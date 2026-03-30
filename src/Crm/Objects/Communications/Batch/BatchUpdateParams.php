@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 
 /**
- * Update a batch of communications by ID (`objectId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+ * Update a batch of messages by ID (`communicationId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
  * @see HubspotSDK\Services\Crm\Objects\Communications\BatchService::update()
  *

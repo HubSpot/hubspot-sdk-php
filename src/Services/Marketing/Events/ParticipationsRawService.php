@@ -31,6 +31,8 @@ final class ParticipationsRawService implements ParticipationsRawContract
     /**
      * @api
      *
+     * Read Marketing event's participations counters by externalAccountId and externalEventId pair.
+     *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param array{
      *   externalAccountID: string
@@ -69,6 +71,8 @@ final class ParticipationsRawService implements ParticipationsRawContract
     /**
      * @api
      *
+     * Read Marketing event's participations counters by internal identifier marketingEventId.
+     *
      * @param int $marketingEventID the internal id of the marketing event in HubSpot
      * @param RequestOpts|null $requestOptions
      *
@@ -94,6 +98,8 @@ final class ParticipationsRawService implements ParticipationsRawContract
 
     /**
      * @api
+     *
+     * Read Contact's participations by identifier - email or internal id.
      *
      * @param string $contactIdentifier The identifier of the Contact. It may be email or internal id.
      * @param array{
@@ -131,6 +137,8 @@ final class ParticipationsRawService implements ParticipationsRawContract
 
     /**
      * @api
+     *
+     * Read Marketing event's participations breakdown with optional filters by externalAccountId and externalEventId pair.
      *
      * @param string $externalEventID path param: The id of the marketing event in the external event application
      * @param array{
@@ -175,6 +183,8 @@ final class ParticipationsRawService implements ParticipationsRawContract
 
     /**
      * @api
+     *
+     * Read Marketing event's participations breakdown with optional filters by internal identifier marketingEventId.
      *
      * @param int $marketingEventID the internal id of the marketing event in HubSpot
      * @param array{

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve all discounts, using query parameters to specify the information that gets returned.
+ * List.
  *
  * @see HubspotSDK\Services\Crm\Objects\DiscountsService::list()
  *

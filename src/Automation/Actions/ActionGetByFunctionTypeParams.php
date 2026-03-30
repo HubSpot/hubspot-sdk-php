@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve functions of a specific type for a given definition.
+ *
  * @see HubspotSDK\Services\Automation\ActionsService::getByFunctionType()
  *
  * @phpstan-type ActionGetByFunctionTypeParamsShape = array{

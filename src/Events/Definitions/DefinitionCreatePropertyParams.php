@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\OptionInput;
 
 /**
+ * Create a new property for an existing event definition.
+ *
  * @see HubspotSDK\Services\Events\DefinitionsService::createProperty()
  *
  * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput

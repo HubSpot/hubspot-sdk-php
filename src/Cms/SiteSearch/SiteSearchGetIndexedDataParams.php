@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Return all indexed data for an asset (e.g., page, blog post, HubDB table), specified by ID. This is useful when debugging why a particular asset is not returned from a custom search.
+ *
  * @see HubspotSDK\Services\Cms\SiteSearchService::getIndexedData()
  *
  * @phpstan-type SiteSearchGetIndexedDataParamsShape = array{type?: string|null}

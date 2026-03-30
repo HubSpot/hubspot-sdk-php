@@ -4,6 +4,7 @@ namespace Tests\Services\Crm\Extensions;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
 use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -87,6 +88,63 @@ final class CallingTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testCreateInboundCall(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->createInboundCall(
+            createEngagement: true,
+            engagementProperties: ['foo' => 'string'],
+            externalCallID: 'externalCallId',
+            finalCallStatus: 'BUSY',
+            fromNumber: [
+                'e164Number' => 'e164Number', 'phoneNumberType' => 'FIXED_LINE',
+            ],
+            potentialRecipientUserIDs: [0],
+            toNumber: [
+                'e164Number' => 'e164Number', 'phoneNumberType' => 'FIXED_LINE',
+            ],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CompletedThirdPartyCallResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateInboundCallWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->createInboundCall(
+            createEngagement: true,
+            engagementProperties: ['foo' => 'string'],
+            externalCallID: 'externalCallId',
+            finalCallStatus: 'BUSY',
+            fromNumber: [
+                'e164Number' => 'e164Number',
+                'phoneNumberType' => 'FIXED_LINE',
+                'extension' => 'extension',
+            ],
+            potentialRecipientUserIDs: [0],
+            toNumber: [
+                'e164Number' => 'e164Number',
+                'phoneNumberType' => 'FIXED_LINE',
+                'extension' => 'extension',
+            ],
+            callStartedTimestamp: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            durationSeconds: 0,
+            userID: 0,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(CompletedThirdPartyCallResponse::class, $result);
     }
 
     #[Test]

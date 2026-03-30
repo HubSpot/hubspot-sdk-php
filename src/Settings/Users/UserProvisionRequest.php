@@ -1,0 +1,199 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Settings\Users;
+
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type UserProvisionRequestShape = array{
+ *   email: string,
+ *   sendWelcomeEmail: bool,
+ *   firstName?: string|null,
+ *   lastName?: string|null,
+ *   primaryTeamID?: string|null,
+ *   roleID?: string|null,
+ *   secondaryTeamIDs?: list<string>|null,
+ * }
+ */
+final class UserProvisionRequest implements BaseModel
+{
+    /** @use SdkModel<UserProvisionRequestShape> */
+    use SdkModel;
+
+    /**
+     * The user's email.
+     */
+    #[Required]
+    public string $email;
+
+    /**
+     * Whether to send a welcome email.
+     */
+    #[Required]
+    public bool $sendWelcomeEmail;
+
+    /**
+     * The user's first name.
+     */
+    #[Optional]
+    public ?string $firstName;
+
+    /**
+     * The user's last name.
+     */
+    #[Optional]
+    public ?string $lastName;
+
+    /**
+     * The user's primary team.
+     */
+    #[Optional('primaryTeamId')]
+    public ?string $primaryTeamID;
+
+    /**
+     * The user's role.
+     */
+    #[Optional('roleId')]
+    public ?string $roleID;
+
+    /**
+     * The user's additional teams.
+     *
+     * @var list<string>|null $secondaryTeamIDs
+     */
+    #[Optional('secondaryTeamIds', list: 'string')]
+    public ?array $secondaryTeamIDs;
+
+    /**
+     * `new UserProvisionRequest()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * UserProvisionRequest::with(email: ..., sendWelcomeEmail: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new UserProvisionRequest)->withEmail(...)->withSendWelcomeEmail(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<string>|null $secondaryTeamIDs
+     */
+    public static function with(
+        string $email,
+        bool $sendWelcomeEmail,
+        ?string $firstName = null,
+        ?string $lastName = null,
+        ?string $primaryTeamID = null,
+        ?string $roleID = null,
+        ?array $secondaryTeamIDs = null,
+    ): self {
+        $self = new self;
+
+        $self['email'] = $email;
+        $self['sendWelcomeEmail'] = $sendWelcomeEmail;
+
+        null !== $firstName && $self['firstName'] = $firstName;
+        null !== $lastName && $self['lastName'] = $lastName;
+        null !== $primaryTeamID && $self['primaryTeamID'] = $primaryTeamID;
+        null !== $roleID && $self['roleID'] = $roleID;
+        null !== $secondaryTeamIDs && $self['secondaryTeamIDs'] = $secondaryTeamIDs;
+
+        return $self;
+    }
+
+    /**
+     * The user's email.
+     */
+    public function withEmail(string $email): self
+    {
+        $self = clone $this;
+        $self['email'] = $email;
+
+        return $self;
+    }
+
+    /**
+     * Whether to send a welcome email.
+     */
+    public function withSendWelcomeEmail(bool $sendWelcomeEmail): self
+    {
+        $self = clone $this;
+        $self['sendWelcomeEmail'] = $sendWelcomeEmail;
+
+        return $self;
+    }
+
+    /**
+     * The user's first name.
+     */
+    public function withFirstName(string $firstName): self
+    {
+        $self = clone $this;
+        $self['firstName'] = $firstName;
+
+        return $self;
+    }
+
+    /**
+     * The user's last name.
+     */
+    public function withLastName(string $lastName): self
+    {
+        $self = clone $this;
+        $self['lastName'] = $lastName;
+
+        return $self;
+    }
+
+    /**
+     * The user's primary team.
+     */
+    public function withPrimaryTeamID(string $primaryTeamID): self
+    {
+        $self = clone $this;
+        $self['primaryTeamID'] = $primaryTeamID;
+
+        return $self;
+    }
+
+    /**
+     * The user's role.
+     */
+    public function withRoleID(string $roleID): self
+    {
+        $self = clone $this;
+        $self['roleID'] = $roleID;
+
+        return $self;
+    }
+
+    /**
+     * The user's additional teams.
+     *
+     * @param list<string> $secondaryTeamIDs
+     */
+    public function withSecondaryTeamIDs(array $secondaryTeamIDs): self
+    {
+        $self = clone $this;
+        $self['secondaryTeamIDs'] = $secondaryTeamIDs;
+
+        return $self;
+    }
+}

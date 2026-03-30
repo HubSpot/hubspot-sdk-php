@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Enroll a contact into a sequence using the specified sequence ID and sender email. This endpoint requires the user ID to be provided as a query parameter and a valid JSON body with the necessary enrollment details. It is used to automate the process of enrolling contacts into predefined sequences for streamlined communication.
+ * Enroll a contact into a sequence using the specified user ID and sequence details.
  *
  * @see HubspotSDK\Services\Automation\SequencesService::createEnrollment()
  *
@@ -29,9 +29,6 @@ final class SequenceCreateEnrollmentParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The unique identifier of the user performing the enrollment. This parameter is required.
-     */
     #[Required]
     public string $userID;
 
@@ -108,9 +105,6 @@ final class SequenceCreateEnrollmentParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The unique identifier of the user performing the enrollment. This parameter is required.
-     */
     public function withUserID(string $userID): self
     {
         $self = clone $this;

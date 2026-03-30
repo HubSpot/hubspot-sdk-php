@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm;
 
+use HubspotSDK\AssociationDefinition;
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Crm\ObjectSchemas\ObjectSchema;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaCreateAssociationParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaCreateParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaDeleteAssociationParams;
@@ -16,8 +18,6 @@ use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaGetParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaListParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaUpdateParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
-use HubspotSDK\Events\AssociationDefinition;
-use HubspotSDK\ObjectSchema;
 use HubspotSDK\ObjectTypeDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
@@ -38,6 +38,8 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
 
     /**
      * @api
+     *
+     * Create a new custom object schema by defining its properties and associations.
      *
      * @param array{
      *   allowsSensitiveProperties: bool,
@@ -79,6 +81,9 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
     /**
      * @api
      *
+     * Update attributes of a custom object schema, such as properties and labels, using the object type ID or fully qualified name.
+     *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array{
      *   clearDescription: bool,
      *   allowsSensitiveProperties?: bool,
@@ -119,6 +124,8 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
     /**
      * @api
      *
+     * Retrieve all custom object schemas, with options to include property definitions, association definitions, and audit metadata.
+     *
      * @param array{
      *   archived?: bool,
      *   includeAssociationDefinitions?: bool,
@@ -153,6 +160,9 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
     /**
      * @api
      *
+     * Remove a custom object schema from the account using its object type ID or fully qualified name.
+     *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array{archived?: bool}|ObjectSchemaDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -183,6 +193,9 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
     /**
      * @api
      *
+     * Create a new association between the specified object type and another object type. This operation requires the definition of the association attributes, such as the primary and target object type IDs.
+     *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array{
      *   fromObjectTypeID: string, toObjectTypeID: string, name?: string
      * }|ObjectSchemaCreateAssociationParams $params
@@ -217,6 +230,9 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
     /**
      * @api
      *
+     * Remove an association between two object types identified by the association identifier and object type. This operation is irreversible and will permanently delete the specified association.
+     *
+     * @param string $associationIdentifier unique ID of the association to remove
      * @param array{objectType: string}|ObjectSchemaDeleteAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -252,6 +268,9 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
     /**
      * @api
      *
+     * Retrieve details of a custom object schema, including its properties and associations, using the object type ID or fully qualified name.
+     *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array{
      *   includeAssociationDefinitions?: bool,
      *   includeAuditMetadata?: bool,

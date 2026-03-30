@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\AssociationDefinition;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Crm\ObjectSchemas\ObjectSchema;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaCreateAssociationParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaCreateParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaDeleteAssociationParams;
@@ -14,8 +16,6 @@ use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaDeleteParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaGetParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaListParams;
 use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaUpdateParams;
-use HubspotSDK\Events\AssociationDefinition;
-use HubspotSDK\ObjectSchema;
 use HubspotSDK\ObjectTypeDefinition;
 use HubspotSDK\RequestOptions;
 
@@ -42,6 +42,7 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|ObjectSchemaUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -73,6 +74,7 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|ObjectSchemaDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -89,6 +91,7 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|ObjectSchemaCreateAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -105,6 +108,7 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
+     * @param string $associationIdentifier unique ID of the association to remove
      * @param array<string,mixed>|ObjectSchemaDeleteAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -121,6 +125,7 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|ObjectSchemaGetParams $params
      * @param RequestOpts|null $requestOptions
      *

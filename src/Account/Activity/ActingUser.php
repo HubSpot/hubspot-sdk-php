@@ -18,7 +18,7 @@ final class ActingUser implements BaseModel
     use SdkModel;
 
     /**
-     * The ID of the user who performed the action.
+     * The user's unique ID.
      */
     #[Required('userId')]
     public int $userID;
@@ -65,7 +65,7 @@ final class ActingUser implements BaseModel
     }
 
     /**
-     * The ID of the user who performed the action.
+     * The user's unique ID.
      */
     public function withUserID(int $userID): self
     {

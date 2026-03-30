@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update a batch of blog posts.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Posts\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 
 /**
- * Batch update multiple subscription objects in a single batch operation, allowing for efficient modifications of CRM subscription records.
+ * Update multiple subscription objects in a single batch operation, allowing for efficient modifications of CRM subscription records.
  *
  * @see HubspotSDK\Services\Crm\Objects\Subscriptions\BatchService::update()
  *

@@ -10,6 +10,8 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Files\Folder;
 use HubspotSDK\Files\FolderActionResponse;
+use HubspotSDK\Files\Folders\FolderGetByIDParams;
+use HubspotSDK\Files\Folders\FolderGetByPathParams;
 use HubspotSDK\Files\Folders\FolderSearchParams;
 use HubspotSDK\Files\Folders\FolderUpdateAsyncByIDParams;
 use HubspotSDK\Files\Folders\FolderUpdateByIDParams;
@@ -32,8 +34,125 @@ final class FoldersRawService implements FoldersRawContract
     /**
      * @api
      *
+     * Delete folder by ID.
+     *
+     * @param string $folderID ID of folder to delete
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteByID(
+        string $folderID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['files/2026-03/folders/%1$s', $folderID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Delete a folder, identified by its path.
+     *
+     * @param string $folderPath Path of folder to delete
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteByPath(
+        string $folderPath,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['files/2026-03/folders/%1$s', $folderPath],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve a folder by its ID.
+     *
+     * @param string $folderID ID of desired folder
+     * @param array{properties?: list<string>}|FolderGetByIDParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Folder>
+     *
+     * @throws APIException
+     */
+    public function getByID(
+        string $folderID,
+        array|FolderGetByIDParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = FolderGetByIDParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['files/2026-03/folders/%1$s', $folderID],
+            query: $parsed,
+            options: $options,
+            convert: Folder::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve a folder, identified by its path.
+     *
+     * @param string $folderPath path of desired folder
+     * @param array{properties?: list<string>}|FolderGetByPathParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Folder>
+     *
+     * @throws APIException
+     */
+    public function getByPath(
+        string $folderPath,
+        array|FolderGetByPathParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = FolderGetByPathParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['files/2026-03/folders/%1$s', $folderPath],
+            query: $parsed,
+            options: $options,
+            convert: Folder::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Check status of folder update. Folder updates happen asynchronously.
      *
+     * @param string $taskID TaskId of folder update
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FolderActionResponse>
@@ -144,6 +263,7 @@ final class FoldersRawService implements FoldersRawContract
      *
      * Update a folder's properties, identified by folder ID.
      *
+     * @param string $folderID ID of folder to update
      * @param array{name?: string, parentFolderID?: int}|FolderUpdateByIDParams $params
      * @param RequestOpts|null $requestOptions
      *

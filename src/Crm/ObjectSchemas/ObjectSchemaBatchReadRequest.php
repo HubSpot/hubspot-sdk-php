@@ -21,12 +21,21 @@ final class ObjectSchemaBatchReadRequest implements BaseModel
     /** @use SdkModel<ObjectSchemaBatchReadRequestShape> */
     use SdkModel;
 
+    /**
+     * Indicates whether to include association definitions in the response.
+     */
     #[Required]
     public bool $includeAssociationDefinitions;
 
+    /**
+     * Indicates whether to include audit metadata in the response.
+     */
     #[Required]
     public bool $includeAuditMetadata;
 
+    /**
+     * Indicates whether to include property definitions in the response.
+     */
     #[Required]
     public bool $includePropertyDefinitions;
 
@@ -85,6 +94,9 @@ final class ObjectSchemaBatchReadRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether to include association definitions in the response.
+     */
     public function withIncludeAssociationDefinitions(
         bool $includeAssociationDefinitions
     ): self {
@@ -94,6 +106,9 @@ final class ObjectSchemaBatchReadRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether to include audit metadata in the response.
+     */
     public function withIncludeAuditMetadata(bool $includeAuditMetadata): self
     {
         $self = clone $this;
@@ -102,6 +117,9 @@ final class ObjectSchemaBatchReadRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether to include property definitions in the response.
+     */
     public function withIncludePropertyDefinitions(
         bool $includePropertyDefinitions
     ): self {

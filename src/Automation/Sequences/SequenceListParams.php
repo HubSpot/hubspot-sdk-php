@@ -25,14 +25,11 @@ final class SequenceListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The unique identifier of the user whose sequences are to be retrieved. This parameter is required.
-     */
     #[Required]
     public string $userID;
 
     /**
-     * The paging cursor token of the last successfully read resource. Use this for pagination to retrieve the next set of results.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     #[Optional]
     public ?string $after;
@@ -43,9 +40,6 @@ final class SequenceListParams implements BaseModel
     #[Optional]
     public ?int $limit;
 
-    /**
-     * The name of the sequence to filter results by.
-     */
     #[Optional]
     public ?string $name;
 
@@ -90,9 +84,6 @@ final class SequenceListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The unique identifier of the user whose sequences are to be retrieved. This parameter is required.
-     */
     public function withUserID(string $userID): self
     {
         $self = clone $this;
@@ -102,7 +93,7 @@ final class SequenceListParams implements BaseModel
     }
 
     /**
-     * The paging cursor token of the last successfully read resource. Use this for pagination to retrieve the next set of results.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     public function withAfter(string $after): self
     {
@@ -123,9 +114,6 @@ final class SequenceListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The name of the sequence to filter results by.
-     */
     public function withName(string $name): self
     {
         $self = clone $this;

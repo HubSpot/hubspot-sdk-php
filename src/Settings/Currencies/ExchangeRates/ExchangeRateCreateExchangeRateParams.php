@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams\FromCurrencyCode;
 
 /**
+ * Create a new exchange rate with specified conversion rate and currency codes.
+ *
  * @see HubspotSDK\Services\Settings\Currencies\ExchangeRatesService::createExchangeRate()
  *
  * @phpstan-type ExchangeRateCreateExchangeRateParamsShape = array{

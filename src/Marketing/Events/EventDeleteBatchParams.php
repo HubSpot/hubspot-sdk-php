@@ -10,6 +10,12 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Deletes multiple Marketing Events from the portal based on their objectId, if they exist.
+ *
+ * Responses:
+ * 204: Returned if all specified Marketing Events were successfully deleted.
+ * 207: Returned if some objectIds did not correspond to any existing Marketing Events.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::deleteBatch()
  *
  * @phpstan-import-type MarketingEventPublicObjectIDDeleteRequestShape from \HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest

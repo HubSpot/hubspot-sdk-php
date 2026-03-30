@@ -45,7 +45,7 @@ final class PropertyUpdate implements BaseModel
     public ?string $description;
 
     /**
-     * Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
      */
     #[Optional]
     public ?int $displayOrder;
@@ -77,13 +77,13 @@ final class PropertyUpdate implements BaseModel
     public ?bool $hidden;
 
     /**
-     * A human-readable label that will be shown in HubSpot.
+     * A human-readable property label that will be shown in HubSpot.
      */
     #[Optional]
     public ?string $label;
 
     /**
-     * A list of valid options for the property. This field is required for enumerated properties.
+     * A list of valid options for the property.
      *
      * @var list<OptionInput>|null $options
      */
@@ -163,7 +163,7 @@ final class PropertyUpdate implements BaseModel
     }
 
     /**
-     * Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
      */
     public function withDisplayOrder(int $displayOrder): self
     {
@@ -220,7 +220,7 @@ final class PropertyUpdate implements BaseModel
     }
 
     /**
-     * A human-readable label that will be shown in HubSpot.
+     * A human-readable property label that will be shown in HubSpot.
      */
     public function withLabel(string $label): self
     {
@@ -231,7 +231,7 @@ final class PropertyUpdate implements BaseModel
     }
 
     /**
-     * A list of valid options for the property. This field is required for enumerated properties.
+     * A list of valid options for the property.
      *
      * @param list<OptionInput|OptionInputShape> $options
      */

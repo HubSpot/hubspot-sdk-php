@@ -6,6 +6,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Campaigns\PublicCampaign;
 use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -30,6 +31,36 @@ final class CampaignsTest extends TestCase
         );
 
         $this->client = $client;
+    }
+
+    #[Test]
+    public function testCreate(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->marketing->campaigns->create(
+            properties: ['foo' => 'string']
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCampaign::class, $result);
+    }
+
+    #[Test]
+    public function testCreateWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->marketing->campaigns->create(
+            properties: ['foo' => 'string']
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PublicCampaign::class, $result);
     }
 
     #[Test]
@@ -62,6 +93,24 @@ final class CampaignsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicCampaign::class, $result);
+    }
+
+    #[Test]
+    public function testList(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $page = $this->client->marketing->campaigns->list();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PublicCampaign::class, $item);
+        }
     }
 
     #[Test]

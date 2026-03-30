@@ -34,6 +34,9 @@ final class PipelineStage implements BaseModel
     #[Required]
     public string $id;
 
+    /**
+     * Whether the pipeline is archived.
+     */
     #[Required]
     public bool $archived;
 
@@ -169,6 +172,9 @@ final class PipelineStage implements BaseModel
         return $self;
     }
 
+    /**
+     * Whether the pipeline is archived.
+     */
     public function withArchived(bool $archived): self
     {
         $self = clone $this;

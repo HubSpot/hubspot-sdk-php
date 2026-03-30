@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\Objects\Tasks\TaskCreateParams;
@@ -71,7 +71,7 @@ final class TasksRawService implements TasksRawContract
     /**
      * @api
      *
-     * Perform a partial update of a task identified by `{taskId}`or optionally a unique property value as specified by the `idProperty` query param. `{taskId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+     * Perform a partial update of an Object identified by `{taskId}`or optionally a unique property value as specified by the `idProperty` query param. `{taskId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
      * @param string $taskID Path param
      * @param array{

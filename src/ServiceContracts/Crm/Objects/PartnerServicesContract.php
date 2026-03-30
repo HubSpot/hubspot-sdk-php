@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 use HubspotSDK\Page;

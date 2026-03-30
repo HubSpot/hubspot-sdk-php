@@ -13,6 +13,8 @@ use HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\State;
 use HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory;
 
 /**
+ * Create or update the draft version of a marketing email. If no draft exists, the system creates a draft from the current “live” email then applies the request body to that draft. The draft version only lives on the buffer—the email is not cloned.
+ *
  * @see HubspotSDK\Services\Marketing\EmailsService::updateDraft()
  *
  * @phpstan-import-type PublicEmailContentShape from \HubspotSDK\Marketing\Emails\PublicEmailContent

@@ -33,6 +33,8 @@ final class ExchangeRatesRawService implements ExchangeRatesRawContract
     /**
      * @api
      *
+     * Create a new exchange rate with specified conversion rate and currency codes.
+     *
      * @param array{
      *   conversionRate: float,
      *   fromCurrencyCode: value-of<FromCurrencyCode>,
@@ -66,6 +68,8 @@ final class ExchangeRatesRawService implements ExchangeRatesRawContract
     /**
      * @api
      *
+     * Retrieve the details for a specific exchange rate specified by its ID.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ExchangeRate>
@@ -90,6 +94,8 @@ final class ExchangeRatesRawService implements ExchangeRatesRawContract
     /**
      * @api
      *
+     * Retrieve all current exchange rates for all currency pairs.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseExchangeRateNoPaging>
@@ -110,6 +116,8 @@ final class ExchangeRatesRawService implements ExchangeRatesRawContract
 
     /**
      * @api
+     *
+     * Get a list of exchange rates
      *
      * @param array{
      *   after?: string,
@@ -146,6 +154,8 @@ final class ExchangeRatesRawService implements ExchangeRatesRawContract
     /**
      * @api
      *
+     * Update an existing conversion rate, specified by its ID.
+     *
      * @param array{
      *   conversionRate: float, effectiveAt?: \DateTimeInterface
      * }|ExchangeRateUpdateExchangeRateParams $params
@@ -179,6 +189,8 @@ final class ExchangeRatesRawService implements ExchangeRatesRawContract
 
     /**
      * @api
+     *
+     * Change the visibility setting for a currency pair. This will hide or display a currency pair for users in the HubSpot app.
      *
      * @param array{
      *   fromCurrencyCode: value-of<ExchangeRateUpdateVisibilityParams\FromCurrencyCode>,

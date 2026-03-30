@@ -38,11 +38,11 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Retrieve the unsubscribe-all status for a batch of subscribers in a specified channel. This endpoint is useful for checking the current unsubscribe-all status of multiple subscribers at once, helping to manage and audit communication preferences efficiently.
+     * Checks whether a set of contacts have opted out of all communications.
      *
-     * @param Channel|value-of<Channel> $channel Query param: The communication channel to check the unsubscribe-all status for. Currently, only 'EMAIL' is supported. This parameter is required.
+     * @param Channel|value-of<Channel> $channel Query param
      * @param list<string> $inputs body param: Strings to input
-     * @param int $businessUnitID Query param: The ID of the business unit for which the statuses are being retrieved. This is an optional parameter.
+     * @param int $businessUnitID Query param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -70,11 +70,11 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Retrieve the subscription statuses for multiple subscribers in a batch operation. This endpoint allows you to check the communication preferences of several subscribers at once, which is useful for managing large lists of contacts efficiently.
+     * Batch retrieve subscription statuses for a set of contacts.
      *
-     * @param \HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel|value-of<\HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel> $channel Query param: The communication channel to filter by. This parameter is required and currently only supports 'EMAIL'.
+     * @param \HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel|value-of<\HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel> $channel Query param
      * @param list<string> $inputs body param: Strings to input
-     * @param int $businessUnitID Query param: An optional identifier for the business unit. This is an integer value.
+     * @param int $businessUnitID Query param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -104,10 +104,10 @@ final class BatchService implements BatchContract
      *
      * Unsubscribe a set of contacts from all email subscriptions.
      *
-     * @param \HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel|value-of<\HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel> $channel Query param: A required string specifying the communication channel. Currently, only 'EMAIL' is supported.
+     * @param \HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel|value-of<\HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel> $channel Query param
      * @param list<string> $inputs body param: Strings to input
-     * @param int $businessUnitID Query param: The ID of the business unit to which the operation applies. It is an optional parameter.
-     * @param bool $verbose Query param: A boolean indicating whether to include detailed information in the response. Defaults to false.
+     * @param int $businessUnitID Query param
+     * @param bool $verbose Query param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

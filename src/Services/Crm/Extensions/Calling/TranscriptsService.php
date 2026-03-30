@@ -82,11 +82,16 @@ final class TranscriptsService implements TranscriptsContract
     /**
      * @api
      *
-     * @param array<string,string> $engagementProperties
-     * @param FinalCallStatus|value-of<FinalCallStatus> $finalCallStatus
+     * @param bool $createEngagement indicates whether an engagement should be created for the call
+     * @param array<string,string> $engagementProperties contains additional properties related to the engagement
+     * @param string $externalCallID the unique identifier for the call from an external system
+     * @param FinalCallStatus|value-of<FinalCallStatus> $finalCallStatus the final status of the call, with accepted values including: BUSY, CALLING_CRM_USER, CANCELED, COMPLETED, CONNECTING, FAILED, HOLD, IN_PROGRESS, MISSED, NO_ANSWER, QUEUED, RINGING, UNKNOWN
      * @param FormattedPhoneNumber|FormattedPhoneNumberShape $fromNumber
      * @param list<int> $potentialRecipientUserIDs
      * @param FormattedPhoneNumber|FormattedPhoneNumberShape $toNumber
+     * @param \DateTimeInterface $callStartedTimestamp the timestamp indicating when the call started, formatted as a date-time string
+     * @param int $durationSeconds the duration of the call in seconds
+     * @param int $userID the ID of the user associated with the call
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Set whether a custom action definition requires an object.
+ *
  * @see HubspotSDK\Services\Automation\ActionsService::createRequiresObject()
  *
  * @phpstan-type ActionCreateRequiresObjectParamsShape = array{
@@ -25,6 +27,9 @@ final class ActionCreateRequiresObjectParams implements BaseModel
     #[Required]
     public int $appID;
 
+    /**
+     * Indicates whether a custom action definition requires an associated object.
+     */
     #[Required]
     public bool $requiresObject;
 
@@ -70,6 +75,9 @@ final class ActionCreateRequiresObjectParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether a custom action definition requires an associated object.
+     */
     public function withRequiresObject(bool $requiresObject): self
     {
         $self = clone $this;

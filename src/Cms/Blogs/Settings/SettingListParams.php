@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Get the list of blogs. Results can be limited and filtered by creation or updated date.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\SettingsService::list()
  *
  * @phpstan-type SettingListParamsShape = array{

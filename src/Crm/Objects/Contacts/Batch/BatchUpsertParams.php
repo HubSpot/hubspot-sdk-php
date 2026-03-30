@@ -11,8 +11,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
 
 /**
- * Upsert a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record.
- *
  * @see HubspotSDK\Services\Crm\Objects\Contacts\BatchService::upsert()
  *
  * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert

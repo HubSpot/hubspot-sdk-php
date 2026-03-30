@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
@@ -100,7 +100,7 @@ final class CoursesService implements CoursesContract
     /**
      * @api
      *
-     * Retrieve all courses.
+     * Read a page of courses. Control what is returned via the `properties` query param.
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
@@ -143,7 +143,7 @@ final class CoursesService implements CoursesContract
     /**
      * @api
      *
-     * Delete a course by ID.
+     * Move an Object identified by `{courseId}` to the recycling bin.
      *
      * @param RequestOpts|null $requestOptions
      *

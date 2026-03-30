@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Explicitly set new languages for each Blog Author in a multi-language group.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::updateLanguages()
  *
  * @phpstan-type AuthorUpdateLanguagesParamsShape = array{

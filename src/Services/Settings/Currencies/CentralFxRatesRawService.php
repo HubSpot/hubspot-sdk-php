@@ -29,6 +29,8 @@ final class CentralFxRatesRawService implements CentralFxRatesRawContract
     /**
      * @api
      *
+     * Create a new currency with central exchange rates in the portal. Unsupported currencies cannot be added here.
+     *
      * @param array{
      *   currencyCode: value-of<CurrencyCode>
      * }|CentralFxRateCreateCurrencyParams $params
@@ -60,6 +62,8 @@ final class CentralFxRatesRawService implements CentralFxRatesRawContract
     /**
      * @api
      *
+     * Retrieve details on whether the central exchange rates feature is enabled for the portal.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CentralExchangeRatesInformation>
@@ -80,6 +84,8 @@ final class CentralFxRatesRawService implements CentralFxRatesRawContract
 
     /**
      * @api
+     *
+     * Retrieve a list of currency codes that are not supported by the central exchange rates. Unsupported currencies will need to be manually updated.
      *
      * @param RequestOpts|null $requestOptions
      *

@@ -4,9 +4,9 @@ namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;

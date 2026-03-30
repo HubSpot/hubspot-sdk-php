@@ -37,6 +37,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
     /**
      * @api
      *
+     * Create a new account for a channel. Multiple accounts can communicate over a single channel using different delivery identifiers.
+     *
      * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape $deliveryIdentifier
      * @param RequestOpts|null $requestOptions
      *
@@ -68,6 +70,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
     /**
      * @api
      *
+     * This API is used to update the name of the channel account and it's isAuthorized status. Setting to isAuthorized flag to False disables the channel account.
+     *
      * @param int $channelAccountID Path param
      * @param int $channelID Path param
      * @param bool $authorized Body param
@@ -95,6 +99,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
 
     /**
      * @api
+     *
+     * Retrieve a list of accounts for a custom channel.
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
@@ -139,6 +145,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
 
     /**
      * @api
+     *
+     * Update a channel account staging token's account name and delivery identifier. This information will be applied to the channel account created from this staging token. This is used for public apps.
      *
      * @param string $accountToken Path param
      * @param int $channelID Path param

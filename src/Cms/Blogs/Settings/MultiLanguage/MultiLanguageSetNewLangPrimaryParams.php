@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Set a blog as the primary language of a multi-language group.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Settings\MultiLanguageService::setNewLangPrimary()
  *
  * @phpstan-type MultiLanguageSetNewLangPrimaryParamsShape = array{id: string}

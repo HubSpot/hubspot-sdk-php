@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create a batch of blog posts, specifying their content in the request body.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Posts\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{inputs: list<mixed>}

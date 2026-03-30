@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\Type;
@@ -116,13 +116,13 @@ final class PropertiesService implements PropertiesContract
      * @param string $objectType Path param
      * @param string $calculationFormula body param: Represents a formula that is used to compute a calculated property
      * @param string $description body param: A description of the property that will be shown as help text in HubSpot
-     * @param int $displayOrder Body param: Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+     * @param int $displayOrder Body param: Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
      * @param \HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType|value-of<\HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType> $fieldType body param: Controls how the property appears in HubSpot
      * @param bool $formField body param: Whether or not the property can be used in a HubSpot form
      * @param string $groupName body param: The name of the property group the property belongs to
      * @param bool $hidden body param: If true, the property won't be visible and can't be used in HubSpot
-     * @param string $label body param: A human-readable label that will be shown in HubSpot
-     * @param list<OptionInput|OptionInputShape> $options Body param: A list of valid options for the property. This field is required for enumerated properties.
+     * @param string $label body param: A human-readable property label that will be shown in HubSpot
+     * @param list<OptionInput|OptionInputShape> $options body param: A list of valid options for the property
      * @param \HubspotSDK\Crm\Properties\PropertyUpdateParams\Type|value-of<\HubspotSDK\Crm\Properties\PropertyUpdateParams\Type> $type body param: The data type of the property
      * @param RequestOpts|null $requestOptions
      *
@@ -202,7 +202,7 @@ final class PropertiesService implements PropertiesContract
     /**
      * @api
      *
-     * Delete an existing property.
+     * Move a property identified by {propertyName} to the recycling bin.
      *
      * @param RequestOpts|null $requestOptions
      *

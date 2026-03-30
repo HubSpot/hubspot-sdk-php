@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Deletes/Revokes provided Refresh Token.
+ *
  * @see HubspotSDK\Services\Auth\OAuthService::revokeToken()
  *
  * @phpstan-type OAuthRevokeTokenParamsShape = array{

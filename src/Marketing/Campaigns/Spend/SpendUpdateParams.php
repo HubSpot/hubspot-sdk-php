@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Update a specific campaign spend item by its ID. This endpoint allows you to modify the details of a spend item associated with a marketing campaign, such as its amount, name, or order. Use this to keep your campaign spend data accurate and up-to-date.
+ * Update a specific campaign spend item by ID.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::update()
  *

@@ -7,10 +7,10 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Custom\CustomCreateParams;
 use HubspotSDK\Crm\Objects\Custom\CustomDeleteParams;
 use HubspotSDK\Crm\Objects\Custom\CustomGetParams;
@@ -48,9 +48,8 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Create multiple CRM objects in a single request by specifying the object type and providing the necessary properties and associations for each object.
+     * Create a batch of objects
      *
-     * @param string $objectType the type of object
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
      * }|CustomCreateParams $params
@@ -83,9 +82,8 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Update a batch of CRM objects by their internal IDs or unique property values, allowing for efficient modifications of multiple records in a single request.
+     * Update a batch of objects by internal ID, or unique property values
      *
-     * @param string $objectType the type of object
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
      * }|CustomUpdateParams $params
@@ -120,7 +118,6 @@ final class CustomRawService implements CustomRawContract
      *
      * Read a page of objects. Control what is returned via the `properties` query param.
      *
-     * @param string $objectType the type of object
      * @param array{
      *   after?: string,
      *   archived?: bool,
@@ -159,9 +156,8 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Archive a batch of objects by their unique IDs. This operation moves the specified objects to the recycling bin, effectively marking them as archived.
+     * Archive a batch of objects by ID
      *
-     * @param string $objectType the type of object
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
      * }|CustomDeleteParams $params
@@ -196,7 +192,7 @@ final class CustomRawService implements CustomRawContract
      *
      * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
-     * @param string $objectType path param: The type of object
+     * @param string $objectType Path param
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
      *   properties: list<string>,
@@ -237,7 +233,6 @@ final class CustomRawService implements CustomRawContract
      *
      * Merge two CRM objects of the same type by specifying one as the primary object and the other as the object to be merged into it.
      *
-     * @param string $objectType the type of object
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string
      * }|CustomMergeParams $params
@@ -270,9 +265,6 @@ final class CustomRawService implements CustomRawContract
     /**
      * @api
      *
-     * Execute a search query to find CRM objects of a given type, using specified filters and properties. The search can be customized with filters, sorting, and pagination options.
-     *
-     * @param string $objectType the type of object
      * @param array{
      *   after: string,
      *   filterGroups: list<FilterGroup|FilterGroupShape>,
@@ -312,7 +304,6 @@ final class CustomRawService implements CustomRawContract
      *
      * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
      *
-     * @param string $objectType the type of object
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,
      * }|CustomUpsertParams $params

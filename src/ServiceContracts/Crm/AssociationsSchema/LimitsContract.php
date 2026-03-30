@@ -33,8 +33,8 @@ interface LimitsContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: The type of the target object in the association
-     * @param string $fromObjectType path param: The type of the source object in the association
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicAssociationSpec|PublicAssociationSpecShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -50,8 +50,8 @@ interface LimitsContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: The type of the target object in the association
-     * @param string $fromObjectType path param: The type of the source object in the association
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicAssociationDefinitionConfigurationUpdateRequest|PublicAssociationDefinitionConfigurationUpdateRequestShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -67,8 +67,6 @@ interface LimitsContract
     /**
      * @api
      *
-     * @param string $toObjectType the type of the target object in the association
-     * @param string $fromObjectType the type of the source object in the association
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

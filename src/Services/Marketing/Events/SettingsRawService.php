@@ -26,6 +26,8 @@ final class SettingsRawService implements SettingsRawContract
     /**
      * @api
      *
+     * Create or update the current settings for the application.
+     *
      * @param array{eventDetailsURL: string}|SettingCreateOrUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -55,6 +57,8 @@ final class SettingsRawService implements SettingsRawContract
 
     /**
      * @api
+     *
+     * Retrieve the current settings for the application.
      *
      * @param RequestOpts|null $requestOptions
      *

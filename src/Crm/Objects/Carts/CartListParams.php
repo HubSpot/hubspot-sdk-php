@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve all carts. Control what is returned via the `properties` query param.
+ * Retrieve all carts. You can control what is returned via the `properties` query parameter.
  *
  * @see HubspotSDK\Services\Crm\Objects\CartsService::list()
  *

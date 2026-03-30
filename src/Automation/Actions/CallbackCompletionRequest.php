@@ -25,17 +25,31 @@ final class CallbackCompletionRequest implements BaseModel
     /** @use SdkModel<CallbackCompletionRequestShape> */
     use SdkModel;
 
-    /** @var array<string,string> $outputFields */
+    /**
+     * Contains the output fields associated with the callback, with each field represented as a key-value pair.
+     *
+     * @var array<string,string> $outputFields
+     */
     #[Required(map: 'string')]
     public array $outputFields;
 
+    /**
+     * Holds the typed outputs related to the callback, structured as an object.
+     */
     #[Required]
     public mixed $typedOutputs;
 
+    /**
+     * Indicates the reason for the failure of a callback completion.
+     */
     #[Optional]
     public ?string $failureReasonType;
 
-    /** @var RequestContextVariants|null $requestContext */
+    /**
+     * Specifies the context in which the request is made, which can be one of several predefined contexts.
+     *
+     * @var RequestContextVariants|null $requestContext
+     */
     #[Optional]
     public WorkflowsRequestContext|AgentRequestContext|CopilotRequestContext|StandaloneRequestContext|TestRequestContext|null $requestContext;
 
@@ -84,6 +98,8 @@ final class CallbackCompletionRequest implements BaseModel
     }
 
     /**
+     * Contains the output fields associated with the callback, with each field represented as a key-value pair.
+     *
      * @param array<string,string> $outputFields
      */
     public function withOutputFields(array $outputFields): self
@@ -94,6 +110,9 @@ final class CallbackCompletionRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * Holds the typed outputs related to the callback, structured as an object.
+     */
     public function withTypedOutputs(mixed $typedOutputs): self
     {
         $self = clone $this;
@@ -102,6 +121,9 @@ final class CallbackCompletionRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates the reason for the failure of a callback completion.
+     */
     public function withFailureReasonType(string $failureReasonType): self
     {
         $self = clone $this;
@@ -111,6 +133,8 @@ final class CallbackCompletionRequest implements BaseModel
     }
 
     /**
+     * Specifies the context in which the request is made, which can be one of several predefined contexts.
+     *
      * @param RequestContextShape $requestContext
      */
     public function withRequestContext(

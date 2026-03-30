@@ -32,6 +32,8 @@ final class SiteSearchRawService implements SiteSearchRawContract
     /**
      * @api
      *
+     * Return all indexed data for an asset (e.g., page, blog post, HubDB table), specified by ID. This is useful when debugging why a particular asset is not returned from a custom search.
+     *
      * @param array{type?: string}|SiteSearchGetIndexedDataParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -61,6 +63,8 @@ final class SiteSearchRawService implements SiteSearchRawContract
 
     /**
      * @api
+     *
+     * Returns any website content matching the given search criteria for a given HubSpot account. Searches can be filtered by content type, domain, or URL path. Includes options for weighing results by recency and popularity, along with language support.
      *
      * @param array{
      *   analytics?: bool,

@@ -11,8 +11,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
 
 /**
- * Create and update a batch of discounts by a unique property. Discounts that don't exist will be created, while existing discounts will be updated.
- *
  * @see HubspotSDK\Services\Crm\Objects\Discounts\BatchService::upsert()
  *
  * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert

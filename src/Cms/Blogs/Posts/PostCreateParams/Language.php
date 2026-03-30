@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Cms\Blogs\Posts\PostCreateParams;
 
 /**
- * The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
+ * The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.
  */
 enum Language: string
 {

@@ -18,10 +18,17 @@ final class PublicExecutionTranslationRule implements BaseModel
     /** @use SdkModel<PublicExecutionTranslationRuleShape> */
     use SdkModel;
 
-    /** @var array<string,mixed> $conditions */
+    /**
+     * Defines the conditions that must be met for the execution rule to apply.
+     *
+     * @var array<string,mixed> $conditions
+     */
     #[Required(map: 'mixed')]
     public array $conditions;
 
+    /**
+     * Specifies the name of the label associated with the execution rule.
+     */
     #[Required]
     public string $labelName;
 
@@ -62,6 +69,8 @@ final class PublicExecutionTranslationRule implements BaseModel
     }
 
     /**
+     * Defines the conditions that must be met for the execution rule to apply.
+     *
      * @param array<string,mixed> $conditions
      */
     public function withConditions(array $conditions): self
@@ -72,6 +81,9 @@ final class PublicExecutionTranslationRule implements BaseModel
         return $self;
     }
 
+    /**
+     * Specifies the name of the label associated with the execution rule.
+     */
     public function withLabelName(string $labelName): self
     {
         $self = clone $this;

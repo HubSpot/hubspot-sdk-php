@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create a new language variation from an existing blog.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Settings\MultiLanguageService::createLanguageVariation()
  *
  * @phpstan-type MultiLanguageCreateLanguageVariationParamsShape = array{
@@ -26,15 +28,27 @@ final class MultiLanguageCreateLanguageVariationParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * ID of blog to clone.
+     */
     #[Required]
     public string $id;
 
+    /**
+     * Target language of new variant.
+     */
     #[Optional]
     public ?string $language;
 
+    /**
+     * Language of primary blog to clone.
+     */
     #[Optional]
     public ?string $primaryLanguage;
 
+    /**
+     * Path to this blog.
+     */
     #[Optional]
     public ?string $slug;
 
@@ -79,6 +93,9 @@ final class MultiLanguageCreateLanguageVariationParams implements BaseModel
         return $self;
     }
 
+    /**
+     * ID of blog to clone.
+     */
     public function withID(string $id): self
     {
         $self = clone $this;
@@ -87,6 +104,9 @@ final class MultiLanguageCreateLanguageVariationParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Target language of new variant.
+     */
     public function withLanguage(string $language): self
     {
         $self = clone $this;
@@ -95,6 +115,9 @@ final class MultiLanguageCreateLanguageVariationParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Language of primary blog to clone.
+     */
     public function withPrimaryLanguage(string $primaryLanguage): self
     {
         $self = clone $this;
@@ -103,6 +126,9 @@ final class MultiLanguageCreateLanguageVariationParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Path to this blog.
+     */
     public function withSlug(string $slug): self
     {
         $self = clone $this;

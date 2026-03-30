@@ -11,6 +11,16 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
 
 /**
+ * Records the participation of multiple HubSpot contacts in a Marketing Event using their HubSpot contact IDs.
+ *
+ * Additional Functionality:
+ * - Adds a timeline event to the contacts.
+ *
+ * Allowed Properties:
+ * For the state "attend":
+ * - joinedAt
+ * - leftAt
+ *
  * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByEventIDAndContactID()
  *
  * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventSubscriber

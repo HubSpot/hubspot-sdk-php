@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create a new language variation from an existing Blog Author.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::createLanguageVariation()
  *
  * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor

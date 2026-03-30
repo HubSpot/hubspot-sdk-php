@@ -6,9 +6,9 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceGetParams;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceListParams;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceSearchParams;

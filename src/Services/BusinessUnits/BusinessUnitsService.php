@@ -32,6 +32,8 @@ final class BusinessUnitsService implements BusinessUnitsContract
     /**
      * @api
      *
+     * Retrieve the brands that a specific user can access.
+     *
      * @param list<string> $name
      * @param list<string> $properties
      * @param RequestOpts|null $requestOptions

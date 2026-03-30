@@ -33,6 +33,8 @@ final class ExportsService implements ExportsContract
     /**
      * @api
      *
+     * Begins exporting CRM data for the portal as specified in the request body
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -48,6 +50,8 @@ final class ExportsService implements ExportsContract
 
     /**
      * @api
+     *
+     * Retrieve detailed information about a specific CRM export, including its current state and properties.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -65,6 +69,8 @@ final class ExportsService implements ExportsContract
 
     /**
      * @api
+     *
+     * Returns the status of the export with taskId, including the URL of the resulting file if the export status is COMPLETE
      *
      * @param RequestOpts|null $requestOptions
      *

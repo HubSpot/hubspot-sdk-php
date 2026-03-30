@@ -18,9 +18,15 @@ final class ActionExecutionIndexIdentifier implements BaseModel
     /** @use SdkModel<ActionExecutionIndexIdentifierShape> */
     use SdkModel;
 
+    /**
+     * The index number representing the execution order of the action.
+     */
     #[Required]
     public int $actionExecutionIndex;
 
+    /**
+     * The ID associated with the enrollment process.
+     */
     #[Required('enrollmentId')]
     public int $enrollmentID;
 
@@ -64,6 +70,9 @@ final class ActionExecutionIndexIdentifier implements BaseModel
         return $self;
     }
 
+    /**
+     * The index number representing the execution order of the action.
+     */
     public function withActionExecutionIndex(int $actionExecutionIndex): self
     {
         $self = clone $this;
@@ -72,6 +81,9 @@ final class ActionExecutionIndexIdentifier implements BaseModel
         return $self;
     }
 
+    /**
+     * The ID associated with the enrollment process.
+     */
     public function withEnrollmentID(int $enrollmentID): self
     {
         $self = clone $this;

@@ -19,13 +19,13 @@ final class PublicCampaignBatchUpdateItem implements BaseModel
     use SdkModel;
 
     /**
-     * The unique identifier for the campaign to be updated. It is a string.
+     * The unique identifier for the campaign to be updated.
      */
     #[Required]
     public string $id;
 
     /**
-     * A map of property names to their new values for the campaign. Each property name is a string, and its value is also a string.
+     * A set of key-value pairs representing the properties to be updated for the campaign.
      *
      * @var array<string,string> $properties
      */
@@ -69,7 +69,7 @@ final class PublicCampaignBatchUpdateItem implements BaseModel
     }
 
     /**
-     * The unique identifier for the campaign to be updated. It is a string.
+     * The unique identifier for the campaign to be updated.
      */
     public function withID(string $id): self
     {
@@ -80,7 +80,7 @@ final class PublicCampaignBatchUpdateItem implements BaseModel
     }
 
     /**
-     * A map of property names to their new values for the campaign. Each property name is a string, and its value is also a string.
+     * A set of key-value pairs representing the properties to be updated for the campaign.
      *
      * @param array<string,string> $properties
      */

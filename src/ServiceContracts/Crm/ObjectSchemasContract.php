@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\AssociationDefinition;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Crm\ObjectSchemas\ObjectSchema;
 use HubspotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
-use HubspotSDK\Events\AssociationDefinition;
-use HubspotSDK\ObjectSchema;
 use HubspotSDK\ObjectTypeDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
@@ -23,6 +23,7 @@ interface ObjectSchemasContract
     /**
      * @api
      *
+     * @param bool $allowsSensitiveProperties determines if the object type can include properties that are marked as sensitive
      * @param list<string> $associatedObjects associations defined for this object type
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
      * @param string $name A unique name for this object. For internal use only.
@@ -30,6 +31,7 @@ interface ObjectSchemasContract
      * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
      * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
      * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param string $description a brief explanation of the object type
      * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
      * @param RequestOpts|null $requestOptions
      *
@@ -52,6 +54,7 @@ interface ObjectSchemasContract
     /**
      * @api
      *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
@@ -93,6 +96,7 @@ interface ObjectSchemasContract
     /**
      * @api
      *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *
@@ -107,6 +111,7 @@ interface ObjectSchemasContract
     /**
      * @api
      *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -122,6 +127,8 @@ interface ObjectSchemasContract
     /**
      * @api
      *
+     * @param string $associationIdentifier unique ID of the association to remove
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -135,6 +142,7 @@ interface ObjectSchemasContract
     /**
      * @api
      *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

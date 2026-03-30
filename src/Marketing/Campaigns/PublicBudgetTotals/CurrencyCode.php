@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
 
 /**
- * The currency code used for budget and spending amounts. Valid values include standard currency codes such as 'USD', 'EUR', 'JPY', etc.
+ * The currency code used for the budget and spend amounts, following ISO 4217 standards.
  */
 enum CurrencyCode: string
 {

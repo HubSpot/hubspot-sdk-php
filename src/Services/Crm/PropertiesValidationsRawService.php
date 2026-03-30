@@ -31,6 +31,8 @@ final class PropertiesValidationsRawService implements PropertiesValidationsRawC
     /**
      * @api
      *
+     * Read all properties with validation rules for a given object.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePublicPropertyValidationRuleMapNoPaging>
@@ -52,6 +54,8 @@ final class PropertiesValidationsRawService implements PropertiesValidationsRawC
 
     /**
      * @api
+     *
+     * Read a property's validation rules identified by {propertyName}.
      *
      * @param array{
      *   objectTypeID: string
@@ -89,6 +93,8 @@ final class PropertiesValidationsRawService implements PropertiesValidationsRawC
 
     /**
      * @api
+     *
+     * Retrieve a specific validation rule for a property identified by its name and rule type.
      *
      * @param RuleType|value-of<RuleType> $ruleType
      * @param array{
@@ -130,6 +136,8 @@ final class PropertiesValidationsRawService implements PropertiesValidationsRawC
 
     /**
      * @api
+     *
+     * Update a specific validation rule for a property identified by its name and rule type.
      *
      * @param PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType|value-of<PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType> $ruleType Path param
      * @param array{

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve all meetings, using query parameters to specify the information that gets returned.
+ * Read a page of meetings. Control what is returned via the `properties` query param.
  *
  * @see HubspotSDK\Services\Crm\Objects\MeetingsService::list()
  *

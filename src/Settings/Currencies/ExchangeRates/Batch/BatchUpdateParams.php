@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest;
 
 /**
+ * Update the conversion rates for multiple exchange rates in a batch operation.
+ *
  * @see HubspotSDK\Services\Settings\Currencies\ExchangeRates\BatchService::update()
  *
  * @phpstan-import-type ExchangeRateUpdateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest

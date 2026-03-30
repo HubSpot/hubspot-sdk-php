@@ -58,6 +58,8 @@ final class ActionsRawService implements ActionsRawContract
     /**
      * @api
      *
+     * Create a new custom workflow action.
+     *
      * @param array{
      *   actionURL: string,
      *   functions: list<PublicActionFunction|PublicActionFunctionShape>,
@@ -99,6 +101,8 @@ final class ActionsRawService implements ActionsRawContract
 
     /**
      * @api
+     *
+     * Update an existing action definition by ID.
      *
      * @param string $definitionID Path param
      * @param array{
@@ -144,6 +148,8 @@ final class ActionsRawService implements ActionsRawContract
     /**
      * @api
      *
+     * Retrieve the versions of a definition by ID.
+     *
      * @param string $definitionID Path param
      * @param array{appID: int, after?: string, limit?: int}|ActionListParams $params
      * @param RequestOpts|null $requestOptions
@@ -179,6 +185,8 @@ final class ActionsRawService implements ActionsRawContract
 
     /**
      * @api
+     *
+     * Archive a function for a specific definition.
      *
      * @param array{
      *   appID: int, definitionID: string, functionType: value-of<FunctionType>
@@ -223,6 +231,8 @@ final class ActionsRawService implements ActionsRawContract
     /**
      * @api
      *
+     * Complete a specific blocked action execution by ID.
+     *
      * @param array{
      *   outputFields: array<string,string>,
      *   typedOutputs: mixed,
@@ -258,6 +268,8 @@ final class ActionsRawService implements ActionsRawContract
     /**
      * @api
      *
+     * Complete a batch of blocked action executions.
+     *
      * @param array{
      *   inputs: list<CallbackCompletionBatchRequest|CallbackCompletionBatchRequestShape>,
      * }|ActionCompleteBatchParams $params
@@ -288,6 +300,8 @@ final class ActionsRawService implements ActionsRawContract
 
     /**
      * @api
+     *
+     * Update a function for a given definition by ID.
      *
      * @param string $functionID Path param
      * @param array{
@@ -344,6 +358,8 @@ final class ActionsRawService implements ActionsRawContract
     /**
      * @api
      *
+     * Add a function for a given definition.
+     *
      * @param ActionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<ActionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType Path param
      * @param array{
      *   appID: int, definitionID: string, body: string
@@ -390,6 +406,8 @@ final class ActionsRawService implements ActionsRawContract
     /**
      * @api
      *
+     * Set whether a custom action definition requires an object.
+     *
      * @param string $definitionID Path param
      * @param array{
      *   appID: int, requiresObject: bool
@@ -428,6 +446,8 @@ final class ActionsRawService implements ActionsRawContract
 
     /**
      * @api
+     *
+     * Delete a function within a given definition.
      *
      * @param ActionDeleteByFunctionTypeParams\FunctionType|value-of<ActionDeleteByFunctionTypeParams\FunctionType> $functionType
      * @param array{
@@ -470,6 +490,8 @@ final class ActionsRawService implements ActionsRawContract
     /**
      * @api
      *
+     * Retrieve a specific revision of a definition by revision ID.
+     *
      * @param array{appID: int, definitionID: string}|ActionGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -507,6 +529,8 @@ final class ActionsRawService implements ActionsRawContract
 
     /**
      * @api
+     *
+     * Retrieve functions of a specific type for a given definition.
      *
      * @param ActionGetByFunctionTypeParams\FunctionType|value-of<ActionGetByFunctionTypeParams\FunctionType> $functionType
      * @param array{
@@ -548,6 +572,8 @@ final class ActionsRawService implements ActionsRawContract
 
     /**
      * @api
+     *
+     * Retrieve whether a custom action definition requires an object.
      *
      * @param array{appID: int}|ActionGetRequiresObjectParams $params
      * @param RequestOpts|null $requestOptions

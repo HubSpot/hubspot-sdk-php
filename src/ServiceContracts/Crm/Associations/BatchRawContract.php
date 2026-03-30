@@ -40,7 +40,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: Specifies the type of the target object in the batch association deletion
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|BatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -57,7 +57,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: Specifies the type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|BatchCreateDefaultParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -74,7 +74,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param: The type of the to Object
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|BatchDeleteLabelsParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -91,7 +91,7 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param: The type of the to Object
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|BatchGetParams $params
      * @param RequestOpts|null $requestOptions
      *

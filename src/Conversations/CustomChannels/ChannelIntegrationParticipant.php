@@ -15,6 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ChannelIntegrationParticipantShape = array{
  *   deliveryIdentifier: PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
  *   name?: string|null,
+ *   senderActorID?: string|null,
  * }
  */
 final class ChannelIntegrationParticipant implements BaseModel
@@ -27,6 +28,9 @@ final class ChannelIntegrationParticipant implements BaseModel
 
     #[Optional]
     public ?string $name;
+
+    #[Optional('senderActorId')]
+    public ?string $senderActorID;
 
     /**
      * `new ChannelIntegrationParticipant()` is missing required properties by the API.
@@ -56,13 +60,15 @@ final class ChannelIntegrationParticipant implements BaseModel
      */
     public static function with(
         PublicDeliveryIdentifier|array $deliveryIdentifier,
-        ?string $name = null
+        ?string $name = null,
+        ?string $senderActorID = null,
     ): self {
         $self = new self;
 
         $self['deliveryIdentifier'] = $deliveryIdentifier;
 
         null !== $name && $self['name'] = $name;
+        null !== $senderActorID && $self['senderActorID'] = $senderActorID;
 
         return $self;
     }
@@ -83,6 +89,14 @@ final class ChannelIntegrationParticipant implements BaseModel
     {
         $self = clone $this;
         $self['name'] = $name;
+
+        return $self;
+    }
+
+    public function withSenderActorID(string $senderActorID): self
+    {
+        $self = clone $this;
+        $self['senderActorID'] = $senderActorID;
 
         return $self;
     }

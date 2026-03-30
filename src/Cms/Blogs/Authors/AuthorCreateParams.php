@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create a new Blog Author.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::create()
  *
  * @phpstan-type AuthorCreateParamsShape = array{

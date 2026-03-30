@@ -18,8 +18,8 @@ interface IPRangesContract
     /**
      * @api
      *
-     * @param list<Direction|value-of<Direction>> $direction An array of traffic directions to filter the IP ranges. Valid values are `INGRESS` and `EGRESS`.
-     * @param list<Service|value-of<Service>> $service An array of service types to filter the IP ranges. Valid values include `EMAIL`, `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
+     * @param list<Direction|value-of<Direction>> $direction
+     * @param list<Service|value-of<Service>> $service
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -33,8 +33,8 @@ interface IPRangesContract
     /**
      * @api
      *
-     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction>> $direction An array of directions to filter the IP ranges by. Valid values are `INGRESS` and `EGRESS`.
-     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service>> $service An array specifying the service types to filter by. Valid values include `EMAIL`, `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
+     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction>> $direction
+     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service>> $service
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

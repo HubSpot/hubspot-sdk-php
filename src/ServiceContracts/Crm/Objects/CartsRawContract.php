@@ -6,12 +6,12 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Carts\CartCreateParams;
 use HubspotSDK\Crm\Objects\Carts\CartGetParams;
 use HubspotSDK\Crm\Objects\Carts\CartListParams;
 use HubspotSDK\Crm\Objects\Carts\CartSearchParams;
 use HubspotSDK\Crm\Objects\Carts\CartUpdateParams;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;

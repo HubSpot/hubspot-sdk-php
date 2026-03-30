@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
@@ -154,7 +154,7 @@ final class PartnerClientsService implements PartnerClientsContract
     /**
      * @api
      *
-     * Search for partner clients by filtering on properties, searching through associations, and sorting results.
+     * Execute a search for partner clients based on defined filters, properties, and sorting options. This endpoint allows you to retrieve partner client data that matches the search criteria, facilitating integration and data synchronization with third-party systems.
      *
      * @param string $after a paging cursor token for retrieving subsequent pages
      * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria

@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update the Blog Author objects identified in the request body.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Authors\BatchService::update()
  *
  * @phpstan-type BatchUpdateParamsShape = array{

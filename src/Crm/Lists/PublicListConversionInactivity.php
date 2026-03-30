@@ -31,7 +31,7 @@ final class PublicListConversionInactivity implements BaseModel
     public string $conversionType;
 
     /**
-     * The number of time units for the inactivity period.
+     * Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
      */
     #[Required]
     public int $offset;
@@ -105,7 +105,7 @@ final class PublicListConversionInactivity implements BaseModel
     }
 
     /**
-     * The number of time units for the inactivity period.
+     * Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
      */
     public function withOffset(int $offset): self
     {

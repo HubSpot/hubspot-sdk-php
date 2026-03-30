@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 
 /**
- * Update a batch of payments by ID (`objectId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+ * Update multiple commerce payment records using their internal IDs or unique property values. This operation allows you to modify existing payment records in bulk by providing a list of records with their respective IDs and updated property values.
  *
  * @see HubspotSDK\Services\Crm\Objects\CommercePayments\BatchService::update()
  *

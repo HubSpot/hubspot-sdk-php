@@ -11,8 +11,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
 
 /**
- * Create multiple discounts in a single request by providing the necessary properties and associations for each discount. This operation returns a list of the created discounts, including their unique identifiers.
- *
  * @see HubspotSDK\Services\Crm\Objects\Discounts\BatchService::create()
  *
  * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
@@ -31,7 +31,6 @@ interface CustomContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -46,7 +45,6 @@ interface CustomContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -61,7 +59,6 @@ interface CustomContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
      * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
@@ -88,7 +85,6 @@ interface CustomContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -103,7 +99,7 @@ interface CustomContract
     /**
      * @api
      *
-     * @param string $objectType path param: The type of object
+     * @param string $objectType Path param
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
      * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
      * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
@@ -126,7 +122,6 @@ interface CustomContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param string $objectIDToMerge the ID of the company to merge into the primary
      * @param string $primaryObjectID the ID of the primary company, which the other will merge into
      * @param RequestOpts|null $requestOptions
@@ -143,7 +138,6 @@ interface CustomContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param string $after a paging cursor token for retrieving subsequent pages
      * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
      * @param int $limit the maximum results to return, up to 200 objects
@@ -168,7 +162,6 @@ interface CustomContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
      * @param RequestOpts|null $requestOptions
      *

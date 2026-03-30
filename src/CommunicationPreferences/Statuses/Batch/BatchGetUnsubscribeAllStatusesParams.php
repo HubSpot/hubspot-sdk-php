@@ -12,7 +12,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve the unsubscribe-all status for a batch of subscribers in a specified channel. This endpoint is useful for checking the current unsubscribe-all status of multiple subscribers at once, helping to manage and audit communication preferences efficiently.
+ * Checks whether a set of contacts have opted out of all communications.
  *
  * @see HubspotSDK\Services\CommunicationPreferences\Statuses\BatchService::getUnsubscribeAllStatuses()
  *
@@ -28,11 +28,7 @@ final class BatchGetUnsubscribeAllStatusesParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The communication channel to check the unsubscribe-all status for. Currently, only 'EMAIL' is supported. This parameter is required.
-     *
-     * @var value-of<Channel> $channel
-     */
+    /** @var value-of<Channel> $channel */
     #[Required(enum: Channel::class)]
     public string $channel;
 
@@ -44,9 +40,6 @@ final class BatchGetUnsubscribeAllStatusesParams implements BaseModel
     #[Required(list: 'string')]
     public array $inputs;
 
-    /**
-     * The ID of the business unit for which the statuses are being retrieved. This is an optional parameter.
-     */
     #[Optional]
     public ?int $businessUnitID;
 
@@ -93,8 +86,6 @@ final class BatchGetUnsubscribeAllStatusesParams implements BaseModel
     }
 
     /**
-     * The communication channel to check the unsubscribe-all status for. Currently, only 'EMAIL' is supported. This parameter is required.
-     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -118,9 +109,6 @@ final class BatchGetUnsubscribeAllStatusesParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The ID of the business unit for which the statuses are being retrieved. This is an optional parameter.
-     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;

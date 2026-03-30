@@ -45,7 +45,7 @@ final class ActionHookActionBody implements BaseModel
     public array $propertyNamesIncluded;
 
     /**
-     * Specifies the type of action, which is 'ACTION_HOOK' for action hooks.
+     * The type of status.
      *
      * @var value-of<Type> $type
      */
@@ -62,7 +62,7 @@ final class ActionHookActionBody implements BaseModel
     public ?ActionConfirmationBody $confirmation;
 
     /**
-     * The label for the button that triggers the action as it will be displayed to users.
+     * The label for this property as you'd like it displayed to users.
      */
     #[Optional]
     public ?string $label;
@@ -151,7 +151,7 @@ final class ActionHookActionBody implements BaseModel
     }
 
     /**
-     * Specifies the type of action, which is 'ACTION_HOOK' for action hooks.
+     * The type of status.
      *
      * @param Type|value-of<Type> $type
      */
@@ -187,7 +187,7 @@ final class ActionHookActionBody implements BaseModel
     }
 
     /**
-     * The label for the button that triggers the action as it will be displayed to users.
+     * The label for this property as you'd like it displayed to users.
      */
     public function withLabel(string $label): self
     {

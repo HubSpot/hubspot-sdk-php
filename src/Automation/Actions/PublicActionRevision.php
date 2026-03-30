@@ -23,15 +23,24 @@ final class PublicActionRevision implements BaseModel
     /** @use SdkModel<PublicActionRevisionShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the action revision.
+     */
     #[Required]
     public string $id;
 
+    /**
+     * The date and time when the action revision was created.
+     */
     #[Required]
     public \DateTimeInterface $createdAt;
 
     #[Required]
     public PublicActionDefinition $definition;
 
+    /**
+     * The unique identifier for the specific revision of the action.
+     */
     #[Required('revisionId')]
     public string $revisionID;
 
@@ -83,6 +92,9 @@ final class PublicActionRevision implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the action revision.
+     */
     public function withID(string $id): self
     {
         $self = clone $this;
@@ -91,6 +103,9 @@ final class PublicActionRevision implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time when the action revision was created.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $self = clone $this;
@@ -111,6 +126,9 @@ final class PublicActionRevision implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the specific revision of the action.
+     */
     public function withRevisionID(string $revisionID): self
     {
         $self = clone $this;

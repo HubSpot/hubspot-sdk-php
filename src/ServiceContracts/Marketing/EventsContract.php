@@ -11,7 +11,6 @@ use HubspotSDK\Marketing\Events\CollectionResponseSearchPublicResponseWrapperNoP
 use HubspotSDK\Marketing\Events\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
 use HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams;
 use HubspotSDK\Marketing\Events\MarketingEventDefaultResponse;
-use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
 use HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2;
@@ -19,7 +18,7 @@ use HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2;
 use HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2;
-use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
+use HubspotSDK\Page;
 use HubspotSDK\PropertyValue;
 use HubspotSDK\RequestOptions;
 
@@ -28,8 +27,6 @@ use HubspotSDK\RequestOptions;
  * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier
  * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2
  * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams
- * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber
- * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventSubscriber
  * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  */
@@ -101,6 +98,23 @@ interface EventsContract
         ?\DateTimeInterface $startDateTime = null,
         RequestOptions|array|null $requestOptions = null,
     ): MarketingEventPublicDefaultResponseV2;
+
+    /**
+     * @api
+     *
+     * @param string $after the cursor indicating the position of the last retrieved item
+     * @param int $limit The limit for response size. The default value is 10, the max number is 100
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<MarketingEventPublicReadResponseV2>
+     *
+     * @throws APIException
+     */
+    public function list(
+        ?string $after = null,
+        int $limit = 10,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page;
 
     /**
      * @api
@@ -303,42 +317,4 @@ interface EventsContract
         ?\DateTimeInterface $startDateTime = null,
         RequestOptions|array|null $requestOptions = null,
     ): MarketingEventPublicDefaultResponse;
-
-    /**
-     * @api
-     *
-     * @param string $subscriberState Path param
-     * @param string $externalEventID Path param
-     * @param string $externalAccountID Query param
-     * @param list<MarketingEventEmailSubscriber|MarketingEventEmailSubscriberShape> $inputs Body param: List of marketing event details to create or update
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByEmail(
-        string $subscriberState,
-        string $externalEventID,
-        string $externalAccountID,
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null,
-    ): string;
-
-    /**
-     * @api
-     *
-     * @param string $subscriberState Path param
-     * @param string $externalEventID Path param
-     * @param string $externalAccountID Query param
-     * @param list<MarketingEventSubscriber|MarketingEventSubscriberShape> $inputs Body param: List of HubSpot contacts to subscribe to the marketing event
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByID(
-        string $subscriberState,
-        string $externalEventID,
-        string $externalAccountID,
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null,
-    ): string;
 }

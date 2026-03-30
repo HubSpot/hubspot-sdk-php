@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Update the content file in the specified environment and path within the HubSpot CMS. This operation allows you to upload a new file to replace the existing content at the given path. It is useful for managing and updating your website's source code files directly through the API.
+ * Upserts a file at the specified path in the specified environment. Accepts multipart/form-data content type.
  *
  * @see HubspotSDK\Services\Cms\SourceCodeService::upsert()
  *

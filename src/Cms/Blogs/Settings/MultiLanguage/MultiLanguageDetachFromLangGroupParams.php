@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Detaches a blog from a multi-language group.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Settings\MultiLanguageService::detachFromLangGroup()
  *
  * @phpstan-type MultiLanguageDetachFromLangGroupParamsShape = array{id: string}

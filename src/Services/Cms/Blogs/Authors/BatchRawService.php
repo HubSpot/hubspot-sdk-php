@@ -30,6 +30,8 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
+     * Create the Blog Author objects detailed in the request body.
+     *
      * @param array{inputs: list<BlogAuthor|BlogAuthorShape>}|BatchCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -59,6 +61,8 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
+     *
+     * Update the Blog Author objects identified in the request body.
      *
      * @param array{inputs: list<mixed>, archived?: bool}|BatchUpdateParams $params
      * @param RequestOpts|null $requestOptions
@@ -92,6 +96,8 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
+     * Delete the Blog Author objects identified in the request body.
+     *
      * @param array{inputs: list<string>}|BatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -121,6 +127,8 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
+     *
+     * Retrieve the Blog Author objects identified in the request body.
      *
      * @param array{inputs: list<string>, archived?: bool}|BatchGetParams $params
      * @param RequestOpts|null $requestOptions

@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Return all the stages associated with the pipeline identified by `{pipelineId}`.
+ *
  * @see HubspotSDK\Services\Crm\PipelinesService::list()
  *
  * @phpstan-type PipelineListParamsShape = array{objectType: string}

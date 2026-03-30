@@ -27,6 +27,8 @@ final class ExportsRawService implements ExportsRawContract
     /**
      * @api
      *
+     * Begins exporting CRM data for the portal as specified in the request body
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TaskLocator>
@@ -47,6 +49,8 @@ final class ExportsRawService implements ExportsRawContract
 
     /**
      * @api
+     *
+     * Retrieve detailed information about a specific CRM export, including its current state and properties.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -69,6 +73,8 @@ final class ExportsRawService implements ExportsRawContract
 
     /**
      * @api
+     *
+     * Returns the status of the export with taskId, including the URL of the resulting file if the export status is COMPLETE
      *
      * @param RequestOpts|null $requestOptions
      *

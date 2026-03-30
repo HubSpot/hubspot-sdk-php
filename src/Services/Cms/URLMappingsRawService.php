@@ -6,6 +6,7 @@ namespace HubspotSDK\Services\Cms;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\URLMappings\URLMappingCreateParams;
+use HubspotSDK\Cms\URLMappings\URLMappingCreateParams\CosObjectType;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -28,19 +29,32 @@ final class URLMappingsRawService implements URLMappingsRawContract
      * Create a new URL mapping in your HubSpot account. This endpoint allows you to define URL redirections and mappings, which can be useful for managing site navigation and SEO. The request body must include all required properties of the UrlMapping schema.
      *
      * @param array{
-     *   id: string,
-     *   created: \DateTimeInterface,
+     *   id: int,
+     *   cdnPurgeEmbargoTime: int,
+     *   contentGroupID: int,
+     *   cosObjectType: value-of<CosObjectType>,
+     *   created: int,
+     *   createdByID: int,
+     *   deletedAt: int,
      *   destination: string,
+     *   internallyCreated: bool,
+     *   isActive: bool,
      *   isMatchFullURL: bool,
      *   isMatchQueryString: bool,
      *   isOnlyAfterNotFound: bool,
      *   isPattern: bool,
      *   isProtocolAgnostic: bool,
+     *   isRegex: bool,
      *   isTrailingSlashOptional: bool,
+     *   label: string,
+     *   name: string,
+     *   note: string,
+     *   portalID: int,
      *   precedence: int,
      *   redirectStyle: int,
      *   routePrefix: string,
-     *   updated: \DateTimeInterface,
+     *   updated: int,
+     *   updatedByID: int,
      * }|URLMappingCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -97,7 +111,6 @@ final class URLMappingsRawService implements URLMappingsRawContract
      *
      * Delete a specific URL mapping in your HubSpot account using its unique identifier. This operation will remove the URL mapping permanently, and it requires appropriate write and delete permissions.
      *
-     * @param int $id The unique identifier of the URL mapping to delete. Must be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -122,7 +135,6 @@ final class URLMappingsRawService implements URLMappingsRawContract
      *
      * Retrieve a specific URL mapping by its unique identifier. This endpoint is useful for obtaining details about a particular URL mapping configuration within your HubSpot account. It requires the ID of the URL mapping as a path parameter.
      *
-     * @param int $id The unique identifier of the URL mapping to retrieve. It must be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>

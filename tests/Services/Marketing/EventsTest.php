@@ -13,6 +13,7 @@ use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -216,6 +217,24 @@ final class EventsTest extends TestCase
             MarketingEventPublicDefaultResponseV2::class,
             $result
         );
+    }
+
+    #[Test]
+    public function testList(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $page = $this->client->marketing->events->list();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(MarketingEventPublicReadResponseV2::class, $item);
+        }
     }
 
     #[Test]
@@ -822,103 +841,5 @@ final class EventsTest extends TestCase
             MarketingEventPublicDefaultResponse::class,
             $result
         );
-    }
-
-    #[Test]
-    public function testUpsertSubscriberStateByEmail(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->marketing->events->upsertSubscriberStateByEmail(
-            'subscriberState',
-            externalEventID: 'externalEventId',
-            externalAccountID: 'externalAccountId',
-            inputs: [
-                [
-                    'contactProperties' => ['foo' => 'string'],
-                    'email' => 'email',
-                    'interactionDateTime' => 0,
-                    'properties' => ['foo' => 'string'],
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testUpsertSubscriberStateByEmailWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->marketing->events->upsertSubscriberStateByEmail(
-            'subscriberState',
-            externalEventID: 'externalEventId',
-            externalAccountID: 'externalAccountId',
-            inputs: [
-                [
-                    'contactProperties' => ['foo' => 'string'],
-                    'email' => 'email',
-                    'interactionDateTime' => 0,
-                    'properties' => ['foo' => 'string'],
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testUpsertSubscriberStateByID(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->marketing->events->upsertSubscriberStateByID(
-            'subscriberState',
-            externalEventID: 'externalEventId',
-            externalAccountID: 'externalAccountId',
-            inputs: [
-                [
-                    'interactionDateTime' => 0,
-                    'properties' => ['foo' => 'string'],
-                    'vid' => 0,
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testUpsertSubscriberStateByIDWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->marketing->events->upsertSubscriberStateByID(
-            'subscriberState',
-            externalEventID: 'externalEventId',
-            externalAccountID: 'externalAccountId',
-            inputs: [
-                [
-                    'interactionDateTime' => 0,
-                    'properties' => ['foo' => 'string'],
-                    'vid' => 0,
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
     }
 }

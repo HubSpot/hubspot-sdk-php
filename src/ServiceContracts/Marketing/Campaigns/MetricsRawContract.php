@@ -23,7 +23,7 @@ interface MetricsRawContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign for which metrics are being fetched
+     * @param string $campaignGuid The unique identifier of the campaign
      * @param array<string,mixed>|MetricGetAttributionMetricsParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -40,7 +40,7 @@ interface MetricsRawContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign
+     * @param string $campaignGuid The unique identifier of the campaign
      * @param array<string,mixed>|MetricGetRevenueAttributionParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -57,7 +57,7 @@ interface MetricsRawContract
     /**
      * @api
      *
-     * @param string $contactType path param: The type of contact to filter the list
+     * @param string $contactType Path param: The type of contact to filter the list
      * @param array<string,mixed>|MetricListContactIDsByTypeParams $params
      * @param RequestOpts|null $requestOptions
      *

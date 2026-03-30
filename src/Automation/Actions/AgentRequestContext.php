@@ -25,16 +25,26 @@ final class AgentRequestContext implements BaseModel
     /** @use SdkModel<AgentRequestContextShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the agent making the request.
+     */
     #[Required('agentId')]
     public int $agentID;
 
     #[Required('chirpAiContextObject')]
     public ChirpAIContextObject $chirpAIContextObject;
 
-    /** @var value-of<Source> $source */
+    /**
+     * Indicates the source of the request, with the default value being 'AGENTS'.
+     *
+     * @var value-of<Source> $source
+     */
     #[Required(enum: Source::class)]
     public string $source;
 
+    /**
+     * The unique identifier for the trajectory associated with the agent request.
+     */
     #[Optional('trajectoryId')]
     public ?string $trajectoryID;
 
@@ -85,6 +95,9 @@ final class AgentRequestContext implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the agent making the request.
+     */
     public function withAgentID(int $agentID): self
     {
         $self = clone $this;
@@ -106,6 +119,8 @@ final class AgentRequestContext implements BaseModel
     }
 
     /**
+     * Indicates the source of the request, with the default value being 'AGENTS'.
+     *
      * @param Source|value-of<Source> $source
      */
     public function withSource(Source|string $source): self
@@ -116,6 +131,9 @@ final class AgentRequestContext implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the trajectory associated with the agent request.
+     */
     public function withTrajectoryID(string $trajectoryID): self
     {
         $self = clone $this;

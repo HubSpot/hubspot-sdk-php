@@ -22,13 +22,23 @@ final class FormattedPhoneNumber implements BaseModel
     /** @use SdkModel<FormattedPhoneNumberShape> */
     use SdkModel;
 
+    /**
+     * The phone number formatted in E.164 standard.
+     */
     #[Required]
     public string $e164Number;
 
-    /** @var value-of<PhoneNumberType> $phoneNumberType */
+    /**
+     * The type of phone number, with accepted values including FIXED_LINE, MOBILE, VOIP, and others.
+     *
+     * @var value-of<PhoneNumberType> $phoneNumberType
+     */
     #[Required(enum: PhoneNumberType::class)]
     public string $phoneNumberType;
 
+    /**
+     * The extension number associated with the phone number.
+     */
     #[Optional]
     public ?string $extension;
 
@@ -73,6 +83,9 @@ final class FormattedPhoneNumber implements BaseModel
         return $self;
     }
 
+    /**
+     * The phone number formatted in E.164 standard.
+     */
     public function withE164Number(string $e164Number): self
     {
         $self = clone $this;
@@ -82,6 +95,8 @@ final class FormattedPhoneNumber implements BaseModel
     }
 
     /**
+     * The type of phone number, with accepted values including FIXED_LINE, MOBILE, VOIP, and others.
+     *
      * @param PhoneNumberType|value-of<PhoneNumberType> $phoneNumberType
      */
     public function withPhoneNumberType(
@@ -93,6 +108,9 @@ final class FormattedPhoneNumber implements BaseModel
         return $self;
     }
 
+    /**
+     * The extension number associated with the phone number.
+     */
     public function withExtension(string $extension): self
     {
         $self = clone $this;

@@ -41,10 +41,13 @@ interface ActionsContract
     /**
      * @api
      *
+     * @param string $actionURL the URL endpoint where the action is executed
      * @param list<PublicActionFunction|PublicActionFunctionShape> $functions
      * @param list<PublicInputFieldDefinition|PublicInputFieldDefinitionShape> $inputFields
-     * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels
+     * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels holds various labels associated with the action, including names and descriptions
      * @param list<string> $objectTypes
+     * @param bool $published indicates whether the action is published and available for use
+     * @param int $archivedAt the timestamp indicating when the action was archived
      * @param list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape> $executionRules
      * @param list<InputFieldDependencyShape> $inputFieldDependencies
      * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape $objectRequestOptions
@@ -74,15 +77,15 @@ interface ActionsContract
      *
      * @param string $definitionID Path param
      * @param int $appID Path param
-     * @param string $actionURL Body param
+     * @param string $actionURL body param: The URL endpoint where the action is executed
      * @param list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape> $executionRules Body param
      * @param list<InputFieldDependencyShape1> $inputFieldDependencies Body param
      * @param list<PublicInputFieldDefinition|PublicInputFieldDefinitionShape> $inputFields Body param
-     * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels Body param
+     * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels body param: Contains labels for the action, including names and descriptions
      * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape $objectRequestOptions Body param
      * @param list<string> $objectTypes Body param
      * @param list<mixed> $outputFields Body param
-     * @param bool $published Body param
+     * @param bool $published body param: Indicates whether the action is published and available for use
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -142,8 +145,10 @@ interface ActionsContract
     /**
      * @api
      *
-     * @param array<string,string> $outputFields
-     * @param RequestContextShape $requestContext
+     * @param array<string,string> $outputFields contains the output fields associated with the callback, with each field represented as a key-value pair
+     * @param mixed $typedOutputs holds the typed outputs related to the callback, structured as an object
+     * @param string $failureReasonType indicates the reason for the failure of a callback completion
+     * @param RequestContextShape $requestContext specifies the context in which the request is made, which can be one of several predefined contexts
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -215,7 +220,7 @@ interface ActionsContract
      *
      * @param string $definitionID Path param
      * @param int $appID Path param
-     * @param bool $requiresObject Body param
+     * @param bool $requiresObject body param: Indicates whether a custom action definition requires an associated object
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

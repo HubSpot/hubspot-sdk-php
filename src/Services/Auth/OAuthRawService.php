@@ -109,6 +109,8 @@ final class OAuthRawService implements OAuthRawContract
     /**
      * @api
      *
+     * Deletes/Revokes provided Refresh Token
+     *
      * @param array{
      *   token?: string,
      *   clientID?: string,

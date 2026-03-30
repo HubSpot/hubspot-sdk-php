@@ -39,8 +39,6 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Create multiple discounts in a single request by providing the necessary properties and associations for each discount. This operation returns a list of the created discounts, including their unique identifiers.
-     *
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
      * }|BatchCreateParams $params
@@ -72,7 +70,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Update discounts
+     * Update a batch of discounts by internal ID, or unique property values
      *
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
@@ -105,8 +103,6 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Batch delete discounts
-     *
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
      * }|BatchDeleteParams $params
@@ -138,7 +134,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Batch retrieve discounts.
+     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
@@ -176,8 +172,6 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
-     *
-     * Create and update a batch of discounts by a unique property. Discounts that don't exist will be created, while existing discounts will be updated.
      *
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,

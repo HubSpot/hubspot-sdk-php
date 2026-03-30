@@ -6,7 +6,10 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Files\File;
 use HubspotSDK\Files\FileActionResponse;
+use HubspotSDK\Files\FileStat;
+use HubspotSDK\Files\Folder;
 use HubspotSDK\Files\ImportFromURLTaskLocator;
+use HubspotSDK\Files\SignedURL;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -35,6 +38,126 @@ final class FilesTest extends TestCase
     }
 
     #[Test]
+    public function testCreate(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->create(name: 'name');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Folder::class, $result);
+    }
+
+    #[Test]
+    public function testCreateWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->create(
+            name: 'name',
+            parentFolderID: 'parentFolderId',
+            parentPath: 'parentPath'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Folder::class, $result);
+    }
+
+    #[Test]
+    public function testUpdate(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->update(
+            '321669910225',
+            clearExpires: true
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(File::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->update(
+            '321669910225',
+            clearExpires: true,
+            access: 'HIDDEN_INDEXABLE',
+            expiresAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            isUsableInContent: true,
+            name: 'name',
+            parentFolderID: 'parentFolderId',
+            parentFolderPath: 'parentFolderPath',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(File::class, $result);
+    }
+
+    #[Test]
+    public function testDelete(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->delete('321669910225');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testGdprDelete(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->gdprDelete('321669910225');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testGet(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->get('321669910225');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(File::class, $result);
+    }
+
+    #[Test]
+    public function testGetByPath(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->getByPath('path');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FileStat::class, $result);
+    }
+
+    #[Test]
     public function testGetImportTaskStatus(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -45,6 +168,19 @@ final class FilesTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(FileActionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetSignedURL(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->getSignedURL('321669910225');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SignedURL::class, $result);
     }
 
     #[Test]
@@ -90,6 +226,19 @@ final class FilesTest extends TestCase
     }
 
     #[Test]
+    public function testReplace(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->replace('321669910225');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(File::class, $result);
+    }
+
+    #[Test]
     public function testSearch(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -105,5 +254,18 @@ final class FilesTest extends TestCase
             // @phpstan-ignore-next-line method.alreadyNarrowedType
             $this->assertInstanceOf(File::class, $item);
         }
+    }
+
+    #[Test]
+    public function testUpload(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->files->upload();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(File::class, $result);
     }
 }

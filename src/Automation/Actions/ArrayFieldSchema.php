@@ -22,11 +22,19 @@ final class ArrayFieldSchema implements BaseModel
     /** @use SdkModel<ArrayFieldSchemaShape> */
     use SdkModel;
 
-    /** @var ItemsVariants $items */
+    /**
+     * Defines the type of elements contained within the array, which can be an integer, long, double, string, boolean, another array, or an object.
+     *
+     * @var ItemsVariants $items
+     */
     #[Required]
     public IntegerFieldSchema|LongFieldSchema|DoubleFieldSchema|StringFieldSchema|BooleanFieldSchema|ArrayFieldSchema|ObjectFieldSchema $items;
 
-    /** @var value-of<Type> $type */
+    /**
+     * Specifies that the field is of type 'ARRAY'.
+     *
+     * @var value-of<Type> $type
+     */
     #[Required(enum: Type::class)]
     public string $type;
 
@@ -70,6 +78,8 @@ final class ArrayFieldSchema implements BaseModel
     }
 
     /**
+     * Defines the type of elements contained within the array, which can be an integer, long, double, string, boolean, another array, or an object.
+     *
      * @param ItemsShape $items
      */
     public function withItems(
@@ -82,6 +92,8 @@ final class ArrayFieldSchema implements BaseModel
     }
 
     /**
+     * Specifies that the field is of type 'ARRAY'.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

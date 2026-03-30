@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve whether a custom action definition requires an object.
+ *
  * @see HubspotSDK\Services\Automation\ActionsService::getRequiresObject()
  *
  * @phpstan-type ActionGetRequiresObjectParamsShape = array{appID: int}

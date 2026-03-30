@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
 
-use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Cms\MediaBridge\Batch\BatchCreateParams;
 use HubspotSDK\Cms\MediaBridge\Batch\BatchDeleteParams;
 use HubspotSDK\Cms\MediaBridge\Batch\BatchGetParams;
+use HubspotSDK\Cms\MediaBridge\BatchResponseProperty;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;

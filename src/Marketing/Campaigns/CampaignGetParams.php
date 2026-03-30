@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Read a campaign identified by a specified internal ID. This endpoint allows you to retrieve detailed information about a specific marketing campaign using its unique identifier. It supports filtering the response by specific properties and date ranges.
+ * Get a campaign identified by a specific campaignGuid with the given properties. Along with the campaign information, it also returns information about assets. Depending on the query parameters used, this can also be used to return information about the corresponding assets' metrics. Metrics are available only if startDate and endDate are provided.
  *
  * @see HubspotSDK\Services\Marketing\CampaignsService::get()
  *
@@ -24,23 +24,13 @@ final class CampaignGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The end date for filtering campaign data, in YYYY-MM-DD format.
-     */
     #[Optional]
     public ?string $endDate;
 
-    /**
-     * A comma-separated list of property names to include in the response.
-     *
-     * @var list<string>|null $properties
-     */
+    /** @var list<string>|null $properties */
     #[Optional(list: 'string')]
     public ?array $properties;
 
-    /**
-     * The start date for filtering campaign data, in YYYY-MM-DD format.
-     */
     #[Optional]
     public ?string $startDate;
 
@@ -70,9 +60,6 @@ final class CampaignGetParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The end date for filtering campaign data, in YYYY-MM-DD format.
-     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -82,8 +69,6 @@ final class CampaignGetParams implements BaseModel
     }
 
     /**
-     * A comma-separated list of property names to include in the response.
-     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -94,9 +79,6 @@ final class CampaignGetParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The start date for filtering campaign data, in YYYY-MM-DD format.
-     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;

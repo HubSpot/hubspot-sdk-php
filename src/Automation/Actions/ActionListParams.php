@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve the versions of a definition by ID.
+ *
  * @see HubspotSDK\Services\Automation\ActionsService::list()
  *
  * @phpstan-type ActionListParamsShape = array{

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Fetch the list of contact IDs for the specified campaign and contact type. This endpoint allows you to retrieve contact identifiers associated with a particular campaign, filtered by the type of contact. It is useful for analyzing or processing contacts involved in specific marketing campaigns.
+ * Fetch the list of contact IDs for the specified campaign and contact type.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\MetricsService::listContactIDsByType()
  *
@@ -33,14 +33,11 @@ final class MetricListContactIDsByTypeParams implements BaseModel
     public string $campaignGuid;
 
     /**
-     * The paging cursor token of the last successfully read resource, used for pagination.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     #[Optional]
     public ?string $after;
 
-    /**
-     * The end date for filtering contacts, formatted as a string.
-     */
     #[Optional]
     public ?string $endDate;
 
@@ -50,9 +47,6 @@ final class MetricListContactIDsByTypeParams implements BaseModel
     #[Optional]
     public ?int $limit;
 
-    /**
-     * The start date for filtering contacts, formatted as a string.
-     */
     #[Optional]
     public ?string $startDate;
 
@@ -108,7 +102,7 @@ final class MetricListContactIDsByTypeParams implements BaseModel
     }
 
     /**
-     * The paging cursor token of the last successfully read resource, used for pagination.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     public function withAfter(string $after): self
     {
@@ -118,9 +112,6 @@ final class MetricListContactIDsByTypeParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The end date for filtering contacts, formatted as a string.
-     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -140,9 +131,6 @@ final class MetricListContactIDsByTypeParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The start date for filtering contacts, formatted as a string.
-     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;

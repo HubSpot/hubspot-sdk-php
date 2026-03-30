@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
 
 /**
- * Batch create and update a batch of carts by a unique property. Carts that don't exist will be created, while existing carts will be updated.
+ * Create or update records identified by a unique property value as specified by the `idProperty` query parameter.
  *
  * @see HubspotSDK\Services\Crm\Objects\Carts\BatchService::upsert()
  *

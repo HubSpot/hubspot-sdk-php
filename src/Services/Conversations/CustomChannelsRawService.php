@@ -67,6 +67,8 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
     /**
      * @api
      *
+     * Update the capabilities for an existing. You can also use it to update the channel's webhookUri and its channelAccountConnectionRedirectUrl.
+     *
      * @param array{
      *   capabilities: array<string,mixed>,
      *   channelAccountConnectionRedirectURL: mixed,
@@ -136,6 +138,8 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
     /**
      * @api
      *
+     * Archive an existing registered custom channel
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -157,6 +161,8 @@ final class CustomChannelsRawService implements CustomChannelsRawContract
 
     /**
      * @api
+     *
+     * Retrieve the details for a specific channel account. This contains all the metadata about your channel account, including its channel, associated inbox id, and delivery identifier information.
      *
      * @param int $channelAccountID Path param
      * @param array{channelID: int, archived?: bool}|CustomChannelGetParams $params

@@ -26,19 +26,32 @@ final class ContactCallerID implements BaseModel
     /** @use SdkModel<ContactCallerIDShape> */
     use SdkModel;
 
-    /** @var value-of<CallerIDType> $callerIDType */
+    /**
+     * Specifies the type of caller ID, with the default value being CONTACT.
+     *
+     * @var value-of<CallerIDType> $callerIDType
+     */
     #[Required('callerIdType', enum: CallerIDType::class)]
     public string $callerIDType;
 
     #[Required]
     public ObjectCoordinates $objectCoordinates;
 
+    /**
+     * The email address of the contact.
+     */
     #[Optional]
     public ?string $email;
 
+    /**
+     * The first name of the contact.
+     */
     #[Optional]
     public ?string $firstName;
 
+    /**
+     * The last name of the contact.
+     */
     #[Optional]
     public ?string $lastName;
 
@@ -89,6 +102,8 @@ final class ContactCallerID implements BaseModel
     }
 
     /**
+     * Specifies the type of caller ID, with the default value being CONTACT.
+     *
      * @param CallerIDType|value-of<CallerIDType> $callerIDType
      */
     public function withCallerIDType(CallerIDType|string $callerIDType): self
@@ -111,6 +126,9 @@ final class ContactCallerID implements BaseModel
         return $self;
     }
 
+    /**
+     * The email address of the contact.
+     */
     public function withEmail(string $email): self
     {
         $self = clone $this;
@@ -119,6 +137,9 @@ final class ContactCallerID implements BaseModel
         return $self;
     }
 
+    /**
+     * The first name of the contact.
+     */
     public function withFirstName(string $firstName): self
     {
         $self = clone $this;
@@ -127,6 +148,9 @@ final class ContactCallerID implements BaseModel
         return $self;
     }
 
+    /**
+     * The last name of the contact.
+     */
     public function withLastName(string $lastName): self
     {
         $self = clone $this;

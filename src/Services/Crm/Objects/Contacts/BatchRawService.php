@@ -39,8 +39,6 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Create a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
-     *
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
      * }|BatchCreateParams $params
@@ -71,8 +69,6 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
-     *
-     * Update a batch of contacts by ID (`contactId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
@@ -105,7 +101,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Archive a batch of contacts by ID. Archived contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).
+     * Archive a batch of contacts
      *
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
@@ -137,8 +133,6 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
-     *
-     * Retrieve a batch of contacts by ID (`contactId`) or unique property value (`idProperty`).
      *
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
@@ -176,8 +170,6 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
-     *
-     * Upsert a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record.
      *
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,

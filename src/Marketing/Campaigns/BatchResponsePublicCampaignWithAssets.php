@@ -32,7 +32,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     use SdkModel;
 
     /**
-     * The date and time when the batch operation was completed, in ISO 8601 format.
+     * The timestamp when the batch request processing was completed.
      */
     #[Required]
     public \DateTimeInterface $completedAt;
@@ -46,13 +46,13 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     public array $results;
 
     /**
-     * The date and time when the batch operation started, in ISO 8601 format.
+     * The timestamp when the processing of the batch request began.
      */
     #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
-     * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
+     * The current processing status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.
      *
      * @var value-of<Status> $status
      */
@@ -68,7 +68,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     public ?array $errors;
 
     /**
-     * A map of link names to associated URIs that provide additional information about the batch operation.
+     * A collection of URLs linking to related resources or documentation.
      *
      * @var array<string,string>|null $links
      */
@@ -82,7 +82,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     public ?int $numErrors;
 
     /**
-     * The date and time when the batch operation was requested, in ISO 8601 format.
+     * The timestamp when the batch request was initially made.
      */
     #[Optional]
     public ?\DateTimeInterface $requestedAt;
@@ -148,7 +148,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * The date and time when the batch operation was completed, in ISO 8601 format.
+     * The timestamp when the batch request processing was completed.
      */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
@@ -172,7 +172,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * The date and time when the batch operation started, in ISO 8601 format.
+     * The timestamp when the processing of the batch request began.
      */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
@@ -183,7 +183,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
+     * The current processing status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.
      *
      * @param Status|value-of<Status> $status
      */
@@ -209,7 +209,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * A map of link names to associated URIs that provide additional information about the batch operation.
+     * A collection of URLs linking to related resources or documentation.
      *
      * @param array<string,string> $links
      */
@@ -233,7 +233,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * The date and time when the batch operation was requested, in ISO 8601 format.
+     * The timestamp when the batch request was initially made.
      */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {

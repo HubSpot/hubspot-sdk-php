@@ -12,6 +12,18 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
 
 /**
+ * Records the participation of multiple HubSpot contacts in a Marketing Event using their email addresses.
+ *
+ * If a contact does not exist, it will be automatically created. The contactProperties field is used exclusively for creating new contacts and will not update properties of existing contacts.
+ *
+ * Additional Functionality:
+ * - Adds a timeline event to the contacts.
+ *
+ * Allowed Properties:
+ * For the state "attend":
+ * - joinedAt
+ * - leftAt
+ *
  * @see HubspotSDK\Services\Marketing\Events\AttendanceService::createByExternalEventIDAndEmail()
  *
  * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\PublicAssociationMultiPost;
 
 /**
- * Batch remove specific labelled associations between records in bulk. Deleting an unlabeled association will also delete all labeled associations between those two objects.
+ * Batch delete specific association labels for objects. Deleting an unlabeled association will also delete all labeled associations between those two objects.
  *
  * @see HubspotSDK\Services\Crm\Associations\BatchService::deleteLabels()
  *

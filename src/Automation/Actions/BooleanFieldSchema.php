@@ -17,7 +17,11 @@ final class BooleanFieldSchema implements BaseModel
     /** @use SdkModel<BooleanFieldSchemaShape> */
     use SdkModel;
 
-    /** @var value-of<Type> $type */
+    /**
+     * Specifies the field type as BOOLEAN, indicating that the field can hold a true or false value.
+     *
+     * @var value-of<Type> $type
+     */
     #[Required(enum: Type::class)]
     public string $type;
 
@@ -57,6 +61,8 @@ final class BooleanFieldSchema implements BaseModel
     }
 
     /**
+     * Specifies the field type as BOOLEAN, indicating that the field can hold a true or false value.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

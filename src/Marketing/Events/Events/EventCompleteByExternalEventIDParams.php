@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Mark a marketing event as completed.
+ *
  * @see HubspotSDK\Services\Marketing\Events\EventsService::completeByExternalEventID()
  *
  * @phpstan-type EventCompleteByExternalEventIDParamsShape = array{

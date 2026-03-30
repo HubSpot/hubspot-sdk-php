@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Delete a pipeline stage.
+ *
  * @see HubspotSDK\Services\Crm\PipelinesService::delete()
  *
  * @phpstan-type PipelineDeleteParamsShape = array{

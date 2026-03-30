@@ -200,7 +200,7 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param string $id the unique identifier of the email to be cloned
+     * @param string $id the email ID
      * @param string $cloneName the name to assign to the cloned email
      * @param string $language the language code for the cloned email, such as 'en' for English
      * @param RequestOpts|null $requestOptions
@@ -217,8 +217,8 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param string $contentID ID of the email to test
-     * @param string $variationName name of the variation to be created
+     * @param string $contentID ID of the object to test
+     * @param string $variationName name of A/B test variation
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -366,6 +366,7 @@ interface EmailsContract
     /**
      * @api
      *
+     * @param int $revisionID the ID of the revision
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

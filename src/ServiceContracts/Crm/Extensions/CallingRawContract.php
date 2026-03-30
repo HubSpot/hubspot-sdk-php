@@ -6,9 +6,11 @@ namespace HubspotSDK\ServiceContracts\Crm\Extensions;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams;
 use HubspotSDK\Crm\Extensions\Calling\CallingCreateParams;
 use HubspotSDK\Crm\Extensions\Calling\CallingMarkReadyParams;
 use HubspotSDK\Crm\Extensions\Calling\CallingUpdateParams;
+use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
 use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
 use HubspotSDK\RequestOptions;
 
@@ -61,6 +63,21 @@ interface CallingRawContract
     public function delete(
         int $appID,
         RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|CallingCreateInboundCallParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CompletedThirdPartyCallResponse>
+     *
+     * @throws APIException
+     */
+    public function createInboundCall(
+        array|CallingCreateInboundCallParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**

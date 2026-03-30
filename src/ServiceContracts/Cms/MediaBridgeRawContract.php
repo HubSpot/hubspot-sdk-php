@@ -4,7 +4,11 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
+use HubspotSDK\AssociationDefinition;
+use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubspotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
+use HubspotSDK\Cms\MediaBridge\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
 use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
@@ -18,22 +22,18 @@ use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyGroupParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeDeleteAssociationParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeDeleteOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeDeleteParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeDeletePropertyGroupParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeDeletePropertyParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeGetOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeGetParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeGetPropertyGroupParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeGetPropertyParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeGetSchemaParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams;
+use HubspotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListOembedDomainsParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeListParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeListParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListPropertiesParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListPropertyGroupsParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListSchemasParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeObject;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeRegisterAppNameParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams;
@@ -42,18 +42,16 @@ use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyGroupParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateSchemaParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateSettingsParams;
+use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
+use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
+use HubspotSDK\Cms\MediaBridge\ObjectSchema;
 use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Cms\MediaBridge\Property;
 use HubspotSDK\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Events\AssociationDefinition;
-use HubspotSDK\ObjectSchema;
 use HubspotSDK\ObjectTypeDefinition;
-use HubspotSDK\Page;
-use HubspotSDK\Property;
 use HubspotSDK\PropertyGroup;
 use HubspotSDK\RequestOptions;
 
@@ -62,65 +60,6 @@ use HubspotSDK\RequestOptions;
  */
 interface MediaBridgeRawContract
 {
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<MediaBridgeObject>
-     *
-     * @throws APIException
-     */
-    public function create(
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<MediaBridgeObject>
-     *
-     * @throws APIException
-     */
-    public function update(
-        int $objectID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|MediaBridgeListParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Page<MediaBridgeObject>>
-     *
-     * @throws APIException
-     */
-    public function list(
-        MediaType|string $mediaType,
-        array|MediaBridgeListParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|MediaBridgeDeleteParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function delete(
-        int $objectID,
-        array|MediaBridgeDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
     /**
      * @api
      *
@@ -144,7 +83,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeCreateAttentionSpanEventParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<AttentionSpanEvent>
      *
      * @throws APIException
      */
@@ -159,7 +98,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeCreateMediaPlayedEventParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<MediaPlayedEvent>
      *
      * @throws APIException
      */
@@ -174,7 +113,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeCreateMediaPlayedPercentEventParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<MediaPlayedPercentageEvent>
      *
      * @throws APIException
      */
@@ -194,7 +133,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function createObjectType(
-        string $appID,
+        int $appID,
         array|MediaBridgeCreateObjectTypeParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -210,7 +149,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function createOembedDomain(
-        string $appID,
+        int $appID,
         array|MediaBridgeCreateOembedDomainParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -259,7 +198,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function createVideoAssociationDefinition(
-        string $appID,
+        int $appID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
@@ -290,7 +229,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function deleteOembedDomain(
-        string $appID,
+        int $appID,
         array|MediaBridgeDeleteOembedDomainParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -330,22 +269,6 @@ interface MediaBridgeRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|MediaBridgeGetParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<MediaBridgeObject>
-     *
-     * @throws APIException
-     */
-    public function get(
-        int $objectID,
-        array|MediaBridgeGetParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<EventVisibilityResponse>
@@ -353,7 +276,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function getEventVisibilitySettings(
-        string $appID,
+        int $appID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
@@ -425,7 +348,7 @@ interface MediaBridgeRawContract
     /**
      * @api
      *
-     * @param MediaBridgeListObjectTypesByMediaTypeParams\MediaType|string $mediaType Path param
+     * @param MediaType|string $mediaType Path param
      * @param array<string,mixed>|MediaBridgeListObjectTypesByMediaTypeParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -434,7 +357,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function listObjectTypesByMediaType(
-        MediaBridgeListObjectTypesByMediaTypeParams\MediaType|string $mediaType,
+        MediaType|string $mediaType,
         array|MediaBridgeListObjectTypesByMediaTypeParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -450,7 +373,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function listOembedDomains(
-        string $appID,
+        int $appID,
         array|MediaBridgeListOembedDomainsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -499,7 +422,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function listSchemas(
-        string $appID,
+        int $appID,
         array|MediaBridgeListSchemasParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -517,7 +440,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function registerAppName(
-        string $appID,
+        int $appID,
         array|MediaBridgeRegisterAppNameParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -533,7 +456,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function updateEventVisibilitySettings(
-        string $appID,
+        int $appID,
         array|MediaBridgeUpdateEventVisibilitySettingsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -617,7 +540,7 @@ interface MediaBridgeRawContract
      * @throws APIException
      */
     public function updateSettings(
-        string $appID,
+        int $appID,
         array|MediaBridgeUpdateSettingsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;

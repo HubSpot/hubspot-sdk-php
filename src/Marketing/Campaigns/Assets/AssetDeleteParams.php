@@ -10,7 +10,9 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Disassociate an asset from a specific campaign. This operation removes the association between the specified asset and campaign, effectively detaching the asset from the campaign's context.
+ * Disassociate a specified asset from a campaign. Using the API, you can remove associations for the following asset types: ads, blog posts, calls, case studies, CTAs, CTAs (legacy), external website pages, feedback surveys, forms, files, knowledge base articles, landing pages, marketing email, marketing events, meetings, playbooks, podcast episodes, sales documents, sales emails, sequences, SMS, social posts, static lists, videos, website pages, and workflows.
+ *
+ * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\AssetsService::delete()
  *

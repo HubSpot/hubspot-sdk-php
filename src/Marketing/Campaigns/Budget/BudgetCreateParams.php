@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Add a new budget item to the specified campaign. This operation allows you to allocate a budget for a campaign by specifying the necessary details in the request body.
+ * Add a new budget item to the campaign.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::create()
  *

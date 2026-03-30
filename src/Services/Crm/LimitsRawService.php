@@ -35,6 +35,8 @@ final class LimitsRawService implements LimitsRawContract
     /**
      * @api
      *
+     * Returns limits and usage for custom association labels
+     *
      * @param array{
      *   fromObjectTypeID?: string, toObjectTypeID?: string
      * }|LimitGetAssociationLabelLimitsParams $params
@@ -71,6 +73,8 @@ final class LimitsRawService implements LimitsRawContract
 
     /**
      * @api
+     *
+     * Returns records approaching or at association limits between two objects
      *
      * @param array{
      *   fromObjectTypeID: string
@@ -109,6 +113,8 @@ final class LimitsRawService implements LimitsRawContract
     /**
      * @api
      *
+     * Returns objects with records approaching or at association limits
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging,>
@@ -129,6 +135,8 @@ final class LimitsRawService implements LimitsRawContract
 
     /**
      * @api
+     *
+     * Returns objects for which the from object has records approaching or at association limits
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -154,6 +162,8 @@ final class LimitsRawService implements LimitsRawContract
     /**
      * @api
      *
+     * Returns overall limit and per object usage for calculated properties
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CalculatedPropertyLimitResponse>
@@ -174,6 +184,8 @@ final class LimitsRawService implements LimitsRawContract
 
     /**
      * @api
+     *
+     * Returns limits and usage for custom object schemas
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -196,6 +208,8 @@ final class LimitsRawService implements LimitsRawContract
     /**
      * @api
      *
+     * Returns limits and usage per object for custom properties
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CustomPropertyLimitResponse>
@@ -217,6 +231,8 @@ final class LimitsRawService implements LimitsRawContract
     /**
      * @api
      *
+     * Returns limits and usage per object for pipelines
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PipelineLimitResponse>
@@ -237,6 +253,8 @@ final class LimitsRawService implements LimitsRawContract
 
     /**
      * @api
+     *
+     * Returns limits and usage per object for records
      *
      * @param RequestOpts|null $requestOptions
      *

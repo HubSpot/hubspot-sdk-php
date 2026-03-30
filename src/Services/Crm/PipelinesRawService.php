@@ -34,6 +34,8 @@ final class PipelinesRawService implements PipelinesRawContract
     /**
      * @api
      *
+     * Create a pipeline stage
+     *
      * @param string $pipelineID Path param
      * @param array{
      *   objectType: string,
@@ -125,6 +127,8 @@ final class PipelinesRawService implements PipelinesRawContract
     /**
      * @api
      *
+     * Return all the stages associated with the pipeline identified by `{pipelineId}`.
+     *
      * @param array{objectType: string}|PipelineListParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -157,6 +161,8 @@ final class PipelinesRawService implements PipelinesRawContract
 
     /**
      * @api
+     *
+     * Delete a pipeline stage
      *
      * @param array{
      *   objectType: string, pipelineID: string
@@ -198,6 +204,8 @@ final class PipelinesRawService implements PipelinesRawContract
     /**
      * @api
      *
+     * Return a pipeline stage by ID
+     *
      * @param array{objectType: string, pipelineID: string}|PipelineGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -235,6 +243,8 @@ final class PipelinesRawService implements PipelinesRawContract
 
     /**
      * @api
+     *
+     * Return a reverse chronological list of all mutations that have occurred on the pipeline stage identified by `{stageId}`.
      *
      * @param array{
      *   objectType: string, pipelineID: string
@@ -275,6 +285,8 @@ final class PipelinesRawService implements PipelinesRawContract
 
     /**
      * @api
+     *
+     * Replace all the properties of an existing pipeline stage with the values provided. The updated stage will be returned in the response.
      *
      * @param string $stageID Path param
      * @param array{

@@ -32,6 +32,8 @@ final class MultiLanguageRawService implements MultiLanguageRawContract
     /**
      * @api
      *
+     * Attach a blog to a multi-language group.
+     *
      * @param array{
      *   id: string,
      *   language: value-of<Language>,
@@ -67,6 +69,8 @@ final class MultiLanguageRawService implements MultiLanguageRawContract
     /**
      * @api
      *
+     * Create a new language variation from an existing blog.
+     *
      * @param array{
      *   id: string, language?: string, primaryLanguage?: string, slug?: string
      * }|MultiLanguageCreateLanguageVariationParams $params
@@ -98,6 +102,8 @@ final class MultiLanguageRawService implements MultiLanguageRawContract
     /**
      * @api
      *
+     * Detaches a blog from a multi-language group.
+     *
      * @param array{id: string}|MultiLanguageDetachFromLangGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -128,6 +134,8 @@ final class MultiLanguageRawService implements MultiLanguageRawContract
     /**
      * @api
      *
+     * Set a blog as the primary language of a multi-language group.
+     *
      * @param array{id: string}|MultiLanguageSetNewLangPrimaryParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -156,6 +164,8 @@ final class MultiLanguageRawService implements MultiLanguageRawContract
 
     /**
      * @api
+     *
+     * Explicitly set new languages for each blog in a multi-language group.
      *
      * @param array{
      *   languages: array<string,MultiLanguageUpdateLanguagesParams\Language|value-of<MultiLanguageUpdateLanguagesParams\Language>>,

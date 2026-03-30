@@ -146,11 +146,13 @@ final class ActionsTest extends TestCase
                         'name' => 'name',
                         'options' => [
                             [
-                                'hidden' => true,
-                                'label' => 'label',
-                                'value' => 'value',
                                 'description' => 'description',
                                 'displayOrder' => 0,
+                                'doubleData' => 0,
+                                'hidden' => true,
+                                'label' => 'label',
+                                'readOnly' => true,
+                                'value' => 'value',
                             ],
                         ],
                         'schema' => ['type' => 'INTEGER', 'maximum' => 0, 'minimum' => 0],
@@ -255,11 +257,13 @@ final class ActionsTest extends TestCase
                         'name' => 'name',
                         'options' => [
                             [
-                                'hidden' => true,
-                                'label' => 'label',
-                                'value' => 'value',
                                 'description' => 'description',
                                 'displayOrder' => 0,
+                                'doubleData' => 0,
+                                'hidden' => true,
+                                'label' => 'label',
+                                'readOnly' => true,
+                                'value' => 'value',
                             ],
                         ],
                         'schema' => ['type' => 'INTEGER', 'maximum' => 0, 'minimum' => 0],

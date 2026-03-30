@@ -63,7 +63,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Batch update multiple subscription objects in a single batch operation, allowing for efficient modifications of CRM subscription records.
+     * Update multiple subscription objects in a single batch operation, allowing for efficient modifications of CRM subscription records.
      *
      * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
      * @param RequestOpts|null $requestOptions
@@ -107,7 +107,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Retrieve a batch of commerce subscriptions by their IDs, including specified properties and their histories.
+     * Retrieve a batch of CRM subscription objects by their IDs, including specified properties and their histories.
      *
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
      * @param list<string> $properties body param: Key-value pairs for setting properties for the new object

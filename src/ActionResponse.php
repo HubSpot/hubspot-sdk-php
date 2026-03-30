@@ -45,7 +45,7 @@ final class ActionResponse implements BaseModel
     public string $status;
 
     /**
-     * A collection of related links associated with the action.
+     * A map of link names to associated URIs containing documentation about the error or recommended remediation steps.
      *
      * @var array<string,string>|null $links
      */
@@ -140,7 +140,7 @@ final class ActionResponse implements BaseModel
     }
 
     /**
-     * A collection of related links associated with the action.
+     * A map of link names to associated URIs containing documentation about the error or recommended remediation steps.
      *
      * @param array<string,string> $links
      */

@@ -35,7 +35,7 @@ interface LimitsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: The type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|LimitBatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -52,7 +52,7 @@ interface LimitsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: The type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|LimitBatchUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -69,7 +69,6 @@ interface LimitsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType the type of the target object in the association
      * @param array<string,mixed>|LimitGetByObjectTypesParams $params
      * @param RequestOpts|null $requestOptions
      *

@@ -36,8 +36,8 @@ final class IPRangesService implements IPRangesContract
      *
      * Retrieve a collection of IP ranges associated with specific services and directions, such as `EMAIL`, `API`, `DNS`, or `WEB_SCRAPING`. The response includes details like CIDR notation, description, and the direction of IP traffic.
      *
-     * @param list<Direction|value-of<Direction>> $direction An array of traffic directions to filter the IP ranges. Valid values are `INGRESS` and `EGRESS`.
-     * @param list<Service|value-of<Service>> $service An array of service types to filter the IP ranges. Valid values include `EMAIL`, `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
+     * @param list<Direction|value-of<Direction>> $direction
+     * @param list<Service|value-of<Service>> $service
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -62,8 +62,8 @@ final class IPRangesService implements IPRangesContract
      *
      * Retrieve a simplified list of IP ranges for specified services and directions in plain text format. This endpoint provides a straightforward representation of IP ranges without additional metadata.
      *
-     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction>> $direction An array of directions to filter the IP ranges by. Valid values are `INGRESS` and `EGRESS`.
-     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service>> $service An array specifying the service types to filter by. Valid values include `EMAIL`, `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
+     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction>> $direction
+     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service>> $service
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

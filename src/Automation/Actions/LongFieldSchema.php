@@ -20,13 +20,23 @@ final class LongFieldSchema implements BaseModel
     /** @use SdkModel<LongFieldSchemaShape> */
     use SdkModel;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The type of the field, which is LONG by default.
+     *
+     * @var value-of<Type> $type
+     */
     #[Required(enum: Type::class)]
     public string $type;
 
+    /**
+     * The maximum value allowed for the long field.
+     */
     #[Optional]
     public ?int $maximum;
 
+    /**
+     * The minimum value allowed for the long field.
+     */
     #[Optional]
     public ?int $minimum;
 
@@ -72,6 +82,8 @@ final class LongFieldSchema implements BaseModel
     }
 
     /**
+     * The type of the field, which is LONG by default.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -82,6 +94,9 @@ final class LongFieldSchema implements BaseModel
         return $self;
     }
 
+    /**
+     * The maximum value allowed for the long field.
+     */
     public function withMaximum(int $maximum): self
     {
         $self = clone $this;
@@ -90,6 +105,9 @@ final class LongFieldSchema implements BaseModel
         return $self;
     }
 
+    /**
+     * The minimum value allowed for the long field.
+     */
     public function withMinimum(int $minimum): self
     {
         $self = clone $this;

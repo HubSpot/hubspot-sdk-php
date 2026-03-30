@@ -3,8 +3,8 @@
 namespace Tests\Services\Crm\ObjectSchemas;
 
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,8 +2,8 @@
 
 namespace Tests\Services\Cms\MediaBridge;
 
-use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
+use HubspotSDK\Cms\MediaBridge\BatchResponseProperty;
 use HubspotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -40,7 +40,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->batch->create(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             inputs: [
                 [
                     'fieldType' => 'booleancheckbox',
@@ -65,7 +65,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->batch->create(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             inputs: [
                 [
                     'fieldType' => 'booleancheckbox',
@@ -108,7 +108,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->batch->delete(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             inputs: [['name' => 'name']]
         );
 
@@ -125,7 +125,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->batch->delete(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             inputs: [['name' => 'name']]
         );
 
@@ -142,7 +142,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->batch->get(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             archived: true,
             dataSensitivity: 'highly_sensitive',
             inputs: [['name' => 'name']],
@@ -161,7 +161,7 @@ final class BatchTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->batch->get(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             archived: true,
             dataSensitivity: 'highly_sensitive',
             inputs: [['name' => 'name']],

@@ -18,12 +18,21 @@ final class ObjectCoordinates implements BaseModel
     /** @use SdkModel<ObjectCoordinatesShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the object.
+     */
     #[Required('objectId')]
     public int $objectID;
 
+    /**
+     * The type identifier for the object.
+     */
     #[Required('objectTypeId')]
     public string $objectTypeID;
 
+    /**
+     * The unique identifier for the portal.
+     */
     #[Required('portalId')]
     public int $portalID;
 
@@ -68,6 +77,9 @@ final class ObjectCoordinates implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the object.
+     */
     public function withObjectID(int $objectID): self
     {
         $self = clone $this;
@@ -76,6 +88,9 @@ final class ObjectCoordinates implements BaseModel
         return $self;
     }
 
+    /**
+     * The type identifier for the object.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $self = clone $this;
@@ -84,6 +99,9 @@ final class ObjectCoordinates implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the portal.
+     */
     public function withPortalID(int $portalID): self
     {
         $self = clone $this;

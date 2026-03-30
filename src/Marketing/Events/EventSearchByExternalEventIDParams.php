@@ -10,6 +10,10 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieves Marketing Events where the externalEventId matches the value provided in the request, limited to events created by the app making the request.
+ *
+ * Marketing Events created by other apps will not be included in the results.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::searchByExternalEventID()
  *
  * @phpstan-type EventSearchByExternalEventIDParamsShape = array{q: string}

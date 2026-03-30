@@ -113,7 +113,7 @@ final class PublicEmail implements BaseModel
     public ?string $businessUnitID;
 
     /**
-     * The campaign GUID on the email.
+     * The ID of the campaign this email is associated to.
      */
     #[Optional]
     public ?string $campaign;
@@ -300,7 +300,7 @@ final class PublicEmail implements BaseModel
     public ?\DateTimeInterface $updatedAt;
 
     /**
-     * The ID of the user who last updated the email.
+     * The id of the user who last updated the email.
      */
     #[Optional('updatedById')]
     public ?string $updatedByID;
@@ -531,7 +531,7 @@ final class PublicEmail implements BaseModel
     }
 
     /**
-     * The campaign GUID on the email.
+     * The ID of the campaign this email is associated to.
      */
     public function withCampaign(string $campaign): self
     {
@@ -943,7 +943,7 @@ final class PublicEmail implements BaseModel
     }
 
     /**
-     * The ID of the user who last updated the email.
+     * The id of the user who last updated the email.
      */
     public function withUpdatedByID(string $updatedByID): self
     {

@@ -19,9 +19,7 @@ interface MetricsContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign for which metrics are being fetched
-     * @param string $endDate the end date for fetching metrics, in YYYY-MM-DD format
-     * @param string $startDate the start date for fetching metrics, in YYYY-MM-DD format
+     * @param string $campaignGuid The unique identifier of the campaign
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -36,10 +34,9 @@ interface MetricsContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign
-     * @param string $attributionModel the model used to attribute revenue to the campaign
-     * @param string $endDate end date to fetch attribution data, YYYY-MM-DD
-     * @param string $startDate start date to fetch attribution data, YYYY-MM-DD
+     * @param string $campaignGuid The unique identifier of the campaign
+     * @param string $endDate End date to fetch attribution data, YYYY-MM-DD
+     * @param string $startDate Start date to fetch attribution data, YYYY-MM-DD
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -55,12 +52,12 @@ interface MetricsContract
     /**
      * @api
      *
-     * @param string $contactType path param: The type of contact to filter the list
-     * @param string $campaignGuid path param: The unique identifier of the campaign
-     * @param string $after query param: The paging cursor token of the last successfully read resource, used for pagination
-     * @param string $endDate query param: The end date for filtering contacts, formatted as a string
+     * @param string $contactType Path param: The type of contact to filter the list
+     * @param string $campaignGuid Path param: The unique identifier of the campaign
+     * @param string $after Query param: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param string $endDate Query param
      * @param int $limit query param: The maximum number of results to display per page
-     * @param string $startDate query param: The start date for filtering contacts, formatted as a string
+     * @param string $startDate Query param
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<ContactReference>

@@ -6,7 +6,7 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Companies\CompanyCreateParams;
 use HubspotSDK\Crm\Objects\Companies\CompanyGetParams;
 use HubspotSDK\Crm\Objects\Companies\CompanyListParams;

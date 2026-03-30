@@ -26,6 +26,8 @@ final class BusinessUnitsRawService implements BusinessUnitsRawContract
     /**
      * @api
      *
+     * Retrieve the brands that a specific user can access.
+     *
      * @param array{
      *   name?: list<string>, properties?: list<string>
      * }|BusinessUnitGetByUserIDParams $params

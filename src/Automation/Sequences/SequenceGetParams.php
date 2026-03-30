@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve details of a specific sequence in your HubSpot account using the sequence ID. This endpoint requires the user ID to be specified and provides comprehensive information about the sequence, including its steps and dependencies.
+ * Retrieve details of a specific sequence by its ID.
  *
  * @see HubspotSDK\Services\Automation\SequencesService::get()
  *
@@ -22,9 +22,6 @@ final class SequenceGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The unique identifier of the user requesting the sequence details. This parameter is required.
-     */
     #[Required]
     public string $userID;
 
@@ -61,9 +58,6 @@ final class SequenceGetParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The unique identifier of the user requesting the sequence details. This parameter is required.
-     */
     public function withUserID(string $userID): self
     {
         $self = clone $this;

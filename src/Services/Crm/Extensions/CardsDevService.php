@@ -43,6 +43,8 @@ final class CardsDevService implements CardsDevContract
     /**
      * @api
      *
+     * Defines a new card that will become active on an account when this app is installed.
+     *
      * @param CardActions|CardActionsShape $actions
      * @param CardDisplayBody|CardDisplayBodyShape $display
      * @param CardFetchBody|CardFetchBodyShape $fetch
@@ -76,6 +78,8 @@ final class CardsDevService implements CardsDevContract
 
     /**
      * @api
+     *
+     * Update a card definition with new details.
      *
      * @param string $cardID Path param
      * @param int $appID Path param
@@ -115,6 +119,8 @@ final class CardsDevService implements CardsDevContract
     /**
      * @api
      *
+     * Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -135,6 +141,8 @@ final class CardsDevService implements CardsDevContract
     /**
      * @api
      *
+     * Returns a list of cards for a given app.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -151,6 +159,8 @@ final class CardsDevService implements CardsDevContract
 
     /**
      * @api
+     *
+     * Returns the definition for a card with the given ID.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -171,6 +181,8 @@ final class CardsDevService implements CardsDevContract
 
     /**
      * @api
+     *
+     * Returns an example card detail response. This is the payload with displayed details for a card that will be shown to a user. An app should send this in response to the data fetch request.
      *
      * @param RequestOpts|null $requestOptions
      *

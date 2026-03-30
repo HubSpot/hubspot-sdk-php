@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Update a specific budget item by its ID within a marketing campaign. This operation allows you to modify the details of a budget item, such as its amount, name, or order, ensuring that your campaign's financial records are accurate and up-to-date.
+ * Update a specific budget item by ID.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::update()
  *

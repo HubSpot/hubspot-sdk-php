@@ -12,7 +12,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
 
 /**
- * Retrieve a batch of campaigns with specified properties and date range. This endpoint allows you to filter campaigns by start and end dates and specify which properties to include in the response.
+ * This endpoint reads a batch of campaigns based on the provided input data and returns the campaigns along with their associated assets.
+ * The maximum number of items in a batch request is 50.
+ * The campaigns in the response are not guaranteed to be in the same order as they were provided in the request.
+ * If duplicate campaign IDs are provided in the request, duplicates will be ignored. The response will include only unique IDs and will be returned without duplicates.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::get()
  *
@@ -39,23 +42,13 @@ final class BatchGetParams implements BaseModel
     #[Required(list: PublicCampaignReadInput::class)]
     public array $inputs;
 
-    /**
-     * The end date for filtering campaigns, in YYYY-MM-DD format.
-     */
     #[Optional]
     public ?string $endDate;
 
-    /**
-     * A comma-separated list of property names to include in the response.
-     *
-     * @var list<string>|null $properties
-     */
+    /** @var list<string>|null $properties */
     #[Optional(list: 'string')]
     public ?array $properties;
 
-    /**
-     * The start date for filtering campaigns, in YYYY-MM-DD format.
-     */
     #[Optional]
     public ?string $startDate;
 
@@ -116,9 +109,6 @@ final class BatchGetParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The end date for filtering campaigns, in YYYY-MM-DD format.
-     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -128,8 +118,6 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
-     * A comma-separated list of property names to include in the response.
-     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -140,9 +128,6 @@ final class BatchGetParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The start date for filtering campaigns, in YYYY-MM-DD format.
-     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;

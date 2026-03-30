@@ -31,6 +31,8 @@ final class SettingsRawService implements SettingsRawContract
     /**
      * @api
      *
+     * Get the list of blogs. Results can be limited and filtered by creation or updated date.
+     *
      * @param array{
      *   after?: string,
      *   archived?: bool,
@@ -72,6 +74,8 @@ final class SettingsRawService implements SettingsRawContract
     /**
      * @api
      *
+     * Retrieve a specific blog by its ID.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Blog>
@@ -93,6 +97,8 @@ final class SettingsRawService implements SettingsRawContract
 
     /**
      * @api
+     *
+     * Get a specific blog revision.
      *
      * @param array{blogID: string}|SettingGetRevisionParams $params
      * @param RequestOpts|null $requestOptions
@@ -128,6 +134,8 @@ final class SettingsRawService implements SettingsRawContract
 
     /**
      * @api
+     *
+     * Get the list of blog revisions. Results can be limited and filtered by creation or updated date.
      *
      * @param array{
      *   after?: string, before?: string, limit?: int

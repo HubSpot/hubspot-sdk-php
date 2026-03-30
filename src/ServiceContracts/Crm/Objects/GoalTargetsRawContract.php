@@ -6,7 +6,7 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetCreateParams;
 use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetGetParams;
 use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetListParams;

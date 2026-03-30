@@ -45,7 +45,6 @@ interface URLMappingsRawContract
     /**
      * @api
      *
-     * @param int $id The unique identifier of the URL mapping to delete. Must be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -60,7 +59,6 @@ interface URLMappingsRawContract
     /**
      * @api
      *
-     * @param int $id The unique identifier of the URL mapping to retrieve. It must be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>

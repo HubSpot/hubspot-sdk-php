@@ -32,6 +32,8 @@ final class EventsService implements EventsContract
     /**
      * @api
      *
+     * Mark a marketing event as cancelled.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -51,6 +53,8 @@ final class EventsService implements EventsContract
 
     /**
      * @api
+     *
+     * Mark a marketing event as completed
      *
      * @param string $externalEventID Path param
      * @param string $externalAccountID Query param

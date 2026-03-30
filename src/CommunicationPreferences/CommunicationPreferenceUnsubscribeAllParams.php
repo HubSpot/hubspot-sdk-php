@@ -12,7 +12,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Unsubscribe a subscriber from all communication channels. This endpoint allows you to remove a subscriber from all communication preferences, effectively opting them out from receiving any further communications. This can be useful for ensuring compliance with user requests or legal requirements.
+ * Unsubscribe a contact from all email subscriptions.
  *
  * @see HubspotSDK\Services\CommunicationPreferencesService::unsubscribeAll()
  *
@@ -28,23 +28,13 @@ final class CommunicationPreferenceUnsubscribeAllParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The communication channel from which to unsubscribe the subscriber. Must be 'EMAIL'.
-     *
-     * @var value-of<Channel> $channel
-     */
+    /** @var value-of<Channel> $channel */
     #[Required(enum: Channel::class)]
     public string $channel;
 
-    /**
-     * The ID of the business unit associated with the subscriber. This is an optional parameter.
-     */
     #[Optional]
     public ?int $businessUnitID;
 
-    /**
-     * A boolean flag indicating whether to include detailed information in the response. Defaults to false.
-     */
     #[Optional]
     public ?bool $verbose;
 
@@ -90,8 +80,6 @@ final class CommunicationPreferenceUnsubscribeAllParams implements BaseModel
     }
 
     /**
-     * The communication channel from which to unsubscribe the subscriber. Must be 'EMAIL'.
-     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -102,9 +90,6 @@ final class CommunicationPreferenceUnsubscribeAllParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The ID of the business unit associated with the subscriber. This is an optional parameter.
-     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;
@@ -113,9 +98,6 @@ final class CommunicationPreferenceUnsubscribeAllParams implements BaseModel
         return $self;
     }
 
-    /**
-     * A boolean flag indicating whether to include detailed information in the response. Defaults to false.
-     */
     public function withVerbose(bool $verbose): self
     {
         $self = clone $this;

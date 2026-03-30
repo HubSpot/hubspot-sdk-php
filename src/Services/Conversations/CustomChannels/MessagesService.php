@@ -39,6 +39,8 @@ final class MessagesService implements MessagesContract
     /**
      * @api
      *
+     * Publish a message over your custom channel
+     *
      * @param list<AttachmentShape> $attachments
      * @param MessageDirection|value-of<MessageDirection> $messageDirection
      * @param list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape> $recipients
@@ -92,6 +94,8 @@ final class MessagesService implements MessagesContract
     /**
      * @api
      *
+     * Update a message's status to indicate if it was successfully sent, failed to send, or was read. For failed messages, this can also include the error message for the failure.
+     *
      * @param string $messageID Path param
      * @param int $channelID Path param
      * @param StatusType|value-of<StatusType> $statusType Body param: Valid status are SENT, FAILED, and READ
@@ -123,6 +127,8 @@ final class MessagesService implements MessagesContract
 
     /**
      * @api
+     *
+     * Get the details for a specific message sent over a custom channel
      *
      * @param RequestOpts|null $requestOptions
      *

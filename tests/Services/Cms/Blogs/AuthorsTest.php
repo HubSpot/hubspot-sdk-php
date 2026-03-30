@@ -328,6 +328,71 @@ final class AuthorsTest extends TestCase
     }
 
     #[Test]
+    public function testListByQuery(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->authors->listByQuery();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testListPosts(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->authors->listPosts();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testListPostsByQuery(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->authors->listPostsByQuery();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testListTags(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->authors->listTags();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testListTagsByQuery(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->authors->listTagsByQuery();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
     public function testSetNewLangPrimary(): void
     {
         if (UnsupportedMockTests::$skip) {

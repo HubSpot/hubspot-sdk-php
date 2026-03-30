@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Delete the Blog Author objects identified in the request body.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Authors\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<string>}

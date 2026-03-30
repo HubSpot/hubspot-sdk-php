@@ -37,7 +37,7 @@ final class PublicBudgetTotals implements BaseModel
     public array $budgetItems;
 
     /**
-     * The currency code used for budget and spending amounts. Valid values include standard currency codes such as 'USD', 'EUR', 'JPY', etc.
+     * The currency code used for the budget and spend amounts, following ISO 4217 standards.
      *
      * @var value-of<CurrencyCode> $currencyCode
      */
@@ -53,19 +53,19 @@ final class PublicBudgetTotals implements BaseModel
     public array $spendItems;
 
     /**
-     * The total budget amount for the campaign, represented as a number.
+     * The total budget allocated for the campaign.
      */
     #[Optional]
     public ?float $budgetTotal;
 
     /**
-     * The remaining budget for the campaign after spending, represented as a number.
+     * The remaining budget available for the campaign after accounting for all spend items.
      */
     #[Optional]
     public ?float $remainingBudget;
 
     /**
-     * The total amount spent for the campaign, represented as a number.
+     * The total amount spent across all spend items in the campaign.
      */
     #[Optional]
     public ?float $spendTotal;
@@ -136,7 +136,7 @@ final class PublicBudgetTotals implements BaseModel
     }
 
     /**
-     * The currency code used for budget and spending amounts. Valid values include standard currency codes such as 'USD', 'EUR', 'JPY', etc.
+     * The currency code used for the budget and spend amounts, following ISO 4217 standards.
      *
      * @param CurrencyCode|value-of<CurrencyCode> $currencyCode
      */
@@ -162,7 +162,7 @@ final class PublicBudgetTotals implements BaseModel
     }
 
     /**
-     * The total budget amount for the campaign, represented as a number.
+     * The total budget allocated for the campaign.
      */
     public function withBudgetTotal(float $budgetTotal): self
     {
@@ -173,7 +173,7 @@ final class PublicBudgetTotals implements BaseModel
     }
 
     /**
-     * The remaining budget for the campaign after spending, represented as a number.
+     * The remaining budget available for the campaign after accounting for all spend items.
      */
     public function withRemainingBudget(float $remainingBudget): self
     {
@@ -184,7 +184,7 @@ final class PublicBudgetTotals implements BaseModel
     }
 
     /**
-     * The total amount spent for the campaign, represented as a number.
+     * The total amount spent across all spend items in the campaign.
      */
     public function withSpendTotal(float $spendTotal): self
     {

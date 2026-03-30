@@ -734,41 +734,6 @@ final class PostsTest extends TestCase
     }
 
     #[Test]
-    public function testAttachToLangGroup(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->attachToLangGroup(
-            id: 'id',
-            language: 'aa',
-            primaryID: 'primaryId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testAttachToLangGroupWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->attachToLangGroup(
-            id: 'id',
-            language: 'aa',
-            primaryID: 'primaryId',
-            primaryLanguage: 'aa'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
     public function testClone(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -792,61 +757,6 @@ final class PostsTest extends TestCase
             id: 'id',
             cloneName: 'cloneName'
         );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testCreateLangVariation(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->createLangVariation(id: 'id');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testCreateLangVariationWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->createLangVariation(
-            id: 'id',
-            language: 'language'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testDetachFromLangGroup(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->detachFromLangGroup(id: 'id');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testDetachFromLangGroupWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->detachFromLangGroup(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -879,45 +789,26 @@ final class PostsTest extends TestCase
     }
 
     #[Test]
-    public function testGetPreviousVersion(): void
+    public function testListAuthors(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->getPreviousVersion(
-            'revisionId',
-            objectID: 'objectId'
-        );
+        $result = $this->client->cms->blogs->posts->listAuthors();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testGetPreviousVersionWithOptionalParams(): void
+    public function testListTags(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->posts->getPreviousVersion(
-            'revisionId',
-            objectID: 'objectId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testGetPreviousVersions(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->getPreviousVersions('objectId');
+        $result = $this->client->cms->blogs->posts->listTags();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -937,6 +828,45 @@ final class PostsTest extends TestCase
     }
 
     #[Test]
+    public function testQuery(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->posts->query();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testQueryAuthors(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->posts->queryAuthors();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testQueryTags(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->posts->queryTags();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
     public function testResetDraft(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -947,70 +877,6 @@ final class PostsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testRestorePreviousVersion(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->restorePreviousVersion(
-            'revisionId',
-            objectID: 'objectId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testRestorePreviousVersionWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->restorePreviousVersion(
-            'revisionId',
-            objectID: 'objectId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testRestorePreviousVersionToDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->restorePreviousVersionToDraft(
-            0,
-            objectID: 'objectId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testRestorePreviousVersionToDraftWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->restorePreviousVersionToDraft(
-            0,
-            objectID: 'objectId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
     }
 
     #[Test]
@@ -1040,32 +906,6 @@ final class PostsTest extends TestCase
             id: 'id',
             publishDate: new \DateTimeImmutable('2019-12-27T18:11:19.117Z')
         );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testSetLangPrimary(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->setLangPrimary(id: 'id');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testSetLangPrimaryWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->setLangPrimary(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -1404,38 +1244,6 @@ final class PostsTest extends TestCase
             useFeaturedImage: true,
             widgetContainers: ['foo' => (object) []],
             widgets: ['foo' => (object) []],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testUpdateLangs(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->updateLangs(
-            languages: ['foo' => 'aa'],
-            primaryID: 'primaryId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testUpdateLangsWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->posts->updateLangs(
-            languages: ['foo' => 'aa'],
-            primaryID: 'primaryId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

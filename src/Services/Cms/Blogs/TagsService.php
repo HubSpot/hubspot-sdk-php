@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Tags\Tag;
 use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\PrimaryLanguage;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateParams\Language;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\TagsContract;
+use HubspotSDK\Services\Cms\Blogs\Tags\BatchService;
 
 /**
- * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  */
 final class TagsService implements TagsContract
@@ -25,15 +24,23 @@ final class TagsService implements TagsContract
     public TagsRawService $raw;
 
     /**
+     * @api
+     */
+    public BatchService $batch;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
     {
         $this->raw = new TagsRawService($client);
+        $this->batch = new BatchService($client);
     }
 
     /**
      * @api
+     *
+     * Create a new Blog Tag.
      *
      * @param string $id the unique ID of the Blog Tag
      * @param \DateTimeInterface $created the timestamp (ISO8601 format) when this Blog Tag was created
@@ -78,6 +85,9 @@ final class TagsService implements TagsContract
 
     /**
      * @api
+     *
+     * Sparse updates a single Blog Tag object identified by the id in the path.
+     * All the column values need not be specified. Only the that need to be modified can be specified.
      *
      * @param string $objectID Path param
      * @param string $id body param: The unique ID of the Blog Tag
@@ -129,6 +139,8 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
+     * Get the list of blog tags. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
+     *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
      * @param int $limit the maximum number of results to display per page
@@ -176,6 +188,8 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
+     * Delete the Blog Tag object identified by the id in the path.
+     *
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *
@@ -196,6 +210,8 @@ final class TagsService implements TagsContract
 
     /**
      * @api
+     *
+     * Attach a Blog Tag to a multi-language group.
      *
      * @param string $id ID of the object to add to a multi-language group
      * @param \HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
@@ -230,25 +246,7 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * @param list<Tag|TagShape> $inputs blog tags to input
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function createBatch(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): string {
-        $params = Util::removeNulls(['inputs' => $inputs]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->createBatch(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
+     * Create a new language variation from an existing Blog Tag
      *
      * @param string $id ID of the object to be cloned
      * @param string $name name of newly cloned blog tag
@@ -283,25 +281,7 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * @param list<string> $inputs strings to input
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function deleteBatch(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed {
-        $params = Util::removeNulls(['inputs' => $inputs]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->deleteBatch(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
+     * Detach a Blog Tag from a multi-language group.
      *
      * @param string $id ID of the object to remove from a multi-language group
      * @param RequestOpts|null $requestOptions
@@ -322,6 +302,8 @@ final class TagsService implements TagsContract
 
     /**
      * @api
+     *
+     * Retrieve the Blog Tag object identified by the id in the path.
      *
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
@@ -347,27 +329,289 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * @param list<string> $inputs body param: Strings to input
-     * @param bool $archived query param: Whether to return only results that have been archived
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getBatch(
-        array $inputs,
+    public function listAuthorsCursor(
+        ?string $after = null,
         ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
         RequestOptions|array|null $requestOptions = null,
     ): string {
-        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getBatch(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->listAuthorsCursor(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
 
     /**
      * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listAuthorsCursorByQuery(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listAuthorsCursorByQuery(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listCursor(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listCursor(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listCursorByQuery(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listCursorByQuery(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listPostsCursor(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listPostsCursor(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listPostsCursorByQuery(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listPostsCursorByQuery(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Set a Blog Tag as the primary language of a multi-language group.
      *
      * @param string $id ID of object to set as primary in multi-language group
      * @param RequestOpts|null $requestOptions
@@ -389,27 +633,7 @@ final class TagsService implements TagsContract
     /**
      * @api
      *
-     * @param list<mixed> $inputs body param: JSON nodes to input
-     * @param bool $archived query param: Whether to return only results that have been archived
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function updateBatch(
-        array $inputs,
-        ?bool $archived = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string {
-        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->updateBatch(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
+     * Explicitly set new languages for each Blog Tag in a multi-language group.
      *
      * @param array<string,\HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
      * @param string $primaryID ID of the primary object in the multi-language group

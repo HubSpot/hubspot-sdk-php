@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Return a pipeline stage by ID.
+ *
  * @see HubspotSDK\Services\Crm\PipelinesService::get()
  *
  * @phpstan-type PipelineGetParamsShape = array{

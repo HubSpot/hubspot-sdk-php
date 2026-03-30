@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Emails\EmailCreateParams;
 use HubspotSDK\Crm\Objects\Emails\EmailGetParams;
 use HubspotSDK\Crm\Objects\Emails\EmailListParams;
@@ -108,7 +108,7 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
-     * Retrieve all emails. Control what is returned via the `properties` query param.
+     * Read a page of emails. Control what is returned via the `properties` query param.
      *
      * @param array{
      *   after?: string,
@@ -171,7 +171,7 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
-     * Retrieve an email identified by `{emailId}`. `{emailId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+     * Read an Object identified by `{emailId}`. `{emailId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
      * @param array{
      *   archived?: bool,

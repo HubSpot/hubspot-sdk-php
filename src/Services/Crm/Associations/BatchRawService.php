@@ -85,7 +85,7 @@ final class BatchRawService implements BatchRawContract
      *
      * Batch delete associations for objects
      *
-     * @param string $toObjectType path param: Specifies the type of the target object in the batch association deletion
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<PublicAssociationMultiArchive|PublicAssociationMultiArchiveShape>,
@@ -125,9 +125,9 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Batch create the default (most generic) association type between two object types.
+     * Create the default (most generic) association type between two object types
      *
-     * @param string $toObjectType path param: Specifies the type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<PublicDefaultAssociationMultiPost|PublicDefaultAssociationMultiPostShape>,
@@ -167,9 +167,9 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Batch remove specific labelled associations between records in bulk. Deleting an unlabeled association will also delete all labeled associations between those two objects
+     * Batch delete specific association labels for objects. Deleting an unlabeled association will also delete all labeled associations between those two objects
      *
-     * @param string $toObjectType Path param: The type of the to Object
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<PublicAssociationMultiPost|PublicAssociationMultiPostShape>,
@@ -211,7 +211,7 @@ final class BatchRawService implements BatchRawContract
      *
      * Batch read associations for objects to specific object type. The 'after' field in a returned paging object  can be added alongside the 'id' to retrieve the next page of associations from that objectId. The 'link' field is deprecated and should be ignored. Note: The 'paging' field will only be present if there are more pages and absent otherwise.
      *
-     * @param string $toObjectType Path param: The type of the to Object
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<PublicFetchAssociationsBatchRequest|PublicFetchAssociationsBatchRequestShape>,

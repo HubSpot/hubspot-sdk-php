@@ -1,0 +1,80 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Crm\Timeline;
+
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-type ExternalAppEventResolutionRequestShape = array{
+ *   developerSymbol: string, projectName: string
+ * }
+ */
+final class ExternalAppEventResolutionRequest implements BaseModel
+{
+    /** @use SdkModel<ExternalAppEventResolutionRequestShape> */
+    use SdkModel;
+
+    #[Required]
+    public string $developerSymbol;
+
+    #[Required]
+    public string $projectName;
+
+    /**
+     * `new ExternalAppEventResolutionRequest()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * ExternalAppEventResolutionRequest::with(developerSymbol: ..., projectName: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new ExternalAppEventResolutionRequest)
+     *   ->withDeveloperSymbol(...)
+     *   ->withProjectName(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     */
+    public static function with(
+        string $developerSymbol,
+        string $projectName
+    ): self {
+        $self = new self;
+
+        $self['developerSymbol'] = $developerSymbol;
+        $self['projectName'] = $projectName;
+
+        return $self;
+    }
+
+    public function withDeveloperSymbol(string $developerSymbol): self
+    {
+        $self = clone $this;
+        $self['developerSymbol'] = $developerSymbol;
+
+        return $self;
+    }
+
+    public function withProjectName(string $projectName): self
+    {
+        $self = clone $this;
+        $self['projectName'] = $projectName;
+
+        return $self;
+    }
+}

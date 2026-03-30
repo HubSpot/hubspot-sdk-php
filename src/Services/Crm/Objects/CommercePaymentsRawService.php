@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\CommercePayments\CommercePaymentCreateParams;
 use HubspotSDK\Crm\Objects\CommercePayments\CommercePaymentGetParams;
 use HubspotSDK\Crm\Objects\CommercePayments\CommercePaymentListParams;
@@ -37,7 +37,7 @@ final class CommercePaymentsRawService implements CommercePaymentsRawContract
     /**
      * @api
      *
-     * Create a single payment. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the {objectName}, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
+     * Create a commerce payment with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard commerce payments is provided.
      *
      * @param array{
      *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
@@ -71,7 +71,7 @@ final class CommercePaymentsRawService implements CommercePaymentsRawContract
     /**
      * @api
      *
-     * Update a payment by ID (`objectId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+     * Perform a partial update of an Object identified by `{commercePaymentId}`or optionally a unique property value as specified by the `idProperty` query param. `{commercePaymentId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
      * @param string $commercePaymentID Path param
      * @param array{
@@ -108,7 +108,7 @@ final class CommercePaymentsRawService implements CommercePaymentsRawContract
     /**
      * @api
      *
-     * Retrieve all payments, using query parameters to specify the information that gets returned.
+     * Read a page of commerce payments. Control what is returned via the `properties` query param.
      *
      * @param array{
      *   after?: string,
@@ -147,7 +147,7 @@ final class CommercePaymentsRawService implements CommercePaymentsRawContract
     /**
      * @api
      *
-     * Delete a payment by ID.
+     * Move an Object identified by `{commercePaymentId}` to the recycling bin.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -171,7 +171,7 @@ final class CommercePaymentsRawService implements CommercePaymentsRawContract
     /**
      * @api
      *
-     * Retrieve a payment by its ID (`objectId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
+     * Read an Object identified by `{commercePaymentId}`. `{commercePaymentId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
      * @param array{
      *   archived?: bool,
@@ -209,7 +209,7 @@ final class CommercePaymentsRawService implements CommercePaymentsRawContract
     /**
      * @api
      *
-     * Search for payments by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
+     * Execute a search for commerce payments based on the provided filter groups, properties, and sorting options. This endpoint allows for complex queries to retrieve specific payment records from the CRM.
      *
      * @param array{
      *   after: string,

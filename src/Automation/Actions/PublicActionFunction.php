@@ -22,13 +22,23 @@ final class PublicActionFunction implements BaseModel
     /** @use SdkModel<PublicActionFunctionShape> */
     use SdkModel;
 
+    /**
+     * The source code or script that defines the function's behavior.
+     */
     #[Required]
     public string $functionSource;
 
-    /** @var value-of<FunctionType> $functionType */
+    /**
+     * The type of function, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS.
+     *
+     * @var value-of<FunctionType> $functionType
+     */
     #[Required(enum: FunctionType::class)]
     public string $functionType;
 
+    /**
+     * The unique identifier for the action function.
+     */
     #[Optional]
     public ?string $id;
 
@@ -73,6 +83,9 @@ final class PublicActionFunction implements BaseModel
         return $self;
     }
 
+    /**
+     * The source code or script that defines the function's behavior.
+     */
     public function withFunctionSource(string $functionSource): self
     {
         $self = clone $this;
@@ -82,6 +95,8 @@ final class PublicActionFunction implements BaseModel
     }
 
     /**
+     * The type of function, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS.
+     *
      * @param FunctionType|value-of<FunctionType> $functionType
      */
     public function withFunctionType(FunctionType|string $functionType): self
@@ -92,6 +107,9 @@ final class PublicActionFunction implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the action function.
+     */
     public function withID(string $id): self
     {
         $self = clone $this;

@@ -8,14 +8,21 @@ use HubspotSDK\AssociationSpec;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Associations\AssociationDeleteAssociationsParams;
+use HubspotSDK\Crm\Associations\AssociationDeleteParams;
+use HubspotSDK\Crm\Associations\AssociationListParams;
+use HubspotSDK\Crm\Associations\AssociationSearchParams;
 use HubspotSDK\Crm\Associations\AssociationUpdateAssociationLabelsParams;
 use HubspotSDK\Crm\Associations\ReportCreationResponse;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\LabelsBetweenObjectPair;
+use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\AssociationsRawContract;
 
 /**
+ * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
  * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  */
@@ -30,21 +37,66 @@ final class AssociationsRawService implements AssociationsRawContract
     /**
      * @api
      *
+     * Retrieve all associations between a specific record and an object type. Limit 500 per call.
+     *
+     * @param string $toObjectType Path param
+     * @param array{
+     *   objectType: string, objectID: string, after?: string, limit?: int
+     * }|AssociationListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<MultiAssociatedObjectWithLabel>>
+     *
+     * @throws APIException
+     */
+    public function list(
+        string $toObjectType,
+        array|AssociationListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = AssociationListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $objectType = $parsed['objectType'];
+        unset($parsed['objectType']);
+        $objectID = $parsed['objectID'];
+        unset($parsed['objectID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'crm/objects/2026-03/%1$s/%2$s/associations/%3$s',
+                $objectType,
+                $objectID,
+                $toObjectType,
+            ],
+            query: $parsed,
+            options: $options,
+            convert: MultiAssociatedObjectWithLabel::class,
+            page: Page::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * @param array{
      *   objectType: string, objectID: string, toObjectType: string
-     * }|AssociationDeleteAssociationsParams $params
+     * }|AssociationDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function deleteAssociations(
+    public function delete(
         string $toObjectID,
-        array|AssociationDeleteAssociationsParams $params,
+        array|AssociationDeleteParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = AssociationDeleteAssociationsParams::parseRequest(
+        [$parsed, $options] = AssociationDeleteParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -75,7 +127,6 @@ final class AssociationsRawService implements AssociationsRawContract
      *
      * Requests a report of all objects in the portal which have a high usage of associations
      *
-     * @param int $userID The user for the report
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ReportCreationResponse>
@@ -92,6 +143,43 @@ final class AssociationsRawService implements AssociationsRawContract
             path: ['crm/associations/2026-03/usage/high-usage-report/%1$s', $userID],
             options: $requestOptions,
             convert: ReportCreationResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after: string,
+     *   filterGroups: list<FilterGroup|FilterGroupShape>,
+     *   limit: int,
+     *   properties: list<string>,
+     *   sorts: list<string>,
+     *   query?: string,
+     * }|AssociationSearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CollectionResponseWithTotalSimplePublicObject>
+     *
+     * @throws APIException
+     */
+    public function search(
+        string $objectType,
+        array|AssociationSearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = AssociationSearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['crm/objects/2026-03/%1$s/search', $objectType],
+            body: (object) $parsed,
+            options: $options,
+            convert: CollectionResponseWithTotalSimplePublicObject::class,
         );
     }
 

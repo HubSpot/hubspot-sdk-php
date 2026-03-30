@@ -29,9 +29,8 @@ final class SpendRawService implements SpendRawContract
     /**
      * @api
      *
-     * Create a new campaign spend item for a specific campaign identified by its unique ID. This endpoint allows you to add financial details related to campaign expenditures, which can be useful for budget tracking and financial reporting.
+     * Create a new campaign spend item
      *
-     * @param string $campaignGuid the unique identifier of the campaign for which the spend item is being created
      * @param array{
      *   amount: float, name: string, order: int, description?: string
      * }|SpendCreateParams $params
@@ -64,9 +63,9 @@ final class SpendRawService implements SpendRawContract
     /**
      * @api
      *
-     * Update a specific campaign spend item by its ID. This endpoint allows you to modify the details of a spend item associated with a marketing campaign, such as its amount, name, or order. Use this to keep your campaign spend data accurate and up-to-date.
+     * Update a specific campaign spend item by ID
      *
-     * @param int $spendID path param: The unique identifier of the spend item to update
+     * @param int $spendID Path param
      * @param array{
      *   campaignGuid: string,
      *   amount: float,
@@ -107,9 +106,8 @@ final class SpendRawService implements SpendRawContract
     /**
      * @api
      *
-     * Delete a specific campaign spend item by its ID. This operation is useful for removing spend items that are no longer needed or were added in error. Once deleted, the spend item cannot be recovered.
+     * Delete a specific campaign spend item by ID
      *
-     * @param int $spendID the unique identifier of the spend item to delete
      * @param array{campaignGuid: string}|SpendDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -143,9 +141,8 @@ final class SpendRawService implements SpendRawContract
     /**
      * @api
      *
-     * Retrieve details of a specific campaign spend item using its spendId. This endpoint allows you to access information about the spend associated with a particular campaign, identified by the campaignGuid.
+     * Read a campaign spend item by its spendId
      *
-     * @param int $spendID the unique identifier of the spend item to retrieve
      * @param array{campaignGuid: string}|SpendGetParams $params
      * @param RequestOpts|null $requestOptions
      *

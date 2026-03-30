@@ -18,6 +18,9 @@ final class PublicActionDefinitionRequiresObjectResponse implements BaseModel
     /** @use SdkModel<PublicActionDefinitionRequiresObjectResponseShape> */
     use SdkModel;
 
+    /**
+     * Indicates whether a custom action definition requires an object.
+     */
     #[Required]
     public bool $requiresObject;
 
@@ -54,6 +57,9 @@ final class PublicActionDefinitionRequiresObjectResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether a custom action definition requires an object.
+     */
     public function withRequiresObject(bool $requiresObject): self
     {
         $self = clone $this;

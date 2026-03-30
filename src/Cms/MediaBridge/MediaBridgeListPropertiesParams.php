@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridgeService::listProperties()
  *
  * @phpstan-type MediaBridgeListPropertiesParamsShape = array{
- *   appID: string, archived?: bool|null, properties?: string|null
+ *   appID: int, archived?: bool|null, properties?: string|null
  * }
  */
 final class MediaBridgeListPropertiesParams implements BaseModel
@@ -26,7 +26,7 @@ final class MediaBridgeListPropertiesParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     /**
      * Whether to return only results that have been archived.
@@ -62,7 +62,7 @@ final class MediaBridgeListPropertiesParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $appID,
+        int $appID,
         ?bool $archived = null,
         ?string $properties = null
     ): self {
@@ -76,7 +76,7 @@ final class MediaBridgeListPropertiesParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

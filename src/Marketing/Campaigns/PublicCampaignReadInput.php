@@ -17,7 +17,7 @@ final class PublicCampaignReadInput implements BaseModel
     use SdkModel;
 
     /**
-     * The unique identifier for the campaign, represented as a string.
+     * The unique identifier for a campaign.
      */
     #[Required]
     public string $id;
@@ -56,7 +56,7 @@ final class PublicCampaignReadInput implements BaseModel
     }
 
     /**
-     * The unique identifier for the campaign, represented as a string.
+     * The unique identifier for a campaign.
      */
     public function withID(string $id): self
     {

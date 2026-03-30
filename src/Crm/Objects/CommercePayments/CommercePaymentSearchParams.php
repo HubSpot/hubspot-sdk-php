@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * Search for payments by filtering on properties, searching through associations, and sorting results. Learn more about [CRM search](https://developers.hubspot.com/docs/guides/api/crm/search#make-a-search-request).
+ * Execute a search for commerce payments based on the provided filter groups, properties, and sorting options. This endpoint allows for complex queries to retrieve specific payment records from the CRM.
  *
  * @see HubspotSDK\Services\Crm\Objects\CommercePaymentsService::search()
  *

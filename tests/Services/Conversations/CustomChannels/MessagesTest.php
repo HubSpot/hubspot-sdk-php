@@ -85,6 +85,7 @@ final class MessagesTest extends TestCase
                         'type' => 'CHANNEL_SPECIFIC_OPAQUE_ID', 'value' => 'value',
                     ],
                     'name' => 'name',
+                    'senderActorID' => 'senderActorId',
                 ],
             ],
             senders: [
@@ -93,6 +94,7 @@ final class MessagesTest extends TestCase
                         'type' => 'CHANNEL_SPECIFIC_OPAQUE_ID', 'value' => 'value',
                     ],
                     'name' => 'name',
+                    'senderActorID' => 'senderActorId',
                 ],
             ],
             text: 'text',

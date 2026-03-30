@@ -67,7 +67,7 @@ final class SequencesRawService implements SequencesRawContract
     /**
      * @api
      *
-     * Enroll a contact into a sequence using the specified sequence ID and sender email. This endpoint requires the user ID to be provided as a query parameter and a valid JSON body with the necessary enrollment details. It is used to automate the process of enrolling contacts into predefined sequences for streamlined communication.
+     * Enroll a contact into a sequence using the specified user ID and sequence details.
      *
      * @param array{
      *   userID: string,
@@ -109,9 +109,8 @@ final class SequencesRawService implements SequencesRawContract
     /**
      * @api
      *
-     * Retrieve details of a specific sequence in your HubSpot account using the sequence ID. This endpoint requires the user ID to be specified and provides comprehensive information about the sequence, including its steps and dependencies.
+     * Retrieve details of a specific sequence by its ID.
      *
-     * @param string $sequenceID the unique identifier of the sequence to retrieve
      * @param array{userID: string}|SequenceGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -142,9 +141,8 @@ final class SequencesRawService implements SequencesRawContract
     /**
      * @api
      *
-     * Retrieve the sequence enrollment details for a specific contact in your HubSpot account. This endpoint provides information about the sequence a contact is enrolled in, including enrollment timestamps and the sequence's name. It is useful for tracking the progress and status of a contact within a sequence.
+     * Get the enrollment status of a contact in sequences by their contact ID.
      *
-     * @param string $contactID the unique identifier of the contact whose sequence enrollment details are being retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSequenceEnrollmentResponse>

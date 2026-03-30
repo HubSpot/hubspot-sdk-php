@@ -12,8 +12,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Retrieve a batch of contacts by ID (`contactId`) or unique property value (`idProperty`).
- *
  * @see HubspotSDK\Services\Crm\Objects\Contacts\BatchService::get()
  *
  * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID

@@ -41,8 +41,6 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Create multiple discounts in a single request by providing the necessary properties and associations for each discount. This operation returns a list of the created discounts, including their unique identifiers.
-     *
      * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -63,7 +61,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Update discounts
+     * Update a batch of discounts by internal ID, or unique property values
      *
      * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
      * @param RequestOpts|null $requestOptions
@@ -85,8 +83,6 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Batch delete discounts
-     *
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -107,7 +103,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Batch retrieve discounts.
+     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
      * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
@@ -144,8 +140,6 @@ final class BatchService implements BatchContract
 
     /**
      * @api
-     *
-     * Create and update a batch of discounts by a unique property. Discounts that don't exist will be created, while existing discounts will be updated.
      *
      * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
      * @param RequestOpts|null $requestOptions

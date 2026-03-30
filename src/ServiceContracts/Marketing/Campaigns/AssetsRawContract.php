@@ -20,7 +20,6 @@ interface AssetsRawContract
     /**
      * @api
      *
-     * @param string $assetID the unique identifier of the asset to be associated with the campaign
      * @param array<string,mixed>|AssetUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -37,7 +36,7 @@ interface AssetsRawContract
     /**
      * @api
      *
-     * @param string $assetType path param: The type of asset to list for the specified campaign
+     * @param string $assetType Path param
      * @param array<string,mixed>|AssetListParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -54,7 +53,6 @@ interface AssetsRawContract
     /**
      * @api
      *
-     * @param string $assetID the unique identifier of the asset to be disassociated from the campaign
      * @param array<string,mixed>|AssetDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *

@@ -31,7 +31,7 @@ final class HydratedCriticalAction implements BaseModel
     use SdkModel;
 
     /**
-     * The unique ID of the activity.
+     * The activity's unique ID.
      */
     #[Required]
     public string $id;
@@ -160,7 +160,7 @@ final class HydratedCriticalAction implements BaseModel
     }
 
     /**
-     * The unique ID of the activity.
+     * The activity's unique ID.
      */
     public function withID(string $id): self
     {

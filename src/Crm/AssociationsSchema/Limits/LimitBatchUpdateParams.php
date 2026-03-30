@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
 
 /**
- * Update multiple association configurations between two specified CRM object types in a single batch operation. This defines details about cardinality limits (i.e., one-to-many vs one-to-one).
+ * Batch update association limits that have been configured between two object types.
  *
  * @see HubspotSDK\Services\Crm\AssociationsSchema\LimitsService::batchUpdate()
  *

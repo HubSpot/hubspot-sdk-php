@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyValue;
 
 /**
+ * Creates a new marketing event in HubSpot.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::create()
  *
  * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue

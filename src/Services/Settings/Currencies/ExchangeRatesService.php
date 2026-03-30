@@ -43,6 +43,8 @@ final class ExchangeRatesService implements ExchangeRatesContract
     /**
      * @api
      *
+     * Create a new exchange rate with specified conversion rate and currency codes.
+     *
      * @param float $conversionRate the conversion rate between the to and from currency code of this exchange rate
      * @param FromCurrencyCode|value-of<FromCurrencyCode> $fromCurrencyCode this represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from
      * @param \DateTimeInterface $effectiveAt the date the exchange rate is in effect
@@ -73,6 +75,8 @@ final class ExchangeRatesService implements ExchangeRatesContract
     /**
      * @api
      *
+     * Retrieve the details for a specific exchange rate specified by its ID.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -90,6 +94,8 @@ final class ExchangeRatesService implements ExchangeRatesContract
     /**
      * @api
      *
+     * Retrieve all current exchange rates for all currency pairs.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -105,6 +111,8 @@ final class ExchangeRatesService implements ExchangeRatesContract
 
     /**
      * @api
+     *
+     * Get a list of exchange rates
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param \HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\FromCurrencyCode|value-of<\HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\FromCurrencyCode> $fromCurrencyCode
@@ -141,6 +149,8 @@ final class ExchangeRatesService implements ExchangeRatesContract
     /**
      * @api
      *
+     * Update an existing conversion rate, specified by its ID.
+     *
      * @param float $conversionRate the updated conversion rate between the to and from currency code of this exchange rate
      * @param \DateTimeInterface $effectiveAt the date the exchange rate is in effect
      * @param RequestOpts|null $requestOptions
@@ -165,6 +175,8 @@ final class ExchangeRatesService implements ExchangeRatesContract
 
     /**
      * @api
+     *
+     * Change the visibility setting for a currency pair. This will hide or display a currency pair for users in the HubSpot app.
      *
      * @param \HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\FromCurrencyCode|value-of<\HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\FromCurrencyCode> $fromCurrencyCode this represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from
      * @param \HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\ToCurrencyCode|value-of<\HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\ToCurrencyCode> $toCurrencyCode this represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert to

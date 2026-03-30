@@ -8,11 +8,10 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Property;
 
 /**
  * @phpstan-import-type CalculationExpressionVariants from \HubspotSDK\Cms\MediaBridge\PropertyDefinition\CalculationExpression
- * @phpstan-import-type PropertyShape from \HubspotSDK\Property
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Cms\MediaBridge\Property
  * @phpstan-import-type CalculationExpressionShape from \HubspotSDK\Cms\MediaBridge\PropertyDefinition\CalculationExpression
  * @phpstan-import-type PropertyDefinitionSourceShape from \HubspotSDK\Cms\MediaBridge\PropertyDefinitionSource
  * @phpstan-import-type ExtensionDataShape from \HubspotSDK\Cms\MediaBridge\ExtensionData
@@ -24,7 +23,7 @@ use HubspotSDK\Property;
  *
  * @phpstan-type PropertyDefinitionShape = array{
  *   objectTypeID: string,
- *   property: \HubspotSDK\Property|PropertyShape,
+ *   property: Property|PropertyShape,
  *   calculationExpression?: CalculationExpressionShape|null,
  *   calculationFormula?: string|null,
  *   definitionSource?: null|PropertyDefinitionSource|PropertyDefinitionSourceShape,

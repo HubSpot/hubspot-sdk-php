@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create or update video conference extension settings for your app.
+ *
  * @see HubspotSDK\Services\Crm\Extensions\VideoConferencingService::update()
  *
  * @phpstan-type VideoConferencingUpdateParamsShape = array{

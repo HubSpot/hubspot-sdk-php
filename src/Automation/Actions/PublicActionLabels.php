@@ -28,35 +28,67 @@ final class PublicActionLabels implements BaseModel
     /** @use SdkModel<PublicActionLabelsShape> */
     use SdkModel;
 
+    /**
+     * The name of the action.
+     */
     #[Required]
     public string $actionName;
 
+    /**
+     * Content displayed on the action card.
+     */
     #[Optional]
     public ?string $actionCardContent;
 
+    /**
+     * A description of what the action does.
+     */
     #[Optional]
     public ?string $actionDescription;
 
+    /**
+     * The display name of the application associated with the action.
+     */
     #[Optional]
     public ?string $appDisplayName;
 
-    /** @var array<string,string>|null $executionRules */
+    /**
+     * Rules that govern the execution of the action.
+     *
+     * @var array<string,string>|null $executionRules
+     */
     #[Optional(map: 'string')]
     public ?array $executionRules;
 
-    /** @var array<string,string>|null $inputFieldDescriptions */
+    /**
+     * Descriptions for each input field.
+     *
+     * @var array<string,string>|null $inputFieldDescriptions
+     */
     #[Optional(map: 'string')]
     public ?array $inputFieldDescriptions;
 
-    /** @var array<string,string>|null $inputFieldLabels */
+    /**
+     * Labels for the input fields.
+     *
+     * @var array<string,string>|null $inputFieldLabels
+     */
     #[Optional(map: 'string')]
     public ?array $inputFieldLabels;
 
-    /** @var array<string,array<string,string>>|null $inputFieldOptionLabels */
+    /**
+     * Labels for the options available in input fields.
+     *
+     * @var array<string,array<string,string>>|null $inputFieldOptionLabels
+     */
     #[Optional(map: new MapOf('string'))]
     public ?array $inputFieldOptionLabels;
 
-    /** @var array<string,string>|null $outputFieldLabels */
+    /**
+     * Labels for the output fields.
+     *
+     * @var array<string,string>|null $outputFieldLabels
+     */
     #[Optional(map: 'string')]
     public ?array $outputFieldLabels;
 
@@ -117,6 +149,9 @@ final class PublicActionLabels implements BaseModel
         return $self;
     }
 
+    /**
+     * The name of the action.
+     */
     public function withActionName(string $actionName): self
     {
         $self = clone $this;
@@ -125,6 +160,9 @@ final class PublicActionLabels implements BaseModel
         return $self;
     }
 
+    /**
+     * Content displayed on the action card.
+     */
     public function withActionCardContent(string $actionCardContent): self
     {
         $self = clone $this;
@@ -133,6 +171,9 @@ final class PublicActionLabels implements BaseModel
         return $self;
     }
 
+    /**
+     * A description of what the action does.
+     */
     public function withActionDescription(string $actionDescription): self
     {
         $self = clone $this;
@@ -141,6 +182,9 @@ final class PublicActionLabels implements BaseModel
         return $self;
     }
 
+    /**
+     * The display name of the application associated with the action.
+     */
     public function withAppDisplayName(string $appDisplayName): self
     {
         $self = clone $this;
@@ -150,6 +194,8 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
+     * Rules that govern the execution of the action.
+     *
      * @param array<string,string> $executionRules
      */
     public function withExecutionRules(array $executionRules): self
@@ -161,6 +207,8 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
+     * Descriptions for each input field.
+     *
      * @param array<string,string> $inputFieldDescriptions
      */
     public function withInputFieldDescriptions(
@@ -173,6 +221,8 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
+     * Labels for the input fields.
+     *
      * @param array<string,string> $inputFieldLabels
      */
     public function withInputFieldLabels(array $inputFieldLabels): self
@@ -184,6 +234,8 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
+     * Labels for the options available in input fields.
+     *
      * @param array<string,array<string,string>> $inputFieldOptionLabels
      */
     public function withInputFieldOptionLabels(
@@ -196,6 +248,8 @@ final class PublicActionLabels implements BaseModel
     }
 
     /**
+     * Labels for the output fields.
+     *
      * @param array<string,string> $outputFieldLabels
      */
     public function withOutputFieldLabels(array $outputFieldLabels): self

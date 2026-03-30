@@ -24,9 +24,15 @@ final class PipelinePatchInput implements BaseModel
     #[Optional]
     public ?bool $archived;
 
+    /**
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     #[Optional]
     public ?int $displayOrder;
 
+    /**
+     * A unique label used to organize pipelines in HubSpot's UI.
+     */
     #[Optional]
     public ?string $label;
 
@@ -65,6 +71,9 @@ final class PipelinePatchInput implements BaseModel
         return $self;
     }
 
+    /**
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $self = clone $this;
@@ -73,6 +82,9 @@ final class PipelinePatchInput implements BaseModel
         return $self;
     }
 
+    /**
+     * A unique label used to organize pipelines in HubSpot's UI.
+     */
     public function withLabel(string $label): self
     {
         $self = clone $this;

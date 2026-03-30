@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Crm\ObjectSchemas;
 
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\ObjectSchemas\Batch\BatchGetParams;
+use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\RequestOptions;
 
 /**

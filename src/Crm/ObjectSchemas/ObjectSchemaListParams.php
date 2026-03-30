@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve all custom object schemas, with options to include property definitions, association definitions, and audit metadata.
+ *
  * @see HubspotSDK\Services\Crm\ObjectSchemasService::list()
  *
  * @phpstan-type ObjectSchemaListParamsShape = array{

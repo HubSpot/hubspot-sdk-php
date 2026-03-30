@@ -28,6 +28,8 @@ final class EventsRawService implements EventsRawContract
     /**
      * @api
      *
+     * Mark a marketing event as cancelled.
+     *
      * @param array{
      *   externalAccountID: string
      * }|EventCancelByExternalEventIDParams $params
@@ -65,6 +67,8 @@ final class EventsRawService implements EventsRawContract
 
     /**
      * @api
+     *
+     * Mark a marketing event as completed
      *
      * @param string $externalEventID Path param
      * @param array{

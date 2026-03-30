@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Blogs;
 
-use HubspotSDK\Cms\Blogs\Tags\Tag;
 use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\PrimaryLanguage;
 use HubspotSDK\Cms\Blogs\Tags\TagCreateParams\Language;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  */
 interface TagsContract
@@ -135,19 +133,6 @@ interface TagsContract
     /**
      * @api
      *
-     * @param list<Tag|TagShape> $inputs blog tags to input
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function createBatch(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): string;
-
-    /**
-     * @api
-     *
      * @param string $id ID of the object to be cloned
      * @param string $name name of newly cloned blog tag
      * @param string $language target language of new variant
@@ -163,19 +148,6 @@ interface TagsContract
         ?string $primaryLanguage = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
-
-    /**
-     * @api
-     *
-     * @param list<string> $inputs strings to input
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function deleteBatch(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed;
 
     /**
      * @api
@@ -208,15 +180,156 @@ interface TagsContract
     /**
      * @api
      *
-     * @param list<string> $inputs body param: Strings to input
-     * @param bool $archived query param: Whether to return only results that have been archived
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getBatch(
-        array $inputs,
+    public function listAuthorsCursor(
+        ?string $after = null,
         ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listAuthorsCursorByQuery(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listCursor(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listCursorByQuery(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listPostsCursor(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listPostsCursorByQuery(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
 
@@ -232,21 +345,6 @@ interface TagsContract
         string $id,
         RequestOptions|array|null $requestOptions = null
     ): mixed;
-
-    /**
-     * @api
-     *
-     * @param list<mixed> $inputs body param: JSON nodes to input
-     * @param bool $archived query param: Whether to return only results that have been archived
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function updateBatch(
-        array $inputs,
-        ?bool $archived = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string;
 
     /**
      * @api

@@ -38,6 +38,8 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * Create multiple exchange rates in a single request.
+     *
      * @param list<ExchangeRateCreateRequest|ExchangeRateCreateRequestShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -58,6 +60,8 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * Update the conversion rates for multiple exchange rates in a batch operation.
+     *
      * @param list<ExchangeRateUpdateRequest|ExchangeRateUpdateRequestShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -77,6 +81,8 @@ final class BatchService implements BatchContract
 
     /**
      * @api
+     *
+     * Retrieve the details of multiple exchange rates in a single request, specified by their IDs.
      *
      * @param list<PublicObjectID|PublicObjectIDShape> $inputs An array of deal split inputs
      * @param RequestOpts|null $requestOptions

@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create the Blog Author objects detailed in the request body.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Authors\BatchService::create()
  *
  * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor

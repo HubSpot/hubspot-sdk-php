@@ -12,6 +12,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyValue;
 
 /**
+ * Updates the details of an existing Marketing Event identified by its externalAccountId, externalEventId if it exists.
+ *
+ * Only Marketing Events created by the same app can be updated.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::updateByExternalEventID()
  *
  * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue

@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetCreateParams;
 use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetGetParams;
 use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetListParams;
@@ -71,7 +71,7 @@ final class GoalTargetsRawService implements GoalTargetsRawContract
     /**
      * @api
      *
-     * Update a goal target by ID (`objectId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+     * Perform a partial update of an Object identified by `{goalTargetId}`or optionally a unique property value as specified by the `idProperty` query param. `{goalTargetId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
      * @param string $goalTargetID Path param
      * @param array{
@@ -108,7 +108,7 @@ final class GoalTargetsRawService implements GoalTargetsRawContract
     /**
      * @api
      *
-     * Retrieve all goal targets. Control what is returned via the `properties` query param.
+     * Read a page of goal targets. Control what is returned via the `properties` query param.
      *
      * @param array{
      *   after?: string,
@@ -147,7 +147,7 @@ final class GoalTargetsRawService implements GoalTargetsRawContract
     /**
      * @api
      *
-     * Delete a goal target by ID.
+     * Delete a goal target by `{goalTargetId}` to the recycling bin.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -171,7 +171,7 @@ final class GoalTargetsRawService implements GoalTargetsRawContract
     /**
      * @api
      *
-     * Read an Object identified by `{goalTargetId}`. `{goalTargetId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
+     * Retrieve a goal target by its ID. You can specify what is returned using the `properties` query parameter.
      *
      * @param array{
      *   archived?: bool,

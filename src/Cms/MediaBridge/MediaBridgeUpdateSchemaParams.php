@@ -19,7 +19,7 @@ use HubspotSDK\ObjectTypeDefinitionLabels;
  * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
  *
  * @phpstan-type MediaBridgeUpdateSchemaParamsShape = array{
- *   appID: string,
+ *   appID: int,
  *   clearDescription: bool,
  *   allowsSensitiveProperties?: bool|null,
  *   description?: string|null,
@@ -38,7 +38,7 @@ final class MediaBridgeUpdateSchemaParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     #[Required]
     public bool $clearDescription;
@@ -100,7 +100,7 @@ final class MediaBridgeUpdateSchemaParams implements BaseModel
      * @param list<string>|null $secondaryDisplayProperties
      */
     public static function with(
-        string $appID,
+        int $appID,
         bool $clearDescription,
         ?bool $allowsSensitiveProperties = null,
         ?string $description = null,
@@ -128,7 +128,7 @@ final class MediaBridgeUpdateSchemaParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

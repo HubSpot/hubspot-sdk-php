@@ -20,13 +20,23 @@ final class DoubleFieldSchema implements BaseModel
     /** @use SdkModel<DoubleFieldSchemaShape> */
     use SdkModel;
 
-    /** @var value-of<Type> $type */
+    /**
+     * Indicates the field type as DOUBLE.
+     *
+     * @var value-of<Type> $type
+     */
     #[Required(enum: Type::class)]
     public string $type;
 
+    /**
+     * The maximum allowable value for the double field.
+     */
     #[Optional]
     public ?float $maximum;
 
+    /**
+     * The minimum allowable value for the double field.
+     */
     #[Optional]
     public ?float $minimum;
 
@@ -72,6 +82,8 @@ final class DoubleFieldSchema implements BaseModel
     }
 
     /**
+     * Indicates the field type as DOUBLE.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -82,6 +94,9 @@ final class DoubleFieldSchema implements BaseModel
         return $self;
     }
 
+    /**
+     * The maximum allowable value for the double field.
+     */
     public function withMaximum(float $maximum): self
     {
         $self = clone $this;
@@ -90,6 +105,9 @@ final class DoubleFieldSchema implements BaseModel
         return $self;
     }
 
+    /**
+     * The minimum allowable value for the double field.
+     */
     public function withMinimum(float $minimum): self
     {
         $self = clone $this;

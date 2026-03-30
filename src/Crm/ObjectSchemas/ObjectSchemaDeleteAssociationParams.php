@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Remove an association between two object types identified by the association identifier and object type. This operation is irreversible and will permanently delete the specified association.
+ *
  * @see HubspotSDK\Services\Crm\ObjectSchemasService::deleteAssociation()
  *
  * @phpstan-type ObjectSchemaDeleteAssociationParamsShape = array{

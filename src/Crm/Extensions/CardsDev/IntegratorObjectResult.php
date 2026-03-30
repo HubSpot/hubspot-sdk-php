@@ -43,7 +43,7 @@ final class IntegratorObjectResult implements BaseModel
     public array $actions;
 
     /**
-     * The title of the object card, displayed to users.
+     * The top-level title for this card. Displayed to users in the CRM UI.
      */
     #[Required]
     public string $title;
@@ -137,7 +137,7 @@ final class IntegratorObjectResult implements BaseModel
     }
 
     /**
-     * The title of the object card, displayed to users.
+     * The top-level title for this card. Displayed to users in the CRM UI.
      */
     public function withTitle(string $title): self
     {

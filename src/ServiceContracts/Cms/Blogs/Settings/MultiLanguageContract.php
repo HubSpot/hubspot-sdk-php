@@ -37,6 +37,10 @@ interface MultiLanguageContract
     /**
      * @api
      *
+     * @param string $id ID of blog to clone
+     * @param string $language target language of new variant
+     * @param string $primaryLanguage language of primary blog to clone
+     * @param string $slug path to this blog
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve a specific budget item by its ID for a given campaign. This endpoint is useful for accessing detailed information about a particular budget item associated with a marketing campaign.
+ * Get a specific budget item by ID.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::get()
  *

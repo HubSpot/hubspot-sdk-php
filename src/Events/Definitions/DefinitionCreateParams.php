@@ -9,14 +9,14 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\Events\ExternalObjectResolutionMappingRequest;
 
 /**
+ * Create a custom event definition.
+ *
  * @see HubspotSDK\Services\Events\DefinitionsService::create()
  *
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\ExternalObjectResolutionMappingRequest
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest
  *
  * @phpstan-type DefinitionCreateParamsShape = array{
  *   includeDefaultProperties: bool,

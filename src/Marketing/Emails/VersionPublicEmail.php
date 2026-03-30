@@ -34,6 +34,9 @@ final class VersionPublicEmail implements BaseModel
     #[Required]
     public PublicEmail $object;
 
+    /**
+     * The date and time of the last update to the email, in ISO8601 representation.
+     */
     #[Required]
     public \DateTimeInterface $updatedAt;
 
@@ -109,6 +112,9 @@ final class VersionPublicEmail implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time of the last update to the email, in ISO8601 representation.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $self = clone $this;

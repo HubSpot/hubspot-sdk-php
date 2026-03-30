@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
+ * Update attributes of a custom object schema, such as properties and labels, using the object type ID or fully qualified name.
+ *
  * @see HubspotSDK\Services\Crm\ObjectSchemasService::update()
  *
  * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels

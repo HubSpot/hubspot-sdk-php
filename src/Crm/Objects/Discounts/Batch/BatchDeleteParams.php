@@ -11,8 +11,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Batch delete discounts.
- *
  * @see HubspotSDK\Services\Crm\Objects\Discounts\BatchService::delete()
  *
  * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID

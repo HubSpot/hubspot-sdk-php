@@ -54,7 +54,6 @@ interface SequencesRawContract
     /**
      * @api
      *
-     * @param string $sequenceID the unique identifier of the sequence to retrieve
      * @param array<string,mixed>|SequenceGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -71,7 +70,6 @@ interface SequencesRawContract
     /**
      * @api
      *
-     * @param string $contactID the unique identifier of the contact whose sequence enrollment details are being retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicSequenceEnrollmentResponse>

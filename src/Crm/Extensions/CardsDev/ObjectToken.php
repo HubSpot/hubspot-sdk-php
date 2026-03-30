@@ -30,7 +30,7 @@ final class ObjectToken implements BaseModel
     public string $value;
 
     /**
-     * The type of the property. Can be one of CURRENCY, DATE, DATETIME, EMAIL, LINK, NUMERIC, STATUS.
+     * Type of data represented by this property.
      *
      * @var value-of<DataType>|null $dataType
      */
@@ -38,13 +38,13 @@ final class ObjectToken implements BaseModel
     public ?string $dataType;
 
     /**
-     * The label of the property as it will be displayed to users.
+     * The label for this property as you'd like it displayed to users.
      */
     #[Optional]
     public ?string $label;
 
     /**
-     * The name of the property.
+     * An internal identifier for this property. This value must be unique TODO.
      */
     #[Optional]
     public ?string $name;
@@ -104,7 +104,7 @@ final class ObjectToken implements BaseModel
     }
 
     /**
-     * The type of the property. Can be one of CURRENCY, DATE, DATETIME, EMAIL, LINK, NUMERIC, STATUS.
+     * Type of data represented by this property.
      *
      * @param DataType|value-of<DataType> $dataType
      */
@@ -117,7 +117,7 @@ final class ObjectToken implements BaseModel
     }
 
     /**
-     * The label of the property as it will be displayed to users.
+     * The label for this property as you'd like it displayed to users.
      */
     public function withLabel(string $label): self
     {
@@ -128,7 +128,7 @@ final class ObjectToken implements BaseModel
     }
 
     /**
-     * The name of the property.
+     * An internal identifier for this property. This value must be unique TODO.
      */
     public function withName(string $name): self
     {

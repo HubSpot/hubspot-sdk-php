@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Crm\Properties\PropertyCreateParams;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
@@ -168,7 +168,7 @@ final class PropertiesRawService implements PropertiesRawContract
     /**
      * @api
      *
-     * Delete an existing property.
+     * Move a property identified by {propertyName} to the recycling bin.
      *
      * @param array{objectType: string}|PropertyDeleteParams $params
      * @param RequestOpts|null $requestOptions

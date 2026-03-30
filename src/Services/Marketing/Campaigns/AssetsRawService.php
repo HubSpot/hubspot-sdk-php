@@ -28,9 +28,10 @@ final class AssetsRawService implements AssetsRawContract
     /**
      * @api
      *
-     * Associate an asset with a specific campaign in your HubSpot account. This operation allows you to link an asset of a specified type and ID to a campaign, facilitating better organization and tracking of campaign resources.
+     * Associate a specified asset with a campaign. Using the API, you can create associations for the following asset types: ads, blog posts, calls, case studies, CTAs, CTAs (legacy), external website pages, feedback surveys, forms, files, knowledge base articles, landing pages, marketing email, marketing events, meetings, playbooks, podcast episodes, sales documents, sales emails, sequences, SMS, social posts, static lists, videos, website pages, and workflows.
      *
-     * @param string $assetID the unique identifier of the asset to be associated with the campaign
+     * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
+     *
      * @param array{campaignGuid: string, assetType: string}|AssetUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -69,9 +70,10 @@ final class AssetsRawService implements AssetsRawContract
     /**
      * @api
      *
-     * List all assets of a specified campaign by asset type. This endpoint allows you to retrieve assets associated with a campaign, filtered by the type of asset. It supports pagination and date filtering to manage and refine the results.
+     * This endpoint lists all assets of the campaign by asset type. The assetType parameter is required, and each request can only fetch assets of a single type.
+     * Asset metrics can also be fetched along with the assets; they are available only if start and end dates are provided.
      *
-     * @param string $assetType path param: The type of asset to list for the specified campaign
+     * @param string $assetType Path param
      * @param array{
      *   campaignGuid: string,
      *   after?: string,
@@ -114,9 +116,10 @@ final class AssetsRawService implements AssetsRawContract
     /**
      * @api
      *
-     * Disassociate an asset from a specific campaign. This operation removes the association between the specified asset and campaign, effectively detaching the asset from the campaign's context.
+     * Disassociate a specified asset from a campaign. Using the API, you can remove associations for the following asset types: ads, blog posts, calls, case studies, CTAs, CTAs (legacy), external website pages, feedback surveys, forms, files, knowledge base articles, landing pages, marketing email, marketing events, meetings, playbooks, podcast episodes, sales documents, sales emails, sequences, SMS, social posts, static lists, videos, website pages, and workflows.
      *
-     * @param string $assetID the unique identifier of the asset to be disassociated from the campaign
+     * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
+     *
      * @param array{campaignGuid: string, assetType: string}|AssetDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *

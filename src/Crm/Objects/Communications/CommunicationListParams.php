@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve a communication by its ID (`objectId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
+ * Read a page of communications. Control what is returned via the `properties` query param.
  *
  * @see HubspotSDK\Services\Crm\Objects\CommunicationsService::list()
  *

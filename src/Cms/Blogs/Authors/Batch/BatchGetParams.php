@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve the Blog Author objects identified in the request body.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Authors\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{

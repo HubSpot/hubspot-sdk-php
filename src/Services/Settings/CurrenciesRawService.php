@@ -28,6 +28,8 @@ final class CurrenciesRawService implements CurrenciesRawContract
     /**
      * @api
      *
+     * Get the details for the company currency. The company currency is used in deal totals, reports, and the default currency for new deals.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CompanyCurrency>
@@ -49,6 +51,8 @@ final class CurrenciesRawService implements CurrenciesRawContract
     /**
      * @api
      *
+     * Retrieve a list of all available currency codes and their names.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponseCurrencyCodeInfoNoPaging>
@@ -69,6 +73,8 @@ final class CurrenciesRawService implements CurrenciesRawContract
 
     /**
      * @api
+     *
+     * Set or update the primary company currency.
      *
      * @param array{
      *   currencyCode: value-of<CurrencyCode>

@@ -35,10 +35,10 @@ final class LabelsService implements LabelsContract
     /**
      * @api
      *
-     * Create multiple association definitions between two specified CRM object types in a single request.
+     * Batch configure association limits between two object types.
      *
-     * @param string $toObjectType path param: The type of the target object in the association
-     * @param string $fromObjectType path param: The type of the source object in the association
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicAssociationDefinitionConfigurationCreateRequest|PublicAssociationDefinitionConfigurationCreateRequestShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -65,8 +65,8 @@ final class LabelsService implements LabelsContract
      *
      * Create a new label that describes the relationship between two specified CRM object types. This can help in categorizing and managing associations more effectively.
      *
-     * @param string $toObjectType path param: The type of the target object in the association
-     * @param string $fromObjectType path param: The type of the source object in the association
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param string $label body param: A descriptor that provides context about the relationship between two associated CRM objects
      * @param string $name body param: The unique identifier for the association definition
      * @param string $inverseLabel body param: An optional descriptor that clarifies the reverse relationship in the association
@@ -102,9 +102,6 @@ final class LabelsService implements LabelsContract
      *
      * Remove a specific label from the association between two CRM object types.
      *
-     * @param int $associationTypeID the unique identifier for the association type
-     * @param string $fromObjectType the type of the source object in the association
-     * @param string $toObjectType the type of the target object in the association
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -130,8 +127,6 @@ final class LabelsService implements LabelsContract
      *
      * Retrieve all labels that describe the relationships between two specified CRM object types. These labels provide context about the nature of the associations.
      *
-     * @param string $toObjectType the type of the target object in the association
-     * @param string $fromObjectType the type of the source object in the association
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -154,8 +149,8 @@ final class LabelsService implements LabelsContract
      *
      * Update an existing label that describes the relationship between two specified CRM object types. This allows for modifications to existing association labels to better reflect the nature of the relationship.
      *
-     * @param string $toObjectType path param: The type of the target object in the association
-     * @param string $fromObjectType path param: The type of the source object in the association
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param int $associationTypeID body param: The unique identifier for the association type
      * @param string $label body param: A descriptor that provides context about the relationship between associated records
      * @param string $inverseLabel body param: An optional descriptor for the inverse relationship between associated records

@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\MediaBridgeService::getSchema()
  *
- * @phpstan-type MediaBridgeGetSchemaParamsShape = array{appID: string}
+ * @phpstan-type MediaBridgeGetSchemaParamsShape = array{appID: int}
  */
 final class MediaBridgeGetSchemaParams implements BaseModel
 {
@@ -23,7 +23,7 @@ final class MediaBridgeGetSchemaParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     /**
      * `new MediaBridgeGetSchemaParams()` is missing required properties by the API.
@@ -49,7 +49,7 @@ final class MediaBridgeGetSchemaParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appID): self
+    public static function with(int $appID): self
     {
         $self = new self;
 
@@ -58,7 +58,7 @@ final class MediaBridgeGetSchemaParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

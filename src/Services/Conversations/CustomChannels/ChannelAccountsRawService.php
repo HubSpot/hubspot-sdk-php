@@ -34,6 +34,8 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
     /**
      * @api
      *
+     * Create a new account for a channel. Multiple accounts can communicate over a single channel using different delivery identifiers.
+     *
      * @param array{
      *   authorized: bool,
      *   inboxID: string,
@@ -71,6 +73,8 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
 
     /**
      * @api
+     *
+     * This API is used to update the name of the channel account and it's isAuthorized status. Setting to isAuthorized flag to False disables the channel account.
      *
      * @param int $channelAccountID Path param
      * @param array{
@@ -110,6 +114,8 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
 
     /**
      * @api
+     *
+     * Retrieve a list of accounts for a custom channel.
      *
      * @param array{
      *   after?: string,
@@ -152,6 +158,8 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
 
     /**
      * @api
+     *
+     * Update a channel account staging token's account name and delivery identifier. This information will be applied to the channel account created from this staging token. This is used for public apps.
      *
      * @param string $accountToken Path param
      * @param array{

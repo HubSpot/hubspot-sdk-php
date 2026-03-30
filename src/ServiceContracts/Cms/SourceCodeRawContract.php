@@ -28,7 +28,7 @@ interface SourceCodeRawContract
      *
      * @api
      *
-     * @param string $path Path param: The specific path within the environment where the content file will be stored. This should be a valid path string.
+     * @param string $path Path param
      * @param array<string,mixed>|SourceCodeCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -45,7 +45,6 @@ interface SourceCodeRawContract
     /**
      * @api
      *
-     * @param string $path The specific path to the content file that you want to delete. This should be a valid path string.
      * @param array<string,mixed>|SourceCodeDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -77,7 +76,6 @@ interface SourceCodeRawContract
     /**
      * @api
      *
-     * @param string $path The path to the content file within the specified environment. This should be a valid string that represents the location of the content file.
      * @param array<string,mixed>|SourceCodeGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -94,7 +92,6 @@ interface SourceCodeRawContract
     /**
      * @api
      *
-     * @param int $taskID The unique identifier of the task whose status is being retrieved. It is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponse>
@@ -109,7 +106,7 @@ interface SourceCodeRawContract
     /**
      * @api
      *
-     * @param string $path path param: The path to the specific file or folder for which metadata is being retrieved
+     * @param string $path Path param
      * @param array<string,mixed>|SourceCodeGetMetadataParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -126,7 +123,7 @@ interface SourceCodeRawContract
     /**
      * @api
      *
-     * @param string $path Path param: The path to the content file that you want to update. This should be a string representing the file's location.
+     * @param string $path Path param
      * @param array<string,mixed>|SourceCodeUpsertParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -143,7 +140,7 @@ interface SourceCodeRawContract
     /**
      * @api
      *
-     * @param string $path Path param: The path of the source code file to validate. This should be a string that matches the file's location within the environment.
+     * @param string $path Path param
      * @param array<string,mixed>|SourceCodeValidateParams $params
      * @param RequestOpts|null $requestOptions
      *

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Fetch revenue attribution report data for a specific campaign. This endpoint allows you to retrieve detailed revenue attribution information, which can be filtered by attribution model and date range. It is useful for analyzing the financial impact of marketing campaigns.
+ * Fetch revenue attribution report data for a specified campaign.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\MetricsService::getRevenueAttribution()
  *
@@ -24,9 +24,6 @@ final class MetricGetRevenueAttributionParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The model used to attribute revenue to the campaign.
-     */
     #[Optional]
     public ?string $attributionModel;
 
@@ -66,9 +63,6 @@ final class MetricGetRevenueAttributionParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The model used to attribute revenue to the campaign.
-     */
     public function withAttributionModel(string $attributionModel): self
     {
         $self = clone $this;

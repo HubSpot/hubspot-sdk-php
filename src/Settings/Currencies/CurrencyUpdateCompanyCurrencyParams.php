@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams\CurrencyCode;
 
 /**
+ * Set or update the primary company currency.
+ *
  * @see HubspotSDK\Services\Settings\CurrenciesService::updateCompanyCurrency()
  *
  * @phpstan-type CurrencyUpdateCompanyCurrencyParamsShape = array{

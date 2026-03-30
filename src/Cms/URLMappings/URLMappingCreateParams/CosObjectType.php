@@ -1,0 +1,133 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Cms\URLMappings\URLMappingCreateParams;
+
+/**
+ * A string representing the type of content object associated with the URL mapping. Valid values include various content types such as 'CONTENT', 'LAYOUT', 'FILE', etc.
+ */
+enum CosObjectType: string
+{
+    case ACCESS_GROUP_MEMBERSHIP = 'ACCESS_GROUP_MEMBERSHIP';
+
+    case APP_PAGE = 'APP_PAGE';
+
+    case BLOCK = 'BLOCK';
+
+    case BLOG = 'BLOG';
+
+    case BLOG_AUTHOR = 'BLOG_AUTHOR';
+
+    case BRAND_BUSINESS_UNIT = 'BRAND_BUSINESS_UNIT';
+
+    case BRAND_SETTINGS = 'BRAND_SETTINGS';
+
+    case CONTACT_MEMBERSHIP = 'CONTACT_MEMBERSHIP';
+
+    case CONTENT = 'CONTENT';
+
+    case CONTENT_EMBED = 'CONTENT_EMBED';
+
+    case CONTENT_FOLDER = 'CONTENT_FOLDER';
+
+    case CONTENT_GROUP = 'CONTENT_GROUP';
+
+    case CRM_OBJECT = 'CRM_OBJECT';
+
+    case CRM_OBJECT_TYPE = 'CRM_OBJECT_TYPE';
+
+    case CUSTOM_WIDGET = 'CUSTOM_WIDGET';
+
+    case CUSTOMER_PORTAL = 'CUSTOMER_PORTAL';
+
+    case DATA_QUERY = 'DATA_QUERY';
+
+    case DESIGN_FOLDER = 'DESIGN_FOLDER';
+
+    case DOMAIN = 'DOMAIN';
+
+    case DOMAIN_SETTINGS = 'DOMAIN_SETTINGS';
+
+    case EMAIL_ADDRESS = 'EMAIL_ADDRESS';
+
+    case EXTENSION_RESOURCE = 'EXTENSION_RESOURCE';
+
+    case FILE = 'FILE';
+
+    case FOLDER = 'FOLDER';
+
+    case FOLLOW_ME = 'FOLLOW_ME';
+
+    case FORM = 'FORM';
+
+    case GLOBAL_CONTENT = 'GLOBAL_CONTENT';
+
+    case HUBDB_TABLE = 'HUBDB_TABLE';
+
+    case HUBDB_TABLE_ROW = 'HUBDB_TABLE_ROW';
+
+    case IMAGE = 'IMAGE';
+
+    case JS_PROJECT_COMPONENT = 'JS_PROJECT_COMPONENT';
+
+    case KNOWLEDGE_BASE = 'KNOWLEDGE_BASE';
+
+    case KNOWLEDGE_CATEGORY = 'KNOWLEDGE_CATEGORY';
+
+    case KNOWLEDGE_CATEGORY_TRANSLATION = 'KNOWLEDGE_CATEGORY_TRANSLATION';
+
+    case KNOWLEDGE_HOMEPAGE_CATEGORY = 'KNOWLEDGE_HOMEPAGE_CATEGORY';
+
+    case LAYOUT = 'LAYOUT';
+
+    case LAYOUT_SECTION = 'LAYOUT_SECTION';
+
+    case LIST_MEMBERSHIP = 'LIST_MEMBERSHIP';
+
+    case MARKETPLACE_LISTING = 'MARKETPLACE_LISTING';
+
+    case PASSWORD_PROTECTED = 'PASSWORD_PROTECTED';
+
+    case PAYMENT = 'PAYMENT';
+
+    case PERSONALIZATION_TOKEN = 'PERSONALIZATION_TOKEN';
+
+    case PLACEMENT = 'PLACEMENT';
+
+    case PROJECT = 'PROJECT';
+
+    case QUOTE_TEMPLATE = 'QUOTE_TEMPLATE';
+
+    case RAW_ASSET = 'RAW_ASSET';
+
+    case REDIRECT_URL = 'REDIRECT_URL';
+
+    case SECTION = 'SECTION';
+
+    case SERVERLESS_FUNCTION = 'SERVERLESS_FUNCTION';
+
+    case SITE_MAP = 'SITE_MAP';
+
+    case SITE_MENU = 'SITE_MENU';
+
+    case SITE_SETTINGS = 'SITE_SETTINGS';
+
+    case SUBSCRIPTIONS_SETTINGS = 'SUBSCRIPTIONS_SETTINGS';
+
+    case TAG = 'TAG';
+
+    case THEME = 'THEME';
+
+    case THEME_SETTINGS = 'THEME_SETTINGS';
+
+    case UNRESTRICTED_ACCESS = 'UNRESTRICTED_ACCESS';
+
+    case URL_MAPPING = 'URL_MAPPING';
+
+    case VIDEO_PLAYER = 'VIDEO_PLAYER';
+
+    case WIDGET = 'WIDGET';
+
+    case WORKFLOW = 'WORKFLOW';
+}

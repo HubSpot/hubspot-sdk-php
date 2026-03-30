@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve a specific revision of a definition by revision ID.
+ *
  * @see HubspotSDK\Services\Automation\ActionsService::get()
  *
  * @phpstan-type ActionGetParamsShape = array{appID: int, definitionID: string}

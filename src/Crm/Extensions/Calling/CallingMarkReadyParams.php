@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * This endpoint is used to mark a call recording as ready. It requires the engagementId to identify the specific recording.
+ *
  * @see HubspotSDK\Services\Crm\Extensions\CallingService::markReady()
  *
  * @phpstan-type CallingMarkReadyParamsShape = array{engagementID: int}

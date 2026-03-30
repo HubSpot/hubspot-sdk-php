@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyValue;
 
 /**
+ * Updates the details of an existing Marketing Event identified by its objectId, if it exists.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::update()
  *
  * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue

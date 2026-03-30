@@ -615,15 +615,9 @@ final class ListsService implements ListsContract
      * @param list<string> $additionalProperties The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
      *
      * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
-     * @param list<string> $listIDs The `listIds` that will be used to filter results by `listId`. If values are provided, then the response will only include results that have a `listId` in this array.
-     *
-     * If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.
+     * @param list<string> $listIDs ILS list ids to be included in search results. If not specified, all lists matching other criteria will be included
      * @param int $offset Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
-     * @param list<string> $processingTypes The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.
-     *
-     * If no value is provided, or if an empty list is provided, then results will not be filtered by `processingType`.
-     *
-     * Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.
+     * @param list<string> $processingTypes List processing types to be included in search results. If not specified, all lists with all processing types will be included.
      * @param int $count The number of lists to include in the response. Defaults to `20` if no value is provided. The max `count` is `500`.
      * @param string $query The `query` that will be used to search for lists by list name. If no `query` is provided, then the results will include all lists.
      * @param string $sort Sort field and order
@@ -719,7 +713,7 @@ final class ListsService implements ListsContract
      * @param int $day the day component of the conversion date
      * @param int $month the month component of the conversion date
      * @param int $year the year component of the conversion date
-     * @param int $offset the number of time units for the inactivity period
+     * @param int $offset Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
      * @param TimeUnit|value-of<TimeUnit> $timeUnit the unit of time for the inactivity period, such as (DAY, MONTH, WEEK)
      * @param ConversionType|value-of<ConversionType> $conversionType specifies the type of conversion (INACTIVITY)
      * @param RequestOpts|null $requestOptions

@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * This endpoint lets you obtain the variation of an A/B marketing email. If the email is variation A (master) it will return variation B (variant) and vice versa.
+ *
  * @see HubspotSDK\Services\Marketing\EmailsService::getAbTestVariation()
  *
  * @phpstan-type EmailGetAbTestVariationParamsShape = array{

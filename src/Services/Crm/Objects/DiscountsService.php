@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
@@ -46,7 +46,7 @@ final class DiscountsService implements DiscountsContract
     /**
      * @api
      *
-     * Create a discount
+     * Create a discount with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard discounts is provided.
      *
      * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties key-value pairs for setting properties for the new object
@@ -100,7 +100,7 @@ final class DiscountsService implements DiscountsContract
     /**
      * @api
      *
-     * Retrieve all discounts, using query parameters to specify the information that gets returned.
+     * List
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
@@ -143,7 +143,7 @@ final class DiscountsService implements DiscountsContract
     /**
      * @api
      *
-     * Delete a discount.
+     * Archive
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -162,7 +162,7 @@ final class DiscountsService implements DiscountsContract
     /**
      * @api
      *
-     * Retrieve a discount by its ID (`objectId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
+     * Read an Object identified by `{discountId}`. `{discountId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
      * @param bool $archived whether to return only results that have been archived
      * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
@@ -200,8 +200,6 @@ final class DiscountsService implements DiscountsContract
 
     /**
      * @api
-     *
-     * Search for a discount
      *
      * @param string $after a paging cursor token for retrieving subsequent pages
      * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria

@@ -35,11 +35,9 @@ final class MetricsService implements MetricsContract
     /**
      * @api
      *
-     * Fetch the metrics for a specific marketing campaign using its unique identifier. This endpoint allows you to retrieve various performance metrics of the campaign, which can be useful for analyzing the effectiveness of your marketing efforts over a specified time period.
+     * This endpoint retrieves key attribution metrics for a specified campaign, such as sessions, new contacts, and influenced contacts.
      *
-     * @param string $campaignGuid the unique identifier of the campaign for which metrics are being fetched
-     * @param string $endDate the end date for fetching metrics, in YYYY-MM-DD format
-     * @param string $startDate the start date for fetching metrics, in YYYY-MM-DD format
+     * @param string $campaignGuid The unique identifier of the campaign
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -63,12 +61,11 @@ final class MetricsService implements MetricsContract
     /**
      * @api
      *
-     * Fetch revenue attribution report data for a specific campaign. This endpoint allows you to retrieve detailed revenue attribution information, which can be filtered by attribution model and date range. It is useful for analyzing the financial impact of marketing campaigns.
+     * Fetch revenue attribution report data for a specified campaign
      *
-     * @param string $campaignGuid the unique identifier of the campaign
-     * @param string $attributionModel the model used to attribute revenue to the campaign
-     * @param string $endDate end date to fetch attribution data, YYYY-MM-DD
-     * @param string $startDate start date to fetch attribution data, YYYY-MM-DD
+     * @param string $campaignGuid The unique identifier of the campaign
+     * @param string $endDate End date to fetch attribution data, YYYY-MM-DD
+     * @param string $startDate Start date to fetch attribution data, YYYY-MM-DD
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -97,14 +94,14 @@ final class MetricsService implements MetricsContract
     /**
      * @api
      *
-     * Fetch the list of contact IDs for the specified campaign and contact type. This endpoint allows you to retrieve contact identifiers associated with a particular campaign, filtered by the type of contact. It is useful for analyzing or processing contacts involved in specific marketing campaigns.
+     * Fetch the list of contact IDs for the specified campaign and contact type
      *
-     * @param string $contactType path param: The type of contact to filter the list
-     * @param string $campaignGuid path param: The unique identifier of the campaign
-     * @param string $after query param: The paging cursor token of the last successfully read resource, used for pagination
-     * @param string $endDate query param: The end date for filtering contacts, formatted as a string
+     * @param string $contactType Path param: The type of contact to filter the list
+     * @param string $campaignGuid Path param: The unique identifier of the campaign
+     * @param string $after Query param: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param string $endDate Query param
      * @param int $limit query param: The maximum number of results to display per page
-     * @param string $startDate query param: The start date for filtering contacts, formatted as a string
+     * @param string $startDate Query param
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<ContactReference>

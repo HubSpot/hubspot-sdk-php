@@ -26,6 +26,8 @@ final class VideoConferencingRawService implements VideoConferencingRawContract
     /**
      * @api
      *
+     * Create or update video conference extension settings for your app
+     *
      * @param array{
      *   createMeetingURL: string,
      *   deleteMeetingURL?: string,
@@ -62,6 +64,8 @@ final class VideoConferencingRawService implements VideoConferencingRawContract
     /**
      * @api
      *
+     * Delete video conference extension settings for your app
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -83,6 +87,8 @@ final class VideoConferencingRawService implements VideoConferencingRawContract
 
     /**
      * @api
+     *
+     * Fetch video conference extension settings for your app
      *
      * @param RequestOpts|null $requestOptions
      *

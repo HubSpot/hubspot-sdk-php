@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm\Properties;
 
-use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
@@ -12,6 +11,7 @@ use HubspotSDK\Crm\Properties\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Properties\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Properties\Batch\BatchGetParams;
 use HubspotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
+use HubspotSDK\Crm\Properties\BatchResponseProperty;
 use HubspotSDK\PropertyCreate;
 use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;
@@ -67,7 +67,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Delete multiple properties in a single request. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).
+     * Archive a provided list of properties. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).
      *
      * @param array{
      *   inputs: list<PropertyName|PropertyNameShape>
@@ -101,7 +101,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Read a batch of properties.
+     * Read a provided list of properties.
      *
      * @param string $objectType Path param
      * @param array{

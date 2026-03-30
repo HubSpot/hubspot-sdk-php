@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * This API is used to update the name of the channel account and it's isAuthorized status. Setting to isAuthorized flag to False disables the channel account.
+ *
  * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::update()
  *
  * @phpstan-type ChannelAccountUpdateParamsShape = array{

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
 
 /**
- * Create multiple CRM objects in a single request by specifying the object type and providing the necessary properties and associations for each object.
+ * Create a batch of objects.
  *
  * @see HubspotSDK\Services\Crm\Objects\CustomService::create()
  *

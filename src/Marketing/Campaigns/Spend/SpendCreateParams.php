@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Create a new campaign spend item for a specific campaign identified by its unique ID. This endpoint allows you to add financial details related to campaign expenditures, which can be useful for budget tracking and financial reporting.
+ * Create a new campaign spend item.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::create()
  *

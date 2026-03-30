@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Gets lists associated with a marketing event by external account id and external event id.
+ *
  * @see HubspotSDK\Services\Marketing\Events\ListAssociationsService::listByExternalAccount()
  *
  * @phpstan-type ListAssociationListByExternalAccountParamsShape = array{

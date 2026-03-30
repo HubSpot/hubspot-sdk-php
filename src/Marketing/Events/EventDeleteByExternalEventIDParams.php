@@ -10,6 +10,10 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Deletes the existing Marketing Event with the specified externalAccountId, externalEventId, if it exists.
+ *
+ * Only Marketing Events created by the same app can be deleted.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::deleteByExternalEventID()
  *
  * @phpstan-type EventDeleteByExternalEventIDParamsShape = array{

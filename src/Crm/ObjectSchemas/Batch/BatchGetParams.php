@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve details of multiple custom object schemas by providing a batch request with specified inputs. This operation allows you to fetch schema information, including properties and associations, for multiple custom objects in a single API call.
+ *
  * @see HubspotSDK\Services\Crm\ObjectSchemas\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
@@ -25,12 +27,21 @@ final class BatchGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Indicates whether to include association definitions in the response.
+     */
     #[Required]
     public bool $includeAssociationDefinitions;
 
+    /**
+     * Indicates whether to include audit metadata in the response.
+     */
     #[Required]
     public bool $includeAuditMetadata;
 
+    /**
+     * Indicates whether to include property definitions in the response.
+     */
     #[Required]
     public bool $includePropertyDefinitions;
 
@@ -89,6 +100,9 @@ final class BatchGetParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether to include association definitions in the response.
+     */
     public function withIncludeAssociationDefinitions(
         bool $includeAssociationDefinitions
     ): self {
@@ -98,6 +112,9 @@ final class BatchGetParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether to include audit metadata in the response.
+     */
     public function withIncludeAuditMetadata(bool $includeAuditMetadata): self
     {
         $self = clone $this;
@@ -106,6 +123,9 @@ final class BatchGetParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether to include property definitions in the response.
+     */
     public function withIncludePropertyDefinitions(
         bool $includePropertyDefinitions
     ): self {

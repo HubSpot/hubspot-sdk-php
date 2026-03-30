@@ -10,6 +10,10 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Deletes multiple Marketing Events based on externalAccountId, externalEventId, and appId.
+ *
+ * Only Marketing Events created by the same apps will be deleted; events from other apps cannot be removed by this endpoint.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::deleteBatchByExternalEventID()
  *
  * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier

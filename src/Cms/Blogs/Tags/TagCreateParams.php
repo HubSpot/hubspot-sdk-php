@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create a new Blog Tag.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\TagsService::create()
  *
  * @phpstan-type TagCreateParamsShape = array{

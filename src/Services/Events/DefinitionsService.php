@@ -8,9 +8,9 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
-use HubspotSDK\Events\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\ExternalObjectResolutionMappingRequest;
+use HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate;
+use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
 use HubspotSDK\OptionInput;
 use HubspotSDK\Page;
 use HubspotSDK\Property;
@@ -18,8 +18,8 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Events\DefinitionsContract;
 
 /**
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\ExternalObjectResolutionMappingRequest
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest
  * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
@@ -41,6 +41,8 @@ final class DefinitionsService implements DefinitionsContract
 
     /**
      * @api
+     *
+     * Create a custom event definition.
      *
      * @param string $label Human readable label for the event. Used in HubSpot UI
      * @param list<ExternalBehavioralEventPropertyCreate|ExternalBehavioralEventPropertyCreateShape> $propertyDefinitions List of custom properties on event
@@ -83,6 +85,8 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
+     * Update a specific custom event definition by name.
+     *
      * @param string $description a description of the event that will be shown as help text in HubSpot
      * @param string $label Human readable label for the event. Used in HubSpot UI
      * @param RequestOpts|null $requestOptions
@@ -107,6 +111,8 @@ final class DefinitionsService implements DefinitionsContract
 
     /**
      * @api
+     *
+     * Retrieve existing custom event definitions.
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
@@ -143,6 +149,8 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
+     * Delete a custom event definition by name.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -159,6 +167,8 @@ final class DefinitionsService implements DefinitionsContract
 
     /**
      * @api
+     *
+     * Create a new property for an existing event definition.
      *
      * @param string $label Human readable label for the property. Used in HubSpot UI
      * @param string $type The data type of the property. Can be one of the following: [string, number, enumeration, datetime]
@@ -197,6 +207,8 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
+     * Delete an existing property from a custom event definition.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -217,6 +229,8 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
+     * Fetch a single custom event definition by name.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -234,46 +248,7 @@ final class DefinitionsService implements DefinitionsContract
     /**
      * @api
      *
-     * @param string $eventName Internal name of the event-type to trigger
-     * @param array<string,string> $properties Map of properties for the event in the format property internal name - property value
-     * @param string $email Email of visitor
-     * @param string $objectID The object id that this event occurred on. Could be a contact id or a visitor id.
-     * @param \DateTimeInterface $occurredAt The time when this event occurred (if any). If this isn't set, the current time will be used
-     * @param string $utk User token
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function send(
-        string $eventName,
-        array $properties,
-        ?string $email = null,
-        ?string $objectID = null,
-        ?\DateTimeInterface $occurredAt = null,
-        ?string $utk = null,
-        ?string $uuid = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): mixed {
-        $params = Util::removeNulls(
-            [
-                'eventName' => $eventName,
-                'properties' => $properties,
-                'email' => $email,
-                'objectID' => $objectID,
-                'occurredAt' => $occurredAt,
-                'utk' => $utk,
-                'uuid' => $uuid,
-            ],
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->send(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
+     * Send multiple event occurrences at once.
      *
      * @param list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape> $inputs
      * @param RequestOpts|null $requestOptions
@@ -294,6 +269,8 @@ final class DefinitionsService implements DefinitionsContract
 
     /**
      * @api
+     *
+     * Update an existing property in a custom event definition.
      *
      * @param string $propertyName Path param
      * @param string $eventName Path param

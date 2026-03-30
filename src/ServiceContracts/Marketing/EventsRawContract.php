@@ -15,19 +15,19 @@ use HubspotSDK\Marketing\Events\EventDeleteBatchByExternalEventIDParams;
 use HubspotSDK\Marketing\Events\EventDeleteBatchParams;
 use HubspotSDK\Marketing\Events\EventDeleteByExternalEventIDParams;
 use HubspotSDK\Marketing\Events\EventGetByExternalEventIDParams;
+use HubspotSDK\Marketing\Events\EventListParams;
 use HubspotSDK\Marketing\Events\EventSearchByExternalEventIDParams;
 use HubspotSDK\Marketing\Events\EventUpdateBatchParams;
 use HubspotSDK\Marketing\Events\EventUpdateByExternalEventIDParams;
 use HubspotSDK\Marketing\Events\EventUpdateParams;
 use HubspotSDK\Marketing\Events\EventUpsertBatchParams;
 use HubspotSDK\Marketing\Events\EventUpsertByExternalEventIDParams;
-use HubspotSDK\Marketing\Events\EventUpsertSubscriberStateByEmailParams;
-use HubspotSDK\Marketing\Events\EventUpsertSubscriberStateByIDParams;
 use HubspotSDK\Marketing\Events\MarketingEventDefaultResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -64,6 +64,21 @@ interface EventsRawContract
     public function update(
         string $objectID,
         array|EventUpdateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|EventListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<MarketingEventPublicReadResponseV2>>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|EventListParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -249,40 +264,6 @@ interface EventsRawContract
     public function upsertByExternalEventID(
         string $externalEventID_,
         array|EventUpsertByExternalEventIDParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $subscriberState Path param
-     * @param array<string,mixed>|EventUpsertSubscriberStateByEmailParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByEmail(
-        string $subscriberState,
-        array|EventUpsertSubscriberStateByEmailParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $subscriberState Path param
-     * @param array<string,mixed>|EventUpsertSubscriberStateByIDParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByID(
-        string $subscriberState,
-        array|EventUpsertSubscriberStateByIDParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

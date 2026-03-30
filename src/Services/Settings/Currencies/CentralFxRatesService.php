@@ -35,6 +35,8 @@ final class CentralFxRatesService implements CentralFxRatesContract
     /**
      * @api
      *
+     * Create a new currency with central exchange rates in the portal. Unsupported currencies cannot be added here.
+     *
      * @param CurrencyCode|value-of<CurrencyCode> $currencyCode the currency code being added to the HubSpot portal for use with central exchange rates
      * @param RequestOpts|null $requestOptions
      *
@@ -55,6 +57,8 @@ final class CentralFxRatesService implements CentralFxRatesContract
     /**
      * @api
      *
+     * Retrieve details on whether the central exchange rates feature is enabled for the portal.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -70,6 +74,8 @@ final class CentralFxRatesService implements CentralFxRatesContract
 
     /**
      * @api
+     *
+     * Retrieve a list of currency codes that are not supported by the central exchange rates. Unsupported currencies will need to be manually updated.
      *
      * @param RequestOpts|null $requestOptions
      *

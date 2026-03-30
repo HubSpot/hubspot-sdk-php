@@ -61,6 +61,8 @@ final class OwnersRawService implements OwnersRawContract
     /**
      * @api
      *
+     * Retrieve details of a specific owner using either their 'id' or 'userId'.
+     *
      * @param array{
      *   archived?: bool, idProperty?: IDProperty|value-of<IDProperty>
      * }|OwnerGetParams $params

@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
 
 /**
- * Create a batch of payments The `inputs` array can contain a `properties` object to define property values for the record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
+ * Create multiple commerce payment records in a single request, returning the details of each created payment, including their unique IDs.
  *
  * @see HubspotSDK\Services\Crm\Objects\CommercePayments\BatchService::create()
  *

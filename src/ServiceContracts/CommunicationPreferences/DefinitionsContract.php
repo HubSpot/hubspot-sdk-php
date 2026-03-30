@@ -16,8 +16,6 @@ interface DefinitionsContract
     /**
      * @api
      *
-     * @param int $businessUnitID the unique identifier of the business unit for which to retrieve the subscription definitions
-     * @param bool $includeTranslations A boolean indicating whether to include translations of the subscription definitions. Defaults to false if not specified.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

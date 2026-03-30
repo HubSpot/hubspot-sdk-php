@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Fetch the metrics for a specific marketing campaign using its unique identifier. This endpoint allows you to retrieve various performance metrics of the campaign, which can be useful for analyzing the effectiveness of your marketing efforts over a specified time period.
+ * This endpoint retrieves key attribution metrics for a specified campaign, such as sessions, new contacts, and influenced contacts.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\MetricsService::getAttributionMetrics()
  *
@@ -24,15 +24,9 @@ final class MetricGetAttributionMetricsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The end date for fetching metrics, in YYYY-MM-DD format.
-     */
     #[Optional]
     public ?string $endDate;
 
-    /**
-     * The start date for fetching metrics, in YYYY-MM-DD format.
-     */
     #[Optional]
     public ?string $startDate;
 
@@ -58,9 +52,6 @@ final class MetricGetAttributionMetricsParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The end date for fetching metrics, in YYYY-MM-DD format.
-     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -69,9 +60,6 @@ final class MetricGetAttributionMetricsParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The start date for fetching metrics, in YYYY-MM-DD format.
-     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;

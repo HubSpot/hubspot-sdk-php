@@ -183,58 +183,6 @@ final class TagsTest extends TestCase
     }
 
     #[Test]
-    public function testCreateBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->tags->createBatch(
-            inputs: [
-                [
-                    'id' => 'id',
-                    'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    'language' => 'aa',
-                    'name' => 'name',
-                    'slug' => 'slug',
-                    'translatedFromID' => 0,
-                    'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testCreateBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->tags->createBatch(
-            inputs: [
-                [
-                    'id' => 'id',
-                    'created' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    'deletedAt' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                    'language' => 'aa',
-                    'name' => 'name',
-                    'slug' => 'slug',
-                    'translatedFromID' => 0,
-                    'updated' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
     public function testCreateLangVariation(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -266,32 +214,6 @@ final class TagsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testDeleteBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->tags->deleteBatch(inputs: ['string']);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testDeleteBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->tags->deleteBatch(inputs: ['string']);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
     }
 
     #[Test]
@@ -334,29 +256,78 @@ final class TagsTest extends TestCase
     }
 
     #[Test]
-    public function testGetBatch(): void
+    public function testListAuthorsCursor(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->getBatch(inputs: ['string']);
+        $result = $this->client->cms->blogs->tags->listAuthorsCursor();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testGetBatchWithOptionalParams(): void
+    public function testListAuthorsCursorByQuery(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->tags->getBatch(
-            inputs: ['string'],
-            archived: true
-        );
+        $result = $this->client->cms->blogs->tags->listAuthorsCursorByQuery();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testListCursor(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->tags->listCursor();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testListCursorByQuery(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->tags->listCursorByQuery();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testListPostsCursor(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->tags->listPostsCursor();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testListPostsCursorByQuery(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->tags->listPostsCursorByQuery();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -386,37 +357,6 @@ final class TagsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testUpdateBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->tags->updateBatch(
-            inputs: [(object) []]
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testUpdateBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->blogs->tags->updateBatch(
-            inputs: [(object) []],
-            archived: true
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
     }
 
     #[Test]

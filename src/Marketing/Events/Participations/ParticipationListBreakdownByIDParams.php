@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Read Marketing event's participations breakdown with optional filters by internal identifier marketingEventId.
+ *
  * @see HubspotSDK\Services\Marketing\Events\ParticipationsService::listBreakdownByID()
  *
  * @phpstan-type ParticipationListBreakdownByIDParamsShape = array{

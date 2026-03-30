@@ -12,7 +12,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve the subscription statuses for multiple subscribers in a batch operation. This endpoint allows you to check the communication preferences of several subscribers at once, which is useful for managing large lists of contacts efficiently.
+ * Batch retrieve subscription statuses for a set of contacts.
  *
  * @see HubspotSDK\Services\CommunicationPreferences\Statuses\BatchService::read()
  *
@@ -28,11 +28,7 @@ final class BatchReadParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * The communication channel to filter by. This parameter is required and currently only supports 'EMAIL'.
-     *
-     * @var value-of<Channel> $channel
-     */
+    /** @var value-of<Channel> $channel */
     #[Required(enum: Channel::class)]
     public string $channel;
 
@@ -44,9 +40,6 @@ final class BatchReadParams implements BaseModel
     #[Required(list: 'string')]
     public array $inputs;
 
-    /**
-     * An optional identifier for the business unit. This is an integer value.
-     */
     #[Optional]
     public ?int $businessUnitID;
 
@@ -93,8 +86,6 @@ final class BatchReadParams implements BaseModel
     }
 
     /**
-     * The communication channel to filter by. This parameter is required and currently only supports 'EMAIL'.
-     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -118,9 +109,6 @@ final class BatchReadParams implements BaseModel
         return $self;
     }
 
-    /**
-     * An optional identifier for the business unit. This is an integer value.
-     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;

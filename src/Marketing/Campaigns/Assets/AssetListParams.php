@@ -11,7 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * List all assets of a specified campaign by asset type. This endpoint allows you to retrieve assets associated with a campaign, filtered by the type of asset. It supports pagination and date filtering to manage and refine the results.
+ * This endpoint lists all assets of the campaign by asset type. The assetType parameter is required, and each request can only fetch assets of a single type.
+ * Asset metrics can also be fetched along with the assets; they are available only if start and end dates are provided.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\AssetsService::list()
  *
@@ -38,9 +39,6 @@ final class AssetListParams implements BaseModel
     #[Optional]
     public ?string $after;
 
-    /**
-     * The end date for filtering assets, in YYYY-MM-DD format.
-     */
     #[Optional]
     public ?string $endDate;
 
@@ -50,9 +48,6 @@ final class AssetListParams implements BaseModel
     #[Optional]
     public ?string $limit;
 
-    /**
-     * The start date for filtering assets, in YYYY-MM-DD format.
-     */
     #[Optional]
     public ?string $startDate;
 
@@ -118,9 +113,6 @@ final class AssetListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The end date for filtering assets, in YYYY-MM-DD format.
-     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -140,9 +132,6 @@ final class AssetListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The start date for filtering assets, in YYYY-MM-DD format.
-     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;
