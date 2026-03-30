@@ -5,25 +5,21 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm\Objects\Services;
 
 use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
+ * Read an Object identified by `{serviceId}`. `{serviceId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
  * @see HubspotSDK\Services\Crm\Objects\ServicesService::get()
  *
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
- *
  * @phpstan-type ServiceGetParamsShape = array{
- *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
- *   properties: list<string>,
- *   propertiesWithHistory: list<string>,
  *   archived?: bool|null,
+ *   associations?: list<string>|null,
  *   idProperty?: string|null,
+ *   properties?: list<string>|null,
+ *   propertiesWithHistory?: list<string>|null,
  * }
  */
 final class ServiceGetParams implements BaseModel
@@ -32,26 +28,6 @@ final class ServiceGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<SimplePublicObjectID> $inputs */
-    #[Required(list: SimplePublicObjectID::class)]
-    public array $inputs;
-
-    /**
-     * Key-value pairs for setting properties for the new object.
-     *
-     * @var list<string> $properties
-     */
-    #[Required(list: 'string')]
-    public array $properties;
-
-    /**
-     * Key-value pairs for setting properties for the new object and their histories.
-     *
-     * @var list<string> $propertiesWithHistory
-     */
-    #[Required(list: 'string')]
-    public array $propertiesWithHistory;
-
     /**
      * Whether to return only results that have been archived.
      */
@@ -59,28 +35,35 @@ final class ServiceGetParams implements BaseModel
     public ?bool $archived;
 
     /**
-     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     * A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     *
+     * @var list<string>|null $associations
+     */
+    #[Optional(list: 'string')]
+    public ?array $associations;
+
+    /**
+     * The name of a property whose values are unique for this object type.
      */
     #[Optional]
     public ?string $idProperty;
 
     /**
-     * `new ServiceGetParams()` is missing required properties by the API.
+     * A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
      *
-     * To enforce required parameters use
-     * ```
-     * ServiceGetParams::with(inputs: ..., properties: ..., propertiesWithHistory: ...)
-     * ```
-     *
-     * Otherwise ensure the following setters are called
-     *
-     * ```
-     * (new ServiceGetParams)
-     *   ->withInputs(...)
-     *   ->withProperties(...)
-     *   ->withPropertiesWithHistory(...)
-     * ```
+     * @var list<string>|null $properties
      */
+    #[Optional(list: 'string')]
+    public ?array $properties;
+
+    /**
+     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @var list<string>|null $propertiesWithHistory
+     */
+    #[Optional(list: 'string')]
+    public ?array $propertiesWithHistory;
+
     public function __construct()
     {
         $this->initialize();
@@ -91,63 +74,24 @@ final class ServiceGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
-     * @param list<string> $properties
-     * @param list<string> $propertiesWithHistory
+     * @param list<string>|null $associations
+     * @param list<string>|null $properties
+     * @param list<string>|null $propertiesWithHistory
      */
     public static function with(
-        array $inputs,
-        array $properties,
-        array $propertiesWithHistory,
         ?bool $archived = null,
+        ?array $associations = null,
         ?string $idProperty = null,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
     ): self {
         $self = new self;
 
-        $self['inputs'] = $inputs;
-        $self['properties'] = $properties;
-        $self['propertiesWithHistory'] = $propertiesWithHistory;
-
         null !== $archived && $self['archived'] = $archived;
+        null !== $associations && $self['associations'] = $associations;
         null !== $idProperty && $self['idProperty'] = $idProperty;
-
-        return $self;
-    }
-
-    /**
-     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
-     */
-    public function withInputs(array $inputs): self
-    {
-        $self = clone $this;
-        $self['inputs'] = $inputs;
-
-        return $self;
-    }
-
-    /**
-     * Key-value pairs for setting properties for the new object.
-     *
-     * @param list<string> $properties
-     */
-    public function withProperties(array $properties): self
-    {
-        $self = clone $this;
-        $self['properties'] = $properties;
-
-        return $self;
-    }
-
-    /**
-     * Key-value pairs for setting properties for the new object and their histories.
-     *
-     * @param list<string> $propertiesWithHistory
-     */
-    public function withPropertiesWithHistory(
-        array $propertiesWithHistory
-    ): self {
-        $self = clone $this;
-        $self['propertiesWithHistory'] = $propertiesWithHistory;
+        null !== $properties && $self['properties'] = $properties;
+        null !== $propertiesWithHistory && $self['propertiesWithHistory'] = $propertiesWithHistory;
 
         return $self;
     }
@@ -164,12 +108,52 @@ final class ServiceGetParams implements BaseModel
     }
 
     /**
-     * When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     * A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     *
+     * @param list<string> $associations
+     */
+    public function withAssociations(array $associations): self
+    {
+        $self = clone $this;
+        $self['associations'] = $associations;
+
+        return $self;
+    }
+
+    /**
+     * The name of a property whose values are unique for this object type.
      */
     public function withIDProperty(string $idProperty): self
     {
         $self = clone $this;
         $self['idProperty'] = $idProperty;
+
+        return $self;
+    }
+
+    /**
+     * A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @param list<string> $properties
+     */
+    public function withProperties(array $properties): self
+    {
+        $self = clone $this;
+        $self['properties'] = $properties;
+
+        return $self;
+    }
+
+    /**
+     * A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     *
+     * @param list<string> $propertiesWithHistory
+     */
+    public function withPropertiesWithHistory(
+        array $propertiesWithHistory
+    ): self {
+        $self = clone $this;
+        $self['propertiesWithHistory'] = $propertiesWithHistory;
 
         return $self;
     }

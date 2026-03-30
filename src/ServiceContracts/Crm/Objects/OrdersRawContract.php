@@ -7,16 +7,13 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\Orders\OrderCreateParams;
-use HubspotSDK\Crm\Objects\Orders\OrderDeleteParams;
 use HubspotSDK\Crm\Objects\Orders\OrderGetParams;
 use HubspotSDK\Crm\Objects\Orders\OrderListParams;
 use HubspotSDK\Crm\Objects\Orders\OrderSearchParams;
 use HubspotSDK\Crm\Objects\Orders\OrderUpdateParams;
-use HubspotSDK\Crm\Objects\Orders\OrderUpsertParams;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
@@ -31,7 +28,7 @@ interface OrdersRawContract
      * @param array<string,mixed>|OrderCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
@@ -43,14 +40,16 @@ interface OrdersRawContract
     /**
      * @api
      *
+     * @param string $orderID Path param
      * @param array<string,mixed>|OrderUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
+        string $orderID,
         array|OrderUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -73,7 +72,6 @@ interface OrdersRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|OrderDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -81,8 +79,8 @@ interface OrdersRawContract
      * @throws APIException
      */
     public function delete(
-        array|OrderDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
+        string $orderID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -91,11 +89,12 @@ interface OrdersRawContract
      * @param array<string,mixed>|OrderGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function get(
+        string $orderID,
         array|OrderGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -112,21 +111,6 @@ interface OrdersRawContract
      */
     public function search(
         array|OrderSearchParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|OrderUpsertParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array|OrderUpsertParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

@@ -6,7 +6,8 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -42,11 +43,12 @@ final class PartnerServicesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->partnerServices->update(
-            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]]
+            'partnerServiceId',
+            properties: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -57,18 +59,13 @@ final class PartnerServicesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->partnerServices->update(
-            inputs: [
-                [
-                    'id' => 'id',
-                    'properties' => ['foo' => 'string'],
-                    'idProperty' => 'my_unique_property_name',
-                    'objectWriteTraceID' => 'objectWriteTraceId',
-                ],
-            ],
+            'partnerServiceId',
+            properties: ['foo' => 'string'],
+            idProperty: 'idProperty',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -123,32 +120,11 @@ final class PartnerServicesTest extends TestCase
         }
 
         $result = $this->client->crm->objects->partnerServices->get(
-            inputs: [['id' => '430001']],
-            properties: ['string'],
-            propertiesWithHistory: ['string'],
+            'partnerServiceId'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
-    }
-
-    #[Test]
-    public function testGetWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->partnerServices->get(
-            inputs: [['id' => '430001']],
-            properties: ['string'],
-            propertiesWithHistory: ['string'],
-            archived: true,
-            idProperty: 'idProperty',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
     }
 
     #[Test]

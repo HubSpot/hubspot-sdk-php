@@ -7,16 +7,13 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\Products\ProductCreateParams;
-use HubspotSDK\Crm\Objects\Products\ProductDeleteParams;
 use HubspotSDK\Crm\Objects\Products\ProductGetParams;
 use HubspotSDK\Crm\Objects\Products\ProductListParams;
 use HubspotSDK\Crm\Objects\Products\ProductSearchParams;
 use HubspotSDK\Crm\Objects\Products\ProductUpdateParams;
-use HubspotSDK\Crm\Objects\Products\ProductUpsertParams;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
@@ -31,7 +28,7 @@ interface ProductsRawContract
      * @param array<string,mixed>|ProductCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
@@ -43,14 +40,16 @@ interface ProductsRawContract
     /**
      * @api
      *
+     * @param string $productID Path param
      * @param array<string,mixed>|ProductUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
+        string $productID,
         array|ProductUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -73,7 +72,6 @@ interface ProductsRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|ProductDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -81,8 +79,8 @@ interface ProductsRawContract
      * @throws APIException
      */
     public function delete(
-        array|ProductDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
+        string $productID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -91,11 +89,12 @@ interface ProductsRawContract
      * @param array<string,mixed>|ProductGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function get(
+        string $productID,
         array|ProductGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -112,21 +111,6 @@ interface ProductsRawContract
      */
     public function search(
         array|ProductSearchParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|ProductUpsertParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array|ProductUpsertParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

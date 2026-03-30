@@ -5,8 +5,6 @@ namespace Tests\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
@@ -45,26 +43,22 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->create(
             'objectType',
-            inputs: [
+            associations: [
                 [
-                    'associations' => [
+                    'to' => ['id' => 'id'],
+                    'types' => [
                         [
-                            'to' => ['id' => 'id'],
-                            'types' => [
-                                [
-                                    'associationCategory' => 'HUBSPOT_DEFINED',
-                                    'associationTypeID' => 0,
-                                ],
-                            ],
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
                         ],
                     ],
-                    'properties' => ['foo' => 'string'],
                 ],
             ],
+            properties: ['foo' => 'string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -76,27 +70,22 @@ final class CustomTest extends TestCase
 
         $result = $this->client->crm->objects->custom->create(
             'objectType',
-            inputs: [
+            associations: [
                 [
-                    'associations' => [
+                    'to' => ['id' => 'id'],
+                    'types' => [
                         [
-                            'to' => ['id' => 'id'],
-                            'types' => [
-                                [
-                                    'associationCategory' => 'HUBSPOT_DEFINED',
-                                    'associationTypeID' => 0,
-                                ],
-                            ],
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
                         ],
                     ],
-                    'properties' => ['foo' => 'string'],
-                    'objectWriteTraceID' => 'objectWriteTraceId',
                 ],
             ],
+            properties: ['foo' => 'string'],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -107,12 +96,13 @@ final class CustomTest extends TestCase
         }
 
         $result = $this->client->crm->objects->custom->update(
-            'objectType',
-            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]],
+            'objectId',
+            objectType: 'objectType',
+            properties: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -123,19 +113,14 @@ final class CustomTest extends TestCase
         }
 
         $result = $this->client->crm->objects->custom->update(
-            'objectType',
-            inputs: [
-                [
-                    'id' => 'id',
-                    'properties' => ['foo' => 'string'],
-                    'idProperty' => 'my_unique_property_name',
-                    'objectWriteTraceID' => 'objectWriteTraceId',
-                ],
-            ],
+            'objectId',
+            objectType: 'objectType',
+            properties: ['foo' => 'string'],
+            idProperty: 'idProperty',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(SimplePublicObject::class, $result);
     }
 
     #[Test]
@@ -164,8 +149,8 @@ final class CustomTest extends TestCase
         }
 
         $result = $this->client->crm->objects->custom->delete(
-            'objectType',
-            inputs: [['id' => '430001']]
+            'objectId',
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -180,8 +165,8 @@ final class CustomTest extends TestCase
         }
 
         $result = $this->client->crm->objects->custom->delete(
-            'objectType',
-            inputs: [['id' => '430001']]
+            'objectId',
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -196,14 +181,12 @@ final class CustomTest extends TestCase
         }
 
         $result = $this->client->crm->objects->custom->get(
-            'objectType',
-            inputs: [['id' => '430001']],
-            properties: ['string'],
-            propertiesWithHistory: ['string'],
+            'objectId',
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
     }
 
     #[Test]
@@ -214,16 +197,17 @@ final class CustomTest extends TestCase
         }
 
         $result = $this->client->crm->objects->custom->get(
-            'objectType',
-            inputs: [['id' => '430001']],
+            'objectId',
+            objectType: 'objectType',
+            archived: true,
+            associations: ['string'],
+            idProperty: 'idProperty',
             properties: ['string'],
             propertiesWithHistory: ['string'],
-            archived: true,
-            idProperty: 'idProperty',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+        $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
     }
 
     #[Test]
@@ -321,51 +305,6 @@ final class CustomTest extends TestCase
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
             CollectionResponseWithTotalSimplePublicObject::class,
-            $result
-        );
-    }
-
-    #[Test]
-    public function testUpsert(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->custom->upsert(
-            'objectType',
-            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            BatchResponseSimplePublicUpsertObject::class,
-            $result
-        );
-    }
-
-    #[Test]
-    public function testUpsertWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->custom->upsert(
-            'objectType',
-            inputs: [
-                [
-                    'id' => 'id',
-                    'properties' => ['foo' => 'string'],
-                    'idProperty' => 'idProperty',
-                    'objectWriteTraceID' => 'objectWriteTraceId',
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            BatchResponseSimplePublicUpsertObject::class,
             $result
         );
     }

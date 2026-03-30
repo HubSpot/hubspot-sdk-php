@@ -8,17 +8,18 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 
 /**
- * Create multiple products in a single request by specifying their properties, and receive a response containing the details of the created products.
+ * Create a product with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard products is provided.
  *
  * @see HubspotSDK\Services\Crm\Objects\ProductsService::create()
  *
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
  *
  * @phpstan-type ProductCreateParamsShape = array{
- *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
+ *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
+ *   properties: array<string,string>,
  * }
  */
 final class ProductCreateParams implements BaseModel
@@ -27,22 +28,30 @@ final class ProductCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<SimplePublicObjectBatchInputForCreate> $inputs */
-    #[Required(list: SimplePublicObjectBatchInputForCreate::class)]
-    public array $inputs;
+    /** @var list<PublicAssociationsForObject> $associations */
+    #[Required(list: PublicAssociationsForObject::class)]
+    public array $associations;
+
+    /**
+     * Key-value pairs for setting properties for the new object.
+     *
+     * @var array<string,string> $properties
+     */
+    #[Required(map: 'string')]
+    public array $properties;
 
     /**
      * `new ProductCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ProductCreateParams::with(inputs: ...)
+     * ProductCreateParams::with(associations: ..., properties: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ProductCreateParams)->withInputs(...)
+     * (new ProductCreateParams)->withAssociations(...)->withProperties(...)
      * ```
      */
     public function __construct()
@@ -55,24 +64,39 @@ final class ProductCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
+     * @param array<string,string> $properties
      */
-    public static function with(array $inputs): self
+    public static function with(array $associations, array $properties): self
     {
         $self = new self;
 
-        $self['inputs'] = $inputs;
+        $self['associations'] = $associations;
+        $self['properties'] = $properties;
 
         return $self;
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      */
-    public function withInputs(array $inputs): self
+    public function withAssociations(array $associations): self
     {
         $self = clone $this;
-        $self['inputs'] = $inputs;
+        $self['associations'] = $associations;
+
+        return $self;
+    }
+
+    /**
+     * Key-value pairs for setting properties for the new object.
+     *
+     * @param array<string,string> $properties
+     */
+    public function withProperties(array $properties): self
+    {
+        $self = clone $this;
+        $self['properties'] = $properties;
 
         return $self;
     }

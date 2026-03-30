@@ -9,31 +9,22 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\Objects\Taxes\TaxCreateParams;
-use HubspotSDK\Crm\Objects\Taxes\TaxDeleteParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxGetParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxListParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxSearchParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxUpdateParams;
-use HubspotSDK\Crm\Objects\Taxes\TaxUpsertParams;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\TaxesRawContract;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
  * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
 final class TaxesRawService implements TaxesRawContract
 {
@@ -46,14 +37,15 @@ final class TaxesRawService implements TaxesRawContract
     /**
      * @api
      *
-     * Create multiple tax records in a single request, each with specified properties and optional associations, and receive a response with details of the created objects.
+     * Create a tax with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard taxes is provided.
      *
      * @param array{
-     *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
+     *   properties: array<string,string>,
      * }|TaxCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
@@ -69,28 +61,30 @@ final class TaxesRawService implements TaxesRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'crm/objects/2026-03/taxes/batch/create',
+            path: 'crm/objects/2026-03/taxes',
             body: (object) $parsed,
             options: $options,
-            convert: BatchResponseSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
     /**
      * @api
      *
-     * Update multiple tax records using their internal IDs or unique property values. This operation allows for batch processing of updates to tax objects, ensuring efficient management of tax data in bulk.
+     * Perform a partial update of an Object identified by `{taxId}`or optionally a unique property value as specified by the `idProperty` query param. `{taxId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
+     * @param string $taxID Path param
      * @param array{
-     *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
+     *   properties: array<string,string>, idProperty?: string
      * }|TaxUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
+        string $taxID,
         array|TaxUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -98,14 +92,16 @@ final class TaxesRawService implements TaxesRawContract
             $params,
             $requestOptions,
         );
+        $query_params = array_flip(['idProperty']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'post',
-            path: 'crm/objects/2026-03/taxes/batch/update',
-            body: (object) $parsed,
+            method: 'patch',
+            path: ['crm/objects/2026-03/taxes/%1$s', $taxID],
+            query: array_intersect_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: BatchResponseSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
@@ -151,11 +147,8 @@ final class TaxesRawService implements TaxesRawContract
     /**
      * @api
      *
-     * Archive multiple taxes by their IDs in a single request.
+     * Move an Object identified by `{taxId}` to the recycling bin.
      *
-     * @param array{
-     *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
-     * }|TaxDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -163,20 +156,14 @@ final class TaxesRawService implements TaxesRawContract
      * @throws APIException
      */
     public function delete(
-        array|TaxDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
+        string $taxID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
-        [$parsed, $options] = TaxDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'post',
-            path: 'crm/objects/2026-03/taxes/batch/archive',
-            body: (object) $parsed,
-            options: $options,
+            method: 'delete',
+            path: ['crm/objects/2026-03/taxes/%1$s', $taxID],
+            options: $requestOptions,
             convert: null,
         );
     }
@@ -184,39 +171,38 @@ final class TaxesRawService implements TaxesRawContract
     /**
      * @api
      *
-     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
+     * Read an Object identified by `{taxId}`. `{taxId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
      * @param array{
-     *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
-     *   properties: list<string>,
-     *   propertiesWithHistory: list<string>,
      *   archived?: bool,
+     *   associations?: list<string>,
      *   idProperty?: string,
+     *   properties?: list<string>,
+     *   propertiesWithHistory?: list<string>,
      * }|TaxGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function get(
+        string $taxID,
         array|TaxGetParams $params,
-        RequestOptions|array|null $requestOptions = null
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
         [$parsed, $options] = TaxGetParams::parseRequest(
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['archived']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'post',
-            path: 'crm/objects/2026-03/taxes/batch/read',
-            query: array_intersect_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
+            method: 'get',
+            path: ['crm/objects/2026-03/taxes/%1$s', $taxID],
+            query: $parsed,
             options: $options,
-            convert: BatchResponseSimplePublicObject::class,
+            convert: SimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -255,39 +241,6 @@ final class TaxesRawService implements TaxesRawContract
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
-     *
-     * @param array{
-     *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,
-     * }|TaxUpsertParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array|TaxUpsertParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = TaxUpsertParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'crm/objects/2026-03/taxes/batch/upsert',
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }
