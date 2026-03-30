@@ -9,31 +9,22 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\Objects\Users\UserCreateParams;
-use HubspotSDK\Crm\Objects\Users\UserDeleteParams;
 use HubspotSDK\Crm\Objects\Users\UserGetParams;
 use HubspotSDK\Crm\Objects\Users\UserListParams;
 use HubspotSDK\Crm\Objects\Users\UserSearchParams;
 use HubspotSDK\Crm\Objects\Users\UserUpdateParams;
-use HubspotSDK\Crm\Objects\Users\UserUpsertParams;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\UsersRawContract;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
  * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
 final class UsersRawService implements UsersRawContract
 {
@@ -46,14 +37,15 @@ final class UsersRawService implements UsersRawContract
     /**
      * @api
      *
-     * Create multiple users in a single request by providing a batch of user properties and associations. This endpoint returns the created users along with their IDs.
+     * Create a user with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard users is provided.
      *
      * @param array{
-     *   inputs: list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape>,
+     *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
+     *   properties: array<string,string>,
      * }|UserCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
@@ -69,28 +61,30 @@ final class UsersRawService implements UsersRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'crm/objects/2026-03/users/batch/create',
+            path: 'crm/objects/2026-03/users',
             body: (object) $parsed,
             options: $options,
-            convert: BatchResponseSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
     /**
      * @api
      *
-     * Update multiple user records in a single request by specifying their internal IDs or unique property values. This operation allows for batch processing of user data, ensuring efficient updates across multiple user profiles.
+     * Perform a partial update of an Object identified by `{userId}`or optionally a unique property value as specified by the `idProperty` query param. `{userId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
+     * @param string $userID Path param
      * @param array{
-     *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
+     *   properties: array<string,string>, idProperty?: string
      * }|UserUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
+        string $userID,
         array|UserUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -98,14 +92,16 @@ final class UsersRawService implements UsersRawContract
             $params,
             $requestOptions,
         );
+        $query_params = array_flip(['idProperty']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'post',
-            path: 'crm/objects/2026-03/users/batch/update',
-            body: (object) $parsed,
+            method: 'patch',
+            path: ['crm/objects/2026-03/users/%1$s', $userID],
+            query: array_intersect_key($parsed, $query_params),
+            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: BatchResponseSimplePublicObject::class,
+            convert: SimplePublicObject::class,
         );
     }
 
@@ -151,11 +147,8 @@ final class UsersRawService implements UsersRawContract
     /**
      * @api
      *
-     * Archive multiple users by their IDs in a single request. This operation moves the specified users to the recycling bin, effectively deactivating them from active use.
+     * Move an Object identified by `{userId}` to the recycling bin.
      *
-     * @param array{
-     *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
-     * }|UserDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -163,20 +156,14 @@ final class UsersRawService implements UsersRawContract
      * @throws APIException
      */
     public function delete(
-        array|UserDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
+        string $userID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
-        [$parsed, $options] = UserDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'post',
-            path: 'crm/objects/2026-03/users/batch/archive',
-            body: (object) $parsed,
-            options: $options,
+            method: 'delete',
+            path: ['crm/objects/2026-03/users/%1$s', $userID],
+            options: $requestOptions,
             convert: null,
         );
     }
@@ -184,22 +171,23 @@ final class UsersRawService implements UsersRawContract
     /**
      * @api
      *
-     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
+     * Read an Object identified by `{userId}`. `{userId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
      * @param array{
-     *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
-     *   properties: list<string>,
-     *   propertiesWithHistory: list<string>,
      *   archived?: bool,
+     *   associations?: list<string>,
      *   idProperty?: string,
+     *   properties?: list<string>,
+     *   propertiesWithHistory?: list<string>,
      * }|UserGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function get(
+        string $userID,
         array|UserGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -207,16 +195,14 @@ final class UsersRawService implements UsersRawContract
             $params,
             $requestOptions,
         );
-        $query_params = array_flip(['archived']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'post',
-            path: 'crm/objects/2026-03/users/batch/read',
-            query: array_intersect_key($parsed, $query_params),
-            body: (object) array_diff_key($parsed, $query_params),
+            method: 'get',
+            path: ['crm/objects/2026-03/users/%1$s', $userID],
+            query: $parsed,
             options: $options,
-            convert: BatchResponseSimplePublicObject::class,
+            convert: SimplePublicObjectWithAssociations::class,
         );
     }
 
@@ -255,39 +241,6 @@ final class UsersRawService implements UsersRawContract
             body: (object) $parsed,
             options: $options,
             convert: CollectionResponseWithTotalSimplePublicObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
-     *
-     * @param array{
-     *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,
-     * }|UserUpsertParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array|UserUpsertParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = UserUpsertParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'crm/objects/2026-03/users/batch/upsert',
-            body: (object) $parsed,
-            options: $options,
-            convert: BatchResponseSimplePublicUpsertObject::class,
         );
     }
 }

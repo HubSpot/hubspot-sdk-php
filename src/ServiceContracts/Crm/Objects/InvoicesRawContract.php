@@ -7,16 +7,13 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\Invoices\InvoiceCreateParams;
-use HubspotSDK\Crm\Objects\Invoices\InvoiceDeleteParams;
 use HubspotSDK\Crm\Objects\Invoices\InvoiceGetParams;
 use HubspotSDK\Crm\Objects\Invoices\InvoiceListParams;
 use HubspotSDK\Crm\Objects\Invoices\InvoiceSearchParams;
 use HubspotSDK\Crm\Objects\Invoices\InvoiceUpdateParams;
-use HubspotSDK\Crm\Objects\Invoices\InvoiceUpsertParams;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
@@ -31,7 +28,7 @@ interface InvoicesRawContract
      * @param array<string,mixed>|InvoiceCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
@@ -43,14 +40,16 @@ interface InvoicesRawContract
     /**
      * @api
      *
+     * @param string $invoiceID Path param
      * @param array<string,mixed>|InvoiceUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
+        string $invoiceID,
         array|InvoiceUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -73,7 +72,6 @@ interface InvoicesRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|InvoiceDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -81,8 +79,8 @@ interface InvoicesRawContract
      * @throws APIException
      */
     public function delete(
-        array|InvoiceDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
+        string $invoiceID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -91,11 +89,12 @@ interface InvoicesRawContract
      * @param array<string,mixed>|InvoiceGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function get(
+        string $invoiceID,
         array|InvoiceGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -112,21 +111,6 @@ interface InvoicesRawContract
      */
     public function search(
         array|InvoiceSearchParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|InvoiceUpsertParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array|InvoiceUpsertParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

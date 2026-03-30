@@ -10,16 +10,14 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\PartnerServicesContract;
+use HubspotSDK\Services\Crm\Objects\PartnerServices\BatchService;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  */
@@ -31,31 +29,43 @@ final class PartnerServicesService implements PartnerServicesContract
     public PartnerServicesRawService $raw;
 
     /**
+     * @api
+     */
+    public BatchService $batch;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
     {
         $this->raw = new PartnerServicesRawService($client);
+        $this->batch = new BatchService($client);
     }
 
     /**
      * @api
      *
-     * Update multiple partner services using their internal IDs or unique property values. This operation allows for batch processing of updates, ensuring efficient synchronization of service data between HubSpot and other systems.
+     * Perform a partial update of an Object identified by `{partnerServiceId}`or optionally a unique property value as specified by the `idProperty` query param. `{partnerServiceId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
-     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
+     * @param string $partnerServiceID Path param
+     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
+     * @param string $idProperty Query param: The name of a property whose values are unique for this object type
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicObject {
-        $params = Util::removeNulls(['inputs' => $inputs]);
+        string $partnerServiceID,
+        array $properties,
+        ?string $idProperty = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): SimplePublicObject {
+        $params = Util::removeNulls(
+            ['properties' => $properties, 'idProperty' => $idProperty]
+        );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->update(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->update($partnerServiceID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -99,37 +109,38 @@ final class PartnerServicesService implements PartnerServicesContract
     /**
      * @api
      *
-     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
+     * Read an Object identified by `{partnerServiceId}`. `{partnerServiceId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
-     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
-     * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
-     * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
-     * @param bool $archived query param: Whether to return only results that have been archived
-     * @param string $idProperty Body param: When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object type
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
-        array $inputs,
-        array $properties,
-        array $propertiesWithHistory,
+        string $partnerServiceID,
         bool $archived = false,
+        ?array $associations = null,
         ?string $idProperty = null,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseSimplePublicObject {
+    ): SimplePublicObjectWithAssociations {
         $params = Util::removeNulls(
             [
-                'inputs' => $inputs,
+                'archived' => $archived,
+                'associations' => $associations,
+                'idProperty' => $idProperty,
                 'properties' => $properties,
                 'propertiesWithHistory' => $propertiesWithHistory,
-                'archived' => $archived,
-                'idProperty' => $idProperty,
             ],
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->get(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->get($partnerServiceID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

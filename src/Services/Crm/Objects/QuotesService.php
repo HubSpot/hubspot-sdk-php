@@ -15,7 +15,7 @@ use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\QuotesContract;
-use HubspotSDK\Services\Crm\Objects\Quotes\BasicService;
+use HubspotSDK\Services\Crm\Objects\Quotes\BatchService;
 
 /**
  * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
@@ -32,7 +32,7 @@ final class QuotesService implements QuotesContract
     /**
      * @api
      */
-    public BasicService $basic;
+    public BatchService $batch;
 
     /**
      * @internal
@@ -40,7 +40,7 @@ final class QuotesService implements QuotesContract
     public function __construct(private Client $client)
     {
         $this->raw = new QuotesRawService($client);
-        $this->basic = new BasicService($client);
+        $this->batch = new BatchService($client);
     }
 
     /**

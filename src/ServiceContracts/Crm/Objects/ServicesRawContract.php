@@ -7,16 +7,13 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\Services\ServiceCreateParams;
-use HubspotSDK\Crm\Objects\Services\ServiceDeleteParams;
 use HubspotSDK\Crm\Objects\Services\ServiceGetParams;
 use HubspotSDK\Crm\Objects\Services\ServiceListParams;
 use HubspotSDK\Crm\Objects\Services\ServiceSearchParams;
 use HubspotSDK\Crm\Objects\Services\ServiceUpdateParams;
-use HubspotSDK\Crm\Objects\Services\ServiceUpsertParams;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
@@ -31,7 +28,7 @@ interface ServicesRawContract
      * @param array<string,mixed>|ServiceCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
@@ -43,14 +40,16 @@ interface ServicesRawContract
     /**
      * @api
      *
+     * @param string $serviceID Path param
      * @param array<string,mixed>|ServiceUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
+        string $serviceID,
         array|ServiceUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -73,7 +72,6 @@ interface ServicesRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|ServiceDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -81,8 +79,8 @@ interface ServicesRawContract
      * @throws APIException
      */
     public function delete(
-        array|ServiceDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
+        string $serviceID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -91,11 +89,12 @@ interface ServicesRawContract
      * @param array<string,mixed>|ServiceGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function get(
+        string $serviceID,
         array|ServiceGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -112,21 +111,6 @@ interface ServicesRawContract
      */
     public function search(
         array|ServiceSearchParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|ServiceUpsertParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array|ServiceUpsertParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

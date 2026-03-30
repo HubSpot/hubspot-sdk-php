@@ -8,11 +8,12 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceGetParams;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceListParams;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceSearchParams;
 use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceUpdateParams;
+use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
@@ -24,14 +25,16 @@ interface PartnerServicesRawContract
     /**
      * @api
      *
+     * @param string $partnerServiceID Path param
      * @param array<string,mixed>|PartnerServiceUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
+        string $partnerServiceID,
         array|PartnerServiceUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -59,11 +62,12 @@ interface PartnerServicesRawContract
      * @param array<string,mixed>|PartnerServiceGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function get(
+        string $partnerServiceID,
         array|PartnerServiceGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;

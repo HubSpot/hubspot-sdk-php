@@ -7,51 +7,50 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
  * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
 interface PostalMailContract
 {
     /**
      * @api
      *
-     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
+     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
+     * @param array<string,string> $properties key-value pairs for setting properties for the new object
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicObject;
+        array $associations,
+        array $properties,
+        RequestOptions|array|null $requestOptions = null,
+    ): SimplePublicObject;
 
     /**
      * @api
      *
-     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
+     * @param string $postalMailID Path param
+     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
+     * @param string $idProperty Query param: The name of a property whose values are unique for this object type
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicObject;
+        string $postalMailID,
+        array $properties,
+        ?string $idProperty = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): SimplePublicObject;
 
     /**
      * @api
@@ -81,36 +80,36 @@ interface PostalMailContract
     /**
      * @api
      *
-     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
-        array $inputs,
+        string $postalMailID,
         RequestOptions|array|null $requestOptions = null
     ): mixed;
 
     /**
      * @api
      *
-     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
-     * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
-     * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
-     * @param bool $archived query param: Whether to return only results that have been archived
-     * @param string $idProperty Body param: When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+     * @param bool $archived whether to return only results that have been archived
+     * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+     * @param string $idProperty The name of a property whose values are unique for this object type
+     * @param list<string> $properties A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+     * @param list<string> $propertiesWithHistory A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
-        array $inputs,
-        array $properties,
-        array $propertiesWithHistory,
+        string $postalMailID,
         bool $archived = false,
+        ?array $associations = null,
         ?string $idProperty = null,
+        ?array $properties = null,
+        ?array $propertiesWithHistory = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseSimplePublicObject;
+    ): SimplePublicObjectWithAssociations;
 
     /**
      * @api
@@ -134,17 +133,4 @@ interface PostalMailContract
         ?string $query = null,
         RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject;
 }

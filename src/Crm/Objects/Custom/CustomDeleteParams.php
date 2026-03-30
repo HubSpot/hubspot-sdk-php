@@ -8,18 +8,13 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Archive a batch of objects by ID.
+ * Move an Object identified by `{objectId}` to the recycling bin.
  *
  * @see HubspotSDK\Services\Crm\Objects\CustomService::delete()
  *
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
- *
- * @phpstan-type CustomDeleteParamsShape = array{
- *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>
- * }
+ * @phpstan-type CustomDeleteParamsShape = array{objectType: string}
  */
 final class CustomDeleteParams implements BaseModel
 {
@@ -27,22 +22,21 @@ final class CustomDeleteParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<SimplePublicObjectID> $inputs */
-    #[Required(list: SimplePublicObjectID::class)]
-    public array $inputs;
+    #[Required]
+    public string $objectType;
 
     /**
      * `new CustomDeleteParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * CustomDeleteParams::with(inputs: ...)
+     * CustomDeleteParams::with(objectType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new CustomDeleteParams)->withInputs(...)
+     * (new CustomDeleteParams)->withObjectType(...)
      * ```
      */
     public function __construct()
@@ -54,25 +48,20 @@ final class CustomDeleteParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
-     *
-     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      */
-    public static function with(array $inputs): self
+    public static function with(string $objectType): self
     {
         $self = new self;
 
-        $self['inputs'] = $inputs;
+        $self['objectType'] = $objectType;
 
         return $self;
     }
 
-    /**
-     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
-     */
-    public function withInputs(array $inputs): self
+    public function withObjectType(string $objectType): self
     {
         $self = clone $this;
-        $self['inputs'] = $inputs;
+        $self['objectType'] = $objectType;
 
         return $self;
     }

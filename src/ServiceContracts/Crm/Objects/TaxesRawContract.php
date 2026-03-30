@@ -7,16 +7,13 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\Objects\Taxes\TaxCreateParams;
-use HubspotSDK\Crm\Objects\Taxes\TaxDeleteParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxGetParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxListParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxSearchParams;
 use HubspotSDK\Crm\Objects\Taxes\TaxUpdateParams;
-use HubspotSDK\Crm\Objects\Taxes\TaxUpsertParams;
+use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
@@ -31,7 +28,7 @@ interface TaxesRawContract
      * @param array<string,mixed>|TaxCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
@@ -43,14 +40,16 @@ interface TaxesRawContract
     /**
      * @api
      *
+     * @param string $taxID Path param
      * @param array<string,mixed>|TaxUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObject>
      *
      * @throws APIException
      */
     public function update(
+        string $taxID,
         array|TaxUpdateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -73,7 +72,6 @@ interface TaxesRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|TaxDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -81,8 +79,8 @@ interface TaxesRawContract
      * @throws APIException
      */
     public function delete(
-        array|TaxDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
+        string $taxID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
@@ -91,11 +89,12 @@ interface TaxesRawContract
      * @param array<string,mixed>|TaxGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSimplePublicObject>
+     * @return BaseResponse<SimplePublicObjectWithAssociations>
      *
      * @throws APIException
      */
     public function get(
+        string $taxID,
         array|TaxGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
@@ -112,21 +111,6 @@ interface TaxesRawContract
      */
     public function search(
         array|TaxSearchParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|TaxUpsertParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array|TaxUpsertParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

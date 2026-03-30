@@ -4,21 +4,19 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\Custom;
 
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 
 /**
- * Update a batch of objects by internal ID, or unique property values.
+ * Perform a partial update of an Object identified by `{objectId}`or optionally a unique property value as specified by the `idProperty` query param. `{objectId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
  * @see HubspotSDK\Services\Crm\Objects\CustomService::update()
  *
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
- *
  * @phpstan-type CustomUpdateParamsShape = array{
- *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
+ *   objectType: string, properties: array<string,string>, idProperty?: string|null
  * }
  */
 final class CustomUpdateParams implements BaseModel
@@ -27,22 +25,35 @@ final class CustomUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<SimplePublicObjectBatchInput> $inputs */
-    #[Required(list: SimplePublicObjectBatchInput::class)]
-    public array $inputs;
+    #[Required]
+    public string $objectType;
+
+    /**
+     * Key value pairs representing the properties of the object.
+     *
+     * @var array<string,string> $properties
+     */
+    #[Required(map: 'string')]
+    public array $properties;
+
+    /**
+     * The name of a property whose values are unique for this object type.
+     */
+    #[Optional]
+    public ?string $idProperty;
 
     /**
      * `new CustomUpdateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * CustomUpdateParams::with(inputs: ...)
+     * CustomUpdateParams::with(objectType: ..., properties: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new CustomUpdateParams)->withInputs(...)
+     * (new CustomUpdateParams)->withObjectType(...)->withProperties(...)
      * ```
      */
     public function __construct()
@@ -55,24 +66,51 @@ final class CustomUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
+     * @param array<string,string> $properties
      */
-    public static function with(array $inputs): self
-    {
+    public static function with(
+        string $objectType,
+        array $properties,
+        ?string $idProperty = null
+    ): self {
         $self = new self;
 
-        $self['inputs'] = $inputs;
+        $self['objectType'] = $objectType;
+        $self['properties'] = $properties;
+
+        null !== $idProperty && $self['idProperty'] = $idProperty;
+
+        return $self;
+    }
+
+    public function withObjectType(string $objectType): self
+    {
+        $self = clone $this;
+        $self['objectType'] = $objectType;
 
         return $self;
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
+     * Key value pairs representing the properties of the object.
+     *
+     * @param array<string,string> $properties
      */
-    public function withInputs(array $inputs): self
+    public function withProperties(array $properties): self
     {
         $self = clone $this;
-        $self['inputs'] = $inputs;
+        $self['properties'] = $properties;
+
+        return $self;
+    }
+
+    /**
+     * The name of a property whose values are unique for this object type.
+     */
+    public function withIDProperty(string $idProperty): self
+    {
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
         return $self;
     }

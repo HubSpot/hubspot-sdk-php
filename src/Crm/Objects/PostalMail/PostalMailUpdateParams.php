@@ -4,21 +4,17 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Objects\PostalMail;
 
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 
 /**
- * Update multiple postal mail objects in a single request.
- *
  * @see HubspotSDK\Services\Crm\Objects\PostalMailService::update()
  *
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
- *
  * @phpstan-type PostalMailUpdateParamsShape = array{
- *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
+ *   properties: array<string,string>, idProperty?: string|null
  * }
  */
 final class PostalMailUpdateParams implements BaseModel
@@ -27,22 +23,32 @@ final class PostalMailUpdateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var list<SimplePublicObjectBatchInput> $inputs */
-    #[Required(list: SimplePublicObjectBatchInput::class)]
-    public array $inputs;
+    /**
+     * Key value pairs representing the properties of the object.
+     *
+     * @var array<string,string> $properties
+     */
+    #[Required(map: 'string')]
+    public array $properties;
+
+    /**
+     * The name of a property whose values are unique for this object type.
+     */
+    #[Optional]
+    public ?string $idProperty;
 
     /**
      * `new PostalMailUpdateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PostalMailUpdateParams::with(inputs: ...)
+     * PostalMailUpdateParams::with(properties: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PostalMailUpdateParams)->withInputs(...)
+     * (new PostalMailUpdateParams)->withProperties(...)
      * ```
      */
     public function __construct()
@@ -55,24 +61,41 @@ final class PostalMailUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
+     * @param array<string,string> $properties
      */
-    public static function with(array $inputs): self
-    {
+    public static function with(
+        array $properties,
+        ?string $idProperty = null
+    ): self {
         $self = new self;
 
-        $self['inputs'] = $inputs;
+        $self['properties'] = $properties;
+
+        null !== $idProperty && $self['idProperty'] = $idProperty;
 
         return $self;
     }
 
     /**
-     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
+     * Key value pairs representing the properties of the object.
+     *
+     * @param array<string,string> $properties
      */
-    public function withInputs(array $inputs): self
+    public function withProperties(array $properties): self
     {
         $self = clone $this;
-        $self['inputs'] = $inputs;
+        $self['properties'] = $properties;
+
+        return $self;
+    }
+
+    /**
+     * The name of a property whose values are unique for this object type.
+     */
+    public function withIDProperty(string $idProperty): self
+    {
+        $self = clone $this;
+        $self['idProperty'] = $idProperty;
 
         return $self;
     }
