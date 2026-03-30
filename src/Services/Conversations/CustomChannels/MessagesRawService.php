@@ -35,6 +35,8 @@ final class MessagesRawService implements MessagesRawContract
     /**
      * @api
      *
+     * Publish a message over your custom channel
+     *
      * @param array{
      *   attachments: list<AttachmentShape>,
      *   channelAccountID: string,
@@ -79,6 +81,8 @@ final class MessagesRawService implements MessagesRawContract
     /**
      * @api
      *
+     * Update a message's status to indicate if it was successfully sent, failed to send, or was read. For failed messages, this can also include the error message for the failure.
+     *
      * @param string $messageID Path param
      * @param array{
      *   channelID: int,
@@ -119,6 +123,8 @@ final class MessagesRawService implements MessagesRawContract
 
     /**
      * @api
+     *
+     * Get the details for a specific message sent over a custom channel
      *
      * @param array{channelID: int}|MessageGetParams $params
      * @param RequestOpts|null $requestOptions

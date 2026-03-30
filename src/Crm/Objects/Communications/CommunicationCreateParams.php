@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 
 /**
- * Create a single communication (WhatsApp, SMS, LinkedIn message). Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the {objectName}, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
+ * Create a communication with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard communications is provided.
  *
  * @see HubspotSDK\Services\Crm\Objects\CommunicationsService::create()
  *

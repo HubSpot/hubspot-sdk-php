@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve existing custom event definitions.
+ *
  * @see HubspotSDK\Services\Events\DefinitionsService::list()
  *
  * @phpstan-type DefinitionListParamsShape = array{

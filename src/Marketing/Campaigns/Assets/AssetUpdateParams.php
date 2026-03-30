@@ -10,7 +10,9 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Associate an asset with a specific campaign in your HubSpot account. This operation allows you to link an asset of a specified type and ID to a campaign, facilitating better organization and tracking of campaign resources.
+ * Associate a specified asset with a campaign. Using the API, you can create associations for the following asset types: ads, blog posts, calls, case studies, CTAs, CTAs (legacy), external website pages, feedback surveys, forms, files, knowledge base articles, landing pages, marketing email, marketing events, meetings, playbooks, podcast episodes, sales documents, sales emails, sequences, SMS, social posts, static lists, videos, website pages, and workflows.
+ *
+ * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\AssetsService::update()
  *

@@ -28,7 +28,7 @@ final class PublicAPIUserActionEvent implements BaseModel
     use SdkModel;
 
     /**
-     * The unique ID of the activity.
+     * The login activity's unique ID.
      */
     #[Required]
     public string $id;
@@ -123,7 +123,7 @@ final class PublicAPIUserActionEvent implements BaseModel
     }
 
     /**
-     * The unique ID of the activity.
+     * The login activity's unique ID.
      */
     public function withID(string $id): self
     {

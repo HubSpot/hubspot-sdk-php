@@ -41,29 +41,19 @@ final class OccurrenceListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * An array of event IDs to filter by.
-     *
-     * @var list<string>|null $id
-     */
+    /** @var list<string>|null $id */
     #[Optional(list: 'string')]
     public ?array $id;
 
     /**
-     * A cursor token for pagination. Use the value from the previous response's paging.next.after field.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     #[Optional]
     public ?string $after;
 
-    /**
-     * A cursor token to retrieve results before a specific point.
-     */
     #[Optional]
     public ?string $before;
 
-    /**
-     * The type of event to filter by.
-     */
     #[Optional]
     public ?string $eventType;
 
@@ -73,49 +63,29 @@ final class OccurrenceListParams implements BaseModel
     #[Optional]
     public ?int $limit;
 
-    /**
-     * The unique identifier of the object associated with the events.
-     */
     #[Optional]
     public ?int $objectID;
 
     #[Optional]
     public ?ObjectProperty $objectProperty;
 
-    /**
-     * The type of object associated with the events.
-     */
     #[Optional]
     public ?string $objectType;
 
-    /**
-     * Filter events that occurred after this date-time.
-     */
     #[Optional]
     public ?\DateTimeInterface $occurredAfter;
 
-    /**
-     * Filter events that occurred before this date-time.
-     */
     #[Optional]
     public ?\DateTimeInterface $occurredBefore;
 
-    /**
-     * An array of property names to include in the response.
-     *
-     * @var list<string>|null $properties
-     */
+    /** @var list<string>|null $properties */
     #[Optional(list: 'string')]
     public ?array $properties;
 
     #[Optional]
     public ?Property $property;
 
-    /**
-     * An array of fields to sort the results by.
-     *
-     * @var list<string>|null $sort
-     */
+    /** @var list<string>|null $sort */
     #[Optional(list: 'string')]
     public ?array $sort;
 
@@ -170,8 +140,6 @@ final class OccurrenceListParams implements BaseModel
     }
 
     /**
-     * An array of event IDs to filter by.
-     *
      * @param list<string> $id
      */
     public function withID(array $id): self
@@ -183,7 +151,7 @@ final class OccurrenceListParams implements BaseModel
     }
 
     /**
-     * A cursor token for pagination. Use the value from the previous response's paging.next.after field.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     public function withAfter(string $after): self
     {
@@ -193,9 +161,6 @@ final class OccurrenceListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * A cursor token to retrieve results before a specific point.
-     */
     public function withBefore(string $before): self
     {
         $self = clone $this;
@@ -204,9 +169,6 @@ final class OccurrenceListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The type of event to filter by.
-     */
     public function withEventType(string $eventType): self
     {
         $self = clone $this;
@@ -226,9 +188,6 @@ final class OccurrenceListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The unique identifier of the object associated with the events.
-     */
     public function withObjectID(int $objectID): self
     {
         $self = clone $this;
@@ -249,9 +208,6 @@ final class OccurrenceListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The type of object associated with the events.
-     */
     public function withObjectType(string $objectType): self
     {
         $self = clone $this;
@@ -260,9 +216,6 @@ final class OccurrenceListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Filter events that occurred after this date-time.
-     */
     public function withOccurredAfter(\DateTimeInterface $occurredAfter): self
     {
         $self = clone $this;
@@ -271,9 +224,6 @@ final class OccurrenceListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Filter events that occurred before this date-time.
-     */
     public function withOccurredBefore(\DateTimeInterface $occurredBefore): self
     {
         $self = clone $this;
@@ -283,8 +233,6 @@ final class OccurrenceListParams implements BaseModel
     }
 
     /**
-     * An array of property names to include in the response.
-     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -307,8 +255,6 @@ final class OccurrenceListParams implements BaseModel
     }
 
     /**
-     * An array of fields to sort the results by.
-     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self

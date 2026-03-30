@@ -43,8 +43,9 @@ interface ActivityContract
     /**
      * @api
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
+     * @param int $userID Identifier of user to retrieve activities for
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicLoginAudit>
@@ -61,8 +62,11 @@ interface ActivityContract
     /**
      * @api
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
+     * @param string $after The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $fromTimestamp limit to activities created after this epoch timestamp
+     * @param int $limit The maximum number of results to display per page. Max value of limit is 200.
+     * @param int $toTimestamp limit to activities created before this epoch timestamp
+     * @param int $userID Identifier of user to retrieve activities for
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<HydratedCriticalAction>

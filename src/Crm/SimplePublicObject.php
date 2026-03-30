@@ -72,7 +72,7 @@ final class SimplePublicObject implements BaseModel
     public ?\DateTimeInterface $archivedAt;
 
     /**
-     * An identifier used for tracing the write request for the object.
+     * A unique identifier for tracing the creation request.
      */
     #[Optional('objectWriteTraceId')]
     public ?string $objectWriteTraceID;
@@ -221,7 +221,7 @@ final class SimplePublicObject implements BaseModel
     }
 
     /**
-     * An identifier used for tracing the write request for the object.
+     * A unique identifier for tracing the creation request.
      */
     public function withObjectWriteTraceID(string $objectWriteTraceID): self
     {

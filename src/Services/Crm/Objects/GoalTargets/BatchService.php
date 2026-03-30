@@ -104,7 +104,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Retrieve multiple goal targets with a single request. Goal targets are specified by ID.
+     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
      * @param list<string> $properties body param: Key-value pairs for setting properties for the new object

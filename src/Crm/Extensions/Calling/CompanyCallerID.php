@@ -24,13 +24,20 @@ final class CompanyCallerID implements BaseModel
     /** @use SdkModel<CompanyCallerIDShape> */
     use SdkModel;
 
-    /** @var value-of<CallerIDType> $callerIDType */
+    /**
+     * Specifies the type of caller ID, which is set to 'COMPANY' by default.
+     *
+     * @var value-of<CallerIDType> $callerIDType
+     */
     #[Required('callerIdType', enum: CallerIDType::class)]
     public string $callerIDType;
 
     #[Required]
     public ObjectCoordinates $objectCoordinates;
 
+    /**
+     * The name associated with the company caller ID.
+     */
     #[Optional]
     public ?string $name;
 
@@ -77,6 +84,8 @@ final class CompanyCallerID implements BaseModel
     }
 
     /**
+     * Specifies the type of caller ID, which is set to 'COMPANY' by default.
+     *
      * @param CallerIDType|value-of<CallerIDType> $callerIDType
      */
     public function withCallerIDType(CallerIDType|string $callerIDType): self
@@ -99,6 +108,9 @@ final class CompanyCallerID implements BaseModel
         return $self;
     }
 
+    /**
+     * The name associated with the company caller ID.
+     */
     public function withName(string $name): self
     {
         $self = clone $this;

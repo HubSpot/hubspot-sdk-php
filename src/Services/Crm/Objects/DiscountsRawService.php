@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Discounts\DiscountCreateParams;
 use HubspotSDK\Crm\Objects\Discounts\DiscountGetParams;
 use HubspotSDK\Crm\Objects\Discounts\DiscountListParams;
@@ -37,7 +37,7 @@ final class DiscountsRawService implements DiscountsRawContract
     /**
      * @api
      *
-     * Create a discount
+     * Create a discount with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard discounts is provided.
      *
      * @param array{
      *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
@@ -108,7 +108,7 @@ final class DiscountsRawService implements DiscountsRawContract
     /**
      * @api
      *
-     * Retrieve all discounts, using query parameters to specify the information that gets returned.
+     * List
      *
      * @param array{
      *   after?: string,
@@ -147,7 +147,7 @@ final class DiscountsRawService implements DiscountsRawContract
     /**
      * @api
      *
-     * Delete a discount.
+     * Archive
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -171,7 +171,7 @@ final class DiscountsRawService implements DiscountsRawContract
     /**
      * @api
      *
-     * Retrieve a discount by its ID (`objectId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
+     * Read an Object identified by `{discountId}`. `{discountId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
      * @param array{
      *   archived?: bool,
@@ -208,8 +208,6 @@ final class DiscountsRawService implements DiscountsRawContract
 
     /**
      * @api
-     *
-     * Search for a discount
      *
      * @param array{
      *   after: string,

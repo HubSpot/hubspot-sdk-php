@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyValue;
 
 /**
+ * Upserts a marketing event If there is an existing marketing event with the specified ID, it will be updated; otherwise a new event will be created.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::upsertByExternalEventID()
  *
  * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue

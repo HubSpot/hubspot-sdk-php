@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Delete a batch of carts by ID. Deleted carts can be restored within 90 days of deletion. Learn more about [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
+ * Archive a batch of carts identified by their IDs.
  *
  * @see HubspotSDK\Services\Crm\Objects\Carts\BatchService::delete()
  *

@@ -11,7 +11,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
 
 /**
- * Archive a batch of marketing campaigns in your HubSpot account. This operation permanently removes the specified campaigns, making them inaccessible. It is useful for cleaning up outdated or unnecessary campaigns in bulk.
+ * This endpoint deletes a batch of campaigns.
+ * The maximum number of items in a batch request is 50.
+ * The response will always be 204 No Content, regardless of whether the campaigns exist or not, whether they were successfully deleted or not, or if only some of the campaigns in the batch were deleted.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::delete()
  *

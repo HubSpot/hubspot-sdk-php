@@ -22,7 +22,15 @@ final class PipelineStagePatchInput implements BaseModel
     /** @use SdkModel<PipelineStagePatchInputShape> */
     use SdkModel;
 
-    /** @var array<string,string> $metadata */
+    /**
+     * A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
+     * @var array<string,string> $metadata
+     */
     #[Required(map: 'string')]
     public array $metadata;
 
@@ -32,6 +40,9 @@ final class PipelineStagePatchInput implements BaseModel
     #[Optional]
     public ?bool $archived;
 
+    /**
+     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     #[Optional]
     public ?int $displayOrder;
 
@@ -85,6 +96,12 @@ final class PipelineStagePatchInput implements BaseModel
     }
 
     /**
+     * A JSON object containing properties that are not present on all object pipelines.
+     *
+     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+     *
+     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+     *
      * @param array<string,string> $metadata
      */
     public function withMetadata(array $metadata): self
@@ -106,6 +123,9 @@ final class PipelineStagePatchInput implements BaseModel
         return $self;
     }
 
+    /**
+     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $self = clone $this;

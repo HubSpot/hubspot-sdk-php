@@ -13,7 +13,7 @@ use HubspotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
 use HubspotSDK\PropertyName;
 
 /**
- * Read a batch of properties.
+ * Read a provided list of properties.
  *
  * @see HubspotSDK\Services\Crm\Properties\BatchService::get()
  *

@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create a new language variation from an existing Blog Tag.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\TagsService::createLangVariation()
  *
  * @phpstan-type TagCreateLangVariationParamsShape = array{

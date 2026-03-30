@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create a new association between the specified object type and another object type. This operation requires the definition of the association attributes, such as the primary and target object type IDs.
+ *
  * @see HubspotSDK\Services\Crm\ObjectSchemasService::createAssociation()
  *
  * @phpstan-type ObjectSchemaCreateAssociationParamsShape = array{

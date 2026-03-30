@@ -21,11 +21,19 @@ final class StringFieldSchema implements BaseModel
     /** @use SdkModel<StringFieldSchemaShape> */
     use SdkModel;
 
-    /** @var value-of<Type> $type */
+    /**
+     * Indicates that the type is a string, with the default value being STRING.
+     *
+     * @var value-of<Type> $type
+     */
     #[Required(enum: Type::class)]
     public string $type;
 
-    /** @var value-of<Format>|null $format */
+    /**
+     * Specifies the format of the string, with accepted values: DATE, DATE_TIME, OBJECT_COORDINATE, TIME, URI.
+     *
+     * @var value-of<Format>|null $format
+     */
     #[Optional(enum: Format::class)]
     public ?string $format;
 
@@ -70,6 +78,8 @@ final class StringFieldSchema implements BaseModel
     }
 
     /**
+     * Indicates that the type is a string, with the default value being STRING.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -81,6 +91,8 @@ final class StringFieldSchema implements BaseModel
     }
 
     /**
+     * Specifies the format of the string, with accepted values: DATE, DATE_TIME, OBJECT_COORDINATE, TIME, URI.
+     *
      * @param Format|value-of<Format> $format
      */
     public function withFormat(Format|string $format): self

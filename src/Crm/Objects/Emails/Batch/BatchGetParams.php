@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Retrieve a batch of emails by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
+ * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
  *
  * @see HubspotSDK\Services\Crm\Objects\Emails\BatchService::get()
  *

@@ -22,15 +22,27 @@ final class BlogLanguageCloneRequestVNext implements BaseModel
     /** @use SdkModel<BlogLanguageCloneRequestVNextShape> */
     use SdkModel;
 
+    /**
+     * ID of blog to clone.
+     */
     #[Required]
     public string $id;
 
+    /**
+     * Target language of new variant.
+     */
     #[Optional]
     public ?string $language;
 
+    /**
+     * Language of primary blog to clone.
+     */
     #[Optional]
     public ?string $primaryLanguage;
 
+    /**
+     * Path to this blog.
+     */
     #[Optional]
     public ?string $slug;
 
@@ -75,6 +87,9 @@ final class BlogLanguageCloneRequestVNext implements BaseModel
         return $self;
     }
 
+    /**
+     * ID of blog to clone.
+     */
     public function withID(string $id): self
     {
         $self = clone $this;
@@ -83,6 +98,9 @@ final class BlogLanguageCloneRequestVNext implements BaseModel
         return $self;
     }
 
+    /**
+     * Target language of new variant.
+     */
     public function withLanguage(string $language): self
     {
         $self = clone $this;
@@ -91,6 +109,9 @@ final class BlogLanguageCloneRequestVNext implements BaseModel
         return $self;
     }
 
+    /**
+     * Language of primary blog to clone.
+     */
     public function withPrimaryLanguage(string $primaryLanguage): self
     {
         $self = clone $this;
@@ -99,6 +120,9 @@ final class BlogLanguageCloneRequestVNext implements BaseModel
         return $self;
     }
 
+    /**
+     * Path to this blog.
+     */
     public function withSlug(string $slug): self
     {
         $self = clone $this;

@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * Search for partner clients by filtering on properties, searching through associations, and sorting results.
+ * Execute a search for partner clients based on defined filters, properties, and sorting options. This endpoint allows you to retrieve partner client data that matches the search criteria, facilitating integration and data synchronization with third-party systems.
  *
  * @see HubspotSDK\Services\Crm\Objects\PartnerClientsService::search()
  *

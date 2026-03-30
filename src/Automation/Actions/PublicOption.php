@@ -22,15 +22,27 @@ final class PublicOption implements BaseModel
     /** @use SdkModel<PublicOptionShape> */
     use SdkModel;
 
+    /**
+     * A user-friendly label that identifies the option.
+     */
     #[Required]
     public string $label;
 
+    /**
+     * The actual value of the option.
+     */
     #[Required]
     public string $value;
 
+    /**
+     * A description of the option.
+     */
     #[Optional]
     public ?string $description;
 
+    /**
+     * The position of the option relative to others in the list.
+     */
     #[Optional]
     public ?int $displayOrder;
 
@@ -75,6 +87,9 @@ final class PublicOption implements BaseModel
         return $self;
     }
 
+    /**
+     * A user-friendly label that identifies the option.
+     */
     public function withLabel(string $label): self
     {
         $self = clone $this;
@@ -83,6 +98,9 @@ final class PublicOption implements BaseModel
         return $self;
     }
 
+    /**
+     * The actual value of the option.
+     */
     public function withValue(string $value): self
     {
         $self = clone $this;
@@ -91,6 +109,9 @@ final class PublicOption implements BaseModel
         return $self;
     }
 
+    /**
+     * A description of the option.
+     */
     public function withDescription(string $description): self
     {
         $self = clone $this;
@@ -99,6 +120,9 @@ final class PublicOption implements BaseModel
         return $self;
     }
 
+    /**
+     * The position of the option relative to others in the list.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $self = clone $this;

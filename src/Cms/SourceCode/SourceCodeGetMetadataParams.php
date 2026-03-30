@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve metadata for a specific file or folder within a specified environment in the HubSpot CMS. This endpoint is useful for obtaining detailed information about content files, such as their creation and update timestamps, and other metadata attributes.
+ * Gets the metadata object for the file at the specified path in the specified environment.
  *
  * @see HubspotSDK\Services\Cms\SourceCodeService::getMetadata()
  *
@@ -28,9 +28,6 @@ final class SourceCodeGetMetadataParams implements BaseModel
     #[Required]
     public string $environment;
 
-    /**
-     * A comma-separated list of specific metadata properties to include in the response.
-     */
     #[Optional]
     public ?string $properties;
 
@@ -79,9 +76,6 @@ final class SourceCodeGetMetadataParams implements BaseModel
         return $self;
     }
 
-    /**
-     * A comma-separated list of specific metadata properties to include in the response.
-     */
     public function withProperties(string $properties): self
     {
         $self = clone $this;

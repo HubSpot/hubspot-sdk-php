@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Updates multiple Marketing Events on the portal based on their objectId, if they exist.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::updateBatch()
  *
  * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2

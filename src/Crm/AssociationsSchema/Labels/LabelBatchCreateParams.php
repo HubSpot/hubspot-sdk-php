@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationCreateRequest;
 
 /**
- * Create multiple association definitions between two specified CRM object types in a single request.
+ * Batch configure association limits between two object types.
  *
  * @see HubspotSDK\Services\Crm\AssociationsSchema\LabelsService::batchCreate()
  *

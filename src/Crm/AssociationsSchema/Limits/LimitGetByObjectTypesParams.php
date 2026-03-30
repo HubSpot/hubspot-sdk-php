@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve the cardinality limits for associations between two specified CRM object types (i.e., one-to-many vs one-to-one).
+ * Retrieve the configuration details for associations between two specified CRM object types. Use this endpoint to understand limits that have been set for specific association types.
  *
  * @see HubspotSDK\Services\Crm\AssociationsSchema\LimitsService::getByObjectTypes()
  *

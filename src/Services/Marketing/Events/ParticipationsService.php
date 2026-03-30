@@ -34,6 +34,8 @@ final class ParticipationsService implements ParticipationsContract
     /**
      * @api
      *
+     * Read Marketing event's participations counters by externalAccountId and externalEventId pair.
+     *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
      * @param RequestOpts|null $requestOptions
@@ -56,6 +58,8 @@ final class ParticipationsService implements ParticipationsContract
     /**
      * @api
      *
+     * Read Marketing event's participations counters by internal identifier marketingEventId.
+     *
      * @param int $marketingEventID the internal id of the marketing event in HubSpot
      * @param RequestOpts|null $requestOptions
      *
@@ -73,6 +77,8 @@ final class ParticipationsService implements ParticipationsContract
 
     /**
      * @api
+     *
+     * Read Contact's participations by identifier - email or internal id.
      *
      * @param string $contactIdentifier The identifier of the Contact. It may be email or internal id.
      * @param string $after the cursor indicating the position of the last retrieved item
@@ -103,6 +109,8 @@ final class ParticipationsService implements ParticipationsContract
 
     /**
      * @api
+     *
+     * Read Marketing event's participations breakdown with optional filters by externalAccountId and externalEventId pair.
      *
      * @param string $externalEventID path param: The id of the marketing event in the external event application
      * @param string $externalAccountID path param: The accountId that is associated with this marketing event in the external event application
@@ -143,6 +151,8 @@ final class ParticipationsService implements ParticipationsContract
 
     /**
      * @api
+     *
+     * Read Marketing event's participations breakdown with optional filters by internal identifier marketingEventId.
      *
      * @param int $marketingEventID the internal id of the marketing event in HubSpot
      * @param string $after the cursor indicating the position of the last retrieved item

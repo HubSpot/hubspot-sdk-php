@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Get the list of blog tags. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\TagsService::list()
  *
  * @phpstan-type TagListParamsShape = array{

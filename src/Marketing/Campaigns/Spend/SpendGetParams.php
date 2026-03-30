@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve details of a specific campaign spend item using its spendId. This endpoint allows you to access information about the spend associated with a particular campaign, identified by the campaignGuid.
+ * Read a campaign spend item by its spendId.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::get()
  *

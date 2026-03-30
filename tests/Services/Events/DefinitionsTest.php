@@ -4,7 +4,7 @@ namespace Tests\Services\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
 use HubspotSDK\Page;
 use HubspotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -239,43 +239,6 @@ final class DefinitionsTest extends TestCase
             ExternalBehavioralEventTypeDefinition::class,
             $result
         );
-    }
-
-    #[Test]
-    public function testSend(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->definitions->send(
-            eventName: 'eventName',
-            properties: ['foo' => 'string']
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testSendWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->definitions->send(
-            eventName: 'eventName',
-            properties: ['foo' => 'string'],
-            email: 'email',
-            objectID: 'objectId',
-            occurredAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            utk: 'utk',
-            uuid: 'uuid',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
     }
 
     #[Test]

@@ -145,7 +145,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Create and update a batch of fees by a unique property. Fees that don't exist will be created, while existing fees will be updated.
+     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
      *
      * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
      * @param RequestOpts|null $requestOptions

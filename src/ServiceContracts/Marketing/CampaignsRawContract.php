@@ -6,10 +6,13 @@ namespace HubspotSDK\ServiceContracts\Marketing;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Campaigns\CampaignCreateParams;
 use HubspotSDK\Marketing\Campaigns\CampaignGetParams;
+use HubspotSDK\Marketing\Campaigns\CampaignListParams;
 use HubspotSDK\Marketing\Campaigns\CampaignUpdateParams;
 use HubspotSDK\Marketing\Campaigns\PublicCampaign;
 use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -20,7 +23,21 @@ interface CampaignsRawContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign to update
+     * @param array<string,mixed>|CampaignCreateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PublicCampaign>
+     *
+     * @throws APIException
+     */
+    public function create(
+        array|CampaignCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
      * @param array<string,mixed>|CampaignUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -37,7 +54,21 @@ interface CampaignsRawContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign to delete
+     * @param array<string,mixed>|CampaignListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<PublicCampaign>>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|CampaignListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -52,7 +83,6 @@ interface CampaignsRawContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign to retrieve
      * @param array<string,mixed>|CampaignGetParams $params
      * @param RequestOpts|null $requestOptions
      *

@@ -36,6 +36,8 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * Read a batch of deal split objects by their associated deal object internal ID
+     *
      * @param list<PublicObjectID|PublicObjectIDShape> $inputs An array of deal split inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -55,6 +57,8 @@ final class BatchService implements BatchContract
 
     /**
      * @api
+     *
+     * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
      *
      * @param list<PublicDealSplitsCreateRequest|PublicDealSplitsCreateRequestShape> $inputs An array of deal split inputs
      * @param RequestOpts|null $requestOptions

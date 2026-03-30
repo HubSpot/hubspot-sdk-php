@@ -68,6 +68,8 @@ final class DomainsRawService implements DomainsRawContract
     /**
      * @api
      *
+     * Returns a single domains with the id specified.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Domain>

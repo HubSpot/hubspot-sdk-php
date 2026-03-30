@@ -13,7 +13,12 @@ use HubspotSDK\Cms\Blogs\Authors\AuthorCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Authors\AuthorDeleteParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorDetachFromLangGroupParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorGetParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListByQueryParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorListParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListPostsByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListPostsParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListTagsByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListTagsParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorSetNewLangPrimaryParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateParams;
@@ -37,6 +42,8 @@ final class AuthorsRawService implements AuthorsRawContract
 
     /**
      * @api
+     *
+     * Create a new Blog Author.
      *
      * @param array{
      *   id: string,
@@ -85,6 +92,9 @@ final class AuthorsRawService implements AuthorsRawContract
 
     /**
      * @api
+     *
+     * Sparse updates a single Blog Author object identified by the id in the path.
+     * All the column values need not be specified. Only the that need to be modified can be specified.
      *
      * @param string $objectID Path param
      * @param array{
@@ -170,7 +180,7 @@ final class AuthorsRawService implements AuthorsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'cms/blogs/2026-03/authors',
+            path: 'cms/blogs/2026-03/authors/cursor',
             query: $parsed,
             headers: ['Accept' => '*/*'],
             options: $options,
@@ -180,6 +190,8 @@ final class AuthorsRawService implements AuthorsRawContract
 
     /**
      * @api
+     *
+     * Delete the Blog Author object identified by the id in the path.
      *
      * @param array{archived?: bool}|AuthorDeleteParams $params
      * @param RequestOpts|null $requestOptions
@@ -210,6 +222,8 @@ final class AuthorsRawService implements AuthorsRawContract
 
     /**
      * @api
+     *
+     * Attach a Blog Author to a multi-language group.
      *
      * @param array{
      *   id: string,
@@ -246,6 +260,8 @@ final class AuthorsRawService implements AuthorsRawContract
     /**
      * @api
      *
+     * Create a new language variation from an existing Blog Author.
+     *
      * @param array{
      *   id: string,
      *   blogAuthor: BlogAuthor|BlogAuthorShape,
@@ -281,6 +297,8 @@ final class AuthorsRawService implements AuthorsRawContract
     /**
      * @api
      *
+     * Detach a Blog Author from a multi-language group.
+     *
      * @param array{id: string}|AuthorDetachFromLangGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -310,6 +328,8 @@ final class AuthorsRawService implements AuthorsRawContract
 
     /**
      * @api
+     *
+     * Retrieve the Blog Author object identified by the id in the path.
      *
      * @param array{archived?: bool, property?: string}|AuthorGetParams $params
      * @param RequestOpts|null $requestOptions
@@ -342,6 +362,218 @@ final class AuthorsRawService implements AuthorsRawContract
     /**
      * @api
      *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|AuthorListByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listByQuery(
+        array|AuthorListByQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = AuthorListByQueryParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/blogs/2026-03/authors/cursor/query',
+            query: $parsed,
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|AuthorListPostsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listPosts(
+        array|AuthorListPostsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = AuthorListPostsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/blogs/2026-03/posts/cursor',
+            query: $parsed,
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|AuthorListPostsByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listPostsByQuery(
+        array|AuthorListPostsByQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = AuthorListPostsByQueryParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/blogs/2026-03/posts/cursor/query',
+            query: $parsed,
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|AuthorListTagsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listTags(
+        array|AuthorListTagsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = AuthorListTagsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/blogs/2026-03/tags/cursor',
+            query: $parsed,
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|AuthorListTagsByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listTagsByQuery(
+        array|AuthorListTagsByQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = AuthorListTagsByQueryParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/blogs/2026-03/tags/cursor/query',
+            query: $parsed,
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Set a Blog Author as the primary language of a multi-language group.
+     *
      * @param array{id: string}|AuthorSetNewLangPrimaryParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -371,6 +603,8 @@ final class AuthorsRawService implements AuthorsRawContract
 
     /**
      * @api
+     *
+     * Explicitly set new languages for each Blog Author in a multi-language group.
      *
      * @param array{
      *   languages: array<string,AuthorUpdateLanguagesParams\Language|value-of<AuthorUpdateLanguagesParams\Language>>,

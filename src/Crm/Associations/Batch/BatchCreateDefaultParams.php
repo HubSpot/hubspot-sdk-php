@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
 
 /**
- * Batch create the default (most generic) association type between two object types.
+ * Create the default (most generic) association type between two object types.
  *
  * @see HubspotSDK\Services\Crm\Associations\BatchService::createDefault()
  *

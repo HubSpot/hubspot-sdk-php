@@ -33,9 +33,9 @@ final class LabelsRawService implements LabelsRawContract
     /**
      * @api
      *
-     * Create multiple association definitions between two specified CRM object types in a single request.
+     * Batch configure association limits between two object types.
      *
-     * @param string $toObjectType path param: The type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string,
      *   inputs: list<PublicAssociationDefinitionConfigurationCreateRequest|PublicAssociationDefinitionConfigurationCreateRequestShape>,
@@ -77,7 +77,7 @@ final class LabelsRawService implements LabelsRawContract
      *
      * Create a new label that describes the relationship between two specified CRM object types. This can help in categorizing and managing associations more effectively.
      *
-     * @param string $toObjectType path param: The type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string, label: string, name: string, inverseLabel?: string
      * }|LabelCreateLabelParams $params
@@ -118,7 +118,6 @@ final class LabelsRawService implements LabelsRawContract
      *
      * Remove a specific label from the association between two CRM object types.
      *
-     * @param int $associationTypeID the unique identifier for the association type
      * @param array{
      *   fromObjectType: string, toObjectType: string
      * }|LabelDeleteLabelParams $params
@@ -161,7 +160,6 @@ final class LabelsRawService implements LabelsRawContract
      *
      * Retrieve all labels that describe the relationships between two specified CRM object types. These labels provide context about the nature of the associations.
      *
-     * @param string $toObjectType the type of the target object in the association
      * @param array{fromObjectType: string}|LabelListLabelsParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -199,7 +197,7 @@ final class LabelsRawService implements LabelsRawContract
      *
      * Update an existing label that describes the relationship between two specified CRM object types. This allows for modifications to existing association labels to better reflect the nature of the relationship.
      *
-     * @param string $toObjectType path param: The type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array{
      *   fromObjectType: string,
      *   associationTypeID: int,

@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create a pipeline stage.
+ *
  * @see HubspotSDK\Services\Crm\PipelinesService::create()
  *
  * @phpstan-type PipelineCreateParamsShape = array{
@@ -30,9 +32,15 @@ final class PipelineCreateParams implements BaseModel
     #[Required]
     public string $objectType;
 
+    /**
+     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     #[Required]
     public int $displayOrder;
 
+    /**
+     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     */
     #[Required]
     public string $label;
 
@@ -110,6 +118,9 @@ final class PipelineCreateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $self = clone $this;
@@ -118,6 +129,9 @@ final class PipelineCreateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     */
     public function withLabel(string $label): self
     {
         $self = clone $this;

@@ -16,6 +16,8 @@ use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
+ * Defines the structure and constraints of the field.
+ *
  * @phpstan-import-type IntegerFieldSchemaShape from \HubspotSDK\Automation\Actions\IntegerFieldSchema
  * @phpstan-import-type LongFieldSchemaShape from \HubspotSDK\Automation\Actions\LongFieldSchema
  * @phpstan-import-type DoubleFieldSchemaShape from \HubspotSDK\Automation\Actions\DoubleFieldSchema

@@ -36,7 +36,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Retrieve the unsubscribe-all status for a batch of subscribers in a specified channel. This endpoint is useful for checking the current unsubscribe-all status of multiple subscribers at once, helping to manage and audit communication preferences efficiently.
+     * Checks whether a set of contacts have opted out of all communications.
      *
      * @param array{
      *   channel: Channel|value-of<Channel>, inputs: list<string>, businessUnitID?: int
@@ -74,7 +74,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Retrieve the subscription statuses for multiple subscribers in a batch operation. This endpoint allows you to check the communication preferences of several subscribers at once, which is useful for managing large lists of contacts efficiently.
+     * Batch retrieve subscription statuses for a set of contacts.
      *
      * @param array{
      *   channel: BatchReadParams\Channel|value-of<BatchReadParams\Channel>,

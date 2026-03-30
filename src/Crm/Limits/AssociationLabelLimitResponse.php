@@ -7,10 +7,9 @@ namespace HubspotSDK\Crm\Limits;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ObjectTypeDefinition;
 
 /**
- * @phpstan-import-type ObjectTypeDefinitionShape from \HubspotSDK\ObjectTypeDefinition
+ * @phpstan-import-type ObjectTypeDefinitionShape from \HubspotSDK\Crm\Limits\ObjectTypeDefinition
  *
  * @phpstan-type AssociationLabelLimitResponseShape = array{
  *   allLabels: list<string>,

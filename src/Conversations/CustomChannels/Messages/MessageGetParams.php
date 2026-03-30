@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Get the details for a specific message sent over a custom channel.
+ *
  * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::get()
  *
  * @phpstan-type MessageGetParamsShape = array{channelID: int}

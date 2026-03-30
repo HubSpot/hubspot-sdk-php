@@ -40,19 +40,13 @@ final class OccurrencesService implements OccurrencesContract
      *
      * Retrieve event occurrences for the specified time frame. This endpoint allows filtering by various parameters such as object type, event type, and occurrence time. It supports pagination and sorting of results.
      *
-     * @param list<string> $id an array of event IDs to filter by
-     * @param string $after A cursor token for pagination. Use the value from the previous response's paging.next.after field.
-     * @param string $before a cursor token to retrieve results before a specific point
-     * @param string $eventType the type of event to filter by
+     * @param list<string> $id
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
-     * @param int $objectID the unique identifier of the object associated with the events
      * @param ObjectProperty|ObjectPropertyShape $objectProperty
-     * @param string $objectType the type of object associated with the events
-     * @param \DateTimeInterface $occurredAfter filter events that occurred after this date-time
-     * @param \DateTimeInterface $occurredBefore filter events that occurred before this date-time
-     * @param list<string> $properties an array of property names to include in the response
+     * @param list<string> $properties
      * @param Property|PropertyShape $property
-     * @param list<string> $sort an array of fields to sort the results by
+     * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<ExternalUnifiedEvent>
@@ -102,7 +96,9 @@ final class OccurrencesService implements OccurrencesContract
     /**
      * @api
      *
-     * Retrieve a list of visible external event type names for the specified event occurrences in March 2026. This endpoint is useful for identifying the types of events that are available for analysis or reporting within your HubSpot account.
+     * Retrieve a list of event type names. You may use these event types to query the API for event occurrences of a desired type.
+     *
+     * Note: the `get_types` method is only supported in the Python SDK version `12.0.0-beta.1` or later.
      *
      * @param RequestOpts|null $requestOptions
      *

@@ -26,20 +26,37 @@ final class CallbackCompletionBatchRequest implements BaseModel
     /** @use SdkModel<CallbackCompletionBatchRequestShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the callback.
+     */
     #[Required('callbackId')]
     public string $callbackID;
 
-    /** @var array<string,string> $outputFields */
+    /**
+     * Holds the output fields for the callback completion.
+     *
+     * @var array<string,string> $outputFields
+     */
     #[Required(map: 'string')]
     public array $outputFields;
 
+    /**
+     * Contains the typed outputs for the callback completion.
+     */
     #[Required]
     public mixed $typedOutputs;
 
+    /**
+     * Specifies the type of failure reason for the callback completion.
+     */
     #[Optional]
     public ?string $failureReasonType;
 
-    /** @var RequestContextVariants|null $requestContext */
+    /**
+     * Defines the context of the request, which can be one of several predefined types.
+     *
+     * @var RequestContextVariants|null $requestContext
+     */
     #[Optional]
     public WorkflowsRequestContext|AgentRequestContext|CopilotRequestContext|StandaloneRequestContext|TestRequestContext|null $requestContext;
 
@@ -94,6 +111,9 @@ final class CallbackCompletionBatchRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the callback.
+     */
     public function withCallbackID(string $callbackID): self
     {
         $self = clone $this;
@@ -103,6 +123,8 @@ final class CallbackCompletionBatchRequest implements BaseModel
     }
 
     /**
+     * Holds the output fields for the callback completion.
+     *
      * @param array<string,string> $outputFields
      */
     public function withOutputFields(array $outputFields): self
@@ -113,6 +135,9 @@ final class CallbackCompletionBatchRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * Contains the typed outputs for the callback completion.
+     */
     public function withTypedOutputs(mixed $typedOutputs): self
     {
         $self = clone $this;
@@ -121,6 +146,9 @@ final class CallbackCompletionBatchRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * Specifies the type of failure reason for the callback completion.
+     */
     public function withFailureReasonType(string $failureReasonType): self
     {
         $self = clone $this;
@@ -130,6 +158,8 @@ final class CallbackCompletionBatchRequest implements BaseModel
     }
 
     /**
+     * Defines the context of the request, which can be one of several predefined types.
+     *
      * @param RequestContextShape $requestContext
      */
     public function withRequestContext(

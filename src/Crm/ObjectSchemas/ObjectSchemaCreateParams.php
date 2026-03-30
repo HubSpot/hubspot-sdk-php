@@ -12,6 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 
 /**
+ * Create a new custom object schema by defining its properties and associations.
+ *
  * @see HubspotSDK\Services\Crm\ObjectSchemasService::create()
  *
  * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
@@ -36,6 +38,9 @@ final class ObjectSchemaCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Determines if the object type can include properties that are marked as sensitive.
+     */
     #[Required]
     public bool $allowsSensitiveProperties;
 
@@ -88,6 +93,9 @@ final class ObjectSchemaCreateParams implements BaseModel
     #[Required(list: 'string')]
     public array $secondaryDisplayProperties;
 
+    /**
+     * A brief explanation of the object type.
+     */
     #[Optional]
     public ?string $description;
 
@@ -174,6 +182,9 @@ final class ObjectSchemaCreateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Determines if the object type can include properties that are marked as sensitive.
+     */
     public function withAllowsSensitiveProperties(
         bool $allowsSensitiveProperties
     ): self {
@@ -271,6 +282,9 @@ final class ObjectSchemaCreateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * A brief explanation of the object type.
+     */
     public function withDescription(string $description): self
     {
         $self = clone $this;

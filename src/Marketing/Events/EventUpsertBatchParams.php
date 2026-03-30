@@ -10,6 +10,10 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Upserts multiple Marketing Events. If a Marketing Event with the specified ID already exists, it will be updated; otherwise, a new event will be created.
+ *
+ * Only Marketing Events originally created by the same app can be updated.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::upsertBatch()
  *
  * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams

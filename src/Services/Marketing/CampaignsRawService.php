@@ -7,10 +7,13 @@ namespace HubspotSDK\Services\Marketing;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Marketing\Campaigns\CampaignCreateParams;
 use HubspotSDK\Marketing\Campaigns\CampaignGetParams;
+use HubspotSDK\Marketing\Campaigns\CampaignListParams;
 use HubspotSDK\Marketing\Campaigns\CampaignUpdateParams;
 use HubspotSDK\Marketing\Campaigns\PublicCampaign;
 use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\CampaignsRawContract;
 
@@ -28,9 +31,40 @@ final class CampaignsRawService implements CampaignsRawContract
     /**
      * @api
      *
-     * Perform a partial update of a campaign identified by the specified ID. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string. Note: The 'hs_goal' property is deprecated and will be ignored if provided.
+     * Create a campaign with the specified properties and receive a copy of the campaign object, including its ID. Note that the 'hs_goal' property is deprecated and will be ignored if provided.
      *
-     * @param string $campaignGuid the unique identifier of the campaign to update
+     * @param array{properties: array<string,string>}|CampaignCreateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PublicCampaign>
+     *
+     * @throws APIException
+     */
+    public function create(
+        array|CampaignCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = CampaignCreateParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'marketing/campaigns/2026-03',
+            body: (object) $parsed,
+            options: $options,
+            convert: PublicCampaign::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Perform a partial update of a campaign identified by the specified campaignGuid. Provided property values will be overwritten. Read-only and non-existent properties will cause 400 error.
+     * If an empty string is passed for any property in the Batch Update, it will reset that property's value.
+     *
      * @param array{properties: array<string,string>}|CampaignUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -61,9 +95,47 @@ final class CampaignsRawService implements CampaignsRawContract
     /**
      * @api
      *
-     * Delete a specified campaign from the system. This operation removes the campaign identified by the provided campaignGuid from your HubSpot account.
+     * Retrieve a paginated list of campaigns from your HubSpot account. This endpoint allows you to specify sorting, pagination, and filtering options to tailor the results to your needs.
      *
-     * @param string $campaignGuid the unique identifier of the campaign to delete
+     * @param array{
+     *   after?: string,
+     *   limit?: int,
+     *   name?: string,
+     *   properties?: list<string>,
+     *   sort?: string,
+     * }|CampaignListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<PublicCampaign>>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|CampaignListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = CampaignListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'marketing/campaigns/2026-03',
+            query: $parsed,
+            options: $options,
+            convert: PublicCampaign::class,
+            page: Page::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Delete a specified campaign from the system.
+     * This call will return a 204 No Content response regardless of whether the campaignGuid provided corresponds to an existing campaign or not.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -86,9 +158,8 @@ final class CampaignsRawService implements CampaignsRawContract
     /**
      * @api
      *
-     * Read a campaign identified by a specified internal ID. This endpoint allows you to retrieve detailed information about a specific marketing campaign using its unique identifier. It supports filtering the response by specific properties and date ranges.
+     * Get a campaign identified by a specific campaignGuid with the given properties. Along with the campaign information, it also returns information about assets. Depending on the query parameters used, this can also be used to return information about the corresponding assets' metrics. Metrics are available only if startDate and endDate are provided.
      *
-     * @param string $campaignGuid the unique identifier of the campaign to retrieve
      * @param array{
      *   endDate?: string, properties?: list<string>, startDate?: string
      * }|CampaignGetParams $params

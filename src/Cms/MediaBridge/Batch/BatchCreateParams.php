@@ -18,7 +18,7 @@ use HubspotSDK\PropertyCreate;
  * @phpstan-import-type PropertyCreateShape from \HubspotSDK\PropertyCreate
  *
  * @phpstan-type BatchCreateParamsShape = array{
- *   appID: string, inputs: list<PropertyCreate|PropertyCreateShape>
+ *   appID: int, inputs: list<PropertyCreate|PropertyCreateShape>
  * }
  */
 final class BatchCreateParams implements BaseModel
@@ -28,7 +28,7 @@ final class BatchCreateParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     /** @var list<PropertyCreate> $inputs */
     #[Required(list: PropertyCreate::class)]
@@ -60,7 +60,7 @@ final class BatchCreateParams implements BaseModel
      *
      * @param list<PropertyCreate|PropertyCreateShape> $inputs
      */
-    public static function with(string $appID, array $inputs): self
+    public static function with(int $appID, array $inputs): self
     {
         $self = new self;
 
@@ -70,7 +70,7 @@ final class BatchCreateParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

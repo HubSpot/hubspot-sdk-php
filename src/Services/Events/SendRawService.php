@@ -8,29 +8,14 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
-use HubspotSDK\Events\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\ExternalObjectResolutionMappingRequest;
-use HubspotSDK\Events\Send\SendCreateEventDefinitionParams;
-use HubspotSDK\Events\Send\SendCreateEventDefinitionPropertyParams;
-use HubspotSDK\Events\Send\SendDeleteEventDefinitionPropertyParams;
-use HubspotSDK\Events\Send\SendListEventDefinitionsParams;
-use HubspotSDK\Events\Send\SendSendEventBatchParams;
-use HubspotSDK\Events\Send\SendSendEventParams;
-use HubspotSDK\Events\Send\SendUpdateEventDefinitionParams;
-use HubspotSDK\Events\Send\SendUpdateEventDefinitionPropertyParams;
-use HubspotSDK\OptionInput;
-use HubspotSDK\Page;
-use HubspotSDK\Property;
+use HubspotSDK\Events\Send\SendBatchSendParams;
+use HubspotSDK\Events\Send\SendSendParams;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Events\SendRawContract;
 
 /**
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\ExternalObjectResolutionMappingRequest
  * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
  */
 final class SendRawService implements SendRawContract
 {
@@ -43,26 +28,22 @@ final class SendRawService implements SendRawContract
     /**
      * @api
      *
+     * Send multiple event occurrences at once.
+     *
      * @param array{
-     *   includeDefaultProperties: bool,
-     *   label: string,
-     *   propertyDefinitions: list<ExternalBehavioralEventPropertyCreate|ExternalBehavioralEventPropertyCreateShape>,
-     *   customMatchingID?: ExternalObjectResolutionMappingRequest|ExternalObjectResolutionMappingRequestShape,
-     *   description?: string,
-     *   name?: string,
-     *   primaryObject?: string,
-     * }|SendCreateEventDefinitionParams $params
+     *   inputs: list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape>,
+     * }|SendBatchSendParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function createEventDefinition(
-        array|SendCreateEventDefinitionParams $params,
+    public function batchSend(
+        array|SendBatchSendParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = SendCreateEventDefinitionParams::parseRequest(
+        [$parsed, $options] = SendBatchSendParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -70,103 +51,8 @@ final class SendRawService implements SendRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'events/custom/2026-03/event-definitions',
+            path: 'events/2026-03/send/batch',
             body: (object) $parsed,
-            options: $options,
-            convert: ExternalBehavioralEventTypeDefinition::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   label: string,
-     *   type: string,
-     *   description?: string,
-     *   name?: string,
-     *   options?: list<OptionInput|OptionInputShape>,
-     * }|SendCreateEventDefinitionPropertyParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Property>
-     *
-     * @throws APIException
-     */
-    public function createEventDefinitionProperty(
-        string $eventName,
-        array|SendCreateEventDefinitionPropertyParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = SendCreateEventDefinitionPropertyParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: [
-                'events/custom/2026-03/event-definitions/%1$s/property', $eventName,
-            ],
-            body: (object) $parsed,
-            options: $options,
-            convert: Property::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function deleteEventDefinition(
-        string $eventName,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'delete',
-            path: ['events/custom/2026-03/event-definitions/%1$s', $eventName],
-            options: $requestOptions,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{eventName: string}|SendDeleteEventDefinitionPropertyParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function deleteEventDefinitionProperty(
-        string $propertyName,
-        array|SendDeleteEventDefinitionPropertyParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = SendDeleteEventDefinitionPropertyParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $eventName = $parsed['eventName'];
-        unset($parsed['eventName']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'delete',
-            path: [
-                'events/custom/2026-03/event-definitions/%1$s/property/%2$s',
-                $eventName,
-                $propertyName,
-            ],
             options: $options,
             convert: null,
         );
@@ -175,63 +61,7 @@ final class SendRawService implements SendRawContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
-     *
-     * @throws APIException
-     */
-    public function getEventDefinition(
-        string $eventName,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['events/custom/2026-03/event-definitions/%1$s', $eventName],
-            options: $requestOptions,
-            convert: ExternalBehavioralEventTypeDefinition::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   after?: string,
-     *   includeProperties?: bool,
-     *   limit?: int,
-     *   searchString?: string,
-     *   sortOrder?: string,
-     * }|SendListEventDefinitionsParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Page<ExternalBehavioralEventTypeDefinition>>
-     *
-     * @throws APIException
-     */
-    public function listEventDefinitions(
-        array|SendListEventDefinitionsParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = SendListEventDefinitionsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: 'events/custom/2026-03/event-definitions',
-            query: $parsed,
-            options: $options,
-            convert: ExternalBehavioralEventTypeDefinition::class,
-            page: Page::class,
-        );
-    }
-
-    /**
-     * @api
+     * Send data for a single custom event occurrence.
      *
      * @param array{
      *   eventName: string,
@@ -241,18 +71,18 @@ final class SendRawService implements SendRawContract
      *   occurredAt?: \DateTimeInterface,
      *   utk?: string,
      *   uuid?: string,
-     * }|SendSendEventParams $params
+     * }|SendSendParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function sendEvent(
-        array|SendSendEventParams $params,
+    public function send(
+        array|SendSendParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = SendSendEventParams::parseRequest(
+        [$parsed, $options] = SendSendParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -260,115 +90,10 @@ final class SendRawService implements SendRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'events/custom/2026-03/send',
+            path: 'events/2026-03/send',
             body: (object) $parsed,
             options: $options,
             convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   inputs: list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape>,
-     * }|SendSendEventBatchParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function sendEventBatch(
-        array|SendSendEventBatchParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = SendSendEventBatchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'events/custom/2026-03/send/batch',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   description?: string, label?: string
-     * }|SendUpdateEventDefinitionParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<ExternalBehavioralEventTypeDefinition>
-     *
-     * @throws APIException
-     */
-    public function updateEventDefinition(
-        string $eventName,
-        array|SendUpdateEventDefinitionParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = SendUpdateEventDefinitionParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'patch',
-            path: ['events/custom/2026-03/event-definitions/%1$s', $eventName],
-            body: (object) $parsed,
-            options: $options,
-            convert: ExternalBehavioralEventTypeDefinition::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param string $propertyName Path param
-     * @param array{
-     *   eventName: string,
-     *   description?: string,
-     *   label?: string,
-     *   options?: list<OptionInput|OptionInputShape>,
-     * }|SendUpdateEventDefinitionPropertyParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Property>
-     *
-     * @throws APIException
-     */
-    public function updateEventDefinitionProperty(
-        string $propertyName,
-        array|SendUpdateEventDefinitionPropertyParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = SendUpdateEventDefinitionPropertyParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $eventName = $parsed['eventName'];
-        unset($parsed['eventName']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'patch',
-            path: [
-                'events/custom/2026-03/event-definitions/%1$s/property/%2$s',
-                $eventName,
-                $propertyName,
-            ],
-            body: (object) array_diff_key($parsed, array_flip(['eventName'])),
-            options: $options,
-            convert: Property::class,
         );
     }
 }

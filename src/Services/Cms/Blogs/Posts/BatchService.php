@@ -31,6 +31,8 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * Create a batch of blog posts, specifying their content in the request body.
+     *
      * @param list<mixed> $inputs blog posts to input
      * @param RequestOpts|null $requestOptions
      *
@@ -50,6 +52,8 @@ final class BatchService implements BatchContract
 
     /**
      * @api
+     *
+     * Update a batch of blog posts.
      *
      * @param list<mixed> $inputs body param: JSON nodes to input
      * @param bool $archived query param: Whether to return only results that have been archived
@@ -73,6 +77,9 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * Delete a blog post by ID.
+     * Note: This is not the same as the in-app `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to `true`.
+     *
      * @param list<string> $inputs strings to input
      * @param RequestOpts|null $requestOptions
      *
@@ -92,6 +99,8 @@ final class BatchService implements BatchContract
 
     /**
      * @api
+     *
+     * Retrieve a batch of blog posts by ID. identified in the request body.
      *
      * @param list<string> $inputs body param: Strings to input
      * @param bool $archived query param: Whether to return only results that have been archived

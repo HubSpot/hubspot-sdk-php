@@ -34,7 +34,7 @@ final class URLRedirectListParams implements BaseModel
     use SdkParams;
 
     /**
-     * A cursor token for pagination. Use the value from the previous response's paging.next.after field.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     #[Optional]
     public ?string $after;
@@ -45,21 +45,12 @@ final class URLRedirectListParams implements BaseModel
     #[Optional]
     public ?bool $archived;
 
-    /**
-     * Filter redirects created after a specific timestamp. Format must be date-time.
-     */
     #[Optional]
     public ?\DateTimeInterface $createdAfter;
 
-    /**
-     * Filter redirects by their exact creation timestamp. Format must be date-time.
-     */
     #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    /**
-     * Filter redirects created before a specific timestamp. Format must be date-time.
-     */
     #[Optional]
     public ?\DateTimeInterface $createdBefore;
 
@@ -69,29 +60,16 @@ final class URLRedirectListParams implements BaseModel
     #[Optional]
     public ?int $limit;
 
-    /**
-     * Specify the order in which to sort the results. Accepts an array of strings.
-     *
-     * @var list<string>|null $sort
-     */
+    /** @var list<string>|null $sort */
     #[Optional(list: 'string')]
     public ?array $sort;
 
-    /**
-     * Filter redirects updated after a specific timestamp. Format must be date-time.
-     */
     #[Optional]
     public ?\DateTimeInterface $updatedAfter;
 
-    /**
-     * Filter redirects by their exact update timestamp. Format must be date-time.
-     */
     #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
-    /**
-     * Filter redirects updated before a specific timestamp. Format must be date-time.
-     */
     #[Optional]
     public ?\DateTimeInterface $updatedBefore;
 
@@ -136,7 +114,7 @@ final class URLRedirectListParams implements BaseModel
     }
 
     /**
-     * A cursor token for pagination. Use the value from the previous response's paging.next.after field.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     public function withAfter(string $after): self
     {
@@ -157,9 +135,6 @@ final class URLRedirectListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Filter redirects created after a specific timestamp. Format must be date-time.
-     */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $self = clone $this;
@@ -168,9 +143,6 @@ final class URLRedirectListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Filter redirects by their exact creation timestamp. Format must be date-time.
-     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $self = clone $this;
@@ -179,9 +151,6 @@ final class URLRedirectListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Filter redirects created before a specific timestamp. Format must be date-time.
-     */
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $self = clone $this;
@@ -202,8 +171,6 @@ final class URLRedirectListParams implements BaseModel
     }
 
     /**
-     * Specify the order in which to sort the results. Accepts an array of strings.
-     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
@@ -214,9 +181,6 @@ final class URLRedirectListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Filter redirects updated after a specific timestamp. Format must be date-time.
-     */
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $self = clone $this;
@@ -225,9 +189,6 @@ final class URLRedirectListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Filter redirects by their exact update timestamp. Format must be date-time.
-     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $self = clone $this;
@@ -236,9 +197,6 @@ final class URLRedirectListParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Filter redirects updated before a specific timestamp. Format must be date-time.
-     */
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $self = clone $this;

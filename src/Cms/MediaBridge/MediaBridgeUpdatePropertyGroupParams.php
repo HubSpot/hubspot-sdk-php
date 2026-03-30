@@ -16,10 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridgeService::updatePropertyGroup()
  *
  * @phpstan-type MediaBridgeUpdatePropertyGroupParamsShape = array{
- *   appID: string,
- *   objectType: string,
- *   displayOrder?: int|null,
- *   label?: string|null,
+ *   appID: int, objectType: string, displayOrder?: int|null, label?: string|null
  * }
  */
 final class MediaBridgeUpdatePropertyGroupParams implements BaseModel
@@ -29,7 +26,7 @@ final class MediaBridgeUpdatePropertyGroupParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     #[Required]
     public string $objectType;
@@ -65,7 +62,7 @@ final class MediaBridgeUpdatePropertyGroupParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $appID,
+        int $appID,
         string $objectType,
         ?int $displayOrder = null,
         ?string $label = null,
@@ -81,7 +78,7 @@ final class MediaBridgeUpdatePropertyGroupParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

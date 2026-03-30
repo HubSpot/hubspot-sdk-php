@@ -29,11 +29,7 @@ final class BatchUnsubscribeAllParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * A required string specifying the communication channel. Currently, only 'EMAIL' is supported.
-     *
-     * @var value-of<Channel> $channel
-     */
+    /** @var value-of<Channel> $channel */
     #[Required(enum: Channel::class)]
     public string $channel;
 
@@ -45,15 +41,9 @@ final class BatchUnsubscribeAllParams implements BaseModel
     #[Required(list: 'string')]
     public array $inputs;
 
-    /**
-     * The ID of the business unit to which the operation applies. It is an optional parameter.
-     */
     #[Optional]
     public ?int $businessUnitID;
 
-    /**
-     * A boolean indicating whether to include detailed information in the response. Defaults to false.
-     */
     #[Optional]
     public ?bool $verbose;
 
@@ -102,8 +92,6 @@ final class BatchUnsubscribeAllParams implements BaseModel
     }
 
     /**
-     * A required string specifying the communication channel. Currently, only 'EMAIL' is supported.
-     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -127,9 +115,6 @@ final class BatchUnsubscribeAllParams implements BaseModel
         return $self;
     }
 
-    /**
-     * The ID of the business unit to which the operation applies. It is an optional parameter.
-     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;
@@ -138,9 +123,6 @@ final class BatchUnsubscribeAllParams implements BaseModel
         return $self;
     }
 
-    /**
-     * A boolean indicating whether to include detailed information in the response. Defaults to false.
-     */
     public function withVerbose(bool $verbose): self
     {
         $self = clone $this;

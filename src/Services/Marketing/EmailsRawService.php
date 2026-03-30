@@ -115,6 +115,8 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
+     * Change properties of a marketing email.
+     *
      * @param string $emailID Path param
      * @param array{
      *   archived?: bool,
@@ -221,6 +223,8 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
+     * Delete a marketing email by its ID
+     *
      * @param array{archived?: bool}|EmailDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -250,6 +254,8 @@ final class EmailsRawService implements EmailsRawContract
 
     /**
      * @api
+     *
+     * This will create a duplicate email with the same properties as the original, with the exception of a unique ID.
      *
      * @param array{
      *   id: string, cloneName?: string, language?: string
@@ -282,6 +288,8 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
+     * Create a variation of a marketing email for an A/B test. The new variation will be created as a draft. If an active variation already exists, a new one won't be created.
+     *
      * @param array{
      *   contentID: string, variationName: string
      * }|EmailCreateAbTestVariationParams $params
@@ -312,6 +320,8 @@ final class EmailsRawService implements EmailsRawContract
 
     /**
      * @api
+     *
+     * Use this endpoint to get aggregated statistics of emails sent in a specified time span. It also returns the list of emails that were sent during the time span.
      *
      * @param array{
      *   emailIDs?: list<int>,
@@ -346,6 +356,8 @@ final class EmailsRawService implements EmailsRawContract
 
     /**
      * @api
+     *
+     * This endpoint lets you obtain the variation of an A/B marketing email. If the email is variation A (master) it will return variation B (variant) and vice versa.
      *
      * @param array{
      *   archived?: bool,
@@ -384,6 +396,8 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
+     * Get the draft version of an email (if it exists). If no draft version exists, the published email is returned.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicEmail>
@@ -405,6 +419,8 @@ final class EmailsRawService implements EmailsRawContract
 
     /**
      * @api
+     *
+     * Get aggregated statistics in intervals for a specified time span. Each interval contains aggregated statistics of the emails that were sent in that time.
      *
      * @param array{
      *   emailIDs?: list<int>,
@@ -440,6 +456,8 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
+     * Get a specific revision of a marketing email.
+     *
      * @param array{emailID: string}|EmailGetRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -472,6 +490,8 @@ final class EmailsRawService implements EmailsRawContract
 
     /**
      * @api
+     *
+     * Get a list of all versions of a marketing email, with each entry including the full state of that particular version. To view the most recent version, sort by the updatedAt parameter.
      *
      * @param array{
      *   after?: string, before?: string, limit?: int
@@ -506,6 +526,8 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
+     * If you have a Marketing Hub Enterprise account or the transactional email add-on, you can use this endpoint to publish an automated email or send/schedule a regular email.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -528,6 +550,8 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
+     * Resets the draft back to a copy of the live object.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -549,6 +573,8 @@ final class EmailsRawService implements EmailsRawContract
 
     /**
      * @api
+     *
+     * Restores a previous revision of a marketing email. The current revision becomes old, and the restored revision is given a new version number.
      *
      * @param array{emailID: string}|EmailRestoreRevisionParams $params
      * @param RequestOpts|null $requestOptions
@@ -585,6 +611,9 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
+     * Restores a previous revision of a marketing email to DRAFT state. If there is currently something in the draft for that object, it is overwritten.
+     *
+     * @param int $revisionID the ID of the revision
      * @param array{emailID: string}|EmailRestoreRevisionToDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -620,6 +649,8 @@ final class EmailsRawService implements EmailsRawContract
     /**
      * @api
      *
+     * If you have a Marketing Hub Enterprise account or the transactional email add-on, you can use this endpoint to unpublish an automated email or cancel a regular email. If the email is already in the process of being sent, canceling might not be possible.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -641,6 +672,8 @@ final class EmailsRawService implements EmailsRawContract
 
     /**
      * @api
+     *
+     * Create or update the draft version of a marketing email. If no draft exists, the system creates a draft from the current “live” email then applies the request body to that draft. The draft version only lives on the buffer—the email is not cloned.
      *
      * @param array{
      *   activeDomain?: string,

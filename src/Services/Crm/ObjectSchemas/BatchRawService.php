@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Crm\ObjectSchemas;
 
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\ObjectSchemas\Batch\BatchGetParams;
+use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\ObjectSchemas\BatchRawContract;
 
@@ -25,6 +25,8 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
+     *
+     * Retrieve details of multiple custom object schemas by providing a batch request with specified inputs. This operation allows you to fetch schema information, including properties and associations, for multiple custom objects in a single API call.
      *
      * @param array{
      *   includeAssociationDefinitions: bool,

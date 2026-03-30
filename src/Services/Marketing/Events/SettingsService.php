@@ -32,6 +32,8 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
+     * Create or update the current settings for the application.
+     *
      * @param string $eventDetailsURL The url that will be used to fetch marketing event details by id. Must contain a `%s` character sequence that will be substituted with the event id. For example: `https://my.event.app/events/%s`
      * @param RequestOpts|null $requestOptions
      *
@@ -52,6 +54,8 @@ final class SettingsService implements SettingsContract
 
     /**
      * @api
+     *
+     * Retrieve the current settings for the application.
      *
      * @param RequestOpts|null $requestOptions
      *

@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update a specific custom event definition by name.
+ *
  * @see HubspotSDK\Services\Events\DefinitionsService::update()
  *
  * @phpstan-type DefinitionUpdateParamsShape = array{

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Cms\MediaBridge;
 
-use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\Batch\BatchGetParams\DataSensitivity;
+use HubspotSDK\Cms\MediaBridge\BatchResponseProperty;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\PropertyCreate;
@@ -40,7 +40,7 @@ final class BatchService implements BatchContract
      * Create a batch of properties of the specified object type.
      *
      * @param string $objectType Path param
-     * @param string $appID Path param
+     * @param int $appID Path param
      * @param list<PropertyCreate|PropertyCreateShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -48,7 +48,7 @@ final class BatchService implements BatchContract
      */
     public function create(
         string $objectType,
-        string $appID,
+        int $appID,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
     ): BatchResponseProperty {
@@ -66,7 +66,7 @@ final class BatchService implements BatchContract
      * Archive a batch of existing properties for the specified types.
      *
      * @param string $objectType Path param
-     * @param string $appID Path param
+     * @param int $appID Path param
      * @param list<PropertyName|PropertyNameShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -74,7 +74,7 @@ final class BatchService implements BatchContract
      */
     public function delete(
         string $objectType,
-        string $appID,
+        int $appID,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
     ): mixed {
@@ -92,7 +92,7 @@ final class BatchService implements BatchContract
      * Get the details for a batch of properties for a specified object type.
      *
      * @param string $objectType Path param
-     * @param string $appID Path param
+     * @param int $appID Path param
      * @param bool $archived Body param
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity Body param
      * @param list<PropertyName|PropertyNameShape> $inputs Body param
@@ -102,7 +102,7 @@ final class BatchService implements BatchContract
      */
     public function get(
         string $objectType,
-        string $appID,
+        int $appID,
         bool $archived,
         DataSensitivity|string $dataSensitivity,
         array $inputs,

@@ -22,7 +22,7 @@ use HubspotSDK\OptionInput;
  * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
  *
  * @phpstan-type MediaBridgeCreatePropertyParamsShape = array{
- *   appID: string,
+ *   appID: int,
  *   fieldType: FieldType|value-of<FieldType>,
  *   groupName: string,
  *   label: string,
@@ -47,7 +47,7 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     /** @var value-of<FieldType> $fieldType */
     #[Required(enum: FieldType::class)]
@@ -136,7 +136,7 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
      * @param list<OptionInput|OptionInputShape>|null $options
      */
     public static function with(
-        string $appID,
+        int $appID,
         FieldType|string $fieldType,
         string $groupName,
         string $label,
@@ -176,7 +176,7 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

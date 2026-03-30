@@ -25,7 +25,7 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
     use SdkModel;
 
     /**
-     * An array of ExternalUnifiedEvent objects, each representing an individual event occurrence.
+     * An array of ExternalUnifiedEvent objects, each representing an individual event with its associated details.
      *
      * @var list<ExternalUnifiedEvent> $results
      */
@@ -76,7 +76,7 @@ final class CollectionResponseExternalUnifiedEvent implements BaseModel
     }
 
     /**
-     * An array of ExternalUnifiedEvent objects, each representing an individual event occurrence.
+     * An array of ExternalUnifiedEvent objects, each representing an individual event with its associated details.
      *
      * @param list<ExternalUnifiedEvent|ExternalUnifiedEventShape> $results
      */

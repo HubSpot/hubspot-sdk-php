@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve the brands that a specific user can access.
+ *
  * @see HubspotSDK\Services\BusinessUnits\BusinessUnitsService::getByUserID()
  *
  * @phpstan-type BusinessUnitGetByUserIDParamsShape = array{

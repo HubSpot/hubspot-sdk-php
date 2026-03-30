@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update the recording settings for a specific app using the provided app ID.
+ *
  * @see HubspotSDK\Services\Crm\Extensions\CallingService::update()
  *
  * @phpstan-type CallingUpdateParamsShape = array{

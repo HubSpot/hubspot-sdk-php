@@ -10,7 +10,12 @@ use HubspotSDK\Cms\Blogs\Authors\AuthorCreateParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorDeleteParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorDetachFromLangGroupParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorGetParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListByQueryParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorListParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListPostsByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListPostsParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListTagsByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorListTagsParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorSetNewLangPrimaryParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateParams;
@@ -144,6 +149,81 @@ interface AuthorsRawContract
     public function get(
         string $objectID,
         array|AuthorGetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|AuthorListByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listByQuery(
+        array|AuthorListByQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|AuthorListPostsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listPosts(
+        array|AuthorListPostsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|AuthorListPostsByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listPostsByQuery(
+        array|AuthorListPostsByQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|AuthorListTagsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listTags(
+        array|AuthorListTagsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|AuthorListTagsByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listTagsByQuery(
+        array|AuthorListTagsByQueryParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

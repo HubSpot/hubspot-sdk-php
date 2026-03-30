@@ -35,6 +35,58 @@ final class FoldersTest extends TestCase
     }
 
     #[Test]
+    public function testDeleteByID(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->folders->deleteByID('321669910225');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testDeleteByPath(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->folders->deleteByPath('folderPath');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testGetByID(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->folders->getByID('321669910225');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Folder::class, $result);
+    }
+
+    #[Test]
+    public function testGetByPath(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->files->folders->getByPath('folderPath');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Folder::class, $result);
+    }
+
+    #[Test]
     public function testGetUpdateAsyncStatus(): void
     {
         if (UnsupportedMockTests::$skip) {

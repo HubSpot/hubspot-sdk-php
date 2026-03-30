@@ -7,21 +7,21 @@ namespace HubspotSDK\Automation\Actions;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
 use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
+use HubspotSDK\AutomationActionsOption;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Option;
 
 /**
  * @phpstan-import-type SchemaVariants from \HubspotSDK\Automation\Actions\FieldTypeDefinition\Schema
- * @phpstan-import-type OptionShape from \HubspotSDK\Option
+ * @phpstan-import-type AutomationActionsOptionShape from \HubspotSDK\AutomationActionsOption
  * @phpstan-import-type SchemaShape from \HubspotSDK\Automation\Actions\FieldTypeDefinition\Schema
  *
  * @phpstan-type FieldTypeDefinitionShape = array{
  *   externalOptions: bool,
  *   name: string,
- *   options: list<Option|OptionShape>,
+ *   options: list<AutomationActionsOption|AutomationActionsOptionShape>,
  *   schema: SchemaShape,
  *   type: Type|value-of<Type>,
  *   useChirp: bool,
@@ -39,47 +39,87 @@ final class FieldTypeDefinition implements BaseModel
     /** @use SdkModel<FieldTypeDefinitionShape> */
     use SdkModel;
 
+    /**
+     * Indicates whether the field's options are sourced externally.
+     */
     #[Required]
     public bool $externalOptions;
 
+    /**
+     * The unique identifier for the field.
+     */
     #[Required]
     public string $name;
 
-    /** @var list<Option> $options */
-    #[Required(list: Option::class)]
+    /** @var list<AutomationActionsOption> $options */
+    #[Required(list: AutomationActionsOption::class)]
     public array $options;
 
-    /** @var SchemaVariants $schema */
+    /**
+     * Defines the structure and constraints of the field.
+     *
+     * @var SchemaVariants $schema
+     */
     #[Required]
     public IntegerFieldSchema|LongFieldSchema|DoubleFieldSchema|StringFieldSchema|BooleanFieldSchema|ArrayFieldSchema|ObjectFieldSchema $schema;
 
-    /** @var value-of<Type> $type */
+    /**
+     * Specifies the data type of the field, with accepted values like bool, date, datetime, enumeration, json, number, object_coordinates, phone_number, string.
+     *
+     * @var value-of<Type> $type
+     */
     #[Required(enum: Type::class)]
     public string $type;
 
+    /**
+     * Specifies whether the field uses the Chirp feature.
+     */
     #[Required]
     public bool $useChirp;
 
+    /**
+     * A detailed explanation of the field's purpose and usage.
+     */
     #[Optional]
     public ?string $description;
 
+    /**
+     * Specifies the type of external reference for options.
+     */
     #[Optional]
     public ?string $externalOptionsReferenceType;
 
-    /** @var value-of<FieldType>|null $fieldType */
+    /**
+     * Describes the field's type in the UI, with accepted values like booleancheckbox, calculation_equation, checkbox, date, file, html, number, phonenumber, radio, select, text, textarea, unknown.
+     *
+     * @var value-of<FieldType>|null $fieldType
+     */
     #[Optional(enum: FieldType::class)]
     public ?string $fieldType;
 
+    /**
+     * Additional information or guidance about the field.
+     */
     #[Optional]
     public ?string $helpText;
 
+    /**
+     * The user-friendly label for the field.
+     */
     #[Optional]
     public ?string $label;
 
+    /**
+     * A URL that provides options for the field.
+     */
     #[Optional('optionsUrl')]
     public ?string $optionsURL;
 
-    /** @var value-of<ReferencedObjectType>|null $referencedObjectType */
+    /**
+     * Indicates the type of object that the field references, with accepted values like OWNER.
+     *
+     * @var value-of<ReferencedObjectType>|null $referencedObjectType
+     */
     #[Optional(enum: ReferencedObjectType::class)]
     public ?string $referencedObjectType;
 
@@ -120,7 +160,7 @@ final class FieldTypeDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option|OptionShape> $options
+     * @param list<AutomationActionsOption|AutomationActionsOptionShape> $options
      * @param SchemaShape $schema
      * @param Type|value-of<Type> $type
      * @param FieldType|value-of<FieldType>|null $fieldType
@@ -161,6 +201,9 @@ final class FieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether the field's options are sourced externally.
+     */
     public function withExternalOptions(bool $externalOptions): self
     {
         $self = clone $this;
@@ -169,6 +212,9 @@ final class FieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the field.
+     */
     public function withName(string $name): self
     {
         $self = clone $this;
@@ -178,7 +224,7 @@ final class FieldTypeDefinition implements BaseModel
     }
 
     /**
-     * @param list<Option|OptionShape> $options
+     * @param list<AutomationActionsOption|AutomationActionsOptionShape> $options
      */
     public function withOptions(array $options): self
     {
@@ -189,6 +235,8 @@ final class FieldTypeDefinition implements BaseModel
     }
 
     /**
+     * Defines the structure and constraints of the field.
+     *
      * @param SchemaShape $schema
      */
     public function withSchema(
@@ -201,6 +249,8 @@ final class FieldTypeDefinition implements BaseModel
     }
 
     /**
+     * Specifies the data type of the field, with accepted values like bool, date, datetime, enumeration, json, number, object_coordinates, phone_number, string.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -211,6 +261,9 @@ final class FieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * Specifies whether the field uses the Chirp feature.
+     */
     public function withUseChirp(bool $useChirp): self
     {
         $self = clone $this;
@@ -219,6 +272,9 @@ final class FieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * A detailed explanation of the field's purpose and usage.
+     */
     public function withDescription(string $description): self
     {
         $self = clone $this;
@@ -227,6 +283,9 @@ final class FieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * Specifies the type of external reference for options.
+     */
     public function withExternalOptionsReferenceType(
         string $externalOptionsReferenceType
     ): self {
@@ -237,6 +296,8 @@ final class FieldTypeDefinition implements BaseModel
     }
 
     /**
+     * Describes the field's type in the UI, with accepted values like booleancheckbox, calculation_equation, checkbox, date, file, html, number, phonenumber, radio, select, text, textarea, unknown.
+     *
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public function withFieldType(FieldType|string $fieldType): self
@@ -247,6 +308,9 @@ final class FieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * Additional information or guidance about the field.
+     */
     public function withHelpText(string $helpText): self
     {
         $self = clone $this;
@@ -255,6 +319,9 @@ final class FieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * The user-friendly label for the field.
+     */
     public function withLabel(string $label): self
     {
         $self = clone $this;
@@ -263,6 +330,9 @@ final class FieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * A URL that provides options for the field.
+     */
     public function withOptionsURL(string $optionsURL): self
     {
         $self = clone $this;
@@ -272,6 +342,8 @@ final class FieldTypeDefinition implements BaseModel
     }
 
     /**
+     * Indicates the type of object that the field references, with accepted values like OWNER.
+     *
      * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
      */
     public function withReferencedObjectType(

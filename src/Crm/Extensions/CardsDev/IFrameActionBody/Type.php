@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm\Extensions\CardsDev\IFrameActionBody;
 
 /**
- * Specifies the type of action, which is 'IFRAME' for iframe actions.
+ * The type of status.
  */
 enum Type: string
 {

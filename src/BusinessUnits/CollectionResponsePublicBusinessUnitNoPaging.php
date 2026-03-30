@@ -7,13 +7,12 @@ namespace HubspotSDK\BusinessUnits;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Campaigns\PublicBusinessUnit;
 
 /**
- * @phpstan-import-type PublicBusinessUnitShape from \HubspotSDK\Marketing\Campaigns\PublicBusinessUnit
+ * @phpstan-import-type PublicBusinessUnitShape from \HubspotSDK\BusinessUnits\PublicBusinessUnit
  *
  * @phpstan-type CollectionResponsePublicBusinessUnitNoPagingShape = array{
- *   results: list<\HubspotSDK\Marketing\Campaigns\PublicBusinessUnit|PublicBusinessUnitShape>,
+ *   results: list<PublicBusinessUnit|PublicBusinessUnitShape>
  * }
  */
 final class CollectionResponsePublicBusinessUnitNoPaging implements BaseModel

@@ -40,7 +40,7 @@ final class IFrameActionBody implements BaseModel
     public array $propertyNamesIncluded;
 
     /**
-     * Specifies the type of action, which is 'IFRAME' for iframe actions.
+     * The type of status.
      *
      * @var value-of<Type> $type
      */
@@ -60,7 +60,7 @@ final class IFrameActionBody implements BaseModel
     public int $width;
 
     /**
-     * The label for the button that opens the iframen as it will be displayed to users.
+     * The label for this property as you'd like it displayed to users.
      */
     #[Optional]
     public ?string $label;
@@ -146,7 +146,7 @@ final class IFrameActionBody implements BaseModel
     }
 
     /**
-     * Specifies the type of action, which is 'IFRAME' for iframe actions.
+     * The type of status.
      *
      * @param Type|value-of<Type> $type
      */
@@ -181,7 +181,7 @@ final class IFrameActionBody implements BaseModel
     }
 
     /**
-     * The label for the button that opens the iframen as it will be displayed to users.
+     * The label for this property as you'd like it displayed to users.
      */
     public function withLabel(string $label): self
     {

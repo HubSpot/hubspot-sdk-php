@@ -72,7 +72,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Batch update multiple subscription objects in a single batch operation, allowing for efficient modifications of CRM subscription records.
+     * Update multiple subscription objects in a single batch operation, allowing for efficient modifications of CRM subscription records.
      *
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>
@@ -138,7 +138,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Retrieve a batch of commerce subscriptions by their IDs, including specified properties and their histories.
+     * Retrieve a batch of CRM subscription objects by their IDs, including specified properties and their histories.
      *
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,

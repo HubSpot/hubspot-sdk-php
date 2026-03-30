@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Schedule a blog post to be published at a specified time.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\PostsService::schedule()
  *
  * @phpstan-type PostScheduleParamsShape = array{

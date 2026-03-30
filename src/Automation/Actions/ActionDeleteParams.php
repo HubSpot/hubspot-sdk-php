@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Archive a function for a specific definition.
+ *
  * @see HubspotSDK\Services\Automation\ActionsService::delete()
  *
  * @phpstan-type ActionDeleteParamsShape = array{

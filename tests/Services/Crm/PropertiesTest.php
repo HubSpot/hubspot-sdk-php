@@ -3,8 +3,8 @@
 namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;

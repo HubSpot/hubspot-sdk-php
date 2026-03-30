@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientGetParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientListParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientSearchParams;
@@ -148,7 +148,7 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
     /**
      * @api
      *
-     * Search for partner clients by filtering on properties, searching through associations, and sorting results.
+     * Execute a search for partner clients based on defined filters, properties, and sorting options. This endpoint allows you to retrieve partner client data that matches the search criteria, facilitating integration and data synchronization with third-party systems.
      *
      * @param array{
      *   after: string,

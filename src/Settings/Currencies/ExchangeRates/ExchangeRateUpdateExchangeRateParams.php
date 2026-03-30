@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update an existing conversion rate, specified by its ID.
+ *
  * @see HubspotSDK\Services\Settings\Currencies\ExchangeRatesService::updateExchangeRate()
  *
  * @phpstan-type ExchangeRateUpdateExchangeRateParamsShape = array{

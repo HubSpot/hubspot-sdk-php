@@ -41,8 +41,8 @@ interface BatchContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: Specifies the type of the target object in the batch association deletion
-     * @param string $fromObjectType path param: Specifies the type of the source object in the batch association deletion
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicAssociationMultiArchive|PublicAssociationMultiArchiveShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -58,8 +58,8 @@ interface BatchContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: Specifies the type of the target object in the association
-     * @param string $fromObjectType path param: Specifies the type of the source object in the association
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicDefaultAssociationMultiPost|PublicDefaultAssociationMultiPostShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -75,8 +75,8 @@ interface BatchContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param: The type of the to Object
-     * @param string $fromObjectType Path param: The type of the from Object
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicAssociationMultiPost|PublicAssociationMultiPostShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -92,8 +92,8 @@ interface BatchContract
     /**
      * @api
      *
-     * @param string $toObjectType Path param: The type of the to Object
-     * @param string $fromObjectType Path param: The type of the from Object
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicFetchAssociationsBatchRequest|PublicFetchAssociationsBatchRequestShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *

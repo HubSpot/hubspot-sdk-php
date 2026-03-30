@@ -11,7 +11,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
 
 /**
- * Update a batch of marketing campaigns with specified properties. This endpoint allows you to modify multiple campaigns in one request. Note that the 'hs_goal' property is deprecated and will be ignored if provided.
+ * This endpoint updates a batch of campaigns based on the provided input data.
+ * The maximum number of items in a batch request is 50.
+ * If an empty string ("") is passed for any property in the Batch Update, it will reset that property's value.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::update()
  *

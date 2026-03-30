@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Crm\FeatureFlags\FlagPutRequest;
+
+/**
+ * The state that the flag should have if there are no overrides for a particular portal.
+ */
+enum DefaultState: string
+{
+    case ABSENT = 'ABSENT';
+
+    case OFF = 'OFF';
+
+    case ON = 'ON';
+}

@@ -38,6 +38,9 @@ final class PublicActionDefinitionEgg implements BaseModel
     /** @use SdkModel<PublicActionDefinitionEggShape> */
     use SdkModel;
 
+    /**
+     * The URL endpoint where the action is executed.
+     */
     #[Required('actionUrl')]
     public string $actionURL;
 
@@ -49,7 +52,11 @@ final class PublicActionDefinitionEgg implements BaseModel
     #[Required(list: PublicInputFieldDefinition::class)]
     public array $inputFields;
 
-    /** @var array<string,PublicActionLabels> $labels */
+    /**
+     * Holds various labels associated with the action, including names and descriptions.
+     *
+     * @var array<string,PublicActionLabels> $labels
+     */
     #[Required(map: PublicActionLabels::class)]
     public array $labels;
 
@@ -57,9 +64,15 @@ final class PublicActionDefinitionEgg implements BaseModel
     #[Required(list: 'string')]
     public array $objectTypes;
 
+    /**
+     * Indicates whether the action is published and available for use.
+     */
     #[Required]
     public bool $published;
 
+    /**
+     * The timestamp indicating when the action was archived.
+     */
     #[Optional]
     public ?int $archivedAt;
 
@@ -155,6 +168,9 @@ final class PublicActionDefinitionEgg implements BaseModel
         return $self;
     }
 
+    /**
+     * The URL endpoint where the action is executed.
+     */
     public function withActionURL(string $actionURL): self
     {
         $self = clone $this;
@@ -186,6 +202,8 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
+     * Holds various labels associated with the action, including names and descriptions.
+     *
      * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels
      */
     public function withLabels(array $labels): self
@@ -207,6 +225,9 @@ final class PublicActionDefinitionEgg implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether the action is published and available for use.
+     */
     public function withPublished(bool $published): self
     {
         $self = clone $this;
@@ -215,6 +236,9 @@ final class PublicActionDefinitionEgg implements BaseModel
         return $self;
     }
 
+    /**
+     * The timestamp indicating when the action was archived.
+     */
     public function withArchivedAt(int $archivedAt): self
     {
         $self = clone $this;

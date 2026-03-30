@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Crm\Properties;
 
-use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Properties\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Properties\Batch\BatchGetParams;
+use HubspotSDK\Crm\Properties\BatchResponseProperty;
 use HubspotSDK\RequestOptions;
 
 /**

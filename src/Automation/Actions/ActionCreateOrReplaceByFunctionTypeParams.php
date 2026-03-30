@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Add a function for a given definition.
+ *
  * @see HubspotSDK\Services\Automation\ActionsService::createOrReplaceByFunctionType()
  *
  * @phpstan-type ActionCreateOrReplaceByFunctionTypeParamsShape = array{

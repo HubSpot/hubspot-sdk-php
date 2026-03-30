@@ -34,6 +34,9 @@ final class PublicActionDefinitionPatch implements BaseModel
     /** @use SdkModel<PublicActionDefinitionPatchShape> */
     use SdkModel;
 
+    /**
+     * The URL endpoint where the action is executed.
+     */
     #[Optional('actionUrl')]
     public ?string $actionURL;
 
@@ -49,7 +52,11 @@ final class PublicActionDefinitionPatch implements BaseModel
     #[Optional(list: PublicInputFieldDefinition::class)]
     public ?array $inputFields;
 
-    /** @var array<string,PublicActionLabels>|null $labels */
+    /**
+     * Contains labels for the action, including names and descriptions.
+     *
+     * @var array<string,PublicActionLabels>|null $labels
+     */
     #[Optional(map: PublicActionLabels::class)]
     public ?array $labels;
 
@@ -64,6 +71,9 @@ final class PublicActionDefinitionPatch implements BaseModel
     #[Optional(list: OutputFieldDefinition::class)]
     public ?array $outputFields;
 
+    /**
+     * Indicates whether the action is published and available for use.
+     */
     #[Optional]
     public ?bool $published;
 
@@ -111,6 +121,9 @@ final class PublicActionDefinitionPatch implements BaseModel
         return $self;
     }
 
+    /**
+     * The URL endpoint where the action is executed.
+     */
     public function withActionURL(string $actionURL): self
     {
         $self = clone $this;
@@ -154,6 +167,8 @@ final class PublicActionDefinitionPatch implements BaseModel
     }
 
     /**
+     * Contains labels for the action, including names and descriptions.
+     *
      * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels
      */
     public function withLabels(array $labels): self
@@ -198,6 +213,9 @@ final class PublicActionDefinitionPatch implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether the action is published and available for use.
+     */
     public function withPublished(bool $published): self
     {
         $self = clone $this;

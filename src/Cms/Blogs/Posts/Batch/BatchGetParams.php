@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve a batch of blog posts by ID. identified in the request body.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Posts\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{

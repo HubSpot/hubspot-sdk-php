@@ -39,6 +39,8 @@ final class LimitsService implements LimitsContract
     /**
      * @api
      *
+     * Returns limits and usage for custom association labels
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -64,6 +66,8 @@ final class LimitsService implements LimitsContract
     /**
      * @api
      *
+     * Returns records approaching or at association limits between two objects
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -84,6 +88,8 @@ final class LimitsService implements LimitsContract
     /**
      * @api
      *
+     * Returns objects with records approaching or at association limits
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -99,6 +105,8 @@ final class LimitsService implements LimitsContract
 
     /**
      * @api
+     *
+     * Returns objects for which the from object has records approaching or at association limits
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -117,6 +125,8 @@ final class LimitsService implements LimitsContract
     /**
      * @api
      *
+     * Returns overall limit and per object usage for calculated properties
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -132,6 +142,8 @@ final class LimitsService implements LimitsContract
 
     /**
      * @api
+     *
+     * Returns limits and usage for custom object schemas
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -149,6 +161,8 @@ final class LimitsService implements LimitsContract
     /**
      * @api
      *
+     * Returns limits and usage per object for custom properties
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -165,6 +179,8 @@ final class LimitsService implements LimitsContract
     /**
      * @api
      *
+     * Returns limits and usage per object for pipelines
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -180,6 +196,8 @@ final class LimitsService implements LimitsContract
 
     /**
      * @api
+     *
+     * Returns limits and usage per object for records
      *
      * @param RequestOpts|null $requestOptions
      *

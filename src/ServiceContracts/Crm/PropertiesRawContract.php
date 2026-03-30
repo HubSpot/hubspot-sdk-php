@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Crm\Properties\PropertyCreateParams;
 use HubspotSDK\Crm\Properties\PropertyDeleteParams;
 use HubspotSDK\Crm\Properties\PropertyGetParams;

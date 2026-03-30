@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PropertyName;
 
 /**
- * Delete multiple properties in a single request. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).
+ * Archive a provided list of properties. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).
  *
  * @see HubspotSDK\Services\Crm\Properties\BatchService::delete()
  *

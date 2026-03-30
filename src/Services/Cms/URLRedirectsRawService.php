@@ -71,9 +71,8 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
     /**
      * @api
      *
-     * Update the details of an existing URL redirect in your HubSpot account. This operation allows you to modify properties such as the destination URL, route prefix, and other redirect settings. Use this endpoint to ensure your URL redirects are up-to-date and functioning as intended.
+     * Updates the settings for an existing URL redirect.
      *
-     * @param string $urlRedirectID the unique identifier of the URL redirect to update
      * @param array{
      *   id: string,
      *   created: \DateTimeInterface,
@@ -161,9 +160,8 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
     /**
      * @api
      *
-     * Delete a specific URL redirect in your HubSpot account using its unique identifier. This operation is useful for removing outdated or incorrect URL redirects, ensuring that your URL mappings remain current and accurate.
+     * Delete one existing redirect, so it is no longer mapped.
      *
-     * @param string $urlRedirectID the unique identifier of the URL redirect to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -186,9 +184,8 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
     /**
      * @api
      *
-     * Retrieve detailed information about a specific URL redirect in your HubSpot account using its unique identifier. This endpoint is useful for obtaining the configuration and properties of a URL redirect, such as its destination, route prefix, and other settings.
+     * Returns the details for a single existing URL redirect by ID.
      *
-     * @param string $urlRedirectID the unique identifier of the URL redirect to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<URLMapping>

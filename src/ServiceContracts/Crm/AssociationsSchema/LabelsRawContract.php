@@ -23,7 +23,7 @@ interface LabelsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: The type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|LabelBatchCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -40,7 +40,7 @@ interface LabelsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: The type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|LabelCreateLabelParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -57,7 +57,6 @@ interface LabelsRawContract
     /**
      * @api
      *
-     * @param int $associationTypeID the unique identifier for the association type
      * @param array<string,mixed>|LabelDeleteLabelParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -74,7 +73,6 @@ interface LabelsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType the type of the target object in the association
      * @param array<string,mixed>|LabelListLabelsParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -91,7 +89,7 @@ interface LabelsRawContract
     /**
      * @api
      *
-     * @param string $toObjectType path param: The type of the target object in the association
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|LabelUpdateLabelParams $params
      * @param RequestOpts|null $requestOptions
      *

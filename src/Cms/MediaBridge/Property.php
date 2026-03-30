@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge;
 
+use HubspotSDK\AutomationActionsOption;
 use HubspotSDK\Cms\MediaBridge\Property\DataSensitivity;
 use HubspotSDK\Cms\MediaBridge\Property\DateDisplayHint;
 use HubspotSDK\Cms\MediaBridge\Property\DisplayMode;
@@ -16,13 +17,12 @@ use HubspotSDK\Cms\MediaBridge\Property\Type;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Option;
 
 /**
  * A HubSpot property.
  *
  * @phpstan-import-type ObjectTypeIDProtoShape from \HubspotSDK\Cms\MediaBridge\ObjectTypeIDProto
- * @phpstan-import-type OptionShape from \HubspotSDK\Option
+ * @phpstan-import-type AutomationActionsOptionShape from \HubspotSDK\AutomationActionsOption
  *
  * @phpstan-type PropertyShape = array{
  *   allowedObjectTypes: list<ObjectTypeIDProto|ObjectTypeIDProtoShape>,
@@ -57,7 +57,7 @@ use HubspotSDK\Option;
  *   mutableDefinitionNotDeletable: bool,
  *   name: string,
  *   numberDisplayHint: NumberDisplayHint|value-of<NumberDisplayHint>,
- *   options: list<Option|OptionShape>,
+ *   options: list<AutomationActionsOption|AutomationActionsOptionShape>,
  *   optionsAreMutable: bool,
  *   optionSortStrategy: OptionSortStrategy|value-of<OptionSortStrategy>,
  *   owningAppID: int,
@@ -271,9 +271,9 @@ final class Property implements BaseModel
     /**
      * A list of valid options for the property. This field is required for enumerated properties.
      *
-     * @var list<Option> $options
+     * @var list<AutomationActionsOption> $options
      */
-    #[Required(list: Option::class)]
+    #[Required(list: AutomationActionsOption::class)]
     public array $options;
 
     /**
@@ -489,7 +489,7 @@ final class Property implements BaseModel
      * @param DateDisplayHint|value-of<DateDisplayHint> $dateDisplayHint
      * @param DisplayMode|value-of<DisplayMode> $displayMode
      * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
-     * @param list<Option|OptionShape> $options
+     * @param list<AutomationActionsOption|AutomationActionsOptionShape> $options
      * @param OptionSortStrategy|value-of<OptionSortStrategy> $optionSortStrategy
      * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
      * @param SearchTextAnalysisMode|value-of<SearchTextAnalysisMode> $searchTextAnalysisMode
@@ -959,7 +959,7 @@ final class Property implements BaseModel
     /**
      * A list of valid options for the property. This field is required for enumerated properties.
      *
-     * @param list<Option|OptionShape> $options
+     * @param list<AutomationActionsOption|AutomationActionsOptionShape> $options
      */
     public function withOptions(array $options): self
     {

@@ -9,6 +9,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Marketing\Campaigns\PublicCampaign;
 use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\CampaignsContract;
 use HubspotSDK\Services\Marketing\Campaigns\AssetsService;
@@ -68,9 +69,31 @@ final class CampaignsService implements CampaignsContract
     /**
      * @api
      *
-     * Perform a partial update of a campaign identified by the specified ID. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string. Note: The 'hs_goal' property is deprecated and will be ignored if provided.
+     * Create a campaign with the specified properties and receive a copy of the campaign object, including its ID. Note that the 'hs_goal' property is deprecated and will be ignored if provided.
      *
-     * @param string $campaignGuid the unique identifier of the campaign to update
+     * @param array<string,string> $properties A collection of key-value pairs representing the properties of the campaign. Each key is a property name, and the corresponding value is the property's value.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function create(
+        array $properties,
+        RequestOptions|array|null $requestOptions = null
+    ): PublicCampaign {
+        $params = Util::removeNulls(['properties' => $properties]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Perform a partial update of a campaign identified by the specified campaignGuid. Provided property values will be overwritten. Read-only and non-existent properties will cause 400 error.
+     * If an empty string is passed for any property in the Batch Update, it will reset that property's value.
+     *
      * @param array<string,string> $properties A collection of key-value pairs representing the properties of the campaign. Each key is a property name, and the corresponding value is the property's value.
      * @param RequestOpts|null $requestOptions
      *
@@ -92,9 +115,47 @@ final class CampaignsService implements CampaignsContract
     /**
      * @api
      *
-     * Delete a specified campaign from the system. This operation removes the campaign identified by the provided campaignGuid from your HubSpot account.
+     * Retrieve a paginated list of campaigns from your HubSpot account. This endpoint allows you to specify sorting, pagination, and filtering options to tailor the results to your needs.
      *
-     * @param string $campaignGuid the unique identifier of the campaign to delete
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $properties
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<PublicCampaign>
+     *
+     * @throws APIException
+     */
+    public function list(
+        ?string $after = null,
+        ?int $limit = null,
+        ?string $name = null,
+        ?array $properties = null,
+        ?string $sort = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page {
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'limit' => $limit,
+                'name' => $name,
+                'properties' => $properties,
+                'sort' => $sort,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Delete a specified campaign from the system.
+     * This call will return a 204 No Content response regardless of whether the campaignGuid provided corresponds to an existing campaign or not.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -112,12 +173,9 @@ final class CampaignsService implements CampaignsContract
     /**
      * @api
      *
-     * Read a campaign identified by a specified internal ID. This endpoint allows you to retrieve detailed information about a specific marketing campaign using its unique identifier. It supports filtering the response by specific properties and date ranges.
+     * Get a campaign identified by a specific campaignGuid with the given properties. Along with the campaign information, it also returns information about assets. Depending on the query parameters used, this can also be used to return information about the corresponding assets' metrics. Metrics are available only if startDate and endDate are provided.
      *
-     * @param string $campaignGuid the unique identifier of the campaign to retrieve
-     * @param string $endDate the end date for filtering campaign data, in YYYY-MM-DD format
-     * @param list<string> $properties a comma-separated list of property names to include in the response
-     * @param string $startDate the start date for filtering campaign data, in YYYY-MM-DD format
+     * @param list<string> $properties
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

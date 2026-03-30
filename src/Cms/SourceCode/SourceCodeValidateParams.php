@@ -11,7 +11,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Validate a source code file within a specified environment in your HubSpot account. This endpoint is useful for checking the correctness of code files before deployment or further processing. The validation process requires the file to be uploaded in a multipart/form-data request.
+ * Validates the file contents passed to the endpoint given a specified path and environment. Accepts multipart/form-data content type.
  *
  * @see HubspotSDK\Services\Cms\SourceCodeService::validate()
  *

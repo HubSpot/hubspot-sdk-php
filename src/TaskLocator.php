@@ -26,7 +26,7 @@ final class TaskLocator implements BaseModel
     public string $id;
 
     /**
-     * A collection of link names mapped to their corresponding URIs.
+     * A map of link names to associated URIs containing documentation about the error or recommended remediation steps.
      *
      * @var array<string,string>|null $links
      */
@@ -82,7 +82,7 @@ final class TaskLocator implements BaseModel
     }
 
     /**
-     * A collection of link names mapped to their corresponding URIs.
+     * A map of link names to associated URIs containing documentation about the error or recommended remediation steps.
      *
      * @param array<string,string> $links
      */

@@ -16,7 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridgeService::listObjectTypesByMediaType()
  *
  * @phpstan-type MediaBridgeListObjectTypesByMediaTypeParamsShape = array{
- *   appID: string, includeFullDefinition?: bool|null
+ *   appID: int, includeFullDefinition?: bool|null
  * }
  */
 final class MediaBridgeListObjectTypesByMediaTypeParams implements BaseModel
@@ -26,7 +26,7 @@ final class MediaBridgeListObjectTypesByMediaTypeParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     #[Optional]
     public ?bool $includeFullDefinition;
@@ -56,7 +56,7 @@ final class MediaBridgeListObjectTypesByMediaTypeParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $appID,
+        int $appID,
         ?bool $includeFullDefinition = null
     ): self {
         $self = new self;
@@ -68,7 +68,7 @@ final class MediaBridgeListObjectTypesByMediaTypeParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

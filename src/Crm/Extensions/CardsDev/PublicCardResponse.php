@@ -55,7 +55,7 @@ final class PublicCardResponse implements BaseModel
     public PublicCardFetchBody $fetch;
 
     /**
-     * The top-level title for this card, displayed to users in the CRM UI.
+     * The top-level title for this card. Displayed to users in the CRM UI.
      */
     #[Required]
     public string $title;
@@ -192,7 +192,7 @@ final class PublicCardResponse implements BaseModel
     }
 
     /**
-     * The top-level title for this card, displayed to users in the CRM UI.
+     * The top-level title for this card. Displayed to users in the CRM UI.
      */
     public function withTitle(string $title): self
     {

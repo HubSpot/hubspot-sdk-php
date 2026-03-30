@@ -38,6 +38,9 @@ final class AutomationActionsOption implements BaseModel
     #[Required]
     public int $displayOrder;
 
+    /**
+     * A numerical value associated with the option.
+     */
     #[Required]
     public float $doubleData;
 
@@ -148,6 +151,9 @@ final class AutomationActionsOption implements BaseModel
         return $self;
     }
 
+    /**
+     * A numerical value associated with the option.
+     */
     public function withDoubleData(float $doubleData): self
     {
         $self = clone $this;

@@ -16,10 +16,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @see HubspotSDK\Services\Cms\MediaBridgeService::getProperty()
  *
  * @phpstan-type MediaBridgeGetPropertyParamsShape = array{
- *   appID: string,
- *   objectType: string,
- *   archived?: bool|null,
- *   properties?: string|null,
+ *   appID: int, objectType: string, archived?: bool|null, properties?: string|null
  * }
  */
 final class MediaBridgeGetPropertyParams implements BaseModel
@@ -29,7 +26,7 @@ final class MediaBridgeGetPropertyParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     #[Required]
     public string $objectType;
@@ -68,7 +65,7 @@ final class MediaBridgeGetPropertyParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        string $appID,
+        int $appID,
         string $objectType,
         ?bool $archived = null,
         ?string $properties = null,
@@ -84,7 +81,7 @@ final class MediaBridgeGetPropertyParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

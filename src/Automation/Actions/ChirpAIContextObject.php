@@ -30,17 +30,31 @@ final class ChirpAIContextObject implements BaseModel
     /** @use SdkModel<ChirpAIContextObjectShape> */
     use SdkModel;
 
+    /**
+     * The group to which the application belongs.
+     */
     #[Required]
     public string $applicationGroup;
 
+    /**
+     * The identifier for the application associated with the context.
+     */
     #[Required('applicationId')]
     public string $applicationID;
 
-    /** @var array<string,string> $metadata */
+    /**
+     * Additional metadata related to the context, represented as key-value pairs.
+     *
+     * @var array<string,string> $metadata
+     */
     #[Required(map: 'string')]
     public array $metadata;
 
-    /** @var array<string,string> $otelContextHolder */
+    /**
+     * Holds OpenTelemetry context information as key-value pairs.
+     *
+     * @var array<string,string> $otelContextHolder
+     */
     #[Required(map: 'string')]
     public array $otelContextHolder;
 
@@ -51,12 +65,21 @@ final class ChirpAIContextObject implements BaseModel
     #[Optional('complianceIds')]
     public ?ComplianceIDs $complianceIDs;
 
+    /**
+     * The identifier for the feature associated with the context.
+     */
     #[Optional('featureId')]
     public ?string $featureID;
 
+    /**
+     * The identifier for the inference associated with the context.
+     */
     #[Optional('inferenceId')]
     public ?string $inferenceID;
 
+    /**
+     * The identifier for the trajectory, formatted as a UUID.
+     */
     #[Optional('trajectoryId')]
     public ?string $trajectoryID;
 
@@ -127,6 +150,9 @@ final class ChirpAIContextObject implements BaseModel
         return $self;
     }
 
+    /**
+     * The group to which the application belongs.
+     */
     public function withApplicationGroup(string $applicationGroup): self
     {
         $self = clone $this;
@@ -135,6 +161,9 @@ final class ChirpAIContextObject implements BaseModel
         return $self;
     }
 
+    /**
+     * The identifier for the application associated with the context.
+     */
     public function withApplicationID(string $applicationID): self
     {
         $self = clone $this;
@@ -144,6 +173,8 @@ final class ChirpAIContextObject implements BaseModel
     }
 
     /**
+     * Additional metadata related to the context, represented as key-value pairs.
+     *
      * @param array<string,string> $metadata
      */
     public function withMetadata(array $metadata): self
@@ -155,6 +186,8 @@ final class ChirpAIContextObject implements BaseModel
     }
 
     /**
+     * Holds OpenTelemetry context information as key-value pairs.
+     *
      * @param array<string,string> $otelContextHolder
      */
     public function withOtelContextHolder(array $otelContextHolder): self
@@ -187,6 +220,9 @@ final class ChirpAIContextObject implements BaseModel
         return $self;
     }
 
+    /**
+     * The identifier for the feature associated with the context.
+     */
     public function withFeatureID(string $featureID): self
     {
         $self = clone $this;
@@ -195,6 +231,9 @@ final class ChirpAIContextObject implements BaseModel
         return $self;
     }
 
+    /**
+     * The identifier for the inference associated with the context.
+     */
     public function withInferenceID(string $inferenceID): self
     {
         $self = clone $this;
@@ -203,6 +242,9 @@ final class ChirpAIContextObject implements BaseModel
         return $self;
     }
 
+    /**
+     * The identifier for the trajectory, formatted as a UUID.
+     */
     public function withTrajectoryID(string $trajectoryID): self
     {
         $self = clone $this;

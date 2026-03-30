@@ -13,12 +13,11 @@ use HubspotSDK\Events\Definitions\DefinitionCreatePropertyParams;
 use HubspotSDK\Events\Definitions\DefinitionDeletePropertyParams;
 use HubspotSDK\Events\Definitions\DefinitionListParams;
 use HubspotSDK\Events\Definitions\DefinitionSendBatchParams;
-use HubspotSDK\Events\Definitions\DefinitionSendParams;
 use HubspotSDK\Events\Definitions\DefinitionUpdateParams;
 use HubspotSDK\Events\Definitions\DefinitionUpdatePropertyParams;
-use HubspotSDK\Events\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\ExternalObjectResolutionMappingRequest;
+use HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate;
+use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
 use HubspotSDK\OptionInput;
 use HubspotSDK\Page;
 use HubspotSDK\Property;
@@ -26,8 +25,8 @@ use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Events\DefinitionsRawContract;
 
 /**
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\ExternalObjectResolutionMappingRequest
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest
  * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
@@ -42,6 +41,8 @@ final class DefinitionsRawService implements DefinitionsRawContract
 
     /**
      * @api
+     *
+     * Create a custom event definition.
      *
      * @param array{
      *   includeDefaultProperties: bool,
@@ -70,7 +71,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'events/custom/2026-03/event-definitions',
+            path: 'events/2026-03/event-definitions',
             body: (object) $parsed,
             options: $options,
             convert: ExternalBehavioralEventTypeDefinition::class,
@@ -79,6 +80,8 @@ final class DefinitionsRawService implements DefinitionsRawContract
 
     /**
      * @api
+     *
+     * Update a specific custom event definition by name.
      *
      * @param array{
      *   description?: string, label?: string
@@ -102,7 +105,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'patch',
-            path: ['events/custom/2026-03/event-definitions/%1$s', $eventName],
+            path: ['events/2026-03/event-definitions/%1$s', $eventName],
             body: (object) $parsed,
             options: $options,
             convert: ExternalBehavioralEventTypeDefinition::class,
@@ -111,6 +114,8 @@ final class DefinitionsRawService implements DefinitionsRawContract
 
     /**
      * @api
+     *
+     * Retrieve existing custom event definitions.
      *
      * @param array{
      *   after?: string,
@@ -137,7 +142,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'events/custom/2026-03/event-definitions',
+            path: 'events/2026-03/event-definitions',
             query: $parsed,
             options: $options,
             convert: ExternalBehavioralEventTypeDefinition::class,
@@ -147,6 +152,8 @@ final class DefinitionsRawService implements DefinitionsRawContract
 
     /**
      * @api
+     *
+     * Delete a custom event definition by name.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -161,7 +168,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'delete',
-            path: ['events/custom/2026-03/event-definitions/%1$s', $eventName],
+            path: ['events/2026-03/event-definitions/%1$s', $eventName],
             options: $requestOptions,
             convert: null,
         );
@@ -169,6 +176,8 @@ final class DefinitionsRawService implements DefinitionsRawContract
 
     /**
      * @api
+     *
+     * Create a new property for an existing event definition.
      *
      * @param array{
      *   label: string,
@@ -196,9 +205,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: [
-                'events/custom/2026-03/event-definitions/%1$s/property', $eventName,
-            ],
+            path: ['events/2026-03/event-definitions/%1$s/property', $eventName],
             body: (object) $parsed,
             options: $options,
             convert: Property::class,
@@ -207,6 +214,8 @@ final class DefinitionsRawService implements DefinitionsRawContract
 
     /**
      * @api
+     *
+     * Delete an existing property from a custom event definition.
      *
      * @param array{eventName: string}|DefinitionDeletePropertyParams $params
      * @param RequestOpts|null $requestOptions
@@ -231,7 +240,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         return $this->client->request(
             method: 'delete',
             path: [
-                'events/custom/2026-03/event-definitions/%1$s/property/%2$s',
+                'events/2026-03/event-definitions/%1$s/property/%2$s',
                 $eventName,
                 $propertyName,
             ],
@@ -242,6 +251,8 @@ final class DefinitionsRawService implements DefinitionsRawContract
 
     /**
      * @api
+     *
+     * Fetch a single custom event definition by name.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -256,7 +267,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: ['events/custom/2026-03/event-definitions/%1$s', $eventName],
+            path: ['events/2026-03/event-definitions/%1$s', $eventName],
             options: $requestOptions,
             convert: ExternalBehavioralEventTypeDefinition::class,
         );
@@ -265,42 +276,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
     /**
      * @api
      *
-     * @param array{
-     *   eventName: string,
-     *   properties: array<string,string>,
-     *   email?: string,
-     *   objectID?: string,
-     *   occurredAt?: \DateTimeInterface,
-     *   utk?: string,
-     *   uuid?: string,
-     * }|DefinitionSendParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function send(
-        array|DefinitionSendParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = DefinitionSendParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'events/custom/2026-03/send',
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
+     * Send multiple event occurrences at once.
      *
      * @param array{
      *   inputs: list<BehavioralEventHTTPCompletionRequest|BehavioralEventHTTPCompletionRequestShape>,
@@ -323,7 +299,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
-            path: 'events/custom/2026-03/send/batch',
+            path: 'events/2026-03/send/batch',
             body: (object) $parsed,
             options: $options,
             convert: null,
@@ -332,6 +308,8 @@ final class DefinitionsRawService implements DefinitionsRawContract
 
     /**
      * @api
+     *
+     * Update an existing property in a custom event definition.
      *
      * @param string $propertyName Path param
      * @param array{
@@ -362,7 +340,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
         return $this->client->request(
             method: 'patch',
             path: [
-                'events/custom/2026-03/event-definitions/%1$s/property/%2$s',
+                'events/2026-03/event-definitions/%1$s/property/%2$s',
                 $eventName,
                 $propertyName,
             ],

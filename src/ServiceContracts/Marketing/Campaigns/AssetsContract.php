@@ -16,9 +16,6 @@ interface AssetsContract
     /**
      * @api
      *
-     * @param string $assetID the unique identifier of the asset to be associated with the campaign
-     * @param string $campaignGuid the unique identifier of the campaign to which the asset will be associated
-     * @param string $assetType the type of asset to be associated with the campaign
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -33,12 +30,12 @@ interface AssetsContract
     /**
      * @api
      *
-     * @param string $assetType path param: The type of asset to list for the specified campaign
-     * @param string $campaignGuid path param: The unique identifier of the campaign
+     * @param string $assetType Path param
+     * @param string $campaignGuid Path param
      * @param string $after Query param: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param string $endDate query param: The end date for filtering assets, in YYYY-MM-DD format
+     * @param string $endDate Query param
      * @param string $limit query param: The maximum number of results to display per page
-     * @param string $startDate query param: The start date for filtering assets, in YYYY-MM-DD format
+     * @param string $startDate Query param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -56,9 +53,6 @@ interface AssetsContract
     /**
      * @api
      *
-     * @param string $assetID the unique identifier of the asset to be disassociated from the campaign
-     * @param string $campaignGuid the unique identifier of the campaign from which the asset will be disassociated
-     * @param string $assetType the type of asset to be disassociated from the campaign
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

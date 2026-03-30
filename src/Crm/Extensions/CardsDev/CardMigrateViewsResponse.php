@@ -16,6 +16,9 @@ final class CardMigrateViewsResponse implements BaseModel
     /** @use SdkModel<CardMigrateViewsResponseShape> */
     use SdkModel;
 
+    /**
+     * A human readable message describing the error along with remediation steps where appropriate.
+     */
     #[Required]
     public string $message;
 
@@ -52,6 +55,9 @@ final class CardMigrateViewsResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * A human readable message describing the error along with remediation steps where appropriate.
+     */
     public function withMessage(string $message): self
     {
         $self = clone $this;

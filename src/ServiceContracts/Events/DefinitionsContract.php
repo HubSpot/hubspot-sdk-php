@@ -6,17 +6,17 @@ namespace HubspotSDK\ServiceContracts\Events;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
-use HubspotSDK\Events\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\ExternalObjectResolutionMappingRequest;
+use HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate;
+use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
 use HubspotSDK\OptionInput;
 use HubspotSDK\Page;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\ExternalObjectResolutionMappingRequest
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest
  * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
@@ -141,30 +141,6 @@ interface DefinitionsContract
         string $eventName,
         RequestOptions|array|null $requestOptions = null
     ): ExternalBehavioralEventTypeDefinition;
-
-    /**
-     * @api
-     *
-     * @param string $eventName Internal name of the event-type to trigger
-     * @param array<string,string> $properties Map of properties for the event in the format property internal name - property value
-     * @param string $email Email of visitor
-     * @param string $objectID The object id that this event occurred on. Could be a contact id or a visitor id.
-     * @param \DateTimeInterface $occurredAt The time when this event occurred (if any). If this isn't set, the current time will be used
-     * @param string $utk User token
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function send(
-        string $eventName,
-        array $properties,
-        ?string $email = null,
-        ?string $objectID = null,
-        ?\DateTimeInterface $occurredAt = null,
-        ?string $utk = null,
-        ?string $uuid = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): mixed;
 
     /**
      * @api

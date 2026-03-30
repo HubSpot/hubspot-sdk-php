@@ -15,5 +15,7 @@ enum Service: string
 
     case EMAIL = 'EMAIL';
 
+    case TEST_SERVICE = 'TEST_SERVICE';
+
     case WEB_SCRAPING = 'WEB_SCRAPING';
 }

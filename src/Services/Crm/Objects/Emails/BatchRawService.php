@@ -138,7 +138,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Retrieve a batch of emails by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
+     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
      * @param array{
      *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,
@@ -177,7 +177,7 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
-     * Create and update a batch of emails by a unique property. Emails that don't exist will be created, while existing emails will be updated.
+     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
      *
      * @param array{
      *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,

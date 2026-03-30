@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm\Extensions\CardsDev\ActionHookActionBody;
 
 /**
- * Specifies the type of action, which is 'ACTION_HOOK' for action hooks.
+ * The type of status.
  */
 enum Type: string
 {

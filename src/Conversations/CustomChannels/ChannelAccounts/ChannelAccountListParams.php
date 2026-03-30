@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve a list of accounts for a custom channel.
+ *
  * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::list()
  *
  * @phpstan-type ChannelAccountListParamsShape = array{

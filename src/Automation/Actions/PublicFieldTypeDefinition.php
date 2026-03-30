@@ -32,6 +32,9 @@ final class PublicFieldTypeDefinition implements BaseModel
     /** @use SdkModel<PublicFieldTypeDefinitionShape> */
     use SdkModel;
 
+    /**
+     * The internal name used to identify the field.
+     */
     #[Required]
     public string $name;
 
@@ -39,27 +42,51 @@ final class PublicFieldTypeDefinition implements BaseModel
     #[Required(list: PublicOption::class)]
     public array $options;
 
-    /** @var value-of<Type> $type */
+    /**
+     * The data type of the field, with accepted values including bool, date, datetime, enumeration, json, number, object_coordinates, phone_number, and string.
+     *
+     * @var value-of<Type> $type
+     */
     #[Required(enum: Type::class)]
     public string $type;
 
+    /**
+     * A detailed explanation of the field's purpose.
+     */
     #[Optional]
     public ?string $description;
 
-    /** @var value-of<FieldType>|null $fieldType */
+    /**
+     * The type of field, with accepted values including booleancheckbox, calculation_equation, checkbox, date, file, html, number, phonenumber, radio, select, text, and textarea.
+     *
+     * @var value-of<FieldType>|null $fieldType
+     */
     #[Optional(enum: FieldType::class)]
     public ?string $fieldType;
 
+    /**
+     * Additional information or guidance about the field.
+     */
     #[Optional]
     public ?string $helpText;
 
+    /**
+     * A user-friendly name for the field.
+     */
     #[Optional]
     public ?string $label;
 
+    /**
+     * A URL that provides options for the field.
+     */
     #[Optional('optionsUrl')]
     public ?string $optionsURL;
 
-    /** @var value-of<ReferencedObjectType>|null $referencedObjectType */
+    /**
+     * The type of object that the field references, with accepted values including OWNER.
+     *
+     * @var value-of<ReferencedObjectType>|null $referencedObjectType
+     */
     #[Optional(enum: ReferencedObjectType::class)]
     public ?string $referencedObjectType;
 
@@ -119,6 +146,9 @@ final class PublicFieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * The internal name used to identify the field.
+     */
     public function withName(string $name): self
     {
         $self = clone $this;
@@ -139,6 +169,8 @@ final class PublicFieldTypeDefinition implements BaseModel
     }
 
     /**
+     * The data type of the field, with accepted values including bool, date, datetime, enumeration, json, number, object_coordinates, phone_number, and string.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self
@@ -149,6 +181,9 @@ final class PublicFieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * A detailed explanation of the field's purpose.
+     */
     public function withDescription(string $description): self
     {
         $self = clone $this;
@@ -158,6 +193,8 @@ final class PublicFieldTypeDefinition implements BaseModel
     }
 
     /**
+     * The type of field, with accepted values including booleancheckbox, calculation_equation, checkbox, date, file, html, number, phonenumber, radio, select, text, and textarea.
+     *
      * @param FieldType|value-of<FieldType> $fieldType
      */
     public function withFieldType(FieldType|string $fieldType): self
@@ -168,6 +205,9 @@ final class PublicFieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * Additional information or guidance about the field.
+     */
     public function withHelpText(string $helpText): self
     {
         $self = clone $this;
@@ -176,6 +216,9 @@ final class PublicFieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * A user-friendly name for the field.
+     */
     public function withLabel(string $label): self
     {
         $self = clone $this;
@@ -184,6 +227,9 @@ final class PublicFieldTypeDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * A URL that provides options for the field.
+     */
     public function withOptionsURL(string $optionsURL): self
     {
         $self = clone $this;
@@ -193,6 +239,8 @@ final class PublicFieldTypeDefinition implements BaseModel
     }
 
     /**
+     * The type of object that the field references, with accepted values including OWNER.
+     *
      * @param ReferencedObjectType|value-of<ReferencedObjectType> $referencedObjectType
      */
     public function withReferencedObjectType(

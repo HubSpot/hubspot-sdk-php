@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create or update the current settings for the application.
+ *
  * @see HubspotSDK\Services\Marketing\Events\SettingsService::createOrUpdate()
  *
  * @phpstan-type SettingCreateOrUpdateParamsShape = array{eventDetailsURL: string}

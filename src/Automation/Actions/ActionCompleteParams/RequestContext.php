@@ -14,6 +14,8 @@ use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
+ * Specifies the context in which the request is made, which can be one of several predefined contexts.
+ *
  * @phpstan-import-type WorkflowsRequestContextShape from \HubspotSDK\Automation\Actions\WorkflowsRequestContext
  * @phpstan-import-type AgentRequestContextShape from \HubspotSDK\Automation\Actions\AgentRequestContext
  * @phpstan-import-type CopilotRequestContextShape from \HubspotSDK\Automation\Actions\CopilotRequestContext

@@ -30,6 +30,8 @@ final class ListAssociationsRawService implements ListAssociationsRawContract
     /**
      * @api
      *
+     * Gets lists associated with a marketing event by marketing event id
+     *
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
      * @param RequestOpts|null $requestOptions
      *
@@ -55,6 +57,8 @@ final class ListAssociationsRawService implements ListAssociationsRawContract
 
     /**
      * @api
+     *
+     * Disassociates a list from a marketing event by marketing event id and ILS list id
      *
      * @param string $listID the ILS ID of the list
      * @param array{marketingEventID: string}|ListAssociationDeleteParams $params
@@ -92,6 +96,8 @@ final class ListAssociationsRawService implements ListAssociationsRawContract
     /**
      * @api
      *
+     * Associates a list with a marketing event by marketing event id and ILS list id
+     *
      * @param string $listID the ILS ID of the list
      * @param array{marketingEventID: string}|ListAssociationAssociateParams $params
      * @param RequestOpts|null $requestOptions
@@ -127,6 +133,8 @@ final class ListAssociationsRawService implements ListAssociationsRawContract
 
     /**
      * @api
+     *
+     * Associates a list with a marketing event by external account id, external event id, and ILS list id
      *
      * @param string $listID the ILS ID of the list
      * @param array{
@@ -169,6 +177,8 @@ final class ListAssociationsRawService implements ListAssociationsRawContract
     /**
      * @api
      *
+     * Disassociates a list from a marketing event by external account id, external event id, and ILS list id
+     *
      * @param string $listID the ILS ID of the list
      * @param array{
      *   externalAccountID: string, externalEventID: string
@@ -209,6 +219,8 @@ final class ListAssociationsRawService implements ListAssociationsRawContract
 
     /**
      * @api
+     *
+     * Gets lists associated with a marketing event by external account id and external event id
      *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param array{

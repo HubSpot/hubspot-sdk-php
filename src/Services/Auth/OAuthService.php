@@ -104,6 +104,8 @@ final class OAuthService implements OAuthContract
     /**
      * @api
      *
+     * Deletes/Revokes provided Refresh Token
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

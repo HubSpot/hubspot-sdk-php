@@ -80,31 +80,31 @@ final class Domain implements BaseModel
     public bool $isSslOnly;
 
     /**
-     * Whether the domain is used for CMS blog posts. Deprecated.
+     * Whether the domain is used for CMS blog posts.
      */
     #[Required]
     public bool $isUsedForBlogPost;
 
     /**
-     * Whether the domain is used for CMS email web pages. Deprecated.
+     * Whether the domain is used for CMS email web pages.
      */
     #[Required]
     public bool $isUsedForEmail;
 
     /**
-     * Whether the domain is used for CMS knowledge pages. Deprecated.
+     * Whether the domain is used for CMS knowledge pages.
      */
     #[Required]
     public bool $isUsedForKnowledge;
 
     /**
-     * Whether the domain is used for CMS landing pages. Deprecated.
+     * Whether the domain is used for CMS landing pages.
      */
     #[Required]
     public bool $isUsedForLandingPage;
 
     /**
-     * Whether the domain is used for CMS site pages. Deprecated.
+     * Whether the domain is used for CMS site pages.
      */
     #[Required]
     public bool $isUsedForSitePage;
@@ -348,7 +348,7 @@ final class Domain implements BaseModel
     }
 
     /**
-     * Whether the domain is used for CMS blog posts. Deprecated.
+     * Whether the domain is used for CMS blog posts.
      */
     public function withIsUsedForBlogPost(bool $isUsedForBlogPost): self
     {
@@ -359,7 +359,7 @@ final class Domain implements BaseModel
     }
 
     /**
-     * Whether the domain is used for CMS email web pages. Deprecated.
+     * Whether the domain is used for CMS email web pages.
      */
     public function withIsUsedForEmail(bool $isUsedForEmail): self
     {
@@ -370,7 +370,7 @@ final class Domain implements BaseModel
     }
 
     /**
-     * Whether the domain is used for CMS knowledge pages. Deprecated.
+     * Whether the domain is used for CMS knowledge pages.
      */
     public function withIsUsedForKnowledge(bool $isUsedForKnowledge): self
     {
@@ -381,7 +381,7 @@ final class Domain implements BaseModel
     }
 
     /**
-     * Whether the domain is used for CMS landing pages. Deprecated.
+     * Whether the domain is used for CMS landing pages.
      */
     public function withIsUsedForLandingPage(bool $isUsedForLandingPage): self
     {
@@ -392,7 +392,7 @@ final class Domain implements BaseModel
     }
 
     /**
-     * Whether the domain is used for CMS site pages. Deprecated.
+     * Whether the domain is used for CMS site pages.
      */
     public function withIsUsedForSitePage(bool $isUsedForSitePage): self
     {

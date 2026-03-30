@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
 
 /**
+ * Send multiple event occurrences at once.
+ *
  * @see HubspotSDK\Services\Events\DefinitionsService::sendBatch()
  *
  * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest

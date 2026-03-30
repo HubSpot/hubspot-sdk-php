@@ -18,7 +18,7 @@ use HubspotSDK\PropertyName;
  * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
  *
  * @phpstan-type BatchDeleteParamsShape = array{
- *   appID: string, inputs: list<PropertyName|PropertyNameShape>
+ *   appID: int, inputs: list<PropertyName|PropertyNameShape>
  * }
  */
 final class BatchDeleteParams implements BaseModel
@@ -28,7 +28,7 @@ final class BatchDeleteParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     /** @var list<PropertyName> $inputs */
     #[Required(list: PropertyName::class)]
@@ -60,7 +60,7 @@ final class BatchDeleteParams implements BaseModel
      *
      * @param list<PropertyName|PropertyNameShape> $inputs
      */
-    public static function with(string $appID, array $inputs): self
+    public static function with(int $appID, array $inputs): self
     {
         $self = new self;
 
@@ -70,7 +70,7 @@ final class BatchDeleteParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

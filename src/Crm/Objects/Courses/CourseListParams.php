@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve all courses.
+ * Read a page of courses. Control what is returned via the `properties` query param.
  *
  * @see HubspotSDK\Services\Crm\Objects\CoursesService::list()
  *

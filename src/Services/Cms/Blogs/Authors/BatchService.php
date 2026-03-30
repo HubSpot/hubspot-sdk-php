@@ -33,6 +33,8 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * Create the Blog Author objects detailed in the request body.
+     *
      * @param list<BlogAuthor|BlogAuthorShape> $inputs blog authors to input
      * @param RequestOpts|null $requestOptions
      *
@@ -52,6 +54,8 @@ final class BatchService implements BatchContract
 
     /**
      * @api
+     *
+     * Update the Blog Author objects identified in the request body.
      *
      * @param list<mixed> $inputs body param: JSON nodes to input
      * @param bool $archived query param: Whether to return only results that have been archived
@@ -75,6 +79,8 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * Delete the Blog Author objects identified in the request body.
+     *
      * @param list<string> $inputs strings to input
      * @param RequestOpts|null $requestOptions
      *
@@ -94,6 +100,8 @@ final class BatchService implements BatchContract
 
     /**
      * @api
+     *
+     * Retrieve the Blog Author objects identified in the request body.
      *
      * @param list<string> $inputs body param: Strings to input
      * @param bool $archived query param: Whether to return only results that have been archived

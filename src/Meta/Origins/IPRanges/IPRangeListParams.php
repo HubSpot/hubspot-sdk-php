@@ -27,19 +27,11 @@ final class IPRangeListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * An array of traffic directions to filter the IP ranges. Valid values are `INGRESS` and `EGRESS`.
-     *
-     * @var list<value-of<Direction>>|null $direction
-     */
+    /** @var list<value-of<Direction>>|null $direction */
     #[Optional(list: Direction::class)]
     public ?array $direction;
 
-    /**
-     * An array of service types to filter the IP ranges. Valid values include `EMAIL`, `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
-     *
-     * @var list<value-of<Service>>|null $service
-     */
+    /** @var list<value-of<Service>>|null $service */
     #[Optional(list: Service::class)]
     public ?array $service;
 
@@ -69,8 +61,6 @@ final class IPRangeListParams implements BaseModel
     }
 
     /**
-     * An array of traffic directions to filter the IP ranges. Valid values are `INGRESS` and `EGRESS`.
-     *
      * @param list<Direction|value-of<Direction>> $direction
      */
     public function withDirection(array $direction): self
@@ -82,8 +72,6 @@ final class IPRangeListParams implements BaseModel
     }
 
     /**
-     * An array of service types to filter the IP ranges. Valid values include `EMAIL`, `API`, `DNS`, `WEB_SCRAPING`, and `TEST_SERVICE`.
-     *
      * @param list<Service|value-of<Service>> $service
      */
     public function withService(array $service): self

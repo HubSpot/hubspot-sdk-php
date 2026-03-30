@@ -19,12 +19,21 @@ final class ContactID implements BaseModel
     /** @use SdkModel<ContactIDShape> */
     use SdkModel;
 
+    /**
+     * The ID of the portal associated with the contact.
+     */
     #[Required('portalId')]
     public int $portalID;
 
+    /**
+     * The email address of the contact.
+     */
     #[Optional]
     public ?string $email;
 
+    /**
+     * The unique identifier for the contact.
+     */
     #[Optional]
     public ?int $vid;
 
@@ -67,6 +76,9 @@ final class ContactID implements BaseModel
         return $self;
     }
 
+    /**
+     * The ID of the portal associated with the contact.
+     */
     public function withPortalID(int $portalID): self
     {
         $self = clone $this;
@@ -75,6 +87,9 @@ final class ContactID implements BaseModel
         return $self;
     }
 
+    /**
+     * The email address of the contact.
+     */
     public function withEmail(string $email): self
     {
         $self = clone $this;
@@ -83,6 +98,9 @@ final class ContactID implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the contact.
+     */
     public function withVid(int $vid): self
     {
         $self = clone $this;

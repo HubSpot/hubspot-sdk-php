@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Crm\Extensions\CardsDev\ObjectToken;
 
 /**
- * The type of the property. Can be one of CURRENCY, DATE, DATETIME, EMAIL, LINK, NUMERIC, STATUS.
+ * Type of data represented by this property.
  */
 enum DataType: string
 {

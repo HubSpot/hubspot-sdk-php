@@ -32,6 +32,8 @@ final class VideoConferencingService implements VideoConferencingContract
     /**
      * @api
      *
+     * Create or update video conference extension settings for your app
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -64,6 +66,8 @@ final class VideoConferencingService implements VideoConferencingContract
     /**
      * @api
      *
+     * Delete video conference extension settings for your app
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -80,6 +84,8 @@ final class VideoConferencingService implements VideoConferencingContract
 
     /**
      * @api
+     *
+     * Fetch video conference extension settings for your app
      *
      * @param RequestOpts|null $requestOptions
      *

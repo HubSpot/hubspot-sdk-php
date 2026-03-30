@@ -28,6 +28,8 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
+     * Create a batch of blog posts, specifying their content in the request body.
+     *
      * @param array{inputs: list<mixed>}|BatchCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -57,6 +59,8 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
+     *
+     * Update a batch of blog posts.
      *
      * @param array{inputs: list<mixed>, archived?: bool}|BatchUpdateParams $params
      * @param RequestOpts|null $requestOptions
@@ -90,6 +94,9 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
+     * Delete a blog post by ID.
+     * Note: This is not the same as the in-app `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to `true`.
+     *
      * @param array{inputs: list<string>}|BatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -119,6 +126,8 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
+     *
+     * Retrieve a batch of blog posts by ID. identified in the request body.
      *
      * @param array{inputs: list<string>, archived?: bool}|BatchGetParams $params
      * @param RequestOpts|null $requestOptions

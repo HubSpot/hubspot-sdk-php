@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.
+ *
  * @see HubspotSDK\Services\Crm\Extensions\CardsDevService::delete()
  *
  * @phpstan-type CardsDevDeleteParamsShape = array{appID: int}

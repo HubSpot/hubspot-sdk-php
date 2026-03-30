@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Delete a specific campaign spend item by its ID. This operation is useful for removing spend items that are no longer needed or were added in error. Once deleted, the spend item cannot be recovered.
+ * Delete a specific campaign spend item by ID.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::delete()
  *

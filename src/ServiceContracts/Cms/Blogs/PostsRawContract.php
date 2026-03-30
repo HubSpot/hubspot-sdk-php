@@ -4,22 +4,18 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Blogs;
 
-use HubspotSDK\Cms\Blogs\Posts\PostAttachToLangGroupParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCloneParams;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateLangVariationParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams;
 use HubspotSDK\Cms\Blogs\Posts\PostDeleteParams;
-use HubspotSDK\Cms\Blogs\Posts\PostDetachFromLangGroupParams;
 use HubspotSDK\Cms\Blogs\Posts\PostGetParams;
-use HubspotSDK\Cms\Blogs\Posts\PostGetPreviousVersionParams;
-use HubspotSDK\Cms\Blogs\Posts\PostGetPreviousVersionsParams;
+use HubspotSDK\Cms\Blogs\Posts\PostListAuthorsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostListParams;
-use HubspotSDK\Cms\Blogs\Posts\PostRestorePreviousVersionParams;
-use HubspotSDK\Cms\Blogs\Posts\PostRestorePreviousVersionToDraftParams;
+use HubspotSDK\Cms\Blogs\Posts\PostListTagsParams;
+use HubspotSDK\Cms\Blogs\Posts\PostQueryAuthorsParams;
+use HubspotSDK\Cms\Blogs\Posts\PostQueryParams;
+use HubspotSDK\Cms\Blogs\Posts\PostQueryTagsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostScheduleParams;
-use HubspotSDK\Cms\Blogs\Posts\PostSetLangPrimaryParams;
 use HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams;
-use HubspotSDK\Cms\Blogs\Posts\PostUpdateLangsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
@@ -96,21 +92,6 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|PostAttachToLangGroupParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function attachToLangGroup(
-        array|PostAttachToLangGroupParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
      * @param array<string,mixed>|PostCloneParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -120,36 +101,6 @@ interface PostsRawContract
      */
     public function clone(
         array|PostCloneParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|PostCreateLangVariationParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function createLangVariation(
-        array|PostCreateLangVariationParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|PostDetachFromLangGroupParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function detachFromLangGroup(
-        array|PostDetachFromLangGroupParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -186,32 +137,30 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|PostGetPreviousVersionParams $params
+     * @param array<string,mixed>|PostListAuthorsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getPreviousVersion(
-        string $revisionID,
-        array|PostGetPreviousVersionParams $params,
+    public function listAuthors(
+        array|PostListAuthorsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|PostGetPreviousVersionsParams $params
+     * @param array<string,mixed>|PostListTagsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getPreviousVersions(
-        string $objectID,
-        array|PostGetPreviousVersionsParams $params,
+    public function listTags(
+        array|PostListTagsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -232,6 +181,51 @@ interface PostsRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|PostQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function query(
+        array|PostQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|PostQueryAuthorsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function queryAuthors(
+        array|PostQueryAuthorsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|PostQueryTagsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function queryTags(
+        array|PostQueryTagsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -241,38 +235,6 @@ interface PostsRawContract
     public function resetDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|PostRestorePreviousVersionParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function restorePreviousVersion(
-        string $revisionID,
-        array|PostRestorePreviousVersionParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|PostRestorePreviousVersionToDraftParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function restorePreviousVersionToDraft(
-        int $revisionID,
-        array|PostRestorePreviousVersionToDraftParams $params,
-        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -293,21 +255,6 @@ interface PostsRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|PostSetLangPrimaryParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function setLangPrimary(
-        array|PostSetLangPrimaryParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
      * @param array<string,mixed>|PostUpdateDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -318,21 +265,6 @@ interface PostsRawContract
     public function updateDraft(
         string $objectID,
         array|PostUpdateDraftParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|PostUpdateLangsParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function updateLangs(
-        array|PostUpdateLangsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

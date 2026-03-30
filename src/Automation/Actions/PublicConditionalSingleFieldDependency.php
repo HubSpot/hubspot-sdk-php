@@ -22,13 +22,23 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
     /** @use SdkModel<PublicConditionalSingleFieldDependencyShape> */
     use SdkModel;
 
+    /**
+     * The name of the field that determines the dependency.
+     */
     #[Required]
     public string $controllingFieldName;
 
+    /**
+     * The value of the controlling field that triggers the dependency.
+     */
     #[Required]
     public string $controllingFieldValue;
 
-    /** @var value-of<DependencyType> $dependencyType */
+    /**
+     * The type of dependency, with the default value being CONDITIONAL_SINGLE_FIELD.
+     *
+     * @var value-of<DependencyType> $dependencyType
+     */
     #[Required(enum: DependencyType::class)]
     public string $dependencyType;
 
@@ -88,6 +98,9 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
         return $self;
     }
 
+    /**
+     * The name of the field that determines the dependency.
+     */
     public function withControllingFieldName(string $controllingFieldName): self
     {
         $self = clone $this;
@@ -96,6 +109,9 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
         return $self;
     }
 
+    /**
+     * The value of the controlling field that triggers the dependency.
+     */
     public function withControllingFieldValue(
         string $controllingFieldValue
     ): self {
@@ -106,6 +122,8 @@ final class PublicConditionalSingleFieldDependency implements BaseModel
     }
 
     /**
+     * The type of dependency, with the default value being CONDITIONAL_SINGLE_FIELD.
+     *
      * @param DependencyType|value-of<DependencyType> $dependencyType
      */
     public function withDependencyType(

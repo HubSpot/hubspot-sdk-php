@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve details of a custom object schema, including its properties and associations, using the object type ID or fully qualified name.
+ *
  * @see HubspotSDK\Services\Crm\ObjectSchemasService::get()
  *
  * @phpstan-type ObjectSchemaGetParamsShape = array{

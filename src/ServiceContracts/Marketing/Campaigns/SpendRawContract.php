@@ -21,7 +21,6 @@ interface SpendRawContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign for which the spend item is being created
      * @param array<string,mixed>|SpendCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -38,7 +37,7 @@ interface SpendRawContract
     /**
      * @api
      *
-     * @param int $spendID path param: The unique identifier of the spend item to update
+     * @param int $spendID Path param
      * @param array<string,mixed>|SpendUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -55,7 +54,6 @@ interface SpendRawContract
     /**
      * @api
      *
-     * @param int $spendID the unique identifier of the spend item to delete
      * @param array<string,mixed>|SpendDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -72,7 +70,6 @@ interface SpendRawContract
     /**
      * @api
      *
-     * @param int $spendID the unique identifier of the spend item to retrieve
      * @param array<string,mixed>|SpendGetParams $params
      * @param RequestOpts|null $requestOptions
      *

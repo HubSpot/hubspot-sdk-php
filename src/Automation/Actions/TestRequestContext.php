@@ -17,7 +17,11 @@ final class TestRequestContext implements BaseModel
     /** @use SdkModel<TestRequestContextShape> */
     use SdkModel;
 
-    /** @var value-of<Source> $source */
+    /**
+     * Indicates the source of the test request, with the only accepted value being 'TEST'.
+     *
+     * @var value-of<Source> $source
+     */
     #[Required(enum: Source::class)]
     public string $source;
 
@@ -57,6 +61,8 @@ final class TestRequestContext implements BaseModel
     }
 
     /**
+     * Indicates the source of the test request, with the only accepted value being 'TEST'.
+     *
      * @param Source|value-of<Source> $source
      */
     public function withSource(Source|string $source): self

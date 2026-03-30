@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update a specific validation rule for a property identified by its name and rule type.
+ *
  * @see HubspotSDK\Services\Crm\PropertiesValidationsService::updateByObjectTypeIDPropertyNameAndRuleType()
  *
  * @phpstan-type PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParamsShape = array{

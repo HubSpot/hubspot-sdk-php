@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
+ * Merge two contacts.
  *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::merge()
  *

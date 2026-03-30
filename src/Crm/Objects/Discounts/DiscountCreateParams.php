@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 
 /**
- * Create a discount.
+ * Create a discount with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard discounts is provided.
  *
  * @see HubspotSDK\Services\Crm\Objects\DiscountsService::create()
  *

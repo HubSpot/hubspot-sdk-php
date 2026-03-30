@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Cms\MediaBridge;
 
-use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\Batch\BatchCreateParams;
 use HubspotSDK\Cms\MediaBridge\Batch\BatchDeleteParams;
 use HubspotSDK\Cms\MediaBridge\Batch\BatchGetParams;
 use HubspotSDK\Cms\MediaBridge\Batch\BatchGetParams\DataSensitivity;
+use HubspotSDK\Cms\MediaBridge\BatchResponseProperty;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\PropertyCreate;
@@ -37,7 +37,7 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $objectType Path param
      * @param array{
-     *   appID: string, inputs: list<PropertyCreate|PropertyCreateShape>
+     *   appID: int, inputs: list<PropertyCreate|PropertyCreateShape>
      * }|BatchCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -78,7 +78,7 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $objectType Path param
      * @param array{
-     *   appID: string, inputs: list<PropertyName|PropertyNameShape>
+     *   appID: int, inputs: list<PropertyName|PropertyNameShape>
      * }|BatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -119,7 +119,7 @@ final class BatchRawService implements BatchRawContract
      *
      * @param string $objectType Path param
      * @param array{
-     *   appID: string,
+     *   appID: int,
      *   archived: bool,
      *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
      *   inputs: list<PropertyName|PropertyNameShape>,

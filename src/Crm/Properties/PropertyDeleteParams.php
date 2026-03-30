@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Delete an existing property.
+ * Move a property identified by {propertyName} to the recycling bin.
  *
  * @see HubspotSDK\Services\Crm\PropertiesService::delete()
  *

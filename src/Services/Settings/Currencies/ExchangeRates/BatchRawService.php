@@ -34,6 +34,8 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
+     * Create multiple exchange rates in a single request.
+     *
      * @param array{
      *   inputs: list<ExchangeRateCreateRequest|ExchangeRateCreateRequestShape>
      * }|BatchCreateParams $params
@@ -65,6 +67,8 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
+     * Update the conversion rates for multiple exchange rates in a batch operation.
+     *
      * @param array{
      *   inputs: list<ExchangeRateUpdateRequest|ExchangeRateUpdateRequestShape>
      * }|BatchUpdateParams $params
@@ -95,6 +99,8 @@ final class BatchRawService implements BatchRawContract
 
     /**
      * @api
+     *
+     * Retrieve the details of multiple exchange rates in a single request, specified by their IDs.
      *
      * @param array{
      *   inputs: list<PublicObjectID|PublicObjectIDShape>

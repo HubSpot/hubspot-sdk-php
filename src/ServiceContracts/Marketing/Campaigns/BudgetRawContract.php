@@ -22,7 +22,6 @@ interface BudgetRawContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign to which the budget item will be added
      * @param array<string,mixed>|BudgetCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -39,7 +38,7 @@ interface BudgetRawContract
     /**
      * @api
      *
-     * @param int $budgetID path param: The unique identifier of the budget item to update
+     * @param int $budgetID Path param
      * @param array<string,mixed>|BudgetUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -56,7 +55,6 @@ interface BudgetRawContract
     /**
      * @api
      *
-     * @param int $budgetID the unique identifier of the budget item to be deleted
      * @param array<string,mixed>|BudgetDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -73,7 +71,6 @@ interface BudgetRawContract
     /**
      * @api
      *
-     * @param int $budgetID the unique identifier of the budget item to retrieve
      * @param array<string,mixed>|BudgetGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -90,7 +87,6 @@ interface BudgetRawContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign for which the budget and spending totals are being retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetTotals>

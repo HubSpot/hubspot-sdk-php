@@ -26,43 +26,43 @@ final class PublicSpendItem implements BaseModel
     use SdkModel;
 
     /**
-     * The unique identifier for the spend item, represented as a string.
+     * Unique identifier for the spend item.
      */
     #[Required]
     public string $id;
 
     /**
-     * The monetary amount of the spend item, represented as a number.
+     * The monetary value associated with the spend item.
      */
     #[Required]
     public float $amount;
 
     /**
-     * A Unix timestamp in milliseconds indicating when the spend item was created.
+     * The timestamp indicating when the spend item was created.
      */
     #[Required]
     public int $createdAt;
 
     /**
-     * The name of the spend item, represented as a string.
+     * The name assigned to the spend item.
      */
     #[Required]
     public string $name;
 
     /**
-     * An integer that specifies the order of the spend item.
+     * The sequence order of the spend item, where 0 is the oldest.
      */
     #[Required]
     public int $order;
 
     /**
-     * A Unix timestamp in milliseconds indicating when the spend item was last updated.
+     * The timestamp indicating when the spend item was last updated.
      */
     #[Required]
     public int $updatedAt;
 
     /**
-     * A brief description of the spend item, represented as a string.
+     * A detailed explanation or notes about the spend item.
      */
     #[Optional]
     public ?string $description;
@@ -123,7 +123,7 @@ final class PublicSpendItem implements BaseModel
     }
 
     /**
-     * The unique identifier for the spend item, represented as a string.
+     * Unique identifier for the spend item.
      */
     public function withID(string $id): self
     {
@@ -134,7 +134,7 @@ final class PublicSpendItem implements BaseModel
     }
 
     /**
-     * The monetary amount of the spend item, represented as a number.
+     * The monetary value associated with the spend item.
      */
     public function withAmount(float $amount): self
     {
@@ -145,7 +145,7 @@ final class PublicSpendItem implements BaseModel
     }
 
     /**
-     * A Unix timestamp in milliseconds indicating when the spend item was created.
+     * The timestamp indicating when the spend item was created.
      */
     public function withCreatedAt(int $createdAt): self
     {
@@ -156,7 +156,7 @@ final class PublicSpendItem implements BaseModel
     }
 
     /**
-     * The name of the spend item, represented as a string.
+     * The name assigned to the spend item.
      */
     public function withName(string $name): self
     {
@@ -167,7 +167,7 @@ final class PublicSpendItem implements BaseModel
     }
 
     /**
-     * An integer that specifies the order of the spend item.
+     * The sequence order of the spend item, where 0 is the oldest.
      */
     public function withOrder(int $order): self
     {
@@ -178,7 +178,7 @@ final class PublicSpendItem implements BaseModel
     }
 
     /**
-     * A Unix timestamp in milliseconds indicating when the spend item was last updated.
+     * The timestamp indicating when the spend item was last updated.
      */
     public function withUpdatedAt(int $updatedAt): self
     {
@@ -189,7 +189,7 @@ final class PublicSpendItem implements BaseModel
     }
 
     /**
-     * A brief description of the spend item, represented as a string.
+     * A detailed explanation or notes about the spend item.
      */
     public function withDescription(string $description): self
     {

@@ -37,6 +37,16 @@ final class AttendanceService implements AttendanceContract
     /**
      * @api
      *
+     * Records the participation of multiple HubSpot contacts in a Marketing Event using their HubSpot contact IDs.
+     *
+     * Additional Functionality:
+     * - Adds a timeline event to the contacts.
+     *
+     * Allowed Properties:
+     * For the state "attend":
+     * - joinedAt
+     * - leftAt
+     *
      * @param string $subscriberState Path param: The attendance state value. It may be 'register', 'attend' or 'cancel'
      * @param string $objectID path param: The internal id of the marketing event in HubSpot
      * @param list<MarketingEventSubscriber|MarketingEventSubscriberShape> $inputs Body param: List of HubSpot contacts to subscribe to the marketing event
@@ -61,6 +71,18 @@ final class AttendanceService implements AttendanceContract
     /**
      * @api
      *
+     * Records the participation of multiple HubSpot contacts in a Marketing Event using their email addresses.
+     *
+     * If a contact does not exist, it will be automatically created. The contactProperties field is used exclusively for creating new contacts and will not update properties of existing contacts.
+     *
+     * Additional Functionality:
+     * - Adds a timeline event to the contacts.
+     *
+     * Allowed Properties:
+     * For the state "attend":
+     * - joinedAt
+     * - leftAt
+     *
      * @param string $subscriberState Path param: The attendance state value. It may be 'register', 'attend' or 'cancel'
      * @param string $objectID path param: The internal id of the marketing event in HubSpot
      * @param list<MarketingEventEmailSubscriber|MarketingEventEmailSubscriberShape> $inputs Body param: List of marketing event details to create or update
@@ -84,6 +106,16 @@ final class AttendanceService implements AttendanceContract
 
     /**
      * @api
+     *
+     * Records the participation of multiple HubSpot contacts in a Marketing Event using their HubSpot contact IDs.
+     *
+     * Additional Functionality:
+     * - Adds a timeline event to the contacts.
+     *
+     * Allowed Properties:
+     * For the state "attend":
+     * - joinedAt
+     * - leftAt
      *
      * @param string $subscriberState Path param
      * @param string $externalEventID Path param
@@ -116,6 +148,18 @@ final class AttendanceService implements AttendanceContract
 
     /**
      * @api
+     *
+     * Records the participation of multiple HubSpot contacts in a Marketing Event using their email addresses.
+     *
+     * If a contact does not exist, it will be automatically created. The contactProperties field is used exclusively for creating new contacts and will not update properties of existing contacts.
+     *
+     * Additional Functionality:
+     * - Adds a timeline event to the contacts.
+     *
+     * Allowed Properties:
+     * For the state "attend":
+     * - joinedAt
+     * - leftAt
      *
      * @param string $subscriberState Path param
      * @param string $externalEventID Path param

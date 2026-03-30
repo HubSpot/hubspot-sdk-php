@@ -12,6 +12,7 @@ use HubspotSDK\Services\Crm\AssociationsService;
 use HubspotSDK\Services\Crm\DealSplitsService;
 use HubspotSDK\Services\Crm\ExportsService;
 use HubspotSDK\Services\Crm\ExtensionsService;
+use HubspotSDK\Services\Crm\FeatureFlagsService;
 use HubspotSDK\Services\Crm\ImportsService;
 use HubspotSDK\Services\Crm\LimitsService;
 use HubspotSDK\Services\Crm\ListsService;
@@ -22,6 +23,7 @@ use HubspotSDK\Services\Crm\OwnersService;
 use HubspotSDK\Services\Crm\PipelinesService;
 use HubspotSDK\Services\Crm\PropertiesService;
 use HubspotSDK\Services\Crm\PropertiesValidationsService;
+use HubspotSDK\Services\Crm\TimelineService;
 
 final class CrmService implements CrmContract
 {
@@ -59,6 +61,11 @@ final class CrmService implements CrmContract
      * @api
      */
     public ExtensionsService $extensions;
+
+    /**
+     * @api
+     */
+    public FeatureFlagsService $featureFlags;
 
     /**
      * @api
@@ -111,6 +118,11 @@ final class CrmService implements CrmContract
     public PropertiesValidationsService $propertiesValidations;
 
     /**
+     * @api
+     */
+    public TimelineService $timeline;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
@@ -122,6 +134,7 @@ final class CrmService implements CrmContract
         $this->dealSplits = new DealSplitsService($client);
         $this->exports = new ExportsService($client);
         $this->extensions = new ExtensionsService($client);
+        $this->featureFlags = new FeatureFlagsService($client);
         $this->imports = new ImportsService($client);
         $this->limits = new LimitsService($client);
         $this->lists = new ListsService($client);
@@ -132,5 +145,6 @@ final class CrmService implements CrmContract
         $this->pipelines = new PipelinesService($client);
         $this->properties = new PropertiesService($client);
         $this->propertiesValidations = new PropertiesValidationsService($client);
+        $this->timeline = new TimelineService($client);
     }
 }

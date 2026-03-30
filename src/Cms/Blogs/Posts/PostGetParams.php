@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve a blog post by the post ID.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\PostsService::get()
  *
  * @phpstan-type PostGetParamsShape = array{

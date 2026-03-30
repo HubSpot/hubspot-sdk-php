@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Delete a specific budget item from a campaign using its unique ID. This operation removes the budget item from the campaign's budget list, ensuring it is no longer considered in budget calculations.
+ * Delete a specific budget item by ID.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::delete()
  *

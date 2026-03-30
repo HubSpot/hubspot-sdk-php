@@ -25,16 +25,26 @@ final class WorkflowsRequestContext implements BaseModel
     /** @use SdkModel<WorkflowsRequestContextShape> */
     use SdkModel;
 
-    /** @var value-of<Source> $source */
+    /**
+     * Indicates the source of the request, with the default value being WORKFLOWS.
+     *
+     * @var value-of<Source> $source
+     */
     #[Required(enum: Source::class)]
     public string $source;
 
+    /**
+     * The ID of the workflow associated with the request context.
+     */
     #[Required('workflowId')]
     public int $workflowID;
 
     #[Optional]
     public ?ActionExecutionIndexIdentifier $actionExecutionIndexIdentifier;
 
+    /**
+     * The ID of the action within the workflow context.
+     */
     #[Optional('actionId')]
     public ?int $actionID;
 
@@ -83,6 +93,8 @@ final class WorkflowsRequestContext implements BaseModel
     }
 
     /**
+     * Indicates the source of the request, with the default value being WORKFLOWS.
+     *
      * @param Source|value-of<Source> $source
      */
     public function withSource(Source|string $source): self
@@ -93,6 +105,9 @@ final class WorkflowsRequestContext implements BaseModel
         return $self;
     }
 
+    /**
+     * The ID of the workflow associated with the request context.
+     */
     public function withWorkflowID(int $workflowID): self
     {
         $self = clone $this;
@@ -113,6 +128,9 @@ final class WorkflowsRequestContext implements BaseModel
         return $self;
     }
 
+    /**
+     * The ID of the action within the workflow context.
+     */
     public function withActionID(int $actionID): self
     {
         $self = clone $this;

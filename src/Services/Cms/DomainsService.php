@@ -80,6 +80,8 @@ final class DomainsService implements DomainsContract
     /**
      * @api
      *
+     * Returns a single domains with the id specified.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

@@ -25,10 +25,17 @@ final class CollectionResponseWithTotalDomain implements BaseModel
     /** @use SdkModel<CollectionResponseWithTotalDomainShape> */
     use SdkModel;
 
-    /** @var list<Domain> $results */
+    /**
+     * The results of the query.
+     *
+     * @var list<Domain> $results
+     */
     #[Required(list: Domain::class)]
     public array $results;
 
+    /**
+     * The number of available results.
+     */
     #[Required]
     public int $total;
 
@@ -78,6 +85,8 @@ final class CollectionResponseWithTotalDomain implements BaseModel
     }
 
     /**
+     * The results of the query.
+     *
      * @param list<Domain|DomainShape> $results
      */
     public function withResults(array $results): self
@@ -88,6 +97,9 @@ final class CollectionResponseWithTotalDomain implements BaseModel
         return $self;
     }
 
+    /**
+     * The number of available results.
+     */
     public function withTotal(int $total): self
     {
         $self = clone $this;

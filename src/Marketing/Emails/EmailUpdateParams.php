@@ -13,6 +13,8 @@ use HubspotSDK\Marketing\Emails\EmailUpdateParams\State;
 use HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory;
 
 /**
+ * Change properties of a marketing email.
+ *
  * @see HubspotSDK\Services\Marketing\EmailsService::update()
  *
  * @phpstan-import-type PublicEmailContentShape from \HubspotSDK\Marketing\Emails\PublicEmailContent

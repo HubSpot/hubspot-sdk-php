@@ -8,6 +8,8 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Files\Folder;
 use HubspotSDK\Files\FolderActionResponse;
+use HubspotSDK\Files\Folders\FolderGetByIDParams;
+use HubspotSDK\Files\Folders\FolderGetByPathParams;
 use HubspotSDK\Files\Folders\FolderSearchParams;
 use HubspotSDK\Files\Folders\FolderUpdateAsyncByIDParams;
 use HubspotSDK\Files\Folders\FolderUpdateByIDParams;
@@ -23,6 +25,71 @@ interface FoldersRawContract
     /**
      * @api
      *
+     * @param string $folderID ID of folder to delete
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteByID(
+        string $folderID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $folderPath Path of folder to delete
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteByPath(
+        string $folderPath,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $folderID ID of desired folder
+     * @param array<string,mixed>|FolderGetByIDParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Folder>
+     *
+     * @throws APIException
+     */
+    public function getByID(
+        string $folderID,
+        array|FolderGetByIDParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $folderPath path of desired folder
+     * @param array<string,mixed>|FolderGetByPathParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Folder>
+     *
+     * @throws APIException
+     */
+    public function getByPath(
+        string $folderPath,
+        array|FolderGetByPathParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $taskID TaskId of folder update
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FolderActionResponse>
@@ -67,6 +134,7 @@ interface FoldersRawContract
     /**
      * @api
      *
+     * @param string $folderID ID of folder to update
      * @param array<string,mixed>|FolderUpdateByIDParams $params
      * @param RequestOpts|null $requestOptions
      *

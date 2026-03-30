@@ -20,10 +20,17 @@ final class CopilotRequestContext implements BaseModel
     /** @use SdkModel<CopilotRequestContextShape> */
     use SdkModel;
 
-    /** @var value-of<Source> $source */
+    /**
+     * Indicates the source of the request, with the default value being 'COPILOT'.
+     *
+     * @var value-of<Source> $source
+     */
     #[Required(enum: Source::class)]
     public string $source;
 
+    /**
+     * The unique identifier for the trajectory.
+     */
     #[Optional('trajectoryId')]
     public ?string $trajectoryID;
 
@@ -67,6 +74,8 @@ final class CopilotRequestContext implements BaseModel
     }
 
     /**
+     * Indicates the source of the request, with the default value being 'COPILOT'.
+     *
      * @param Source|value-of<Source> $source
      */
     public function withSource(Source|string $source): self
@@ -77,6 +86,9 @@ final class CopilotRequestContext implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the trajectory.
+     */
     public function withTrajectoryID(string $trajectoryID): self
     {
         $self = clone $this;

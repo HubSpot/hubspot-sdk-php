@@ -6,8 +6,6 @@ use HubspotSDK\Client;
 use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsPublicStatus;
 use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsPublicWideStatus;
 use HubspotSDK\CommunicationPreferences\LinkGenerationResponse;
-use HubspotSDK\CommunicationPreferences\PublicSubscriptionStatus;
-use HubspotSDK\CommunicationPreferences\PublicSubscriptionStatusesResponse;
 use HubspotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -68,21 +66,6 @@ final class CommunicationPreferencesTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(LinkGenerationResponse::class, $result);
-    }
-
-    #[Test]
-    public function testGetStatusByEmail(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->communicationPreferences->getStatusByEmail(
-            'emailAddress'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PublicSubscriptionStatusesResponse::class, $result);
     }
 
     #[Test]
@@ -162,74 +145,6 @@ final class CommunicationPreferencesTest extends TestCase
             ActionResponseWithResultsPublicWideStatus::class,
             $result
         );
-    }
-
-    #[Test]
-    public function testSubscribe(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->communicationPreferences->subscribe(
-            emailAddress: 'emailAddress',
-            subscriptionID: 'subscriptionId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
-    }
-
-    #[Test]
-    public function testSubscribeWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->communicationPreferences->subscribe(
-            emailAddress: 'emailAddress',
-            subscriptionID: 'subscriptionId',
-            legalBasis: 'CONSENT_WITH_NOTICE',
-            legalBasisExplanation: 'legalBasisExplanation',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
-    }
-
-    #[Test]
-    public function testUnsubscribe(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->communicationPreferences->unsubscribe(
-            emailAddress: 'emailAddress',
-            subscriptionID: 'subscriptionId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
-    }
-
-    #[Test]
-    public function testUnsubscribeWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->communicationPreferences->unsubscribe(
-            emailAddress: 'emailAddress',
-            subscriptionID: 'subscriptionId',
-            legalBasis: 'CONSENT_WITH_NOTICE',
-            legalBasisExplanation: 'legalBasisExplanation',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PublicSubscriptionStatus::class, $result);
     }
 
     #[Test]

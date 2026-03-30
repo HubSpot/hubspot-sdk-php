@@ -41,6 +41,8 @@ final class CardsDevRawService implements CardsDevRawContract
     /**
      * @api
      *
+     * Defines a new card that will become active on an account when this app is installed.
+     *
      * @param array{
      *   actions: CardActions|CardActionsShape,
      *   display: CardDisplayBody|CardDisplayBodyShape,
@@ -75,6 +77,8 @@ final class CardsDevRawService implements CardsDevRawContract
 
     /**
      * @api
+     *
+     * Update a card definition with new details.
      *
      * @param string $cardID Path param
      * @param array{
@@ -115,6 +119,8 @@ final class CardsDevRawService implements CardsDevRawContract
     /**
      * @api
      *
+     * Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.
+     *
      * @param array{appID: int}|CardsDevDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -146,6 +152,8 @@ final class CardsDevRawService implements CardsDevRawContract
     /**
      * @api
      *
+     * Returns a list of cards for a given app.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardListResponse>
@@ -167,6 +175,8 @@ final class CardsDevRawService implements CardsDevRawContract
 
     /**
      * @api
+     *
+     * Returns the definition for a card with the given ID.
      *
      * @param array{appID: int}|CardsDevGetByIDParams $params
      * @param RequestOpts|null $requestOptions
@@ -198,6 +208,8 @@ final class CardsDevRawService implements CardsDevRawContract
 
     /**
      * @api
+     *
+     * Returns an example card detail response. This is the payload with displayed details for a card that will be shown to a user. An app should send this in response to the data fetch request.
      *
      * @param RequestOpts|null $requestOptions
      *

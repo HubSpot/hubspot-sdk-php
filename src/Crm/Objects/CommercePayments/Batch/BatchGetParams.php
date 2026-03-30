@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Retrieve a batch of payments by ID (`objectId`) or unique property value (`idProperty`).
+ * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
  *
  * @see HubspotSDK\Services\Crm\Objects\CommercePayments\BatchService::get()
  *

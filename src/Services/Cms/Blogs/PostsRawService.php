@@ -5,36 +5,31 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Blogs;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Posts\ContentLanguageVariation;
-use HubspotSDK\Cms\Blogs\Posts\PostAttachToLangGroupParams;
-use HubspotSDK\Cms\Blogs\Posts\PostAttachToLangGroupParams\PrimaryLanguage;
 use HubspotSDK\Cms\Blogs\Posts\PostCloneParams;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateLangVariationParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Posts\PostDeleteParams;
-use HubspotSDK\Cms\Blogs\Posts\PostDetachFromLangGroupParams;
 use HubspotSDK\Cms\Blogs\Posts\PostGetParams;
-use HubspotSDK\Cms\Blogs\Posts\PostGetPreviousVersionParams;
-use HubspotSDK\Cms\Blogs\Posts\PostGetPreviousVersionsParams;
+use HubspotSDK\Cms\Blogs\Posts\PostListAuthorsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostListParams;
-use HubspotSDK\Cms\Blogs\Posts\PostRestorePreviousVersionParams;
-use HubspotSDK\Cms\Blogs\Posts\PostRestorePreviousVersionToDraftParams;
+use HubspotSDK\Cms\Blogs\Posts\PostListTagsParams;
+use HubspotSDK\Cms\Blogs\Posts\PostQueryAuthorsParams;
+use HubspotSDK\Cms\Blogs\Posts\PostQueryParams;
+use HubspotSDK\Cms\Blogs\Posts\PostQueryTagsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostScheduleParams;
-use HubspotSDK\Cms\Blogs\Posts\PostSetLangPrimaryParams;
 use HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams;
-use HubspotSDK\Cms\Blogs\Posts\PostUpdateLangsParams;
 use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
+use HubspotSDK\Cms\ContentLanguageVariation;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Blogs\PostsRawContract;
 
 /**
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\Blogs\Posts\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  */
 final class PostsRawService implements PostsRawContract
@@ -47,6 +42,8 @@ final class PostsRawService implements PostsRawContract
 
     /**
      * @api
+     *
+     * Create a new blog post, specifying its content in the request body.
      *
      * @param array{
      *   id: string,
@@ -139,6 +136,8 @@ final class PostsRawService implements PostsRawContract
 
     /**
      * @api
+     *
+     * Partially updates a single blog post by ID. You only need to specify the values that you want to update.
      *
      * @param string $objectID Path param
      * @param array{
@@ -268,7 +267,7 @@ final class PostsRawService implements PostsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'cms/blogs/2026-03/posts',
+            path: 'cms/blogs/2026-03/posts/cursor',
             query: $parsed,
             headers: ['Accept' => '*/*'],
             options: $options,
@@ -278,6 +277,8 @@ final class PostsRawService implements PostsRawContract
 
     /**
      * @api
+     *
+     * Delete a blog post by ID.
      *
      * @param array{archived?: bool}|PostDeleteParams $params
      * @param RequestOpts|null $requestOptions
@@ -309,40 +310,7 @@ final class PostsRawService implements PostsRawContract
     /**
      * @api
      *
-     * @param array{
-     *   id: string,
-     *   language: value-of<PostAttachToLangGroupParams\Language>,
-     *   primaryID: string,
-     *   primaryLanguage?: value-of<PrimaryLanguage>,
-     * }|PostAttachToLangGroupParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function attachToLangGroup(
-        array|PostAttachToLangGroupParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = PostAttachToLangGroupParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'cms/blogs/2026-03/posts/multi-language/attach-to-lang-group',
-            headers: ['Content-Type' => '*/*', 'Accept' => '*/*'],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
+     * Clone a blog post, making a copy of it in a new blog post.
      *
      * @param array{id: string, cloneName?: string}|PostCloneParams $params
      * @param RequestOpts|null $requestOptions
@@ -374,67 +342,7 @@ final class PostsRawService implements PostsRawContract
     /**
      * @api
      *
-     * @param array{
-     *   id: string, language?: string
-     * }|PostCreateLangVariationParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function createLangVariation(
-        array|PostCreateLangVariationParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = PostCreateLangVariationParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'cms/blogs/2026-03/posts/multi-language/create-language-variation',
-            headers: ['Content-Type' => '*/*', 'Accept' => '*/*'],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{id: string}|PostDetachFromLangGroupParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function detachFromLangGroup(
-        array|PostDetachFromLangGroupParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = PostDetachFromLangGroupParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'cms/blogs/2026-03/posts/multi-language/detach-from-lang-group',
-            headers: ['Content-Type' => '*/*', 'Accept' => '*/*'],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
+     * Retrieve a blog post by the post ID.
      *
      * @param array{archived?: bool, property?: string}|PostGetParams $params
      * @param RequestOpts|null $requestOptions
@@ -467,6 +375,8 @@ final class PostsRawService implements PostsRawContract
     /**
      * @api
      *
+     * Retrieve the full draft version of a blog post.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
@@ -490,31 +400,39 @@ final class PostsRawService implements PostsRawContract
     /**
      * @api
      *
-     * @param array{objectID: string}|PostGetPreviousVersionParams $params
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|PostListAuthorsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getPreviousVersion(
-        string $revisionID,
-        array|PostGetPreviousVersionParams $params,
+    public function listAuthors(
+        array|PostListAuthorsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = PostGetPreviousVersionParams::parseRequest(
+        [$parsed, $options] = PostListAuthorsParams::parseRequest(
             $params,
             $requestOptions,
         );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: [
-                'cms/blogs/2026-03/posts/%1$s/revisions/%2$s', $objectID, $revisionID,
-            ],
+            path: 'cms/blogs/2026-03/authors/cursor',
+            query: $parsed,
             headers: ['Accept' => '*/*'],
             options: $options,
             convert: 'string',
@@ -525,20 +443,29 @@ final class PostsRawService implements PostsRawContract
      * @api
      *
      * @param array{
-     *   after?: string, before?: string, limit?: int
-     * }|PostGetPreviousVersionsParams $params
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|PostListTagsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getPreviousVersions(
-        string $objectID,
-        array|PostGetPreviousVersionsParams $params,
+    public function listTags(
+        array|PostListTagsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = PostGetPreviousVersionsParams::parseRequest(
+        [$parsed, $options] = PostListTagsParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -546,7 +473,7 @@ final class PostsRawService implements PostsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: ['cms/blogs/2026-03/posts/%1$s/revisions', $objectID],
+            path: 'cms/blogs/2026-03/tags/cursor',
             query: $parsed,
             headers: ['Accept' => '*/*'],
             options: $options,
@@ -556,6 +483,8 @@ final class PostsRawService implements PostsRawContract
 
     /**
      * @api
+     *
+     * Publish the draft version of the blog post, sending its content to the live page.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -579,6 +508,134 @@ final class PostsRawService implements PostsRawContract
     /**
      * @api
      *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|PostQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function query(
+        array|PostQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = PostQueryParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/blogs/2026-03/posts/cursor/query',
+            query: $parsed,
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|PostQueryAuthorsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function queryAuthors(
+        array|PostQueryAuthorsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = PostQueryAuthorsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/blogs/2026-03/authors/cursor/query',
+            query: $parsed,
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|PostQueryTagsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function queryTags(
+        array|PostQueryTagsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = PostQueryTagsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/blogs/2026-03/tags/cursor/query',
+            query: $parsed,
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Discard all drafted content, resetting the draft to contain the content in the currently published version.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -601,77 +658,7 @@ final class PostsRawService implements PostsRawContract
     /**
      * @api
      *
-     * @param array{objectID: string}|PostRestorePreviousVersionParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function restorePreviousVersion(
-        string $revisionID,
-        array|PostRestorePreviousVersionParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = PostRestorePreviousVersionParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: [
-                'cms/blogs/2026-03/posts/%1$s/revisions/%2$s/restore',
-                $objectID,
-                $revisionID,
-            ],
-            headers: ['Accept' => '*/*'],
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{objectID: string}|PostRestorePreviousVersionToDraftParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function restorePreviousVersionToDraft(
-        int $revisionID,
-        array|PostRestorePreviousVersionToDraftParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = PostRestorePreviousVersionToDraftParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $objectID = $parsed['objectID'];
-        unset($parsed['objectID']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: [
-                'cms/blogs/2026-03/posts/%1$s/revisions/%2$s/restore-to-draft',
-                $objectID,
-                $revisionID,
-            ],
-            headers: ['Accept' => '*/*'],
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
+     * Schedule a blog post to be published at a specified time.
      *
      * @param array{
      *   id: string, publishDate: \DateTimeInterface
@@ -705,35 +692,7 @@ final class PostsRawService implements PostsRawContract
     /**
      * @api
      *
-     * @param array{id: string}|PostSetLangPrimaryParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function setLangPrimary(
-        array|PostSetLangPrimaryParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = PostSetLangPrimaryParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'put',
-            path: 'cms/blogs/2026-03/posts/multi-language/set-new-lang-primary',
-            headers: ['Content-Type' => '*/*'],
-            body: (object) $parsed,
-            options: $options,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
+     * Partially updates the draft version of a single blog post by ID. You only need to specify the values that you want to update.
      *
      * @param array{
      *   id: string,
@@ -818,39 +777,6 @@ final class PostsRawService implements PostsRawContract
         return $this->client->request(
             method: 'patch',
             path: ['cms/blogs/2026-03/posts/%1$s/draft', $objectID],
-            headers: ['Content-Type' => '*/*', 'Accept' => '*/*'],
-            body: (object) $parsed,
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   languages: array<string,PostUpdateLangsParams\Language|value-of<PostUpdateLangsParams\Language>>,
-     *   primaryID: string,
-     * }|PostUpdateLangsParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function updateLangs(
-        array|PostUpdateLangsParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = PostUpdateLangsParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'cms/blogs/2026-03/posts/multi-language/update-languages',
             headers: ['Content-Type' => '*/*', 'Accept' => '*/*'],
             body: (object) $parsed,
             options: $options,

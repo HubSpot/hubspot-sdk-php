@@ -33,7 +33,7 @@ final class PublicCampaignWithAssets implements BaseModel
     public string $id;
 
     /**
-     * A map of asset types to their corresponding collection of campaign assets, represented by CollectionResponsePublicCampaignAsset objects.
+     * Contains the assets associated with the campaign, each represented as a collection of campaign assets.
      *
      * @var array<string,CollectionResponsePublicCampaignAsset> $assets
      */
@@ -49,13 +49,13 @@ final class PublicCampaignWithAssets implements BaseModel
     public array $businessUnits;
 
     /**
-     * The date and time when the campaign was created, in ISO 8601 format.
+     * The date and time when the campaign was created, formatted as a date-time string.
      */
     #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
-     * A map of custom property names to their values for the campaign.
+     * A map of key-value pairs representing the properties of the campaign.
      *
      * @var array<string,string> $properties
      */
@@ -63,7 +63,7 @@ final class PublicCampaignWithAssets implements BaseModel
     public array $properties;
 
     /**
-     * The date and time when the campaign was last updated, in ISO 8601 format.
+     * The date and time when the campaign was last updated, formatted as a date-time string.
      */
     #[Required]
     public \DateTimeInterface $updatedAt;
@@ -141,7 +141,7 @@ final class PublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * A map of asset types to their corresponding collection of campaign assets, represented by CollectionResponsePublicCampaignAsset objects.
+     * Contains the assets associated with the campaign, each represented as a collection of campaign assets.
      *
      * @param array<string,CollectionResponsePublicCampaignAsset|CollectionResponsePublicCampaignAssetShape> $assets
      */
@@ -167,7 +167,7 @@ final class PublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * The date and time when the campaign was created, in ISO 8601 format.
+     * The date and time when the campaign was created, formatted as a date-time string.
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
@@ -178,7 +178,7 @@ final class PublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * A map of custom property names to their values for the campaign.
+     * A map of key-value pairs representing the properties of the campaign.
      *
      * @param array<string,string> $properties
      */
@@ -191,7 +191,7 @@ final class PublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * The date and time when the campaign was last updated, in ISO 8601 format.
+     * The date and time when the campaign was last updated, formatted as a date-time string.
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {

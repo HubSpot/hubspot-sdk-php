@@ -36,17 +36,31 @@ final class TranscriptCreateInboundCallParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * Indicates whether an engagement should be created for the call.
+     */
     #[Required]
     public bool $createEngagement;
 
-    /** @var array<string,string> $engagementProperties */
+    /**
+     * Contains additional properties related to the engagement.
+     *
+     * @var array<string,string> $engagementProperties
+     */
     #[Required(map: 'string')]
     public array $engagementProperties;
 
+    /**
+     * The unique identifier for the call from an external system.
+     */
     #[Required('externalCallId')]
     public string $externalCallID;
 
-    /** @var value-of<FinalCallStatus> $finalCallStatus */
+    /**
+     * The final status of the call, with accepted values including: BUSY, CALLING_CRM_USER, CANCELED, COMPLETED, CONNECTING, FAILED, HOLD, IN_PROGRESS, MISSED, NO_ANSWER, QUEUED, RINGING, UNKNOWN.
+     *
+     * @var value-of<FinalCallStatus> $finalCallStatus
+     */
     #[Required(enum: FinalCallStatus::class)]
     public string $finalCallStatus;
 
@@ -60,12 +74,21 @@ final class TranscriptCreateInboundCallParams implements BaseModel
     #[Required]
     public FormattedPhoneNumber $toNumber;
 
+    /**
+     * The timestamp indicating when the call started, formatted as a date-time string.
+     */
     #[Optional]
     public ?\DateTimeInterface $callStartedTimestamp;
 
+    /**
+     * The duration of the call in seconds.
+     */
     #[Optional]
     public ?int $durationSeconds;
 
+    /**
+     * The ID of the user associated with the call.
+     */
     #[Optional('userId')]
     public ?int $userID;
 
@@ -143,6 +166,9 @@ final class TranscriptCreateInboundCallParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether an engagement should be created for the call.
+     */
     public function withCreateEngagement(bool $createEngagement): self
     {
         $self = clone $this;
@@ -152,6 +178,8 @@ final class TranscriptCreateInboundCallParams implements BaseModel
     }
 
     /**
+     * Contains additional properties related to the engagement.
+     *
      * @param array<string,string> $engagementProperties
      */
     public function withEngagementProperties(array $engagementProperties): self
@@ -162,6 +190,9 @@ final class TranscriptCreateInboundCallParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the call from an external system.
+     */
     public function withExternalCallID(string $externalCallID): self
     {
         $self = clone $this;
@@ -171,6 +202,8 @@ final class TranscriptCreateInboundCallParams implements BaseModel
     }
 
     /**
+     * The final status of the call, with accepted values including: BUSY, CALLING_CRM_USER, CANCELED, COMPLETED, CONNECTING, FAILED, HOLD, IN_PROGRESS, MISSED, NO_ANSWER, QUEUED, RINGING, UNKNOWN.
+     *
      * @param FinalCallStatus|value-of<FinalCallStatus> $finalCallStatus
      */
     public function withFinalCallStatus(
@@ -216,6 +249,9 @@ final class TranscriptCreateInboundCallParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The timestamp indicating when the call started, formatted as a date-time string.
+     */
     public function withCallStartedTimestamp(
         \DateTimeInterface $callStartedTimestamp
     ): self {
@@ -225,6 +261,9 @@ final class TranscriptCreateInboundCallParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The duration of the call in seconds.
+     */
     public function withDurationSeconds(int $durationSeconds): self
     {
         $self = clone $this;
@@ -233,6 +272,9 @@ final class TranscriptCreateInboundCallParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The ID of the user associated with the call.
+     */
     public function withUserID(int $userID): self
     {
         $self = clone $this;

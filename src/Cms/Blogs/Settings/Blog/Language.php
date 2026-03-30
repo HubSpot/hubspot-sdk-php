@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\Blogs\Settings\Blog;
 
+/**
+ * The explicitly defined language of the Blog. If null, the Blog will default to the language of the Domain.
+ */
 enum Language: string
 {
     case AA = 'aa';

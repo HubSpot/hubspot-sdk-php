@@ -32,6 +32,9 @@ final class ObjectSchemaEgg implements BaseModel
     /** @use SdkModel<ObjectSchemaEggShape> */
     use SdkModel;
 
+    /**
+     * Determines if the object type can include properties that are marked as sensitive.
+     */
     #[Required]
     public bool $allowsSensitiveProperties;
 
@@ -84,6 +87,9 @@ final class ObjectSchemaEgg implements BaseModel
     #[Required(list: 'string')]
     public array $secondaryDisplayProperties;
 
+    /**
+     * A brief explanation of the object type.
+     */
     #[Optional]
     public ?string $description;
 
@@ -170,6 +176,9 @@ final class ObjectSchemaEgg implements BaseModel
         return $self;
     }
 
+    /**
+     * Determines if the object type can include properties that are marked as sensitive.
+     */
     public function withAllowsSensitiveProperties(
         bool $allowsSensitiveProperties
     ): self {
@@ -267,6 +276,9 @@ final class ObjectSchemaEgg implements BaseModel
         return $self;
     }
 
+    /**
+     * A brief explanation of the object type.
+     */
     public function withDescription(string $description): self
     {
         $self = clone $this;

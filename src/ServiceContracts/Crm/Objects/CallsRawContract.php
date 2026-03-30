@@ -6,12 +6,12 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Calls\CallCreateParams;
 use HubspotSDK\Crm\Objects\Calls\CallGetParams;
 use HubspotSDK\Crm\Objects\Calls\CallListParams;
 use HubspotSDK\Crm\Objects\Calls\CallSearchParams;
 use HubspotSDK\Crm\Objects\Calls\CallUpdateParams;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;

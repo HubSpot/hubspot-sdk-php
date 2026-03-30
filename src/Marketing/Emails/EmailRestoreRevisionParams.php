@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Restores a previous revision of a marketing email. The current revision becomes old, and the restored revision is given a new version number.
+ *
  * @see HubspotSDK\Services\Marketing\EmailsService::restoreRevision()
  *
  * @phpstan-type EmailRestoreRevisionParamsShape = array{emailID: string}

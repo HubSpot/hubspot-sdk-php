@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
+ * Read a batch of deal split objects by their associated deal object internal ID.
+ *
  * @see HubspotSDK\Services\Crm\DealSplits\BatchService::read()
  *
  * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID

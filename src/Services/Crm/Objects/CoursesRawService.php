@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Courses\CourseCreateParams;
 use HubspotSDK\Crm\Objects\Courses\CourseGetParams;
 use HubspotSDK\Crm\Objects\Courses\CourseListParams;
@@ -108,7 +108,7 @@ final class CoursesRawService implements CoursesRawContract
     /**
      * @api
      *
-     * Retrieve all courses.
+     * Read a page of courses. Control what is returned via the `properties` query param.
      *
      * @param array{
      *   after?: string,
@@ -147,7 +147,7 @@ final class CoursesRawService implements CoursesRawContract
     /**
      * @api
      *
-     * Delete a course by ID.
+     * Move an Object identified by `{courseId}` to the recycling bin.
      *
      * @param RequestOpts|null $requestOptions
      *

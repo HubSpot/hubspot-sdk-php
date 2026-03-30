@@ -18,7 +18,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type EndpointsShape from \HubspotSDK\Cms\MediaBridge\Endpoints
  *
  * @phpstan-type MediaBridgeUpdateOembedDomainParamsShape = array{
- *   appID: string, endpoints: Endpoints|EndpointsShape, portalID?: int|null
+ *   appID: int, endpoints: Endpoints|EndpointsShape, portalID?: int|null
  * }
  */
 final class MediaBridgeUpdateOembedDomainParams implements BaseModel
@@ -28,7 +28,7 @@ final class MediaBridgeUpdateOembedDomainParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     #[Required]
     public Endpoints $endpoints;
@@ -63,7 +63,7 @@ final class MediaBridgeUpdateOembedDomainParams implements BaseModel
      * @param Endpoints|EndpointsShape $endpoints
      */
     public static function with(
-        string $appID,
+        int $appID,
         Endpoints|array $endpoints,
         ?int $portalID = null
     ): self {
@@ -77,7 +77,7 @@ final class MediaBridgeUpdateOembedDomainParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

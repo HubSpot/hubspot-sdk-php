@@ -140,7 +140,11 @@ final class Property implements BaseModel
     #[Optional(enum: DataSensitivity::class)]
     public ?string $dataSensitivity;
 
-    /** @var value-of<DateDisplayHint>|null $dateDisplayHint */
+    /**
+     * Controls how date properties are displayed in the HubSpot UI, with options such as 'absolute', 'absolute_with_relative', 'time_since', and 'time_until'.
+     *
+     * @var value-of<DateDisplayHint>|null $dateDisplayHint
+     */
     #[Optional(enum: DateDisplayHint::class)]
     public ?string $dateDisplayHint;
 
@@ -169,7 +173,7 @@ final class Property implements BaseModel
     public ?bool $hasUniqueValue;
 
     /**
-     * Whether or not the property will be hidden from the HubSpot UI. It's recommended that this be set to false for custom properties.
+     * Hidden options won't be shown in HubSpot.
      */
     #[Optional]
     public ?bool $hidden;
@@ -204,7 +208,7 @@ final class Property implements BaseModel
     public ?bool $showCurrencySymbol;
 
     /**
-     * The timestamp when the property was last updated, in ISO 8601 format.
+     * When the object type was last updated.
      */
     #[Optional]
     public ?\DateTimeInterface $updatedAt;
@@ -483,6 +487,8 @@ final class Property implements BaseModel
     }
 
     /**
+     * Controls how date properties are displayed in the HubSpot UI, with options such as 'absolute', 'absolute_with_relative', 'time_since', and 'time_until'.
+     *
      * @param DateDisplayHint|value-of<DateDisplayHint> $dateDisplayHint
      */
     public function withDateDisplayHint(
@@ -539,7 +545,7 @@ final class Property implements BaseModel
     }
 
     /**
-     * Whether or not the property will be hidden from the HubSpot UI. It's recommended that this be set to false for custom properties.
+     * Hidden options won't be shown in HubSpot.
      */
     public function withHidden(bool $hidden): self
     {
@@ -609,7 +615,7 @@ final class Property implements BaseModel
     }
 
     /**
-     * The timestamp when the property was last updated, in ISO 8601 format.
+     * When the object type was last updated.
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {

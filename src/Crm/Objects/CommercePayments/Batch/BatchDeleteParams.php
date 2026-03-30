@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Delete a batch of payments by ID.
+ * Archive a batch of commerce payments by their IDs. This operation moves the specified payments to the archive, making them inactive in the system.
  *
  * @see HubspotSDK\Services\Crm\Objects\CommercePayments\BatchService::delete()
  *

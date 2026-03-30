@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
 
+/**
+ * The type of phone number, with accepted values including FIXED_LINE, MOBILE, VOIP, and others.
+ */
 enum PhoneNumberType: string
 {
     case FIXED_LINE = 'FIXED_LINE';

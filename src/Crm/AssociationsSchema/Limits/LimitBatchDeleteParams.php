@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationsSchema\PublicAssociationSpec;
 
 /**
- * Batch delete limits defined for associations between two specified CRM object types.
+ * Batch delete limits that have been defined for association types between two object types.
  *
  * @see HubspotSDK\Services\Crm\AssociationsSchema\LimitsService::batchDelete()
  *

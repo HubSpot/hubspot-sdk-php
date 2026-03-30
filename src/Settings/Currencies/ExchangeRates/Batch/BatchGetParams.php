@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\PublicObjectID;
 
 /**
+ * Retrieve the details of multiple exchange rates in a single request, specified by their IDs.
+ *
  * @see HubspotSDK\Services\Settings\Currencies\ExchangeRates\BatchService::get()
  *
  * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID

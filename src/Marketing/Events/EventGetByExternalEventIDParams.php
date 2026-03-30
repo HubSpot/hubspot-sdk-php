@@ -10,6 +10,10 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Returns the details of a Marketing Event with the specified externalAccountId, externalEventId, if it exists.
+ *
+ * Only Marketing Events created by the same app making the request can be retrieved.
+ *
  * @see HubspotSDK\Services\Marketing\EventsService::getByExternalEventID()
  *
  * @phpstan-type EventGetByExternalEventIDParamsShape = array{

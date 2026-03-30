@@ -16,9 +16,6 @@ final class ObjectProperty implements BaseModel
     /** @use SdkModel<ObjectPropertyShape> */
     use SdkModel;
 
-    /**
-     * Filter events by specific object properties.
-     */
     #[Optional('{propname}')]
     public mixed $_propname;
 
@@ -41,9 +38,6 @@ final class ObjectProperty implements BaseModel
         return $self;
     }
 
-    /**
-     * Filter events by specific object properties.
-     */
     public function withPropname(mixed $_propname): self
     {
         $self = clone $this;

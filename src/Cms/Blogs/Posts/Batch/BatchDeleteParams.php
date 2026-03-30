@@ -10,6 +10,9 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Delete a blog post by ID.
+ * Note: This is not the same as the in-app `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to `true`.
+ *
  * @see HubspotSDK\Services\Cms\Blogs\Posts\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<string>}

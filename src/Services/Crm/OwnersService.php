@@ -69,6 +69,8 @@ final class OwnersService implements OwnersContract
     /**
      * @api
      *
+     * Retrieve details of a specific owner using either their 'id' or 'userId'.
+     *
      * @param bool $archived whether to return only results that have been archived
      * @param IDProperty|value-of<IDProperty> $idProperty
      * @param RequestOpts|null $requestOptions

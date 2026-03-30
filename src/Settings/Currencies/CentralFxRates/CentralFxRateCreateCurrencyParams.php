@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams\CurrencyCode;
 
 /**
+ * Create a new currency with central exchange rates in the portal. Unsupported currencies cannot be added here.
+ *
  * @see HubspotSDK\Services\Settings\Currencies\CentralFxRatesService::createCurrency()
  *
  * @phpstan-type CentralFxRateCreateCurrencyParamsShape = array{

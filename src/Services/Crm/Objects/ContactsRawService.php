@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Contacts\ContactCreateParams;
 use HubspotSDK\Crm\Objects\Contacts\ContactGdprDeleteParams;
 use HubspotSDK\Crm\Objects\Contacts\ContactGetParams;
@@ -39,7 +39,7 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
+     * Create a contact
      *
      * @param array{
      *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,
@@ -110,8 +110,6 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Retrieve all contacts, using query parameters to specify the information that gets returned.
-     *
      * @param array{
      *   after?: string,
      *   archived?: bool,
@@ -173,8 +171,6 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
-     *
      * @param array{
      *   objectID: string, idProperty?: string
      * }|ContactGdprDeleteParams $params
@@ -205,8 +201,6 @@ final class ContactsRawService implements ContactsRawContract
 
     /**
      * @api
-     *
-     * Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
      *
      * @param array{
      *   archived?: bool,
@@ -244,7 +238,7 @@ final class ContactsRawService implements ContactsRawContract
     /**
      * @api
      *
-     * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
+     * Merge two contacts
      *
      * @param array{
      *   objectIDToMerge: string, primaryObjectID: string

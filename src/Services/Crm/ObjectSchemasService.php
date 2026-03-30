@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Crm;
 
+use HubspotSDK\AssociationDefinition;
 use HubspotSDK\Client;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Crm\ObjectSchemas\ObjectSchema;
 use HubspotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
-use HubspotSDK\Events\AssociationDefinition;
-use HubspotSDK\ObjectSchema;
 use HubspotSDK\ObjectTypeDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\RequestOptions;
@@ -46,6 +46,9 @@ final class ObjectSchemasService implements ObjectSchemasContract
     /**
      * @api
      *
+     * Create a new custom object schema by defining its properties and associations.
+     *
+     * @param bool $allowsSensitiveProperties determines if the object type can include properties that are marked as sensitive
      * @param list<string> $associatedObjects associations defined for this object type
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
      * @param string $name A unique name for this object. For internal use only.
@@ -53,6 +56,7 @@ final class ObjectSchemasService implements ObjectSchemasContract
      * @param list<string> $requiredProperties the names of properties that should be **required** when creating an object of this type
      * @param list<string> $searchableProperties names of properties that will be indexed for this object type in by HubSpot's product search
      * @param list<string> $secondaryDisplayProperties The names of secondary properties for this object. These will be displayed as secondary on the HubSpot record page for this object type.
+     * @param string $description a brief explanation of the object type
      * @param string $primaryDisplayProperty The name of the primary property for this object. This will be displayed as primary on the HubSpot record page for this object type.
      * @param RequestOpts|null $requestOptions
      *
@@ -95,6 +99,9 @@ final class ObjectSchemasService implements ObjectSchemasContract
     /**
      * @api
      *
+     * Update attributes of a custom object schema, such as properties and labels, using the object type ID or fully qualified name.
+     *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
@@ -139,6 +146,8 @@ final class ObjectSchemasService implements ObjectSchemasContract
     /**
      * @api
      *
+     * Retrieve all custom object schemas, with options to include property definitions, association definitions, and audit metadata.
+     *
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *
@@ -169,6 +178,9 @@ final class ObjectSchemasService implements ObjectSchemasContract
     /**
      * @api
      *
+     * Remove a custom object schema from the account using its object type ID or fully qualified name.
+     *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *
@@ -190,6 +202,9 @@ final class ObjectSchemasService implements ObjectSchemasContract
     /**
      * @api
      *
+     * Create a new association between the specified object type and another object type. This operation requires the definition of the association attributes, such as the primary and target object type IDs.
+     *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -218,6 +233,10 @@ final class ObjectSchemasService implements ObjectSchemasContract
     /**
      * @api
      *
+     * Remove an association between two object types identified by the association identifier and object type. This operation is irreversible and will permanently delete the specified association.
+     *
+     * @param string $associationIdentifier unique ID of the association to remove
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -238,6 +257,9 @@ final class ObjectSchemasService implements ObjectSchemasContract
     /**
      * @api
      *
+     * Retrieve details of a custom object schema, including its properties and associations, using the object type ID or fully qualified name.
+     *
+     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

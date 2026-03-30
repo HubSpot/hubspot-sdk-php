@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update the capabilities for an existing. You can also use it to update the channel's webhookUri and its channelAccountConnectionRedirectUrl.
+ *
  * @see HubspotSDK\Services\Conversations\CustomChannelsService::update()
  *
  * @phpstan-type CustomChannelUpdateParamsShape = array{

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve content from the specified environment and path in your HubSpot CMS. This endpoint allows you to access specific content files based on the environment and path parameters, which can be useful for managing and displaying content in different environments.
+ * Downloads the byte contents of the file at the specified path in the specified environment.
  *
  * @see HubspotSDK\Services\Cms\SourceCodeService::get()
  *

@@ -11,7 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\PublicCampaignInput;
 
 /**
- * Create a batch of campaigns with specified properties. This endpoint allows for the creation of multiple campaigns in a single request. Note that the 'hs_goal' property is deprecated and will be ignored if provided.
+ * This endpoint creates a batch of campaigns. The maximum number of items in a batch request is 50.
+ * The campaigns in the response are not guaranteed to be in the same order as they were provided in the request.
  *
  * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::create()
  *

@@ -79,7 +79,7 @@ final class ContentSearchResult implements BaseModel
     public ?string $authorFullName;
 
     /**
-     * For knowledge articles, the category of the article.
+     * The error category.
      */
     #[Optional]
     public ?string $category;
@@ -308,7 +308,7 @@ final class ContentSearchResult implements BaseModel
     }
 
     /**
-     * For knowledge articles, the category of the article.
+     * The error category.
      */
     public function withCategory(string $category): self
     {

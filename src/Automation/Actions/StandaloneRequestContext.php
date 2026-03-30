@@ -27,10 +27,17 @@ final class StandaloneRequestContext implements BaseModel
     #[Required('chirpAiContextObject')]
     public ChirpAIContextObject $chirpAIContextObject;
 
-    /** @var value-of<Source> $source */
+    /**
+     * Indicates the source of the request, with the default value being 'STANDALONE'.
+     *
+     * @var value-of<Source> $source
+     */
     #[Required(enum: Source::class)]
     public string $source;
 
+    /**
+     * A unique identifier for tracking the trajectory of the request.
+     */
     #[Optional('trajectoryId')]
     public ?string $trajectoryID;
 
@@ -89,6 +96,8 @@ final class StandaloneRequestContext implements BaseModel
     }
 
     /**
+     * Indicates the source of the request, with the default value being 'STANDALONE'.
+     *
      * @param Source|value-of<Source> $source
      */
     public function withSource(Source|string $source): self
@@ -99,6 +108,9 @@ final class StandaloneRequestContext implements BaseModel
         return $self;
     }
 
+    /**
+     * A unique identifier for tracking the trajectory of the request.
+     */
     public function withTrajectoryID(string $trajectoryID): self
     {
         $self = clone $this;

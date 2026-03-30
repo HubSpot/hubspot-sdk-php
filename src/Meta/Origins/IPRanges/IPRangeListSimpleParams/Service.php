@@ -13,4 +13,6 @@ enum Service: string
     case DNS = 'DNS';
 
     case WEB_SCRAPING = 'WEB_SCRAPING';
+
+    case TEST_SERVICE = 'TEST_SERVICE';
 }

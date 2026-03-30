@@ -41,9 +41,7 @@ final class ListSearchParams implements BaseModel
     public array $additionalProperties;
 
     /**
-     * The `listIds` that will be used to filter results by `listId`. If values are provided, then the response will only include results that have a `listId` in this array.
-     *
-     * If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.
+     * ILS list ids to be included in search results. If not specified, all lists matching other criteria will be included.
      *
      * @var list<string> $listIDs
      */
@@ -57,11 +55,7 @@ final class ListSearchParams implements BaseModel
     public int $offset;
 
     /**
-     * The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.
-     *
-     * If no value is provided, or if an empty list is provided, then results will not be filtered by `processingType`.
-     *
-     * Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.
+     * List processing types to be included in search results. If not specified, all lists with all processing types will be included.
      *
      * @var list<string> $processingTypes
      */
@@ -164,9 +158,7 @@ final class ListSearchParams implements BaseModel
     }
 
     /**
-     * The `listIds` that will be used to filter results by `listId`. If values are provided, then the response will only include results that have a `listId` in this array.
-     *
-     * If no value is provided, or if an empty list is provided, then the results will not be filtered by `listId`.
+     * ILS list ids to be included in search results. If not specified, all lists matching other criteria will be included.
      *
      * @param list<string> $listIDs
      */
@@ -190,11 +182,7 @@ final class ListSearchParams implements BaseModel
     }
 
     /**
-     * The `processingTypes` that will be used to filter results by `processingType`. If values are provided, then the response will only include results that have a `processingType` in this array.
-     *
-     * If no value is provided, or if an empty list is provided, then results will not be filtered by `processingType`.
-     *
-     * Valid `processingTypes` are: `MANUAL`, `SNAPSHOT`, or `DYNAMIC`.
+     * List processing types to be included in search results. If not specified, all lists with all processing types will be included.
      *
      * @param list<string> $processingTypes
      */

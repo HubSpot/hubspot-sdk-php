@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Read Marketing event's participations counters by externalAccountId and externalEventId pair.
+ *
  * @see HubspotSDK\Services\Marketing\Events\ParticipationsService::getByExternalAccountAndEventID()
  *
  * @phpstan-type ParticipationGetByExternalAccountAndEventIDParamsShape = array{

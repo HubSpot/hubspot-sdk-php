@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
@@ -46,7 +46,7 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Create a single contact. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the contact, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
+     * Create a contact
      *
      * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
      * @param array<string,string> $properties key-value pairs for setting properties for the new object
@@ -99,8 +99,6 @@ final class ContactsService implements ContactsContract
 
     /**
      * @api
-     *
-     * Retrieve all contacts, using query parameters to specify the information that gets returned.
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
@@ -162,8 +160,6 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Permanently delete a contact and all associated content to follow GDPR. Use optional property `idProperty` set to `email` to identify contact by email address. If email address is not found, the email address will be added to a blocklist and prevent it from being used in the future. Learn more about [permanently deleting contacts](https://knowledge.hubspot.com/privacy-and-consent/how-do-i-perform-a-gdpr-delete-in-hubspot).
-     *
      * @param string $objectID the ID of the contact to permanently delete
      * @param string $idProperty The name of a property whose values are unique for this object. An alternative to identifying a contact by ID.
      * @param RequestOpts|null $requestOptions
@@ -187,8 +183,6 @@ final class ContactsService implements ContactsContract
 
     /**
      * @api
-     *
-     * Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
      *
      * @param bool $archived whether to return only results that have been archived
      * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
@@ -227,7 +221,7 @@ final class ContactsService implements ContactsContract
     /**
      * @api
      *
-     * Merge two contact records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
+     * Merge two contacts
      *
      * @param string $objectIDToMerge the ID of the company to merge into the primary
      * @param string $primaryObjectID the ID of the primary company, which the other will merge into

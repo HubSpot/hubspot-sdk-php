@@ -29,13 +29,13 @@ final class URLMappingCreateRequestBody implements BaseModel
     use SdkModel;
 
     /**
-     * The destination URL, where the target URL should be redirected if it matches the routePrefix.
+     * The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
      */
     #[Required]
     public string $destination;
 
     /**
-     * The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy).
+     * The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
      */
     #[Required]
     public int $redirectStyle;
@@ -47,13 +47,13 @@ final class URLMappingCreateRequestBody implements BaseModel
     public string $routePrefix;
 
     /**
-     * Whether the routePrefix should match on the entire URL, including the domain.
+     * Whether the `routePrefix` should match on the entire URL, including the domain.
      */
     #[Optional('isMatchFullUrl')]
     public ?bool $isMatchFullURL;
 
     /**
-     * Whether the routePrefix should match on the entire URL path, including the query string.
+     * Whether the `routePrefix` should match on the entire URL path, including the query string.
      */
     #[Optional]
     public ?bool $isMatchQueryString;
@@ -65,13 +65,13 @@ final class URLMappingCreateRequestBody implements BaseModel
     public ?bool $isOnlyAfterNotFound;
 
     /**
-     * Whether the routePrefix should match based on pattern.
+     * Whether the `routePrefix` should match based on pattern.
      */
     #[Optional]
     public ?bool $isPattern;
 
     /**
-     * Whether the routePrefix should match both HTTP and HTTPS protocols.
+     * Whether the `routePrefix` should match both HTTP and HTTPS protocols.
      */
     #[Optional]
     public ?bool $isProtocolAgnostic;
@@ -83,7 +83,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     public ?bool $isTrailingSlashOptional;
 
     /**
-     * Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the lower precedence will be used.
+     * Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
      */
     #[Optional]
     public ?int $precedence;
@@ -147,7 +147,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     }
 
     /**
-     * The destination URL, where the target URL should be redirected if it matches the routePrefix.
+     * The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
      */
     public function withDestination(string $destination): self
     {
@@ -158,7 +158,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     }
 
     /**
-     * The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy).
+     * The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
      */
     public function withRedirectStyle(int $redirectStyle): self
     {
@@ -180,7 +180,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     }
 
     /**
-     * Whether the routePrefix should match on the entire URL, including the domain.
+     * Whether the `routePrefix` should match on the entire URL, including the domain.
      */
     public function withIsMatchFullURL(bool $isMatchFullURL): self
     {
@@ -191,7 +191,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     }
 
     /**
-     * Whether the routePrefix should match on the entire URL path, including the query string.
+     * Whether the `routePrefix` should match on the entire URL path, including the query string.
      */
     public function withIsMatchQueryString(bool $isMatchQueryString): self
     {
@@ -213,7 +213,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     }
 
     /**
-     * Whether the routePrefix should match based on pattern.
+     * Whether the `routePrefix` should match based on pattern.
      */
     public function withIsPattern(bool $isPattern): self
     {
@@ -224,7 +224,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     }
 
     /**
-     * Whether the routePrefix should match both HTTP and HTTPS protocols.
+     * Whether the `routePrefix` should match both HTTP and HTTPS protocols.
      */
     public function withIsProtocolAgnostic(bool $isProtocolAgnostic): self
     {
@@ -247,7 +247,7 @@ final class URLMappingCreateRequestBody implements BaseModel
     }
 
     /**
-     * Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the lower precedence will be used.
+     * Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
      */
     public function withPrecedence(int $precedence): self
     {

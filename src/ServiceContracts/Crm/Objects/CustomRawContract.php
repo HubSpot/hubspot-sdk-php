@@ -6,9 +6,9 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\Custom\CustomCreateParams;
 use HubspotSDK\Crm\Objects\Custom\CustomDeleteParams;
 use HubspotSDK\Crm\Objects\Custom\CustomGetParams;
@@ -30,7 +30,6 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param array<string,mixed>|CustomCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -47,7 +46,6 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param array<string,mixed>|CustomUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -64,7 +62,6 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param array<string,mixed>|CustomListParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -81,7 +78,6 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param array<string,mixed>|CustomDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -98,7 +94,7 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectType path param: The type of object
+     * @param string $objectType Path param
      * @param array<string,mixed>|CustomGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -115,7 +111,6 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param array<string,mixed>|CustomMergeParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -132,7 +127,6 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param array<string,mixed>|CustomSearchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -149,7 +143,6 @@ interface CustomRawContract
     /**
      * @api
      *
-     * @param string $objectType the type of object
      * @param array<string,mixed>|CustomUpsertParams $params
      * @param RequestOpts|null $requestOptions
      *

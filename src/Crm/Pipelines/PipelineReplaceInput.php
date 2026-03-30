@@ -22,13 +22,23 @@ final class PipelineReplaceInput implements BaseModel
     /** @use SdkModel<PipelineReplaceInputShape> */
     use SdkModel;
 
+    /**
+     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     #[Required]
     public int $displayOrder;
 
+    /**
+     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     */
     #[Required]
     public string $label;
 
-    /** @var list<PipelineStageInput> $stages */
+    /**
+     * The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
+     *
+     * @var list<PipelineStageInput> $stages
+     */
     #[Required(list: PipelineStageInput::class)]
     public array $stages;
 
@@ -75,6 +85,9 @@ final class PipelineReplaceInput implements BaseModel
         return $self;
     }
 
+    /**
+     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     */
     public function withDisplayOrder(int $displayOrder): self
     {
         $self = clone $this;
@@ -83,6 +96,9 @@ final class PipelineReplaceInput implements BaseModel
         return $self;
     }
 
+    /**
+     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     */
     public function withLabel(string $label): self
     {
         $self = clone $this;
@@ -92,6 +108,8 @@ final class PipelineReplaceInput implements BaseModel
     }
 
     /**
+     * The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
+     *
      * @param list<PipelineStageInput|PipelineStageInputShape> $stages
      */
     public function withStages(array $stages): self

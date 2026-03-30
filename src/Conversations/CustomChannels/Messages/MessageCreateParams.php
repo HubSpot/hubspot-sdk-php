@@ -15,6 +15,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Publish a message over your custom channel.
+ *
  * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::create()
  *
  * @phpstan-import-type AttachmentVariants from \HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment

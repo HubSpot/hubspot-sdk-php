@@ -13,7 +13,6 @@ use HubspotSDK\Marketing\Events\CollectionResponseSearchPublicResponseWrapperNoP
 use HubspotSDK\Marketing\Events\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
 use HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams;
 use HubspotSDK\Marketing\Events\MarketingEventDefaultResponse;
-use HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber;
 use HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicDefaultResponseV2;
@@ -21,7 +20,7 @@ use HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponse;
 use HubspotSDK\Marketing\Events\MarketingEventPublicReadResponseV2;
 use HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2;
-use HubspotSDK\Marketing\Events\MarketingEventSubscriber;
+use HubspotSDK\Page;
 use HubspotSDK\PropertyValue;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Marketing\EventsContract;
@@ -29,14 +28,13 @@ use HubspotSDK\Services\Marketing\Events\AttendanceService;
 use HubspotSDK\Services\Marketing\Events\ListAssociationsService;
 use HubspotSDK\Services\Marketing\Events\ParticipationsService;
 use HubspotSDK\Services\Marketing\Events\SettingsService;
+use HubspotSDK\Services\Marketing\Events\SubscriberStateService;
 
 /**
  * @phpstan-import-type MarketingEventPublicObjectIDDeleteRequestShape from \HubspotSDK\Marketing\Events\MarketingEventPublicObjectIDDeleteRequest
  * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubspotSDK\Marketing\Events\MarketingEventExternalUniqueIdentifier
  * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubspotSDK\Marketing\Events\MarketingEventPublicUpdateRequestFullV2
  * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\Events\MarketingEventCreateRequestParams
- * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventEmailSubscriber
- * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\Events\MarketingEventSubscriber
  * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  */
@@ -73,6 +71,11 @@ final class EventsService implements EventsContract
     public SettingsService $settings;
 
     /**
+     * @api
+     */
+    public SubscriberStateService $subscriberState;
+
+    /**
      * @internal
      */
     public function __construct(private Client $client)
@@ -83,10 +86,13 @@ final class EventsService implements EventsContract
         $this->listAssociations = new ListAssociationsService($client);
         $this->participations = new ParticipationsService($client);
         $this->settings = new SettingsService($client);
+        $this->subscriberState = new SubscriberStateService($client);
     }
 
     /**
      * @api
+     *
+     * Creates a new marketing event in HubSpot
      *
      * @param list<PropertyValue|PropertyValueShape> $customProperties A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
      * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
@@ -146,6 +152,8 @@ final class EventsService implements EventsContract
     /**
      * @api
      *
+     * Updates the details of an existing Marketing Event identified by its objectId, if it exists.
+     *
      * @param string $objectID the internal id of the marketing event in HubSpot
      * @param list<PropertyValue|PropertyValueShape> $customProperties
      * @param \DateTimeInterface $endDateTime The end date and time of the marketing event
@@ -196,6 +204,32 @@ final class EventsService implements EventsContract
     /**
      * @api
      *
+     * @param string $after the cursor indicating the position of the last retrieved item
+     * @param int $limit The limit for response size. The default value is 10, the max number is 100
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<MarketingEventPublicReadResponseV2>
+     *
+     * @throws APIException
+     */
+    public function list(
+        ?string $after = null,
+        int $limit = 10,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page {
+        $params = Util::removeNulls(['after' => $after, 'limit' => $limit]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Deletes the existing Marketing Event with the specified objectId, if it exists.
+     *
      * @param string $objectID the internal id of the marketing event in HubSpot
      * @param RequestOpts|null $requestOptions
      *
@@ -213,6 +247,12 @@ final class EventsService implements EventsContract
 
     /**
      * @api
+     *
+     * Deletes multiple Marketing Events from the portal based on their objectId, if they exist.
+     *
+     * Responses:
+     * 204: Returned if all specified Marketing Events were successfully deleted.
+     * 207: Returned if some objectIds did not correspond to any existing Marketing Events.
      *
      * @param list<MarketingEventPublicObjectIDDeleteRequest|MarketingEventPublicObjectIDDeleteRequestShape> $inputs
      * @param RequestOpts|null $requestOptions
@@ -234,6 +274,10 @@ final class EventsService implements EventsContract
     /**
      * @api
      *
+     * Deletes multiple Marketing Events based on externalAccountId, externalEventId, and appId.
+     *
+     * Only Marketing Events created by the same apps will be deleted; events from other apps cannot be removed by this endpoint.
+     *
      * @param list<MarketingEventExternalUniqueIdentifier|MarketingEventExternalUniqueIdentifierShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -253,6 +297,10 @@ final class EventsService implements EventsContract
 
     /**
      * @api
+     *
+     * Deletes the existing Marketing Event with the specified externalAccountId, externalEventId, if it exists.
+     *
+     * Only Marketing Events created by the same app can be deleted.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -274,6 +322,8 @@ final class EventsService implements EventsContract
     /**
      * @api
      *
+     * Returns the details of a Marketing Event with the specified objectId, if it exists.
+     *
      * @param string $objectID the internal id of the marketing event in HubSpot
      * @param RequestOpts|null $requestOptions
      *
@@ -291,6 +341,10 @@ final class EventsService implements EventsContract
 
     /**
      * @api
+     *
+     * Returns the details of a Marketing Event with the specified externalAccountId, externalEventId, if it exists.
+     *
+     * Only Marketing Events created by the same app making the request can be retrieved.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -312,6 +366,10 @@ final class EventsService implements EventsContract
     /**
      * @api
      *
+     * Retrieves Marketing Events where the externalEventId matches the value provided in the request, limited to events created by the app making the request.
+     *
+     * Marketing Events created by other apps will not be included in the results.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -331,6 +389,14 @@ final class EventsService implements EventsContract
     /**
      * @api
      *
+     * This endpoint searches the portal for all Marketing Events whose externalEventId matches the value provided in the request.
+     *
+     * It retrieves the objectId and additional event details for each matching Marketing Event.
+     *
+     * Since multiple Marketing Events can have the same externalEventId, the endpoint returns all matching results.
+     *
+     * Note: Marketing Events become searchable by externalEventId a few minutes after creation.
+     *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param RequestOpts|null $requestOptions
      *
@@ -348,6 +414,8 @@ final class EventsService implements EventsContract
 
     /**
      * @api
+     *
+     * Updates multiple Marketing Events on the portal based on their objectId, if they exist.
      *
      * @param list<MarketingEventPublicUpdateRequestFullV2|MarketingEventPublicUpdateRequestFullV2Shape> $inputs
      * @param RequestOpts|null $requestOptions
@@ -368,6 +436,10 @@ final class EventsService implements EventsContract
 
     /**
      * @api
+     *
+     * Updates the details of an existing Marketing Event identified by its externalAccountId, externalEventId if it exists.
+     *
+     * Only Marketing Events created by the same app can be updated.
      *
      * @param string $externalEventID Path param
      * @param string $externalAccountID Query param
@@ -426,6 +498,10 @@ final class EventsService implements EventsContract
     /**
      * @api
      *
+     * Upserts multiple Marketing Events. If a Marketing Event with the specified ID already exists, it will be updated; otherwise, a new event will be created.
+     *
+     * Only Marketing Events originally created by the same app can be updated.
+     *
      * @param list<MarketingEventCreateRequestParams|MarketingEventCreateRequestParamsShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -445,6 +521,8 @@ final class EventsService implements EventsContract
 
     /**
      * @api
+     *
+     * Upserts a marketing event If there is an existing marketing event with the specified ID, it will be updated; otherwise a new event will be created.
      *
      * @param list<PropertyValue|PropertyValueShape> $customProperties A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
      * In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
@@ -498,70 +576,6 @@ final class EventsService implements EventsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->upsertByExternalEventID($externalEventID_, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * @param string $subscriberState Path param
-     * @param string $externalEventID Path param
-     * @param string $externalAccountID Query param
-     * @param list<MarketingEventEmailSubscriber|MarketingEventEmailSubscriberShape> $inputs Body param: List of marketing event details to create or update
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByEmail(
-        string $subscriberState,
-        string $externalEventID,
-        string $externalAccountID,
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null,
-    ): string {
-        $params = Util::removeNulls(
-            [
-                'externalEventID' => $externalEventID,
-                'externalAccountID' => $externalAccountID,
-                'inputs' => $inputs,
-            ],
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->upsertSubscriberStateByEmail($subscriberState, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * @param string $subscriberState Path param
-     * @param string $externalEventID Path param
-     * @param string $externalAccountID Query param
-     * @param list<MarketingEventSubscriber|MarketingEventSubscriberShape> $inputs Body param: List of HubSpot contacts to subscribe to the marketing event
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function upsertSubscriberStateByID(
-        string $subscriberState,
-        string $externalEventID,
-        string $externalAccountID,
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null,
-    ): string {
-        $params = Util::removeNulls(
-            [
-                'externalEventID' => $externalEventID,
-                'externalAccountID' => $externalAccountID,
-                'inputs' => $inputs,
-            ],
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->upsertSubscriberStateByID($subscriberState, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

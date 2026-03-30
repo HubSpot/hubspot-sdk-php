@@ -12,8 +12,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * Search for a discount.
- *
  * @see HubspotSDK\Services\Crm\Objects\DiscountsService::search()
  *
  * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup

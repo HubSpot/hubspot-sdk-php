@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Remove a custom object schema from the account using its object type ID or fully qualified name.
+ *
  * @see HubspotSDK\Services\Crm\ObjectSchemasService::delete()
  *
  * @phpstan-type ObjectSchemaDeleteParamsShape = array{archived?: bool|null}

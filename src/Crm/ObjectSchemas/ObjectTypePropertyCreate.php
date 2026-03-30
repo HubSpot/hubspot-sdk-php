@@ -81,6 +81,9 @@ final class ObjectTypePropertyCreate implements BaseModel
     #[Optional]
     public ?int $displayOrder;
 
+    /**
+     * Specifies the reference type for external options associated with the property.
+     */
     #[Optional]
     public ?string $externalOptionsReferenceType;
 
@@ -102,6 +105,9 @@ final class ObjectTypePropertyCreate implements BaseModel
     #[Optional]
     public ?bool $hasUniqueValue;
 
+    /**
+     * Hidden options won't be shown in HubSpot.
+     */
     #[Optional]
     public ?bool $hidden;
 
@@ -302,6 +308,9 @@ final class ObjectTypePropertyCreate implements BaseModel
         return $self;
     }
 
+    /**
+     * Specifies the reference type for external options associated with the property.
+     */
     public function withExternalOptionsReferenceType(
         string $externalOptionsReferenceType
     ): self {
@@ -344,6 +353,9 @@ final class ObjectTypePropertyCreate implements BaseModel
         return $self;
     }
 
+    /**
+     * Hidden options won't be shown in HubSpot.
+     */
     public function withHidden(bool $hidden): self
     {
         $self = clone $this;

@@ -11,10 +11,9 @@ use HubspotSDK\Events\Definitions\DefinitionCreatePropertyParams;
 use HubspotSDK\Events\Definitions\DefinitionDeletePropertyParams;
 use HubspotSDK\Events\Definitions\DefinitionListParams;
 use HubspotSDK\Events\Definitions\DefinitionSendBatchParams;
-use HubspotSDK\Events\Definitions\DefinitionSendParams;
 use HubspotSDK\Events\Definitions\DefinitionUpdateParams;
 use HubspotSDK\Events\Definitions\DefinitionUpdatePropertyParams;
-use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
 use HubspotSDK\Page;
 use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
@@ -128,21 +127,6 @@ interface DefinitionsRawContract
     public function get(
         string $eventName,
         RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|DefinitionSendParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function send(
-        array|DefinitionSendParams $params,
-        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**

@@ -16,6 +16,8 @@ use HubspotSDK\Core\Conversion\Contracts\Converter;
 use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
+ * Defines the type of elements contained within the array, which can be an integer, long, double, string, boolean, another array, or an object.
+ *
  * @phpstan-import-type IntegerFieldSchemaShape from \HubspotSDK\Automation\Actions\IntegerFieldSchema
  * @phpstan-import-type LongFieldSchemaShape from \HubspotSDK\Automation\Actions\LongFieldSchema
  * @phpstan-import-type DoubleFieldSchemaShape from \HubspotSDK\Automation\Actions\DoubleFieldSchema

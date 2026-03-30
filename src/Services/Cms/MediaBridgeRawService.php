@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Services\Cms;
 
+use HubspotSDK\AssociationDefinition;
 use HubspotSDK\Client;
 use HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
+use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubspotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
+use HubspotSDK\Cms\MediaBridge\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Cms\MediaBridge\Endpoints;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
@@ -14,6 +18,7 @@ use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAssociationParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\ExternalPlayContext;
+use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams;
@@ -26,22 +31,17 @@ use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeDeleteAssociationParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeDeleteOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeDeleteParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeDeletePropertyGroupParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeDeletePropertyParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeGetOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeGetParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeGetPropertyGroupParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeGetPropertyParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeGetSchemaParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListOembedDomainsParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeListParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeListParams\MediaType;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListPropertiesParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListPropertyGroupsParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeListSchemasParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeObject;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeRegisterAppNameParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams;
@@ -51,21 +51,19 @@ use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyGroupParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateSchemaParams;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateSettingsParams;
+use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
+use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
+use HubspotSDK\Cms\MediaBridge\ObjectSchema;
 use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Cms\MediaBridge\Property;
 use HubspotSDK\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Events\AssociationDefinition;
-use HubspotSDK\ObjectSchema;
 use HubspotSDK\ObjectTypeDefinition;
 use HubspotSDK\ObjectTypeDefinitionLabels;
 use HubspotSDK\OptionInput;
-use HubspotSDK\Page;
-use HubspotSDK\Property;
 use HubspotSDK\PropertyGroup;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\MediaBridgeRawContract;
@@ -88,119 +86,11 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<MediaBridgeObject>
-     *
-     * @throws APIException
-     */
-    public function create(
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'media-bridge/2026-03/objects',
-            options: $requestOptions,
-            convert: MediaBridgeObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<MediaBridgeObject>
-     *
-     * @throws APIException
-     */
-    public function update(
-        int $objectID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'patch',
-            path: ['media-bridge/2026-03/objects/%1$s', $objectID],
-            options: $requestOptions,
-            convert: MediaBridgeObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param MediaType|value-of<MediaType> $mediaType
-     * @param array{after?: string, limit?: int}|MediaBridgeListParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Page<MediaBridgeObject>>
-     *
-     * @throws APIException
-     */
-    public function list(
-        MediaType|string $mediaType,
-        array|MediaBridgeListParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = MediaBridgeListParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['media-bridge/2026-03/objects/%1$s', $mediaType],
-            query: $parsed,
-            options: $options,
-            convert: MediaBridgeObject::class,
-            page: Page::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   mediaType: MediaBridgeDeleteParams\MediaType|value-of<MediaBridgeDeleteParams\MediaType>,
-     * }|MediaBridgeDeleteParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function delete(
-        int $objectID,
-        array|MediaBridgeDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = MediaBridgeDeleteParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $mediaType = $parsed['mediaType'];
-        unset($parsed['mediaType']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'delete',
-            path: ['media-bridge/2026-03/objects/%1$s/%2$s', $mediaType, $objectID],
-            options: $options,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Create a new association definition for the specified object type.
      *
      * @param string $objectType Path param
      * @param array{
-     *   appID: string, fromObjectTypeID: string, toObjectTypeID: string, name?: string
+     *   appID: int, fromObjectTypeID: string, toObjectTypeID: string, name?: string
      * }|MediaBridgeCreateAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -240,7 +130,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * Create an event containing the viewers attention span details for the media.
      *
      * @param array{
-     *   mediaType: MediaBridgeCreateAttentionSpanEventParams\MediaType|value-of<MediaBridgeCreateAttentionSpanEventParams\MediaType>,
+     *   mediaType: MediaType|value-of<MediaType>,
      *   occurredTimestamp: int,
      *   rawDataMap: array<string,int>,
      *   sessionID: string,
@@ -260,7 +150,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeCreateAttentionSpanEventParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<AttentionSpanEvent>
      *
      * @throws APIException
      */
@@ -277,10 +167,9 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
         return $this->client->request(
             method: 'post',
             path: 'media-bridge/2026-03/events/attention-span',
-            headers: ['Accept' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: 'string',
+            convert: AttentionSpanEvent::class,
         );
     }
 
@@ -309,7 +198,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeCreateMediaPlayedEventParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<MediaPlayedEvent>
      *
      * @throws APIException
      */
@@ -326,10 +215,9 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
         return $this->client->request(
             method: 'post',
             path: 'media-bridge/2026-03/events/media-played',
-            headers: ['Accept' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: 'string',
+            convert: MediaPlayedEvent::class,
         );
     }
 
@@ -357,7 +245,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeCreateMediaPlayedPercentEventParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<MediaPlayedPercentageEvent>
      *
      * @throws APIException
      */
@@ -374,10 +262,9 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
         return $this->client->request(
             method: 'post',
             path: 'media-bridge/2026-03/events/media-played-percent',
-            headers: ['Accept' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: 'string',
+            convert: MediaPlayedPercentageEvent::class,
         );
     }
 
@@ -396,7 +283,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function createObjectType(
-        string $appID,
+        int $appID,
         array|MediaBridgeCreateObjectTypeParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -430,7 +317,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function createOembedDomain(
-        string $appID,
+        int $appID,
         array|MediaBridgeCreateOembedDomainParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -456,7 +343,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param string $objectType Path param
      * @param array{
-     *   appID: string,
+     *   appID: int,
      *   fieldType: value-of<FieldType>,
      *   groupName: string,
      *   label: string,
@@ -508,7 +395,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param string $objectType Path param
      * @param array{
-     *   appID: string, label: string, name: string, displayOrder?: int
+     *   appID: int, label: string, name: string, displayOrder?: int
      * }|MediaBridgeCreatePropertyGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -550,7 +437,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function createVideoAssociationDefinition(
-        string $appID,
+        int $appID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
@@ -571,7 +458,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * Delete an existing association definition for an object type.
      *
      * @param array{
-     *   appID: string, objectType: string
+     *   appID: int, objectType: string
      * }|MediaBridgeDeleteAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -622,7 +509,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function deleteOembedDomain(
-        string $appID,
+        int $appID,
         array|MediaBridgeDeleteOembedDomainParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -650,7 +537,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * Delete an existing property for an object type.
      *
      * @param array{
-     *   appID: string, objectType: string
+     *   appID: int, objectType: string
      * }|MediaBridgeDeletePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -692,7 +579,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * Delete an existing property group by name
      *
      * @param array{
-     *   appID: string, objectType: string
+     *   appID: int, objectType: string
      * }|MediaBridgeDeletePropertyGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -731,39 +618,6 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
     /**
      * @api
      *
-     * @param array{
-     *   mediaType: MediaBridgeGetParams\MediaType|value-of<MediaBridgeGetParams\MediaType>,
-     * }|MediaBridgeGetParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<MediaBridgeObject>
-     *
-     * @throws APIException
-     */
-    public function get(
-        int $objectID,
-        array|MediaBridgeGetParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = MediaBridgeGetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $mediaType = $parsed['mediaType'];
-        unset($parsed['mediaType']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['media-bridge/2026-03/objects/%1$s/%2$s', $mediaType, $objectID],
-            options: $options,
-            convert: MediaBridgeObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Get the visibility settings for media bridge events for your apps.
      *
      * @param RequestOpts|null $requestOptions
@@ -773,7 +627,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function getEventVisibilitySettings(
-        string $appID,
+        int $appID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
@@ -790,7 +644,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * Get the details for an existing oEmbed domain.
      *
-     * @param array{appID: string}|MediaBridgeGetOembedDomainParams $params
+     * @param array{appID: int}|MediaBridgeGetOembedDomainParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<IntegratorOEmbedDomainModel>
@@ -829,7 +683,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param string $propertyName Path param
      * @param array{
-     *   appID: string, objectType: string, archived?: bool, properties?: string
+     *   appID: int, objectType: string, archived?: bool, properties?: string
      * }|MediaBridgeGetPropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -872,7 +726,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * Get the details of an existing property group by name.
      *
      * @param array{
-     *   appID: string, objectType: string
+     *   appID: int, objectType: string
      * }|MediaBridgeGetPropertyGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -913,7 +767,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * Get the schema for a specified object type.
      *
-     * @param array{appID: string}|MediaBridgeGetSchemaParams $params
+     * @param array{appID: int}|MediaBridgeGetSchemaParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ObjectSchema>
@@ -948,7 +802,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param MediaBridgeListObjectTypesByMediaTypeParams\MediaType|value-of<MediaBridgeListObjectTypesByMediaTypeParams\MediaType> $mediaType Path param
      * @param array{
-     *   appID: string, includeFullDefinition?: bool
+     *   appID: int, includeFullDefinition?: bool
      * }|MediaBridgeListObjectTypesByMediaTypeParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -995,7 +849,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function listOembedDomains(
-        string $appID,
+        int $appID,
         array|MediaBridgeListOembedDomainsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -1024,7 +878,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param string $objectType Path param
      * @param array{
-     *   appID: string, archived?: bool, properties?: string
+     *   appID: int, archived?: bool, properties?: string
      * }|MediaBridgeListPropertiesParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -1059,7 +913,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * Get the property groups for a specified object type.
      *
-     * @param array{appID: string}|MediaBridgeListPropertyGroupsParams $params
+     * @param array{appID: int}|MediaBridgeListPropertyGroupsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CollectionResponsePropertyGroupNoPaging>
@@ -1102,7 +956,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function listSchemas(
-        string $appID,
+        int $appID,
         array|MediaBridgeListSchemasParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -1141,7 +995,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function registerAppName(
-        string $appID,
+        int $appID,
         array|MediaBridgeRegisterAppNameParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -1179,7 +1033,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function updateEventVisibilitySettings(
-        string $appID,
+        int $appID,
         array|MediaBridgeUpdateEventVisibilitySettingsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -1205,7 +1059,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param string $oEmbedDomainID Path param
      * @param array{
-     *   appID: string, endpoints: Endpoints|EndpointsShape, portalID?: int
+     *   appID: int, endpoints: Endpoints|EndpointsShape, portalID?: int
      * }|MediaBridgeUpdateOembedDomainParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -1246,7 +1100,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param string $propertyName Path param
      * @param array{
-     *   appID: string,
+     *   appID: int,
      *   objectType: string,
      *   calculationFormula?: string,
      *   description?: string,
@@ -1305,7 +1159,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param string $groupName Path param
      * @param array{
-     *   appID: string, objectType: string, displayOrder?: int, label?: string
+     *   appID: int, objectType: string, displayOrder?: int, label?: string
      * }|MediaBridgeUpdatePropertyGroupParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -1352,7 +1206,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param string $objectType Path param
      * @param array{
-     *   appID: string,
+     *   appID: int,
      *   clearDescription: bool,
      *   allowsSensitiveProperties?: bool,
      *   description?: string,
@@ -1409,7 +1263,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * @throws APIException
      */
     public function updateSettings(
-        string $appID,
+        int $appID,
         array|MediaBridgeUpdateSettingsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {

@@ -10,7 +10,7 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve all goal targets. Control what is returned via the `properties` query param.
+ * Read a page of goal targets. Control what is returned via the `properties` query param.
  *
  * @see HubspotSDK\Services\Crm\Objects\GoalTargetsService::list()
  *

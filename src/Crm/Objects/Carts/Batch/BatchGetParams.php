@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Retrieve a batch of carts by ID (`objectId`) or unique property value (`idProperty`).
+ * Retrieve carts by ID, or include the `idProperty` parameter to retrieve carts by a custom unique value property.
  *
  * @see HubspotSDK\Services\Crm\Objects\Carts\BatchService::get()
  *

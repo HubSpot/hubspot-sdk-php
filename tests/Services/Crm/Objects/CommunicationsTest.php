@@ -4,7 +4,7 @@ namespace Tests\Services\Crm\Objects;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;

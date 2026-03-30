@@ -4,9 +4,6 @@ namespace Tests\Services\Events;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Events\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Page;
-use HubspotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -34,242 +31,13 @@ final class SendTest extends TestCase
     }
 
     #[Test]
-    public function testCreateEventDefinition(): void
+    public function testBatchSend(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->events->send->createEventDefinition(
-            includeDefaultProperties: true,
-            label: 'label',
-            propertyDefinitions: [['label' => 'label', 'type' => 'type']],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            ExternalBehavioralEventTypeDefinition::class,
-            $result
-        );
-    }
-
-    #[Test]
-    public function testCreateEventDefinitionWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->createEventDefinition(
-            includeDefaultProperties: true,
-            label: 'label',
-            propertyDefinitions: [
-                [
-                    'label' => 'label',
-                    'type' => 'type',
-                    'description' => 'description',
-                    'name' => 'name',
-                    'options' => [
-                        [
-                            'displayOrder' => 0,
-                            'hidden' => true,
-                            'label' => 'label',
-                            'value' => 'value',
-                            'description' => 'description',
-                        ],
-                    ],
-                ],
-            ],
-            customMatchingID: [
-                'primaryObjectRule' => [
-                    'eventPropertyName' => 'eventPropertyName',
-                    'targetObjectPropertyName' => 'targetObjectPropertyName',
-                ],
-            ],
-            description: 'description',
-            name: 'name',
-            primaryObject: 'primaryObject',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            ExternalBehavioralEventTypeDefinition::class,
-            $result
-        );
-    }
-
-    #[Test]
-    public function testCreateEventDefinitionProperty(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->createEventDefinitionProperty(
-            'eventName',
-            label: 'label',
-            type: 'type'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
-    }
-
-    #[Test]
-    public function testCreateEventDefinitionPropertyWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->createEventDefinitionProperty(
-            'eventName',
-            label: 'label',
-            type: 'type',
-            description: 'description',
-            name: 'name',
-            options: [
-                [
-                    'displayOrder' => 0,
-                    'hidden' => true,
-                    'label' => 'label',
-                    'value' => 'value',
-                    'description' => 'description',
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
-    }
-
-    #[Test]
-    public function testDeleteEventDefinition(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->deleteEventDefinition('eventName');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testDeleteEventDefinitionProperty(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->deleteEventDefinitionProperty(
-            'propertyName',
-            eventName: 'eventName'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testDeleteEventDefinitionPropertyWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->deleteEventDefinitionProperty(
-            'propertyName',
-            eventName: 'eventName'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testGetEventDefinition(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->getEventDefinition('eventName');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            ExternalBehavioralEventTypeDefinition::class,
-            $result
-        );
-    }
-
-    #[Test]
-    public function testListEventDefinitions(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $page = $this->client->events->send->listEventDefinitions();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $page);
-
-        if ($item = $page->getItems()[0] ?? null) {
-            // @phpstan-ignore-next-line method.alreadyNarrowedType
-            $this->assertInstanceOf(
-                ExternalBehavioralEventTypeDefinition::class,
-                $item
-            );
-        }
-    }
-
-    #[Test]
-    public function testSendEvent(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->sendEvent(
-            eventName: 'eventName',
-            properties: ['foo' => 'string']
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testSendEventWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->sendEvent(
-            eventName: 'eventName',
-            properties: ['foo' => 'string'],
-            email: 'email',
-            objectID: 'objectId',
-            occurredAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            utk: 'utk',
-            uuid: 'uuid',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testSendEventBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->sendEventBatch(
+        $result = $this->client->events->send->batchSend(
             inputs: [
                 ['eventName' => 'eventName', 'properties' => ['foo' => 'string']],
             ],
@@ -280,13 +48,13 @@ final class SendTest extends TestCase
     }
 
     #[Test]
-    public function testSendEventBatchWithOptionalParams(): void
+    public function testBatchSendWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->events->send->sendEventBatch(
+        $result = $this->client->events->send->batchSend(
             inputs: [
                 [
                     'eventName' => 'eventName',
@@ -305,61 +73,39 @@ final class SendTest extends TestCase
     }
 
     #[Test]
-    public function testUpdateEventDefinition(): void
+    public function testSend(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->events->send->updateEventDefinition('eventName');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            ExternalBehavioralEventTypeDefinition::class,
-            $result
-        );
-    }
-
-    #[Test]
-    public function testUpdateEventDefinitionProperty(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->updateEventDefinitionProperty(
-            'propertyName',
-            eventName: 'eventName'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
-    }
-
-    #[Test]
-    public function testUpdateEventDefinitionPropertyWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->events->send->updateEventDefinitionProperty(
-            'propertyName',
+        $result = $this->client->events->send->send(
             eventName: 'eventName',
-            description: 'description',
-            label: 'label',
-            options: [
-                [
-                    'displayOrder' => 0,
-                    'hidden' => true,
-                    'label' => 'label',
-                    'value' => 'value',
-                    'description' => 'description',
-                ],
-            ],
+            properties: ['foo' => 'string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testSendWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->events->send->send(
+            eventName: 'eventName',
+            properties: ['foo' => 'string'],
+            email: 'email',
+            objectID: 'objectId',
+            occurredAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            utk: 'utk',
+            uuid: 'uuid',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
     }
 }

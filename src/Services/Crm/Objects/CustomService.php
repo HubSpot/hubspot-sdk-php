@@ -7,10 +7,10 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
@@ -47,9 +47,8 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * Create multiple CRM objects in a single request by specifying the object type and providing the necessary properties and associations for each object.
+     * Create a batch of objects
      *
-     * @param string $objectType the type of object
      * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -71,9 +70,8 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * Update a batch of CRM objects by their internal IDs or unique property values, allowing for efficient modifications of multiple records in a single request.
+     * Update a batch of objects by internal ID, or unique property values
      *
-     * @param string $objectType the type of object
      * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -97,7 +95,6 @@ final class CustomService implements CustomContract
      *
      * Read a page of objects. Control what is returned via the `properties` query param.
      *
-     * @param string $objectType the type of object
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
      * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
@@ -140,9 +137,8 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * Archive a batch of objects by their unique IDs. This operation moves the specified objects to the recycling bin, effectively marking them as archived.
+     * Archive a batch of objects by ID
      *
-     * @param string $objectType the type of object
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -166,7 +162,7 @@ final class CustomService implements CustomContract
      *
      * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
-     * @param string $objectType path param: The type of object
+     * @param string $objectType Path param
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
      * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
      * @param list<string> $propertiesWithHistory body param: Key-value pairs for setting properties for the new object and their histories
@@ -206,7 +202,6 @@ final class CustomService implements CustomContract
      *
      * Merge two CRM objects of the same type by specifying one as the primary object and the other as the object to be merged into it.
      *
-     * @param string $objectType the type of object
      * @param string $objectIDToMerge the ID of the company to merge into the primary
      * @param string $primaryObjectID the ID of the primary company, which the other will merge into
      * @param RequestOpts|null $requestOptions
@@ -235,9 +230,6 @@ final class CustomService implements CustomContract
     /**
      * @api
      *
-     * Execute a search query to find CRM objects of a given type, using specified filters and properties. The search can be customized with filters, sorting, and pagination options.
-     *
-     * @param string $objectType the type of object
      * @param string $after a paging cursor token for retrieving subsequent pages
      * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
      * @param int $limit the maximum results to return, up to 200 objects
@@ -280,7 +272,6 @@ final class CustomService implements CustomContract
      *
      * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
      *
-     * @param string $objectType the type of object
      * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
      * @param RequestOpts|null $requestOptions
      *

@@ -24,6 +24,9 @@ final class PublicInputFieldDefinition implements BaseModel
     /** @use SdkModel<PublicInputFieldDefinitionShape> */
     use SdkModel;
 
+    /**
+     * Indicates whether the input field is mandatory.
+     */
     #[Required]
     public bool $isRequired;
 
@@ -76,6 +79,9 @@ final class PublicInputFieldDefinition implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether the input field is mandatory.
+     */
     public function withIsRequired(bool $isRequired): self
     {
         $self = clone $this;

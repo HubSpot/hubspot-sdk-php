@@ -14,7 +14,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *
  * @see HubspotSDK\Services\Cms\MediaBridgeService::getOembedDomain()
  *
- * @phpstan-type MediaBridgeGetOembedDomainParamsShape = array{appID: string}
+ * @phpstan-type MediaBridgeGetOembedDomainParamsShape = array{appID: int}
  */
 final class MediaBridgeGetOembedDomainParams implements BaseModel
 {
@@ -23,7 +23,7 @@ final class MediaBridgeGetOembedDomainParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     /**
      * `new MediaBridgeGetOembedDomainParams()` is missing required properties by the API.
@@ -49,7 +49,7 @@ final class MediaBridgeGetOembedDomainParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $appID): self
+    public static function with(int $appID): self
     {
         $self = new self;
 
@@ -58,7 +58,7 @@ final class MediaBridgeGetOembedDomainParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

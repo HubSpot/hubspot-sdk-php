@@ -34,6 +34,8 @@ final class MultiLanguageService implements MultiLanguageContract
     /**
      * @api
      *
+     * Attach a blog to a multi-language group.
+     *
      * @param string $id ID of the object to add to a multi-language group
      * @param Language|value-of<Language> $language designated language of the object to add to a multi-language group
      * @param string $primaryID ID of primary language object in multi-language group
@@ -67,6 +69,12 @@ final class MultiLanguageService implements MultiLanguageContract
     /**
      * @api
      *
+     * Create a new language variation from an existing blog.
+     *
+     * @param string $id ID of blog to clone
+     * @param string $language target language of new variant
+     * @param string $primaryLanguage language of primary blog to clone
+     * @param string $slug path to this blog
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -96,6 +104,8 @@ final class MultiLanguageService implements MultiLanguageContract
     /**
      * @api
      *
+     * Detaches a blog from a multi-language group.
+     *
      * @param string $id ID of the object to remove from a multi-language group
      * @param RequestOpts|null $requestOptions
      *
@@ -116,6 +126,8 @@ final class MultiLanguageService implements MultiLanguageContract
     /**
      * @api
      *
+     * Set a blog as the primary language of a multi-language group.
+     *
      * @param string $id ID of object to set as primary in multi-language group
      * @param RequestOpts|null $requestOptions
      *
@@ -135,6 +147,8 @@ final class MultiLanguageService implements MultiLanguageContract
 
     /**
      * @api
+     *
+     * Explicitly set new languages for each blog in a multi-language group.
      *
      * @param array<string,\HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language|value-of<\HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
      * @param string $primaryID ID of the primary object in the multi-language group

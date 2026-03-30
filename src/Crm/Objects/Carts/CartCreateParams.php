@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 
 /**
- * Create a single cart. Include a `properties` object to define [property values](https://developers.hubspot.com/docs/guides/api/crm/properties) for the {objectName}, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other records.
+ * Create a cart with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard carts is provided.
  *
  * @see HubspotSDK\Services\Crm\Objects\CartsService::create()
  *

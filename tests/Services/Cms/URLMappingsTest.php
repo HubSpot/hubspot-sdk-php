@@ -38,19 +38,32 @@ final class URLMappingsTest extends TestCase
         }
 
         $result = $this->client->cms->urlMappings->create(
-            id: 'id',
-            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            id: 0,
+            cdnPurgeEmbargoTime: 0,
+            contentGroupID: 0,
+            cosObjectType: 'ACCESS_GROUP_MEMBERSHIP',
+            created: 0,
+            createdByID: 0,
+            deletedAt: 0,
             destination: 'destination',
+            internallyCreated: true,
+            isActive: true,
             isMatchFullURL: true,
             isMatchQueryString: true,
             isOnlyAfterNotFound: true,
             isPattern: true,
             isProtocolAgnostic: true,
+            isRegex: true,
             isTrailingSlashOptional: true,
+            label: 'label',
+            name: 'name',
+            note: 'note',
+            portalID: 0,
             precedence: 0,
             redirectStyle: 0,
             routePrefix: 'routePrefix',
-            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            updated: 0,
+            updatedByID: 0,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -65,19 +78,32 @@ final class URLMappingsTest extends TestCase
         }
 
         $result = $this->client->cms->urlMappings->create(
-            id: 'id',
-            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            id: 0,
+            cdnPurgeEmbargoTime: 0,
+            contentGroupID: 0,
+            cosObjectType: 'ACCESS_GROUP_MEMBERSHIP',
+            created: 0,
+            createdByID: 0,
+            deletedAt: 0,
             destination: 'destination',
+            internallyCreated: true,
+            isActive: true,
             isMatchFullURL: true,
             isMatchQueryString: true,
             isOnlyAfterNotFound: true,
             isPattern: true,
             isProtocolAgnostic: true,
+            isRegex: true,
             isTrailingSlashOptional: true,
+            label: 'label',
+            name: 'name',
+            note: 'note',
+            portalID: 0,
             precedence: 0,
             redirectStyle: 0,
             routePrefix: 'routePrefix',
-            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            updated: 0,
+            updatedByID: 0,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

@@ -36,7 +36,6 @@ interface URLRedirectsRawContract
     /**
      * @api
      *
-     * @param string $urlRedirectID the unique identifier of the URL redirect to update
      * @param array<string,mixed>|URLRedirectUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -68,7 +67,6 @@ interface URLRedirectsRawContract
     /**
      * @api
      *
-     * @param string $urlRedirectID the unique identifier of the URL redirect to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -83,7 +81,6 @@ interface URLRedirectsRawContract
     /**
      * @api
      *
-     * @param string $urlRedirectID the unique identifier of the URL redirect to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<URLMapping>

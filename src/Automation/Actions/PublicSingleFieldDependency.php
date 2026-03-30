@@ -21,10 +21,17 @@ final class PublicSingleFieldDependency implements BaseModel
     /** @use SdkModel<PublicSingleFieldDependencyShape> */
     use SdkModel;
 
+    /**
+     * The name of the field that controls the dependency.
+     */
     #[Required]
     public string $controllingFieldName;
 
-    /** @var value-of<DependencyType> $dependencyType */
+    /**
+     * The type of dependency, with the default value being 'SINGLE_FIELD'.
+     *
+     * @var value-of<DependencyType> $dependencyType
+     */
     #[Required(enum: DependencyType::class)]
     public string $dependencyType;
 
@@ -78,6 +85,9 @@ final class PublicSingleFieldDependency implements BaseModel
         return $self;
     }
 
+    /**
+     * The name of the field that controls the dependency.
+     */
     public function withControllingFieldName(string $controllingFieldName): self
     {
         $self = clone $this;
@@ -87,6 +97,8 @@ final class PublicSingleFieldDependency implements BaseModel
     }
 
     /**
+     * The type of dependency, with the default value being 'SINGLE_FIELD'.
+     *
      * @param DependencyType|value-of<DependencyType> $dependencyType
      */
     public function withDependencyType(

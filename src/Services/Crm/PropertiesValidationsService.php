@@ -35,6 +35,8 @@ final class PropertiesValidationsService implements PropertiesValidationsContrac
     /**
      * @api
      *
+     * Read all properties with validation rules for a given object.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -51,6 +53,8 @@ final class PropertiesValidationsService implements PropertiesValidationsContrac
 
     /**
      * @api
+     *
+     * Read a property's validation rules identified by {propertyName}.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -71,6 +75,8 @@ final class PropertiesValidationsService implements PropertiesValidationsContrac
 
     /**
      * @api
+     *
+     * Retrieve a specific validation rule for a property identified by its name and rule type.
      *
      * @param RuleType|value-of<RuleType> $ruleType
      * @param RequestOpts|null $requestOptions
@@ -95,6 +101,8 @@ final class PropertiesValidationsService implements PropertiesValidationsContrac
 
     /**
      * @api
+     *
+     * Update a specific validation rule for a property identified by its name and rule type.
      *
      * @param \HubspotSDK\Crm\PropertiesValidations\PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType|value-of<\HubspotSDK\Crm\PropertiesValidations\PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType> $ruleType Path param
      * @param string $objectTypeID Path param

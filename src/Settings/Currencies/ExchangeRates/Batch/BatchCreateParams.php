@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest;
 
 /**
+ * Create multiple exchange rates in a single request.
+ *
  * @see HubspotSDK\Services\Settings\Currencies\ExchangeRates\BatchService::create()
  *
  * @phpstan-import-type ExchangeRateCreateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest

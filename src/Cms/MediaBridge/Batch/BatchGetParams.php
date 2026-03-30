@@ -19,7 +19,7 @@ use HubspotSDK\PropertyName;
  * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
  *
  * @phpstan-type BatchGetParamsShape = array{
- *   appID: string,
+ *   appID: int,
  *   archived: bool,
  *   dataSensitivity: DataSensitivity|value-of<DataSensitivity>,
  *   inputs: list<PropertyName|PropertyNameShape>,
@@ -32,7 +32,7 @@ final class BatchGetParams implements BaseModel
     use SdkParams;
 
     #[Required]
-    public string $appID;
+    public int $appID;
 
     #[Required]
     public bool $archived;
@@ -79,7 +79,7 @@ final class BatchGetParams implements BaseModel
      * @param list<PropertyName|PropertyNameShape> $inputs
      */
     public static function with(
-        string $appID,
+        int $appID,
         bool $archived,
         DataSensitivity|string $dataSensitivity,
         array $inputs,
@@ -94,7 +94,7 @@ final class BatchGetParams implements BaseModel
         return $self;
     }
 
-    public function withAppID(string $appID): self
+    public function withAppID(int $appID): self
     {
         $self = clone $this;
         $self['appID'] = $appID;

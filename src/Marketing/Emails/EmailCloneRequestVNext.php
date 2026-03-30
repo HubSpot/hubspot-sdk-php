@@ -20,7 +20,7 @@ final class EmailCloneRequestVNext implements BaseModel
     use SdkModel;
 
     /**
-     * The unique identifier of the email to be cloned.
+     * The email ID.
      */
     #[Required]
     public string $id;
@@ -77,7 +77,7 @@ final class EmailCloneRequestVNext implements BaseModel
     }
 
     /**
-     * The unique identifier of the email to be cloned.
+     * The email ID.
      */
     public function withID(string $id): self
     {

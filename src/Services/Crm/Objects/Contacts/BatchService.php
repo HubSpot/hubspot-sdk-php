@@ -41,8 +41,6 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Create a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record, along with an `associations` array to define [associations](https://developers.hubspot.com/docs/guides/api/crm/associations/associations-v4) with other CRM records.
-     *
      * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
@@ -62,8 +60,6 @@ final class BatchService implements BatchContract
 
     /**
      * @api
-     *
-     * Update a batch of contacts by ID (`contactId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
      * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
      * @param RequestOpts|null $requestOptions
@@ -85,7 +81,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Archive a batch of contacts by ID. Archived contacts can be restored within 90 days of deletion. Learn more about the [data impacted by contact deletions](https://knowledge.hubspot.com/privacy-and-consent/understand-restorable-and-permanent-contact-deletions) and how to [restore archived records](https://knowledge.hubspot.com/records/restore-deleted-records).
+     * Archive a batch of contacts
      *
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
      * @param RequestOpts|null $requestOptions
@@ -106,8 +102,6 @@ final class BatchService implements BatchContract
 
     /**
      * @api
-     *
-     * Retrieve a batch of contacts by ID (`contactId`) or unique property value (`idProperty`).
      *
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
      * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
@@ -144,8 +138,6 @@ final class BatchService implements BatchContract
 
     /**
      * @api
-     *
-     * Upsert a batch of contacts. The `inputs` array can contain a `properties` object to define property values for each record.
      *
      * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
      * @param RequestOpts|null $requestOptions

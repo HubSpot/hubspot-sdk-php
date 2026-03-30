@@ -42,6 +42,8 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
+     * Get the list of blogs. Results can be limited and filtered by creation or updated date.
+     *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
      * @param int $limit the maximum number of results to display per page
@@ -89,6 +91,8 @@ final class SettingsService implements SettingsContract
     /**
      * @api
      *
+     * Retrieve a specific blog by its ID.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -105,6 +109,8 @@ final class SettingsService implements SettingsContract
 
     /**
      * @api
+     *
+     * Get a specific blog revision.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -125,6 +131,8 @@ final class SettingsService implements SettingsContract
 
     /**
      * @api
+     *
+     * Get the list of blog revisions. Results can be limited and filtered by creation or updated date.
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page

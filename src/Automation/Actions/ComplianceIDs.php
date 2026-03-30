@@ -38,12 +38,21 @@ final class ComplianceIDs implements BaseModel
     #[Required('userIds', list: 'int')]
     public array $userIDs;
 
+    /**
+     * The reason why no contact ID is available.
+     */
     #[Optional('noContactIdReason')]
     public ?string $noContactIDReason;
 
+    /**
+     * The reason why no portal ID is available.
+     */
     #[Optional('noPortalIdReason')]
     public ?string $noPortalIDReason;
 
+    /**
+     * The reason why no user ID is available.
+     */
     #[Optional('noUserIdReason')]
     public ?string $noUserIDReason;
 
@@ -129,6 +138,9 @@ final class ComplianceIDs implements BaseModel
         return $self;
     }
 
+    /**
+     * The reason why no contact ID is available.
+     */
     public function withNoContactIDReason(string $noContactIDReason): self
     {
         $self = clone $this;
@@ -137,6 +149,9 @@ final class ComplianceIDs implements BaseModel
         return $self;
     }
 
+    /**
+     * The reason why no portal ID is available.
+     */
     public function withNoPortalIDReason(string $noPortalIDReason): self
     {
         $self = clone $this;
@@ -145,6 +160,9 @@ final class ComplianceIDs implements BaseModel
         return $self;
     }
 
+    /**
+     * The reason why no user ID is available.
+     */
     public function withNoUserIDReason(string $noUserIDReason): self
     {
         $self = clone $this;

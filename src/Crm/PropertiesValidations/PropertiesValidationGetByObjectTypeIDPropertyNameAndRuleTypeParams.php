@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve a specific validation rule for a property identified by its name and rule type.
+ *
  * @see HubspotSDK\Services\Crm\PropertiesValidationsService::getByObjectTypeIDPropertyNameAndRuleType()
  *
  * @phpstan-type PropertiesValidationGetByObjectTypeIDPropertyNameAndRuleTypeParamsShape = array{

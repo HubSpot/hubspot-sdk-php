@@ -32,13 +32,13 @@ final class StandardError implements BaseModel
     use SdkModel;
 
     /**
-     * The main category of the error.
+     * Error category.
      */
     #[Required]
     public string $category;
 
     /**
-     * Additional context-specific information related to the error.
+     * Error context.
      *
      * @var array<string,list<string>> $context
      */
@@ -46,7 +46,7 @@ final class StandardError implements BaseModel
     public array $context;
 
     /**
-     * The detailed error objects.
+     * List of error details.
      *
      * @var list<ErrorDetail> $errors
      */
@@ -54,7 +54,7 @@ final class StandardError implements BaseModel
     public array $errors;
 
     /**
-     * URLs linking to documentation or resources associated with the error.
+     * Error links.
      *
      * @var array<string,string> $links
      */
@@ -62,25 +62,25 @@ final class StandardError implements BaseModel
     public array $links;
 
     /**
-     * A human-readable string describing the error and possible remediation steps.
+     * Error message.
      */
     #[Required]
     public string $message;
 
     /**
-     * The HTTP status code associated with the error.
+     * Error status.
      */
     #[Required]
     public string $status;
 
     /**
-     * A unique ID for the error instance.
+     * Error ID.
      */
     #[Optional]
     public ?string $id;
 
     /**
-     * A more specific error category within each main category.
+     * Error subcategory.
      */
     #[Optional]
     public mixed $subCategory;
@@ -152,7 +152,7 @@ final class StandardError implements BaseModel
     }
 
     /**
-     * The main category of the error.
+     * Error category.
      */
     public function withCategory(string $category): self
     {
@@ -163,7 +163,7 @@ final class StandardError implements BaseModel
     }
 
     /**
-     * Additional context-specific information related to the error.
+     * Error context.
      *
      * @param array<string,list<string>> $context
      */
@@ -176,7 +176,7 @@ final class StandardError implements BaseModel
     }
 
     /**
-     * The detailed error objects.
+     * List of error details.
      *
      * @param list<ErrorDetail|ErrorDetailShape> $errors
      */
@@ -189,7 +189,7 @@ final class StandardError implements BaseModel
     }
 
     /**
-     * URLs linking to documentation or resources associated with the error.
+     * Error links.
      *
      * @param array<string,string> $links
      */
@@ -202,7 +202,7 @@ final class StandardError implements BaseModel
     }
 
     /**
-     * A human-readable string describing the error and possible remediation steps.
+     * Error message.
      */
     public function withMessage(string $message): self
     {
@@ -213,7 +213,7 @@ final class StandardError implements BaseModel
     }
 
     /**
-     * The HTTP status code associated with the error.
+     * Error status.
      */
     public function withStatus(string $status): self
     {
@@ -224,7 +224,7 @@ final class StandardError implements BaseModel
     }
 
     /**
-     * A unique ID for the error instance.
+     * Error ID.
      */
     public function withID(string $id): self
     {
@@ -235,7 +235,7 @@ final class StandardError implements BaseModel
     }
 
     /**
-     * A more specific error category within each main category.
+     * Error subcategory.
      */
     public function withSubCategory(mixed $subCategory): self
     {

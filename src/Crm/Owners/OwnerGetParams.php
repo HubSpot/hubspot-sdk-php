@@ -11,6 +11,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Owners\OwnerGetParams\IDProperty;
 
 /**
+ * Retrieve details of a specific owner using either their 'id' or 'userId'.
+ *
  * @see HubspotSDK\Services\Crm\OwnersService::get()
  *
  * @phpstan-type OwnerGetParamsShape = array{

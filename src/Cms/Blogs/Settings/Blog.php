@@ -34,6 +34,9 @@ final class Blog implements BaseModel
     /** @use SdkModel<BlogShape> */
     use SdkModel;
 
+    /**
+     * The unique ID of the Blog.
+     */
     #[Required]
     public string $id;
 
@@ -43,6 +46,9 @@ final class Blog implements BaseModel
     #[Required('absoluteUrl')]
     public string $absoluteURL;
 
+    /**
+     * Boolean determining whether or not this blog allows public comments.
+     */
     #[Required]
     public bool $allowComments;
 
@@ -53,40 +59,69 @@ final class Blog implements BaseModel
     public \DateTimeInterface $created;
 
     /**
-     * The timestamp (ISO8601 format) when this blog was deleted.
+     * The timestamp (ISO8601 format) when this Blog was deleted.
      */
     #[Required]
     public \DateTimeInterface $deletedAt;
 
+    /**
+     * The Description of this Blog.
+     */
     #[Required]
     public string $description;
 
+    /**
+     * The html title of this Blog.
+     */
     #[Required]
     public string $htmlTitle;
 
-    /** @var value-of<Language> $language */
+    /**
+     * The explicitly defined language of the Blog. If null, the Blog will default to the language of the Domain.
+     *
+     * @var value-of<Language> $language
+     */
     #[Required(enum: Language::class)]
     public string $language;
 
     #[Required('listingPageId')]
     public string $listingPageID;
 
+    /**
+     * The internal name of the blog.
+     */
     #[Required]
     public string $name;
 
-    /** @var list<mixed> $publicAccessRules */
+    /**
+     * Rules for require member registration to access private content.
+     *
+     * @var list<mixed> $publicAccessRules
+     */
     #[Required(list: 'mixed')]
     public array $publicAccessRules;
 
+    /**
+     * Boolean to determine whether or not to respect publicAccessRules.
+     */
     #[Required]
     public bool $publicAccessRulesEnabled;
 
+    /**
+     * The public title of this Blog.
+     */
     #[Required]
     public string $publicTitle;
 
+    /**
+     * The path of the this blog. This field is appended to the domain to construct the url of this blog.
+     */
     #[Required]
     public string $slug;
 
+    /**
+     * ID of the primary Blog this object was translated from.
+     */
     #[Required('translatedFromId')]
     public string $translatedFromID;
 
@@ -196,6 +231,9 @@ final class Blog implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique ID of the Blog.
+     */
     public function withID(string $id): self
     {
         $self = clone $this;
@@ -215,6 +253,9 @@ final class Blog implements BaseModel
         return $self;
     }
 
+    /**
+     * Boolean determining whether or not this blog allows public comments.
+     */
     public function withAllowComments(bool $allowComments): self
     {
         $self = clone $this;
@@ -235,7 +276,7 @@ final class Blog implements BaseModel
     }
 
     /**
-     * The timestamp (ISO8601 format) when this blog was deleted.
+     * The timestamp (ISO8601 format) when this Blog was deleted.
      */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
@@ -245,6 +286,9 @@ final class Blog implements BaseModel
         return $self;
     }
 
+    /**
+     * The Description of this Blog.
+     */
     public function withDescription(string $description): self
     {
         $self = clone $this;
@@ -253,6 +297,9 @@ final class Blog implements BaseModel
         return $self;
     }
 
+    /**
+     * The html title of this Blog.
+     */
     public function withHTMLTitle(string $htmlTitle): self
     {
         $self = clone $this;
@@ -262,6 +309,8 @@ final class Blog implements BaseModel
     }
 
     /**
+     * The explicitly defined language of the Blog. If null, the Blog will default to the language of the Domain.
+     *
      * @param Language|value-of<Language> $language
      */
     public function withLanguage(Language|string $language): self
@@ -280,6 +329,9 @@ final class Blog implements BaseModel
         return $self;
     }
 
+    /**
+     * The internal name of the blog.
+     */
     public function withName(string $name): self
     {
         $self = clone $this;
@@ -289,6 +341,8 @@ final class Blog implements BaseModel
     }
 
     /**
+     * Rules for require member registration to access private content.
+     *
      * @param list<mixed> $publicAccessRules
      */
     public function withPublicAccessRules(array $publicAccessRules): self
@@ -299,6 +353,9 @@ final class Blog implements BaseModel
         return $self;
     }
 
+    /**
+     * Boolean to determine whether or not to respect publicAccessRules.
+     */
     public function withPublicAccessRulesEnabled(
         bool $publicAccessRulesEnabled
     ): self {
@@ -308,6 +365,9 @@ final class Blog implements BaseModel
         return $self;
     }
 
+    /**
+     * The public title of this Blog.
+     */
     public function withPublicTitle(string $publicTitle): self
     {
         $self = clone $this;
@@ -316,6 +376,9 @@ final class Blog implements BaseModel
         return $self;
     }
 
+    /**
+     * The path of the this blog. This field is appended to the domain to construct the url of this blog.
+     */
     public function withSlug(string $slug): self
     {
         $self = clone $this;
@@ -324,6 +387,9 @@ final class Blog implements BaseModel
         return $self;
     }
 
+    /**
+     * ID of the primary Blog this object was translated from.
+     */
     public function withTranslatedFromID(string $translatedFromID): self
     {
         $self = clone $this;

@@ -5,7 +5,10 @@ namespace Tests\Services\Crm;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Associations\ReportCreationResponse;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\LabelsBetweenObjectPair;
+use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -33,13 +36,59 @@ final class AssociationsTest extends TestCase
     }
 
     #[Test]
-    public function testDeleteAssociations(): void
+    public function testList(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->associations->deleteAssociations(
+        $page = $this->client->crm->associations->list(
+            'toObjectType',
+            objectType: 'objectType',
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(MultiAssociatedObjectWithLabel::class, $item);
+        }
+    }
+
+    #[Test]
+    public function testListWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $page = $this->client->crm->associations->list(
+            'toObjectType',
+            objectType: 'objectType',
+            objectID: 'objectId',
+            after: 'after',
+            limit: 0,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(MultiAssociatedObjectWithLabel::class, $item);
+        }
+    }
+
+    #[Test]
+    public function testDelete(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->delete(
             'toObjectId',
             objectType: 'objectType',
             objectID: 'objectId',
@@ -51,13 +100,13 @@ final class AssociationsTest extends TestCase
     }
 
     #[Test]
-    public function testDeleteAssociationsWithOptionalParams(): void
+    public function testDeleteWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->associations->deleteAssociations(
+        $result = $this->client->crm->associations->delete(
             'toObjectId',
             objectType: 'objectType',
             objectID: 'objectId',
@@ -79,6 +128,71 @@ final class AssociationsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ReportCreationResponse::class, $result);
+    }
+
+    #[Test]
+    public function testSearch(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->search(
+            'objectType',
+            after: 'after',
+            filterGroups: [
+                [
+                    'filters' => [
+                        ['operator' => 'BETWEEN', 'propertyName' => 'propertyName'],
+                    ],
+                ],
+            ],
+            limit: 0,
+            properties: ['string'],
+            sorts: ['string'],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalSimplePublicObject::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testSearchWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->search(
+            'objectType',
+            after: 'after',
+            filterGroups: [
+                [
+                    'filters' => [
+                        [
+                            'operator' => 'BETWEEN',
+                            'propertyName' => 'propertyName',
+                            'highValue' => 'highValue',
+                            'value' => 'value',
+                            'values' => ['string'],
+                        ],
+                    ],
+                ],
+            ],
+            limit: 0,
+            properties: ['string'],
+            sorts: ['string'],
+            query: 'query',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponseWithTotalSimplePublicObject::class,
+            $result
+        );
     }
 
     #[Test]

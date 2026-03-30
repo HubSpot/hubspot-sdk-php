@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Retrieve a batch of commerce subscriptions by their IDs, including specified properties and their histories.
+ * Retrieve a batch of CRM subscription objects by their IDs, including specified properties and their histories.
  *
  * @see HubspotSDK\Services\Crm\Objects\Subscriptions\BatchService::get()
  *

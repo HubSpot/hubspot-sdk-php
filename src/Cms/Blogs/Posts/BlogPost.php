@@ -8,13 +8,15 @@ use HubspotSDK\Cms\Blogs\Posts\BlogPost\AbStatus;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\ContentTypeCategory;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\CurrentState;
 use HubspotSDK\Cms\Blogs\Posts\BlogPost\Language;
+use HubspotSDK\Cms\ContentLanguageVariation;
+use HubspotSDK\Cms\LayoutSection;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Core\Conversion\MapOf;
 
 /**
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\Blogs\Posts\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
  *
  * @phpstan-type BlogPostShape = array{
  *   id: string,
@@ -86,7 +88,7 @@ final class BlogPost implements BaseModel
     use SdkModel;
 
     /**
-     * The unique ID of the blog post.
+     * The unique ID of the Blog Post.
      */
     #[Required]
     public string $id;
@@ -128,31 +130,31 @@ final class BlogPost implements BaseModel
     public array $attachedStylesheets;
 
     /**
-     * The name of the user who last published the blog post. For posts that haven't been published yet, this property will reflect the user who initially created the draft.
+     * The name of the user that updated this Blog Post.
      */
     #[Required]
     public string $authorName;
 
     /**
-     * The ID of the blog author associated with this post.
+     * The ID of the Blog Author associated with this Blog Post.
      */
     #[Required('blogAuthorId')]
     public string $blogAuthorID;
 
     /**
-     * The GUID of the marketing campaign the post is associated with.
+     * The GUID of the marketing campaign this Blog Post is a part of.
      */
     #[Required]
     public string $campaign;
 
     /**
-     * ID of the object type.
+     * ID of the type of object this is. Should always .
      */
     #[Required('categoryId')]
     public int $categoryID;
 
     /**
-     * The ID of the post's parent blog.
+     * The ID of the parent Blog this Blog Post is associated with.
      */
     #[Required('contentGroupId')]
     public string $contentGroupID;
@@ -172,7 +174,7 @@ final class BlogPost implements BaseModel
     public \DateTimeInterface $created;
 
     /**
-     * The ID of the user that created the post.
+     * The ID of the user that created this Blog Post.
      */
     #[Required('createdById')]
     public string $createdByID;
@@ -192,7 +194,7 @@ final class BlogPost implements BaseModel
     public string $currentState;
 
     /**
-     * The domain that the post lives on. If null, the post will default to the domain of the parent blog.
+     * The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.
      */
     #[Required]
     public string $domain;
@@ -210,8 +212,7 @@ final class BlogPost implements BaseModel
     public int $dynamicPageDataSourceType;
 
     /**
-     * For dynamic HubDB pages,
-     * the ID of the HubDB table this post references.
+     * The ID of the HubDB table this Blog Post references, if applicable.
      */
     #[Required('dynamicPageHubDbTableId')]
     public string $dynamicPageHubDBTableID;
@@ -265,7 +266,7 @@ final class BlogPost implements BaseModel
     public string $headHTML;
 
     /**
-     * The HTML title of the post.
+     * The html title of this Blog Post.
      */
     #[Required]
     public string $htmlTitle;
@@ -277,7 +278,7 @@ final class BlogPost implements BaseModel
     public bool $includeDefaultCustomCss;
 
     /**
-     * The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
+     * The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.
      *
      * @var value-of<Language> $language
      */
@@ -311,7 +312,7 @@ final class BlogPost implements BaseModel
     public string $metaDescription;
 
     /**
-     * The internal name of the post.
+     * The internal name of the Blog Post.
      */
     #[Required]
     public string $name;
@@ -341,7 +342,7 @@ final class BlogPost implements BaseModel
     public string $pageExpiryRedirectURL;
 
     /**
-     * Set this to create a password protected page. Entering the password will be required to view the blog post.
+     * Set this to create a password protected page. Entering the password will be required to view the page.
      */
     #[Required]
     public string $password;
@@ -397,19 +398,19 @@ final class BlogPost implements BaseModel
     public string $rssSummary;
 
     /**
-     * The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
+     * The path of the this blog post. This field is appended to the domain to construct the url of this post.
      */
     #[Required]
     public string $slug;
 
     /**
-     * An enumeration describing the current publish state of the post.
+     * An ENUM descibing the current state of this Blog Post.
      */
     #[Required]
     public string $state;
 
     /**
-     * The IDs of the tags associated with this post.
+     * List of IDs for the tags associated with this Blog Post.
      *
      * @var list<int> $tagIDs
      */
@@ -425,7 +426,7 @@ final class BlogPost implements BaseModel
     public array $themeSettingsValues;
 
     /**
-     * ID of the primary blog post that this post was translated from.
+     * ID of the primary blog post this object was translated from.
      */
     #[Required('translatedFromId')]
     public string $translatedFromID;
@@ -445,7 +446,7 @@ final class BlogPost implements BaseModel
     public \DateTimeInterface $updated;
 
     /**
-     * The ID of the user that updated the post.
+     * The ID of the user that updated this Blog Post.
      */
     #[Required('updatedById')]
     public string $updatedByID;
@@ -457,7 +458,7 @@ final class BlogPost implements BaseModel
     public string $url;
 
     /**
-     * Boolean to determine if this post should use a featured image.
+     * Boolean to determine if this post should use a featuredImage.
      */
     #[Required]
     public bool $useFeaturedImage;
@@ -769,7 +770,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The unique ID of the blog post.
+     * The unique ID of the Blog Post.
      */
     public function withID(string $id): self
     {
@@ -841,7 +842,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The name of the user who last published the blog post. For posts that haven't been published yet, this property will reflect the user who initially created the draft.
+     * The name of the user that updated this Blog Post.
      */
     public function withAuthorName(string $authorName): self
     {
@@ -852,7 +853,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The ID of the blog author associated with this post.
+     * The ID of the Blog Author associated with this Blog Post.
      */
     public function withBlogAuthorID(string $blogAuthorID): self
     {
@@ -863,7 +864,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The GUID of the marketing campaign the post is associated with.
+     * The GUID of the marketing campaign this Blog Post is a part of.
      */
     public function withCampaign(string $campaign): self
     {
@@ -874,7 +875,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * ID of the object type.
+     * ID of the type of object this is. Should always .
      */
     public function withCategoryID(int $categoryID): self
     {
@@ -885,7 +886,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The ID of the post's parent blog.
+     * The ID of the parent Blog this Blog Post is associated with.
      */
     public function withContentGroupID(string $contentGroupID): self
     {
@@ -921,7 +922,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The ID of the user that created the post.
+     * The ID of the user that created this Blog Post.
      */
     public function withCreatedByID(string $createdByID): self
     {
@@ -956,7 +957,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The domain that the post lives on. If null, the post will default to the domain of the parent blog.
+     * The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.
      */
     public function withDomain(string $domain): self
     {
@@ -991,8 +992,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * For dynamic HubDB pages,
-     * the ID of the HubDB table this post references.
+     * The ID of the HubDB table this Blog Post references, if applicable.
      */
     public function withDynamicPageHubDBTableID(
         string $dynamicPageHubDBTableID
@@ -1095,7 +1095,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The HTML title of the post.
+     * The html title of this Blog Post.
      */
     public function withHTMLTitle(string $htmlTitle): self
     {
@@ -1118,7 +1118,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The explicitly defined ISO 639 language code of the post. If null, the post will default to the language of the parent blog.
+     * The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.
      *
      * @param Language|value-of<Language> $language
      */
@@ -1177,7 +1177,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The internal name of the post.
+     * The internal name of the Blog Post.
      */
     public function withName(string $name): self
     {
@@ -1233,7 +1233,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * Set this to create a password protected page. Entering the password will be required to view the blog post.
+     * Set this to create a password protected page. Entering the password will be required to view the page.
      */
     public function withPassword(string $password): self
     {
@@ -1335,7 +1335,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The URL slug of the blog post. This field is appended to the domain to construct the url of this post.
+     * The path of the this blog post. This field is appended to the domain to construct the url of this post.
      */
     public function withSlug(string $slug): self
     {
@@ -1346,7 +1346,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * An enumeration describing the current publish state of the post.
+     * An ENUM descibing the current state of this Blog Post.
      */
     public function withState(string $state): self
     {
@@ -1357,7 +1357,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The IDs of the tags associated with this post.
+     * List of IDs for the tags associated with this Blog Post.
      *
      * @param list<int> $tagIDs
      */
@@ -1383,7 +1383,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * ID of the primary blog post that this post was translated from.
+     * ID of the primary blog post this object was translated from.
      */
     public function withTranslatedFromID(string $translatedFromID): self
     {
@@ -1418,7 +1418,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * The ID of the user that updated the post.
+     * The ID of the user that updated this Blog Post.
      */
     public function withUpdatedByID(string $updatedByID): self
     {
@@ -1440,7 +1440,7 @@ final class BlogPost implements BaseModel
     }
 
     /**
-     * Boolean to determine if this post should use a featured image.
+     * Boolean to determine if this post should use a featuredImage.
      */
     public function withUseFeaturedImage(bool $useFeaturedImage): self
     {

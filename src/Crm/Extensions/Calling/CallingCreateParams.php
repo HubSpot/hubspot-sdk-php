@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create new recording settings for a specific app using the provided app ID.
+ *
  * @see HubspotSDK\Services\Crm\Extensions\CallingService::create()
  *
  * @phpstan-type CallingCreateParamsShape = array{

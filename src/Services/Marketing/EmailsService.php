@@ -140,6 +140,8 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * Change properties of a marketing email.
+     *
      * @param string $emailID Path param
      * @param bool $archived body param: Determines if the email is archived or not
      * @param string $activeDomain body param: The active domain of the email
@@ -294,6 +296,8 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * Delete a marketing email by its ID
+     *
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *
@@ -315,7 +319,9 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
-     * @param string $id the unique identifier of the email to be cloned
+     * This will create a duplicate email with the same properties as the original, with the exception of a unique ID.
+     *
+     * @param string $id the email ID
      * @param string $cloneName the name to assign to the cloned email
      * @param string $language the language code for the cloned email, such as 'en' for English
      * @param RequestOpts|null $requestOptions
@@ -341,8 +347,10 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
-     * @param string $contentID ID of the email to test
-     * @param string $variationName name of the variation to be created
+     * Create a variation of a marketing email for an A/B test. The new variation will be created as a draft. If an active variation already exists, a new one won't be created.
+     *
+     * @param string $contentID ID of the object to test
+     * @param string $variationName name of A/B test variation
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -364,6 +372,8 @@ final class EmailsService implements EmailsContract
 
     /**
      * @api
+     *
+     * Use this endpoint to get aggregated statistics of emails sent in a specified time span. It also returns the list of emails that were sent during the time span.
      *
      * @param list<int> $emailIDs
      * @param RequestOpts|null $requestOptions
@@ -394,6 +404,8 @@ final class EmailsService implements EmailsContract
 
     /**
      * @api
+     *
+     * This endpoint lets you obtain the variation of an A/B marketing email. If the email is variation A (master) it will return variation B (variant) and vice versa.
      *
      * @param bool $archived whether to return only results that have been archived
      * @param list<string> $includedProperties
@@ -431,6 +443,8 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * Get the draft version of an email (if it exists). If no draft version exists, the published email is returned.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -447,6 +461,8 @@ final class EmailsService implements EmailsContract
 
     /**
      * @api
+     *
+     * Get aggregated statistics in intervals for a specified time span. Each interval contains aggregated statistics of the emails that were sent in that time.
      *
      * @param list<int> $emailIDs
      * @param Interval|value-of<Interval> $interval
@@ -479,6 +495,8 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * Get a specific revision of a marketing email.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -498,6 +516,8 @@ final class EmailsService implements EmailsContract
 
     /**
      * @api
+     *
+     * Get a list of all versions of a marketing email, with each entry including the full state of that particular version. To view the most recent version, sort by the updatedAt parameter.
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
@@ -527,6 +547,8 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * If you have a Marketing Hub Enterprise account or the transactional email add-on, you can use this endpoint to publish an automated email or send/schedule a regular email.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -544,6 +566,8 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * Resets the draft back to a copy of the live object.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -560,6 +584,8 @@ final class EmailsService implements EmailsContract
 
     /**
      * @api
+     *
+     * Restores a previous revision of a marketing email. The current revision becomes old, and the restored revision is given a new version number.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -581,6 +607,9 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * Restores a previous revision of a marketing email to DRAFT state. If there is currently something in the draft for that object, it is overwritten.
+     *
+     * @param int $revisionID the ID of the revision
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -601,6 +630,8 @@ final class EmailsService implements EmailsContract
     /**
      * @api
      *
+     * If you have a Marketing Hub Enterprise account or the transactional email add-on, you can use this endpoint to unpublish an automated email or cancel a regular email. If the email is already in the process of being sent, canceling might not be possible.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -617,6 +648,8 @@ final class EmailsService implements EmailsContract
 
     /**
      * @api
+     *
+     * Create or update the draft version of a marketing email. If no draft exists, the system creates a draft from the current “live” email then applies the request body to that draft. The draft version only lives on the buffer—the email is not cloned.
      *
      * @param string $activeDomain the active domain of the email
      * @param bool $archived determines if the email is archived or not

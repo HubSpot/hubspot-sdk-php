@@ -72,8 +72,8 @@ final class BatchService implements BatchContract
      *
      * Batch delete associations for objects
      *
-     * @param string $toObjectType path param: Specifies the type of the target object in the batch association deletion
-     * @param string $fromObjectType path param: Specifies the type of the source object in the batch association deletion
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicAssociationMultiArchive|PublicAssociationMultiArchiveShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -98,10 +98,10 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Batch create the default (most generic) association type between two object types.
+     * Create the default (most generic) association type between two object types
      *
-     * @param string $toObjectType path param: Specifies the type of the target object in the association
-     * @param string $fromObjectType path param: Specifies the type of the source object in the association
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicDefaultAssociationMultiPost|PublicDefaultAssociationMultiPostShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -126,10 +126,10 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Batch remove specific labelled associations between records in bulk. Deleting an unlabeled association will also delete all labeled associations between those two objects
+     * Batch delete specific association labels for objects. Deleting an unlabeled association will also delete all labeled associations between those two objects
      *
-     * @param string $toObjectType Path param: The type of the to Object
-     * @param string $fromObjectType Path param: The type of the from Object
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicAssociationMultiPost|PublicAssociationMultiPostShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -156,8 +156,8 @@ final class BatchService implements BatchContract
      *
      * Batch read associations for objects to specific object type. The 'after' field in a returned paging object  can be added alongside the 'id' to retrieve the next page of associations from that objectId. The 'link' field is deprecated and should be ignored. Note: The 'paging' field will only be present if there are more pages and absent otherwise.
      *
-     * @param string $toObjectType Path param: The type of the to Object
-     * @param string $fromObjectType Path param: The type of the from Object
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
      * @param list<PublicFetchAssociationsBatchRequest|PublicFetchAssociationsBatchRequestShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *

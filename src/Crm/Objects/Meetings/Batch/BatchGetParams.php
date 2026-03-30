@@ -12,7 +12,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
- * Retrieve multiple meetings in a single call. Specify meetings by ID or by including the `idProperty` parameter to retrieve them by a custom unique value property.
+ * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
  *
  * @see HubspotSDK\Services\Crm\Objects\Meetings\BatchService::get()
  *

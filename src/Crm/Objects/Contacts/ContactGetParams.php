@@ -10,8 +10,6 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve a contact by its ID (`contactId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
- *
  * @see HubspotSDK\Services\Crm\Objects\ContactsService::get()
  *
  * @phpstan-type ContactGetParamsShape = array{

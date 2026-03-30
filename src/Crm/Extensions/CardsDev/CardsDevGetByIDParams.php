@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Returns the definition for a card with the given ID.
+ *
  * @see HubspotSDK\Services\Crm\Extensions\CardsDevService::getByID()
  *
  * @phpstan-type CardsDevGetByIDParamsShape = array{appID: int}

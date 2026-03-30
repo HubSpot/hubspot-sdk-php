@@ -16,7 +16,6 @@ interface SpendContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign for which the spend item is being created
      * @param float $amount the monetary value of the spend item
      * @param string $name the name of the spend item
      * @param int $order the sequence number indicating the order of the spend item
@@ -37,8 +36,8 @@ interface SpendContract
     /**
      * @api
      *
-     * @param int $spendID path param: The unique identifier of the spend item to update
-     * @param string $campaignGuid path param: The unique identifier of the campaign
+     * @param int $spendID Path param
+     * @param string $campaignGuid Path param
      * @param float $amount body param: The monetary value of the spend item
      * @param string $name body param: The name of the spend item
      * @param int $order body param: The sequence number indicating the order of the spend item
@@ -60,8 +59,6 @@ interface SpendContract
     /**
      * @api
      *
-     * @param int $spendID the unique identifier of the spend item to delete
-     * @param string $campaignGuid the unique identifier of the campaign
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -75,8 +72,6 @@ interface SpendContract
     /**
      * @api
      *
-     * @param int $spendID the unique identifier of the spend item to retrieve
-     * @param string $campaignGuid the unique identifier of the campaign
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

@@ -7,8 +7,8 @@ namespace HubspotSDK\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
@@ -72,7 +72,7 @@ final class MeetingsService implements MeetingsContract
     /**
      * @api
      *
-     * Update a meeting by ID (`objectId`) or unique property value (`idProperty`). Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
+     * Perform a partial update of an Object identified by `{meetingId}`or optionally a unique property value as specified by the `idProperty` query param. `{meetingId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
      *
      * @param string $meetingID Path param
      * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
@@ -100,7 +100,7 @@ final class MeetingsService implements MeetingsContract
     /**
      * @api
      *
-     * Retrieve all meetings, using query parameters to specify the information that gets returned.
+     * Read a page of meetings. Control what is returned via the `properties` query param.
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
@@ -143,7 +143,7 @@ final class MeetingsService implements MeetingsContract
     /**
      * @api
      *
-     * Delete a meeting by ID.
+     * Move an Object identified by `{meetingId}` to the recycling bin.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -162,7 +162,7 @@ final class MeetingsService implements MeetingsContract
     /**
      * @api
      *
-     * Retrieve a meeting by its ID (`objectId`) or by a unique property (`idProperty`). You can specify what is returned using the `properties` query parameter.
+     * Read an Object identified by `{meetingId}`. `{meetingId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
      * @param bool $archived whether to return only results that have been archived
      * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.

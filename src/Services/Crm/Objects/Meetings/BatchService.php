@@ -107,7 +107,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Retrieve multiple meetings in a single call. Specify meetings by ID or by including the `idProperty` parameter to retrieve them by a custom unique value property.
+     * Retrieve records by record ID or include the `idProperty` parameter to retrieve records by a custom unique value property.
      *
      * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs Body param
      * @param list<string> $properties body param: Key-value pairs for setting properties for the new object
@@ -145,7 +145,7 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
-     * Create and update a batch of meetings by a unique property. Meetings that don't exist will be created, while existing meetings will be updated.
+     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
      *
      * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
      * @param RequestOpts|null $requestOptions

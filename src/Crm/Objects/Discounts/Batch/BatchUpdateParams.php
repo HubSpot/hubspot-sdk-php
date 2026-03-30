@@ -11,7 +11,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 
 /**
- * Update discounts.
+ * Update a batch of discounts by internal ID, or unique property values.
  *
  * @see HubspotSDK\Services\Crm\Objects\Discounts\BatchService::update()
  *

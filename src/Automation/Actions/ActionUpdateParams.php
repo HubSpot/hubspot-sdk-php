@@ -12,6 +12,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update an existing action definition by ID.
+ *
  * @see HubspotSDK\Services\Automation\ActionsService::update()
  *
  * @phpstan-import-type InputFieldDependencyVariants from \HubspotSDK\Automation\Actions\ActionUpdateParams\InputFieldDependency
@@ -43,6 +45,9 @@ final class ActionUpdateParams implements BaseModel
     #[Required]
     public int $appID;
 
+    /**
+     * The URL endpoint where the action is executed.
+     */
     #[Optional('actionUrl')]
     public ?string $actionURL;
 
@@ -58,7 +63,11 @@ final class ActionUpdateParams implements BaseModel
     #[Optional(list: PublicInputFieldDefinition::class)]
     public ?array $inputFields;
 
-    /** @var array<string,PublicActionLabels>|null $labels */
+    /**
+     * Contains labels for the action, including names and descriptions.
+     *
+     * @var array<string,PublicActionLabels>|null $labels
+     */
     #[Optional(map: PublicActionLabels::class)]
     public ?array $labels;
 
@@ -73,6 +82,9 @@ final class ActionUpdateParams implements BaseModel
     #[Optional(list: OutputFieldDefinition::class)]
     public ?array $outputFields;
 
+    /**
+     * Indicates whether the action is published and available for use.
+     */
     #[Optional]
     public ?bool $published;
 
@@ -145,6 +157,9 @@ final class ActionUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The URL endpoint where the action is executed.
+     */
     public function withActionURL(string $actionURL): self
     {
         $self = clone $this;
@@ -188,6 +203,8 @@ final class ActionUpdateParams implements BaseModel
     }
 
     /**
+     * Contains labels for the action, including names and descriptions.
+     *
      * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels
      */
     public function withLabels(array $labels): self
@@ -232,6 +249,9 @@ final class ActionUpdateParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Indicates whether the action is published and available for use.
+     */
     public function withPublished(bool $published): self
     {
         $self = clone $this;

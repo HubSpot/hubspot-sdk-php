@@ -25,6 +25,9 @@ final class VersionBlog implements BaseModel
     /** @use SdkModel<VersionBlogShape> */
     use SdkModel;
 
+    /**
+     * The id of the version.
+     */
     #[Required]
     public string $id;
 
@@ -87,6 +90,9 @@ final class VersionBlog implements BaseModel
         return $self;
     }
 
+    /**
+     * The id of the version.
+     */
     public function withID(string $id): self
     {
         $self = clone $this;

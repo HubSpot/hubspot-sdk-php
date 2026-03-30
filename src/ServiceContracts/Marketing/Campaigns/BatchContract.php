@@ -65,9 +65,9 @@ interface BatchContract
      * @api
      *
      * @param list<PublicCampaignReadInput|PublicCampaignReadInputShape> $inputs Body param: An array of PublicCampaignReadInput objects, each containing the ID of a campaign to be read. This property is required.
-     * @param string $endDate query param: The end date for filtering campaigns, in YYYY-MM-DD format
-     * @param list<string> $properties query param: A comma-separated list of property names to include in the response
-     * @param string $startDate query param: The start date for filtering campaigns, in YYYY-MM-DD format
+     * @param string $endDate Query param
+     * @param list<string> $properties Query param
+     * @param string $startDate Query param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

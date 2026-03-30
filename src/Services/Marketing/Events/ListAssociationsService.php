@@ -32,6 +32,8 @@ final class ListAssociationsService implements ListAssociationsContract
     /**
      * @api
      *
+     * Gets lists associated with a marketing event by marketing event id
+     *
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
      * @param RequestOpts|null $requestOptions
      *
@@ -49,6 +51,8 @@ final class ListAssociationsService implements ListAssociationsContract
 
     /**
      * @api
+     *
+     * Disassociates a list from a marketing event by marketing event id and ILS list id
      *
      * @param string $listID the ILS ID of the list
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
@@ -72,6 +76,8 @@ final class ListAssociationsService implements ListAssociationsContract
     /**
      * @api
      *
+     * Associates a list with a marketing event by marketing event id and ILS list id
+     *
      * @param string $listID the ILS ID of the list
      * @param string $marketingEventID the internal id of the marketing event in HubSpot
      * @param RequestOpts|null $requestOptions
@@ -93,6 +99,8 @@ final class ListAssociationsService implements ListAssociationsContract
 
     /**
      * @api
+     *
+     * Associates a list with a marketing event by external account id, external event id, and ILS list id
      *
      * @param string $listID the ILS ID of the list
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
@@ -123,6 +131,8 @@ final class ListAssociationsService implements ListAssociationsContract
     /**
      * @api
      *
+     * Disassociates a list from a marketing event by external account id, external event id, and ILS list id
+     *
      * @param string $listID the ILS ID of the list
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application
      * @param string $externalEventID the id of the marketing event in the external event application
@@ -151,6 +161,8 @@ final class ListAssociationsService implements ListAssociationsContract
 
     /**
      * @api
+     *
+     * Gets lists associated with a marketing event by external account id and external event id
      *
      * @param string $externalEventID the id of the marketing event in the external event application
      * @param string $externalAccountID the accountId that is associated with this marketing event in the external event application

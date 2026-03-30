@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Crm\Properties;
 
-use HubspotSDK\BatchResponseProperty;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
+use HubspotSDK\Crm\Properties\BatchResponseProperty;
 use HubspotSDK\PropertyCreate;
 use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;

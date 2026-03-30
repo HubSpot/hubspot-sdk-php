@@ -12,6 +12,8 @@ use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesPa
 use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\ToCurrencyCode;
 
 /**
+ * Get a list of exchange rates.
+ *
  * @see HubspotSDK\Services\Settings\Currencies\ExchangeRatesService::listExchangeRates()
  *
  * @phpstan-type ExchangeRateListExchangeRatesParamsShape = array{

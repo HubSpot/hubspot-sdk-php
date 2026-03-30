@@ -19,10 +19,17 @@ final class ObjectFieldSchema implements BaseModel
     /** @use SdkModel<ObjectFieldSchemaShape> */
     use SdkModel;
 
+    /**
+     * Contains the properties of the object.
+     */
     #[Required]
     public mixed $properties;
 
-    /** @var value-of<Type> $type */
+    /**
+     * Specifies the type of the field, which is 'OBJECT' by default.
+     *
+     * @var value-of<Type> $type
+     */
     #[Required(enum: Type::class)]
     public string $type;
 
@@ -64,6 +71,9 @@ final class ObjectFieldSchema implements BaseModel
         return $self;
     }
 
+    /**
+     * Contains the properties of the object.
+     */
     public function withProperties(mixed $properties): self
     {
         $self = clone $this;
@@ -73,6 +83,8 @@ final class ObjectFieldSchema implements BaseModel
     }
 
     /**
+     * Specifies the type of the field, which is 'OBJECT' by default.
+     *
      * @param Type|value-of<Type> $type
      */
     public function withType(Type|string $type): self

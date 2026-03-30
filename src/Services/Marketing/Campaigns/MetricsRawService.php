@@ -31,9 +31,9 @@ final class MetricsRawService implements MetricsRawContract
     /**
      * @api
      *
-     * Fetch the metrics for a specific marketing campaign using its unique identifier. This endpoint allows you to retrieve various performance metrics of the campaign, which can be useful for analyzing the effectiveness of your marketing efforts over a specified time period.
+     * This endpoint retrieves key attribution metrics for a specified campaign, such as sessions, new contacts, and influenced contacts.
      *
-     * @param string $campaignGuid the unique identifier of the campaign for which metrics are being fetched
+     * @param string $campaignGuid The unique identifier of the campaign
      * @param array{
      *   endDate?: string, startDate?: string
      * }|MetricGetAttributionMetricsParams $params
@@ -66,9 +66,9 @@ final class MetricsRawService implements MetricsRawContract
     /**
      * @api
      *
-     * Fetch revenue attribution report data for a specific campaign. This endpoint allows you to retrieve detailed revenue attribution information, which can be filtered by attribution model and date range. It is useful for analyzing the financial impact of marketing campaigns.
+     * Fetch revenue attribution report data for a specified campaign
      *
-     * @param string $campaignGuid the unique identifier of the campaign
+     * @param string $campaignGuid The unique identifier of the campaign
      * @param array{
      *   attributionModel?: string, endDate?: string, startDate?: string
      * }|MetricGetRevenueAttributionParams $params
@@ -101,9 +101,9 @@ final class MetricsRawService implements MetricsRawContract
     /**
      * @api
      *
-     * Fetch the list of contact IDs for the specified campaign and contact type. This endpoint allows you to retrieve contact identifiers associated with a particular campaign, filtered by the type of contact. It is useful for analyzing or processing contacts involved in specific marketing campaigns.
+     * Fetch the list of contact IDs for the specified campaign and contact type
      *
-     * @param string $contactType path param: The type of contact to filter the list
+     * @param string $contactType Path param: The type of contact to filter the list
      * @param array{
      *   campaignGuid: string,
      *   after?: string,

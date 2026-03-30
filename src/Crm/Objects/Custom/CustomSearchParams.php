@@ -12,8 +12,6 @@ use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\FilterGroup;
 
 /**
- * Execute a search query to find CRM objects of a given type, using specified filters and properties. The search can be customized with filters, sorting, and pagination options.
- *
  * @see HubspotSDK\Services\Crm\Objects\CustomService::search()
  *
  * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup

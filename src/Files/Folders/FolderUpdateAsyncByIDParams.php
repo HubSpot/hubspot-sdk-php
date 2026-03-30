@@ -32,13 +32,13 @@ final class FolderUpdateAsyncByIDParams implements BaseModel
     public string $id;
 
     /**
-     * The new name for the folder, which will also update the fullPath and all children of the folder.
+     * New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
      */
     #[Optional]
     public ?string $name;
 
     /**
-     * The ID of the new parent folder, which will move the folder and its children into the specified folder.
+     * New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
      */
     #[Optional('parentFolderId')]
     public ?int $parentFolderID;
@@ -94,7 +94,7 @@ final class FolderUpdateAsyncByIDParams implements BaseModel
     }
 
     /**
-     * The new name for the folder, which will also update the fullPath and all children of the folder.
+     * New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
      */
     public function withName(string $name): self
     {
@@ -105,7 +105,7 @@ final class FolderUpdateAsyncByIDParams implements BaseModel
     }
 
     /**
-     * The ID of the new parent folder, which will move the folder and its children into the specified folder.
+     * New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
      */
     public function withParentFolderID(int $parentFolderID): self
     {

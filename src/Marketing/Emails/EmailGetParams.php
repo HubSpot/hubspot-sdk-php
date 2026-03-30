@@ -10,6 +10,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Use this endpoint to get aggregated statistics of emails sent in a specified time span. It also returns the list of emails that were sent during the time span.
+ *
  * @see HubspotSDK\Services\Marketing\EmailsService::get()
  *
  * @phpstan-type EmailGetParamsShape = array{

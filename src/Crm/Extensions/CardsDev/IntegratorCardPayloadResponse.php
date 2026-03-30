@@ -45,19 +45,19 @@ final class IntegratorCardPayloadResponse implements BaseModel
     public array $sections;
 
     /**
-     * The total number of cards that are sent in this response.
+     * The total number of card properties that will be sent in this response.
      */
     #[Required]
     public int $totalCount;
 
     /**
-     * URL to a page the integrator has built that displays all details for the object cards. This URL will be displayed to users on the title of the card.
+     * URL to a page the integrator has built that displays all details for this card. This URL will be displayed to users under a `See more [x]` link if there are more than five items in your response, where `[x]` is the value of `itemLabel`.
      */
     #[Optional('allItemsLinkUrl')]
     public ?string $allItemsLinkURL;
 
     /**
-     * The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets') and the title of the card.
+     * The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.
      */
     #[Optional]
     public ?string $cardLabel;
@@ -147,7 +147,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
     }
 
     /**
-     * The total number of cards that are sent in this response.
+     * The total number of card properties that will be sent in this response.
      */
     public function withTotalCount(int $totalCount): self
     {
@@ -158,7 +158,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
     }
 
     /**
-     * URL to a page the integrator has built that displays all details for the object cards. This URL will be displayed to users on the title of the card.
+     * URL to a page the integrator has built that displays all details for this card. This URL will be displayed to users under a `See more [x]` link if there are more than five items in your response, where `[x]` is the value of `itemLabel`.
      */
     public function withAllItemsLinkURL(string $allItemsLinkURL): self
     {
@@ -169,7 +169,7 @@ final class IntegratorCardPayloadResponse implements BaseModel
     }
 
     /**
-     * The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets') and the title of the card.
+     * The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.
      */
     public function withCardLabel(string $cardLabel): self
     {

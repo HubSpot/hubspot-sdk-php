@@ -32,6 +32,7 @@ use HubspotSDK\Services\Crm\Objects\PartnerClientsService;
 use HubspotSDK\Services\Crm\Objects\PartnerServicesService;
 use HubspotSDK\Services\Crm\Objects\PostalMailService;
 use HubspotSDK\Services\Crm\Objects\ProductsService;
+use HubspotSDK\Services\Crm\Objects\ProjectsService;
 use HubspotSDK\Services\Crm\Objects\QuotesService;
 use HubspotSDK\Services\Crm\Objects\ServicesService;
 use HubspotSDK\Services\Crm\Objects\SubscriptionsService;
@@ -155,6 +156,11 @@ final class ObjectsService implements ObjectsContract
     /**
      * @api
      */
+    public Objects\ObjectsService $objects;
+
+    /**
+     * @api
+     */
     public OrdersService $orders;
 
     /**
@@ -176,6 +182,11 @@ final class ObjectsService implements ObjectsContract
      * @api
      */
     public ProductsService $products;
+
+    /**
+     * @api
+     */
+    public ProjectsService $projects;
 
     /**
      * @api
@@ -239,11 +250,13 @@ final class ObjectsService implements ObjectsContract
         $this->listings = new ListingsService($client);
         $this->meetings = new MeetingsService($client);
         $this->notes = new NotesService($client);
+        $this->objects = new Objects\ObjectsService($client);
         $this->orders = new OrdersService($client);
         $this->partnerClients = new PartnerClientsService($client);
         $this->partnerServices = new PartnerServicesService($client);
         $this->postalMail = new PostalMailService($client);
         $this->products = new ProductsService($client);
+        $this->projects = new ProjectsService($client);
         $this->quotes = new QuotesService($client);
         $this->services = new ServicesService($client);
         $this->subscriptions = new SubscriptionsService($client);

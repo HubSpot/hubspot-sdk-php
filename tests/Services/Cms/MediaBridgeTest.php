@@ -2,24 +2,25 @@
 
 namespace Tests\Services\Cms;
 
+use HubspotSDK\AssociationDefinition;
 use HubspotSDK\Client;
+use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubspotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
+use HubspotSDK\Cms\MediaBridge\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
 use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
 use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeObject;
 use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
+use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
+use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
+use HubspotSDK\Cms\MediaBridge\ObjectSchema;
 use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubspotSDK\CollectionResponseObjectSchemaNoPaging;
+use HubspotSDK\Cms\MediaBridge\Property;
 use HubspotSDK\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\CollectionResponsePropertyNoPaging;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Events\AssociationDefinition;
-use HubspotSDK\ObjectSchema;
 use HubspotSDK\ObjectTypeDefinition;
-use HubspotSDK\Page;
-use HubspotSDK\Property;
 use HubspotSDK\PropertyGroup;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -48,76 +49,6 @@ final class MediaBridgeTest extends TestCase
     }
 
     #[Test]
-    public function testCreate(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->mediaBridge->create();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(MediaBridgeObject::class, $result);
-    }
-
-    #[Test]
-    public function testUpdate(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->mediaBridge->update(0);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(MediaBridgeObject::class, $result);
-    }
-
-    #[Test]
-    public function testList(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $page = $this->client->cms->mediaBridge->list('AUDIO');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $page);
-
-        if ($item = $page->getItems()[0] ?? null) {
-            // @phpstan-ignore-next-line method.alreadyNarrowedType
-            $this->assertInstanceOf(MediaBridgeObject::class, $item);
-        }
-    }
-
-    #[Test]
-    public function testDelete(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->mediaBridge->delete(0, mediaType: 'AUDIO');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testDeleteWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->mediaBridge->delete(0, mediaType: 'AUDIO');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
     public function testCreateAssociation(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -126,7 +57,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->createAssociation(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             fromObjectTypeID: 'fromObjectTypeId',
             toObjectTypeID: 'toObjectTypeId',
         );
@@ -144,7 +75,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->createAssociation(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             fromObjectTypeID: 'fromObjectTypeId',
             toObjectTypeID: 'toObjectTypeId',
             name: 'name',
@@ -169,7 +100,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->assertInstanceOf(AttentionSpanEvent::class, $result);
     }
 
     #[Test]
@@ -200,7 +131,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->assertInstanceOf(AttentionSpanEvent::class, $result);
     }
 
     #[Test]
@@ -218,7 +149,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->assertInstanceOf(MediaPlayedEvent::class, $result);
     }
 
     #[Test]
@@ -248,7 +179,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->assertInstanceOf(MediaPlayedEvent::class, $result);
     }
 
     #[Test]
@@ -266,7 +197,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->assertInstanceOf(MediaPlayedPercentageEvent::class, $result);
     }
 
     #[Test]
@@ -295,7 +226,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->assertInstanceOf(MediaPlayedPercentageEvent::class, $result);
     }
 
     #[Test]
@@ -306,7 +237,7 @@ final class MediaBridgeTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->createObjectType(
-            'appId',
+            0,
             mediaTypes: ['VIDEO']
         );
 
@@ -325,7 +256,7 @@ final class MediaBridgeTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->createObjectType(
-            'appId',
+            0,
             mediaTypes: ['VIDEO']
         );
 
@@ -344,7 +275,7 @@ final class MediaBridgeTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->createOembedDomain(
-            'appId',
+            0,
             endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
         );
 
@@ -360,7 +291,7 @@ final class MediaBridgeTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->createOembedDomain(
-            'appId',
+            0,
             endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
             portalID: 0,
         );
@@ -378,7 +309,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->createProperty(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             fieldType: 'booleancheckbox',
             groupName: 'groupName',
             label: 'label',
@@ -399,7 +330,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->createProperty(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             fieldType: 'booleancheckbox',
             groupName: 'groupName',
             label: 'label',
@@ -438,7 +369,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->createPropertyGroup(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             label: 'label',
             name: 'name'
         );
@@ -456,10 +387,10 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->createPropertyGroup(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             label: 'label',
             name: 'name',
-            displayOrder: 0,
+            displayOrder: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -474,7 +405,7 @@ final class MediaBridgeTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->createVideoAssociationDefinition(
-            'appId'
+            0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -490,7 +421,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->deleteAssociation(
             'associationId',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -507,7 +438,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->deleteAssociation(
             'associationId',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -522,7 +453,7 @@ final class MediaBridgeTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->deleteOembedDomain('appId');
+        $result = $this->client->cms->mediaBridge->deleteOembedDomain(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -537,7 +468,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->deleteProperty(
             'propertyName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -554,7 +485,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->deleteProperty(
             'propertyName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -571,7 +502,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->deletePropertyGroup(
             'groupName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -588,38 +519,12 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->deletePropertyGroup(
             'groupName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testGet(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->mediaBridge->get(0, mediaType: 'AUDIO');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(MediaBridgeObject::class, $result);
-    }
-
-    #[Test]
-    public function testGetWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->mediaBridge->get(0, mediaType: 'AUDIO');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(MediaBridgeObject::class, $result);
     }
 
     #[Test]
@@ -629,9 +534,7 @@ final class MediaBridgeTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->getEventVisibilitySettings(
-            'appId'
-        );
+        $result = $this->client->cms->mediaBridge->getEventVisibilitySettings(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(EventVisibilityResponse::class, $result);
@@ -646,7 +549,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->getOembedDomain(
             'oEmbedDomainId',
-            appID: 'appId'
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -662,7 +565,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->getOembedDomain(
             'oEmbedDomainId',
-            appID: 'appId'
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -678,7 +581,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->getProperty(
             'propertyName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -695,7 +598,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->getProperty(
             'propertyName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType',
             archived: true,
             properties: 'properties',
@@ -714,7 +617,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->getPropertyGroup(
             'groupName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -731,7 +634,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->getPropertyGroup(
             'groupName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -748,7 +651,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->getSchema(
             'objectType',
-            appID: 'appId'
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -764,7 +667,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->getSchema(
             'objectType',
-            appID: 'appId'
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -780,7 +683,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->listObjectTypesByMediaType(
             'AUDIO',
-            appID: 'appId'
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -796,7 +699,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->listObjectTypesByMediaType(
             'AUDIO',
-            appID: 'appId',
+            appID: 0,
             includeFullDefinition: true
         );
 
@@ -811,7 +714,7 @@ final class MediaBridgeTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->listOembedDomains('appId');
+        $result = $this->client->cms->mediaBridge->listOembedDomains(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(OEmbedDomainsCollectionResponse::class, $result);
@@ -826,7 +729,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->listProperties(
             'objectType',
-            appID: 'appId'
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -842,7 +745,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->listProperties(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             archived: true,
             properties: 'properties'
         );
@@ -860,7 +763,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->listPropertyGroups(
             'objectType',
-            appID: 'appId'
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -879,7 +782,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->listPropertyGroups(
             'objectType',
-            appID: 'appId'
+            appID: 0
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -896,7 +799,7 @@ final class MediaBridgeTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->listSchemas('appId');
+        $result = $this->client->cms->mediaBridge->listSchemas(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -912,10 +815,7 @@ final class MediaBridgeTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->registerAppName(
-            'appId',
-            updatedAt: 0
-        );
+        $result = $this->client->cms->mediaBridge->registerAppName(0, updatedAt: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -932,7 +832,7 @@ final class MediaBridgeTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->registerAppName(
-            'appId',
+            0,
             updatedAt: 0,
             allowImportOnDisconnect: true,
             moduleName: 'moduleName',
@@ -954,7 +854,7 @@ final class MediaBridgeTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->updateEventVisibilitySettings(
-            'appId',
+            0,
             eventType: 'ALL',
             updatedAt: 0
         );
@@ -971,7 +871,7 @@ final class MediaBridgeTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->updateEventVisibilitySettings(
-            'appId',
+            0,
             eventType: 'ALL',
             updatedAt: 0,
             showInReporting: true,
@@ -992,7 +892,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->updateOembedDomain(
             'oEmbedDomainId',
-            appID: 'appId',
+            appID: 0,
             endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
         );
 
@@ -1009,7 +909,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->updateOembedDomain(
             'oEmbedDomainId',
-            appID: 'appId',
+            appID: 0,
             endpoints: ['discovery' => true, 'schemes' => ['string'], 'url' => 'url'],
             portalID: 0,
         );
@@ -1027,7 +927,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->updateProperty(
             'propertyName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -1044,7 +944,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->updateProperty(
             'propertyName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType',
             calculationFormula: 'calculationFormula',
             description: 'description',
@@ -1080,7 +980,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->updatePropertyGroup(
             'groupName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType'
         );
 
@@ -1097,7 +997,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->updatePropertyGroup(
             'groupName',
-            appID: 'appId',
+            appID: 0,
             objectType: 'objectType',
             displayOrder: 0,
             label: 'label',
@@ -1116,7 +1016,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->updateSchema(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             clearDescription: true
         );
 
@@ -1133,7 +1033,7 @@ final class MediaBridgeTest extends TestCase
 
         $result = $this->client->cms->mediaBridge->updateSchema(
             'objectType',
-            appID: 'appId',
+            appID: 0,
             clearDescription: true,
             allowsSensitiveProperties: true,
             description: 'description',
@@ -1156,10 +1056,7 @@ final class MediaBridgeTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->mediaBridge->updateSettings(
-            'appId',
-            updatedAt: 0
-        );
+        $result = $this->client->cms->mediaBridge->updateSettings(0, updatedAt: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
@@ -1176,7 +1073,7 @@ final class MediaBridgeTest extends TestCase
         }
 
         $result = $this->client->cms->mediaBridge->updateSettings(
-            'appId',
+            0,
             updatedAt: 0,
             allowImportOnDisconnect: true,
             moduleName: 'moduleName',

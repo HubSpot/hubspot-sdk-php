@@ -11,6 +11,8 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Update a function for a given definition by ID.
+ *
  * @see HubspotSDK\Services\Automation\ActionsService::createOrReplace()
  *
  * @phpstan-type ActionCreateOrReplaceParamsShape = array{

@@ -22,7 +22,7 @@ final class PublicCardFetchBody implements BaseModel
     use SdkModel;
 
     /**
-     * An array of CRM object types where this card should be displayed. HubSpot will call your data fetch URL whenever a user visits a record page of the types defined here.
+     * An array of CRM object types where this card should be displayed. HubSpot will call your target URL whenever a user visits a record page of the types defined here.
      *
      * @var list<CardObjectTypeBody> $objectTypes
      */
@@ -30,7 +30,7 @@ final class PublicCardFetchBody implements BaseModel
     public array $objectTypes;
 
     /**
-     * URL to a service endpoint that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
+     * URL to a service endpoint that will respond with details for this card. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
      */
     #[Required('targetUrl')]
     public string $targetURL;
@@ -72,7 +72,7 @@ final class PublicCardFetchBody implements BaseModel
     }
 
     /**
-     * An array of CRM object types where this card should be displayed. HubSpot will call your data fetch URL whenever a user visits a record page of the types defined here.
+     * An array of CRM object types where this card should be displayed. HubSpot will call your target URL whenever a user visits a record page of the types defined here.
      *
      * @param list<CardObjectTypeBody|CardObjectTypeBodyShape> $objectTypes
      */
@@ -85,7 +85,7 @@ final class PublicCardFetchBody implements BaseModel
     }
 
     /**
-     * URL to a service endpoint that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
+     * URL to a service endpoint that will respond with details for this card. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
      */
     public function withTargetURL(string $targetURL): self
     {

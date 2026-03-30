@@ -48,6 +48,8 @@ final class CurrenciesService implements CurrenciesContract
     /**
      * @api
      *
+     * Get the details for the company currency. The company currency is used in deal totals, reports, and the default currency for new deals.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -64,6 +66,8 @@ final class CurrenciesService implements CurrenciesContract
     /**
      * @api
      *
+     * Retrieve a list of all available currency codes and their names.
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -79,6 +83,8 @@ final class CurrenciesService implements CurrenciesContract
 
     /**
      * @api
+     *
+     * Set or update the primary company currency.
      *
      * @param CurrencyCode|value-of<CurrencyCode> $currencyCode The three-letter code representing a specific currency (ex. USD).
      * @param RequestOpts|null $requestOptions

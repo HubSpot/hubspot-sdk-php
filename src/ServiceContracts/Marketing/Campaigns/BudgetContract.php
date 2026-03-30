@@ -17,7 +17,6 @@ interface BudgetContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign to which the budget item will be added
      * @param float $amount the monetary value assigned to the budget item
      * @param string $name the name of the budget item
      * @param int $order the sequence number indicating the order of the budget item
@@ -38,8 +37,8 @@ interface BudgetContract
     /**
      * @api
      *
-     * @param int $budgetID path param: The unique identifier of the budget item to update
-     * @param string $campaignGuid path param: The unique identifier of the campaign to which the budget item belongs
+     * @param int $budgetID Path param
+     * @param string $campaignGuid Path param
      * @param float $amount body param: The monetary value assigned to the budget item
      * @param string $name body param: The name of the budget item
      * @param int $order body param: The sequence number indicating the order of the budget item
@@ -61,8 +60,6 @@ interface BudgetContract
     /**
      * @api
      *
-     * @param int $budgetID the unique identifier of the budget item to be deleted
-     * @param string $campaignGuid the unique identifier of the campaign from which the budget item will be deleted
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -76,8 +73,6 @@ interface BudgetContract
     /**
      * @api
      *
-     * @param int $budgetID the unique identifier of the budget item to retrieve
-     * @param string $campaignGuid the unique identifier of the campaign
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -91,7 +86,6 @@ interface BudgetContract
     /**
      * @api
      *
-     * @param string $campaignGuid the unique identifier of the campaign for which the budget and spending totals are being retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
