@@ -36,21 +36,13 @@ Parameters with a default value must be set by name.
 
 use HubspotSDK\Client;
 
-$client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
+$client = new Client(accessToken: 'My Access Token');
 
-$simplePublicObject = $client->crm->objects->contacts->create(
-  associations: [
-    [
-      'to' => ['id' => 'id'],
-      'types' => [
-        ['associationCategory' => 'HUBSPOT_DEFINED', 'associationTypeID' => 0]
-      ],
-    ],
-  ],
-  properties: ['email' => 'mark.s@lumon.industries'],
+$simplePublicObjectWithAssociations = $client->crm->objects->contacts->get(
+  'contactId'
 );
 
-var_dump($simplePublicObject->id);
+var_dump($simplePublicObjectWithAssociations->id);
 ```
 
 ### Value Objects
@@ -71,7 +63,7 @@ This library provides auto-paginating iterators with each list response, so you 
 
 use HubspotSDK\Client;
 
-$client = new Client(accessToken: 'pat-na1-xxxxxxxx-xxxx');
+$client = new Client(accessToken: 'My Access Token');
 
 $page = $client->crm->objects->contacts->list(limit: 100);
 
@@ -108,7 +100,7 @@ try {
         ],
       ],
     ],
-    properties: ['email' => 'mark.s@lumon.industries'],
+    properties: ['foo' => 'string'],
   );
 } catch (APIConnectionException $e) {
   echo "The server could not be reached", PHP_EOL;
@@ -163,7 +155,7 @@ $result = $client->crm->objects->contacts->create(
       ],
     ],
   ],
-  properties: ['email' => 'mark.s@lumon.industries'],
+  properties: ['foo' => 'string'],
   requestOptions: ['maxRetries' => 5],
 );
 ```
@@ -190,7 +182,7 @@ $simplePublicObject = $client->crm->objects->contacts->create(
       ],
     ],
   ],
-  properties: ['email' => 'mark.s@lumon.industries'],
+  properties: ['foo' => 'string'],
   requestOptions: [
     'extraQueryParams' => ['my_query_parameter' => 'value'],
     'extraBodyParams' => ['my_body_parameter' => 'value'],
