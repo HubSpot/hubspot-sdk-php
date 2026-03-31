@@ -265,7 +265,6 @@ interface EmailsRawContract
     /**
      * @api
      *
-     * @param int $revisionID the ID of the revision
      * @param array<string,mixed>|EmailRestoreRevisionToDraftParams $params
      * @param RequestOpts|null $requestOptions
      *

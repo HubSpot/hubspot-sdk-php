@@ -12,6 +12,8 @@ use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse1\Action;
 use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse1\SubscriptionType;
 
 /**
+ * @phpstan-import-type ActionOverrideRequestShape from \HubspotSDK\Webhooks\Webhooks\ActionOverrideRequest
+ *
  * @phpstan-type SubscriptionResponse1Shape = array{
  *   id: int,
  *   actions: list<Action|value-of<Action>>,
@@ -20,6 +22,7 @@ use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse1\SubscriptionType;
  *   objectTypeID: string,
  *   subscriptionType: SubscriptionType|value-of<SubscriptionType>,
  *   updatedAt: \DateTimeInterface,
+ *   actionOverrides?: array<string,ActionOverrideRequest|ActionOverrideRequestShape>|null,
  *   associatedObjectTypeIDs?: list<string>|null,
  *   createdBy?: int|null,
  *   deletedAt?: \DateTimeInterface|null,
@@ -68,6 +71,10 @@ final class SubscriptionResponse1 implements BaseModel
      */
     #[Required]
     public \DateTimeInterface $updatedAt;
+
+    /** @var array<string,ActionOverrideRequest>|null $actionOverrides */
+    #[Optional(map: ActionOverrideRequest::class)]
+    public ?array $actionOverrides;
 
     /** @var list<string>|null $associatedObjectTypeIDs */
     #[Optional('associatedObjectTypeIds', list: 'string')]
@@ -135,6 +142,7 @@ final class SubscriptionResponse1 implements BaseModel
      *
      * @param list<Action|value-of<Action>> $actions
      * @param SubscriptionType|value-of<SubscriptionType> $subscriptionType
+     * @param array<string,ActionOverrideRequest|ActionOverrideRequestShape>|null $actionOverrides
      * @param list<string>|null $associatedObjectTypeIDs
      * @param list<int>|null $listIDs
      * @param list<int>|null $objectIDs
@@ -148,6 +156,7 @@ final class SubscriptionResponse1 implements BaseModel
         string $objectTypeID,
         SubscriptionType|string $subscriptionType,
         \DateTimeInterface $updatedAt,
+        ?array $actionOverrides = null,
         ?array $associatedObjectTypeIDs = null,
         ?int $createdBy = null,
         ?\DateTimeInterface $deletedAt = null,
@@ -166,6 +175,7 @@ final class SubscriptionResponse1 implements BaseModel
         $self['subscriptionType'] = $subscriptionType;
         $self['updatedAt'] = $updatedAt;
 
+        null !== $actionOverrides && $self['actionOverrides'] = $actionOverrides;
         null !== $associatedObjectTypeIDs && $self['associatedObjectTypeIDs'] = $associatedObjectTypeIDs;
         null !== $createdBy && $self['createdBy'] = $createdBy;
         null !== $deletedAt && $self['deletedAt'] = $deletedAt;
@@ -248,6 +258,17 @@ final class SubscriptionResponse1 implements BaseModel
     {
         $self = clone $this;
         $self['updatedAt'] = $updatedAt;
+
+        return $self;
+    }
+
+    /**
+     * @param array<string,ActionOverrideRequest|ActionOverrideRequestShape> $actionOverrides
+     */
+    public function withActionOverrides(array $actionOverrides): self
+    {
+        $self = clone $this;
+        $self['actionOverrides'] = $actionOverrides;
 
         return $self;
     }

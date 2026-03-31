@@ -250,6 +250,8 @@ enum ContactPropertiesLeadingToMatch: string
 
     case HS_EMAIL_LAST_SEND_DATE = 'hs_email_last_send_date';
 
+    case HS_EMAIL_LIVE_SOURCING_RESTRICTED = 'hs_email_live_sourcing_restricted';
+
     case HS_EMAIL_OPEN = 'hs_email_open';
 
     case HS_EMAIL_OPTIMAL_SEND_DAY_OF_WEEK = 'hs_email_optimal_send_day_of_week';

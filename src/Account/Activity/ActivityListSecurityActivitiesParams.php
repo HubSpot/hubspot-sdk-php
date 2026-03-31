@@ -29,32 +29,23 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     use SdkParams;
 
     /**
-     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     #[Optional]
     public ?string $after;
 
-    /**
-     * Limit to activities created after this epoch timestamp.
-     */
     #[Optional]
     public ?int $fromTimestamp;
 
     /**
-     * The maximum number of results to display per page. Max value of limit is 200.
+     * The maximum number of results to display per page.
      */
     #[Optional]
     public ?int $limit;
 
-    /**
-     * Limit to activities created before this epoch timestamp.
-     */
     #[Optional]
     public ?int $toTimestamp;
 
-    /**
-     * Identifier of user to retrieve activities for.
-     */
     #[Optional]
     public ?int $userID;
 
@@ -87,7 +78,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     }
 
     /**
-     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     public function withAfter(string $after): self
     {
@@ -97,9 +88,6 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Limit to activities created after this epoch timestamp.
-     */
     public function withFromTimestamp(int $fromTimestamp): self
     {
         $self = clone $this;
@@ -109,7 +97,7 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
     }
 
     /**
-     * The maximum number of results to display per page. Max value of limit is 200.
+     * The maximum number of results to display per page.
      */
     public function withLimit(int $limit): self
     {
@@ -119,9 +107,6 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Limit to activities created before this epoch timestamp.
-     */
     public function withToTimestamp(int $toTimestamp): self
     {
         $self = clone $this;
@@ -130,9 +115,6 @@ final class ActivityListSecurityActivitiesParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Identifier of user to retrieve activities for.
-     */
     public function withUserID(int $userID): self
     {
         $self = clone $this;

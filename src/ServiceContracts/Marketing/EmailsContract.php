@@ -366,7 +366,6 @@ interface EmailsContract
     /**
      * @api
      *
-     * @param int $revisionID the ID of the revision
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

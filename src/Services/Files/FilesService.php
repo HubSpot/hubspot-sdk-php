@@ -76,7 +76,6 @@ final class FilesService implements FilesContract
      *
      * Update properties of file by ID.
      *
-     * @param string $fileID ID of file to update
      * @param Access|value-of<Access> $access NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
      * @param bool $isUsableInContent mark whether the file should be used in new content or not
      * @param string $name new name for the file
@@ -120,7 +119,6 @@ final class FilesService implements FilesContract
      *
      * Delete a file by ID
      *
-     * @param string $fileID FileId to delete
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -140,7 +138,6 @@ final class FilesService implements FilesContract
      *
      * Delete a file in accordance with GDPR regulations.
      *
-     * @param string $fileID ID of file to GDPR delete
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -160,7 +157,6 @@ final class FilesService implements FilesContract
      *
      * Retrieve a file by its ID.
      *
-     * @param string $fileID ID of the desired file
      * @param list<string> $properties
      * @param RequestOpts|null $requestOptions
      *
@@ -207,7 +203,6 @@ final class FilesService implements FilesContract
      *
      * Check the status of requested import.
      *
-     * @param string $taskID Import by URL task ID
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -227,10 +222,7 @@ final class FilesService implements FilesContract
      *
      * Generates signed URL that allows temporary access to a private file.
      *
-     * @param string $fileID ID of file
-     * @param int $expirationSeconds how long in seconds the link will provide access to the file
-     * @param Size|value-of<Size> $size For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL.
-     * @param bool $upscale if size is provided, this will upscale the image to fit the size dimensions
+     * @param Size|value-of<Size> $size
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -314,7 +306,6 @@ final class FilesService implements FilesContract
      *
      * Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.
      *
-     * @param string $fileID ID of the desired file
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -341,42 +332,12 @@ final class FilesService implements FilesContract
      *
      * Search through files in the file manager. Does not display hidden or archived files.
      *
-     * @param string $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit.
-     * @param bool $allowsAnonymousAccess Search files by access. If 'true' will show only public files; if 'false' will show only private files
-     * @param string $before Search files updated before this timestamp. Time must be epoch time in milliseconds.
-     * @param \DateTimeInterface $createdAt Search files by exact time of creation. Time must be epoch time in milliseconds.
-     * @param \DateTimeInterface $createdAtGte Search files by greater than or equal to time of creation. Can be used with createdAtLte to create a range.
-     * @param \DateTimeInterface $createdAtLte Search files by less than or equal to time of creation. Can be used with createdAtGte to create a range.
-     * @param string $encoding search files by specified encoding
-     * @param \DateTimeInterface $expiresAt Search files by exact expires time. Time must be epoch time in milliseconds.
-     * @param \DateTimeInterface $expiresAtGte Search files by greater than or equal to expires time. Can be used with expiresAtLte to create a range.
-     * @param \DateTimeInterface $expiresAtLte Search files by less than or equal to expires time. Can be used with expiresAtGte to create a range.
-     * @param string $extension search files by given extension
-     * @param string $fileMd5 search files by specific md5 hash
-     * @param int $height search files by height of image or video
-     * @param int $heightGte Search files by greater than or equal to height of image or video. Can be used with heightLte to create a range.
-     * @param int $heightLte Search files by less than or equal to height of image or video. Can be used with heightGte to create a range.
-     * @param int $idGte Search files by greater than or equal to ID. Can be used with idLte to create a range.
-     * @param int $idLte Search files by less than or equal to ID. Can be used with idGte to create a range.
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param list<int> $ids
-     * @param bool $isUsableInContent If true shows files that have been marked to be used in new content. It false shows files that should not be used in new content.
-     * @param int $limit Number of items to return. Default limit is 10, maximum limit is 100.
-     * @param string $name search for files containing the given name
+     * @param int $limit the maximum number of results to display per page
      * @param list<int> $parentFolderIDs
-     * @param string $path search files by path
-     * @param list<string> $properties desired file properties in the return object
-     * @param int $size search files by exact file size in bytes
-     * @param int $sizeGte Search files by greater than or equal to file size. Can be used with sizeLte to create a range.
-     * @param int $sizeLte Search files by less than or equal to file size. Can be used with sizeGte to create a range.
-     * @param list<string> $sort sort files by a given field
-     * @param string $type search files by file type
-     * @param \DateTimeInterface $updatedAt Search files by exact time of latest updated. Time must be epoch time in milliseconds.
-     * @param \DateTimeInterface $updatedAtGte Search files by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
-     * @param \DateTimeInterface $updatedAtLte Search files by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
-     * @param string $url Search for given URL
-     * @param int $width search files by width of image or video
-     * @param int $widthGte Search files by greater than or equal to width of image or video. Can be used with widthLte to create a range.
-     * @param int $widthLte Search files by less than or equal to width of image or video. Can be used with widthGte to create a range.
+     * @param list<string> $properties
+     * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<File>

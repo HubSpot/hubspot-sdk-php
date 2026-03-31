@@ -4,16 +4,20 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\Pages\PageGetRevisionParams;
-use HubspotSDK\Cms\Pages\PageListLandingPageFoldersParams;
-use HubspotSDK\Cms\Pages\PageListLandingPagesParams;
-use HubspotSDK\Cms\Pages\PageListRevisionsParams;
-use HubspotSDK\Cms\Pages\PageListSitePagesParams;
-use HubspotSDK\Cms\Pages\PageQueryLandingPageFoldersParams;
-use HubspotSDK\Cms\Pages\PageQueryLandingPagesParams;
-use HubspotSDK\Cms\Pages\PageQuerySitePagesParams;
-use HubspotSDK\Cms\Pages\PageRestoreRevisionParams;
-use HubspotSDK\Cms\Pages\PageRestoreRevisionToDraftParams;
+use HubspotSDK\Cms\Pages\PageGetLandingPageFoldersByQueryParams;
+use HubspotSDK\Cms\Pages\PageGetLandingPageFoldersParams;
+use HubspotSDK\Cms\Pages\PageGetLandingPageRevisionParams;
+use HubspotSDK\Cms\Pages\PageGetLandingPagesByQueryParams;
+use HubspotSDK\Cms\Pages\PageGetLandingPagesParams;
+use HubspotSDK\Cms\Pages\PageGetSitePageRevisionParams;
+use HubspotSDK\Cms\Pages\PageGetSitePagesByQueryParams;
+use HubspotSDK\Cms\Pages\PageGetSitePagesParams;
+use HubspotSDK\Cms\Pages\PageListLandingPageRevisionsParams;
+use HubspotSDK\Cms\Pages\PageListSitePageRevisionsParams;
+use HubspotSDK\Cms\Pages\PageRestoreLandingPageRevisionParams;
+use HubspotSDK\Cms\Pages\PageRestoreLandingPageRevisionToDraftParams;
+use HubspotSDK\Cms\Pages\PageRestoreSitePageRevisionParams;
+use HubspotSDK\Cms\Pages\PageRestoreSitePageRevisionToDraftParams;
 use HubspotSDK\Cms\Pages\PageVersion;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
@@ -28,122 +32,154 @@ interface PagesRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|PageGetRevisionParams $params
+     * @param array<string,mixed>|PageGetLandingPageFoldersParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function getLandingPageFolders(
+        array|PageGetLandingPageFoldersParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|PageGetLandingPageFoldersByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function getLandingPageFoldersByQuery(
+        array|PageGetLandingPageFoldersByQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|PageGetLandingPageRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PageVersion>
      *
      * @throws APIException
      */
-    public function getRevision(
+    public function getLandingPageRevision(
         string $revisionID,
-        array|PageGetRevisionParams $params,
+        array|PageGetLandingPageRevisionParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|PageListLandingPageFoldersParams $params
+     * @param array<string,mixed>|PageGetLandingPagesParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function listLandingPageFolders(
-        array|PageListLandingPageFoldersParams $params,
+    public function getLandingPages(
+        array|PageGetLandingPagesParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|PageListLandingPagesParams $params
+     * @param array<string,mixed>|PageGetLandingPagesByQueryParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function listLandingPages(
-        array|PageListLandingPagesParams $params,
+    public function getLandingPagesByQuery(
+        array|PageGetLandingPagesByQueryParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|PageListRevisionsParams $params
+     * @param array<string,mixed>|PageGetSitePageRevisionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<PageVersion>
+     *
+     * @throws APIException
+     */
+    public function getSitePageRevision(
+        string $revisionID,
+        array|PageGetSitePageRevisionParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|PageGetSitePagesParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function getSitePages(
+        array|PageGetSitePagesParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|PageGetSitePagesByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function getSitePagesByQuery(
+        array|PageGetSitePagesByQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|PageListLandingPageRevisionsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<PageVersion>>
      *
      * @throws APIException
      */
-    public function listRevisions(
+    public function listLandingPageRevisions(
         string $objectID,
-        array|PageListRevisionsParams $params,
+        array|PageListLandingPageRevisionsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|PageListSitePagesParams $params
+     * @param array<string,mixed>|PageListSitePageRevisionsParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<Page<PageVersion>>
      *
      * @throws APIException
      */
-    public function listSitePages(
-        array|PageListSitePagesParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|PageQueryLandingPageFoldersParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function queryLandingPageFolders(
-        array|PageQueryLandingPageFoldersParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|PageQueryLandingPagesParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function queryLandingPages(
-        array|PageQueryLandingPagesParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|PageQuerySitePagesParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function querySitePages(
-        array|PageQuerySitePagesParams $params,
+    public function listSitePageRevisions(
+        string $objectID,
+        array|PageListSitePageRevisionsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -156,7 +192,7 @@ interface PagesRawContract
      *
      * @throws APIException
      */
-    public function resetDraft(
+    public function resetSitePageDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
@@ -164,32 +200,64 @@ interface PagesRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|PageRestoreRevisionParams $params
+     * @param array<string,mixed>|PageRestoreLandingPageRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
      *
      * @throws APIException
      */
-    public function restoreRevision(
+    public function restoreLandingPageRevision(
         string $revisionID,
-        array|PageRestoreRevisionParams $params,
+        array|PageRestoreLandingPageRevisionParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|PageRestoreRevisionToDraftParams $params
+     * @param array<string,mixed>|PageRestoreLandingPageRevisionToDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
      *
      * @throws APIException
      */
-    public function restoreRevisionToDraft(
+    public function restoreLandingPageRevisionToDraft(
         int $revisionID,
-        array|PageRestoreRevisionToDraftParams $params,
+        array|PageRestoreLandingPageRevisionToDraftParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|PageRestoreSitePageRevisionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     *
+     * @throws APIException
+     */
+    public function restoreSitePageRevision(
+        string $revisionID,
+        array|PageRestoreSitePageRevisionParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|PageRestoreSitePageRevisionToDraftParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     *
+     * @throws APIException
+     */
+    public function restoreSitePageRevisionToDraft(
+        int $revisionID,
+        array|PageRestoreSitePageRevisionToDraftParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

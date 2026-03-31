@@ -8,15 +8,15 @@ use HubspotSDK\Client;
 use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
 use HubspotSDK\Cms\Pages\ContentFolder;
 use HubspotSDK\Cms\Pages\ContentFolderVersion;
-use HubspotSDK\Cms\Pages\Folders\FolderCreateFolderParams;
-use HubspotSDK\Cms\Pages\Folders\FolderDeleteFolderParams;
-use HubspotSDK\Cms\Pages\Folders\FolderGetFolderParams;
-use HubspotSDK\Cms\Pages\Folders\FolderGetFolderRevisionParams;
-use HubspotSDK\Cms\Pages\Folders\FolderGetFoldersBatchParams;
-use HubspotSDK\Cms\Pages\Folders\FolderListFolderRevisionsParams;
-use HubspotSDK\Cms\Pages\Folders\FolderListFoldersParams;
-use HubspotSDK\Cms\Pages\Folders\FolderRestoreFolderRevisionParams;
-use HubspotSDK\Cms\Pages\Folders\FolderUpdateFolderParams;
+use HubspotSDK\Cms\Pages\Folders\FolderBatchGetParams;
+use HubspotSDK\Cms\Pages\Folders\FolderCreateParams;
+use HubspotSDK\Cms\Pages\Folders\FolderDeleteParams;
+use HubspotSDK\Cms\Pages\Folders\FolderGetParams;
+use HubspotSDK\Cms\Pages\Folders\FolderGetRevisionParams;
+use HubspotSDK\Cms\Pages\Folders\FolderListParams;
+use HubspotSDK\Cms\Pages\Folders\FolderListRevisionsParams;
+use HubspotSDK\Cms\Pages\Folders\FolderRestoreRevisionParams;
+use HubspotSDK\Cms\Pages\Folders\FolderUpdateParams;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -47,18 +47,18 @@ final class FoldersRawService implements FoldersRawContract
      *   name: string,
      *   parentFolderID: int,
      *   updated: \DateTimeInterface,
-     * }|FolderCreateFolderParams $params
+     * }|FolderCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
      * @throws APIException
      */
-    public function createFolder(
-        array|FolderCreateFolderParams $params,
+    public function create(
+        array|FolderCreateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = FolderCreateFolderParams::parseRequest(
+        [$parsed, $options] = FolderCreateParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -77,21 +77,110 @@ final class FoldersRawService implements FoldersRawContract
     /**
      * @api
      *
+     * Partially update a landing page folder, specified by the folder ID. You only need to specify the details values that you are modifying.
+     *
+     * @param string $objectID Path param
+     * @param array{
+     *   id: string,
+     *   category: int,
+     *   created: \DateTimeInterface,
+     *   deletedAt: \DateTimeInterface,
+     *   name: string,
+     *   parentFolderID: int,
+     *   updated: \DateTimeInterface,
+     *   archived?: bool,
+     * }|FolderUpdateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ContentFolder>
+     *
+     * @throws APIException
+     */
+    public function update(
+        string $objectID,
+        array|FolderUpdateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = FolderUpdateParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $query_params = array_flip(['archived']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'patch',
+            path: ['cms/pages/2026-03/landing-pages/folders/%1$s', $objectID],
+            query: array_intersect_key($parsed, $query_params),
+            headers: ['Content-Type' => '*/*'],
+            body: (object) array_diff_key($parsed, $query_params),
+            options: $options,
+            convert: ContentFolder::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Get the list of Landing Page Folders. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
+     *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|FolderListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<ContentFolder>>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|FolderListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = FolderListParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/pages/2026-03/landing-pages/folders',
+            query: $parsed,
+            options: $options,
+            convert: ContentFolder::class,
+            page: Page::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Delete a landing page folder, specified by its ID.
      *
-     * @param array{archived?: bool}|FolderDeleteFolderParams $params
+     * @param array{archived?: bool}|FolderDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function deleteFolder(
+    public function delete(
         string $objectID,
-        array|FolderDeleteFolderParams $params,
+        array|FolderDeleteParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = FolderDeleteFolderParams::parseRequest(
+        [$parsed, $options] = FolderDeleteParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -109,21 +198,55 @@ final class FoldersRawService implements FoldersRawContract
     /**
      * @api
      *
+     * Retrieve a batch of landing page folders as identified in the request body.
+     *
+     * @param array{inputs: list<string>, archived?: bool}|FolderBatchGetParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseContentFolder>
+     *
+     * @throws APIException
+     */
+    public function batchGet(
+        array|FolderBatchGetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = FolderBatchGetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $query_params = array_flip(['archived']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'cms/pages/2026-03/landing-pages/folders/batch/read',
+            query: array_intersect_key($parsed, $query_params),
+            headers: ['Content-Type' => '*/*'],
+            body: (object) array_diff_key($parsed, $query_params),
+            options: $options,
+            convert: BatchResponseContentFolder::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Retrieve a landing page folder, specified by its ID.
      *
-     * @param array{archived?: bool, property?: string}|FolderGetFolderParams $params
+     * @param array{archived?: bool, property?: string}|FolderGetParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
      * @throws APIException
      */
-    public function getFolder(
+    public function get(
         string $objectID,
-        array|FolderGetFolderParams $params,
+        array|FolderGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = FolderGetFolderParams::parseRequest(
+        [$parsed, $options] = FolderGetParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -143,19 +266,19 @@ final class FoldersRawService implements FoldersRawContract
      *
      * Retrieve a previous version of a folder, specified by the folder ID and revision ID.
      *
-     * @param array{objectID: string}|FolderGetFolderRevisionParams $params
+     * @param array{objectID: string}|FolderGetRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolderVersion>
      *
      * @throws APIException
      */
-    public function getFolderRevision(
+    public function getRevision(
         string $revisionID,
-        array|FolderGetFolderRevisionParams $params,
+        array|FolderGetRevisionParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = FolderGetFolderRevisionParams::parseRequest(
+        [$parsed, $options] = FolderGetRevisionParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -178,59 +301,23 @@ final class FoldersRawService implements FoldersRawContract
     /**
      * @api
      *
-     * Retrieve a batch of landing page folders as identified in the request body.
-     *
-     * @param array{
-     *   inputs: list<string>, archived?: bool
-     * }|FolderGetFoldersBatchParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponseContentFolder>
-     *
-     * @throws APIException
-     */
-    public function getFoldersBatch(
-        array|FolderGetFoldersBatchParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = FolderGetFoldersBatchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = array_flip(['archived']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'cms/pages/2026-03/landing-pages/folders/batch/read',
-            query: array_intersect_key($parsed, $query_params),
-            headers: ['Content-Type' => '*/*'],
-            body: (object) array_diff_key($parsed, $query_params),
-            options: $options,
-            convert: BatchResponseContentFolder::class,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Retrieves all the previous versions of a landing page folder.
      *
      * @param array{
      *   after?: string, before?: string, limit?: int
-     * }|FolderListFolderRevisionsParams $params
+     * }|FolderListRevisionsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<Page<ContentFolderVersion>>
      *
      * @throws APIException
      */
-    public function listFolderRevisions(
+    public function listRevisions(
         string $objectID,
-        array|FolderListFolderRevisionsParams $params,
+        array|FolderListRevisionsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = FolderListFolderRevisionsParams::parseRequest(
+        [$parsed, $options] = FolderListRevisionsParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -251,65 +338,21 @@ final class FoldersRawService implements FoldersRawContract
     /**
      * @api
      *
-     * Get the list of Landing Page Folders. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
-     *
-     * @param array{
-     *   after?: string,
-     *   archived?: bool,
-     *   createdAfter?: \DateTimeInterface,
-     *   createdAt?: \DateTimeInterface,
-     *   createdBefore?: \DateTimeInterface,
-     *   limit?: int,
-     *   property?: string,
-     *   sort?: list<string>,
-     *   updatedAfter?: \DateTimeInterface,
-     *   updatedAt?: \DateTimeInterface,
-     *   updatedBefore?: \DateTimeInterface,
-     * }|FolderListFoldersParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Page<ContentFolder>>
-     *
-     * @throws APIException
-     */
-    public function listFolders(
-        array|FolderListFoldersParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = FolderListFoldersParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: 'cms/pages/2026-03/landing-pages/folders',
-            query: $parsed,
-            options: $options,
-            convert: ContentFolder::class,
-            page: Page::class,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Takes a specified version of a landing page folder and restores it.
      *
-     * @param array{objectID: string}|FolderRestoreFolderRevisionParams $params
+     * @param array{objectID: string}|FolderRestoreRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
      * @throws APIException
      */
-    public function restoreFolderRevision(
+    public function restoreRevision(
         string $revisionID,
-        array|FolderRestoreFolderRevisionParams $params,
+        array|FolderRestoreRevisionParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = FolderRestoreFolderRevisionParams::parseRequest(
+        [$parsed, $options] = FolderRestoreRevisionParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -324,51 +367,6 @@ final class FoldersRawService implements FoldersRawContract
                 $objectID,
                 $revisionID,
             ],
-            options: $options,
-            convert: ContentFolder::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Partially update a landing page folder, specified by the folder ID. You only need to specify the details values that you are modifying.
-     *
-     * @param string $objectID Path param
-     * @param array{
-     *   id: string,
-     *   category: int,
-     *   created: \DateTimeInterface,
-     *   deletedAt: \DateTimeInterface,
-     *   name: string,
-     *   parentFolderID: int,
-     *   updated: \DateTimeInterface,
-     *   archived?: bool,
-     * }|FolderUpdateFolderParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<ContentFolder>
-     *
-     * @throws APIException
-     */
-    public function updateFolder(
-        string $objectID,
-        array|FolderUpdateFolderParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = FolderUpdateFolderParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $query_params = array_flip(['archived']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'patch',
-            path: ['cms/pages/2026-03/landing-pages/folders/%1$s', $objectID],
-            query: array_intersect_key($parsed, $query_params),
-            headers: ['Content-Type' => '*/*'],
-            body: (object) array_diff_key($parsed, $query_params),
             options: $options,
             convert: ContentFolder::class,
         );

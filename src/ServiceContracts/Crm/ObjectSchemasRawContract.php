@@ -42,7 +42,6 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|ObjectSchemaUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -74,7 +73,6 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|ObjectSchemaDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -91,7 +89,6 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|ObjectSchemaCreateAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -108,7 +105,6 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
-     * @param string $associationIdentifier unique ID of the association to remove
      * @param array<string,mixed>|ObjectSchemaDeleteAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -125,7 +121,6 @@ interface ObjectSchemasRawContract
     /**
      * @api
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param array<string,mixed>|ObjectSchemaGetParams $params
      * @param RequestOpts|null $requestOptions
      *

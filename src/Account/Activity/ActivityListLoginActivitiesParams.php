@@ -25,20 +25,17 @@ final class ActivityListLoginActivitiesParams implements BaseModel
     use SdkParams;
 
     /**
-     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     #[Optional]
     public ?string $after;
 
     /**
-     * The maximum number of results to display per page. Max value of limit is 200.
+     * The maximum number of results to display per page.
      */
     #[Optional]
     public ?int $limit;
 
-    /**
-     * Identifier of user to retrieve activities for.
-     */
     #[Optional]
     public ?int $userID;
 
@@ -67,7 +64,7 @@ final class ActivityListLoginActivitiesParams implements BaseModel
     }
 
     /**
-     * The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     public function withAfter(string $after): self
     {
@@ -78,7 +75,7 @@ final class ActivityListLoginActivitiesParams implements BaseModel
     }
 
     /**
-     * The maximum number of results to display per page. Max value of limit is 200.
+     * The maximum number of results to display per page.
      */
     public function withLimit(int $limit): self
     {
@@ -88,9 +85,6 @@ final class ActivityListLoginActivitiesParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Identifier of user to retrieve activities for.
-     */
     public function withUserID(int $userID): self
     {
         $self = clone $this;

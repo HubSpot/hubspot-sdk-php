@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Auth;
 
 use HubspotSDK\Auth\OAuth\OAuthCreateTokenParams\GrantType;
-use HubspotSDK\Auth\OAuth\TokenInfoResponseBaseIf;
+use HubspotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
+use HubspotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
@@ -85,7 +86,7 @@ final class OAuthService implements OAuthContract
         ?string $clientSecret = null,
         ?string $tokenTypeHint = null,
         RequestOptions|array|null $requestOptions = null,
-    ): TokenInfoResponseBaseIf {
+    ): PublicAccessTokenInfoResponse|PublicRefreshTokenInfoResponse {
         $params = Util::removeNulls(
             [
                 'token' => $token,

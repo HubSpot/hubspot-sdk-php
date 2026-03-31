@@ -164,8 +164,8 @@ final class ChannelAccountsRawService implements ChannelAccountsRawContract
      * @param string $accountToken Path param
      * @param array{
      *   channelID: int,
-     *   accountName: string,
-     *   deliveryIdentifier: PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
+     *   accountName?: string,
+     *   deliveryIdentifier?: PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
      * }|ChannelAccountUpdateStagingTokenParams $params
      * @param RequestOpts|null $requestOptions
      *

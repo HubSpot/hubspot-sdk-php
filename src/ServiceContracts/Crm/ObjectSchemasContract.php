@@ -54,7 +54,6 @@ interface ObjectSchemasContract
     /**
      * @api
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
@@ -96,7 +95,6 @@ interface ObjectSchemasContract
     /**
      * @api
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *
@@ -111,7 +109,6 @@ interface ObjectSchemasContract
     /**
      * @api
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -127,8 +124,6 @@ interface ObjectSchemasContract
     /**
      * @api
      *
-     * @param string $associationIdentifier unique ID of the association to remove
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -142,7 +137,6 @@ interface ObjectSchemasContract
     /**
      * @api
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

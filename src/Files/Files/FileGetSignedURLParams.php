@@ -27,23 +27,13 @@ final class FileGetSignedURLParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * How long in seconds the link will provide access to the file.
-     */
     #[Optional]
     public ?int $expirationSeconds;
 
-    /**
-     * For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL.
-     *
-     * @var value-of<Size>|null $size
-     */
+    /** @var value-of<Size>|null $size */
     #[Optional(enum: Size::class)]
     public ?string $size;
 
-    /**
-     * If size is provided, this will upscale the image to fit the size dimensions.
-     */
     #[Optional]
     public ?bool $upscale;
 
@@ -73,9 +63,6 @@ final class FileGetSignedURLParams implements BaseModel
         return $self;
     }
 
-    /**
-     * How long in seconds the link will provide access to the file.
-     */
     public function withExpirationSeconds(int $expirationSeconds): self
     {
         $self = clone $this;
@@ -85,8 +72,6 @@ final class FileGetSignedURLParams implements BaseModel
     }
 
     /**
-     * For image files. This will resize the image to the desired size before sharing. Does not affect the original file, just the file served by this signed URL.
-     *
      * @param Size|value-of<Size> $size
      */
     public function withSize(Size|string $size): self
@@ -97,9 +82,6 @@ final class FileGetSignedURLParams implements BaseModel
         return $self;
     }
 
-    /**
-     * If size is provided, this will upscale the image to fit the size dimensions.
-     */
     public function withUpscale(bool $upscale): self
     {
         $self = clone $this;

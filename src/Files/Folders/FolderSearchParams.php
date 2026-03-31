@@ -41,64 +41,39 @@ final class FolderSearchParams implements BaseModel
     use SdkParams;
 
     /**
-     * Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     #[Optional]
     public ?string $after;
 
-    /**
-     * Search folders updated before this timestamp. Time must be epoch time in milliseconds.
-     */
     #[Optional]
     public ?string $before;
 
-    /**
-     * Search folders by exact time of creation. Time must be epoch time in milliseconds.
-     */
     #[Optional]
     public ?\DateTimeInterface $createdAt;
 
-    /**
-     * Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range.
-     */
     #[Optional]
     public ?\DateTimeInterface $createdAtGte;
 
-    /**
-     * Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range.
-     */
     #[Optional]
     public ?\DateTimeInterface $createdAtLte;
 
-    /**
-     * Search folders by greater than or equal to ID. Can be used with idLte to create a range.
-     */
     #[Optional]
     public ?int $idGte;
 
-    /**
-     * Search folders by less than or equal to ID. Can be used with idGte to create a range.
-     */
     #[Optional]
     public ?int $idLte;
 
-    /**
-     * Search folders by multiple IDs. Comma-separated list of folder IDs.
-     *
-     * @var list<int>|null $ids
-     */
+    /** @var list<int>|null $ids */
     #[Optional(list: 'int')]
     public ?array $ids;
 
     /**
-     * Number of items to return. Default limit is 10, maximum limit is 100.
+     * The maximum number of results to display per page.
      */
     #[Optional]
     public ?int $limit;
 
-    /**
-     * Search for folders containing the specified name.
-     */
     #[Optional]
     public ?string $name;
 
@@ -106,43 +81,23 @@ final class FolderSearchParams implements BaseModel
     #[Optional(list: 'int')]
     public ?array $parentFolderIDs;
 
-    /**
-     * Search folders by path.
-     */
     #[Optional]
     public ?string $path;
 
-    /**
-     * Properties that should be included in the returned folders.
-     *
-     * @var list<string>|null $properties
-     */
+    /** @var list<string>|null $properties */
     #[Optional(list: 'string')]
     public ?array $properties;
 
-    /**
-     * Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending.
-     *
-     * @var list<string>|null $sort
-     */
+    /** @var list<string>|null $sort */
     #[Optional(list: 'string')]
     public ?array $sort;
 
-    /**
-     * Search folders by exact time of latest updated. Time must be epoch time in milliseconds.
-     */
     #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
-    /**
-     * Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
-     */
     #[Optional]
     public ?\DateTimeInterface $updatedAtGte;
 
-    /**
-     * Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
-     */
     #[Optional]
     public ?\DateTimeInterface $updatedAtLte;
 
@@ -204,7 +159,7 @@ final class FolderSearchParams implements BaseModel
     }
 
     /**
-     * Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit.
+     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      */
     public function withAfter(string $after): self
     {
@@ -214,9 +169,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders updated before this timestamp. Time must be epoch time in milliseconds.
-     */
     public function withBefore(string $before): self
     {
         $self = clone $this;
@@ -225,9 +177,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders by exact time of creation. Time must be epoch time in milliseconds.
-     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $self = clone $this;
@@ -236,9 +185,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range.
-     */
     public function withCreatedAtGte(\DateTimeInterface $createdAtGte): self
     {
         $self = clone $this;
@@ -247,9 +193,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range.
-     */
     public function withCreatedAtLte(\DateTimeInterface $createdAtLte): self
     {
         $self = clone $this;
@@ -258,9 +201,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders by greater than or equal to ID. Can be used with idLte to create a range.
-     */
     public function withIDGte(int $idGte): self
     {
         $self = clone $this;
@@ -269,9 +209,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders by less than or equal to ID. Can be used with idGte to create a range.
-     */
     public function withIDLte(int $idLte): self
     {
         $self = clone $this;
@@ -281,8 +218,6 @@ final class FolderSearchParams implements BaseModel
     }
 
     /**
-     * Search folders by multiple IDs. Comma-separated list of folder IDs.
-     *
      * @param list<int> $ids
      */
     public function withIDs(array $ids): self
@@ -294,7 +229,7 @@ final class FolderSearchParams implements BaseModel
     }
 
     /**
-     * Number of items to return. Default limit is 10, maximum limit is 100.
+     * The maximum number of results to display per page.
      */
     public function withLimit(int $limit): self
     {
@@ -304,9 +239,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search for folders containing the specified name.
-     */
     public function withName(string $name): self
     {
         $self = clone $this;
@@ -326,9 +258,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders by path.
-     */
     public function withPath(string $path): self
     {
         $self = clone $this;
@@ -338,8 +267,6 @@ final class FolderSearchParams implements BaseModel
     }
 
     /**
-     * Properties that should be included in the returned folders.
-     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -351,8 +278,6 @@ final class FolderSearchParams implements BaseModel
     }
 
     /**
-     * Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending.
-     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
@@ -363,9 +288,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders by exact time of latest updated. Time must be epoch time in milliseconds.
-     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $self = clone $this;
@@ -374,9 +296,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range.
-     */
     public function withUpdatedAtGte(\DateTimeInterface $updatedAtGte): self
     {
         $self = clone $this;
@@ -385,9 +304,6 @@ final class FolderSearchParams implements BaseModel
         return $self;
     }
 
-    /**
-     * Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range.
-     */
     public function withUpdatedAtLte(\DateTimeInterface $updatedAtLte): self
     {
         $self = clone $this;

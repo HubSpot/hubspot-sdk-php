@@ -35,13 +35,13 @@ final class FoldersTest extends TestCase
     }
 
     #[Test]
-    public function testCreateFolder(): void
+    public function testCreate(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->folders->createFolder(
+        $result = $this->client->cms->pages->folders->create(
             id: 'id',
             category: 0,
             created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
@@ -56,13 +56,13 @@ final class FoldersTest extends TestCase
     }
 
     #[Test]
-    public function testCreateFolderWithOptionalParams(): void
+    public function testCreateWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->folders->createFolder(
+        $result = $this->client->cms->pages->folders->create(
             id: 'id',
             category: 0,
             created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
@@ -77,120 +77,58 @@ final class FoldersTest extends TestCase
     }
 
     #[Test]
-    public function testDeleteFolder(): void
+    public function testUpdate(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->folders->deleteFolder('objectId');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testGetFolder(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->folders->getFolder('objectId');
+        $result = $this->client->cms->pages->folders->update(
+            'objectId',
+            id: 'id',
+            category: 0,
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            name: 'name',
+            parentFolderID: 0,
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ContentFolder::class, $result);
     }
 
     #[Test]
-    public function testGetFolderRevision(): void
+    public function testUpdateWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->folders->getFolderRevision(
-            'revisionId',
-            objectID: 'objectId'
+        $result = $this->client->cms->pages->folders->update(
+            'objectId',
+            id: 'id',
+            category: 0,
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            name: 'name',
+            parentFolderID: 0,
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            archived: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(ContentFolderVersion::class, $result);
+        $this->assertInstanceOf(ContentFolder::class, $result);
     }
 
     #[Test]
-    public function testGetFolderRevisionWithOptionalParams(): void
+    public function testList(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->folders->getFolderRevision(
-            'revisionId',
-            objectID: 'objectId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(ContentFolderVersion::class, $result);
-    }
-
-    #[Test]
-    public function testGetFoldersBatch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->folders->getFoldersBatch(
-            inputs: ['string']
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
-    }
-
-    #[Test]
-    public function testGetFoldersBatchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->folders->getFoldersBatch(
-            inputs: ['string'],
-            archived: true
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
-    }
-
-    #[Test]
-    public function testListFolderRevisions(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $page = $this->client->cms->pages->folders->listFolderRevisions('objectId');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $page);
-
-        if ($item = $page->getItems()[0] ?? null) {
-            // @phpstan-ignore-next-line method.alreadyNarrowedType
-            $this->assertInstanceOf(ContentFolderVersion::class, $item);
-        }
-    }
-
-    #[Test]
-    public function testListFolders(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $page = $this->client->cms->pages->folders->listFolders();
+        $page = $this->client->cms->pages->folders->list();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $page);
@@ -202,13 +140,118 @@ final class FoldersTest extends TestCase
     }
 
     #[Test]
-    public function testRestoreFolderRevision(): void
+    public function testDelete(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->folders->restoreFolderRevision(
+        $result = $this->client->cms->pages->folders->delete('objectId');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testBatchGet(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->folders->batchGet(inputs: ['string']);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
+    }
+
+    #[Test]
+    public function testBatchGetWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->folders->batchGet(
+            inputs: ['string'],
+            archived: true
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseContentFolder::class, $result);
+    }
+
+    #[Test]
+    public function testGet(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->folders->get('objectId');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolder::class, $result);
+    }
+
+    #[Test]
+    public function testGetRevision(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->folders->getRevision(
+            'revisionId',
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolderVersion::class, $result);
+    }
+
+    #[Test]
+    public function testGetRevisionWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->folders->getRevision(
+            'revisionId',
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ContentFolderVersion::class, $result);
+    }
+
+    #[Test]
+    public function testListRevisions(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $page = $this->client->cms->pages->folders->listRevisions('objectId');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(ContentFolderVersion::class, $item);
+        }
+    }
+
+    #[Test]
+    public function testRestoreRevision(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->folders->restoreRevision(
             'revisionId',
             objectID: 'objectId'
         );
@@ -218,60 +261,15 @@ final class FoldersTest extends TestCase
     }
 
     #[Test]
-    public function testRestoreFolderRevisionWithOptionalParams(): void
+    public function testRestoreRevisionWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->folders->restoreFolderRevision(
+        $result = $this->client->cms->pages->folders->restoreRevision(
             'revisionId',
             objectID: 'objectId'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(ContentFolder::class, $result);
-    }
-
-    #[Test]
-    public function testUpdateFolder(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->folders->updateFolder(
-            'objectId',
-            id: 'id',
-            category: 0,
-            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            name: 'name',
-            parentFolderID: 0,
-            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(ContentFolder::class, $result);
-    }
-
-    #[Test]
-    public function testUpdateFolderWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->folders->updateFolder(
-            'objectId',
-            id: 'id',
-            category: 0,
-            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            deletedAt: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            name: 'name',
-            parentFolderID: 0,
-            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-            archived: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

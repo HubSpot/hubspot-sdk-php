@@ -17,19 +17,6 @@ interface PagesContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getRevision(
-        string $revisionID,
-        string $objectID,
-        RequestOptions|array|null $requestOptions = null,
-    ): PageVersion;
-
-    /**
-     * @api
-     *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
      * @param int $limit the maximum number of results to display per page
@@ -38,7 +25,7 @@ interface PagesContract
      *
      * @throws APIException
      */
-    public function listLandingPageFolders(
+    public function getLandingPageFolders(
         ?string $after = null,
         ?bool $archived = null,
         ?\DateTimeInterface $createdAfter = null,
@@ -64,7 +51,137 @@ interface PagesContract
      *
      * @throws APIException
      */
-    public function listLandingPages(
+    public function getLandingPageFoldersByQuery(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getLandingPageRevision(
+        string $revisionID,
+        string $objectID,
+        RequestOptions|array|null $requestOptions = null,
+    ): PageVersion;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getLandingPages(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getLandingPagesByQuery(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getSitePageRevision(
+        string $revisionID,
+        string $objectID,
+        RequestOptions|array|null $requestOptions = null,
+    ): PageVersion;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getSitePages(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getSitePagesByQuery(
         ?string $after = null,
         ?bool $archived = null,
         ?\DateTimeInterface $createdAfter = null,
@@ -90,7 +207,7 @@ interface PagesContract
      *
      * @throws APIException
      */
-    public function listRevisions(
+    public function listLandingPageRevisions(
         string $objectID,
         ?string $after = null,
         ?string $before = null,
@@ -102,105 +219,20 @@ interface PagesContract
      * @api
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived whether to return only results that have been archived
      * @param int $limit the maximum number of results to display per page
-     * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<PageVersion>
      *
      * @throws APIException
      */
-    public function listSitePages(
+    public function listSitePageRevisions(
+        string $objectID,
         ?string $after = null,
-        ?bool $archived = null,
-        ?\DateTimeInterface $createdAfter = null,
-        ?\DateTimeInterface $createdAt = null,
-        ?\DateTimeInterface $createdBefore = null,
+        ?string $before = null,
         ?int $limit = null,
-        ?string $property = null,
-        ?array $sort = null,
-        ?\DateTimeInterface $updatedAfter = null,
-        ?\DateTimeInterface $updatedAt = null,
-        ?\DateTimeInterface $updatedBefore = null,
         RequestOptions|array|null $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived whether to return only results that have been archived
-     * @param int $limit the maximum number of results to display per page
-     * @param list<string> $sort
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function queryLandingPageFolders(
-        ?string $after = null,
-        ?bool $archived = null,
-        ?\DateTimeInterface $createdAfter = null,
-        ?\DateTimeInterface $createdAt = null,
-        ?\DateTimeInterface $createdBefore = null,
-        ?int $limit = null,
-        ?string $property = null,
-        ?array $sort = null,
-        ?\DateTimeInterface $updatedAfter = null,
-        ?\DateTimeInterface $updatedAt = null,
-        ?\DateTimeInterface $updatedBefore = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived whether to return only results that have been archived
-     * @param int $limit the maximum number of results to display per page
-     * @param list<string> $sort
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function queryLandingPages(
-        ?string $after = null,
-        ?bool $archived = null,
-        ?\DateTimeInterface $createdAfter = null,
-        ?\DateTimeInterface $createdAt = null,
-        ?\DateTimeInterface $createdBefore = null,
-        ?int $limit = null,
-        ?string $property = null,
-        ?array $sort = null,
-        ?\DateTimeInterface $updatedAfter = null,
-        ?\DateTimeInterface $updatedAt = null,
-        ?\DateTimeInterface $updatedBefore = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived whether to return only results that have been archived
-     * @param int $limit the maximum number of results to display per page
-     * @param list<string> $sort
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function querySitePages(
-        ?string $after = null,
-        ?bool $archived = null,
-        ?\DateTimeInterface $createdAfter = null,
-        ?\DateTimeInterface $createdAt = null,
-        ?\DateTimeInterface $createdBefore = null,
-        ?int $limit = null,
-        ?string $property = null,
-        ?array $sort = null,
-        ?\DateTimeInterface $updatedAfter = null,
-        ?\DateTimeInterface $updatedAt = null,
-        ?\DateTimeInterface $updatedBefore = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): mixed;
+    ): Page;
 
     /**
      * @api
@@ -209,7 +241,7 @@ interface PagesContract
      *
      * @throws APIException
      */
-    public function resetDraft(
+    public function resetSitePageDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
     ): mixed;
@@ -221,7 +253,7 @@ interface PagesContract
      *
      * @throws APIException
      */
-    public function restoreRevision(
+    public function restoreLandingPageRevision(
         string $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
@@ -234,7 +266,33 @@ interface PagesContract
      *
      * @throws APIException
      */
-    public function restoreRevisionToDraft(
+    public function restoreLandingPageRevisionToDraft(
+        int $revisionID,
+        string $objectID,
+        RequestOptions|array|null $requestOptions = null,
+    ): \HubspotSDK\Cms\Pages\Page;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function restoreSitePageRevision(
+        string $revisionID,
+        string $objectID,
+        RequestOptions|array|null $requestOptions = null,
+    ): \HubspotSDK\Cms\Pages\Page;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function restoreSitePageRevisionToDraft(
         int $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,

@@ -7,15 +7,15 @@ namespace HubspotSDK\ServiceContracts\Cms\Pages;
 use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
 use HubspotSDK\Cms\Pages\ContentFolder;
 use HubspotSDK\Cms\Pages\ContentFolderVersion;
-use HubspotSDK\Cms\Pages\Folders\FolderCreateFolderParams;
-use HubspotSDK\Cms\Pages\Folders\FolderDeleteFolderParams;
-use HubspotSDK\Cms\Pages\Folders\FolderGetFolderParams;
-use HubspotSDK\Cms\Pages\Folders\FolderGetFolderRevisionParams;
-use HubspotSDK\Cms\Pages\Folders\FolderGetFoldersBatchParams;
-use HubspotSDK\Cms\Pages\Folders\FolderListFolderRevisionsParams;
-use HubspotSDK\Cms\Pages\Folders\FolderListFoldersParams;
-use HubspotSDK\Cms\Pages\Folders\FolderRestoreFolderRevisionParams;
-use HubspotSDK\Cms\Pages\Folders\FolderUpdateFolderParams;
+use HubspotSDK\Cms\Pages\Folders\FolderBatchGetParams;
+use HubspotSDK\Cms\Pages\Folders\FolderCreateParams;
+use HubspotSDK\Cms\Pages\Folders\FolderDeleteParams;
+use HubspotSDK\Cms\Pages\Folders\FolderGetParams;
+use HubspotSDK\Cms\Pages\Folders\FolderGetRevisionParams;
+use HubspotSDK\Cms\Pages\Folders\FolderListParams;
+use HubspotSDK\Cms\Pages\Folders\FolderListRevisionsParams;
+use HubspotSDK\Cms\Pages\Folders\FolderRestoreRevisionParams;
+use HubspotSDK\Cms\Pages\Folders\FolderUpdateParams;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -29,125 +29,15 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|FolderCreateFolderParams $params
+     * @param array<string,mixed>|FolderCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
      * @throws APIException
      */
-    public function createFolder(
-        array|FolderCreateFolderParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|FolderDeleteFolderParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function deleteFolder(
-        string $objectID,
-        array|FolderDeleteFolderParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|FolderGetFolderParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<ContentFolder>
-     *
-     * @throws APIException
-     */
-    public function getFolder(
-        string $objectID,
-        array|FolderGetFolderParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|FolderGetFolderRevisionParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<ContentFolderVersion>
-     *
-     * @throws APIException
-     */
-    public function getFolderRevision(
-        string $revisionID,
-        array|FolderGetFolderRevisionParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|FolderGetFoldersBatchParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponseContentFolder>
-     *
-     * @throws APIException
-     */
-    public function getFoldersBatch(
-        array|FolderGetFoldersBatchParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|FolderListFolderRevisionsParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Page<ContentFolderVersion>>
-     *
-     * @throws APIException
-     */
-    public function listFolderRevisions(
-        string $objectID,
-        array|FolderListFolderRevisionsParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|FolderListFoldersParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Page<ContentFolder>>
-     *
-     * @throws APIException
-     */
-    public function listFolders(
-        array|FolderListFoldersParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|FolderRestoreFolderRevisionParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<ContentFolder>
-     *
-     * @throws APIException
-     */
-    public function restoreFolderRevision(
-        string $revisionID,
-        array|FolderRestoreFolderRevisionParams $params,
+    public function create(
+        array|FolderCreateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -155,16 +45,126 @@ interface FoldersRawContract
      * @api
      *
      * @param string $objectID Path param
-     * @param array<string,mixed>|FolderUpdateFolderParams $params
+     * @param array<string,mixed>|FolderUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ContentFolder>
      *
      * @throws APIException
      */
-    public function updateFolder(
+    public function update(
         string $objectID,
-        array|FolderUpdateFolderParams $params,
+        array|FolderUpdateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|FolderListParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<ContentFolder>>
+     *
+     * @throws APIException
+     */
+    public function list(
+        array|FolderListParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|FolderDeleteParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $objectID,
+        array|FolderDeleteParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|FolderBatchGetParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseContentFolder>
+     *
+     * @throws APIException
+     */
+    public function batchGet(
+        array|FolderBatchGetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|FolderGetParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ContentFolder>
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $objectID,
+        array|FolderGetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|FolderGetRevisionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ContentFolderVersion>
+     *
+     * @throws APIException
+     */
+    public function getRevision(
+        string $revisionID,
+        array|FolderGetRevisionParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|FolderListRevisionsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<ContentFolderVersion>>
+     *
+     * @throws APIException
+     */
+    public function listRevisions(
+        string $objectID,
+        array|FolderListRevisionsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|FolderRestoreRevisionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ContentFolder>
+     *
+     * @throws APIException
+     */
+    public function restoreRevision(
+        string $revisionID,
+        array|FolderRestoreRevisionParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

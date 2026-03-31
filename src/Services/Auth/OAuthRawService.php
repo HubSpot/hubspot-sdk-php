@@ -8,6 +8,8 @@ use HubspotSDK\Auth\OAuth\OAuthCreateTokenParams;
 use HubspotSDK\Auth\OAuth\OAuthCreateTokenParams\GrantType;
 use HubspotSDK\Auth\OAuth\OAuthIntrospectTokenParams;
 use HubspotSDK\Auth\OAuth\OAuthRevokeTokenParams;
+use HubspotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
+use HubspotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
 use HubspotSDK\Auth\OAuth\TokenInfoResponseBaseIf;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
@@ -82,7 +84,7 @@ final class OAuthRawService implements OAuthRawContract
      * }|OAuthIntrospectTokenParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<TokenInfoResponseBaseIf>
+     * @return BaseResponse<PublicAccessTokenInfoResponse|PublicRefreshTokenInfoResponse,>
      *
      * @throws APIException
      */

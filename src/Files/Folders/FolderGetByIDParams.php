@@ -22,11 +22,7 @@ final class FolderGetByIDParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /**
-     * Properties to set on returned folder.
-     *
-     * @var list<string>|null $properties
-     */
+    /** @var list<string>|null $properties */
     #[Optional(list: 'string')]
     public ?array $properties;
 
@@ -52,8 +48,6 @@ final class FolderGetByIDParams implements BaseModel
     }
 
     /**
-     * Properties to set on returned folder.
-     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self

@@ -4,8 +4,10 @@ namespace Tests\Services\Crm\Extensions;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
 use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
 use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
+use HubspotSDK\Crm\Extensions\Calling\SettingsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -33,61 +35,41 @@ final class CallingTest extends TestCase
     }
 
     #[Test]
-    public function testCreate(): void
+    public function testCreateChannelConnectionSettings(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->create(
-            0,
-            urlToRetrieveAuthedRecording: 'urlToRetrieveAuthedRecording'
-        );
+        $result = $this
+            ->client
+            ->crm
+            ->extensions
+            ->calling
+            ->createChannelConnectionSettings(0, isReady: true, url: 'url')
+        ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
+        $this->assertInstanceOf(ChannelConnectionSettingsResponse::class, $result);
     }
 
     #[Test]
-    public function testCreateWithOptionalParams(): void
+    public function testCreateChannelConnectionSettingsWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->create(
-            0,
-            urlToRetrieveAuthedRecording: 'urlToRetrieveAuthedRecording'
-        );
+        $result = $this
+            ->client
+            ->crm
+            ->extensions
+            ->calling
+            ->createChannelConnectionSettings(0, isReady: true, url: 'url')
+        ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
-    }
-
-    #[Test]
-    public function testUpdate(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->extensions->calling->update(0);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
-    }
-
-    #[Test]
-    public function testDelete(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->extensions->calling->delete(0);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(ChannelConnectionSettingsResponse::class, $result);
     }
 
     #[Test]
@@ -148,45 +130,236 @@ final class CallingTest extends TestCase
     }
 
     #[Test]
-    public function testGet(): void
+    public function testCreateRecordingReady(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->get(0);
+        $result = $this->client->crm->extensions->calling->createRecordingReady(
+            engagementID: 0
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testCreateRecordingReadyWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->createRecordingReady(
+            engagementID: 0
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testCreateRecordingSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->createRecordingSettings(
+            0,
+            urlToRetrieveAuthedRecording: 'urlToRetrieveAuthedRecording'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
     }
 
     #[Test]
-    public function testMarkReady(): void
+    public function testCreateRecordingSettingsWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->markReady(
-            engagementID: 0
+        $result = $this->client->crm->extensions->calling->createRecordingSettings(
+            0,
+            urlToRetrieveAuthedRecording: 'urlToRetrieveAuthedRecording'
         );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->createSettings(
+            0,
+            height: 0,
+            isReady: true,
+            name: 'name',
+            supportsCustomObjects: true,
+            supportsInboundCalling: true,
+            url: 'url',
+            usesCallingWindow: true,
+            usesRemote: true,
+            width: 0,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateSettingsWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->createSettings(
+            0,
+            height: 0,
+            isReady: true,
+            name: 'name',
+            supportsCustomObjects: true,
+            supportsInboundCalling: true,
+            url: 'url',
+            usesCallingWindow: true,
+            usesRemote: true,
+            width: 0,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDeleteChannelConnectionSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->crm
+            ->extensions
+            ->calling
+            ->deleteChannelConnectionSettings(0)
+        ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
     }
 
     #[Test]
-    public function testMarkReadyWithOptionalParams(): void
+    public function testDeleteSettings(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->extensions->calling->markReady(
-            engagementID: 0
-        );
+        $result = $this->client->crm->extensions->calling->deleteSettings(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testGetChannelConnectionSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->crm
+            ->extensions
+            ->calling
+            ->getChannelConnectionSettings(0)
+        ;
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ChannelConnectionSettingsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetRecordingSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->getRecordingSettings(0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->getSettings(0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateChannelConnectionSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->crm
+            ->extensions
+            ->calling
+            ->updateChannelConnectionSettings(0)
+        ;
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ChannelConnectionSettingsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateRecordingSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->updateRecordingSettings(
+            0
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(RecordingSettingsResponse::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateSettings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->extensions->calling->updateSettings(0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SettingsResponse::class, $result);
     }
 }

@@ -80,7 +80,6 @@ final class FilesRawService implements FilesRawContract
      *
      * Update properties of file by ID.
      *
-     * @param string $fileID ID of file to update
      * @param array{
      *   clearExpires: bool,
      *   access?: value-of<Access>,
@@ -121,7 +120,6 @@ final class FilesRawService implements FilesRawContract
      *
      * Delete a file by ID
      *
-     * @param string $fileID FileId to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -146,7 +144,6 @@ final class FilesRawService implements FilesRawContract
      *
      * Delete a file in accordance with GDPR regulations.
      *
-     * @param string $fileID ID of file to GDPR delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -171,7 +168,6 @@ final class FilesRawService implements FilesRawContract
      *
      * Retrieve a file by its ID.
      *
-     * @param string $fileID ID of the desired file
      * @param array{properties?: list<string>}|FileGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -236,7 +232,6 @@ final class FilesRawService implements FilesRawContract
      *
      * Check the status of requested import.
      *
-     * @param string $taskID Import by URL task ID
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FileActionResponse>
@@ -263,7 +258,6 @@ final class FilesRawService implements FilesRawContract
      *
      * Generates signed URL that allows temporary access to a private file.
      *
-     * @param string $fileID ID of file
      * @param array{
      *   expirationSeconds?: int, size?: Size|value-of<Size>, upscale?: bool
      * }|FileGetSignedURLParams $params
@@ -340,7 +334,6 @@ final class FilesRawService implements FilesRawContract
      *
      * Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.
      *
-     * @param string $fileID ID of the desired file
      * @param array{
      *   charsetHunch?: string, file?: string, options?: string
      * }|FileReplaceParams $params

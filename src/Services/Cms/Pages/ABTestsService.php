@@ -40,7 +40,7 @@ final class ABTestsService implements ABTestsContract
      *
      * @throws APIException
      */
-    public function createAbTestVariation(
+    public function createLandingPageVariation(
         string $contentID,
         string $variationName,
         RequestOptions|array|null $requestOptions = null,
@@ -50,7 +50,33 @@ final class ABTestsService implements ABTestsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->createAbTestVariation(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->createLandingPageVariation(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Create a new A/B test variation based on the information provided in the request body.
+     *
+     * @param string $contentID ID of the object to test
+     * @param string $variationName name of A/B test variation
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createSitePageVariation(
+        string $contentID,
+        string $variationName,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page {
+        $params = Util::removeNulls(
+            ['contentID' => $contentID, 'variationName' => $variationName]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createSitePageVariation(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -66,7 +92,7 @@ final class ABTestsService implements ABTestsContract
      *
      * @throws APIException
      */
-    public function endAbTest(
+    public function endLandingPageTest(
         string $abTestID,
         string $winnerID,
         RequestOptions|array|null $requestOptions = null,
@@ -76,7 +102,33 @@ final class ABTestsService implements ABTestsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->endAbTest(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->endLandingPageTest(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * End an active A/B test and designate a winner.
+     *
+     * @param string $abTestID ID of the test to end
+     * @param string $winnerID ID of the object to designate as the test winner
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function endSitePageTest(
+        string $abTestID,
+        string $winnerID,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed {
+        $params = Util::removeNulls(
+            ['abTestID' => $abTestID, 'winnerID' => $winnerID]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->endSitePageTest(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -92,7 +144,7 @@ final class ABTestsService implements ABTestsContract
      *
      * @throws APIException
      */
-    public function rerunAbTest(
+    public function rerunLandingPageTest(
         string $abTestID,
         string $variationID,
         RequestOptions|array|null $requestOptions = null,
@@ -102,7 +154,33 @@ final class ABTestsService implements ABTestsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->rerunAbTest(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->rerunLandingPageTest(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Rerun a previous A/B test.
+     *
+     * @param string $abTestID ID of the test to rerun
+     * @param string $variationID ID of the object to reactivate as a test variation
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function rerunSitePageTest(
+        string $abTestID,
+        string $variationID,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed {
+        $params = Util::removeNulls(
+            ['abTestID' => $abTestID, 'variationID' => $variationID]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->rerunSitePageTest(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
