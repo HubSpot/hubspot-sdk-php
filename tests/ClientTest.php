@@ -28,7 +28,7 @@ class ClientTest extends TestCase
 
         $client = new \HubspotSDK\Client(
             baseUrl: 'http://localhost',
-            accessToken: 'pat-na1-xxxxxxxx-xxxx',
+            accessToken: 'My Access Token',
             requestOptions: ['transporter' => $transporter],
         );
 
