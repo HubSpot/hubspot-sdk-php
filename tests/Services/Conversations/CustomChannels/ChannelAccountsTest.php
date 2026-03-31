@@ -149,14 +149,7 @@ final class ChannelAccountsTest extends TestCase
             ->conversations
             ->customChannels
             ->channelAccounts
-            ->updateStagingToken(
-                'accountToken',
-                channelID: 0,
-                accountName: 'accountName',
-                deliveryIdentifier: [
-                    'type' => 'CHANNEL_SPECIFIC_OPAQUE_ID', 'value' => 'value',
-                ],
-            )
+            ->updateStagingToken('accountToken', channelID: 0)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

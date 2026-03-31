@@ -609,7 +609,6 @@ final class EmailsService implements EmailsContract
      *
      * Restores a previous revision of a marketing email to DRAFT state. If there is currently something in the draft for that object, it is overwritten.
      *
-     * @param int $revisionID the ID of the revision
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

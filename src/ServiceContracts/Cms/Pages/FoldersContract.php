@@ -30,7 +30,7 @@ interface FoldersContract
      *
      * @throws APIException
      */
-    public function createFolder(
+    public function create(
         string $id,
         int $category,
         \DateTimeInterface $created,
@@ -38,123 +38,6 @@ interface FoldersContract
         string $name,
         int $parentFolderID,
         \DateTimeInterface $updated,
-        RequestOptions|array|null $requestOptions = null,
-    ): ContentFolder;
-
-    /**
-     * @api
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function deleteFolder(
-        string $objectID,
-        ?bool $archived = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getFolder(
-        string $objectID,
-        ?bool $archived = null,
-        ?string $property = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): ContentFolder;
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getFolderRevision(
-        string $revisionID,
-        string $objectID,
-        RequestOptions|array|null $requestOptions = null,
-    ): ContentFolderVersion;
-
-    /**
-     * @api
-     *
-     * @param list<string> $inputs body param: Strings to input
-     * @param bool $archived query param: Whether to return only results that have been archived
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getFoldersBatch(
-        array $inputs,
-        ?bool $archived = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseContentFolder;
-
-    /**
-     * @api
-     *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return Page<ContentFolderVersion>
-     *
-     * @throws APIException
-     */
-    public function listFolderRevisions(
-        string $objectID,
-        ?string $after = null,
-        ?string $before = null,
-        ?int $limit = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param bool $archived whether to return only results that have been archived
-     * @param int $limit the maximum number of results to display per page
-     * @param list<string> $sort
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return Page<ContentFolder>
-     *
-     * @throws APIException
-     */
-    public function listFolders(
-        ?string $after = null,
-        ?bool $archived = null,
-        ?\DateTimeInterface $createdAfter = null,
-        ?\DateTimeInterface $createdAt = null,
-        ?\DateTimeInterface $createdBefore = null,
-        ?int $limit = null,
-        ?string $property = null,
-        ?array $sort = null,
-        ?\DateTimeInterface $updatedAfter = null,
-        ?\DateTimeInterface $updatedAt = null,
-        ?\DateTimeInterface $updatedBefore = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): Page;
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function restoreFolderRevision(
-        string $revisionID,
-        string $objectID,
         RequestOptions|array|null $requestOptions = null,
     ): ContentFolder;
 
@@ -174,7 +57,7 @@ interface FoldersContract
      *
      * @throws APIException
      */
-    public function updateFolder(
+    public function update(
         string $objectID,
         string $id,
         int $category,
@@ -184,6 +67,123 @@ interface FoldersContract
         int $parentFolderID,
         \DateTimeInterface $updated,
         ?bool $archived = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ContentFolder;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<ContentFolder>
+     *
+     * @throws APIException
+     */
+    public function list(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page;
+
+    /**
+     * @api
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $objectID,
+        ?bool $archived = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param list<string> $inputs body param: Strings to input
+     * @param bool $archived query param: Whether to return only results that have been archived
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function batchGet(
+        array $inputs,
+        ?bool $archived = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseContentFolder;
+
+    /**
+     * @api
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $objectID,
+        ?bool $archived = null,
+        ?string $property = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ContentFolder;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getRevision(
+        string $revisionID,
+        string $objectID,
+        RequestOptions|array|null $requestOptions = null,
+    ): ContentFolderVersion;
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<ContentFolderVersion>
+     *
+     * @throws APIException
+     */
+    public function listRevisions(
+        string $objectID,
+        ?string $after = null,
+        ?string $before = null,
+        ?int $limit = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function restoreRevision(
+        string $revisionID,
+        string $objectID,
         RequestOptions|array|null $requestOptions = null,
     ): ContentFolder;
 }

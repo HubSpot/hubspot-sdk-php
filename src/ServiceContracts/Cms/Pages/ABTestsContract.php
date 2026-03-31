@@ -22,7 +22,22 @@ interface ABTestsContract
      *
      * @throws APIException
      */
-    public function createAbTestVariation(
+    public function createLandingPageVariation(
+        string $contentID,
+        string $variationName,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page;
+
+    /**
+     * @api
+     *
+     * @param string $contentID ID of the object to test
+     * @param string $variationName name of A/B test variation
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createSitePageVariation(
         string $contentID,
         string $variationName,
         RequestOptions|array|null $requestOptions = null,
@@ -37,7 +52,22 @@ interface ABTestsContract
      *
      * @throws APIException
      */
-    public function endAbTest(
+    public function endLandingPageTest(
+        string $abTestID,
+        string $winnerID,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param string $abTestID ID of the test to end
+     * @param string $winnerID ID of the object to designate as the test winner
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function endSitePageTest(
         string $abTestID,
         string $winnerID,
         RequestOptions|array|null $requestOptions = null,
@@ -52,7 +82,22 @@ interface ABTestsContract
      *
      * @throws APIException
      */
-    public function rerunAbTest(
+    public function rerunLandingPageTest(
+        string $abTestID,
+        string $variationID,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param string $abTestID ID of the test to rerun
+     * @param string $variationID ID of the object to reactivate as a test variation
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function rerunSitePageTest(
         string $abTestID,
         string $variationID,
         RequestOptions|array|null $requestOptions = null,

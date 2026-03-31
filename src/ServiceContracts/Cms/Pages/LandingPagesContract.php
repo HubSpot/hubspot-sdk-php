@@ -364,7 +364,7 @@ interface LandingPagesContract
      *
      * @throws APIException
      */
-    public function publishDraft(
+    public function pushDraftLive(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
     ): mixed;

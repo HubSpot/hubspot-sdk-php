@@ -19,7 +19,6 @@ interface BatchContract
     /**
      * @api
      *
-     * @param int $appID the ID of the target app
      * @param list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape> $inputs
      * @param RequestOpts|null $requestOptions
      *

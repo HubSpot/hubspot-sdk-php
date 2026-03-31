@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Auth;
 
 use HubspotSDK\Auth\OAuth\OAuthCreateTokenParams\GrantType;
-use HubspotSDK\Auth\OAuth\TokenInfoResponseBaseIf;
+use HubspotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
+use HubspotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -47,7 +48,7 @@ interface OAuthContract
         ?string $clientSecret = null,
         ?string $tokenTypeHint = null,
         RequestOptions|array|null $requestOptions = null,
-    ): TokenInfoResponseBaseIf;
+    ): PublicAccessTokenInfoResponse|PublicRefreshTokenInfoResponse;
 
     /**
      * @api

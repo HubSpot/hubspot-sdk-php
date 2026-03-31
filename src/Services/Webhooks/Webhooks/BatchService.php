@@ -37,7 +37,6 @@ final class BatchService implements BatchContract
      *
      * Batch create event subscriptions for the specified app.
      *
-     * @param int $appID the ID of the target app
      * @param list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape> $inputs
      * @param RequestOpts|null $requestOptions
      *

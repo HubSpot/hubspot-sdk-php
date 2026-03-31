@@ -25,7 +25,6 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param string $folderID ID of folder to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -40,7 +39,6 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param string $folderPath Path of folder to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -55,7 +53,6 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param string $folderID ID of desired folder
      * @param array<string,mixed>|FolderGetByIDParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -72,7 +69,6 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param string $folderPath path of desired folder
      * @param array<string,mixed>|FolderGetByPathParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -89,7 +85,6 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param string $taskID TaskId of folder update
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FolderActionResponse>
@@ -134,7 +129,6 @@ interface FoldersRawContract
     /**
      * @api
      *
-     * @param string $folderID ID of folder to update
      * @param array<string,mixed>|FolderUpdateByIDParams $params
      * @param RequestOpts|null $requestOptions
      *

@@ -11,6 +11,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Webhooks\WebhooksRawContract;
+use HubspotSDK\Webhooks\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
 use HubspotSDK\Webhooks\Webhooks\CrmObjectSnapshotBatchResponse;
 use HubspotSDK\Webhooks\Webhooks\CrmObjectSnapshotRequest;
 use HubspotSDK\Webhooks\Webhooks\Filter;
@@ -20,18 +21,19 @@ use HubspotSDK\Webhooks\Webhooks\SettingsResponse;
 use HubspotSDK\Webhooks\Webhooks\SnapshotStatusResponse;
 use HubspotSDK\Webhooks\Webhooks\SubscriptionListResponse;
 use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse;
+use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse1;
 use HubspotSDK\Webhooks\Webhooks\ThrottlingSettings;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateCrmSnapshotParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateFilterParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateSubscriptionParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateSubscriptionParams\EventType;
 use HubspotSDK\Webhooks\Webhooks\WebhookDeleteSubscriptionParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetEarliestJournalLocalParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetEarliestJournalParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetLatestJournalLocalParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetLatestJournalParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetNextJournalByOffsetParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetNextJournalLocalByOffsetParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetJournalEarliestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetJournalLatestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetJournalNextByOffsetParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalEarliestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalLatestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalNextByOffsetParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookGetSubscriptionParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookUpdateSettingsParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookUpdateSubscriptionParams;
@@ -115,9 +117,29 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<SubscriptionResponse1>
+     *
+     * @throws APIException
+     */
+    public function createJournalSubscription(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'webhooks-journal/subscriptions/2026-03',
+            options: $requestOptions,
+            convert: SubscriptionResponse1::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Create new event subscription for the specified app.
      *
-     * @param int $appID the ID of the target app
      * @param array{
      *   active: bool,
      *   eventType: value-of<EventType>,
@@ -182,7 +204,29 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * @throws APIException
      */
-    public function deletePortal(
+    public function deleteJournalSubscription(
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['webhooks-journal/subscriptions/2026-03/%1$s', $subscriptionID],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deletePortalSubscriptions(
         int $portalID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
@@ -200,7 +244,6 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * Delete the webhook settings for the specified app. Event subscriptions will not be deleted, but will be paused until another webhook is created.
      *
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -225,7 +268,6 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * Delete an existing event subscription by ID.
      *
-     * @param int $subscriptionID the ID of the subscription to delete
      * @param array{appID: int}|WebhookDeleteSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -253,72 +295,6 @@ final class WebhooksRawService implements WebhooksRawContract
             ],
             options: $options,
             convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{installPortalID?: int}|WebhookGetEarliestJournalParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function getEarliestJournal(
-        array|WebhookGetEarliestJournalParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = WebhookGetEarliestJournalParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: 'webhooks-journal/journal/2026-03/earliest',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['installPortalID' => 'installPortalId']
-            ),
-            headers: ['Accept' => '*/*'],
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{installPortalID?: int}|WebhookGetEarliestJournalLocalParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function getEarliestJournalLocal(
-        array|WebhookGetEarliestJournalLocalParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = WebhookGetEarliestJournalLocalParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: 'webhooks-journal/journal-local/2026-03/earliest',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['installPortalID' => 'installPortalId']
-            ),
-            headers: ['Accept' => '*/*'],
-            options: $options,
-            convert: 'string',
         );
     }
 
@@ -353,7 +329,7 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * @throws APIException
      */
-    public function getFilterBySubscription(
+    public function getFiltersBySubscription(
         int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
@@ -372,22 +348,100 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * @param array{installPortalID?: int}|WebhookGetJournalEarliestParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SnapshotStatusResponse>
+     * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getJournalLocalStatus(
-        string $statusID,
-        RequestOptions|array|null $requestOptions = null
+    public function getJournalEarliest(
+        array|WebhookGetJournalEarliestParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
+        [$parsed, $options] = WebhookGetJournalEarliestParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: ['webhooks-journal/journal-local/2026-03/status/%1$s', $statusID],
-            options: $requestOptions,
-            convert: SnapshotStatusResponse::class,
+            path: 'webhooks-journal/journal/2026-03/earliest',
+            query: Util::array_transform_keys(
+                $parsed,
+                ['installPortalID' => 'installPortalId']
+            ),
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{installPortalID?: int}|WebhookGetJournalLatestParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getJournalLatest(
+        array|WebhookGetJournalLatestParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = WebhookGetJournalLatestParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'webhooks-journal/journal/2026-03/latest',
+            query: Util::array_transform_keys(
+                $parsed,
+                ['installPortalID' => 'installPortalId']
+            ),
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{installPortalID?: int}|WebhookGetJournalNextByOffsetParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getJournalNextByOffset(
+        string $offset,
+        array|WebhookGetJournalNextByOffsetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = WebhookGetJournalNextByOffsetParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['webhooks-journal/journal/2026-03/offset/%1$s/next', $offset],
+            query: Util::array_transform_keys(
+                $parsed,
+                ['installPortalID' => 'installPortalId']
+            ),
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
         );
     }
 
@@ -416,18 +470,18 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetLatestJournalParams $params
+     * @param array{installPortalID?: int}|WebhookGetLocalEarliestParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getLatestJournal(
-        array|WebhookGetLatestJournalParams $params,
+    public function getLocalEarliest(
+        array|WebhookGetLocalEarliestParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetLatestJournalParams::parseRequest(
+        [$parsed, $options] = WebhookGetLocalEarliestParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -435,7 +489,7 @@ final class WebhooksRawService implements WebhooksRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'webhooks-journal/journal/2026-03/latest',
+            path: 'webhooks-journal/journal-local/2026-03/earliest',
             query: Util::array_transform_keys(
                 $parsed,
                 ['installPortalID' => 'installPortalId']
@@ -449,18 +503,18 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetLatestJournalLocalParams $params
+     * @param array{installPortalID?: int}|WebhookGetLocalLatestParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getLatestJournalLocal(
-        array|WebhookGetLatestJournalLocalParams $params,
+    public function getLocalLatest(
+        array|WebhookGetLocalLatestParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetLatestJournalLocalParams::parseRequest(
+        [$parsed, $options] = WebhookGetLocalLatestParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -482,55 +536,19 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetNextJournalByOffsetParams $params
+     * @param array{installPortalID?: int}|WebhookGetLocalNextByOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getNextJournalByOffset(
+    public function getLocalNextByOffset(
         string $offset,
-        array|WebhookGetNextJournalByOffsetParams $params,
+        array|WebhookGetLocalNextByOffsetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetNextJournalByOffsetParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['webhooks-journal/journal/2026-03/offset/%1$s/next', $offset],
-            query: Util::array_transform_keys(
-                $parsed,
-                ['installPortalID' => 'installPortalId']
-            ),
-            headers: ['Accept' => '*/*'],
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   installPortalID?: int
-     * }|WebhookGetNextJournalLocalByOffsetParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function getNextJournalLocalByOffset(
-        string $offset,
-        array|WebhookGetNextJournalLocalByOffsetParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = WebhookGetNextJournalLocalByOffsetParams::parseRequest(
+        [$parsed, $options] = WebhookGetLocalNextByOffsetParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -554,9 +572,30 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<SnapshotStatusResponse>
+     *
+     * @throws APIException
+     */
+    public function getLocalStatus(
+        string $statusID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['webhooks-journal/journal-local/2026-03/status/%1$s', $statusID],
+            options: $requestOptions,
+            convert: SnapshotStatusResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Retrieve the webhook settings for the specified app, including the webhook’s target URL, throttle configuration, and create/update date.
      *
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SettingsResponse>
@@ -581,7 +620,6 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * Retrieve a specific event subscription by ID.
      *
-     * @param int $subscriptionID the ID of the target subscription
      * @param array{appID: int}|WebhookGetSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -615,9 +653,29 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CollectionResponseSubscriptionResponseNoPaging>
+     *
+     * @throws APIException
+     */
+    public function listJournalSubscriptions(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'webhooks-journal/subscriptions/2026-03',
+            options: $requestOptions,
+            convert: CollectionResponseSubscriptionResponseNoPaging::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Retrieve event subscriptions for the specified app.
      *
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionListResponse>
@@ -642,7 +700,6 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * Update webhook settings for the specified app.
      *
-     * @param int $appID the ID of the target app
      * @param array{
      *   targetURL: string, throttling: ThrottlingSettings|ThrottlingSettingsShape
      * }|WebhookUpdateSettingsParams $params
@@ -677,7 +734,7 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * Update an existing event subscription by ID.
      *
-     * @param int $subscriptionID path param: The ID of the subscription to update
+     * @param int $subscriptionID Path param
      * @param array{appID: int, active?: bool}|WebhookUpdateSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *

@@ -23,7 +23,6 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param int $appID the ID of the target app
      * @param array<string,mixed>|BatchCreateParams $params
      * @param RequestOpts|null $requestOptions
      *

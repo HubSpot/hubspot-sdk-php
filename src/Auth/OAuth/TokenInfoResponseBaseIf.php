@@ -4,59 +4,29 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Auth\OAuth;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Core\Concerns\SdkUnion;
+use HubspotSDK\Core\Conversion\Contracts\Converter;
+use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-type TokenInfoResponseBaseIfShape = array{active: bool}
+ * @phpstan-import-type PublicAccessTokenInfoResponseShape from \HubspotSDK\Auth\OAuth\PublicAccessTokenInfoResponse
+ * @phpstan-import-type PublicRefreshTokenInfoResponseShape from \HubspotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse
+ *
+ * @phpstan-type TokenInfoResponseBaseIfVariants = PublicAccessTokenInfoResponse|PublicRefreshTokenInfoResponse
+ * @phpstan-type TokenInfoResponseBaseIfShape = TokenInfoResponseBaseIfVariants|PublicAccessTokenInfoResponseShape|PublicRefreshTokenInfoResponseShape
  */
-final class TokenInfoResponseBaseIf implements BaseModel
+final class TokenInfoResponseBaseIf implements ConverterSource
 {
-    /** @use SdkModel<TokenInfoResponseBaseIfShape> */
-    use SdkModel;
-
-    #[Required]
-    public bool $active;
+    use SdkUnion;
 
     /**
-     * `new TokenInfoResponseBaseIf()` is missing required properties by the API.
-     *
-     * To enforce required parameters use
-     * ```
-     * TokenInfoResponseBaseIf::with(active: ...)
-     * ```
-     *
-     * Otherwise ensure the following setters are called
-     *
-     * ```
-     * (new TokenInfoResponseBaseIf)->withActive(...)
-     * ```
+     * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
-    public function __construct()
+    public static function variants(): array
     {
-        $this->initialize();
-    }
-
-    /**
-     * Construct an instance from the required parameters.
-     *
-     * You must use named parameters to construct any parameters with a default value.
-     */
-    public static function with(bool $active): self
-    {
-        $self = new self;
-
-        $self['active'] = $active;
-
-        return $self;
-    }
-
-    public function withActive(bool $active): self
-    {
-        $self = clone $this;
-        $self['active'] = $active;
-
-        return $self;
+        return [
+            PublicAccessTokenInfoResponse::class,
+            PublicRefreshTokenInfoResponse::class,
+        ];
     }
 }

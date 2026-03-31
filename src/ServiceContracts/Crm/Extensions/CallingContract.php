@@ -6,9 +6,11 @@ namespace HubspotSDK\ServiceContracts\Crm\Extensions;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams\FinalCallStatus;
+use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
 use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
 use HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
 use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
+use HubspotSDK\Crm\Extensions\Calling\SettingsResponse;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -20,42 +22,18 @@ interface CallingContract
     /**
      * @api
      *
-     * @param string $urlToRetrieveAuthedRecording the URL used to access authenticated call recordings
+     * @param bool $isReady indicates whether the channel connection settings are ready
+     * @param string $url the URL associated with the channel connection settings
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function create(
+    public function createChannelConnectionSettings(
         int $appID,
-        string $urlToRetrieveAuthedRecording,
+        bool $isReady,
+        string $url,
         RequestOptions|array|null $requestOptions = null,
-    ): RecordingSettingsResponse;
-
-    /**
-     * @api
-     *
-     * @param string $urlToRetrieveAuthedRecording the URL used to access authenticated call recordings
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function update(
-        int $appID,
-        ?string $urlToRetrieveAuthedRecording = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): RecordingSettingsResponse;
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function delete(
-        int $appID,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): ChannelConnectionSettingsResponse;
 
     /**
      * @api
@@ -91,11 +69,104 @@ interface CallingContract
     /**
      * @api
      *
+     * @param int $engagementID the unique identifier for the engagement associated with the call recording
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function get(
+    public function createRecordingReady(
+        int $engagementID,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param string $urlToRetrieveAuthedRecording the URL used to access authenticated call recordings
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createRecordingSettings(
+        int $appID,
+        string $urlToRetrieveAuthedRecording,
+        RequestOptions|array|null $requestOptions = null,
+    ): RecordingSettingsResponse;
+
+    /**
+     * @api
+     *
+     * @param int $height specifies the height of the calling extension interface
+     * @param bool $isReady indicates if the calling extension is ready for use
+     * @param string $name the name of the calling extension
+     * @param bool $supportsCustomObjects indicates if the calling extension supports custom objects
+     * @param bool $supportsInboundCalling indicates if the calling extension supports inbound calling
+     * @param string $url the URL associated with the calling extension
+     * @param bool $usesCallingWindow indicates if the calling extension uses a separate calling window
+     * @param bool $usesRemote indicates if the calling extension uses remote services
+     * @param int $width specifies the width of the calling extension interface
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createSettings(
+        int $appID,
+        int $height,
+        bool $isReady,
+        string $name,
+        bool $supportsCustomObjects,
+        bool $supportsInboundCalling,
+        string $url,
+        bool $usesCallingWindow,
+        bool $usesRemote,
+        int $width,
+        RequestOptions|array|null $requestOptions = null,
+    ): SettingsResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function deleteChannelConnectionSettings(
+        int $appID,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function deleteSettings(
+        int $appID,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getChannelConnectionSettings(
+        int $appID,
+        RequestOptions|array|null $requestOptions = null
+    ): ChannelConnectionSettingsResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getRecordingSettings(
         int $appID,
         RequestOptions|array|null $requestOptions = null
     ): RecordingSettingsResponse;
@@ -103,13 +174,72 @@ interface CallingContract
     /**
      * @api
      *
-     * @param int $engagementID the unique identifier for the engagement associated with the call recording
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function markReady(
-        int $engagementID,
+    public function getSettings(
+        int $appID,
         RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    ): SettingsResponse;
+
+    /**
+     * @api
+     *
+     * @param bool $isReady indicates whether the channel connection settings are ready
+     * @param string $url the URL for the channel connection settings
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function updateChannelConnectionSettings(
+        int $appID,
+        ?bool $isReady = null,
+        ?string $url = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ChannelConnectionSettingsResponse;
+
+    /**
+     * @api
+     *
+     * @param string $urlToRetrieveAuthedRecording the URL used to access authenticated call recordings
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function updateRecordingSettings(
+        int $appID,
+        ?string $urlToRetrieveAuthedRecording = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): RecordingSettingsResponse;
+
+    /**
+     * @api
+     *
+     * @param int $height the height setting for the calling extension interface
+     * @param bool $isReady specifies whether the calling extension is ready for use
+     * @param string $name the name of the calling extension
+     * @param bool $supportsCustomObjects indicates if the calling extension supports custom objects
+     * @param bool $supportsInboundCalling indicates if the calling extension supports inbound calling
+     * @param string $url the URL associated with the calling extension settings
+     * @param bool $usesCallingWindow indicates if the calling extension uses a calling window
+     * @param bool $usesRemote indicates if the calling extension uses a remote connection
+     * @param int $width the width setting for the calling extension interface
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function updateSettings(
+        int $appID,
+        ?int $height = null,
+        ?bool $isReady = null,
+        ?string $name = null,
+        ?bool $supportsCustomObjects = null,
+        ?bool $supportsInboundCalling = null,
+        ?string $url = null,
+        ?bool $usesCallingWindow = null,
+        ?bool $usesRemote = null,
+        ?int $width = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): SettingsResponse;
 }

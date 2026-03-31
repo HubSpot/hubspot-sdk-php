@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
@@ -12,8 +12,8 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier
  *
  * @phpstan-type PublicChannelAccountStagingTokenUpdateRequestShape = array{
- *   accountName: string,
- *   deliveryIdentifier: PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
+ *   accountName?: string|null,
+ *   deliveryIdentifier?: null|PublicDeliveryIdentifier|PublicDeliveryIdentifierShape,
  * }
  */
 final class PublicChannelAccountStagingTokenUpdateRequest implements BaseModel
@@ -21,30 +21,12 @@ final class PublicChannelAccountStagingTokenUpdateRequest implements BaseModel
     /** @use SdkModel<PublicChannelAccountStagingTokenUpdateRequestShape> */
     use SdkModel;
 
-    #[Required]
-    public string $accountName;
+    #[Optional]
+    public ?string $accountName;
 
-    #[Required]
-    public PublicDeliveryIdentifier $deliveryIdentifier;
+    #[Optional]
+    public ?PublicDeliveryIdentifier $deliveryIdentifier;
 
-    /**
-     * `new PublicChannelAccountStagingTokenUpdateRequest()` is missing required properties by the API.
-     *
-     * To enforce required parameters use
-     * ```
-     * PublicChannelAccountStagingTokenUpdateRequest::with(
-     *   accountName: ..., deliveryIdentifier: ...
-     * )
-     * ```
-     *
-     * Otherwise ensure the following setters are called
-     *
-     * ```
-     * (new PublicChannelAccountStagingTokenUpdateRequest)
-     *   ->withAccountName(...)
-     *   ->withDeliveryIdentifier(...)
-     * ```
-     */
     public function __construct()
     {
         $this->initialize();
@@ -55,16 +37,16 @@ final class PublicChannelAccountStagingTokenUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape $deliveryIdentifier
+     * @param PublicDeliveryIdentifier|PublicDeliveryIdentifierShape|null $deliveryIdentifier
      */
     public static function with(
-        string $accountName,
-        PublicDeliveryIdentifier|array $deliveryIdentifier
+        ?string $accountName = null,
+        PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
     ): self {
         $self = new self;
 
-        $self['accountName'] = $accountName;
-        $self['deliveryIdentifier'] = $deliveryIdentifier;
+        null !== $accountName && $self['accountName'] = $accountName;
+        null !== $deliveryIdentifier && $self['deliveryIdentifier'] = $deliveryIdentifier;
 
         return $self;
     }

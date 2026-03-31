@@ -36,7 +36,6 @@ final class BatchRawService implements BatchRawContract
      *
      * Batch create event subscriptions for the specified app.
      *
-     * @param int $appID the ID of the target app
      * @param array{
      *   inputs: list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape>,
      * }|BatchCreateParams $params

@@ -32,13 +32,13 @@ final class ABTestsTest extends TestCase
     }
 
     #[Test]
-    public function testCreateAbTestVariation(): void
+    public function testCreateLandingPageVariation(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->abTests->createAbTestVariation(
+        $result = $this->client->cms->pages->abTests->createLandingPageVariation(
             contentID: 'contentId',
             variationName: 'variationName'
         );
@@ -48,13 +48,13 @@ final class ABTestsTest extends TestCase
     }
 
     #[Test]
-    public function testCreateAbTestVariationWithOptionalParams(): void
+    public function testCreateLandingPageVariationWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->abTests->createAbTestVariation(
+        $result = $this->client->cms->pages->abTests->createLandingPageVariation(
             contentID: 'contentId',
             variationName: 'variationName'
         );
@@ -64,13 +64,45 @@ final class ABTestsTest extends TestCase
     }
 
     #[Test]
-    public function testEndAbTest(): void
+    public function testCreateSitePageVariation(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->abTests->endAbTest(
+        $result = $this->client->cms->pages->abTests->createSitePageVariation(
+            contentID: 'contentId',
+            variationName: 'variationName'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
+    }
+
+    #[Test]
+    public function testCreateSitePageVariationWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->abTests->createSitePageVariation(
+            contentID: 'contentId',
+            variationName: 'variationName'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $result);
+    }
+
+    #[Test]
+    public function testEndLandingPageTest(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->abTests->endLandingPageTest(
             abTestID: 'abTestId',
             winnerID: 'winnerId'
         );
@@ -80,13 +112,13 @@ final class ABTestsTest extends TestCase
     }
 
     #[Test]
-    public function testEndAbTestWithOptionalParams(): void
+    public function testEndLandingPageTestWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->abTests->endAbTest(
+        $result = $this->client->cms->pages->abTests->endLandingPageTest(
             abTestID: 'abTestId',
             winnerID: 'winnerId'
         );
@@ -96,13 +128,45 @@ final class ABTestsTest extends TestCase
     }
 
     #[Test]
-    public function testRerunAbTest(): void
+    public function testEndSitePageTest(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->abTests->rerunAbTest(
+        $result = $this->client->cms->pages->abTests->endSitePageTest(
+            abTestID: 'abTestId',
+            winnerID: 'winnerId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testEndSitePageTestWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->abTests->endSitePageTest(
+            abTestID: 'abTestId',
+            winnerID: 'winnerId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testRerunLandingPageTest(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->abTests->rerunLandingPageTest(
             abTestID: 'abTestId',
             variationID: 'variationId'
         );
@@ -112,13 +176,45 @@ final class ABTestsTest extends TestCase
     }
 
     #[Test]
-    public function testRerunAbTestWithOptionalParams(): void
+    public function testRerunLandingPageTestWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->abTests->rerunAbTest(
+        $result = $this->client->cms->pages->abTests->rerunLandingPageTest(
+            abTestID: 'abTestId',
+            variationID: 'variationId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testRerunSitePageTest(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->abTests->rerunSitePageTest(
+            abTestID: 'abTestId',
+            variationID: 'variationId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testRerunSitePageTestWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->abTests->rerunSitePageTest(
             abTestID: 'abTestId',
             variationID: 'variationId'
         );

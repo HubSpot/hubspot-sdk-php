@@ -48,7 +48,7 @@ final class FoldersService implements FoldersContract
      *
      * @throws APIException
      */
-    public function createFolder(
+    public function create(
         string $id,
         int $category,
         \DateTimeInterface $created,
@@ -71,7 +71,7 @@ final class FoldersService implements FoldersContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->createFolder(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -79,124 +79,48 @@ final class FoldersService implements FoldersContract
     /**
      * @api
      *
-     * Delete a landing page folder, specified by its ID.
+     * Partially update a landing page folder, specified by the folder ID. You only need to specify the details values that you are modifying.
      *
-     * @param bool $archived whether to return only results that have been archived
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function deleteFolder(
-        string $objectID,
-        ?bool $archived = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): mixed {
-        $params = Util::removeNulls(['archived' => $archived]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->deleteFolder($objectID, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Retrieve a landing page folder, specified by its ID.
-     *
-     * @param bool $archived whether to return only results that have been archived
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getFolder(
-        string $objectID,
-        ?bool $archived = null,
-        ?string $property = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): ContentFolder {
-        $params = Util::removeNulls(
-            ['archived' => $archived, 'property' => $property]
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getFolder($objectID, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Retrieve a previous version of a folder, specified by the folder ID and revision ID.
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getFolderRevision(
-        string $revisionID,
-        string $objectID,
-        RequestOptions|array|null $requestOptions = null,
-    ): ContentFolderVersion {
-        $params = Util::removeNulls(['objectID' => $objectID]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getFolderRevision($revisionID, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Retrieve a batch of landing page folders as identified in the request body.
-     *
-     * @param list<string> $inputs body param: Strings to input
+     * @param string $objectID Path param
+     * @param string $id body param: The unique ID of the content folder
+     * @param int $category Body param: The type of object this folder applies to. Should always be LANDING_PAGE.
+     * @param \DateTimeInterface $created body param: The timestamp indicating when the content folder was created
+     * @param \DateTimeInterface $deletedAt body param: The timestamp (ISO8601 format) when this content folder was deleted
+     * @param string $name Body param: The name of the folder which will show up in the app dashboard
+     * @param int $parentFolderID Body param: The ID of the content folder this folder is nested under
+     * @param \DateTimeInterface $updated body param: The timestamp indicating when the content folder was last updated
      * @param bool $archived query param: Whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getFoldersBatch(
-        array $inputs,
+    public function update(
+        string $objectID,
+        string $id,
+        int $category,
+        \DateTimeInterface $created,
+        \DateTimeInterface $deletedAt,
+        string $name,
+        int $parentFolderID,
+        \DateTimeInterface $updated,
         ?bool $archived = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseContentFolder {
-        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getFoldersBatch(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Retrieves all the previous versions of a landing page folder.
-     *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return Page<ContentFolderVersion>
-     *
-     * @throws APIException
-     */
-    public function listFolderRevisions(
-        string $objectID,
-        ?string $after = null,
-        ?string $before = null,
-        ?int $limit = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): Page {
+    ): ContentFolder {
         $params = Util::removeNulls(
-            ['after' => $after, 'before' => $before, 'limit' => $limit]
+            [
+                'id' => $id,
+                'category' => $category,
+                'created' => $created,
+                'deletedAt' => $deletedAt,
+                'name' => $name,
+                'parentFolderID' => $parentFolderID,
+                'updated' => $updated,
+                'archived' => $archived,
+            ],
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->listFolderRevisions($objectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->update($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -216,7 +140,7 @@ final class FoldersService implements FoldersContract
      *
      * @throws APIException
      */
-    public function listFolders(
+    public function list(
         ?string $after = null,
         ?bool $archived = null,
         ?\DateTimeInterface $createdAfter = null,
@@ -247,7 +171,132 @@ final class FoldersService implements FoldersContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->listFolders(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->list(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Delete a landing page folder, specified by its ID.
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $objectID,
+        ?bool $archived = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): mixed {
+        $params = Util::removeNulls(['archived' => $archived]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($objectID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve a batch of landing page folders as identified in the request body.
+     *
+     * @param list<string> $inputs body param: Strings to input
+     * @param bool $archived query param: Whether to return only results that have been archived
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function batchGet(
+        array $inputs,
+        ?bool $archived = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseContentFolder {
+        $params = Util::removeNulls(['inputs' => $inputs, 'archived' => $archived]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->batchGet(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve a landing page folder, specified by its ID.
+     *
+     * @param bool $archived whether to return only results that have been archived
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $objectID,
+        ?bool $archived = null,
+        ?string $property = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ContentFolder {
+        $params = Util::removeNulls(
+            ['archived' => $archived, 'property' => $property]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($objectID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve a previous version of a folder, specified by the folder ID and revision ID.
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getRevision(
+        string $revisionID,
+        string $objectID,
+        RequestOptions|array|null $requestOptions = null,
+    ): ContentFolderVersion {
+        $params = Util::removeNulls(['objectID' => $objectID]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getRevision($revisionID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieves all the previous versions of a landing page folder.
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<ContentFolderVersion>
+     *
+     * @throws APIException
+     */
+    public function listRevisions(
+        string $objectID,
+        ?string $after = null,
+        ?string $before = null,
+        ?int $limit = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page {
+        $params = Util::removeNulls(
+            ['after' => $after, 'before' => $before, 'limit' => $limit]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listRevisions($objectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -261,7 +310,7 @@ final class FoldersService implements FoldersContract
      *
      * @throws APIException
      */
-    public function restoreFolderRevision(
+    public function restoreRevision(
         string $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
@@ -269,56 +318,7 @@ final class FoldersService implements FoldersContract
         $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->restoreFolderRevision($revisionID, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Partially update a landing page folder, specified by the folder ID. You only need to specify the details values that you are modifying.
-     *
-     * @param string $objectID Path param
-     * @param string $id body param: The unique ID of the content folder
-     * @param int $category Body param: The type of object this folder applies to. Should always be LANDING_PAGE.
-     * @param \DateTimeInterface $created body param: The timestamp indicating when the content folder was created
-     * @param \DateTimeInterface $deletedAt body param: The timestamp (ISO8601 format) when this content folder was deleted
-     * @param string $name Body param: The name of the folder which will show up in the app dashboard
-     * @param int $parentFolderID Body param: The ID of the content folder this folder is nested under
-     * @param \DateTimeInterface $updated body param: The timestamp indicating when the content folder was last updated
-     * @param bool $archived query param: Whether to return only results that have been archived
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function updateFolder(
-        string $objectID,
-        string $id,
-        int $category,
-        \DateTimeInterface $created,
-        \DateTimeInterface $deletedAt,
-        string $name,
-        int $parentFolderID,
-        \DateTimeInterface $updated,
-        ?bool $archived = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): ContentFolder {
-        $params = Util::removeNulls(
-            [
-                'id' => $id,
-                'category' => $category,
-                'created' => $created,
-                'deletedAt' => $deletedAt,
-                'name' => $name,
-                'parentFolderID' => $parentFolderID,
-                'updated' => $updated,
-                'archived' => $archived,
-            ],
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->updateFolder($objectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->restoreRevision($revisionID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

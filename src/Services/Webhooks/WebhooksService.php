@@ -10,6 +10,7 @@ use HubspotSDK\Core\Util;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Webhooks\WebhooksContract;
 use HubspotSDK\Services\Webhooks\Webhooks\BatchService;
+use HubspotSDK\Webhooks\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
 use HubspotSDK\Webhooks\Webhooks\CrmObjectSnapshotBatchResponse;
 use HubspotSDK\Webhooks\Webhooks\CrmObjectSnapshotRequest;
 use HubspotSDK\Webhooks\Webhooks\Filter;
@@ -19,6 +20,7 @@ use HubspotSDK\Webhooks\Webhooks\SettingsResponse;
 use HubspotSDK\Webhooks\Webhooks\SnapshotStatusResponse;
 use HubspotSDK\Webhooks\Webhooks\SubscriptionListResponse;
 use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse;
+use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse1;
 use HubspotSDK\Webhooks\Webhooks\ThrottlingSettings;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateSubscriptionParams\EventType;
 
@@ -95,9 +97,24 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createJournalSubscription(
+        RequestOptions|array|null $requestOptions = null
+    ): SubscriptionResponse1 {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createJournalSubscription(requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * Create new event subscription for the specified app.
      *
-     * @param int $appID the ID of the target app
      * @param bool $active Determines if the subscription is active or paused. Defaults to false.
      * @param EventType|value-of<EventType> $eventType Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
      * @param string $eventTypeName The name of the event to listen for. This is used with custom objects to specify custom event types beyond the standard eventType enum values.
@@ -156,12 +173,29 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function deletePortal(
+    public function deleteJournalSubscription(
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteJournalSubscription($subscriptionID, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function deletePortalSubscriptions(
         int $portalID,
         RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->deletePortal($portalID, requestOptions: $requestOptions);
+        $response = $this->raw->deletePortalSubscriptions($portalID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -171,7 +205,6 @@ final class WebhooksService implements WebhooksContract
      *
      * Delete the webhook settings for the specified app. Event subscriptions will not be deleted, but will be paused until another webhook is created.
      *
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -191,8 +224,6 @@ final class WebhooksService implements WebhooksContract
      *
      * Delete an existing event subscription by ID.
      *
-     * @param int $subscriptionID the ID of the subscription to delete
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -206,44 +237,6 @@ final class WebhooksService implements WebhooksContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->deleteSubscription($subscriptionID, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getEarliestJournal(
-        ?int $installPortalID = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string {
-        $params = Util::removeNulls(['installPortalID' => $installPortalID]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getEarliestJournal(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getEarliestJournalLocal(
-        ?int $installPortalID = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string {
-        $params = Util::removeNulls(['installPortalID' => $installPortalID]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getEarliestJournalLocal(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -274,12 +267,12 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getFilterBySubscription(
+    public function getFiltersBySubscription(
         int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
     ): array {
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getFilterBySubscription($subscriptionID, requestOptions: $requestOptions);
+        $response = $this->raw->getFiltersBySubscription($subscriptionID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -291,12 +284,53 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getJournalLocalStatus(
-        string $statusID,
-        RequestOptions|array|null $requestOptions = null
-    ): SnapshotStatusResponse {
+    public function getJournalEarliest(
+        ?int $installPortalID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(['installPortalID' => $installPortalID]);
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getJournalLocalStatus($statusID, requestOptions: $requestOptions);
+        $response = $this->raw->getJournalEarliest(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getJournalLatest(
+        ?int $installPortalID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(['installPortalID' => $installPortalID]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getJournalLatest(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getJournalNextByOffset(
+        string $offset,
+        ?int $installPortalID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(['installPortalID' => $installPortalID]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getJournalNextByOffset($offset, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -325,14 +359,14 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getLatestJournal(
+    public function getLocalEarliest(
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(['installPortalID' => $installPortalID]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getLatestJournal(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getLocalEarliest(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -344,14 +378,14 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getLatestJournalLocal(
+    public function getLocalLatest(
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(['installPortalID' => $installPortalID]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getLatestJournalLocal(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getLocalLatest(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -363,7 +397,7 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getNextJournalByOffset(
+    public function getLocalNextByOffset(
         string $offset,
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
@@ -371,7 +405,7 @@ final class WebhooksService implements WebhooksContract
         $params = Util::removeNulls(['installPortalID' => $installPortalID]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getNextJournalByOffset($offset, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getLocalNextByOffset($offset, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -383,15 +417,12 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getNextJournalLocalByOffset(
-        string $offset,
-        ?int $installPortalID = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string {
-        $params = Util::removeNulls(['installPortalID' => $installPortalID]);
-
+    public function getLocalStatus(
+        string $statusID,
+        RequestOptions|array|null $requestOptions = null
+    ): SnapshotStatusResponse {
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getNextJournalLocalByOffset($offset, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getLocalStatus($statusID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -401,7 +432,6 @@ final class WebhooksService implements WebhooksContract
      *
      * Retrieve the webhook settings for the specified app, including the webhook’s target URL, throttle configuration, and create/update date.
      *
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -421,8 +451,6 @@ final class WebhooksService implements WebhooksContract
      *
      * Retrieve a specific event subscription by ID.
      *
-     * @param int $subscriptionID the ID of the target subscription
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -443,9 +471,24 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listJournalSubscriptions(
+        RequestOptions|array|null $requestOptions = null
+    ): CollectionResponseSubscriptionResponseNoPaging {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listJournalSubscriptions(requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * Retrieve event subscriptions for the specified app.
      *
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -465,7 +508,6 @@ final class WebhooksService implements WebhooksContract
      *
      * Update webhook settings for the specified app.
      *
-     * @param int $appID the ID of the target app
      * @param string $targetURL A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
      * @param ThrottlingSettings|ThrottlingSettingsShape $throttling
      * @param RequestOpts|null $requestOptions
@@ -493,8 +535,8 @@ final class WebhooksService implements WebhooksContract
      *
      * Update an existing event subscription by ID.
      *
-     * @param int $subscriptionID path param: The ID of the subscription to update
-     * @param int $appID path param: The ID of the target app
+     * @param int $subscriptionID Path param
+     * @param int $appID Path param
      * @param bool $active Body param: Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
      * @param RequestOpts|null $requestOptions
      *

@@ -47,7 +47,6 @@ interface FilesRawContract
     /**
      * @api
      *
-     * @param string $fileID ID of file to update
      * @param array<string,mixed>|FileUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -64,7 +63,6 @@ interface FilesRawContract
     /**
      * @api
      *
-     * @param string $fileID FileId to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -79,7 +77,6 @@ interface FilesRawContract
     /**
      * @api
      *
-     * @param string $fileID ID of file to GDPR delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -94,7 +91,6 @@ interface FilesRawContract
     /**
      * @api
      *
-     * @param string $fileID ID of the desired file
      * @param array<string,mixed>|FileGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -127,7 +123,6 @@ interface FilesRawContract
     /**
      * @api
      *
-     * @param string $taskID Import by URL task ID
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FileActionResponse>
@@ -142,7 +137,6 @@ interface FilesRawContract
     /**
      * @api
      *
-     * @param string $fileID ID of file
      * @param array<string,mixed>|FileGetSignedURLParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -174,7 +168,6 @@ interface FilesRawContract
     /**
      * @api
      *
-     * @param string $fileID ID of the desired file
      * @param array<string,mixed>|FileReplaceParams $params
      * @param RequestOpts|null $requestOptions
      *

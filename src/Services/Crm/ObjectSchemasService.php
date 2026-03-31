@@ -101,7 +101,6 @@ final class ObjectSchemasService implements ObjectSchemasContract
      *
      * Update attributes of a custom object schema, such as properties and labels, using the object type ID or fully qualified name.
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
@@ -180,7 +179,6 @@ final class ObjectSchemasService implements ObjectSchemasContract
      *
      * Remove a custom object schema from the account using its object type ID or fully qualified name.
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *
@@ -204,7 +202,6 @@ final class ObjectSchemasService implements ObjectSchemasContract
      *
      * Create a new association between the specified object type and another object type. This operation requires the definition of the association attributes, such as the primary and target object type IDs.
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -235,8 +232,6 @@ final class ObjectSchemasService implements ObjectSchemasContract
      *
      * Remove an association between two object types identified by the association identifier and object type. This operation is irreversible and will permanently delete the specified association.
      *
-     * @param string $associationIdentifier unique ID of the association to remove
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -259,7 +254,6 @@ final class ObjectSchemasService implements ObjectSchemasContract
      *
      * Retrieve details of a custom object schema, including its properties and associations, using the object type ID or fully qualified name.
      *
-     * @param string $objectType fully qualified name or object type ID of your schema
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

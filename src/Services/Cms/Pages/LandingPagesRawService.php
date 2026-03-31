@@ -397,7 +397,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @throws APIException
      */
-    public function publishDraft(
+    public function pushDraftLive(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {

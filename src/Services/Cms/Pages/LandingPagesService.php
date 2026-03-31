@@ -581,12 +581,12 @@ final class LandingPagesService implements LandingPagesContract
      *
      * @throws APIException
      */
-    public function publishDraft(
+    public function pushDraftLive(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
     ): mixed {
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->publishDraft($objectID, requestOptions: $requestOptions);
+        $response = $this->raw->pushDraftLive($objectID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

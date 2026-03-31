@@ -36,7 +36,6 @@ final class FoldersRawService implements FoldersRawContract
      *
      * Delete folder by ID.
      *
-     * @param string $folderID ID of folder to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -61,7 +60,6 @@ final class FoldersRawService implements FoldersRawContract
      *
      * Delete a folder, identified by its path.
      *
-     * @param string $folderPath Path of folder to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -86,7 +84,6 @@ final class FoldersRawService implements FoldersRawContract
      *
      * Retrieve a folder by its ID.
      *
-     * @param string $folderID ID of desired folder
      * @param array{properties?: list<string>}|FolderGetByIDParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -119,7 +116,6 @@ final class FoldersRawService implements FoldersRawContract
      *
      * Retrieve a folder, identified by its path.
      *
-     * @param string $folderPath path of desired folder
      * @param array{properties?: list<string>}|FolderGetByPathParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -152,7 +148,6 @@ final class FoldersRawService implements FoldersRawContract
      *
      * Check status of folder update. Folder updates happen asynchronously.
      *
-     * @param string $taskID TaskId of folder update
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FolderActionResponse>
@@ -263,7 +258,6 @@ final class FoldersRawService implements FoldersRawContract
      *
      * Update a folder's properties, identified by folder ID.
      *
-     * @param string $folderID ID of folder to update
      * @param array{name?: string, parentFolderID?: int}|FolderUpdateByIDParams $params
      * @param RequestOpts|null $requestOptions
      *

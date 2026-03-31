@@ -159,8 +159,8 @@ final class ChannelAccountsService implements ChannelAccountsContract
     public function updateStagingToken(
         string $accountToken,
         int $channelID,
-        string $accountName,
-        PublicDeliveryIdentifier|array $deliveryIdentifier,
+        ?string $accountName = null,
+        PublicDeliveryIdentifier|array|null $deliveryIdentifier = null,
         RequestOptions|array|null $requestOptions = null,
     ): PublicChannelAccountStagingToken {
         $params = Util::removeNulls(

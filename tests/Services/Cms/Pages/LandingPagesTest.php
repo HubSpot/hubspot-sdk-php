@@ -779,13 +779,15 @@ final class LandingPagesTest extends TestCase
     }
 
     #[Test]
-    public function testPublishDraft(): void
+    public function testPushDraftLive(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->landingPages->publishDraft('objectId');
+        $result = $this->client->cms->pages->landingPages->pushDraftLive(
+            'objectId'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);

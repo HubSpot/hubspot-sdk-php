@@ -33,13 +33,39 @@ final class PagesTest extends TestCase
     }
 
     #[Test]
-    public function testGetRevision(): void
+    public function testGetLandingPageFolders(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->getRevision(
+        $result = $this->client->cms->pages->getLandingPageFolders();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsNotResource($result);
+    }
+
+    #[Test]
+    public function testGetLandingPageFoldersByQuery(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->getLandingPageFoldersByQuery();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsNotResource($result);
+    }
+
+    #[Test]
+    public function testGetLandingPageRevision(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->getLandingPageRevision(
             'revisionId',
             objectID: 'objectId'
         );
@@ -49,13 +75,13 @@ final class PagesTest extends TestCase
     }
 
     #[Test]
-    public function testGetRevisionWithOptionalParams(): void
+    public function testGetLandingPageRevisionWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->getRevision(
+        $result = $this->client->cms->pages->getLandingPageRevision(
             'revisionId',
             objectID: 'objectId'
         );
@@ -65,39 +91,97 @@ final class PagesTest extends TestCase
     }
 
     #[Test]
-    public function testListLandingPageFolders(): void
+    public function testGetLandingPages(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->listLandingPageFolders();
+        $result = $this->client->cms->pages->getLandingPages();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsNotResource($result);
     }
 
     #[Test]
-    public function testListLandingPages(): void
+    public function testGetLandingPagesByQuery(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->listLandingPages();
+        $result = $this->client->cms->pages->getLandingPagesByQuery();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsNotResource($result);
     }
 
     #[Test]
-    public function testListRevisions(): void
+    public function testGetSitePageRevision(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $page = $this->client->cms->pages->listRevisions('objectId');
+        $result = $this->client->cms->pages->getSitePageRevision(
+            'revisionId',
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PageVersion::class, $result);
+    }
+
+    #[Test]
+    public function testGetSitePageRevisionWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->getSitePageRevision(
+            'revisionId',
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PageVersion::class, $result);
+    }
+
+    #[Test]
+    public function testGetSitePages(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->getSitePages();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsNotResource($result);
+    }
+
+    #[Test]
+    public function testGetSitePagesByQuery(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->getSitePagesByQuery();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsNotResource($result);
+    }
+
+    #[Test]
+    public function testListLandingPageRevisions(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $page = $this->client->cms->pages->listLandingPageRevisions('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $page);
@@ -109,78 +193,44 @@ final class PagesTest extends TestCase
     }
 
     #[Test]
-    public function testListSitePages(): void
+    public function testListSitePageRevisions(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->listSitePages();
+        $page = $this->client->cms->pages->listSitePageRevisions('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(PageVersion::class, $item);
+        }
     }
 
     #[Test]
-    public function testQueryLandingPageFolders(): void
+    public function testResetSitePageDraft(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->queryLandingPageFolders();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
-    }
-
-    #[Test]
-    public function testQueryLandingPages(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->queryLandingPages();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
-    }
-
-    #[Test]
-    public function testQuerySitePages(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->querySitePages();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
-    }
-
-    #[Test]
-    public function testResetDraft(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->resetDraft('objectId');
+        $result = $this->client->cms->pages->resetSitePageDraft('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
     }
 
     #[Test]
-    public function testRestoreRevision(): void
+    public function testRestoreLandingPageRevision(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->restoreRevision(
+        $result = $this->client->cms->pages->restoreLandingPageRevision(
             'revisionId',
             objectID: 'objectId'
         );
@@ -190,13 +240,13 @@ final class PagesTest extends TestCase
     }
 
     #[Test]
-    public function testRestoreRevisionWithOptionalParams(): void
+    public function testRestoreLandingPageRevisionWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->restoreRevision(
+        $result = $this->client->cms->pages->restoreLandingPageRevision(
             'revisionId',
             objectID: 'objectId'
         );
@@ -206,13 +256,13 @@ final class PagesTest extends TestCase
     }
 
     #[Test]
-    public function testRestoreRevisionToDraft(): void
+    public function testRestoreLandingPageRevisionToDraft(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->restoreRevisionToDraft(
+        $result = $this->client->cms->pages->restoreLandingPageRevisionToDraft(
             0,
             objectID: 'objectId'
         );
@@ -222,13 +272,77 @@ final class PagesTest extends TestCase
     }
 
     #[Test]
-    public function testRestoreRevisionToDraftWithOptionalParams(): void
+    public function testRestoreLandingPageRevisionToDraftWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->pages->restoreRevisionToDraft(
+        $result = $this->client->cms->pages->restoreLandingPageRevisionToDraft(
+            0,
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(\HubspotSDK\Cms\Pages\Page::class, $result);
+    }
+
+    #[Test]
+    public function testRestoreSitePageRevision(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->restoreSitePageRevision(
+            'revisionId',
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(\HubspotSDK\Cms\Pages\Page::class, $result);
+    }
+
+    #[Test]
+    public function testRestoreSitePageRevisionWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->restoreSitePageRevision(
+            'revisionId',
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(\HubspotSDK\Cms\Pages\Page::class, $result);
+    }
+
+    #[Test]
+    public function testRestoreSitePageRevisionToDraft(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->restoreSitePageRevisionToDraft(
+            0,
+            objectID: 'objectId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(\HubspotSDK\Cms\Pages\Page::class, $result);
+    }
+
+    #[Test]
+    public function testRestoreSitePageRevisionToDraftWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->pages->restoreSitePageRevisionToDraft(
             0,
             objectID: 'objectId'
         );

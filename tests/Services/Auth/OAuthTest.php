@@ -2,7 +2,6 @@
 
 namespace Tests\Services\Auth;
 
-use HubspotSDK\Auth\OAuth\TokenInfoResponseBaseIf;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -54,7 +53,7 @@ final class OAuthTest extends TestCase
         $result = $this->client->auth->oauth->introspectToken();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(TokenInfoResponseBaseIf::class, $result);
+        $this->assertNotNull($result);
     }
 
     #[Test]

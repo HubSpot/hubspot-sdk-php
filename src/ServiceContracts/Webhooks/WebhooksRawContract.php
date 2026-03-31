@@ -7,6 +7,7 @@ namespace HubspotSDK\ServiceContracts\Webhooks;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
+use HubspotSDK\Webhooks\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
 use HubspotSDK\Webhooks\Webhooks\CrmObjectSnapshotBatchResponse;
 use HubspotSDK\Webhooks\Webhooks\FilterCreateResponse;
 use HubspotSDK\Webhooks\Webhooks\FilterResponse;
@@ -14,16 +15,17 @@ use HubspotSDK\Webhooks\Webhooks\SettingsResponse;
 use HubspotSDK\Webhooks\Webhooks\SnapshotStatusResponse;
 use HubspotSDK\Webhooks\Webhooks\SubscriptionListResponse;
 use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse;
+use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse1;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateCrmSnapshotParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateFilterParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateSubscriptionParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookDeleteSubscriptionParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetEarliestJournalLocalParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetEarliestJournalParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetLatestJournalLocalParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetLatestJournalParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetNextJournalByOffsetParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetNextJournalLocalByOffsetParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetJournalEarliestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetJournalLatestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetJournalNextByOffsetParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalEarliestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalLatestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalNextByOffsetParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookGetSubscriptionParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookUpdateSettingsParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookUpdateSubscriptionParams;
@@ -66,7 +68,19 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $appID the ID of the target app
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<SubscriptionResponse1>
+     *
+     * @throws APIException
+     */
+    public function createJournalSubscription(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
      * @param array<string,mixed>|WebhookCreateSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -103,7 +117,21 @@ interface WebhooksRawContract
      *
      * @throws APIException
      */
-    public function deletePortal(
+    public function deleteJournalSubscription(
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deletePortalSubscriptions(
         int $portalID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
@@ -111,7 +139,6 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -126,7 +153,6 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $subscriptionID the ID of the subscription to delete
      * @param array<string,mixed>|WebhookDeleteSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -137,36 +163,6 @@ interface WebhooksRawContract
     public function deleteSubscription(
         int $subscriptionID,
         array|WebhookDeleteSubscriptionParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|WebhookGetEarliestJournalParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function getEarliestJournal(
-        array|WebhookGetEarliestJournalParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|WebhookGetEarliestJournalLocalParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function getEarliestJournalLocal(
-        array|WebhookGetEarliestJournalLocalParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -193,7 +189,7 @@ interface WebhooksRawContract
      *
      * @throws APIException
      */
-    public function getFilterBySubscription(
+    public function getFiltersBySubscription(
         int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
@@ -201,15 +197,47 @@ interface WebhooksRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|WebhookGetJournalEarliestParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SnapshotStatusResponse>
+     * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getJournalLocalStatus(
-        string $statusID,
-        RequestOptions|array|null $requestOptions = null
+    public function getJournalEarliest(
+        array|WebhookGetJournalEarliestParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|WebhookGetJournalLatestParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getJournalLatest(
+        array|WebhookGetJournalLatestParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|WebhookGetJournalNextByOffsetParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getJournalNextByOffset(
+        string $offset,
+        array|WebhookGetJournalNextByOffsetParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -229,69 +257,66 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|WebhookGetLatestJournalParams $params
+     * @param array<string,mixed>|WebhookGetLocalEarliestParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getLatestJournal(
-        array|WebhookGetLatestJournalParams $params,
+    public function getLocalEarliest(
+        array|WebhookGetLocalEarliestParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|WebhookGetLatestJournalLocalParams $params
+     * @param array<string,mixed>|WebhookGetLocalLatestParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getLatestJournalLocal(
-        array|WebhookGetLatestJournalLocalParams $params,
+    public function getLocalLatest(
+        array|WebhookGetLocalLatestParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|WebhookGetNextJournalByOffsetParams $params
+     * @param array<string,mixed>|WebhookGetLocalNextByOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getNextJournalByOffset(
+    public function getLocalNextByOffset(
         string $offset,
-        array|WebhookGetNextJournalByOffsetParams $params,
+        array|WebhookGetLocalNextByOffsetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|WebhookGetNextJournalLocalByOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<SnapshotStatusResponse>
      *
      * @throws APIException
      */
-    public function getNextJournalLocalByOffset(
-        string $offset,
-        array|WebhookGetNextJournalLocalByOffsetParams $params,
-        RequestOptions|array|null $requestOptions = null,
+    public function getLocalStatus(
+        string $statusID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param int $appID the ID of the target app
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SettingsResponse>
@@ -306,7 +331,6 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $subscriptionID the ID of the target subscription
      * @param array<string,mixed>|WebhookGetSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -323,7 +347,19 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $appID the ID of the target app
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<CollectionResponseSubscriptionResponseNoPaging>
+     *
+     * @throws APIException
+     */
+    public function listJournalSubscriptions(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionListResponse>
@@ -338,7 +374,6 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $appID the ID of the target app
      * @param array<string,mixed>|WebhookUpdateSettingsParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -355,7 +390,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $subscriptionID path param: The ID of the subscription to update
+     * @param int $subscriptionID Path param
      * @param array<string,mixed>|WebhookUpdateSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
