@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks\Webhooks;
+namespace HubspotSDK\Webhooks\Webhooks\Batch;
 
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -10,15 +10,13 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Webhooks\WebhooksService::getLocalEarliest()
+ * @see HubspotSDK\Services\Webhooks\Webhooks\BatchService::getLocalLatest()
  *
- * @phpstan-type WebhookGetLocalEarliestParamsShape = array{
- *   installPortalID?: int|null
- * }
+ * @phpstan-type BatchGetLocalLatestParamsShape = array{installPortalID?: int|null}
  */
-final class WebhookGetLocalEarliestParams implements BaseModel
+final class BatchGetLocalLatestParams implements BaseModel
 {
-    /** @use SdkModel<WebhookGetLocalEarliestParamsShape> */
+    /** @use SdkModel<BatchGetLocalLatestParamsShape> */
     use SdkModel;
     use SdkParams;
 

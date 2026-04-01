@@ -10,11 +10,11 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve the account-level flag state of a specific HubSpot account.
+ * Retrieve the current status of the app's feature flags. No request body is included.
  *
  * @see HubspotSDK\Services\Crm\FeatureFlagsService::get()
  *
- * @phpstan-type FeatureFlagGetParamsShape = array{appID: int, flagName: string}
+ * @phpstan-type FeatureFlagGetParamsShape = array{appID: int}
  */
 final class FeatureFlagGetParams implements BaseModel
 {
@@ -25,21 +25,18 @@ final class FeatureFlagGetParams implements BaseModel
     #[Required]
     public int $appID;
 
-    #[Required]
-    public string $flagName;
-
     /**
      * `new FeatureFlagGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FeatureFlagGetParams::with(appID: ..., flagName: ...)
+     * FeatureFlagGetParams::with(appID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new FeatureFlagGetParams)->withAppID(...)->withFlagName(...)
+     * (new FeatureFlagGetParams)->withAppID(...)
      * ```
      */
     public function __construct()
@@ -52,12 +49,11 @@ final class FeatureFlagGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID, string $flagName): self
+    public static function with(int $appID): self
     {
         $self = new self;
 
         $self['appID'] = $appID;
-        $self['flagName'] = $flagName;
 
         return $self;
     }
@@ -66,14 +62,6 @@ final class FeatureFlagGetParams implements BaseModel
     {
         $self = clone $this;
         $self['appID'] = $appID;
-
-        return $self;
-    }
-
-    public function withFlagName(string $flagName): self
-    {
-        $self = clone $this;
-        $self['flagName'] = $flagName;
 
         return $self;
     }

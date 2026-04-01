@@ -4,6 +4,7 @@ namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\FeatureFlags\FlagResponse;
 use HubspotSDK\Crm\FeatureFlags\FlagsForAppResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
@@ -38,14 +39,13 @@ final class FeatureFlagsTest extends TestCase
         }
 
         $result = $this->client->crm->featureFlags->update(
-            0,
+            'flagName',
             appID: 0,
-            flagName: 'flagName',
-            flagState: 'ABSENT'
+            defaultState: 'ABSENT'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
+        $this->assertInstanceOf(FlagResponse::class, $result);
     }
 
     #[Test]
@@ -56,14 +56,14 @@ final class FeatureFlagsTest extends TestCase
         }
 
         $result = $this->client->crm->featureFlags->update(
-            0,
+            'flagName',
             appID: 0,
-            flagName: 'flagName',
-            flagState: 'ABSENT'
+            defaultState: 'ABSENT',
+            overrideState: 'ABSENT'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
+        $this->assertInstanceOf(FlagResponse::class, $result);
     }
 
     #[Test]
@@ -73,7 +73,33 @@ final class FeatureFlagsTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->delete(
+        $result = $this->client->crm->featureFlags->delete('flagName', appID: 0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDeleteWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->featureFlags->delete('flagName', appID: 0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
+    }
+
+    #[Test]
+    public function testDeletePortalState(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->featureFlags->deletePortalState(
             0,
             appID: 0,
             flagName: 'flagName'
@@ -84,13 +110,13 @@ final class FeatureFlagsTest extends TestCase
     }
 
     #[Test]
-    public function testDeleteWithOptionalParams(): void
+    public function testDeletePortalStateWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->delete(
+        $result = $this->client->crm->featureFlags->deletePortalState(
             0,
             appID: 0,
             flagName: 'flagName'
@@ -107,7 +133,33 @@ final class FeatureFlagsTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->get(
+        $result = $this->client->crm->featureFlags->get('flagName', appID: 0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->featureFlags->get('flagName', appID: 0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FlagResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetPortalState(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->featureFlags->getPortalState(
             0,
             appID: 0,
             flagName: 'flagName'
@@ -118,13 +170,13 @@ final class FeatureFlagsTest extends TestCase
     }
 
     #[Test]
-    public function testGetWithOptionalParams(): void
+    public function testGetPortalStateWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->featureFlags->get(
+        $result = $this->client->crm->featureFlags->getPortalState(
             0,
             appID: 0,
             flagName: 'flagName'
@@ -179,5 +231,41 @@ final class FeatureFlagsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PortalFlagStateBatchResponse::class, $result);
+    }
+
+    #[Test]
+    public function testUpdatePortalState(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->featureFlags->updatePortalState(
+            0,
+            appID: 0,
+            flagName: 'flagName',
+            flagState: 'ABSENT'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
+    }
+
+    #[Test]
+    public function testUpdatePortalStateWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->featureFlags->updatePortalState(
+            0,
+            appID: 0,
+            flagName: 'flagName',
+            flagState: 'ABSENT'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PortalFlagStateResponse::class, $result);
     }
 }

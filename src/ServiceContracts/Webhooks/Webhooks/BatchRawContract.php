@@ -7,11 +7,15 @@ namespace HubspotSDK\ServiceContracts\Webhooks\Webhooks;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
-use HubspotSDK\Webhooks\Webhooks\Batch\BatchCreateParams;
 use HubspotSDK\Webhooks\Webhooks\Batch\BatchGetEarliestParams;
 use HubspotSDK\Webhooks\Webhooks\Batch\BatchGetLatestParams;
+use HubspotSDK\Webhooks\Webhooks\Batch\BatchGetLocalEarliestParams;
+use HubspotSDK\Webhooks\Webhooks\Batch\BatchGetLocalLatestParams;
+use HubspotSDK\Webhooks\Webhooks\Batch\BatchGetLocalNextParams;
+use HubspotSDK\Webhooks\Webhooks\Batch\BatchGetLocalParams;
 use HubspotSDK\Webhooks\Webhooks\Batch\BatchGetNextParams;
-use HubspotSDK\Webhooks\Webhooks\Batch\BatchReadParams;
+use HubspotSDK\Webhooks\Webhooks\Batch\BatchGetParams;
+use HubspotSDK\Webhooks\Webhooks\Batch\BatchUpdateSubscriptionsParams;
 use HubspotSDK\Webhooks\Webhooks\BatchResponseJournalFetchResponse;
 use HubspotSDK\Webhooks\Webhooks\BatchResponseSubscriptionResponse;
 
@@ -23,16 +27,15 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|BatchCreateParams $params
+     * @param array<string,mixed>|BatchGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSubscriptionResponse>
+     * @return BaseResponse<BatchResponseJournalFetchResponse>
      *
      * @throws APIException
      */
-    public function create(
-        int $appID,
-        array|BatchCreateParams $params,
+    public function get(
+        array|BatchGetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -71,6 +74,70 @@ interface BatchRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|BatchGetLocalParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseJournalFetchResponse>
+     *
+     * @throws APIException
+     */
+    public function getLocal(
+        array|BatchGetLocalParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|BatchGetLocalEarliestParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseJournalFetchResponse>
+     *
+     * @throws APIException
+     */
+    public function getLocalEarliest(
+        int $count,
+        array|BatchGetLocalEarliestParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|BatchGetLocalLatestParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseJournalFetchResponse>
+     *
+     * @throws APIException
+     */
+    public function getLocalLatest(
+        int $count,
+        array|BatchGetLocalLatestParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param int $count Path param
+     * @param array<string,mixed>|BatchGetLocalNextParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseJournalFetchResponse>
+     *
+     * @throws APIException
+     */
+    public function getLocalNext(
+        int $count,
+        array|BatchGetLocalNextParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
      * @param int $count Path param
      * @param array<string,mixed>|BatchGetNextParams $params
      * @param RequestOpts|null $requestOptions
@@ -88,15 +155,16 @@ interface BatchRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|BatchReadParams $params
+     * @param array<string,mixed>|BatchUpdateSubscriptionsParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseJournalFetchResponse>
+     * @return BaseResponse<BatchResponseSubscriptionResponse>
      *
      * @throws APIException
      */
-    public function read(
-        array|BatchReadParams $params,
+    public function updateSubscriptions(
+        int $appID,
+        array|BatchUpdateSubscriptionsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

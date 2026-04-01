@@ -12,13 +12,14 @@ use HubspotSDK\Cms\Blogs\Authors\AuthorCreateParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorCreateParams\Language;
 use HubspotSDK\Cms\Blogs\Authors\AuthorDeleteParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorDetachFromLangGroupParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetCursorByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetCursorParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorGetParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetPostsCursorByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetPostsCursorParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetTagsCursorByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetTagsCursorParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorListParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListPostsByQueryParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListPostsParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListTagsByQueryParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListTagsParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorSetNewLangPrimaryParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateParams;
@@ -149,6 +150,8 @@ final class AuthorsRawService implements AuthorsRawContract
     /**
      * @api
      *
+     * Get the list of blog authors. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
+     *
      * @param array{
      *   after?: string,
      *   archived?: bool,
@@ -180,7 +183,7 @@ final class AuthorsRawService implements AuthorsRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'cms/blogs/2026-03/authors/cursor',
+            path: 'cms/blogs/2026-03/authors',
             query: $parsed,
             headers: ['Accept' => '*/*'],
             options: $options,
@@ -374,18 +377,60 @@ final class AuthorsRawService implements AuthorsRawContract
      *   updatedAfter?: \DateTimeInterface,
      *   updatedAt?: \DateTimeInterface,
      *   updatedBefore?: \DateTimeInterface,
-     * }|AuthorListByQueryParams $params
+     * }|AuthorGetCursorParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listByQuery(
-        array|AuthorListByQueryParams $params,
+    public function getCursor(
+        array|AuthorGetCursorParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = AuthorListByQueryParams::parseRequest(
+        [$parsed, $options] = AuthorGetCursorParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/blogs/2026-03/authors/cursor',
+            query: $parsed,
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string,
+     *   archived?: bool,
+     *   createdAfter?: \DateTimeInterface,
+     *   createdAt?: \DateTimeInterface,
+     *   createdBefore?: \DateTimeInterface,
+     *   limit?: int,
+     *   property?: string,
+     *   sort?: list<string>,
+     *   updatedAfter?: \DateTimeInterface,
+     *   updatedAt?: \DateTimeInterface,
+     *   updatedBefore?: \DateTimeInterface,
+     * }|AuthorGetCursorByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getCursorByQuery(
+        array|AuthorGetCursorByQueryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = AuthorGetCursorByQueryParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -416,18 +461,18 @@ final class AuthorsRawService implements AuthorsRawContract
      *   updatedAfter?: \DateTimeInterface,
      *   updatedAt?: \DateTimeInterface,
      *   updatedBefore?: \DateTimeInterface,
-     * }|AuthorListPostsParams $params
+     * }|AuthorGetPostsCursorParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listPosts(
-        array|AuthorListPostsParams $params,
+    public function getPostsCursor(
+        array|AuthorGetPostsCursorParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = AuthorListPostsParams::parseRequest(
+        [$parsed, $options] = AuthorGetPostsCursorParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -458,18 +503,18 @@ final class AuthorsRawService implements AuthorsRawContract
      *   updatedAfter?: \DateTimeInterface,
      *   updatedAt?: \DateTimeInterface,
      *   updatedBefore?: \DateTimeInterface,
-     * }|AuthorListPostsByQueryParams $params
+     * }|AuthorGetPostsCursorByQueryParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listPostsByQuery(
-        array|AuthorListPostsByQueryParams $params,
+    public function getPostsCursorByQuery(
+        array|AuthorGetPostsCursorByQueryParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = AuthorListPostsByQueryParams::parseRequest(
+        [$parsed, $options] = AuthorGetPostsCursorByQueryParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -500,18 +545,18 @@ final class AuthorsRawService implements AuthorsRawContract
      *   updatedAfter?: \DateTimeInterface,
      *   updatedAt?: \DateTimeInterface,
      *   updatedBefore?: \DateTimeInterface,
-     * }|AuthorListTagsParams $params
+     * }|AuthorGetTagsCursorParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listTags(
-        array|AuthorListTagsParams $params,
+    public function getTagsCursor(
+        array|AuthorGetTagsCursorParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = AuthorListTagsParams::parseRequest(
+        [$parsed, $options] = AuthorGetTagsCursorParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -542,18 +587,18 @@ final class AuthorsRawService implements AuthorsRawContract
      *   updatedAfter?: \DateTimeInterface,
      *   updatedAt?: \DateTimeInterface,
      *   updatedBefore?: \DateTimeInterface,
-     * }|AuthorListTagsByQueryParams $params
+     * }|AuthorGetTagsCursorByQueryParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listTagsByQuery(
-        array|AuthorListTagsByQueryParams $params,
+    public function getTagsCursorByQuery(
+        array|AuthorGetTagsCursorByQueryParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = AuthorListTagsByQueryParams::parseRequest(
+        [$parsed, $options] = AuthorGetTagsCursorByQueryParams::parseRequest(
             $params,
             $requestOptions,
         );

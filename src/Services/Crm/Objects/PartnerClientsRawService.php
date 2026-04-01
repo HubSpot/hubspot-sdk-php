@@ -9,7 +9,9 @@ use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientGetParams;
+use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientListAssociationsParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientListParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientSearchParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientUpdateParams;
@@ -142,6 +144,48 @@ final class PartnerClientsRawService implements PartnerClientsRawContract
             query: $parsed,
             options: $options,
             convert: SimplePublicObjectWithAssociations::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve a list of associations for a specific partner client based on the specified object type.
+     *
+     * @param string $toObjectType Path param
+     * @param array{
+     *   partnerClientID: string, after?: string, limit?: int
+     * }|PartnerClientListAssociationsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<MultiAssociatedObjectWithLabel>>
+     *
+     * @throws APIException
+     */
+    public function listAssociations(
+        string $toObjectType,
+        array|PartnerClientListAssociationsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = PartnerClientListAssociationsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $partnerClientID = $parsed['partnerClientID'];
+        unset($parsed['partnerClientID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'crm/objects/2026-03/partner_clients/%1$s/associations/%2$s',
+                $partnerClientID,
+                $toObjectType,
+            ],
+            query: $parsed,
+            options: $options,
+            convert: MultiAssociatedObjectWithLabel::class,
+            page: Page::class,
         );
     }
 

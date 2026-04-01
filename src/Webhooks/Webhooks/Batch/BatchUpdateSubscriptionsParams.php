@@ -13,17 +13,17 @@ use HubspotSDK\Webhooks\Webhooks\SubscriptionBatchUpdateRequest;
 /**
  * Batch create event subscriptions for the specified app.
  *
- * @see HubspotSDK\Services\Webhooks\Webhooks\BatchService::create()
+ * @see HubspotSDK\Services\Webhooks\Webhooks\BatchService::updateSubscriptions()
  *
  * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubspotSDK\Webhooks\Webhooks\SubscriptionBatchUpdateRequest
  *
- * @phpstan-type BatchCreateParamsShape = array{
+ * @phpstan-type BatchUpdateSubscriptionsParamsShape = array{
  *   inputs: list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape>,
  * }
  */
-final class BatchCreateParams implements BaseModel
+final class BatchUpdateSubscriptionsParams implements BaseModel
 {
-    /** @use SdkModel<BatchCreateParamsShape> */
+    /** @use SdkModel<BatchUpdateSubscriptionsParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -32,17 +32,17 @@ final class BatchCreateParams implements BaseModel
     public array $inputs;
 
     /**
-     * `new BatchCreateParams()` is missing required properties by the API.
+     * `new BatchUpdateSubscriptionsParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * BatchCreateParams::with(inputs: ...)
+     * BatchUpdateSubscriptionsParams::with(inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new BatchCreateParams)->withInputs(...)
+     * (new BatchUpdateSubscriptionsParams)->withInputs(...)
      * ```
      */
     public function __construct()

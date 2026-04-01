@@ -11,12 +11,14 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Perform a partial update of the pipeline identified by `{pipelineId}`. The updated pipeline will be returned in the response.
+ *
  * @see HubspotSDK\Services\Crm\PipelinesService::update()
  *
  * @phpstan-type PipelineUpdateParamsShape = array{
  *   objectType: string,
- *   pipelineID: string,
- *   metadata: array<string,string>,
+ *   validateDealStageUsagesBeforeDelete?: bool|null,
+ *   validateReferencesBeforeDelete?: bool|null,
  *   archived?: bool|null,
  *   displayOrder?: int|null,
  *   label?: string|null,
@@ -31,35 +33,26 @@ final class PipelineUpdateParams implements BaseModel
     #[Required]
     public string $objectType;
 
-    #[Required]
-    public string $pipelineID;
+    #[Optional]
+    public ?bool $validateDealStageUsagesBeforeDelete;
+
+    #[Optional]
+    public ?bool $validateReferencesBeforeDelete;
 
     /**
-     * A JSON object containing properties that are not present on all object pipelines.
-     *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @var array<string,string> $metadata
-     */
-    #[Required(map: 'string')]
-    public array $metadata;
-
-    /**
-     * Whether the pipeline is archived.
+     * Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
      */
     #[Optional]
     public ?bool $archived;
 
     /**
-     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
     #[Optional]
     public ?int $displayOrder;
 
     /**
-     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     * A unique label used to organize pipelines in HubSpot's UI.
      */
     #[Optional]
     public ?string $label;
@@ -69,16 +62,13 @@ final class PipelineUpdateParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * PipelineUpdateParams::with(objectType: ..., pipelineID: ..., metadata: ...)
+     * PipelineUpdateParams::with(objectType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PipelineUpdateParams)
-     *   ->withObjectType(...)
-     *   ->withPipelineID(...)
-     *   ->withMetadata(...)
+     * (new PipelineUpdateParams)->withObjectType(...)
      * ```
      */
     public function __construct()
@@ -90,13 +80,11 @@ final class PipelineUpdateParams implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
-     *
-     * @param array<string,string> $metadata
      */
     public static function with(
         string $objectType,
-        string $pipelineID,
-        array $metadata,
+        ?bool $validateDealStageUsagesBeforeDelete = null,
+        ?bool $validateReferencesBeforeDelete = null,
         ?bool $archived = null,
         ?int $displayOrder = null,
         ?string $label = null,
@@ -104,9 +92,9 @@ final class PipelineUpdateParams implements BaseModel
         $self = new self;
 
         $self['objectType'] = $objectType;
-        $self['pipelineID'] = $pipelineID;
-        $self['metadata'] = $metadata;
 
+        null !== $validateDealStageUsagesBeforeDelete && $self['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
+        null !== $validateReferencesBeforeDelete && $self['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
         null !== $archived && $self['archived'] = $archived;
         null !== $displayOrder && $self['displayOrder'] = $displayOrder;
         null !== $label && $self['label'] = $label;
@@ -122,33 +110,26 @@ final class PipelineUpdateParams implements BaseModel
         return $self;
     }
 
-    public function withPipelineID(string $pipelineID): self
-    {
+    public function withValidateDealStageUsagesBeforeDelete(
+        bool $validateDealStageUsagesBeforeDelete
+    ): self {
         $self = clone $this;
-        $self['pipelineID'] = $pipelineID;
+        $self['validateDealStageUsagesBeforeDelete'] = $validateDealStageUsagesBeforeDelete;
+
+        return $self;
+    }
+
+    public function withValidateReferencesBeforeDelete(
+        bool $validateReferencesBeforeDelete
+    ): self {
+        $self = clone $this;
+        $self['validateReferencesBeforeDelete'] = $validateReferencesBeforeDelete;
 
         return $self;
     }
 
     /**
-     * A JSON object containing properties that are not present on all object pipelines.
-     *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @param array<string,string> $metadata
-     */
-    public function withMetadata(array $metadata): self
-    {
-        $self = clone $this;
-        $self['metadata'] = $metadata;
-
-        return $self;
-    }
-
-    /**
-     * Whether the pipeline is archived.
+     * Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
      */
     public function withArchived(bool $archived): self
     {
@@ -159,7 +140,7 @@ final class PipelineUpdateParams implements BaseModel
     }
 
     /**
-     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
     public function withDisplayOrder(int $displayOrder): self
     {
@@ -170,7 +151,7 @@ final class PipelineUpdateParams implements BaseModel
     }
 
     /**
-     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     * A unique label used to organize pipelines in HubSpot's UI.
      */
     public function withLabel(string $label): self
     {

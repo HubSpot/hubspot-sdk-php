@@ -4,19 +4,23 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\FeatureFlags;
 
+use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\FlagState;
+use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\DefaultState;
+use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\OverrideState;
 
 /**
- * Specify an account-level flag state for a specific HubSpot account.
+ * Set a feature flag for an app. For example, update the `hs-hide-crm-cards` flag's `defaultState` to `ON` to hide classic CRM cards from new installs.
  *
  * @see HubspotSDK\Services\Crm\FeatureFlagsService::update()
  *
  * @phpstan-type FeatureFlagUpdateParamsShape = array{
- *   appID: int, flagName: string, flagState: FlagState|value-of<FlagState>
+ *   appID: int,
+ *   defaultState: DefaultState|value-of<DefaultState>,
+ *   overrideState?: null|OverrideState|value-of<OverrideState>,
  * }
  */
 final class FeatureFlagUpdateParams implements BaseModel
@@ -28,32 +32,34 @@ final class FeatureFlagUpdateParams implements BaseModel
     #[Required]
     public int $appID;
 
-    #[Required]
-    public string $flagName;
+    /**
+     * The state that the flag should have if there are no overrides for a particular portal.
+     *
+     * @var value-of<DefaultState> $defaultState
+     */
+    #[Required(enum: DefaultState::class)]
+    public string $defaultState;
 
     /**
-     * The state that the given flag should be in for this portal.
+     * A flag value that supercedes all other overrides, including portal-level values. Mostly used for things like emergency overrides.
      *
-     * @var value-of<FlagState> $flagState
+     * @var value-of<OverrideState>|null $overrideState
      */
-    #[Required(enum: FlagState::class)]
-    public string $flagState;
+    #[Optional(enum: OverrideState::class)]
+    public ?string $overrideState;
 
     /**
      * `new FeatureFlagUpdateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FeatureFlagUpdateParams::with(appID: ..., flagName: ..., flagState: ...)
+     * FeatureFlagUpdateParams::with(appID: ..., defaultState: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new FeatureFlagUpdateParams)
-     *   ->withAppID(...)
-     *   ->withFlagName(...)
-     *   ->withFlagState(...)
+     * (new FeatureFlagUpdateParams)->withAppID(...)->withDefaultState(...)
      * ```
      */
     public function __construct()
@@ -66,18 +72,20 @@ final class FeatureFlagUpdateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param FlagState|value-of<FlagState> $flagState
+     * @param DefaultState|value-of<DefaultState> $defaultState
+     * @param OverrideState|value-of<OverrideState>|null $overrideState
      */
     public static function with(
         int $appID,
-        string $flagName,
-        FlagState|string $flagState
+        DefaultState|string $defaultState,
+        OverrideState|string|null $overrideState = null,
     ): self {
         $self = new self;
 
         $self['appID'] = $appID;
-        $self['flagName'] = $flagName;
-        $self['flagState'] = $flagState;
+        $self['defaultState'] = $defaultState;
+
+        null !== $overrideState && $self['overrideState'] = $overrideState;
 
         return $self;
     }
@@ -90,23 +98,28 @@ final class FeatureFlagUpdateParams implements BaseModel
         return $self;
     }
 
-    public function withFlagName(string $flagName): self
+    /**
+     * The state that the flag should have if there are no overrides for a particular portal.
+     *
+     * @param DefaultState|value-of<DefaultState> $defaultState
+     */
+    public function withDefaultState(DefaultState|string $defaultState): self
     {
         $self = clone $this;
-        $self['flagName'] = $flagName;
+        $self['defaultState'] = $defaultState;
 
         return $self;
     }
 
     /**
-     * The state that the given flag should be in for this portal.
+     * A flag value that supercedes all other overrides, including portal-level values. Mostly used for things like emergency overrides.
      *
-     * @param FlagState|value-of<FlagState> $flagState
+     * @param OverrideState|value-of<OverrideState> $overrideState
      */
-    public function withFlagState(FlagState|string $flagState): self
+    public function withOverrideState(OverrideState|string $overrideState): self
     {
         $self = clone $this;
-        $self['flagState'] = $flagState;
+        $self['overrideState'] = $overrideState;
 
         return $self;
     }

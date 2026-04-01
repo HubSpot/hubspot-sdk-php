@@ -4,8 +4,10 @@ namespace Tests\Services\Crm;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
 use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
+use HubspotSDK\Crm\Pipelines\Pipeline;
 use HubspotSDK\Crm\Pipelines\PipelineStage;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -38,15 +40,20 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->create(
-            'pipelineId',
-            objectType: 'objectType',
+            'objectType',
             displayOrder: 0,
             label: 'label',
-            metadata: ['foo' => 'string'],
+            stages: [
+                [
+                    'displayOrder' => 0,
+                    'label' => 'label',
+                    'metadata' => ['foo' => 'string'],
+                ],
+            ],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PipelineStage::class, $result);
+        $this->assertInstanceOf(Pipeline::class, $result);
     }
 
     #[Test]
@@ -57,16 +64,22 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->create(
-            'pipelineId',
-            objectType: 'objectType',
+            'objectType',
             displayOrder: 0,
             label: 'label',
-            metadata: ['foo' => 'string'],
-            stageID: 'stageId',
+            stages: [
+                [
+                    'displayOrder' => 0,
+                    'label' => 'label',
+                    'metadata' => ['foo' => 'string'],
+                    'stageID' => 'stageId',
+                ],
+            ],
+            pipelineID: 'pipelineId',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PipelineStage::class, $result);
+        $this->assertInstanceOf(Pipeline::class, $result);
     }
 
     #[Test]
@@ -77,14 +90,12 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->update(
-            'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId',
-            metadata: ['foo' => 'string'],
+            'pipelineId',
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PipelineStage::class, $result);
+        $this->assertInstanceOf(Pipeline::class, $result);
     }
 
     #[Test]
@@ -95,17 +106,17 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->update(
-            'stageId',
+            'pipelineId',
             objectType: 'objectType',
-            pipelineID: 'pipelineId',
-            metadata: ['foo' => 'string'],
+            validateDealStageUsagesBeforeDelete: true,
+            validateReferencesBeforeDelete: true,
             archived: true,
             displayOrder: 0,
             label: 'label',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PipelineStage::class, $result);
+        $this->assertInstanceOf(Pipeline::class, $result);
     }
 
     #[Test]
@@ -115,35 +126,10 @@ final class PipelinesTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->pipelines->list(
-            'pipelineId',
-            objectType: 'objectType'
-        );
+        $result = $this->client->crm->pipelines->list('objectType');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            CollectionResponsePipelineStageNoPaging::class,
-            $result
-        );
-    }
-
-    #[Test]
-    public function testListWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->pipelines->list(
-            'pipelineId',
-            objectType: 'objectType'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            CollectionResponsePipelineStageNoPaging::class,
-            $result
-        );
+        $this->assertInstanceOf(CollectionResponsePipelineNoPaging::class, $result);
     }
 
     #[Test]
@@ -154,9 +140,8 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->delete(
-            'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            'pipelineId',
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -171,6 +156,80 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->delete(
+            'pipelineId',
+            objectType: 'objectType',
+            validateDealStageUsagesBeforeDelete: true,
+            validateReferencesBeforeDelete: true,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testCreateStage(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->createStage(
+            'pipelineId',
+            objectType: 'objectType',
+            displayOrder: 0,
+            label: 'label',
+            metadata: ['foo' => 'string'],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
+    }
+
+    #[Test]
+    public function testCreateStageWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->createStage(
+            'pipelineId',
+            objectType: 'objectType',
+            displayOrder: 0,
+            label: 'label',
+            metadata: ['foo' => 'string'],
+            stageID: 'stageId',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
+    }
+
+    #[Test]
+    public function testDeleteStage(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->deleteStage(
+            'stageId',
+            objectType: 'objectType',
+            pipelineID: 'pipelineId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
+    public function testDeleteStageWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->deleteStage(
             'stageId',
             objectType: 'objectType',
             pipelineID: 'pipelineId'
@@ -188,13 +247,12 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->get(
-            'stageId',
-            objectType: 'objectType',
-            pipelineID: 'pipelineId'
+            'pipelineId',
+            objectType: 'objectType'
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PipelineStage::class, $result);
+        $this->assertInstanceOf(Pipeline::class, $result);
     }
 
     #[Test]
@@ -205,6 +263,22 @@ final class PipelinesTest extends TestCase
         }
 
         $result = $this->client->crm->pipelines->get(
+            'pipelineId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Pipeline::class, $result);
+    }
+
+    #[Test]
+    public function testGetStage(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->getStage(
             'stageId',
             objectType: 'objectType',
             pipelineID: 'pipelineId'
@@ -215,13 +289,68 @@ final class PipelinesTest extends TestCase
     }
 
     #[Test]
-    public function testGetAudit(): void
+    public function testGetStageWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->pipelines->getAudit(
+        $result = $this->client->crm->pipelines->getStage(
+            'stageId',
+            objectType: 'objectType',
+            pipelineID: 'pipelineId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
+    }
+
+    #[Test]
+    public function testListAudit(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->listAudit(
+            'pipelineId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicAuditInfoNoPaging::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testListAuditWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->listAudit(
+            'pipelineId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePublicAuditInfoNoPaging::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testListStageAudit(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->listStageAudit(
             'stageId',
             objectType: 'objectType',
             pipelineID: 'pipelineId'
@@ -235,13 +364,13 @@ final class PipelinesTest extends TestCase
     }
 
     #[Test]
-    public function testGetAuditWithOptionalParams(): void
+    public function testListStageAuditWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->pipelines->getAudit(
+        $result = $this->client->crm->pipelines->listStageAudit(
             'stageId',
             objectType: 'objectType',
             pipelineID: 'pipelineId'
@@ -255,13 +384,143 @@ final class PipelinesTest extends TestCase
     }
 
     #[Test]
-    public function testReplace(): void
+    public function testListStages(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->pipelines->replace(
+        $result = $this->client->crm->pipelines->listStages(
+            'pipelineId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePipelineStageNoPaging::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testListStagesWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->listStages(
+            'pipelineId',
+            objectType: 'objectType'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            CollectionResponsePipelineStageNoPaging::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testUpdateAllProperties(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->updateAllProperties(
+            'pipelineId',
+            objectType: 'objectType',
+            displayOrder: 0,
+            label: 'label',
+            stages: [
+                [
+                    'displayOrder' => 0,
+                    'label' => 'label',
+                    'metadata' => ['foo' => 'string'],
+                ],
+            ],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Pipeline::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateAllPropertiesWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->updateAllProperties(
+            'pipelineId',
+            objectType: 'objectType',
+            displayOrder: 0,
+            label: 'label',
+            stages: [
+                [
+                    'displayOrder' => 0,
+                    'label' => 'label',
+                    'metadata' => ['foo' => 'string'],
+                    'stageID' => 'stageId',
+                ],
+            ],
+            validateDealStageUsagesBeforeDelete: true,
+            validateReferencesBeforeDelete: true,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Pipeline::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateStage(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->updateStage(
+            'stageId',
+            objectType: 'objectType',
+            pipelineID: 'pipelineId',
+            metadata: ['foo' => 'string'],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateStageWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->updateStage(
+            'stageId',
+            objectType: 'objectType',
+            pipelineID: 'pipelineId',
+            metadata: ['foo' => 'string'],
+            archived: true,
+            displayOrder: 0,
+            label: 'label',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(PipelineStage::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateStageAllProperties(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->pipelines->updateStageAllProperties(
             'stageId',
             objectType: 'objectType',
             pipelineID: 'pipelineId',
@@ -275,13 +534,13 @@ final class PipelinesTest extends TestCase
     }
 
     #[Test]
-    public function testReplaceWithOptionalParams(): void
+    public function testUpdateStageAllPropertiesWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->pipelines->replace(
+        $result = $this->client->crm->pipelines->updateStageAllProperties(
             'stageId',
             objectType: 'objectType',
             pipelineID: 'pipelineId',

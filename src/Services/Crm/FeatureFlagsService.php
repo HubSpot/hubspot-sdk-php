@@ -7,7 +7,10 @@ namespace HubspotSDK\Services\Crm;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\FlagState;
+use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\DefaultState;
+use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\OverrideState;
+use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdatePortalStateParams\FlagState;
+use HubspotSDK\Crm\FeatureFlags\FlagResponse;
 use HubspotSDK\Crm\FeatureFlags\FlagsForAppResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
@@ -42,29 +45,55 @@ final class FeatureFlagsService implements FeatureFlagsContract
     /**
      * @api
      *
-     * Specify an account-level flag state for a specific HubSpot account.
+     * Set a feature flag for an app. For example, update the `hs-hide-crm-cards` flag's `defaultState` to `ON` to hide classic CRM cards from new installs.
      *
-     * @param int $portalID Path param
-     * @param int $appID Path param
      * @param string $flagName Path param
-     * @param FlagState|value-of<FlagState> $flagState Body param: The state that the given flag should be in for this portal
+     * @param int $appID Path param
+     * @param DefaultState|value-of<DefaultState> $defaultState Body param: The state that the flag should have if there are no overrides for a particular portal
+     * @param OverrideState|value-of<OverrideState> $overrideState Body param: A flag value that supercedes all other overrides, including portal-level values. Mostly used for things like emergency overrides
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function update(
-        int $portalID,
-        int $appID,
         string $flagName,
-        FlagState|string $flagState,
+        int $appID,
+        DefaultState|string $defaultState,
+        OverrideState|string|null $overrideState = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PortalFlagStateResponse {
+    ): FlagResponse {
         $params = Util::removeNulls(
-            ['appID' => $appID, 'flagName' => $flagName, 'flagState' => $flagState]
+            [
+                'appID' => $appID,
+                'defaultState' => $defaultState,
+                'overrideState' => $overrideState,
+            ],
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->update($portalID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->update($flagName, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Delete a feature flag in an app.  For example, delete the `hs-release-app-cards` flag after all accounts have been migrated.
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function delete(
+        string $flagName,
+        int $appID,
+        RequestOptions|array|null $requestOptions = null,
+    ): FlagResponse {
+        $params = Util::removeNulls(['appID' => $appID]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->delete($flagName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -78,7 +107,7 @@ final class FeatureFlagsService implements FeatureFlagsContract
      *
      * @throws APIException
      */
-    public function delete(
+    public function deletePortalState(
         int $portalID,
         int $appID,
         string $flagName,
@@ -87,7 +116,29 @@ final class FeatureFlagsService implements FeatureFlagsContract
         $params = Util::removeNulls(['appID' => $appID, 'flagName' => $flagName]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->delete($portalID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->deletePortalState($portalID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve the current status of the app's feature flags. No request body is included.
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function get(
+        string $flagName,
+        int $appID,
+        RequestOptions|array|null $requestOptions = null,
+    ): FlagResponse {
+        $params = Util::removeNulls(['appID' => $appID]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->get($flagName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -101,7 +152,7 @@ final class FeatureFlagsService implements FeatureFlagsContract
      *
      * @throws APIException
      */
-    public function get(
+    public function getPortalState(
         int $portalID,
         int $appID,
         string $flagName,
@@ -110,7 +161,7 @@ final class FeatureFlagsService implements FeatureFlagsContract
         $params = Util::removeNulls(['appID' => $appID, 'flagName' => $flagName]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->get($portalID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getPortalState($portalID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -158,6 +209,36 @@ final class FeatureFlagsService implements FeatureFlagsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listPortals($flagName, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Specify an account-level flag state for a specific HubSpot account.
+     *
+     * @param int $portalID Path param
+     * @param int $appID Path param
+     * @param string $flagName Path param
+     * @param FlagState|value-of<FlagState> $flagState Body param: The state that the given flag should be in for this portal
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function updatePortalState(
+        int $portalID,
+        int $appID,
+        string $flagName,
+        FlagState|string $flagState,
+        RequestOptions|array|null $requestOptions = null,
+    ): PortalFlagStateResponse {
+        $params = Util::removeNulls(
+            ['appID' => $appID, 'flagName' => $flagName, 'flagState' => $flagState]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->updatePortalState($portalID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

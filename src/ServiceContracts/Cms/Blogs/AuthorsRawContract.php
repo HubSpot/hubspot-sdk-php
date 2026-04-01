@@ -9,13 +9,14 @@ use HubspotSDK\Cms\Blogs\Authors\AuthorCreateLanguageVariationParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorCreateParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorDeleteParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorDetachFromLangGroupParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetCursorByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetCursorParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorGetParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetPostsCursorByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetPostsCursorParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetTagsCursorByQueryParams;
+use HubspotSDK\Cms\Blogs\Authors\AuthorGetTagsCursorParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorListParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListPostsByQueryParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListPostsParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListTagsByQueryParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListTagsParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorSetNewLangPrimaryParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams;
 use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateParams;
@@ -155,75 +156,90 @@ interface AuthorsRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|AuthorListByQueryParams $params
+     * @param array<string,mixed>|AuthorGetCursorParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listByQuery(
-        array|AuthorListByQueryParams $params,
+    public function getCursor(
+        array|AuthorGetCursorParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|AuthorListPostsParams $params
+     * @param array<string,mixed>|AuthorGetCursorByQueryParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listPosts(
-        array|AuthorListPostsParams $params,
+    public function getCursorByQuery(
+        array|AuthorGetCursorByQueryParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|AuthorListPostsByQueryParams $params
+     * @param array<string,mixed>|AuthorGetPostsCursorParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listPostsByQuery(
-        array|AuthorListPostsByQueryParams $params,
+    public function getPostsCursor(
+        array|AuthorGetPostsCursorParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|AuthorListTagsParams $params
+     * @param array<string,mixed>|AuthorGetPostsCursorByQueryParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listTags(
-        array|AuthorListTagsParams $params,
+    public function getPostsCursorByQuery(
+        array|AuthorGetPostsCursorByQueryParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
      * @api
      *
-     * @param array<string,mixed>|AuthorListTagsByQueryParams $params
+     * @param array<string,mixed>|AuthorGetTagsCursorParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function listTagsByQuery(
-        array|AuthorListTagsByQueryParams $params,
+    public function getTagsCursor(
+        array|AuthorGetTagsCursorParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|AuthorGetTagsCursorByQueryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getTagsCursorByQuery(
+        array|AuthorGetTagsCursorByQueryParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

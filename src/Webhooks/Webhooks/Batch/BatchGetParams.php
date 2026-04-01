@@ -11,15 +11,15 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Webhooks\Webhooks\BatchService::read()
+ * @see HubspotSDK\Services\Webhooks\Webhooks\BatchService::get()
  *
- * @phpstan-type BatchReadParamsShape = array{
+ * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<string>, installPortalID?: int|null
  * }
  */
-final class BatchReadParams implements BaseModel
+final class BatchGetParams implements BaseModel
 {
-    /** @use SdkModel<BatchReadParamsShape> */
+    /** @use SdkModel<BatchGetParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -35,17 +35,17 @@ final class BatchReadParams implements BaseModel
     public ?int $installPortalID;
 
     /**
-     * `new BatchReadParams()` is missing required properties by the API.
+     * `new BatchGetParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * BatchReadParams::with(inputs: ...)
+     * BatchGetParams::with(inputs: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new BatchReadParams)->withInputs(...)
+     * (new BatchGetParams)->withInputs(...)
      * ```
      */
     public function __construct()

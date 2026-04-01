@@ -19,16 +19,17 @@ interface BatchContract
     /**
      * @api
      *
-     * @param list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape> $inputs
+     * @param list<string> $inputs body param: Strings to input
+     * @param int $installPortalID Query param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function create(
-        int $appID,
+    public function get(
         array $inputs,
+        ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseSubscriptionResponse;
+    ): BatchResponseJournalFetchResponse;
 
     /**
      * @api
@@ -59,6 +60,64 @@ interface BatchContract
     /**
      * @api
      *
+     * @param list<string> $inputs body param: Strings to input
+     * @param int $installPortalID Query param
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getLocal(
+        array $inputs,
+        ?int $installPortalID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseJournalFetchResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getLocalEarliest(
+        int $count,
+        ?int $installPortalID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseJournalFetchResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getLocalLatest(
+        int $count,
+        ?int $installPortalID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseJournalFetchResponse;
+
+    /**
+     * @api
+     *
+     * @param int $count Path param
+     * @param string $offset Path param
+     * @param int $installPortalID Query param
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getLocalNext(
+        int $count,
+        string $offset,
+        ?int $installPortalID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseJournalFetchResponse;
+
+    /**
+     * @api
+     *
      * @param int $count Path param
      * @param string $offset Path param
      * @param int $installPortalID Query param
@@ -76,15 +135,14 @@ interface BatchContract
     /**
      * @api
      *
-     * @param list<string> $inputs body param: Strings to input
-     * @param int $installPortalID Query param
+     * @param list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape> $inputs
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function read(
+    public function updateSubscriptions(
+        int $appID,
         array $inputs,
-        ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseJournalFetchResponse;
+    ): BatchResponseSubscriptionResponse;
 }

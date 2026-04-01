@@ -10,33 +10,38 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Delete a feature flag in an app.  For example, delete the `hs-release-app-cards` flag after all accounts have been migrated.
+ * Retrieve the account-level flag state of a specific HubSpot account.
  *
- * @see HubspotSDK\Services\Crm\FeatureFlagsService::delete()
+ * @see HubspotSDK\Services\Crm\FeatureFlagsService::getPortalState()
  *
- * @phpstan-type FeatureFlagDeleteParamsShape = array{appID: int}
+ * @phpstan-type FeatureFlagGetPortalStateParamsShape = array{
+ *   appID: int, flagName: string
+ * }
  */
-final class FeatureFlagDeleteParams implements BaseModel
+final class FeatureFlagGetPortalStateParams implements BaseModel
 {
-    /** @use SdkModel<FeatureFlagDeleteParamsShape> */
+    /** @use SdkModel<FeatureFlagGetPortalStateParamsShape> */
     use SdkModel;
     use SdkParams;
 
     #[Required]
     public int $appID;
 
+    #[Required]
+    public string $flagName;
+
     /**
-     * `new FeatureFlagDeleteParams()` is missing required properties by the API.
+     * `new FeatureFlagGetPortalStateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FeatureFlagDeleteParams::with(appID: ...)
+     * FeatureFlagGetPortalStateParams::with(appID: ..., flagName: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new FeatureFlagDeleteParams)->withAppID(...)
+     * (new FeatureFlagGetPortalStateParams)->withAppID(...)->withFlagName(...)
      * ```
      */
     public function __construct()
@@ -49,11 +54,12 @@ final class FeatureFlagDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID): self
+    public static function with(int $appID, string $flagName): self
     {
         $self = new self;
 
         $self['appID'] = $appID;
+        $self['flagName'] = $flagName;
 
         return $self;
     }
@@ -62,6 +68,14 @@ final class FeatureFlagDeleteParams implements BaseModel
     {
         $self = clone $this;
         $self['appID'] = $appID;
+
+        return $self;
+    }
+
+    public function withFlagName(string $flagName): self
+    {
+        $self = clone $this;
+        $self['flagName'] = $flagName;
 
         return $self;
     }

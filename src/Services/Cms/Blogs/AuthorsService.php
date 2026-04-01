@@ -196,6 +196,8 @@ final class AuthorsService implements AuthorsContract
     /**
      * @api
      *
+     * Get the list of blog authors. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
+     *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
      * @param int $limit the maximum number of results to display per page
@@ -392,7 +394,7 @@ final class AuthorsService implements AuthorsContract
      *
      * @throws APIException
      */
-    public function listByQuery(
+    public function getCursor(
         ?string $after = null,
         ?bool $archived = null,
         ?\DateTimeInterface $createdAfter = null,
@@ -423,7 +425,7 @@ final class AuthorsService implements AuthorsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->listByQuery(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getCursor(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -439,7 +441,7 @@ final class AuthorsService implements AuthorsContract
      *
      * @throws APIException
      */
-    public function listPosts(
+    public function getCursorByQuery(
         ?string $after = null,
         ?bool $archived = null,
         ?\DateTimeInterface $createdAfter = null,
@@ -470,7 +472,7 @@ final class AuthorsService implements AuthorsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->listPosts(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getCursorByQuery(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -486,7 +488,7 @@ final class AuthorsService implements AuthorsContract
      *
      * @throws APIException
      */
-    public function listPostsByQuery(
+    public function getPostsCursor(
         ?string $after = null,
         ?bool $archived = null,
         ?\DateTimeInterface $createdAfter = null,
@@ -517,7 +519,7 @@ final class AuthorsService implements AuthorsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->listPostsByQuery(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getPostsCursor(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -533,7 +535,7 @@ final class AuthorsService implements AuthorsContract
      *
      * @throws APIException
      */
-    public function listTags(
+    public function getPostsCursorByQuery(
         ?string $after = null,
         ?bool $archived = null,
         ?\DateTimeInterface $createdAfter = null,
@@ -564,7 +566,7 @@ final class AuthorsService implements AuthorsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->listTags(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getPostsCursorByQuery(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -580,7 +582,7 @@ final class AuthorsService implements AuthorsContract
      *
      * @throws APIException
      */
-    public function listTagsByQuery(
+    public function getTagsCursor(
         ?string $after = null,
         ?bool $archived = null,
         ?\DateTimeInterface $createdAfter = null,
@@ -611,7 +613,54 @@ final class AuthorsService implements AuthorsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->listTagsByQuery(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getTagsCursor(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param bool $archived whether to return only results that have been archived
+     * @param int $limit the maximum number of results to display per page
+     * @param list<string> $sort
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getTagsCursorByQuery(
+        ?string $after = null,
+        ?bool $archived = null,
+        ?\DateTimeInterface $createdAfter = null,
+        ?\DateTimeInterface $createdAt = null,
+        ?\DateTimeInterface $createdBefore = null,
+        ?int $limit = null,
+        ?string $property = null,
+        ?array $sort = null,
+        ?\DateTimeInterface $updatedAfter = null,
+        ?\DateTimeInterface $updatedAt = null,
+        ?\DateTimeInterface $updatedBefore = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(
+            [
+                'after' => $after,
+                'archived' => $archived,
+                'createdAfter' => $createdAfter,
+                'createdAt' => $createdAt,
+                'createdBefore' => $createdBefore,
+                'limit' => $limit,
+                'property' => $property,
+                'sort' => $sort,
+                'updatedAfter' => $updatedAfter,
+                'updatedAt' => $updatedAt,
+                'updatedBefore' => $updatedBefore,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getTagsCursorByQuery(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
