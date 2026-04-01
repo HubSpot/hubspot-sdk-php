@@ -11,7 +11,6 @@ use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionCo
 use HubspotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
 use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
 use HubspotSDK\Crm\AssociationsSchema\PublicAssociationSpec;
-use HubspotSDK\Crm\BatchResponseVoid;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\AssociationsSchema\LimitsContract;
 
@@ -70,7 +69,7 @@ final class LimitsService implements LimitsContract
         string $fromObjectType,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseVoid {
+    ): mixed {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
         );

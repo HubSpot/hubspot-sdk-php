@@ -16,6 +16,7 @@ use HubspotSDK\Crm\Lists\ListFolderCreateResponse;
 use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
 use HubspotSDK\Crm\Lists\ListsByIDResponse;
 use HubspotSDK\Crm\Lists\ListSearchResponse;
+use HubspotSDK\Crm\Lists\ListSizeAndEditHistoryResponse;
 use HubspotSDK\Crm\Lists\ListUpdateResponse;
 use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams\ConversionType;
 use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams\TimeUnit;
@@ -320,23 +321,6 @@ final class ListsService implements ListsContract
      *
      * @throws APIException
      */
-    public function deleteScheduleConversion(
-        string $listID,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed {
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->deleteScheduleConversion($listID, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
     public function get(
         string $listID,
         bool $includeFilters = false,
@@ -360,7 +344,7 @@ final class ListsService implements ListsContract
      *
      * @throws APIException
      */
-    public function getByObjectTypeIDAndName(
+    public function getByObjectTypeAndName(
         string $listName,
         string $objectTypeID,
         bool $includeFilters = false,
@@ -371,7 +355,7 @@ final class ListsService implements ListsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getByObjectTypeIDAndName($listName, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getByObjectTypeAndName($listName, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -391,6 +375,34 @@ final class ListsService implements ListsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getIDMapping(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit the maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<JoinTimeAndRecordID>
+     *
+     * @throws APIException
+     */
+    public function getMembershipsJoinOrder(
+        string $listID,
+        ?string $after = null,
+        ?string $before = null,
+        int $limit = 100,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page {
+        $params = Util::removeNulls(
+            ['after' => $after, 'before' => $before, 'limit' => $limit]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getMembershipsJoinOrder($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -439,6 +451,75 @@ final class ListsService implements ListsContract
      *
      * @throws APIException
      */
+    public function getSizeAndEditsHistoryBetween(
+        string $listID,
+        ?string $endDate = null,
+        ?string $startDate = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ListSizeAndEditHistoryResponse {
+        $params = Util::removeNulls(
+            ['endDate' => $endDate, 'startDate' => $startDate]
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getSizeAndEditsHistoryBetween($listID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param list<string> $additionalProperties The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
+     *
+     * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
+     * @param list<string> $listIDs ILS list ids to be included in search results. If not specified, all lists matching other criteria will be included
+     * @param int $offset Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
+     * @param list<string> $processingTypes List processing types to be included in search results. If not specified, all lists with all processing types will be included.
+     * @param int $count The number of lists to include in the response. Defaults to `20` if no value is provided. The max `count` is `500`.
+     * @param string $query The `query` that will be used to search for lists by list name. If no `query` is provided, then the results will include all lists.
+     * @param string $sort Sort field and order
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listBySearch(
+        array $additionalProperties,
+        array $listIDs,
+        int $offset,
+        array $processingTypes,
+        ?int $count = null,
+        ?string $objectTypeID = null,
+        ?string $query = null,
+        ?string $sort = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): ListSearchResponse {
+        $params = Util::removeNulls(
+            [
+                'additionalProperties' => $additionalProperties,
+                'listIDs' => $listIDs,
+                'offset' => $offset,
+                'processingTypes' => $processingTypes,
+                'count' => $count,
+                'objectTypeID' => $objectTypeID,
+                'query' => $query,
+                'sort' => $sort,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listBySearch(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
     public function listFolders(
         string $folderID = '0',
         RequestOptions|array|null $requestOptions = null
@@ -475,34 +556,6 @@ final class ListsService implements ListsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listMemberships($listID, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param int $limit the maximum number of results to display per page
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return Page<JoinTimeAndRecordID>
-     *
-     * @throws APIException
-     */
-    public function listMembershipsJoinOrder(
-        string $listID,
-        ?string $after = null,
-        ?string $before = null,
-        int $limit = 100,
-        RequestOptions|array|null $requestOptions = null,
-    ): Page {
-        $params = Util::removeNulls(
-            ['after' => $after, 'before' => $before, 'limit' => $limit]
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->listMembershipsJoinOrder($listID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -612,45 +665,16 @@ final class ListsService implements ListsContract
     /**
      * @api
      *
-     * @param list<string> $additionalProperties The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
-     *
-     * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
-     * @param list<string> $listIDs ILS list ids to be included in search results. If not specified, all lists matching other criteria will be included
-     * @param int $offset Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
-     * @param list<string> $processingTypes List processing types to be included in search results. If not specified, all lists with all processing types will be included.
-     * @param int $count The number of lists to include in the response. Defaults to `20` if no value is provided. The max `count` is `500`.
-     * @param string $query The `query` that will be used to search for lists by list name. If no `query` is provided, then the results will include all lists.
-     * @param string $sort Sort field and order
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function search(
-        array $additionalProperties,
-        array $listIDs,
-        int $offset,
-        array $processingTypes,
-        ?int $count = null,
-        ?string $objectTypeID = null,
-        ?string $query = null,
-        ?string $sort = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): ListSearchResponse {
-        $params = Util::removeNulls(
-            [
-                'additionalProperties' => $additionalProperties,
-                'listIDs' => $listIDs,
-                'offset' => $offset,
-                'processingTypes' => $processingTypes,
-                'count' => $count,
-                'objectTypeID' => $objectTypeID,
-                'query' => $query,
-                'sort' => $sort,
-            ],
-        );
-
+    public function scheduleConversion(
+        string $listID,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->scheduleConversion($listID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

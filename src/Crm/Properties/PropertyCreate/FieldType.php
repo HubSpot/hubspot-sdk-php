@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\PropertyCreate;
+namespace HubspotSDK\Crm\Properties\PropertyCreate;
 
+/**
+ * Controls how the property appears in HubSpot.
+ */
 enum FieldType: string
 {
     case BOOLEANCHECKBOX = 'booleancheckbox';

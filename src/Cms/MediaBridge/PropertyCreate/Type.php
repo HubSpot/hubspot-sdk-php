@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\PropertyCreate;
+namespace HubspotSDK\Cms\MediaBridge\PropertyCreate;
 
 enum Type: string
 {

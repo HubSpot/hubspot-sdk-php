@@ -9,20 +9,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult\Status;
-use HubspotSDK\StandardError;
 
 /**
  * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateResultShape from \HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateResult
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponsePublicAssociationDefinitionConfigurationUpdateResultShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicAssociationDefinitionConfigurationUpdateResult|PublicAssociationDefinitionConfigurationUpdateResultShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -57,10 +53,6 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
     /**
      * URLs linking to documentation or resources associated with the batch update operation.
      *
@@ -68,12 +60,6 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
      */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    /**
-     * The total number of errors encountered during the batch update operation.
-     */
-    #[Optional]
-    public ?int $numErrors;
 
     /**
      * The date and time when the batch update operation was requested.
@@ -113,7 +99,6 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
      *
      * @param list<PublicAssociationDefinitionConfigurationUpdateResult|PublicAssociationDefinitionConfigurationUpdateResultShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -121,9 +106,7 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -133,9 +116,7 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -188,17 +169,6 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
     }
 
     /**
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * URLs linking to documentation or resources associated with the batch update operation.
      *
      * @param array<string,string> $links
@@ -207,17 +177,6 @@ final class BatchResponsePublicAssociationDefinitionConfigurationUpdateResult im
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    /**
-     * The total number of errors encountered during the batch update operation.
-     */
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

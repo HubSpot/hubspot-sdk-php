@@ -8,8 +8,10 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Objects\Leads\BatchContract;
@@ -17,6 +19,7 @@ use HubspotSDK\ServiceContracts\Crm\Objects\Leads\BatchContract;
 /**
  * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
  * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
@@ -135,6 +138,28 @@ final class BatchService implements BatchContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
+     *
+     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        array $inputs,
+        RequestOptions|array|null $requestOptions = null
+    ): BatchResponseSimplePublicUpsertObject {
+        $params = Util::removeNulls(['inputs' => $inputs]);
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->upsert(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

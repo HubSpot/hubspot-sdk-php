@@ -2,21 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm;
+namespace HubspotSDK\Crm\Lists;
 
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\BatchResponseVoid\Status;
+use HubspotSDK\Crm\Lists\BatchResponseRecordIDWithMembershipsWithErrors\Status;
 use HubspotSDK\StandardError;
 
 /**
+ * @phpstan-import-type RecordIDWithMembershipsShape from \HubspotSDK\Crm\Lists\RecordIDWithMemberships
  * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
- * @phpstan-type BatchResponseVoidShape = array{
+ * @phpstan-type BatchResponseRecordIDWithMembershipsWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<mixed>,
+ *   results: list<RecordIDWithMemberships|RecordIDWithMembershipsShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   errors?: list<StandardError|StandardErrorShape>|null,
@@ -25,32 +26,22 @@ use HubspotSDK\StandardError;
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
-final class BatchResponseVoid implements BaseModel
+final class BatchResponseRecordIDWithMembershipsWithErrors implements BaseModel
 {
-    /** @use SdkModel<BatchResponseVoidShape> */
+    /** @use SdkModel<BatchResponseRecordIDWithMembershipsWithErrorsShape> */
     use SdkModel;
 
-    /**
-     * Time operation completed.
-     */
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<mixed> $results */
-    #[Required(list: 'mixed')]
+    /** @var list<RecordIDWithMemberships> $results */
+    #[Required(list: RecordIDWithMemberships::class)]
     public array $results;
 
-    /**
-     * The timestamp when the batch processing began, in ISO 8601 format.
-     */
     #[Required]
     public \DateTimeInterface $startedAt;
 
-    /**
-     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
-     *
-     * @var value-of<Status> $status
-     */
+    /** @var value-of<Status> $status */
     #[Required(enum: Status::class)]
     public string $status;
 
@@ -58,32 +49,22 @@ final class BatchResponseVoid implements BaseModel
     #[Optional(list: StandardError::class)]
     public ?array $errors;
 
-    /**
-     * An object containing relevant links related to the batch request.
-     *
-     * @var array<string,string>|null $links
-     */
+    /** @var array<string,string>|null $links */
     #[Optional(map: 'string')]
     public ?array $links;
 
-    /**
-     * The number of errors encountered during the batch processing.
-     */
     #[Optional]
     public ?int $numErrors;
 
-    /**
-     * The timestamp when the batch request was initially made, in ISO 8601 format.
-     */
     #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
     /**
-     * `new BatchResponseVoid()` is missing required properties by the API.
+     * `new BatchResponseRecordIDWithMembershipsWithErrors()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * BatchResponseVoid::with(
+     * BatchResponseRecordIDWithMembershipsWithErrors::with(
      *   completedAt: ..., results: ..., startedAt: ..., status: ...
      * )
      * ```
@@ -91,7 +72,7 @@ final class BatchResponseVoid implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new BatchResponseVoid)
+     * (new BatchResponseRecordIDWithMembershipsWithErrors)
      *   ->withCompletedAt(...)
      *   ->withResults(...)
      *   ->withStartedAt(...)
@@ -108,7 +89,7 @@ final class BatchResponseVoid implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $results
+     * @param list<RecordIDWithMemberships|RecordIDWithMembershipsShape> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
@@ -138,9 +119,6 @@ final class BatchResponseVoid implements BaseModel
         return $self;
     }
 
-    /**
-     * Time operation completed.
-     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $self = clone $this;
@@ -150,7 +128,7 @@ final class BatchResponseVoid implements BaseModel
     }
 
     /**
-     * @param list<mixed> $results
+     * @param list<RecordIDWithMemberships|RecordIDWithMembershipsShape> $results
      */
     public function withResults(array $results): self
     {
@@ -160,9 +138,6 @@ final class BatchResponseVoid implements BaseModel
         return $self;
     }
 
-    /**
-     * The timestamp when the batch processing began, in ISO 8601 format.
-     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $self = clone $this;
@@ -172,8 +147,6 @@ final class BatchResponseVoid implements BaseModel
     }
 
     /**
-     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
-     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -196,8 +169,6 @@ final class BatchResponseVoid implements BaseModel
     }
 
     /**
-     * An object containing relevant links related to the batch request.
-     *
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
@@ -208,9 +179,6 @@ final class BatchResponseVoid implements BaseModel
         return $self;
     }
 
-    /**
-     * The number of errors encountered during the batch processing.
-     */
     public function withNumErrors(int $numErrors): self
     {
         $self = clone $this;
@@ -219,9 +187,6 @@ final class BatchResponseVoid implements BaseModel
         return $self;
     }
 
-    /**
-     * The timestamp when the batch request was initially made, in ISO 8601 format.
-     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $self = clone $this;

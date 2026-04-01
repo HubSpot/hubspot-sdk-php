@@ -13,6 +13,7 @@ use HubspotSDK\Crm\Lists\ListFolderCreateResponse;
 use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
 use HubspotSDK\Crm\Lists\ListsByIDResponse;
 use HubspotSDK\Crm\Lists\ListSearchResponse;
+use HubspotSDK\Crm\Lists\ListSizeAndEditHistoryResponse;
 use HubspotSDK\Crm\Lists\ListUpdateResponse;
 use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
 use HubspotSDK\Crm\Lists\PublicBatchMigrationMapping;
@@ -506,19 +507,6 @@ final class ListsTest extends TestCase
     }
 
     #[Test]
-    public function testDeleteScheduleConversion(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->lists->deleteScheduleConversion('listId');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
     public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -532,13 +520,13 @@ final class ListsTest extends TestCase
     }
 
     #[Test]
-    public function testGetByObjectTypeIDAndName(): void
+    public function testGetByObjectTypeAndName(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->lists->getByObjectTypeIDAndName(
+        $result = $this->client->crm->lists->getByObjectTypeAndName(
             'listName',
             objectTypeID: 'objectTypeId'
         );
@@ -548,13 +536,13 @@ final class ListsTest extends TestCase
     }
 
     #[Test]
-    public function testGetByObjectTypeIDAndNameWithOptionalParams(): void
+    public function testGetByObjectTypeAndNameWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->lists->getByObjectTypeIDAndName(
+        $result = $this->client->crm->lists->getByObjectTypeAndName(
             'listName',
             objectTypeID: 'objectTypeId',
             includeFilters: true
@@ -575,6 +563,24 @@ final class ListsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PublicMigrationMapping::class, $result);
+    }
+
+    #[Test]
+    public function testGetMembershipsJoinOrder(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $page = $this->client->crm->lists->getMembershipsJoinOrder('listId');
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(JoinTimeAndRecordID::class, $item);
+        }
     }
 
     #[Test]
@@ -629,6 +635,61 @@ final class ListsTest extends TestCase
     }
 
     #[Test]
+    public function testGetSizeAndEditsHistoryBetween(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->lists->getSizeAndEditsHistoryBetween(
+            'listId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListSizeAndEditHistoryResponse::class, $result);
+    }
+
+    #[Test]
+    public function testListBySearch(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->lists->listBySearch(
+            additionalProperties: ['string'],
+            listIDs: ['string'],
+            offset: 0,
+            processingTypes: ['string'],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListSearchResponse::class, $result);
+    }
+
+    #[Test]
+    public function testListBySearchWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->lists->listBySearch(
+            additionalProperties: ['string'],
+            listIDs: ['string'],
+            offset: 0,
+            processingTypes: ['string'],
+            count: 0,
+            objectTypeID: 'objectTypeId',
+            query: 'query',
+            sort: 'sort',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(ListSearchResponse::class, $result);
+    }
+
+    #[Test]
     public function testListFolders(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -649,24 +710,6 @@ final class ListsTest extends TestCase
         }
 
         $page = $this->client->crm->lists->listMemberships('listId');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $page);
-
-        if ($item = $page->getItems()[0] ?? null) {
-            // @phpstan-ignore-next-line method.alreadyNarrowedType
-            $this->assertInstanceOf(JoinTimeAndRecordID::class, $item);
-        }
-    }
-
-    #[Test]
-    public function testListMembershipsJoinOrder(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $page = $this->client->crm->lists->listMembershipsJoinOrder('listId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(Page::class, $page);
@@ -800,43 +843,16 @@ final class ListsTest extends TestCase
     }
 
     #[Test]
-    public function testSearch(): void
+    public function testScheduleConversion(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->lists->search(
-            additionalProperties: ['string'],
-            listIDs: ['string'],
-            offset: 0,
-            processingTypes: ['string'],
-        );
+        $result = $this->client->crm->lists->scheduleConversion('listId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(ListSearchResponse::class, $result);
-    }
-
-    #[Test]
-    public function testSearchWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->lists->search(
-            additionalProperties: ['string'],
-            listIDs: ['string'],
-            offset: 0,
-            processingTypes: ['string'],
-            count: 0,
-            objectTypeID: 'objectTypeId',
-            query: 'query',
-            sort: 'sort',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(ListSearchResponse::class, $result);
+        $this->assertNull($result);
     }
 
     #[Test]

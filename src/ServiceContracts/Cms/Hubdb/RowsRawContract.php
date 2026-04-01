@@ -200,7 +200,7 @@ interface RowsRawContract
      * @param array<string,mixed>|RowPurgeBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseHubDBTableRowV3>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */

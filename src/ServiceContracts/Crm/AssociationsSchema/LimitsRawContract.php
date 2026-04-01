@@ -11,7 +11,6 @@ use HubspotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinit
 use HubspotSDK\Crm\AssociationsSchema\Limits\LimitBatchDeleteParams;
 use HubspotSDK\Crm\AssociationsSchema\Limits\LimitBatchUpdateParams;
 use HubspotSDK\Crm\AssociationsSchema\Limits\LimitGetByObjectTypesParams;
-use HubspotSDK\Crm\BatchResponseVoid;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -39,7 +38,7 @@ interface LimitsRawContract
      * @param array<string,mixed>|LimitBatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseVoid>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */

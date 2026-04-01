@@ -11,15 +11,15 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Crm\ListsService::getByObjectTypeIDAndName()
+ * @see HubspotSDK\Services\Crm\ListsService::getByObjectTypeAndName()
  *
- * @phpstan-type ListGetByObjectTypeIDAndNameParamsShape = array{
+ * @phpstan-type ListGetByObjectTypeAndNameParamsShape = array{
  *   objectTypeID: string, includeFilters?: bool|null
  * }
  */
-final class ListGetByObjectTypeIDAndNameParams implements BaseModel
+final class ListGetByObjectTypeAndNameParams implements BaseModel
 {
-    /** @use SdkModel<ListGetByObjectTypeIDAndNameParamsShape> */
+    /** @use SdkModel<ListGetByObjectTypeAndNameParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -30,17 +30,17 @@ final class ListGetByObjectTypeIDAndNameParams implements BaseModel
     public ?bool $includeFilters;
 
     /**
-     * `new ListGetByObjectTypeIDAndNameParams()` is missing required properties by the API.
+     * `new ListGetByObjectTypeAndNameParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ListGetByObjectTypeIDAndNameParams::with(objectTypeID: ...)
+     * ListGetByObjectTypeAndNameParams::with(objectTypeID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ListGetByObjectTypeIDAndNameParams)->withObjectTypeID(...)
+     * (new ListGetByObjectTypeAndNameParams)->withObjectTypeID(...)
      * ```
      */
     public function __construct()

@@ -9,20 +9,16 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\StandardError;
 
 /**
- * @phpstan-import-type Property1Shape from \HubspotSDK\Cms\MediaBridge\Property1
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Cms\MediaBridge\Property
  *
  * @phpstan-type BatchResponsePropertyShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<Property1|Property1Shape>,
+ *   results: list<Property|PropertyShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -34,8 +30,8 @@ final class BatchResponseProperty implements BaseModel
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<Property1> $results */
-    #[Required(list: Property1::class)]
+    /** @var list<Property> $results */
+    #[Required(list: Property::class)]
     public array $results;
 
     #[Required]
@@ -45,16 +41,9 @@ final class BatchResponseProperty implements BaseModel
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
     /** @var array<string,string>|null $links */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    #[Optional]
-    public ?int $numErrors;
 
     #[Optional]
     public ?\DateTimeInterface $requestedAt;
@@ -89,9 +78,8 @@ final class BatchResponseProperty implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property1|Property1Shape> $results
+     * @param list<Property|PropertyShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -99,9 +87,7 @@ final class BatchResponseProperty implements BaseModel
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -111,9 +97,7 @@ final class BatchResponseProperty implements BaseModel
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -128,7 +112,7 @@ final class BatchResponseProperty implements BaseModel
     }
 
     /**
-     * @param list<Property1|Property1Shape> $results
+     * @param list<Property|PropertyShape> $results
      */
     public function withResults(array $results): self
     {
@@ -158,31 +142,12 @@ final class BatchResponseProperty implements BaseModel
     }
 
     /**
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

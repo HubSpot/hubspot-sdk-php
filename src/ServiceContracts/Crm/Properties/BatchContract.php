@@ -7,12 +7,12 @@ namespace HubspotSDK\ServiceContracts\Crm\Properties;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
 use HubspotSDK\Crm\Properties\BatchResponseProperty;
-use HubspotSDK\PropertyCreate;
+use HubspotSDK\Crm\Properties\PropertyCreate;
 use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PropertyCreateShape from \HubspotSDK\PropertyCreate
+ * @phpstan-import-type PropertyCreateShape from \HubspotSDK\Crm\Properties\PropertyCreate
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
  */

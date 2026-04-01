@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Cms\MediaBridge\Batch;
 
+use HubspotSDK\Cms\MediaBridge\PropertyCreate;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyCreate;
 
 /**
  * Create a batch of properties of the specified object type.
  *
  * @see HubspotSDK\Services\Cms\MediaBridge\BatchService::create()
  *
- * @phpstan-import-type PropertyCreateShape from \HubspotSDK\PropertyCreate
+ * @phpstan-import-type PropertyCreateShape from \HubspotSDK\Cms\MediaBridge\PropertyCreate
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   appID: int, inputs: list<PropertyCreate|PropertyCreateShape>

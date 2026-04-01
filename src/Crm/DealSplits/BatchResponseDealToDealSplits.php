@@ -9,20 +9,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\DealSplits\BatchResponseDealToDealSplits\Status;
-use HubspotSDK\StandardError;
 
 /**
  * @phpstan-import-type DealToDealSplitsShape from \HubspotSDK\Crm\DealSplits\DealToDealSplits
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponseDealToDealSplitsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<DealToDealSplits|DealToDealSplitsShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -59,10 +55,6 @@ final class BatchResponseDealToDealSplits implements BaseModel
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
     /**
      * A map of link names to associated URIs for additional resources or documentation.
      *
@@ -70,9 +62,6 @@ final class BatchResponseDealToDealSplits implements BaseModel
      */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    #[Optional]
-    public ?int $numErrors;
 
     /**
      * The timestamp indicating when the batch operation was requested, in date-time format.
@@ -112,7 +101,6 @@ final class BatchResponseDealToDealSplits implements BaseModel
      *
      * @param list<DealToDealSplits|DealToDealSplitsShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -120,9 +108,7 @@ final class BatchResponseDealToDealSplits implements BaseModel
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -132,9 +118,7 @@ final class BatchResponseDealToDealSplits implements BaseModel
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -189,17 +173,6 @@ final class BatchResponseDealToDealSplits implements BaseModel
     }
 
     /**
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * A map of link names to associated URIs for additional resources or documentation.
      *
      * @param array<string,string> $links
@@ -208,14 +181,6 @@ final class BatchResponseDealToDealSplits implements BaseModel
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

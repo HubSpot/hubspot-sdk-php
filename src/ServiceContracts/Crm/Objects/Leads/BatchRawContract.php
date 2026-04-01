@@ -7,10 +7,12 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects\Leads;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\Leads\Batch\BatchCreateParams;
 use HubspotSDK\Crm\Objects\Leads\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Objects\Leads\Batch\BatchGetParams;
 use HubspotSDK\Crm\Objects\Leads\Batch\BatchUpdateParams;
+use HubspotSDK\Crm\Objects\Leads\Batch\BatchUpsertParams;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -75,6 +77,21 @@ interface BatchRawContract
      */
     public function get(
         array|BatchGetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|BatchUpsertParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseSimplePublicUpsertObject>
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        array|BatchUpsertParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

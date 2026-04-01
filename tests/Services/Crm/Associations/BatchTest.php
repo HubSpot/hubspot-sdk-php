@@ -6,7 +6,6 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\Crm\BatchResponseVoid;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -86,7 +85,7 @@ final class BatchTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseVoid::class, $result);
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -103,7 +102,7 @@ final class BatchTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseVoid::class, $result);
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -171,7 +170,7 @@ final class BatchTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseVoid::class, $result);
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -199,7 +198,7 @@ final class BatchTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseVoid::class, $result);
+        $this->assertNull($result);
     }
 
     #[Test]

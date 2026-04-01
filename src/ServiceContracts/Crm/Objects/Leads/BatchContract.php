@@ -6,14 +6,17 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects\Leads;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
 use HubspotSDK\RequestOptions;
 
 /**
  * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
  * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
  */
@@ -78,4 +81,17 @@ interface BatchContract
         ?string $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
     ): BatchResponseSimplePublicObject;
+
+    /**
+     * @api
+     *
+     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function upsert(
+        array $inputs,
+        RequestOptions|array|null $requestOptions = null
+    ): BatchResponseSimplePublicUpsertObject;
 }

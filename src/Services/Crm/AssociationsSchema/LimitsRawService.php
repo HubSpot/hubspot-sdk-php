@@ -14,7 +14,6 @@ use HubspotSDK\Crm\AssociationsSchema\Limits\LimitBatchUpdateParams;
 use HubspotSDK\Crm\AssociationsSchema\Limits\LimitGetByObjectTypesParams;
 use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
 use HubspotSDK\Crm\AssociationsSchema\PublicAssociationSpec;
-use HubspotSDK\Crm\BatchResponseVoid;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\AssociationsSchema\LimitsRawContract;
 
@@ -66,7 +65,7 @@ final class LimitsRawService implements LimitsRawContract
      * }|LimitBatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseVoid>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
@@ -92,7 +91,7 @@ final class LimitsRawService implements LimitsRawContract
             ],
             body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
-            convert: BatchResponseVoid::class,
+            convert: null,
         );
     }
 

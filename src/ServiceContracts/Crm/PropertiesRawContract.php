@@ -7,12 +7,12 @@ namespace HubspotSDK\ServiceContracts\Crm;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
+use HubspotSDK\Crm\Properties\Property;
 use HubspotSDK\Crm\Properties\PropertyCreateParams;
 use HubspotSDK\Crm\Properties\PropertyDeleteParams;
 use HubspotSDK\Crm\Properties\PropertyGetParams;
 use HubspotSDK\Crm\Properties\PropertyListParams;
 use HubspotSDK\Crm\Properties\PropertyUpdateParams;
-use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 
 /**
