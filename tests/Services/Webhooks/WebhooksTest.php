@@ -81,56 +81,6 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testCreateFilter(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->webhooks->createFilter(
-            filter: [
-                'conditions' => [
-                    [
-                        'filterType' => 'CRM_OBJECT_PROPERTY',
-                        'operator' => 'CONTAINS',
-                        'property' => 'property',
-                    ],
-                ],
-            ],
-            subscriptionID: 0,
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(FilterCreateResponse::class, $result);
-    }
-
-    #[Test]
-    public function testCreateFilterWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->webhooks->createFilter(
-            filter: [
-                'conditions' => [
-                    [
-                        'filterType' => 'CRM_OBJECT_PROPERTY',
-                        'operator' => 'CONTAINS',
-                        'property' => 'property',
-                        'value' => 'value',
-                        'values' => ['string'],
-                    ],
-                ],
-            ],
-            subscriptionID: 0,
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(FilterCreateResponse::class, $result);
-    }
-
-    #[Test]
     public function testCreateJournalSubscription(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -181,16 +131,53 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testDeleteFilter(): void
+    public function testCreateSubscriptionFilter(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->webhooks->deleteFilter(0);
+        $result = $this->client->webhooks->webhooks->createSubscriptionFilter(
+            filter: [
+                'conditions' => [
+                    [
+                        'filterType' => 'CRM_OBJECT_PROPERTY',
+                        'operator' => 'CONTAINS',
+                        'property' => 'property',
+                    ],
+                ],
+            ],
+            subscriptionID: 0,
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
+        $this->assertInstanceOf(FilterCreateResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateSubscriptionFilterWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->webhooks->createSubscriptionFilter(
+            filter: [
+                'conditions' => [
+                    [
+                        'filterType' => 'CRM_OBJECT_PROPERTY',
+                        'operator' => 'CONTAINS',
+                        'property' => 'property',
+                        'value' => 'value',
+                        'values' => ['string'],
+                    ],
+                ],
+            ],
+            subscriptionID: 0,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FilterCreateResponse::class, $result);
     }
 
     #[Test]
@@ -265,29 +252,16 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetFilter(): void
+    public function testDeleteSubscriptionFilter(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->webhooks->getFilter(0);
+        $result = $this->client->webhooks->webhooks->deleteSubscriptionFilter(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(FilterResponse::class, $result);
-    }
-
-    #[Test]
-    public function testGetFiltersBySubscription(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->webhooks->getFiltersBySubscription(0);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsList($result);
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -347,52 +321,54 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetLocalEarliest(): void
+    public function testGetLocalJournalEarliest(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->webhooks->getLocalEarliest();
+        $result = $this->client->webhooks->webhooks->getLocalJournalEarliest();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testGetLocalLatest(): void
+    public function testGetLocalJournalLatest(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->webhooks->getLocalLatest();
+        $result = $this->client->webhooks->webhooks->getLocalJournalLatest();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testGetLocalNextByOffset(): void
+    public function testGetLocalJournalNextByOffset(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->webhooks->getLocalNextByOffset('offset');
+        $result = $this->client->webhooks->webhooks->getLocalJournalNextByOffset(
+            'offset'
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testGetLocalStatus(): void
+    public function testGetLocalJournalStatus(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->webhooks->getLocalStatus(
+        $result = $this->client->webhooks->webhooks->getLocalJournalStatus(
             '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'
         );
 
@@ -437,6 +413,37 @@ final class WebhooksTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SubscriptionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetSubscriptionFilter(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->webhooks->getSubscriptionFilter(0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(FilterResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetSubscriptionFilterForSubscription(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this
+            ->client
+            ->webhooks
+            ->webhooks
+            ->getSubscriptionFilterForSubscription(0)
+        ;
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsList($result);
     }
 
     #[Test]

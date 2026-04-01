@@ -9,6 +9,7 @@ use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
@@ -147,6 +148,42 @@ final class PartnerClientsService implements PartnerClientsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($partnerClientID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve a list of associations for a specific partner client based on the specified object type.
+     *
+     * @param string $toObjectType Path param
+     * @param string $partnerClientID Path param
+     * @param string $after Query param: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit query param: The maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<MultiAssociatedObjectWithLabel>
+     *
+     * @throws APIException
+     */
+    public function listAssociations(
+        string $toObjectType,
+        string $partnerClientID,
+        ?string $after = null,
+        int $limit = 500,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page {
+        $params = Util::removeNulls(
+            [
+                'partnerClientID' => $partnerClientID,
+                'after' => $after,
+                'limit' => $limit,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listAssociations($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

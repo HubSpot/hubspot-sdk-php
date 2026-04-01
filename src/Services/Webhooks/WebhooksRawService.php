@@ -24,16 +24,16 @@ use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse;
 use HubspotSDK\Webhooks\Webhooks\SubscriptionResponse1;
 use HubspotSDK\Webhooks\Webhooks\ThrottlingSettings;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateCrmSnapshotParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookCreateFilterParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookCreateSubscriptionFilterParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateSubscriptionParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookCreateSubscriptionParams\EventType;
 use HubspotSDK\Webhooks\Webhooks\WebhookDeleteSubscriptionParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookGetJournalEarliestParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookGetJournalLatestParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookGetJournalNextByOffsetParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalEarliestParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalLatestParams;
-use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalNextByOffsetParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalJournalEarliestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalJournalLatestParams;
+use HubspotSDK\Webhooks\Webhooks\WebhookGetLocalJournalNextByOffsetParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookGetSubscriptionParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookUpdateSettingsParams;
 use HubspotSDK\Webhooks\Webhooks\WebhookUpdateSubscriptionParams;
@@ -80,37 +80,6 @@ final class WebhooksRawService implements WebhooksRawContract
             body: (object) $parsed,
             options: $options,
             convert: CrmObjectSnapshotBatchResponse::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   filter: Filter|FilterShape, subscriptionID: int
-     * }|WebhookCreateFilterParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<FilterCreateResponse>
-     *
-     * @throws APIException
-     */
-    public function createFilter(
-        array|WebhookCreateFilterParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = WebhookCreateFilterParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: 'webhooks-journal/subscriptions/2026-03/filters',
-            body: (object) $parsed,
-            options: $options,
-            convert: FilterCreateResponse::class,
         );
     }
 
@@ -176,22 +145,31 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * @param array{
+     *   filter: Filter|FilterShape, subscriptionID: int
+     * }|WebhookCreateSubscriptionFilterParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<mixed>
+     * @return BaseResponse<FilterCreateResponse>
      *
      * @throws APIException
      */
-    public function deleteFilter(
-        int $filterID,
-        RequestOptions|array|null $requestOptions = null
+    public function createSubscriptionFilter(
+        array|WebhookCreateSubscriptionFilterParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
+        [$parsed, $options] = WebhookCreateSubscriptionFilterParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'delete',
-            path: ['webhooks-journal/subscriptions/2026-03/filters/%1$s', $filterID],
-            options: $requestOptions,
-            convert: null,
+            method: 'post',
+            path: 'webhooks-journal/subscriptions/2026-03/filters',
+            body: (object) $parsed,
+            options: $options,
+            convert: FilterCreateResponse::class,
         );
     }
 
@@ -303,45 +281,20 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<FilterResponse>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function getFilter(
+    public function deleteSubscriptionFilter(
         int $filterID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'get',
+            method: 'delete',
             path: ['webhooks-journal/subscriptions/2026-03/filters/%1$s', $filterID],
             options: $requestOptions,
-            convert: FilterResponse::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<list<FilterResponse>>
-     *
-     * @throws APIException
-     */
-    public function getFiltersBySubscription(
-        int $subscriptionID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: [
-                'webhooks-journal/subscriptions/2026-03/filters/subscription/%1$s',
-                $subscriptionID,
-            ],
-            options: $requestOptions,
-            convert: new ListOf(FilterResponse::class),
+            convert: null,
         );
     }
 
@@ -470,18 +423,18 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetLocalEarliestParams $params
+     * @param array{installPortalID?: int}|WebhookGetLocalJournalEarliestParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getLocalEarliest(
-        array|WebhookGetLocalEarliestParams $params,
+    public function getLocalJournalEarliest(
+        array|WebhookGetLocalJournalEarliestParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetLocalEarliestParams::parseRequest(
+        [$parsed, $options] = WebhookGetLocalJournalEarliestParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -503,18 +456,18 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetLocalLatestParams $params
+     * @param array{installPortalID?: int}|WebhookGetLocalJournalLatestParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getLocalLatest(
-        array|WebhookGetLocalLatestParams $params,
+    public function getLocalJournalLatest(
+        array|WebhookGetLocalJournalLatestParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetLocalLatestParams::parseRequest(
+        [$parsed, $options] = WebhookGetLocalJournalLatestParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -536,19 +489,21 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetLocalNextByOffsetParams $params
+     * @param array{
+     *   installPortalID?: int
+     * }|WebhookGetLocalJournalNextByOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getLocalNextByOffset(
+    public function getLocalJournalNextByOffset(
         string $offset,
-        array|WebhookGetLocalNextByOffsetParams $params,
+        array|WebhookGetLocalJournalNextByOffsetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetLocalNextByOffsetParams::parseRequest(
+        [$parsed, $options] = WebhookGetLocalJournalNextByOffsetParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -578,7 +533,7 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * @throws APIException
      */
-    public function getLocalStatus(
+    public function getLocalJournalStatus(
         string $statusID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
@@ -647,6 +602,53 @@ final class WebhooksRawService implements WebhooksRawContract
             ],
             options: $options,
             convert: SubscriptionResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<FilterResponse>
+     *
+     * @throws APIException
+     */
+    public function getSubscriptionFilter(
+        int $filterID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['webhooks-journal/subscriptions/2026-03/filters/%1$s', $filterID],
+            options: $requestOptions,
+            convert: FilterResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<list<FilterResponse>>
+     *
+     * @throws APIException
+     */
+    public function getSubscriptionFilterForSubscription(
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'webhooks-journal/subscriptions/2026-03/filters/subscription/%1$s',
+                $subscriptionID,
+            ],
+            options: $requestOptions,
+            convert: new ListOf(FilterResponse::class),
         );
     }
 

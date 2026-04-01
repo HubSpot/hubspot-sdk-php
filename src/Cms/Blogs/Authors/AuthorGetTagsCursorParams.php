@@ -10,9 +10,9 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::listPostsByQuery()
+ * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::getTagsCursor()
  *
- * @phpstan-type AuthorListPostsByQueryParamsShape = array{
+ * @phpstan-type AuthorGetTagsCursorParamsShape = array{
  *   after?: string|null,
  *   archived?: bool|null,
  *   createdAfter?: \DateTimeInterface|null,
@@ -26,9 +26,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   updatedBefore?: \DateTimeInterface|null,
  * }
  */
-final class AuthorListPostsByQueryParams implements BaseModel
+final class AuthorGetTagsCursorParams implements BaseModel
 {
-    /** @use SdkModel<AuthorListPostsByQueryParamsShape> */
+    /** @use SdkModel<AuthorGetTagsCursorParamsShape> */
     use SdkModel;
     use SdkParams;
 

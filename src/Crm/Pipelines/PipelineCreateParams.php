@@ -11,16 +11,17 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Create a pipeline stage.
+ * Create a new pipeline with the provided property values. The entire pipeline object, including its unique ID, will be returned in the response.
  *
  * @see HubspotSDK\Services\Crm\PipelinesService::create()
  *
+ * @phpstan-import-type PipelineStageInputShape from \HubspotSDK\Crm\Pipelines\PipelineStageInput
+ *
  * @phpstan-type PipelineCreateParamsShape = array{
- *   objectType: string,
  *   displayOrder: int,
  *   label: string,
- *   metadata: array<string,string>,
- *   stageID?: string|null,
+ *   stages: list<PipelineStageInput|PipelineStageInputShape>,
+ *   pipelineID?: string|null,
  * }
  */
 final class PipelineCreateParams implements BaseModel
@@ -29,54 +30,44 @@ final class PipelineCreateParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    #[Required]
-    public string $objectType;
-
     /**
-     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
     #[Required]
     public int $displayOrder;
 
     /**
-     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     * A unique label used to organize pipelines in HubSpot's UI.
      */
     #[Required]
     public string $label;
 
     /**
-     * A JSON object containing properties that are not present on all object pipelines.
+     * Pipeline stage inputs used to create the new or replacement pipeline.
      *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @var array<string,string> $metadata
+     * @var list<PipelineStageInput> $stages
      */
-    #[Required(map: 'string')]
-    public array $metadata;
+    #[Required(list: PipelineStageInput::class)]
+    public array $stages;
 
-    #[Optional('stageId')]
-    public ?string $stageID;
+    #[Optional('pipelineId')]
+    public ?string $pipelineID;
 
     /**
      * `new PipelineCreateParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PipelineCreateParams::with(
-     *   objectType: ..., displayOrder: ..., label: ..., metadata: ...
-     * )
+     * PipelineCreateParams::with(displayOrder: ..., label: ..., stages: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
      * (new PipelineCreateParams)
-     *   ->withObjectType(...)
      *   ->withDisplayOrder(...)
      *   ->withLabel(...)
-     *   ->withMetadata(...)
+     *   ->withStages(...)
      * ```
      */
     public function __construct()
@@ -89,37 +80,27 @@ final class PipelineCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,string> $metadata
+     * @param list<PipelineStageInput|PipelineStageInputShape> $stages
      */
     public static function with(
-        string $objectType,
         int $displayOrder,
         string $label,
-        array $metadata,
-        ?string $stageID = null,
+        array $stages,
+        ?string $pipelineID = null
     ): self {
         $self = new self;
 
-        $self['objectType'] = $objectType;
         $self['displayOrder'] = $displayOrder;
         $self['label'] = $label;
-        $self['metadata'] = $metadata;
+        $self['stages'] = $stages;
 
-        null !== $stageID && $self['stageID'] = $stageID;
-
-        return $self;
-    }
-
-    public function withObjectType(string $objectType): self
-    {
-        $self = clone $this;
-        $self['objectType'] = $objectType;
+        null !== $pipelineID && $self['pipelineID'] = $pipelineID;
 
         return $self;
     }
 
     /**
-     * The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+     * The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
      */
     public function withDisplayOrder(int $displayOrder): self
     {
@@ -130,7 +111,7 @@ final class PipelineCreateParams implements BaseModel
     }
 
     /**
-     * A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+     * A unique label used to organize pipelines in HubSpot's UI.
      */
     public function withLabel(string $label): self
     {
@@ -141,26 +122,22 @@ final class PipelineCreateParams implements BaseModel
     }
 
     /**
-     * A JSON object containing properties that are not present on all object pipelines.
+     * Pipeline stage inputs used to create the new or replacement pipeline.
      *
-     * For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
-     *
-     * For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
-     *
-     * @param array<string,string> $metadata
+     * @param list<PipelineStageInput|PipelineStageInputShape> $stages
      */
-    public function withMetadata(array $metadata): self
+    public function withStages(array $stages): self
     {
         $self = clone $this;
-        $self['metadata'] = $metadata;
+        $self['stages'] = $stages;
 
         return $self;
     }
 
-    public function withStageID(string $stageID): self
+    public function withPipelineID(string $pipelineID): self
     {
         $self = clone $this;
-        $self['stageID'] = $stageID;
+        $self['pipelineID'] = $pipelineID;
 
         return $self;
     }

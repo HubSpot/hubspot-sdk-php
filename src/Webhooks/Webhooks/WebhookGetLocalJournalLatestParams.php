@@ -10,15 +10,15 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Webhooks\WebhooksService::getLocalNextByOffset()
+ * @see HubspotSDK\Services\Webhooks\WebhooksService::getLocalJournalLatest()
  *
- * @phpstan-type WebhookGetLocalNextByOffsetParamsShape = array{
+ * @phpstan-type WebhookGetLocalJournalLatestParamsShape = array{
  *   installPortalID?: int|null
  * }
  */
-final class WebhookGetLocalNextByOffsetParams implements BaseModel
+final class WebhookGetLocalJournalLatestParams implements BaseModel
 {
-    /** @use SdkModel<WebhookGetLocalNextByOffsetParamsShape> */
+    /** @use SdkModel<WebhookGetLocalJournalLatestParamsShape> */
     use SdkModel;
     use SdkParams;
 

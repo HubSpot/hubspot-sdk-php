@@ -74,29 +74,6 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * @param Filter|FilterShape $filter defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function createFilter(
-        Filter|array $filter,
-        int $subscriptionID,
-        RequestOptions|array|null $requestOptions = null,
-    ): FilterCreateResponse {
-        $params = Util::removeNulls(
-            ['filter' => $filter, 'subscriptionID' => $subscriptionID]
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->createFilter(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -152,16 +129,22 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
+     * @param Filter|FilterShape $filter defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function deleteFilter(
-        int $filterID,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed {
+    public function createSubscriptionFilter(
+        Filter|array $filter,
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null,
+    ): FilterCreateResponse {
+        $params = Util::removeNulls(
+            ['filter' => $filter, 'subscriptionID' => $subscriptionID]
+        );
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->deleteFilter($filterID, requestOptions: $requestOptions);
+        $response = $this->raw->createSubscriptionFilter(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -248,31 +231,12 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getFilter(
+    public function deleteSubscriptionFilter(
         int $filterID,
         RequestOptions|array|null $requestOptions = null
-    ): FilterResponse {
+    ): mixed {
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getFilter($filterID, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return list<FilterResponse>
-     *
-     * @throws APIException
-     */
-    public function getFiltersBySubscription(
-        int $subscriptionID,
-        RequestOptions|array|null $requestOptions = null
-    ): array {
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getFiltersBySubscription($subscriptionID, requestOptions: $requestOptions);
+        $response = $this->raw->deleteSubscriptionFilter($filterID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -359,14 +323,14 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getLocalEarliest(
+    public function getLocalJournalEarliest(
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(['installPortalID' => $installPortalID]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getLocalEarliest(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getLocalJournalEarliest(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -378,14 +342,14 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getLocalLatest(
+    public function getLocalJournalLatest(
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(['installPortalID' => $installPortalID]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getLocalLatest(params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getLocalJournalLatest(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -397,7 +361,7 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getLocalNextByOffset(
+    public function getLocalJournalNextByOffset(
         string $offset,
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
@@ -405,7 +369,7 @@ final class WebhooksService implements WebhooksContract
         $params = Util::removeNulls(['installPortalID' => $installPortalID]);
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getLocalNextByOffset($offset, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->getLocalJournalNextByOffset($offset, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -417,12 +381,12 @@ final class WebhooksService implements WebhooksContract
      *
      * @throws APIException
      */
-    public function getLocalStatus(
+    public function getLocalJournalStatus(
         string $statusID,
         RequestOptions|array|null $requestOptions = null
     ): SnapshotStatusResponse {
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getLocalStatus($statusID, requestOptions: $requestOptions);
+        $response = $this->raw->getLocalJournalStatus($statusID, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -464,6 +428,42 @@ final class WebhooksService implements WebhooksContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getSubscription($subscriptionID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getSubscriptionFilter(
+        int $filterID,
+        RequestOptions|array|null $requestOptions = null
+    ): FilterResponse {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getSubscriptionFilter($filterID, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return list<FilterResponse>
+     *
+     * @throws APIException
+     */
+    public function getSubscriptionFilterForSubscription(
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null
+    ): array {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getSubscriptionFilterForSubscription($subscriptionID, requestOptions: $requestOptions);
 
         return $response->parse();
     }

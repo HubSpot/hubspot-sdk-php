@@ -10,33 +10,38 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Return a single pipeline object identified by its unique `{pipelineId}`.
+ * Delete a pipeline stage.
  *
- * @see HubspotSDK\Services\Crm\PipelinesService::get()
+ * @see HubspotSDK\Services\Crm\PipelinesService::deleteStage()
  *
- * @phpstan-type PipelineGetParamsShape = array{objectType: string}
+ * @phpstan-type PipelineDeleteStageParamsShape = array{
+ *   objectType: string, pipelineID: string
+ * }
  */
-final class PipelineGetParams implements BaseModel
+final class PipelineDeleteStageParams implements BaseModel
 {
-    /** @use SdkModel<PipelineGetParamsShape> */
+    /** @use SdkModel<PipelineDeleteStageParamsShape> */
     use SdkModel;
     use SdkParams;
 
     #[Required]
     public string $objectType;
 
+    #[Required]
+    public string $pipelineID;
+
     /**
-     * `new PipelineGetParams()` is missing required properties by the API.
+     * `new PipelineDeleteStageParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PipelineGetParams::with(objectType: ...)
+     * PipelineDeleteStageParams::with(objectType: ..., pipelineID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PipelineGetParams)->withObjectType(...)
+     * (new PipelineDeleteStageParams)->withObjectType(...)->withPipelineID(...)
      * ```
      */
     public function __construct()
@@ -49,11 +54,12 @@ final class PipelineGetParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $objectType): self
+    public static function with(string $objectType, string $pipelineID): self
     {
         $self = new self;
 
         $self['objectType'] = $objectType;
+        $self['pipelineID'] = $pipelineID;
 
         return $self;
     }
@@ -62,6 +68,14 @@ final class PipelineGetParams implements BaseModel
     {
         $self = clone $this;
         $self['objectType'] = $objectType;
+
+        return $self;
+    }
+
+    public function withPipelineID(string $pipelineID): self
+    {
+        $self = clone $this;
+        $self['pipelineID'] = $pipelineID;
 
         return $self;
     }

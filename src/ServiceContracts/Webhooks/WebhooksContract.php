@@ -44,20 +44,6 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param Filter|FilterShape $filter defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function createFilter(
-        Filter|array $filter,
-        int $subscriptionID,
-        RequestOptions|array|null $requestOptions = null,
-    ): FilterCreateResponse;
-
-    /**
-     * @api
-     *
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -91,14 +77,16 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param Filter|FilterShape $filter defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function deleteFilter(
-        int $filterID,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed;
+    public function createSubscriptionFilter(
+        Filter|array $filter,
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null,
+    ): FilterCreateResponse;
 
     /**
      * @api
@@ -156,24 +144,10 @@ interface WebhooksContract
      *
      * @throws APIException
      */
-    public function getFilter(
+    public function deleteSubscriptionFilter(
         int $filterID,
         RequestOptions|array|null $requestOptions = null
-    ): FilterResponse;
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return list<FilterResponse>
-     *
-     * @throws APIException
-     */
-    public function getFiltersBySubscription(
-        int $subscriptionID,
-        RequestOptions|array|null $requestOptions = null
-    ): array;
+    ): mixed;
 
     /**
      * @api
@@ -231,7 +205,7 @@ interface WebhooksContract
      *
      * @throws APIException
      */
-    public function getLocalEarliest(
+    public function getLocalJournalEarliest(
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
@@ -243,7 +217,7 @@ interface WebhooksContract
      *
      * @throws APIException
      */
-    public function getLocalLatest(
+    public function getLocalJournalLatest(
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
@@ -255,7 +229,7 @@ interface WebhooksContract
      *
      * @throws APIException
      */
-    public function getLocalNextByOffset(
+    public function getLocalJournalNextByOffset(
         string $offset,
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
@@ -268,7 +242,7 @@ interface WebhooksContract
      *
      * @throws APIException
      */
-    public function getLocalStatus(
+    public function getLocalJournalStatus(
         string $statusID,
         RequestOptions|array|null $requestOptions = null
     ): SnapshotStatusResponse;
@@ -297,6 +271,32 @@ interface WebhooksContract
         int $appID,
         RequestOptions|array|null $requestOptions = null,
     ): SubscriptionResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getSubscriptionFilter(
+        int $filterID,
+        RequestOptions|array|null $requestOptions = null
+    ): FilterResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return list<FilterResponse>
+     *
+     * @throws APIException
+     */
+    public function getSubscriptionFilterForSubscription(
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null
+    ): array;
 
     /**
      * @api

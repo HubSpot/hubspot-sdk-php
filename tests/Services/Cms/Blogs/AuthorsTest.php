@@ -325,65 +325,78 @@ final class AuthorsTest extends TestCase
     }
 
     #[Test]
-    public function testListByQuery(): void
+    public function testGetCursor(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->listByQuery();
+        $result = $this->client->cms->blogs->authors->getCursor();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testListPosts(): void
+    public function testGetCursorByQuery(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->listPosts();
+        $result = $this->client->cms->blogs->authors->getCursorByQuery();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testListPostsByQuery(): void
+    public function testGetPostsCursor(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->listPostsByQuery();
+        $result = $this->client->cms->blogs->authors->getPostsCursor();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testListTags(): void
+    public function testGetPostsCursorByQuery(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->listTags();
+        $result = $this->client->cms->blogs->authors->getPostsCursorByQuery();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testListTagsByQuery(): void
+    public function testGetTagsCursor(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->cms->blogs->authors->listTagsByQuery();
+        $result = $this->client->cms->blogs->authors->getTagsCursor();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testGetTagsCursorByQuery(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->blogs->authors->getTagsCursorByQuery();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);

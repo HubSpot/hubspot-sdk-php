@@ -7,6 +7,7 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubspotSDK\Crm\FilterGroup;
+use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
@@ -81,6 +82,27 @@ interface PartnerClientsContract
         ?array $propertiesWithHistory = null,
         RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObjectWithAssociations;
+
+    /**
+     * @api
+     *
+     * @param string $toObjectType Path param
+     * @param string $partnerClientID Path param
+     * @param string $after Query param: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param int $limit query param: The maximum number of results to display per page
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return Page<MultiAssociatedObjectWithLabel>
+     *
+     * @throws APIException
+     */
+    public function listAssociations(
+        string $toObjectType,
+        string $partnerClientID,
+        ?string $after = null,
+        int $limit = 500,
+        RequestOptions|array|null $requestOptions = null,
+    ): Page;
 
     /**
      * @api

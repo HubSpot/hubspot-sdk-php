@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags;
+namespace HubspotSDK\Crm\Pipelines;
 
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
@@ -10,33 +10,33 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * Delete a feature flag in an app.  For example, delete the `hs-release-app-cards` flag after all accounts have been migrated.
+ * Return all the stages associated with the pipeline identified by `{pipelineId}`.
  *
- * @see HubspotSDK\Services\Crm\FeatureFlagsService::delete()
+ * @see HubspotSDK\Services\Crm\PipelinesService::listStages()
  *
- * @phpstan-type FeatureFlagDeleteParamsShape = array{appID: int}
+ * @phpstan-type PipelineListStagesParamsShape = array{objectType: string}
  */
-final class FeatureFlagDeleteParams implements BaseModel
+final class PipelineListStagesParams implements BaseModel
 {
-    /** @use SdkModel<FeatureFlagDeleteParamsShape> */
+    /** @use SdkModel<PipelineListStagesParamsShape> */
     use SdkModel;
     use SdkParams;
 
     #[Required]
-    public int $appID;
+    public string $objectType;
 
     /**
-     * `new FeatureFlagDeleteParams()` is missing required properties by the API.
+     * `new PipelineListStagesParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * FeatureFlagDeleteParams::with(appID: ...)
+     * PipelineListStagesParams::with(objectType: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new FeatureFlagDeleteParams)->withAppID(...)
+     * (new PipelineListStagesParams)->withObjectType(...)
      * ```
      */
     public function __construct()
@@ -49,19 +49,19 @@ final class FeatureFlagDeleteParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(int $appID): self
+    public static function with(string $objectType): self
     {
         $self = new self;
 
-        $self['appID'] = $appID;
+        $self['objectType'] = $objectType;
 
         return $self;
     }
 
-    public function withAppID(int $appID): self
+    public function withObjectType(string $objectType): self
     {
         $self = clone $this;
-        $self['appID'] = $appID;
+        $self['objectType'] = $objectType;
 
         return $self;
     }

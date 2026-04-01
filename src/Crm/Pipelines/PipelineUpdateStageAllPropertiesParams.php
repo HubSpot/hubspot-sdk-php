@@ -12,9 +12,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Replace all the properties of an existing pipeline stage with the values provided. The updated stage will be returned in the response.
  *
- * @see HubspotSDK\Services\Crm\PipelinesService::replace()
+ * @see HubspotSDK\Services\Crm\PipelinesService::updateStageAllProperties()
  *
- * @phpstan-type PipelineReplaceParamsShape = array{
+ * @phpstan-type PipelineUpdateStageAllPropertiesParamsShape = array{
  *   objectType: string,
  *   pipelineID: string,
  *   displayOrder: int,
@@ -22,9 +22,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   metadata: array<string,string>,
  * }
  */
-final class PipelineReplaceParams implements BaseModel
+final class PipelineUpdateStageAllPropertiesParams implements BaseModel
 {
-    /** @use SdkModel<PipelineReplaceParamsShape> */
+    /** @use SdkModel<PipelineUpdateStageAllPropertiesParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -59,11 +59,11 @@ final class PipelineReplaceParams implements BaseModel
     public array $metadata;
 
     /**
-     * `new PipelineReplaceParams()` is missing required properties by the API.
+     * `new PipelineUpdateStageAllPropertiesParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PipelineReplaceParams::with(
+     * PipelineUpdateStageAllPropertiesParams::with(
      *   objectType: ..., pipelineID: ..., displayOrder: ..., label: ..., metadata: ...
      * )
      * ```
@@ -71,7 +71,7 @@ final class PipelineReplaceParams implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PipelineReplaceParams)
+     * (new PipelineUpdateStageAllPropertiesParams)
      *   ->withObjectType(...)
      *   ->withPipelineID(...)
      *   ->withDisplayOrder(...)

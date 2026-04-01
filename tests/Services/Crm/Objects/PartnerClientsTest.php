@@ -5,6 +5,7 @@ namespace Tests\Services\Crm\Objects;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
 use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
 use HubspotSDK\Crm\SimplePublicObject;
 use HubspotSDK\Page;
@@ -95,6 +96,50 @@ final class PartnerClientsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SimplePublicObjectWithAssociations::class, $result);
+    }
+
+    #[Test]
+    public function testListAssociations(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $page = $this->client->crm->objects->partnerClients->listAssociations(
+            'toObjectType',
+            partnerClientID: 'partnerClientId'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(MultiAssociatedObjectWithLabel::class, $item);
+        }
+    }
+
+    #[Test]
+    public function testListAssociationsWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $page = $this->client->crm->objects->partnerClients->listAssociations(
+            'toObjectType',
+            partnerClientID: 'partnerClientId',
+            after: 'after',
+            limit: 0,
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(Page::class, $page);
+
+        if ($item = $page->getItems()[0] ?? null) {
+            // @phpstan-ignore-next-line method.alreadyNarrowedType
+            $this->assertInstanceOf(MultiAssociatedObjectWithLabel::class, $item);
+        }
     }
 
     #[Test]

@@ -7,7 +7,9 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientGetParams;
+use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientListAssociationsParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientListParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientSearchParams;
 use HubspotSDK\Crm\Objects\PartnerClients\PartnerClientUpdateParams;
@@ -66,6 +68,23 @@ interface PartnerClientsRawContract
     public function get(
         string $partnerClientID,
         array|PartnerClientGetParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param string $toObjectType Path param
+     * @param array<string,mixed>|PartnerClientListAssociationsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<MultiAssociatedObjectWithLabel>>
+     *
+     * @throws APIException
+     */
+    public function listAssociations(
+        string $toObjectType,
+        array|PartnerClientListAssociationsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

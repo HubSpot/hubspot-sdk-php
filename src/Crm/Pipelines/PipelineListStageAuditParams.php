@@ -12,15 +12,15 @@ use HubspotSDK\Core\Contracts\BaseModel;
 /**
  * Return a reverse chronological list of all mutations that have occurred on the pipeline stage identified by `{stageId}`.
  *
- * @see HubspotSDK\Services\Crm\PipelinesService::getAudit()
+ * @see HubspotSDK\Services\Crm\PipelinesService::listStageAudit()
  *
- * @phpstan-type PipelineGetAuditParamsShape = array{
+ * @phpstan-type PipelineListStageAuditParamsShape = array{
  *   objectType: string, pipelineID: string
  * }
  */
-final class PipelineGetAuditParams implements BaseModel
+final class PipelineListStageAuditParams implements BaseModel
 {
-    /** @use SdkModel<PipelineGetAuditParamsShape> */
+    /** @use SdkModel<PipelineListStageAuditParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -31,17 +31,17 @@ final class PipelineGetAuditParams implements BaseModel
     public string $pipelineID;
 
     /**
-     * `new PipelineGetAuditParams()` is missing required properties by the API.
+     * `new PipelineListStageAuditParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PipelineGetAuditParams::with(objectType: ..., pipelineID: ...)
+     * PipelineListStageAuditParams::with(objectType: ..., pipelineID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PipelineGetAuditParams)->withObjectType(...)->withPipelineID(...)
+     * (new PipelineListStageAuditParams)->withObjectType(...)->withPipelineID(...)
      * ```
      */
     public function __construct()

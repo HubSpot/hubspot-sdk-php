@@ -10,17 +10,17 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Webhooks\WebhooksService::createFilter()
+ * @see HubspotSDK\Services\Webhooks\WebhooksService::createSubscriptionFilter()
  *
  * @phpstan-import-type FilterShape from \HubspotSDK\Webhooks\Webhooks\Filter
  *
- * @phpstan-type WebhookCreateFilterParamsShape = array{
+ * @phpstan-type WebhookCreateSubscriptionFilterParamsShape = array{
  *   filter: Filter|FilterShape, subscriptionID: int
  * }
  */
-final class WebhookCreateFilterParams implements BaseModel
+final class WebhookCreateSubscriptionFilterParams implements BaseModel
 {
-    /** @use SdkModel<WebhookCreateFilterParamsShape> */
+    /** @use SdkModel<WebhookCreateSubscriptionFilterParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -34,17 +34,19 @@ final class WebhookCreateFilterParams implements BaseModel
     public int $subscriptionID;
 
     /**
-     * `new WebhookCreateFilterParams()` is missing required properties by the API.
+     * `new WebhookCreateSubscriptionFilterParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * WebhookCreateFilterParams::with(filter: ..., subscriptionID: ...)
+     * WebhookCreateSubscriptionFilterParams::with(filter: ..., subscriptionID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new WebhookCreateFilterParams)->withFilter(...)->withSubscriptionID(...)
+     * (new WebhookCreateSubscriptionFilterParams)
+     *   ->withFilter(...)
+     *   ->withSubscriptionID(...)
      * ```
      */
     public function __construct()
