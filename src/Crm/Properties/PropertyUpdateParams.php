@@ -23,6 +23,7 @@ use HubspotSDK\OptionInput;
  * @phpstan-type PropertyUpdateParamsShape = array{
  *   objectType: string,
  *   calculationFormula?: string|null,
+ *   currencyPropertyName?: string|null,
  *   description?: string|null,
  *   displayOrder?: int|null,
  *   fieldType?: null|FieldType|value-of<FieldType>,
@@ -31,6 +32,7 @@ use HubspotSDK\OptionInput;
  *   hidden?: bool|null,
  *   label?: string|null,
  *   options?: list<OptionInput|OptionInputShape>|null,
+ *   showCurrencySymbol?: bool|null,
  *   type?: null|Type|value-of<Type>,
  * }
  */
@@ -48,6 +50,9 @@ final class PropertyUpdateParams implements BaseModel
      */
     #[Optional]
     public ?string $calculationFormula;
+
+    #[Optional]
+    public ?string $currencyPropertyName;
 
     /**
      * A description of the property that will be shown as help text in HubSpot.
@@ -101,6 +106,9 @@ final class PropertyUpdateParams implements BaseModel
     #[Optional(list: OptionInput::class)]
     public ?array $options;
 
+    #[Optional]
+    public ?bool $showCurrencySymbol;
+
     /**
      * The data type of the property.
      *
@@ -140,6 +148,7 @@ final class PropertyUpdateParams implements BaseModel
     public static function with(
         string $objectType,
         ?string $calculationFormula = null,
+        ?string $currencyPropertyName = null,
         ?string $description = null,
         ?int $displayOrder = null,
         FieldType|string|null $fieldType = null,
@@ -148,6 +157,7 @@ final class PropertyUpdateParams implements BaseModel
         ?bool $hidden = null,
         ?string $label = null,
         ?array $options = null,
+        ?bool $showCurrencySymbol = null,
         Type|string|null $type = null,
     ): self {
         $self = new self;
@@ -155,6 +165,7 @@ final class PropertyUpdateParams implements BaseModel
         $self['objectType'] = $objectType;
 
         null !== $calculationFormula && $self['calculationFormula'] = $calculationFormula;
+        null !== $currencyPropertyName && $self['currencyPropertyName'] = $currencyPropertyName;
         null !== $description && $self['description'] = $description;
         null !== $displayOrder && $self['displayOrder'] = $displayOrder;
         null !== $fieldType && $self['fieldType'] = $fieldType;
@@ -163,6 +174,7 @@ final class PropertyUpdateParams implements BaseModel
         null !== $hidden && $self['hidden'] = $hidden;
         null !== $label && $self['label'] = $label;
         null !== $options && $self['options'] = $options;
+        null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
         null !== $type && $self['type'] = $type;
 
         return $self;
@@ -183,6 +195,14 @@ final class PropertyUpdateParams implements BaseModel
     {
         $self = clone $this;
         $self['calculationFormula'] = $calculationFormula;
+
+        return $self;
+    }
+
+    public function withCurrencyPropertyName(string $currencyPropertyName): self
+    {
+        $self = clone $this;
+        $self['currencyPropertyName'] = $currencyPropertyName;
 
         return $self;
     }
@@ -275,6 +295,14 @@ final class PropertyUpdateParams implements BaseModel
     {
         $self = clone $this;
         $self['options'] = $options;
+
+        return $self;
+    }
+
+    public function withShowCurrencySymbol(bool $showCurrencySymbol): self
+    {
+        $self = clone $this;
+        $self['showCurrencySymbol'] = $showCurrencySymbol;
 
         return $self;
     }

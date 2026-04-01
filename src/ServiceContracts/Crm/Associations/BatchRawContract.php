@@ -13,7 +13,6 @@ use HubspotSDK\Crm\Associations\Batch\BatchDeleteParams;
 use HubspotSDK\Crm\Associations\Batch\BatchGetParams;
 use HubspotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\Crm\BatchResponseVoid;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -44,7 +43,7 @@ interface BatchRawContract
      * @param array<string,mixed>|BatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseVoid>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
@@ -78,7 +77,7 @@ interface BatchRawContract
      * @param array<string,mixed>|BatchDeleteLabelsParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseVoid>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */

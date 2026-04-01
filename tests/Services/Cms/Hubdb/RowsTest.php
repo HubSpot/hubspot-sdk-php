@@ -372,7 +372,7 @@ final class RowsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -388,7 +388,7 @@ final class RowsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseHubDBTableRowV3::class, $result);
+        $this->assertNull($result);
     }
 
     #[Test]

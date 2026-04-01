@@ -5,6 +5,7 @@ namespace Tests\Services\Crm\Objects\Leads;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -190,5 +191,48 @@ final class BatchTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
+    }
+
+    #[Test]
+    public function testUpsert(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->objects->leads->batch->upsert(
+            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]]
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSimplePublicUpsertObject::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testUpsertWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->objects->leads->batch->upsert(
+            inputs: [
+                [
+                    'id' => 'id',
+                    'properties' => ['foo' => 'string'],
+                    'idProperty' => 'idProperty',
+                    'objectWriteTraceID' => 'objectWriteTraceId',
+                ],
+            ],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponseSimplePublicUpsertObject::class,
+            $result
+        );
     }
 }

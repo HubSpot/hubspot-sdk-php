@@ -11,7 +11,6 @@ use HubspotSDK\Crm\Associations\PublicAssociationMultiPost;
 use HubspotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
 use HubspotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\Crm\BatchResponseVoid;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -53,7 +52,7 @@ interface BatchContract
         string $fromObjectType,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseVoid;
+    ): mixed;
 
     /**
      * @api
@@ -87,7 +86,7 @@ interface BatchContract
         string $fromObjectType,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseVoid;
+    ): mixed;
 
     /**
      * @api

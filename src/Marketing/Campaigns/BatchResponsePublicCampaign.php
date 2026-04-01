@@ -9,20 +9,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaign\Status;
-use HubspotSDK\StandardError;
 
 /**
  * @phpstan-import-type PublicCampaignShape from \HubspotSDK\Marketing\Campaigns\PublicCampaign
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponsePublicCampaignShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicCampaign|PublicCampaignShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -60,26 +56,12 @@ final class BatchResponsePublicCampaign implements BaseModel
     public string $status;
 
     /**
-     * An array of errors that occurred during the batch operation, each item detailing a specific error.
-     *
-     * @var list<StandardError>|null $errors
-     */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
-    /**
      * A map of related links associated with the batch operation.
      *
      * @var array<string,string>|null $links
      */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    /**
-     * The number of errors that occurred during the batch operation.
-     */
-    #[Optional]
-    public ?int $numErrors;
 
     /**
      * The date and time when the batch operation was requested, formatted as a date-time string.
@@ -119,7 +101,6 @@ final class BatchResponsePublicCampaign implements BaseModel
      *
      * @param list<PublicCampaign|PublicCampaignShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -127,9 +108,7 @@ final class BatchResponsePublicCampaign implements BaseModel
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -139,9 +118,7 @@ final class BatchResponsePublicCampaign implements BaseModel
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -196,19 +173,6 @@ final class BatchResponsePublicCampaign implements BaseModel
     }
 
     /**
-     * An array of errors that occurred during the batch operation, each item detailing a specific error.
-     *
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * A map of related links associated with the batch operation.
      *
      * @param array<string,string> $links
@@ -217,17 +181,6 @@ final class BatchResponsePublicCampaign implements BaseModel
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    /**
-     * The number of errors that occurred during the batch operation.
-     */
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

@@ -10,22 +10,18 @@ use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject\Status;
 use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\StandardError;
 
 /**
  * A public object batch response object.
  *
  * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\SimplePublicObject
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponseSimplePublicObjectShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<SimplePublicObject|SimplePublicObjectShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -58,10 +54,6 @@ final class BatchResponseSimplePublicObject implements BaseModel
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
     /**
      * An object containing relevant links related to the batch request.
      *
@@ -69,12 +61,6 @@ final class BatchResponseSimplePublicObject implements BaseModel
      */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    /**
-     * The total number of errors that occurred during the batch operation.
-     */
-    #[Optional]
-    public ?int $numErrors;
 
     /**
      * The timestamp when the batch request was initially made, in ISO 8601 format.
@@ -114,7 +100,6 @@ final class BatchResponseSimplePublicObject implements BaseModel
      *
      * @param list<SimplePublicObject|SimplePublicObjectShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -122,9 +107,7 @@ final class BatchResponseSimplePublicObject implements BaseModel
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -134,9 +117,7 @@ final class BatchResponseSimplePublicObject implements BaseModel
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -189,17 +170,6 @@ final class BatchResponseSimplePublicObject implements BaseModel
     }
 
     /**
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * An object containing relevant links related to the batch request.
      *
      * @param array<string,string> $links
@@ -208,17 +178,6 @@ final class BatchResponseSimplePublicObject implements BaseModel
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    /**
-     * The total number of errors that occurred during the batch operation.
-     */
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

@@ -18,7 +18,6 @@ use HubspotSDK\Crm\Associations\PublicAssociationMultiPost;
 use HubspotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
 use HubspotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\Crm\BatchResponseVoid;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\BatchRawContract;
 
@@ -92,7 +91,7 @@ final class BatchRawService implements BatchRawContract
      * }|BatchDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseVoid>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
@@ -118,7 +117,7 @@ final class BatchRawService implements BatchRawContract
             ],
             body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
-            convert: BatchResponseVoid::class,
+            convert: null,
         );
     }
 
@@ -176,7 +175,7 @@ final class BatchRawService implements BatchRawContract
      * }|BatchDeleteLabelsParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseVoid>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
@@ -202,7 +201,7 @@ final class BatchRawService implements BatchRawContract
             ],
             body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
-            convert: BatchResponseVoid::class,
+            convert: null,
         );
     }
 

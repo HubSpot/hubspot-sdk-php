@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK;
+namespace HubspotSDK\Cms\MediaBridge;
 
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PropertyCreateShape from \HubspotSDK\PropertyCreate
+ * @phpstan-import-type PropertyCreateShape from \HubspotSDK\Cms\MediaBridge\PropertyCreate
  *
  * @phpstan-type BatchInputPropertyCreateShape = array{
  *   inputs: list<PropertyCreate|PropertyCreateShape>

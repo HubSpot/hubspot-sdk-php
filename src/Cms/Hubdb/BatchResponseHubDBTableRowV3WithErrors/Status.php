@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\BatchResponseVoid;
+namespace HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3WithErrors;
 
 /**
- * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
+ * The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.
  */
 enum Status: string
 {

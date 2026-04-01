@@ -6,13 +6,13 @@ namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
 
 use HubspotSDK\Cms\MediaBridge\Batch\BatchGetParams\DataSensitivity;
 use HubspotSDK\Cms\MediaBridge\BatchResponseProperty;
+use HubspotSDK\Cms\MediaBridge\PropertyCreate;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\PropertyCreate;
 use HubspotSDK\PropertyName;
 use HubspotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PropertyCreateShape from \HubspotSDK\PropertyCreate
+ * @phpstan-import-type PropertyCreateShape from \HubspotSDK\Cms\MediaBridge\PropertyCreate
  * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
  * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
  */

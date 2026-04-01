@@ -9,20 +9,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets\Status;
-use HubspotSDK\StandardError;
 
 /**
  * @phpstan-import-type PublicCampaignWithAssetsShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponsePublicCampaignWithAssetsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicCampaignWithAssets|PublicCampaignWithAssetsShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -60,26 +56,12 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     public string $status;
 
     /**
-     * An array of errors encountered during the batch operation, each described by a StandardError object.
-     *
-     * @var list<StandardError>|null $errors
-     */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
-    /**
      * A collection of URLs linking to related resources or documentation.
      *
      * @var array<string,string>|null $links
      */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    /**
-     * The number of errors encountered during the batch operation.
-     */
-    #[Optional]
-    public ?int $numErrors;
 
     /**
      * The timestamp when the batch request was initially made.
@@ -119,7 +101,6 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
      *
      * @param list<PublicCampaignWithAssets|PublicCampaignWithAssetsShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -127,9 +108,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -139,9 +118,7 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -196,19 +173,6 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     }
 
     /**
-     * An array of errors encountered during the batch operation, each described by a StandardError object.
-     *
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * A collection of URLs linking to related resources or documentation.
      *
      * @param array<string,string> $links
@@ -217,17 +181,6 @@ final class BatchResponsePublicCampaignWithAssets implements BaseModel
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    /**
-     * The number of errors encountered during the batch operation.
-     */
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

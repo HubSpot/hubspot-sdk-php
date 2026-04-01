@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK;
+namespace HubspotSDK\Cms\MediaBridge;
 
+use HubspotSDK\Cms\MediaBridge\PropertyCreate\DataSensitivity;
+use HubspotSDK\Cms\MediaBridge\PropertyCreate\FieldType;
+use HubspotSDK\Cms\MediaBridge\PropertyCreate\Type;
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyCreate\DataSensitivity;
-use HubspotSDK\PropertyCreate\FieldType;
-use HubspotSDK\PropertyCreate\Type;
+use HubspotSDK\OptionInput;
 
 /**
  * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput

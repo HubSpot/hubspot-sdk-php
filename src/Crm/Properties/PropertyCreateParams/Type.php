@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\Crm\Properties\PropertyCreateParams;
 
+/**
+ * The data type of the property.
+ */
 enum Type: string
 {
     case BOOL = 'bool';

@@ -5,7 +5,7 @@ namespace Tests\Services\Crm;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
-use HubspotSDK\Property;
+use HubspotSDK\Crm\Properties\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -64,6 +64,7 @@ final class PropertiesTest extends TestCase
             name: 'name',
             type: 'bool',
             calculationFormula: 'calculationFormula',
+            currencyPropertyName: 'currencyPropertyName',
             dataSensitivity: 'highly_sensitive',
             description: 'description',
             displayOrder: 0,
@@ -81,6 +82,7 @@ final class PropertiesTest extends TestCase
                 ],
             ],
             referencedObjectType: 'referencedObjectType',
+            showCurrencySymbol: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -114,6 +116,7 @@ final class PropertiesTest extends TestCase
             'propertyName',
             objectType: 'objectType',
             calculationFormula: 'calculationFormula',
+            currencyPropertyName: 'currencyPropertyName',
             description: 'description',
             displayOrder: 0,
             fieldType: 'booleancheckbox',
@@ -130,6 +133,7 @@ final class PropertiesTest extends TestCase
                     'description' => 'description',
                 ],
             ],
+            showCurrencySymbol: true,
             type: 'bool',
         );
 

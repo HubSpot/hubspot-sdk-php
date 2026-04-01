@@ -8,6 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
+use HubspotSDK\Crm\Properties\Property;
 use HubspotSDK\Crm\Properties\PropertyCreateParams;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
@@ -17,7 +18,6 @@ use HubspotSDK\Crm\Properties\PropertyGetParams;
 use HubspotSDK\Crm\Properties\PropertyListParams;
 use HubspotSDK\Crm\Properties\PropertyUpdateParams;
 use HubspotSDK\OptionInput;
-use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\PropertiesRawContract;
 
@@ -45,6 +45,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *   name: string,
      *   type: Type|value-of<Type>,
      *   calculationFormula?: string,
+     *   currencyPropertyName?: string,
      *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
      *   description?: string,
      *   displayOrder?: int,
@@ -54,6 +55,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *   hidden?: bool,
      *   options?: list<OptionInput|OptionInputShape>,
      *   referencedObjectType?: string,
+     *   showCurrencySymbol?: bool,
      * }|PropertyCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -90,6 +92,7 @@ final class PropertiesRawService implements PropertiesRawContract
      * @param array{
      *   objectType: string,
      *   calculationFormula?: string,
+     *   currencyPropertyName?: string,
      *   description?: string,
      *   displayOrder?: int,
      *   fieldType?: value-of<PropertyUpdateParams\FieldType>,
@@ -98,6 +101,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *   hidden?: bool,
      *   label?: string,
      *   options?: list<OptionInput|OptionInputShape>,
+     *   showCurrencySymbol?: bool,
      *   type?: PropertyUpdateParams\Type|value-of<PropertyUpdateParams\Type>,
      * }|PropertyUpdateParams $params
      * @param RequestOpts|null $requestOptions

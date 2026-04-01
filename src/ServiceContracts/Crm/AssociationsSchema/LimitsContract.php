@@ -9,7 +9,6 @@ use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionCo
 use HubspotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
 use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
 use HubspotSDK\Crm\AssociationsSchema\PublicAssociationSpec;
-use HubspotSDK\Crm\BatchResponseVoid;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -45,7 +44,7 @@ interface LimitsContract
         string $fromObjectType,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseVoid;
+    ): mixed;
 
     /**
      * @api

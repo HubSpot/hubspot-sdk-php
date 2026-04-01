@@ -10,15 +10,15 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Crm\ListsService::listMembershipsJoinOrder()
+ * @see HubspotSDK\Services\Crm\ListsService::getMembershipsJoinOrder()
  *
- * @phpstan-type ListListMembershipsJoinOrderParamsShape = array{
+ * @phpstan-type ListGetMembershipsJoinOrderParamsShape = array{
  *   after?: string|null, before?: string|null, limit?: int|null
  * }
  */
-final class ListListMembershipsJoinOrderParams implements BaseModel
+final class ListGetMembershipsJoinOrderParams implements BaseModel
 {
-    /** @use SdkModel<ListListMembershipsJoinOrderParamsShape> */
+    /** @use SdkModel<ListGetMembershipsJoinOrderParamsShape> */
     use SdkModel;
     use SdkParams;
 

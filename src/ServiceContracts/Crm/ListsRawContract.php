@@ -20,12 +20,14 @@ use HubspotSDK\Crm\Lists\ListCreateResponse;
 use HubspotSDK\Crm\Lists\ListFetchResponse;
 use HubspotSDK\Crm\Lists\ListFolderCreateResponse;
 use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
-use HubspotSDK\Crm\Lists\ListGetByObjectTypeIDAndNameParams;
+use HubspotSDK\Crm\Lists\ListGetByObjectTypeAndNameParams;
 use HubspotSDK\Crm\Lists\ListGetIDMappingParams;
+use HubspotSDK\Crm\Lists\ListGetMembershipsJoinOrderParams;
 use HubspotSDK\Crm\Lists\ListGetParams;
 use HubspotSDK\Crm\Lists\ListGetRecordMembershipsParams;
+use HubspotSDK\Crm\Lists\ListGetSizeAndEditsHistoryBetweenParams;
+use HubspotSDK\Crm\Lists\ListListBySearchParams;
 use HubspotSDK\Crm\Lists\ListListFoldersParams;
-use HubspotSDK\Crm\Lists\ListListMembershipsJoinOrderParams;
 use HubspotSDK\Crm\Lists\ListListMembershipsParams;
 use HubspotSDK\Crm\Lists\ListListParams;
 use HubspotSDK\Crm\Lists\ListMoveFolderParams;
@@ -33,8 +35,8 @@ use HubspotSDK\Crm\Lists\ListMoveListParams;
 use HubspotSDK\Crm\Lists\ListRemoveMembershipsParams;
 use HubspotSDK\Crm\Lists\ListRenameFolderParams;
 use HubspotSDK\Crm\Lists\ListsByIDResponse;
-use HubspotSDK\Crm\Lists\ListSearchParams;
 use HubspotSDK\Crm\Lists\ListSearchResponse;
+use HubspotSDK\Crm\Lists\ListSizeAndEditHistoryResponse;
 use HubspotSDK\Crm\Lists\ListUpdateListFiltersParams;
 use HubspotSDK\Crm\Lists\ListUpdateListNameParams;
 use HubspotSDK\Crm\Lists\ListUpdateResponse;
@@ -219,20 +221,6 @@ interface ListsRawContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function deleteScheduleConversion(
-        string $listID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
      * @param array<string,mixed>|ListGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -250,16 +238,16 @@ interface ListsRawContract
      * @api
      *
      * @param string $listName Path param
-     * @param array<string,mixed>|ListGetByObjectTypeIDAndNameParams $params
+     * @param array<string,mixed>|ListGetByObjectTypeAndNameParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFetchResponse>
      *
      * @throws APIException
      */
-    public function getByObjectTypeIDAndName(
+    public function getByObjectTypeAndName(
         string $listName,
-        array|ListGetByObjectTypeIDAndNameParams $params,
+        array|ListGetByObjectTypeAndNameParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -275,6 +263,22 @@ interface ListsRawContract
      */
     public function getIDMapping(
         array|ListGetIDMappingParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|ListGetMembershipsJoinOrderParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<JoinTimeAndRecordID>>
+     *
+     * @throws APIException
+     */
+    public function getMembershipsJoinOrder(
+        string $listID,
+        array|ListGetMembershipsJoinOrderParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -311,6 +315,37 @@ interface ListsRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|ListGetSizeAndEditsHistoryBetweenParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListSizeAndEditHistoryResponse>
+     *
+     * @throws APIException
+     */
+    public function getSizeAndEditsHistoryBetween(
+        string $listID,
+        array|ListGetSizeAndEditsHistoryBetweenParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|ListListBySearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListSearchResponse>
+     *
+     * @throws APIException
+     */
+    public function listBySearch(
+        array|ListListBySearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
      * @param array<string,mixed>|ListListFoldersParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -336,22 +371,6 @@ interface ListsRawContract
     public function listMemberships(
         string $listID,
         array|ListListMembershipsParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|ListListMembershipsJoinOrderParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Page<JoinTimeAndRecordID>>
-     *
-     * @throws APIException
-     */
-    public function listMembershipsJoinOrder(
-        string $listID,
-        array|ListListMembershipsJoinOrderParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
@@ -435,16 +454,15 @@ interface ListsRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|ListSearchParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<ListSearchResponse>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function search(
-        array|ListSearchParams $params,
-        RequestOptions|array|null $requestOptions = null,
+    public function scheduleConversion(
+        string $listID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 
     /**

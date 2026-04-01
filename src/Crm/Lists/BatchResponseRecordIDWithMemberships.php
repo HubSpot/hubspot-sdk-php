@@ -9,20 +9,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Lists\BatchResponseRecordIDWithMemberships\Status;
-use HubspotSDK\StandardError;
 
 /**
  * @phpstan-import-type RecordIDWithMembershipsShape from \HubspotSDK\Crm\Lists\RecordIDWithMemberships
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponseRecordIDWithMembershipsShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<RecordIDWithMemberships|RecordIDWithMembershipsShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -45,16 +41,9 @@ final class BatchResponseRecordIDWithMemberships implements BaseModel
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
     /** @var array<string,string>|null $links */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    #[Optional]
-    public ?int $numErrors;
 
     #[Optional]
     public ?\DateTimeInterface $requestedAt;
@@ -91,7 +80,6 @@ final class BatchResponseRecordIDWithMemberships implements BaseModel
      *
      * @param list<RecordIDWithMemberships|RecordIDWithMembershipsShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -99,9 +87,7 @@ final class BatchResponseRecordIDWithMemberships implements BaseModel
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -111,9 +97,7 @@ final class BatchResponseRecordIDWithMemberships implements BaseModel
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -158,31 +142,12 @@ final class BatchResponseRecordIDWithMemberships implements BaseModel
     }
 
     /**
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

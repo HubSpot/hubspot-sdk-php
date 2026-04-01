@@ -11,9 +11,9 @@ use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Crm\ListsService::search()
+ * @see HubspotSDK\Services\Crm\ListsService::listBySearch()
  *
- * @phpstan-type ListSearchParamsShape = array{
+ * @phpstan-type ListListBySearchParamsShape = array{
  *   additionalProperties: list<string>,
  *   listIDs: list<string>,
  *   offset: int,
@@ -24,9 +24,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   sort?: string|null,
  * }
  */
-final class ListSearchParams implements BaseModel
+final class ListListBySearchParams implements BaseModel
 {
-    /** @use SdkModel<ListSearchParamsShape> */
+    /** @use SdkModel<ListListBySearchParamsShape> */
     use SdkModel;
     use SdkParams;
 
@@ -84,11 +84,11 @@ final class ListSearchParams implements BaseModel
     public ?string $sort;
 
     /**
-     * `new ListSearchParams()` is missing required properties by the API.
+     * `new ListListBySearchParams()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ListSearchParams::with(
+     * ListListBySearchParams::with(
      *   additionalProperties: ..., listIDs: ..., offset: ..., processingTypes: ...
      * )
      * ```
@@ -96,7 +96,7 @@ final class ListSearchParams implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ListSearchParams)
+     * (new ListListBySearchParams)
      *   ->withAdditionalProperties(...)
      *   ->withListIDs(...)
      *   ->withOffset(...)

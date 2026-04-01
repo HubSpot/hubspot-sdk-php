@@ -9,20 +9,16 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\StandardError;
 
 /**
  * @phpstan-import-type PublicWideStatusBulkResponseShape from \HubspotSDK\CommunicationPreferences\PublicWideStatusBulkResponse
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponsePublicWideStatusBulkResponseShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<PublicWideStatusBulkResponse|PublicWideStatusBulkResponseShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -60,26 +56,12 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
     public string $status;
 
     /**
-     * An array of errors encountered during the batch operation, each item providing details about a specific error.
-     *
-     * @var list<StandardError>|null $errors
-     */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
-    /**
      * A collection of related links associated with the batch response.
      *
      * @var array<string,string>|null $links
      */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    /**
-     * The number of errors that occurred during the batch operation.
-     */
-    #[Optional]
-    public ?int $numErrors;
 
     /**
      * The date and time when the batch request was made.
@@ -119,7 +101,6 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
      *
      * @param list<PublicWideStatusBulkResponse|PublicWideStatusBulkResponseShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -127,9 +108,7 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -139,9 +118,7 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -196,19 +173,6 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
     }
 
     /**
-     * An array of errors encountered during the batch operation, each item providing details about a specific error.
-     *
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * A collection of related links associated with the batch response.
      *
      * @param array<string,string> $links
@@ -217,17 +181,6 @@ final class BatchResponsePublicWideStatusBulkResponse implements BaseModel
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    /**
-     * The number of errors that occurred during the batch operation.
-     */
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

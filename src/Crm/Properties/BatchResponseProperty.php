@@ -9,21 +9,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Properties\BatchResponseProperty\Status;
-use HubspotSDK\Property;
-use HubspotSDK\StandardError;
 
 /**
- * @phpstan-import-type PropertyShape from \HubspotSDK\Property
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Crm\Properties\Property
  *
  * @phpstan-type BatchResponsePropertyShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<Property|PropertyShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -56,10 +51,6 @@ final class BatchResponseProperty implements BaseModel
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
     /**
      * A collection of URLs linking to documentation or resources related to the batch operation.
      *
@@ -67,12 +58,6 @@ final class BatchResponseProperty implements BaseModel
      */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    /**
-     * The total number of errors encountered during the batch operation.
-     */
-    #[Optional]
-    public ?int $numErrors;
 
     /**
      * The timestamp indicating when the batch operation was requested.
@@ -112,7 +97,6 @@ final class BatchResponseProperty implements BaseModel
      *
      * @param list<Property|PropertyShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -120,9 +104,7 @@ final class BatchResponseProperty implements BaseModel
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -132,9 +114,7 @@ final class BatchResponseProperty implements BaseModel
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -187,17 +167,6 @@ final class BatchResponseProperty implements BaseModel
     }
 
     /**
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * A collection of URLs linking to documentation or resources related to the batch operation.
      *
      * @param array<string,string> $links
@@ -206,17 +175,6 @@ final class BatchResponseProperty implements BaseModel
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    /**
-     * The total number of errors encountered during the batch operation.
-     */
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

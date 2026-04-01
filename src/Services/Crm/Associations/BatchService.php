@@ -13,7 +13,6 @@ use HubspotSDK\Crm\Associations\PublicAssociationMultiPost;
 use HubspotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
 use HubspotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest;
 use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\Crm\BatchResponseVoid;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Crm\Associations\BatchContract;
 
@@ -84,7 +83,7 @@ final class BatchService implements BatchContract
         string $fromObjectType,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseVoid {
+    ): mixed {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
         );
@@ -140,7 +139,7 @@ final class BatchService implements BatchContract
         string $fromObjectType,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseVoid {
+    ): mixed {
         $params = Util::removeNulls(
             ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
         );

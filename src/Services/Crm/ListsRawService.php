@@ -22,12 +22,14 @@ use HubspotSDK\Crm\Lists\ListCreateResponse;
 use HubspotSDK\Crm\Lists\ListFetchResponse;
 use HubspotSDK\Crm\Lists\ListFolderCreateResponse;
 use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
-use HubspotSDK\Crm\Lists\ListGetByObjectTypeIDAndNameParams;
+use HubspotSDK\Crm\Lists\ListGetByObjectTypeAndNameParams;
 use HubspotSDK\Crm\Lists\ListGetIDMappingParams;
+use HubspotSDK\Crm\Lists\ListGetMembershipsJoinOrderParams;
 use HubspotSDK\Crm\Lists\ListGetParams;
 use HubspotSDK\Crm\Lists\ListGetRecordMembershipsParams;
+use HubspotSDK\Crm\Lists\ListGetSizeAndEditsHistoryBetweenParams;
+use HubspotSDK\Crm\Lists\ListListBySearchParams;
 use HubspotSDK\Crm\Lists\ListListFoldersParams;
-use HubspotSDK\Crm\Lists\ListListMembershipsJoinOrderParams;
 use HubspotSDK\Crm\Lists\ListListMembershipsParams;
 use HubspotSDK\Crm\Lists\ListListParams;
 use HubspotSDK\Crm\Lists\ListMoveFolderParams;
@@ -35,8 +37,8 @@ use HubspotSDK\Crm\Lists\ListMoveListParams;
 use HubspotSDK\Crm\Lists\ListRemoveMembershipsParams;
 use HubspotSDK\Crm\Lists\ListRenameFolderParams;
 use HubspotSDK\Crm\Lists\ListsByIDResponse;
-use HubspotSDK\Crm\Lists\ListSearchParams;
 use HubspotSDK\Crm\Lists\ListSearchResponse;
+use HubspotSDK\Crm\Lists\ListSizeAndEditHistoryResponse;
 use HubspotSDK\Crm\Lists\ListUpdateListFiltersParams;
 use HubspotSDK\Crm\Lists\ListUpdateListNameParams;
 use HubspotSDK\Crm\Lists\ListUpdateResponse;
@@ -396,28 +398,6 @@ final class ListsRawService implements ListsRawContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function deleteScheduleConversion(
-        string $listID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'delete',
-            path: ['crm/lists/2026-03/%1$s/schedule-conversion', $listID],
-            options: $requestOptions,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
      * @param array{includeFilters?: bool}|ListGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -451,19 +431,19 @@ final class ListsRawService implements ListsRawContract
      * @param string $listName Path param
      * @param array{
      *   objectTypeID: string, includeFilters?: bool
-     * }|ListGetByObjectTypeIDAndNameParams $params
+     * }|ListGetByObjectTypeAndNameParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ListFetchResponse>
      *
      * @throws APIException
      */
-    public function getByObjectTypeIDAndName(
+    public function getByObjectTypeAndName(
         string $listName,
-        array|ListGetByObjectTypeIDAndNameParams $params,
+        array|ListGetByObjectTypeAndNameParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = ListGetByObjectTypeIDAndNameParams::parseRequest(
+        [$parsed, $options] = ListGetByObjectTypeAndNameParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -513,6 +493,39 @@ final class ListsRawService implements ListsRawContract
             ),
             options: $options,
             convert: PublicMigrationMapping::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   after?: string, before?: string, limit?: int
+     * }|ListGetMembershipsJoinOrderParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<Page<JoinTimeAndRecordID>>
+     *
+     * @throws APIException
+     */
+    public function getMembershipsJoinOrder(
+        string $listID,
+        array|ListGetMembershipsJoinOrderParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListGetMembershipsJoinOrderParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/lists/2026-03/%1$s/memberships/join-order', $listID],
+            query: $parsed,
+            options: $options,
+            convert: JoinTimeAndRecordID::class,
+            page: Page::class,
         );
     }
 
@@ -576,6 +589,76 @@ final class ListsRawService implements ListsRawContract
     /**
      * @api
      *
+     * @param array{
+     *   endDate?: string, startDate?: string
+     * }|ListGetSizeAndEditsHistoryBetweenParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListSizeAndEditHistoryResponse>
+     *
+     * @throws APIException
+     */
+    public function getSizeAndEditsHistoryBetween(
+        string $listID,
+        array|ListGetSizeAndEditsHistoryBetweenParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListGetSizeAndEditsHistoryBetweenParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['crm/lists/2026-03/%1$s/size-and-edits-history/between', $listID],
+            query: $parsed,
+            options: $options,
+            convert: ListSizeAndEditHistoryResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param array{
+     *   additionalProperties: list<string>,
+     *   listIDs: list<string>,
+     *   offset: int,
+     *   processingTypes: list<string>,
+     *   count?: int,
+     *   objectTypeID?: string,
+     *   query?: string,
+     *   sort?: string,
+     * }|ListListBySearchParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<ListSearchResponse>
+     *
+     * @throws APIException
+     */
+    public function listBySearch(
+        array|ListListBySearchParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = ListListBySearchParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'crm/lists/2026-03/search',
+            body: (object) $parsed,
+            options: $options,
+            convert: ListSearchResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
      * @param array{folderID?: string}|ListListFoldersParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -628,39 +711,6 @@ final class ListsRawService implements ListsRawContract
         return $this->client->request(
             method: 'get',
             path: ['crm/lists/2026-03/%1$s/memberships', $listID],
-            query: $parsed,
-            options: $options,
-            convert: JoinTimeAndRecordID::class,
-            page: Page::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   after?: string, before?: string, limit?: int
-     * }|ListListMembershipsJoinOrderParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<Page<JoinTimeAndRecordID>>
-     *
-     * @throws APIException
-     */
-    public function listMembershipsJoinOrder(
-        string $listID,
-        array|ListListMembershipsJoinOrderParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = ListListMembershipsJoinOrderParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['crm/lists/2026-03/%1$s/memberships/join-order', $listID],
             query: $parsed,
             options: $options,
             convert: JoinTimeAndRecordID::class,
@@ -817,38 +867,22 @@ final class ListsRawService implements ListsRawContract
     /**
      * @api
      *
-     * @param array{
-     *   additionalProperties: list<string>,
-     *   listIDs: list<string>,
-     *   offset: int,
-     *   processingTypes: list<string>,
-     *   count?: int,
-     *   objectTypeID?: string,
-     *   query?: string,
-     *   sort?: string,
-     * }|ListSearchParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<ListSearchResponse>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function search(
-        array|ListSearchParams $params,
-        RequestOptions|array|null $requestOptions = null,
+    public function scheduleConversion(
+        string $listID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
-        [$parsed, $options] = ListSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'post',
-            path: 'crm/lists/2026-03/search',
-            body: (object) $parsed,
-            options: $options,
-            convert: ListSearchResponse::class,
+            method: 'delete',
+            path: ['crm/lists/2026-03/%1$s/schedule-conversion', $listID],
+            options: $requestOptions,
+            convert: null,
         );
     }
 

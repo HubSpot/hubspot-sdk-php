@@ -418,7 +418,7 @@ final class RowsRawService implements RowsRawContract
      * @param array{inputs: list<string>}|RowPurgeBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseHubDBTableRowV3>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
@@ -440,7 +440,7 @@ final class RowsRawService implements RowsRawContract
             ],
             body: (object) $parsed,
             options: $options,
-            convert: BatchResponseHubDBTableRowV3::class,
+            convert: null,
         );
     }
 

@@ -9,20 +9,16 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate\Status;
-use HubspotSDK\StandardError;
 
 /**
  * @phpstan-import-type ExchangeRateShape from \HubspotSDK\Settings\Currencies\ExchangeRate
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
  *
  * @phpstan-type BatchResponseExchangeRateShape = array{
  *   completedAt: \DateTimeInterface,
  *   results: list<ExchangeRate|ExchangeRateShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
- *   errors?: list<StandardError|StandardErrorShape>|null,
  *   links?: array<string,string>|null,
- *   numErrors?: int|null,
  *   requestedAt?: \DateTimeInterface|null,
  * }
  */
@@ -55,10 +51,6 @@ final class BatchResponseExchangeRate implements BaseModel
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
-    #[Optional(list: StandardError::class)]
-    public ?array $errors;
-
     /**
      * The link to the next page with exchange rates.
      *
@@ -66,9 +58,6 @@ final class BatchResponseExchangeRate implements BaseModel
      */
     #[Optional(map: 'string')]
     public ?array $links;
-
-    #[Optional]
-    public ?int $numErrors;
 
     /**
      * The datetime the of the request.
@@ -108,7 +97,6 @@ final class BatchResponseExchangeRate implements BaseModel
      *
      * @param list<ExchangeRate|ExchangeRateShape> $results
      * @param Status|value-of<Status> $status
-     * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
      */
     public static function with(
@@ -116,9 +104,7 @@ final class BatchResponseExchangeRate implements BaseModel
         array $results,
         \DateTimeInterface $startedAt,
         Status|string $status,
-        ?array $errors = null,
         ?array $links = null,
-        ?int $numErrors = null,
         ?\DateTimeInterface $requestedAt = null,
     ): self {
         $self = new self;
@@ -128,9 +114,7 @@ final class BatchResponseExchangeRate implements BaseModel
         $self['startedAt'] = $startedAt;
         $self['status'] = $status;
 
-        null !== $errors && $self['errors'] = $errors;
         null !== $links && $self['links'] = $links;
-        null !== $numErrors && $self['numErrors'] = $numErrors;
         null !== $requestedAt && $self['requestedAt'] = $requestedAt;
 
         return $self;
@@ -183,17 +167,6 @@ final class BatchResponseExchangeRate implements BaseModel
     }
 
     /**
-     * @param list<StandardError|StandardErrorShape> $errors
-     */
-    public function withErrors(array $errors): self
-    {
-        $self = clone $this;
-        $self['errors'] = $errors;
-
-        return $self;
-    }
-
-    /**
      * The link to the next page with exchange rates.
      *
      * @param array<string,string> $links
@@ -202,14 +175,6 @@ final class BatchResponseExchangeRate implements BaseModel
     {
         $self = clone $this;
         $self['links'] = $links;
-
-        return $self;
-    }
-
-    public function withNumErrors(int $numErrors): self
-    {
-        $self = clone $this;
-        $self['numErrors'] = $numErrors;
 
         return $self;
     }

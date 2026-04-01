@@ -200,7 +200,7 @@ interface RowsContract
         string $tableIDOrName,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseHubDBTableRowV3;
+    ): mixed;
 
     /**
      * @api

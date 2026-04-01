@@ -334,7 +334,7 @@ final class RowsService implements RowsContract
         string $tableIDOrName,
         array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseHubDBTableRowV3 {
+    ): mixed {
         $params = Util::removeNulls(['inputs' => $inputs]);
 
         // @phpstan-ignore-next-line argument.type
