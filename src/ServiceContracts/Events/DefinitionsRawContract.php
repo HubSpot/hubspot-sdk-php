@@ -14,8 +14,8 @@ use HubspotSDK\Events\Definitions\DefinitionSendBatchParams;
 use HubspotSDK\Events\Definitions\DefinitionUpdateParams;
 use HubspotSDK\Events\Definitions\DefinitionUpdatePropertyParams;
 use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
+use HubspotSDK\Events\Definitions\Property;
 use HubspotSDK\Page;
-use HubspotSDK\Property;
 use HubspotSDK\RequestOptions;
 
 /**

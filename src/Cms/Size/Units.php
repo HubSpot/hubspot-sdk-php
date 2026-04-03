@@ -6,7 +6,7 @@ namespace HubspotSDK\Cms\Size;
 
 enum Units: string
 {
-    case PCT = '%';
+    case PERCENT = '%';
 
     case CH = 'ch';
 

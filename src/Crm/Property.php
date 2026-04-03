@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK;
+namespace HubspotSDK\Crm;
 
 use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Property\DataSensitivity;
-use HubspotSDK\Property\DateDisplayHint;
+use HubspotSDK\Crm\Property\DataSensitivity;
+use HubspotSDK\Crm\Property\DateDisplayHint;
+use HubspotSDK\Option;
+use HubspotSDK\PropertyModificationMetadata;
 
 /**
  * A HubSpot property.
@@ -31,6 +33,7 @@ use HubspotSDK\Property\DateDisplayHint;
  *   calculationFormula?: string|null,
  *   createdAt?: \DateTimeInterface|null,
  *   createdUserID?: string|null,
+ *   currencyPropertyName?: string|null,
  *   dataSensitivity?: null|DataSensitivity|value-of<DataSensitivity>,
  *   dateDisplayHint?: null|DateDisplayHint|value-of<DateDisplayHint>,
  *   displayOrder?: int|null,
@@ -131,6 +134,12 @@ final class Property implements BaseModel
      */
     #[Optional('createdUserId')]
     public ?string $createdUserID;
+
+    /**
+     * The name of the related currency property.
+     */
+    #[Optional]
+    public ?string $currencyPropertyName;
 
     /**
      * Indicates the sensitivity level of the property, such as "non_sensitive", "sensitive", or "highly_sensitive".
@@ -278,6 +287,7 @@ final class Property implements BaseModel
         ?string $calculationFormula = null,
         ?\DateTimeInterface $createdAt = null,
         ?string $createdUserID = null,
+        ?string $currencyPropertyName = null,
         DataSensitivity|string|null $dataSensitivity = null,
         DateDisplayHint|string|null $dateDisplayHint = null,
         ?int $displayOrder = null,
@@ -309,6 +319,7 @@ final class Property implements BaseModel
         null !== $calculationFormula && $self['calculationFormula'] = $calculationFormula;
         null !== $createdAt && $self['createdAt'] = $createdAt;
         null !== $createdUserID && $self['createdUserID'] = $createdUserID;
+        null !== $currencyPropertyName && $self['currencyPropertyName'] = $currencyPropertyName;
         null !== $dataSensitivity && $self['dataSensitivity'] = $dataSensitivity;
         null !== $dateDisplayHint && $self['dateDisplayHint'] = $dateDisplayHint;
         null !== $displayOrder && $self['displayOrder'] = $displayOrder;
@@ -468,6 +479,17 @@ final class Property implements BaseModel
     {
         $self = clone $this;
         $self['createdUserID'] = $createdUserID;
+
+        return $self;
+    }
+
+    /**
+     * The name of the related currency property.
+     */
+    public function withCurrencyPropertyName(string $currencyPropertyName): self
+    {
+        $self = clone $this;
+        $self['currencyPropertyName'] = $currencyPropertyName;
 
         return $self;
     }

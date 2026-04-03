@@ -6,10 +6,10 @@ namespace HubspotSDK\ServiceContracts\Crm;
 
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
-use HubspotSDK\Crm\Properties\Property;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
 use HubspotSDK\Crm\Properties\PropertyCreateParams\Type;
+use HubspotSDK\Crm\Property;
 use HubspotSDK\OptionInput;
 use HubspotSDK\RequestOptions;
 

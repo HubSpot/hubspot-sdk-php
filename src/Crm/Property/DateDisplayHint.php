@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\Property;
+namespace HubspotSDK\Crm\Property;
 
 /**
- * Indicates how date values should be displayed, with options such as 'absolute', 'absolute_with_relative', 'time_since', or 'time_until'.
+ * Controls how date properties are displayed in the HubSpot UI, with options such as 'absolute', 'absolute_with_relative', 'time_since', and 'time_until'.
  */
 enum DateDisplayHint: string
 {
