@@ -9,13 +9,13 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Property;
 use HubspotSDK\ObjectTypeDefinitionLabels;
-use HubspotSDK\Property;
 
 /**
  * @phpstan-import-type AssociationDefinitionShape from \HubspotSDK\AssociationDefinition
  * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
- * @phpstan-import-type PropertyShape from \HubspotSDK\Property
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Crm\Property
  *
  * @phpstan-type ObjectSchemaShape = array{
  *   id: string,

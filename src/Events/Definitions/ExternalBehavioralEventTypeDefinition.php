@@ -9,12 +9,11 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition\TrackingType;
-use HubspotSDK\Property;
 
 /**
  * @phpstan-import-type AssociationDefinitionShape from \HubspotSDK\Events\Definitions\AssociationDefinition
  * @phpstan-import-type BehavioralEventTypeDefinitionLabelsShape from \HubspotSDK\Events\Definitions\BehavioralEventTypeDefinitionLabels
- * @phpstan-import-type PropertyShape from \HubspotSDK\Property
+ * @phpstan-import-type PropertyShape from \HubspotSDK\Events\Definitions\Property
  * @phpstan-import-type ComboEventRuleBranchShape from \HubspotSDK\Events\Definitions\ComboEventRuleBranch
  * @phpstan-import-type ExternalObjectResolutionMappingResponseShape from \HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingResponse
  *
