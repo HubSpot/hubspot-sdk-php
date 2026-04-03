@@ -63,35 +63,40 @@ final class Filter implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'filterType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            PublicPropertyFilter::class,
-            PublicAssociationInListFilter::class,
-            PublicPageViewAnalyticsFilter::class,
-            PublicCtaAnalyticsFilter::class,
-            PublicEventAnalyticsFilter::class,
-            PublicFormSubmissionFilter::class,
-            PublicFormSubmissionOnPageFilter::class,
-            PublicIntegrationEventFilter::class,
-            PublicEmailSubscriptionFilter::class,
-            PublicCommunicationSubscriptionFilter::class,
-            PublicCampaignInfluencedFilter::class,
-            PublicSurveyMonkeyFilter::class,
-            PublicSurveyMonkeyValueFilter::class,
-            PublicWebinarFilter::class,
-            PublicEmailEventFilter::class,
-            PublicPrivacyAnalyticsFilter::class,
-            PublicAdsSearchFilter::class,
-            PublicAdsTimeFilter::class,
-            PublicInListFilter::class,
-            PublicNumAssociationsFilter::class,
-            PublicUnifiedEventsFilter::class,
-            PublicPropertyAssociationInListFilter::class,
-            PublicConstantFilter::class,
+            'PROPERTY' => PublicPropertyFilter::class,
+            'ASSOCIATION' => PublicAssociationInListFilter::class,
+            'PAGE_VIEW' => PublicPageViewAnalyticsFilter::class,
+            'CTA' => PublicCtaAnalyticsFilter::class,
+            'EVENT' => PublicEventAnalyticsFilter::class,
+            'FORM_SUBMISSION' => PublicFormSubmissionFilter::class,
+            'FORM_SUBMISSION_ON_PAGE' => PublicFormSubmissionOnPageFilter::class,
+            'INTEGRATION_EVENT' => PublicIntegrationEventFilter::class,
+            'EMAIL_SUBSCRIPTION' => PublicEmailSubscriptionFilter::class,
+            'COMMUNICATION_SUBSCRIPTION' => PublicCommunicationSubscriptionFilter::class,
+            'CAMPAIGN_INFLUENCED' => PublicCampaignInfluencedFilter::class,
+            'SURVEY_MONKEY' => PublicSurveyMonkeyFilter::class,
+            'SURVEY_MONKEY_VALUE' => PublicSurveyMonkeyValueFilter::class,
+            'WEBINAR' => PublicWebinarFilter::class,
+            'EMAIL_EVENT' => PublicEmailEventFilter::class,
+            'PRIVACY' => PublicPrivacyAnalyticsFilter::class,
+            'ADS_SEARCH' => PublicAdsSearchFilter::class,
+            'ADS_TIME' => PublicAdsTimeFilter::class,
+            'IN_LIST' => PublicInListFilter::class,
+            'NUM_ASSOCIATIONS' => PublicNumAssociationsFilter::class,
+            'UNIFIED_EVENTS' => PublicUnifiedEventsFilter::class,
+            'PROPERTY_ASSOCIATION' => PublicPropertyAssociationInListFilter::class,
+            'CONSTANT' => PublicConstantFilter::class,
         ];
     }
 }

@@ -8,7 +8,7 @@ use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\MarketingContract;
 use HubspotSDK\Services\Marketing\CampaignsService;
 use HubspotSDK\Services\Marketing\EmailsService;
-use HubspotSDK\Services\Marketing\EventsService;
+use HubspotSDK\Services\Marketing\MarketingEventsService;
 use HubspotSDK\Services\Marketing\SingleSendService;
 use HubspotSDK\Services\Marketing\TransactionalService;
 
@@ -32,7 +32,7 @@ final class MarketingService implements MarketingContract
     /**
      * @api
      */
-    public EventsService $events;
+    public MarketingEventsService $marketingEvents;
 
     /**
      * @api
@@ -52,7 +52,7 @@ final class MarketingService implements MarketingContract
         $this->raw = new MarketingRawService($client);
         $this->campaigns = new CampaignsService($client);
         $this->emails = new EmailsService($client);
-        $this->events = new EventsService($client);
+        $this->marketingEvents = new MarketingEventsService($client);
         $this->singleSend = new SingleSendService($client);
         $this->transactional = new TransactionalService($client);
     }

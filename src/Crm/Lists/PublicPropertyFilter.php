@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
 use HubspotSDK\Crm\Lists\PublicPropertyFilter\FilterType;
+use HubspotSDK\Crm\Lists\PublicPropertyFilter\Operation;
 
 /**
  * @phpstan-import-type OperationVariants from \HubspotSDK\Crm\Lists\PublicPropertyFilter\Operation
@@ -37,7 +38,7 @@ final class PublicPropertyFilter implements BaseModel
      *
      * @var OperationVariants $operation
      */
-    #[Required]
+    #[Required(union: Operation::class)]
     public PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $operation;
 
     /**

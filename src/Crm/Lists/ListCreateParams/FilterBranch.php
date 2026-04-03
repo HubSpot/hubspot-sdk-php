@@ -35,20 +35,25 @@ final class FilterBranch implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'filterBranchType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            PublicOrFilterBranch::class,
-            PublicAndFilterBranch::class,
-            PublicNotAllFilterBranch::class,
-            PublicNotAnyFilterBranch::class,
-            PublicRestrictedFilterBranch::class,
-            PublicUnifiedEventsFilterBranch::class,
-            PublicPropertyAssociationFilterBranch::class,
-            PublicAssociationFilterBranch::class,
+            'OR' => PublicOrFilterBranch::class,
+            'AND' => PublicAndFilterBranch::class,
+            'NOT_ALL' => PublicNotAllFilterBranch::class,
+            'NOT_ANY' => PublicNotAnyFilterBranch::class,
+            'RESTRICTED' => PublicRestrictedFilterBranch::class,
+            'UNIFIED_EVENTS' => PublicUnifiedEventsFilterBranch::class,
+            'PROPERTY_ASSOCIATION' => PublicPropertyAssociationFilterBranch::class,
+            'ASSOCIATION' => PublicAssociationFilterBranch::class,
         ];
     }
 }

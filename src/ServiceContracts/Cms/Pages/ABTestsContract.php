@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
-use HubspotSDK\Cms\Pages\Page;
+use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -26,7 +26,7 @@ interface ABTestsContract
         string $contentID,
         string $variationName,
         RequestOptions|array|null $requestOptions = null,
-    ): Page;
+    ): CmsPage;
 
     /**
      * @api
@@ -41,7 +41,7 @@ interface ABTestsContract
         string $contentID,
         string $variationName,
         RequestOptions|array|null $requestOptions = null,
-    ): Page;
+    ): CmsPage;
 
     /**
      * @api

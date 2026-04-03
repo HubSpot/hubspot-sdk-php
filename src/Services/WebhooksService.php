@@ -6,6 +6,7 @@ namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\WebhooksContract;
+use HubspotSDK\Services\Webhooks\WebhookSubscriptionsService;
 
 final class WebhooksService implements WebhooksContract
 {
@@ -17,7 +18,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      */
-    public Webhooks\WebhooksService $webhooks;
+    public WebhookSubscriptionsService $webhookSubscriptions;
 
     /**
      * @internal
@@ -25,6 +26,6 @@ final class WebhooksService implements WebhooksContract
     public function __construct(private Client $client)
     {
         $this->raw = new WebhooksRawService($client);
-        $this->webhooks = new Webhooks\WebhooksService($client);
+        $this->webhookSubscriptions = new WebhookSubscriptionsService($client);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms;
 
 use HubspotSDK\Client;
+use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\PageGetLandingPageFoldersByQueryParams;
 use HubspotSDK\Cms\Pages\PageGetLandingPageFoldersParams;
 use HubspotSDK\Cms\Pages\PageGetLandingPageRevisionParams;
@@ -459,7 +460,7 @@ final class PagesRawService implements PagesRawContract
      * @param array{objectID: string}|PageRestoreLandingPageRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */
@@ -484,7 +485,7 @@ final class PagesRawService implements PagesRawContract
                 $revisionID,
             ],
             options: $options,
-            convert: \HubspotSDK\Cms\Pages\Page::class,
+            convert: CmsPage::class,
         );
     }
 
@@ -498,7 +499,7 @@ final class PagesRawService implements PagesRawContract
      * }|PageRestoreLandingPageRevisionToDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */
@@ -523,7 +524,7 @@ final class PagesRawService implements PagesRawContract
                 $revisionID,
             ],
             options: $options,
-            convert: \HubspotSDK\Cms\Pages\Page::class,
+            convert: CmsPage::class,
         );
     }
 
@@ -535,7 +536,7 @@ final class PagesRawService implements PagesRawContract
      * @param array{objectID: string}|PageRestoreSitePageRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */
@@ -560,7 +561,7 @@ final class PagesRawService implements PagesRawContract
                 $revisionID,
             ],
             options: $options,
-            convert: \HubspotSDK\Cms\Pages\Page::class,
+            convert: CmsPage::class,
         );
     }
 
@@ -572,7 +573,7 @@ final class PagesRawService implements PagesRawContract
      * @param array{objectID: string}|PageRestoreSitePageRevisionToDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */
@@ -597,7 +598,7 @@ final class PagesRawService implements PagesRawContract
                 $revisionID,
             ],
             options: $options,
-            convert: \HubspotSDK\Cms\Pages\Page::class,
+            convert: CmsPage::class,
         );
     }
 }

@@ -6,6 +6,7 @@ namespace HubspotSDK\Services;
 
 use HubspotSDK\Client;
 use HubspotSDK\ServiceContracts\BusinessUnitsContract;
+use HubspotSDK\Services\BusinessUnits\BusinessUnitEntriesService;
 
 final class BusinessUnitsService implements BusinessUnitsContract
 {
@@ -17,7 +18,7 @@ final class BusinessUnitsService implements BusinessUnitsContract
     /**
      * @api
      */
-    public BusinessUnits\BusinessUnitsService $businessUnits;
+    public BusinessUnitEntriesService $businessUnitEntries;
 
     /**
      * @internal
@@ -25,6 +26,6 @@ final class BusinessUnitsService implements BusinessUnitsContract
     public function __construct(private Client $client)
     {
         $this->raw = new BusinessUnitsRawService($client);
-        $this->businessUnits = new BusinessUnits\BusinessUnitsService($client);
+        $this->businessUnitEntries = new BusinessUnitEntriesService($client);
     }
 }
