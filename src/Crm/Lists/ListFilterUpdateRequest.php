@@ -7,6 +7,7 @@ namespace HubspotSDK\Crm\Lists;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Lists\ListFilterUpdateRequest\FilterBranch;
 
 /**
  * @phpstan-import-type FilterBranchVariants from \HubspotSDK\Crm\Lists\ListFilterUpdateRequest\FilterBranch
@@ -26,7 +27,7 @@ final class ListFilterUpdateRequest implements BaseModel
      *
      * @var FilterBranchVariants $filterBranch
      */
-    #[Required]
+    #[Required(union: FilterBranch::class)]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch;
 
     /**

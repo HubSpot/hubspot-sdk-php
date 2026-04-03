@@ -9,6 +9,7 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch;
 
 /**
  * @see HubspotSDK\Services\Crm\ListsService::updateListFilters()
@@ -31,7 +32,7 @@ final class ListUpdateListFiltersParams implements BaseModel
      *
      * @var FilterBranchVariants $filterBranch
      */
-    #[Required]
+    #[Required(union: FilterBranch::class)]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch;
 
     #[Optional]

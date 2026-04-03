@@ -6,13 +6,14 @@ namespace HubspotSDK\Services\Cms\Pages;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\ContentLanguageVariation;
+use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
-use HubspotSDK\Cms\Pages\Page;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Pages\LandingPagesContract;
 
@@ -160,7 +161,7 @@ final class LandingPagesService implements LandingPagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): Page {
+    ): CmsPage {
         $params = Util::removeNulls(
             [
                 'id' => $id,
@@ -359,7 +360,7 @@ final class LandingPagesService implements LandingPagesContract
         array $widgets,
         ?bool $archived = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Page {
+    ): CmsPage {
         $params = Util::removeNulls(
             [
                 'id' => $id,
@@ -440,7 +441,7 @@ final class LandingPagesService implements LandingPagesContract
      * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
-     * @return \HubspotSDK\Page<Page>
+     * @return Page<CmsPage>
      *
      * @throws APIException
      */
@@ -457,7 +458,7 @@ final class LandingPagesService implements LandingPagesContract
         ?\DateTimeInterface $updatedAt = null,
         ?\DateTimeInterface $updatedBefore = null,
         RequestOptions|array|null $requestOptions = null,
-    ): \HubspotSDK\Page {
+    ): Page {
         $params = Util::removeNulls(
             [
                 'after' => $after,
@@ -518,7 +519,7 @@ final class LandingPagesService implements LandingPagesContract
         string $id,
         ?string $cloneName = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Page {
+    ): CmsPage {
         $params = Util::removeNulls(['id' => $id, 'cloneName' => $cloneName]);
 
         // @phpstan-ignore-next-line argument.type
@@ -542,7 +543,7 @@ final class LandingPagesService implements LandingPagesContract
         ?bool $archived = null,
         ?string $property = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Page {
+    ): CmsPage {
         $params = Util::removeNulls(
             ['archived' => $archived, 'property' => $property]
         );
@@ -565,7 +566,7 @@ final class LandingPagesService implements LandingPagesContract
     public function getDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
-    ): Page {
+    ): CmsPage {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getDraft($objectID, requestOptions: $requestOptions);
 
@@ -760,7 +761,7 @@ final class LandingPagesService implements LandingPagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): Page {
+    ): CmsPage {
         $params = Util::removeNulls(
             [
                 'id' => $id,

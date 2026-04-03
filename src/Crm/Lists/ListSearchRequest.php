@@ -11,10 +11,10 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ListSearchRequestShape = array{
- *   additionalProperties: list<string>,
  *   listIDs: list<string>,
  *   offset: int,
  *   processingTypes: list<string>,
+ *   additionalFilterProperties?: list<string>|null,
  *   count?: int|null,
  *   objectTypeID?: string|null,
  *   query?: string|null,
@@ -25,16 +25,6 @@ final class ListSearchRequest implements BaseModel
 {
     /** @use SdkModel<ListSearchRequestShape> */
     use SdkModel;
-
-    /**
-     * The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
-     *
-     * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
-     *
-     * @var list<string> $additionalProperties
-     */
-    #[Required(list: 'string')]
-    public array $additionalProperties;
 
     /**
      * ILS list ids to be included in search results. If not specified, all lists matching other criteria will be included.
@@ -57,6 +47,16 @@ final class ListSearchRequest implements BaseModel
      */
     #[Required(list: 'string')]
     public array $processingTypes;
+
+    /**
+     * The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
+     *
+     * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
+     *
+     * @var list<string>|null $additionalFilterProperties
+     */
+    #[Optional('additional_filter_properties', list: 'string')]
+    public ?array $additionalFilterProperties;
 
     /**
      * The number of lists to include in the response. Defaults to `20` if no value is provided. The max `count` is `500`.
@@ -84,16 +84,13 @@ final class ListSearchRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * ListSearchRequest::with(
-     *   additionalProperties: ..., listIDs: ..., offset: ..., processingTypes: ...
-     * )
+     * ListSearchRequest::with(listIDs: ..., offset: ..., processingTypes: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
      * (new ListSearchRequest)
-     *   ->withAdditionalProperties(...)
      *   ->withListIDs(...)
      *   ->withOffset(...)
      *   ->withProcessingTypes(...)
@@ -109,15 +106,15 @@ final class ListSearchRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<string> $additionalProperties
      * @param list<string> $listIDs
      * @param list<string> $processingTypes
+     * @param list<string>|null $additionalFilterProperties
      */
     public static function with(
-        array $additionalProperties,
         array $listIDs,
         int $offset,
         array $processingTypes,
+        ?array $additionalFilterProperties = null,
         ?int $count = null,
         ?string $objectTypeID = null,
         ?string $query = null,
@@ -125,30 +122,15 @@ final class ListSearchRequest implements BaseModel
     ): self {
         $self = new self;
 
-        $self['additionalProperties'] = $additionalProperties;
         $self['listIDs'] = $listIDs;
         $self['offset'] = $offset;
         $self['processingTypes'] = $processingTypes;
 
+        null !== $additionalFilterProperties && $self['additionalFilterProperties'] = $additionalFilterProperties;
         null !== $count && $self['count'] = $count;
         null !== $objectTypeID && $self['objectTypeID'] = $objectTypeID;
         null !== $query && $self['query'] = $query;
         null !== $sort && $self['sort'] = $sort;
-
-        return $self;
-    }
-
-    /**
-     * The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
-     *
-     * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
-     *
-     * @param list<string> $additionalProperties
-     */
-    public function withAdditionalProperties(array $additionalProperties): self
-    {
-        $self = clone $this;
-        $self['additionalProperties'] = $additionalProperties;
 
         return $self;
     }
@@ -186,6 +168,22 @@ final class ListSearchRequest implements BaseModel
     {
         $self = clone $this;
         $self['processingTypes'] = $processingTypes;
+
+        return $self;
+    }
+
+    /**
+     * The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
+     *
+     * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
+     *
+     * @param list<string> $additionalFilterProperties
+     */
+    public function withAdditionalFilterProperties(
+        array $additionalFilterProperties
+    ): self {
+        $self = clone $this;
+        $self['additionalFilterProperties'] = $additionalFilterProperties;
 
         return $self;
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
+use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCloneParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageDeleteParams;
@@ -28,7 +29,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */
@@ -44,7 +45,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */
@@ -60,7 +61,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Page<\HubspotSDK\Cms\Pages\Page>>
+     * @return BaseResponse<Page<CmsPage>>
      *
      * @throws APIException
      */
@@ -91,7 +92,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageCloneParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */
@@ -106,7 +107,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */
@@ -121,7 +122,7 @@ interface LandingPagesRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */
@@ -179,7 +180,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageUpdateDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubspotSDK\Cms\Pages\Page>
+     * @return BaseResponse<CmsPage>
      *
      * @throws APIException
      */

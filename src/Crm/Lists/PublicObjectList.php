@@ -8,6 +8,7 @@ use HubspotSDK\Core\Attributes\Optional;
 use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Lists\PublicObjectList\FilterBranch;
 
 /**
  * @phpstan-import-type FilterBranchVariants from \HubspotSDK\Crm\Lists\PublicObjectList\FilterBranch
@@ -98,7 +99,7 @@ final class PublicObjectList implements BaseModel
      *
      * @var FilterBranchVariants|null $filterBranch
      */
-    #[Optional]
+    #[Optional(union: FilterBranch::class)]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 
     /**

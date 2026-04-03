@@ -20,6 +20,7 @@ use HubspotSDK\Services\Crm\Objects\DiscountsService;
 use HubspotSDK\Services\Crm\Objects\EmailsService;
 use HubspotSDK\Services\Crm\Objects\FeedbackSubmissionsService;
 use HubspotSDK\Services\Crm\Objects\FeesService;
+use HubspotSDK\Services\Crm\Objects\GenericObjectsService;
 use HubspotSDK\Services\Crm\Objects\GoalTargetsService;
 use HubspotSDK\Services\Crm\Objects\InvoicesService;
 use HubspotSDK\Services\Crm\Objects\LeadsService;
@@ -156,7 +157,7 @@ final class ObjectsService implements ObjectsContract
     /**
      * @api
      */
-    public Objects\ObjectsService $objects;
+    public GenericObjectsService $genericObjects;
 
     /**
      * @api
@@ -250,7 +251,7 @@ final class ObjectsService implements ObjectsContract
         $this->listings = new ListingsService($client);
         $this->meetings = new MeetingsService($client);
         $this->notes = new NotesService($client);
-        $this->objects = new Objects\ObjectsService($client);
+        $this->genericObjects = new GenericObjectsService($client);
         $this->orders = new OrdersService($client);
         $this->partnerClients = new PartnerClientsService($client);
         $this->partnerServices = new PartnerServicesService($client);

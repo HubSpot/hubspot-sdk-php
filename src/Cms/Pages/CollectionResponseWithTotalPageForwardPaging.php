@@ -29,7 +29,7 @@ final class CollectionResponseWithTotalPageForwardPaging implements BaseModel
      *
      * @var list<mixed> $results
      */
-    #[Required(list: Page::class)]
+    #[Required(list: CmsPage::class)]
     public array $results;
 
     /**

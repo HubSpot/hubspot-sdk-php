@@ -1,0 +1,479 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Marketing\MarketingEvents;
+
+use HubspotSDK\Core\Attributes\Optional;
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-import-type CrmPropertyWrapperShape from \HubspotSDK\Marketing\MarketingEvents\CrmPropertyWrapper
+ * @phpstan-import-type AppInfoShape from \HubspotSDK\Marketing\MarketingEvents\AppInfo
+ *
+ * @phpstan-type MarketingEventPublicReadResponseV2Shape = array{
+ *   createdAt: \DateTimeInterface,
+ *   customProperties: list<CrmPropertyWrapper|CrmPropertyWrapperShape>,
+ *   eventName: string,
+ *   objectID: string,
+ *   updatedAt: \DateTimeInterface,
+ *   appInfo?: null|AppInfo|AppInfoShape,
+ *   attendees?: int|null,
+ *   cancellations?: int|null,
+ *   endDateTime?: \DateTimeInterface|null,
+ *   eventCancelled?: bool|null,
+ *   eventCompleted?: bool|null,
+ *   eventDescription?: string|null,
+ *   eventOrganizer?: string|null,
+ *   eventStatus?: string|null,
+ *   eventStatusV2?: string|null,
+ *   eventType?: string|null,
+ *   eventURL?: string|null,
+ *   externalEventID?: string|null,
+ *   noShows?: int|null,
+ *   registrants?: int|null,
+ *   startDateTime?: \DateTimeInterface|null,
+ * }
+ */
+final class MarketingEventPublicReadResponseV2 implements BaseModel
+{
+    /** @use SdkModel<MarketingEventPublicReadResponseV2Shape> */
+    use SdkModel;
+
+    /**
+     * The creation date and time of the marketing event.
+     */
+    #[Required]
+    public \DateTimeInterface $createdAt;
+
+    /** @var list<CrmPropertyWrapper> $customProperties */
+    #[Required(list: CrmPropertyWrapper::class)]
+    public array $customProperties;
+
+    /**
+     * The name of the marketing event.
+     */
+    #[Required]
+    public string $eventName;
+
+    /**
+     * The internal ID of the marketing event in HubSpot.
+     */
+    #[Required('objectId')]
+    public string $objectID;
+
+    /**
+     * The update date and time of the marketing event.
+     */
+    #[Required]
+    public \DateTimeInterface $updatedAt;
+
+    #[Optional]
+    public ?AppInfo $appInfo;
+
+    /**
+     * Number of attended contact records of a marketing event.
+     */
+    #[Optional]
+    public ?int $attendees;
+
+    /**
+     * Number of cancelled contact records of a marketing event.
+     */
+    #[Optional]
+    public ?int $cancellations;
+
+    /**
+     * The end date and time of the marketing event.
+     */
+    #[Optional]
+    public ?\DateTimeInterface $endDateTime;
+
+    /**
+     * Indicates if the marketing event has been cancelled.
+     */
+    #[Optional]
+    public ?bool $eventCancelled;
+
+    /**
+     * Indicates if the marketing event has been completed.
+     */
+    #[Optional]
+    public ?bool $eventCompleted;
+
+    /**
+     * The description of the marketing event.
+     */
+    #[Optional]
+    public ?string $eventDescription;
+
+    /**
+     * The name of the organizer of the marketing event.
+     */
+    #[Optional]
+    public ?string $eventOrganizer;
+
+    /**
+     * The status of the marketing event.
+     */
+    #[Optional]
+    public ?string $eventStatus;
+
+    #[Optional]
+    public ?string $eventStatusV2;
+
+    /**
+     * The type of the marketing event.
+     */
+    #[Optional]
+    public ?string $eventType;
+
+    /**
+     * A URL in the external event application where the marketing event can be managed.
+     */
+    #[Optional('eventUrl')]
+    public ?string $eventURL;
+
+    /**
+     * The ID that is associated with this marketing event in the external event application.
+     */
+    #[Optional('externalEventId')]
+    public ?string $externalEventID;
+
+    /**
+     * Number of no-show contact records of a marketing event.
+     */
+    #[Optional]
+    public ?int $noShows;
+
+    /**
+     * Number of registered contact records of a marketing event.
+     */
+    #[Optional]
+    public ?int $registrants;
+
+    /**
+     * The start date and time of the marketing event.
+     */
+    #[Optional]
+    public ?\DateTimeInterface $startDateTime;
+
+    /**
+     * `new MarketingEventPublicReadResponseV2()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * MarketingEventPublicReadResponseV2::with(
+     *   createdAt: ...,
+     *   customProperties: ...,
+     *   eventName: ...,
+     *   objectID: ...,
+     *   updatedAt: ...,
+     * )
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new MarketingEventPublicReadResponseV2)
+     *   ->withCreatedAt(...)
+     *   ->withCustomProperties(...)
+     *   ->withEventName(...)
+     *   ->withObjectID(...)
+     *   ->withUpdatedAt(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<CrmPropertyWrapper|CrmPropertyWrapperShape> $customProperties
+     * @param AppInfo|AppInfoShape|null $appInfo
+     */
+    public static function with(
+        \DateTimeInterface $createdAt,
+        array $customProperties,
+        string $eventName,
+        string $objectID,
+        \DateTimeInterface $updatedAt,
+        AppInfo|array|null $appInfo = null,
+        ?int $attendees = null,
+        ?int $cancellations = null,
+        ?\DateTimeInterface $endDateTime = null,
+        ?bool $eventCancelled = null,
+        ?bool $eventCompleted = null,
+        ?string $eventDescription = null,
+        ?string $eventOrganizer = null,
+        ?string $eventStatus = null,
+        ?string $eventStatusV2 = null,
+        ?string $eventType = null,
+        ?string $eventURL = null,
+        ?string $externalEventID = null,
+        ?int $noShows = null,
+        ?int $registrants = null,
+        ?\DateTimeInterface $startDateTime = null,
+    ): self {
+        $self = new self;
+
+        $self['createdAt'] = $createdAt;
+        $self['customProperties'] = $customProperties;
+        $self['eventName'] = $eventName;
+        $self['objectID'] = $objectID;
+        $self['updatedAt'] = $updatedAt;
+
+        null !== $appInfo && $self['appInfo'] = $appInfo;
+        null !== $attendees && $self['attendees'] = $attendees;
+        null !== $cancellations && $self['cancellations'] = $cancellations;
+        null !== $endDateTime && $self['endDateTime'] = $endDateTime;
+        null !== $eventCancelled && $self['eventCancelled'] = $eventCancelled;
+        null !== $eventCompleted && $self['eventCompleted'] = $eventCompleted;
+        null !== $eventDescription && $self['eventDescription'] = $eventDescription;
+        null !== $eventOrganizer && $self['eventOrganizer'] = $eventOrganizer;
+        null !== $eventStatus && $self['eventStatus'] = $eventStatus;
+        null !== $eventStatusV2 && $self['eventStatusV2'] = $eventStatusV2;
+        null !== $eventType && $self['eventType'] = $eventType;
+        null !== $eventURL && $self['eventURL'] = $eventURL;
+        null !== $externalEventID && $self['externalEventID'] = $externalEventID;
+        null !== $noShows && $self['noShows'] = $noShows;
+        null !== $registrants && $self['registrants'] = $registrants;
+        null !== $startDateTime && $self['startDateTime'] = $startDateTime;
+
+        return $self;
+    }
+
+    /**
+     * The creation date and time of the marketing event.
+     */
+    public function withCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $self = clone $this;
+        $self['createdAt'] = $createdAt;
+
+        return $self;
+    }
+
+    /**
+     * @param list<CrmPropertyWrapper|CrmPropertyWrapperShape> $customProperties
+     */
+    public function withCustomProperties(array $customProperties): self
+    {
+        $self = clone $this;
+        $self['customProperties'] = $customProperties;
+
+        return $self;
+    }
+
+    /**
+     * The name of the marketing event.
+     */
+    public function withEventName(string $eventName): self
+    {
+        $self = clone $this;
+        $self['eventName'] = $eventName;
+
+        return $self;
+    }
+
+    /**
+     * The internal ID of the marketing event in HubSpot.
+     */
+    public function withObjectID(string $objectID): self
+    {
+        $self = clone $this;
+        $self['objectID'] = $objectID;
+
+        return $self;
+    }
+
+    /**
+     * The update date and time of the marketing event.
+     */
+    public function withUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $self = clone $this;
+        $self['updatedAt'] = $updatedAt;
+
+        return $self;
+    }
+
+    /**
+     * @param AppInfo|AppInfoShape $appInfo
+     */
+    public function withAppInfo(AppInfo|array $appInfo): self
+    {
+        $self = clone $this;
+        $self['appInfo'] = $appInfo;
+
+        return $self;
+    }
+
+    /**
+     * Number of attended contact records of a marketing event.
+     */
+    public function withAttendees(int $attendees): self
+    {
+        $self = clone $this;
+        $self['attendees'] = $attendees;
+
+        return $self;
+    }
+
+    /**
+     * Number of cancelled contact records of a marketing event.
+     */
+    public function withCancellations(int $cancellations): self
+    {
+        $self = clone $this;
+        $self['cancellations'] = $cancellations;
+
+        return $self;
+    }
+
+    /**
+     * The end date and time of the marketing event.
+     */
+    public function withEndDateTime(\DateTimeInterface $endDateTime): self
+    {
+        $self = clone $this;
+        $self['endDateTime'] = $endDateTime;
+
+        return $self;
+    }
+
+    /**
+     * Indicates if the marketing event has been cancelled.
+     */
+    public function withEventCancelled(bool $eventCancelled): self
+    {
+        $self = clone $this;
+        $self['eventCancelled'] = $eventCancelled;
+
+        return $self;
+    }
+
+    /**
+     * Indicates if the marketing event has been completed.
+     */
+    public function withEventCompleted(bool $eventCompleted): self
+    {
+        $self = clone $this;
+        $self['eventCompleted'] = $eventCompleted;
+
+        return $self;
+    }
+
+    /**
+     * The description of the marketing event.
+     */
+    public function withEventDescription(string $eventDescription): self
+    {
+        $self = clone $this;
+        $self['eventDescription'] = $eventDescription;
+
+        return $self;
+    }
+
+    /**
+     * The name of the organizer of the marketing event.
+     */
+    public function withEventOrganizer(string $eventOrganizer): self
+    {
+        $self = clone $this;
+        $self['eventOrganizer'] = $eventOrganizer;
+
+        return $self;
+    }
+
+    /**
+     * The status of the marketing event.
+     */
+    public function withEventStatus(string $eventStatus): self
+    {
+        $self = clone $this;
+        $self['eventStatus'] = $eventStatus;
+
+        return $self;
+    }
+
+    public function withEventStatusV2(string $eventStatusV2): self
+    {
+        $self = clone $this;
+        $self['eventStatusV2'] = $eventStatusV2;
+
+        return $self;
+    }
+
+    /**
+     * The type of the marketing event.
+     */
+    public function withEventType(string $eventType): self
+    {
+        $self = clone $this;
+        $self['eventType'] = $eventType;
+
+        return $self;
+    }
+
+    /**
+     * A URL in the external event application where the marketing event can be managed.
+     */
+    public function withEventURL(string $eventURL): self
+    {
+        $self = clone $this;
+        $self['eventURL'] = $eventURL;
+
+        return $self;
+    }
+
+    /**
+     * The ID that is associated with this marketing event in the external event application.
+     */
+    public function withExternalEventID(string $externalEventID): self
+    {
+        $self = clone $this;
+        $self['externalEventID'] = $externalEventID;
+
+        return $self;
+    }
+
+    /**
+     * Number of no-show contact records of a marketing event.
+     */
+    public function withNoShows(int $noShows): self
+    {
+        $self = clone $this;
+        $self['noShows'] = $noShows;
+
+        return $self;
+    }
+
+    /**
+     * Number of registered contact records of a marketing event.
+     */
+    public function withRegistrants(int $registrants): self
+    {
+        $self = clone $this;
+        $self['registrants'] = $registrants;
+
+        return $self;
+    }
+
+    /**
+     * The start date and time of the marketing event.
+     */
+    public function withStartDateTime(\DateTimeInterface $startDateTime): self
+    {
+        $self = clone $this;
+        $self['startDateTime'] = $startDateTime;
+
+        return $self;
+    }
+}

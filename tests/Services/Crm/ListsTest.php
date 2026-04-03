@@ -657,10 +657,9 @@ final class ListsTest extends TestCase
         }
 
         $result = $this->client->crm->lists->listBySearch(
-            additionalProperties: ['string'],
             listIDs: ['string'],
             offset: 0,
-            processingTypes: ['string'],
+            processingTypes: ['string']
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -675,10 +674,10 @@ final class ListsTest extends TestCase
         }
 
         $result = $this->client->crm->lists->listBySearch(
-            additionalProperties: ['string'],
             listIDs: ['string'],
             offset: 0,
             processingTypes: ['string'],
+            additionalFilterProperties: ['string'],
             count: 0,
             objectTypeID: 'objectTypeId',
             query: 'query',

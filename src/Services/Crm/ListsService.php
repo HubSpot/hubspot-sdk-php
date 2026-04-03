@@ -470,12 +470,12 @@ final class ListsService implements ListsContract
     /**
      * @api
      *
-     * @param list<string> $additionalProperties The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
-     *
-     * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
      * @param list<string> $listIDs ILS list ids to be included in search results. If not specified, all lists matching other criteria will be included
      * @param int $offset Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
      * @param list<string> $processingTypes List processing types to be included in search results. If not specified, all lists with all processing types will be included.
+     * @param list<string> $additionalFilterProperties The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
+     *
+     * By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
      * @param int $count The number of lists to include in the response. Defaults to `20` if no value is provided. The max `count` is `500`.
      * @param string $query The `query` that will be used to search for lists by list name. If no `query` is provided, then the results will include all lists.
      * @param string $sort Sort field and order
@@ -484,10 +484,10 @@ final class ListsService implements ListsContract
      * @throws APIException
      */
     public function listBySearch(
-        array $additionalProperties,
         array $listIDs,
         int $offset,
         array $processingTypes,
+        ?array $additionalFilterProperties = null,
         ?int $count = null,
         ?string $objectTypeID = null,
         ?string $query = null,
@@ -496,10 +496,10 @@ final class ListsService implements ListsContract
     ): ListSearchResponse {
         $params = Util::removeNulls(
             [
-                'additionalProperties' => $additionalProperties,
                 'listIDs' => $listIDs,
                 'offset' => $offset,
                 'processingTypes' => $processingTypes,
+                'additionalFilterProperties' => $additionalFilterProperties,
                 'count' => $count,
                 'objectTypeID' => $objectTypeID,
                 'query' => $query,

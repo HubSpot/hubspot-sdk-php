@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
 use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\Pages\Page;
+use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\AbStatus;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\CurrentState;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\Language;
 use HubspotSDK\Core\Exceptions\APIException;
+use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -142,7 +143,7 @@ interface WebsitePagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): Page;
+    ): CmsPage;
 
     /**
      * @api
@@ -271,7 +272,7 @@ interface WebsitePagesContract
         array $widgets,
         ?bool $archived = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Page;
+    ): CmsPage;
 
     /**
      * @api
@@ -282,7 +283,7 @@ interface WebsitePagesContract
      * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
-     * @return \HubspotSDK\Page<Page>
+     * @return Page<CmsPage>
      *
      * @throws APIException
      */
@@ -299,7 +300,7 @@ interface WebsitePagesContract
         ?\DateTimeInterface $updatedAt = null,
         ?\DateTimeInterface $updatedBefore = null,
         RequestOptions|array|null $requestOptions = null,
-    ): \HubspotSDK\Page;
+    ): Page;
 
     /**
      * @api
@@ -328,7 +329,7 @@ interface WebsitePagesContract
         string $id,
         ?string $cloneName = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Page;
+    ): CmsPage;
 
     /**
      * @api
@@ -343,7 +344,7 @@ interface WebsitePagesContract
         ?bool $archived = null,
         ?string $property = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Page;
+    ): CmsPage;
 
     /**
      * @api
@@ -355,7 +356,7 @@ interface WebsitePagesContract
     public function getDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
-    ): Page;
+    ): CmsPage;
 
     /**
      * @api
@@ -521,5 +522,5 @@ interface WebsitePagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): Page;
+    ): CmsPage;
 }

@@ -11,13 +11,13 @@ use HubspotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicObjectListSearchResultShape = array{
- *   additionalProperties: array<string,string>,
  *   listID: string,
  *   listVersion: int,
  *   name: string,
  *   objectTypeID: string,
  *   processingStatus: string,
  *   processingType: string,
+ *   additionalFilterProperties?: array<string,string>|null,
  *   createdAt?: \DateTimeInterface|null,
  *   createdByID?: string|null,
  *   deletedAt?: \DateTimeInterface|null,
@@ -30,14 +30,6 @@ final class PublicObjectListSearchResult implements BaseModel
 {
     /** @use SdkModel<PublicObjectListSearchResultShape> */
     use SdkModel;
-
-    /**
-     * The name and value of any additional properties that exist for this list and that were included in the search request.
-     *
-     * @var array<string,string> $additionalProperties
-     */
-    #[Required(map: 'string')]
-    public array $additionalProperties;
 
     /**
      * The **ILS ID** of the list.
@@ -74,6 +66,14 @@ final class PublicObjectListSearchResult implements BaseModel
      */
     #[Required]
     public string $processingType;
+
+    /**
+     * The name and value of any additional properties that exist for this list and that were included in the search request.
+     *
+     * @var array<string,string>|null $additionalFilterProperties
+     */
+    #[Optional('additional_filter_properties', map: 'string')]
+    public ?array $additionalFilterProperties;
 
     /**
      * The time when the list was created.
@@ -117,7 +117,6 @@ final class PublicObjectListSearchResult implements BaseModel
      * To enforce required parameters use
      * ```
      * PublicObjectListSearchResult::with(
-     *   additionalProperties: ...,
      *   listID: ...,
      *   listVersion: ...,
      *   name: ...,
@@ -131,7 +130,6 @@ final class PublicObjectListSearchResult implements BaseModel
      *
      * ```
      * (new PublicObjectListSearchResult)
-     *   ->withAdditionalProperties(...)
      *   ->withListID(...)
      *   ->withListVersion(...)
      *   ->withName(...)
@@ -150,16 +148,16 @@ final class PublicObjectListSearchResult implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,string> $additionalProperties
+     * @param array<string,string>|null $additionalFilterProperties
      */
     public static function with(
-        array $additionalProperties,
         string $listID,
         int $listVersion,
         string $name,
         string $objectTypeID,
         string $processingStatus,
         string $processingType,
+        ?array $additionalFilterProperties = null,
         ?\DateTimeInterface $createdAt = null,
         ?string $createdByID = null,
         ?\DateTimeInterface $deletedAt = null,
@@ -169,7 +167,6 @@ final class PublicObjectListSearchResult implements BaseModel
     ): self {
         $self = new self;
 
-        $self['additionalProperties'] = $additionalProperties;
         $self['listID'] = $listID;
         $self['listVersion'] = $listVersion;
         $self['name'] = $name;
@@ -177,25 +174,13 @@ final class PublicObjectListSearchResult implements BaseModel
         $self['processingStatus'] = $processingStatus;
         $self['processingType'] = $processingType;
 
+        null !== $additionalFilterProperties && $self['additionalFilterProperties'] = $additionalFilterProperties;
         null !== $createdAt && $self['createdAt'] = $createdAt;
         null !== $createdByID && $self['createdByID'] = $createdByID;
         null !== $deletedAt && $self['deletedAt'] = $deletedAt;
         null !== $filtersUpdatedAt && $self['filtersUpdatedAt'] = $filtersUpdatedAt;
         null !== $updatedAt && $self['updatedAt'] = $updatedAt;
         null !== $updatedByID && $self['updatedByID'] = $updatedByID;
-
-        return $self;
-    }
-
-    /**
-     * The name and value of any additional properties that exist for this list and that were included in the search request.
-     *
-     * @param array<string,string> $additionalProperties
-     */
-    public function withAdditionalProperties(array $additionalProperties): self
-    {
-        $self = clone $this;
-        $self['additionalProperties'] = $additionalProperties;
 
         return $self;
     }
@@ -262,6 +247,20 @@ final class PublicObjectListSearchResult implements BaseModel
     {
         $self = clone $this;
         $self['processingType'] = $processingType;
+
+        return $self;
+    }
+
+    /**
+     * The name and value of any additional properties that exist for this list and that were included in the search request.
+     *
+     * @param array<string,string> $additionalFilterProperties
+     */
+    public function withAdditionalFilterProperties(
+        array $additionalFilterProperties
+    ): self {
+        $self = clone $this;
+        $self['additionalFilterProperties'] = $additionalFilterProperties;
 
         return $self;
     }

@@ -1,0 +1,78 @@
+<?php
+
+declare(strict_types=1);
+
+namespace HubspotSDK\Marketing\MarketingEvents;
+
+use HubspotSDK\Core\Attributes\Required;
+use HubspotSDK\Core\Concerns\SdkModel;
+use HubspotSDK\Core\Contracts\BaseModel;
+
+/**
+ * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventSubscriber
+ *
+ * @phpstan-type BatchInputMarketingEventSubscriberShape = array{
+ *   inputs: list<MarketingEventSubscriber|MarketingEventSubscriberShape>
+ * }
+ */
+final class BatchInputMarketingEventSubscriber implements BaseModel
+{
+    /** @use SdkModel<BatchInputMarketingEventSubscriberShape> */
+    use SdkModel;
+
+    /**
+     * List of HubSpot contacts to subscribe to the marketing event.
+     *
+     * @var list<MarketingEventSubscriber> $inputs
+     */
+    #[Required(list: MarketingEventSubscriber::class)]
+    public array $inputs;
+
+    /**
+     * `new BatchInputMarketingEventSubscriber()` is missing required properties by the API.
+     *
+     * To enforce required parameters use
+     * ```
+     * BatchInputMarketingEventSubscriber::with(inputs: ...)
+     * ```
+     *
+     * Otherwise ensure the following setters are called
+     *
+     * ```
+     * (new BatchInputMarketingEventSubscriber)->withInputs(...)
+     * ```
+     */
+    public function __construct()
+    {
+        $this->initialize();
+    }
+
+    /**
+     * Construct an instance from the required parameters.
+     *
+     * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param list<MarketingEventSubscriber|MarketingEventSubscriberShape> $inputs
+     */
+    public static function with(array $inputs): self
+    {
+        $self = new self;
+
+        $self['inputs'] = $inputs;
+
+        return $self;
+    }
+
+    /**
+     * List of HubSpot contacts to subscribe to the marketing event.
+     *
+     * @param list<MarketingEventSubscriber|MarketingEventSubscriberShape> $inputs
+     */
+    public function withInputs(array $inputs): self
+    {
+        $self = clone $this;
+        $self['inputs'] = $inputs;
+
+        return $self;
+    }
+}

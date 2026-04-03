@@ -622,10 +622,10 @@ final class ListsRawService implements ListsRawContract
      * @api
      *
      * @param array{
-     *   additionalProperties: list<string>,
      *   listIDs: list<string>,
      *   offset: int,
      *   processingTypes: list<string>,
+     *   additionalFilterProperties?: list<string>,
      *   count?: int,
      *   objectTypeID?: string,
      *   query?: string,

@@ -9,6 +9,7 @@ use HubspotSDK\Core\Attributes\Required;
 use HubspotSDK\Core\Concerns\SdkModel;
 use HubspotSDK\Core\Concerns\SdkParams;
 use HubspotSDK\Core\Contracts\BaseModel;
+use HubspotSDK\Crm\Lists\ListCreateParams\FilterBranch;
 
 /**
  * @see HubspotSDK\Services\Crm\ListsService::create()
@@ -66,7 +67,7 @@ final class ListCreateParams implements BaseModel
      *
      * @var FilterBranchVariants|null $filterBranch
      */
-    #[Optional]
+    #[Optional(union: FilterBranch::class)]
     public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 
     /**

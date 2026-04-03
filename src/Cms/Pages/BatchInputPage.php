@@ -21,7 +21,7 @@ final class BatchInputPage implements BaseModel
      *
      * @var list<mixed> $inputs
      */
-    #[Required(list: Page::class)]
+    #[Required(list: CmsPage::class)]
     public array $inputs;
 
     /**

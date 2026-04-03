@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
+use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Cms\Pages\Page;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
 
@@ -49,7 +49,7 @@ interface MultiLanguageContract
         ?string $language = null,
         ?string $primaryLanguage = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Page;
+    ): CmsPage;
 
     /**
      * @api
