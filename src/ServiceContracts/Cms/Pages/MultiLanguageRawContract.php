@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
-use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageCreateLanguageVariationParams;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageDetachFromLangGroupParams;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageSetNewLangPrimaryParams;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageUpdateLanguagesParams;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -40,7 +40,7 @@ interface MultiLanguageRawContract
      * @param array<string,mixed>|MultiLanguageCreateLanguageVariationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */

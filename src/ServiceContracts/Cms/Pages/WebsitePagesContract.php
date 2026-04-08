@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
 use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\Pages\CmsPage;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\AbStatus;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\CurrentState;
@@ -143,7 +143,7 @@ interface WebsitePagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -272,7 +272,7 @@ interface WebsitePagesContract
         array $widgets,
         ?bool $archived = null,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -283,7 +283,7 @@ interface WebsitePagesContract
      * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
-     * @return Page<CmsPage>
+     * @return Page<PageData>
      *
      * @throws APIException
      */
@@ -329,7 +329,7 @@ interface WebsitePagesContract
         string $id,
         ?string $cloneName = null,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -344,7 +344,7 @@ interface WebsitePagesContract
         ?bool $archived = null,
         ?string $property = null,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -356,7 +356,7 @@ interface WebsitePagesContract
     public function getDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -522,5 +522,5 @@ interface WebsitePagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 }

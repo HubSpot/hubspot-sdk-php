@@ -10,9 +10,10 @@ use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
+use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 use HubspotSDK\ServiceContracts\Cms\Hubdb\RowsContract;
 
@@ -89,8 +90,6 @@ final class RowsService implements RowsContract
      * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
-     * @return Page<mixed>
-     *
      * @throws APIException
      */
     public function list(
@@ -102,7 +101,7 @@ final class RowsService implements RowsContract
         ?array $properties = null,
         ?array $sort = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Page {
+    ): RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3 {
         $params = Util::removeNulls(
             [
                 'after' => $after,

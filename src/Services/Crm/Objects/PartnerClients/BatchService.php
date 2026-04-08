@@ -7,7 +7,6 @@ namespace HubspotSDK\Services\Crm\Objects\PartnerClients;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
@@ -52,34 +51,6 @@ final class BatchService implements BatchContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->update(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function createDefaultAssociation(
-        string $toObjectID,
-        string $fromObjectType,
-        string $fromObjectID,
-        string $toObjectType,
-        RequestOptions|array|null $requestOptions = null,
-    ): BatchResponsePublicDefaultAssociation {
-        $params = Util::removeNulls(
-            [
-                'fromObjectType' => $fromObjectType,
-                'fromObjectID' => $fromObjectID,
-                'toObjectType' => $toObjectType,
-            ],
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->createDefaultAssociation($toObjectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

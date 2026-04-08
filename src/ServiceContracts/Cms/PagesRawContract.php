@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\Pages\CmsPage;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Cms\Pages\PageGetLandingPageFoldersByQueryParams;
 use HubspotSDK\Cms\Pages\PageGetLandingPageFoldersParams;
 use HubspotSDK\Cms\Pages\PageGetLandingPageRevisionParams;
@@ -204,7 +204,7 @@ interface PagesRawContract
      * @param array<string,mixed>|PageRestoreLandingPageRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -220,7 +220,7 @@ interface PagesRawContract
      * @param array<string,mixed>|PageRestoreLandingPageRevisionToDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -236,7 +236,7 @@ interface PagesRawContract
      * @param array<string,mixed>|PageRestoreSitePageRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -252,7 +252,7 @@ interface PagesRawContract
      * @param array<string,mixed>|PageRestoreSitePageRevisionToDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */

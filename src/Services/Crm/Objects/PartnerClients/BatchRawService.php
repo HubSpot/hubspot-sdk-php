@@ -7,9 +7,7 @@ namespace HubspotSDK\Services\Crm\Objects\PartnerClients;
 use HubspotSDK\Client;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchCreateDefaultAssociationParams;
 use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchGetParams;
 use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchUpdateParams;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
@@ -60,49 +58,6 @@ final class BatchRawService implements BatchRawContract
             body: (object) $parsed,
             options: $options,
             convert: BatchResponseSimplePublicObject::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * @param array{
-     *   fromObjectType: string, fromObjectID: string, toObjectType: string
-     * }|BatchCreateDefaultAssociationParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponsePublicDefaultAssociation>
-     *
-     * @throws APIException
-     */
-    public function createDefaultAssociation(
-        string $toObjectID,
-        array|BatchCreateDefaultAssociationParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = BatchCreateDefaultAssociationParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $fromObjectType = $parsed['fromObjectType'];
-        unset($parsed['fromObjectType']);
-        $fromObjectID = $parsed['fromObjectID'];
-        unset($parsed['fromObjectID']);
-        $toObjectType = $parsed['toObjectType'];
-        unset($parsed['toObjectType']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'put',
-            path: [
-                'crm/objects/2026-03/%1$s/%2$s/associations/default/%3$s/%4$s',
-                $fromObjectType,
-                $fromObjectID,
-                $toObjectType,
-                $toObjectID,
-            ],
-            options: $options,
-            convert: BatchResponsePublicDefaultAssociation::class,
         );
     }
 

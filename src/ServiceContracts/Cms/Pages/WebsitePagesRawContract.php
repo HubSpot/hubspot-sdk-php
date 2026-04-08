@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
-use HubspotSDK\Cms\Pages\CmsPage;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCloneParams;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams;
 use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageDeleteParams;
@@ -30,7 +30,7 @@ interface WebsitePagesRawContract
      * @param array<string,mixed>|WebsitePageCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -46,7 +46,7 @@ interface WebsitePagesRawContract
      * @param array<string,mixed>|WebsitePageUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -62,7 +62,7 @@ interface WebsitePagesRawContract
      * @param array<string,mixed>|WebsitePageListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Page<CmsPage>>
+     * @return BaseResponse<Page<PageData>>
      *
      * @throws APIException
      */
@@ -93,7 +93,7 @@ interface WebsitePagesRawContract
      * @param array<string,mixed>|WebsitePageCloneParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -108,7 +108,7 @@ interface WebsitePagesRawContract
      * @param array<string,mixed>|WebsitePageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -123,7 +123,7 @@ interface WebsitePagesRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -182,7 +182,7 @@ interface WebsitePagesRawContract
      * @param array<string,mixed>|WebsitePageUpdateDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */

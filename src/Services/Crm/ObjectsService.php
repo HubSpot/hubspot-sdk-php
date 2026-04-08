@@ -122,6 +122,11 @@ final class ObjectsService implements ObjectsContract
     /**
      * @api
      */
+    public GenericObjectsService $genericObjects;
+
+    /**
+     * @api
+     */
     public GoalTargetsService $goalTargets;
 
     /**
@@ -153,11 +158,6 @@ final class ObjectsService implements ObjectsContract
      * @api
      */
     public NotesService $notes;
-
-    /**
-     * @api
-     */
-    public GenericObjectsService $genericObjects;
 
     /**
      * @api
@@ -244,6 +244,7 @@ final class ObjectsService implements ObjectsContract
         $this->emails = new EmailsService($client);
         $this->feedbackSubmissions = new FeedbackSubmissionsService($client);
         $this->fees = new FeesService($client);
+        $this->genericObjects = new GenericObjectsService($client);
         $this->goalTargets = new GoalTargetsService($client);
         $this->invoices = new InvoicesService($client);
         $this->leads = new LeadsService($client);
@@ -251,7 +252,6 @@ final class ObjectsService implements ObjectsContract
         $this->listings = new ListingsService($client);
         $this->meetings = new MeetingsService($client);
         $this->notes = new NotesService($client);
-        $this->genericObjects = new GenericObjectsService($client);
         $this->orders = new OrdersService($client);
         $this->partnerClients = new PartnerClientsService($client);
         $this->partnerServices = new PartnerServicesService($client);

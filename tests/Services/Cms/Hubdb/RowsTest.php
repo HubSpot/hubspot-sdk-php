@@ -6,7 +6,6 @@ use HubspotSDK\Client;
 use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -75,15 +74,10 @@ final class RowsTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $page = $this->client->cms->hubdb->rows->list('tableIdOrName');
+        $result = $this->client->cms->hubdb->rows->list('tableIdOrName');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Page::class, $page);
-
-        if ($item = $page->getItems()[0] ?? null) {
-            // @phpstan-ignore-next-line method.alreadyNarrowedType
-            $this->assertIsNotResource($item);
-        }
+        $this->assertNotNull($result);
     }
 
     #[Test]

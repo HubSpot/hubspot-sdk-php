@@ -3,7 +3,7 @@
 namespace Tests\Services\Cms;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Pages\CmsPage;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Cms\Pages\PageVersion;
 use HubspotSDK\Core\Util;
 use HubspotSDK\Page;
@@ -234,7 +234,7 @@ final class PagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -250,7 +250,7 @@ final class PagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -266,7 +266,7 @@ final class PagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -282,7 +282,7 @@ final class PagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -298,7 +298,7 @@ final class PagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -314,7 +314,7 @@ final class PagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -330,7 +330,7 @@ final class PagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -346,6 +346,6 @@ final class PagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 }

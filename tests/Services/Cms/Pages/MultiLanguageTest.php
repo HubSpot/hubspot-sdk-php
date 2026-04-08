@@ -3,7 +3,7 @@
 namespace Tests\Services\Cms\Pages;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Pages\CmsPage;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -75,7 +75,7 @@ final class MultiLanguageTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -92,7 +92,7 @@ final class MultiLanguageTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(CmsPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]

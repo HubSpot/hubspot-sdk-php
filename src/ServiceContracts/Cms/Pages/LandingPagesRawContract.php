@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
-use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCloneParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageDeleteParams;
@@ -13,6 +12,7 @@ use HubspotSDK\Cms\Pages\LandingPages\LandingPageListParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -29,7 +29,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -45,7 +45,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -61,7 +61,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Page<CmsPage>>
+     * @return BaseResponse<Page<PageData>>
      *
      * @throws APIException
      */
@@ -92,7 +92,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageCloneParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -107,7 +107,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -122,7 +122,7 @@ interface LandingPagesRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -180,7 +180,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageUpdateDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Cms\Pages;
 
 use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
@@ -143,7 +143,7 @@ interface LandingPagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -272,7 +272,7 @@ interface LandingPagesContract
         array $widgets,
         ?bool $archived = null,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -283,7 +283,7 @@ interface LandingPagesContract
      * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *
-     * @return Page<CmsPage>
+     * @return Page<PageData>
      *
      * @throws APIException
      */
@@ -329,7 +329,7 @@ interface LandingPagesContract
         string $id,
         ?string $cloneName = null,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -344,7 +344,7 @@ interface LandingPagesContract
         ?bool $archived = null,
         ?string $property = null,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -356,7 +356,7 @@ interface LandingPagesContract
     public function getDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -521,5 +521,5 @@ interface LandingPagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 }
