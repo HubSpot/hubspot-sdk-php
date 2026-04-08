@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\Services\Cms\Pages;
 
 use HubspotSDK\Client;
-use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
@@ -13,6 +12,7 @@ use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageCreateLanguageVariationParam
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageDetachFromLangGroupParams;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageSetNewLangPrimaryParams;
 use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageUpdateLanguagesParams;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -76,7 +76,7 @@ final class MultiLanguageRawService implements MultiLanguageRawContract
      * }|MultiLanguageCreateLanguageVariationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -96,7 +96,7 @@ final class MultiLanguageRawService implements MultiLanguageRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: CmsPage::class,
+            convert: PageData::class,
         );
     }
 

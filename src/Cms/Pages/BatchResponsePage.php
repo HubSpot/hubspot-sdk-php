@@ -36,7 +36,7 @@ final class BatchResponsePage implements BaseModel
      *
      * @var list<mixed> $results
      */
-    #[Required(list: CmsPage::class)]
+    #[Required(list: PageData::class)]
     public array $results;
 
     /**

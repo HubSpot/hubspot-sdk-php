@@ -6,9 +6,7 @@ namespace HubspotSDK\ServiceContracts\Crm\Objects\PartnerClients;
 
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchCreateDefaultAssociationParams;
 use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchGetParams;
 use HubspotSDK\Crm\Objects\PartnerClients\Batch\BatchUpdateParams;
 use HubspotSDK\RequestOptions;
@@ -30,22 +28,6 @@ interface BatchRawContract
      */
     public function update(
         array|BatchUpdateParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|BatchCreateDefaultAssociationParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<BatchResponsePublicDefaultAssociation>
-     *
-     * @throws APIException
-     */
-    public function createDefaultAssociation(
-        string $toObjectID,
-        array|BatchCreateDefaultAssociationParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

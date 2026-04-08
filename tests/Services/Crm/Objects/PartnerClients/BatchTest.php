@@ -4,7 +4,6 @@ namespace Tests\Services\Crm\Objects\PartnerClients;
 
 use HubspotSDK\Client;
 use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -64,62 +63,6 @@ final class BatchTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
-    }
-
-    #[Test]
-    public function testCreateDefaultAssociation(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this
-            ->client
-            ->crm
-            ->objects
-            ->partnerClients
-            ->batch
-            ->createDefaultAssociation(
-                'toObjectId',
-                fromObjectType: 'fromObjectType',
-                fromObjectID: 'fromObjectId',
-                toObjectType: 'toObjectType',
-            )
-        ;
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            BatchResponsePublicDefaultAssociation::class,
-            $result
-        );
-    }
-
-    #[Test]
-    public function testCreateDefaultAssociationWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this
-            ->client
-            ->crm
-            ->objects
-            ->partnerClients
-            ->batch
-            ->createDefaultAssociation(
-                'toObjectId',
-                fromObjectType: 'fromObjectType',
-                fromObjectID: 'fromObjectId',
-                toObjectType: 'toObjectType',
-            )
-        ;
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            BatchResponsePublicDefaultAssociation::class,
-            $result
-        );
     }
 
     #[Test]

@@ -6,7 +6,6 @@ namespace HubspotSDK\Services\Cms\Pages;
 
 use HubspotSDK\Client;
 use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\Pages\CmsPage;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCloneParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
@@ -19,6 +18,7 @@ use HubspotSDK\Cms\Pages\LandingPages\LandingPageListParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
 use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -103,7 +103,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * }|LandingPageCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -123,7 +123,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: CmsPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -196,7 +196,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * }|LandingPageUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -219,7 +219,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: CmsPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -243,7 +243,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * }|LandingPageListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Page<CmsPage>>
+     * @return BaseResponse<Page<PageData>>
      *
      * @throws APIException
      */
@@ -262,7 +262,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             path: 'cms/pages/2026-03/landing-pages',
             query: $parsed,
             options: $options,
-            convert: CmsPage::class,
+            convert: PageData::class,
             page: Page::class,
         );
     }
@@ -307,7 +307,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{id: string, cloneName?: string}|LandingPageCloneParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -327,7 +327,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: CmsPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -339,7 +339,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{archived?: bool, property?: string}|LandingPageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -359,7 +359,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             path: ['cms/pages/2026-03/landing-pages/%1$s', $objectID],
             query: $parsed,
             options: $options,
-            convert: CmsPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -370,7 +370,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -383,7 +383,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             method: 'get',
             path: ['cms/pages/2026-03/landing-pages/%1$s/draft', $objectID],
             options: $requestOptions,
-            convert: CmsPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -535,7 +535,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * }|LandingPageUpdateDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -556,7 +556,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: CmsPage::class,
+            convert: PageData::class,
         );
     }
 }

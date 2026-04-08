@@ -6,6 +6,7 @@ namespace HubspotSDK\ServiceContracts\Cms\Hubdb;
 
 use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
+use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Cms\Hubdb\Rows\RowCloneBatchParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowCloneDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowCreateBatchParams;
@@ -21,9 +22,9 @@ use HubspotSDK\Cms\Hubdb\Rows\RowReplaceBatchParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowUpdateBatchParams;
 use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
+use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
 use HubspotSDK\RequestOptions;
 
 /**
@@ -53,7 +54,7 @@ interface RowsRawContract
      * @param array<string,mixed>|RowListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Page<mixed>>
+     * @return BaseResponse<RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3,>
      *
      * @throws APIException
      */

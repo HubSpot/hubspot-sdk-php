@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace HubspotSDK\ServiceContracts\Crm\Objects\PartnerClients;
 
 use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 use HubspotSDK\Crm\Objects\SimplePublicObjectID;
@@ -30,21 +29,6 @@ interface BatchContract
         array $inputs,
         RequestOptions|array|null $requestOptions = null
     ): BatchResponseSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function createDefaultAssociation(
-        string $toObjectID,
-        string $fromObjectType,
-        string $fromObjectID,
-        string $toObjectType,
-        RequestOptions|array|null $requestOptions = null,
-    ): BatchResponsePublicDefaultAssociation;
 
     /**
      * @api

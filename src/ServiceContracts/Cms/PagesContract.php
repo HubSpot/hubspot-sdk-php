@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubspotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\Pages\CmsPage;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Cms\Pages\PageVersion;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\Page;
@@ -258,7 +258,7 @@ interface PagesContract
         string $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -271,7 +271,7 @@ interface PagesContract
         int $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -284,7 +284,7 @@ interface PagesContract
         string $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 
     /**
      * @api
@@ -297,5 +297,5 @@ interface PagesContract
         int $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
-    ): CmsPage;
+    ): PageData;
 }

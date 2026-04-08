@@ -11,7 +11,7 @@ use HubspotSDK\Cms\Pages\ABTests\AbTestEndLandingPageTestParams;
 use HubspotSDK\Cms\Pages\ABTests\AbTestEndSitePageTestParams;
 use HubspotSDK\Cms\Pages\ABTests\AbTestRerunLandingPageTestParams;
 use HubspotSDK\Cms\Pages\ABTests\AbTestRerunSitePageTestParams;
-use HubspotSDK\Cms\Pages\CmsPage;
+use HubspotSDK\Cms\Pages\PageData;
 use HubspotSDK\Core\Contracts\BaseResponse;
 use HubspotSDK\Core\Exceptions\APIException;
 use HubspotSDK\RequestOptions;
@@ -38,7 +38,7 @@ final class ABTestsRawService implements ABTestsRawContract
      * }|AbTestCreateLandingPageVariationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -58,7 +58,7 @@ final class ABTestsRawService implements ABTestsRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: CmsPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -72,7 +72,7 @@ final class ABTestsRawService implements ABTestsRawContract
      * }|AbTestCreateSitePageVariationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CmsPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -92,7 +92,7 @@ final class ABTestsRawService implements ABTestsRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: CmsPage::class,
+            convert: PageData::class,
         );
     }
 
