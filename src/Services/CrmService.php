@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\CrmContract;
-use HubspotSDK\Services\Crm\AppUninstallsService;
-use HubspotSDK\Services\Crm\AssociationsSchemaService;
-use HubspotSDK\Services\Crm\AssociationsService;
-use HubspotSDK\Services\Crm\DealSplitsService;
-use HubspotSDK\Services\Crm\ExportsService;
-use HubspotSDK\Services\Crm\ExtensionsService;
-use HubspotSDK\Services\Crm\FeatureFlagsService;
-use HubspotSDK\Services\Crm\ImportsService;
-use HubspotSDK\Services\Crm\LimitsService;
-use HubspotSDK\Services\Crm\ListsService;
-use HubspotSDK\Services\Crm\ObjectLibraryService;
-use HubspotSDK\Services\Crm\ObjectSchemasService;
-use HubspotSDK\Services\Crm\ObjectsService;
-use HubspotSDK\Services\Crm\OwnersService;
-use HubspotSDK\Services\Crm\PipelinesService;
-use HubspotSDK\Services\Crm\PropertiesService;
-use HubspotSDK\Services\Crm\PropertiesValidationsService;
-use HubspotSDK\Services\Crm\TimelineService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\CrmContract;
+use HubSpotSDK\Services\Crm\AppUninstallsService;
+use HubSpotSDK\Services\Crm\AssociationsSchemaService;
+use HubSpotSDK\Services\Crm\AssociationsService;
+use HubSpotSDK\Services\Crm\DealSplitsService;
+use HubSpotSDK\Services\Crm\ExportsService;
+use HubSpotSDK\Services\Crm\ExtensionsService;
+use HubSpotSDK\Services\Crm\FeatureFlagsService;
+use HubSpotSDK\Services\Crm\ImportsService;
+use HubSpotSDK\Services\Crm\LimitsService;
+use HubSpotSDK\Services\Crm\ListsService;
+use HubSpotSDK\Services\Crm\ObjectLibraryService;
+use HubSpotSDK\Services\Crm\ObjectSchemasService;
+use HubSpotSDK\Services\Crm\ObjectsService;
+use HubSpotSDK\Services\Crm\OwnersService;
+use HubSpotSDK\Services\Crm\PipelinesService;
+use HubSpotSDK\Services\Crm\PropertiesService;
+use HubSpotSDK\Services\Crm\PropertiesValidationsService;
+use HubSpotSDK\Services\Crm\TimelineService;
 
 final class CrmService implements CrmContract
 {

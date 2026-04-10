@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Batch\BatchGetParams;
+namespace HubSpotSDK\Cms\MediaBridge\Batch\BatchGetParams;
 
 enum DataSensitivity: string
 {

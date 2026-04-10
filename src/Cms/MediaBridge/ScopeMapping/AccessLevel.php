@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\ScopeMapping;
+namespace HubSpotSDK\Cms\MediaBridge\ScopeMapping;
 
 enum AccessLevel: string
 {

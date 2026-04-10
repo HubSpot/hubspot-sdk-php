@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Quotes;
+namespace HubSpotSDK\Crm\Objects\Quotes;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
 
 /**
  * Create a quote with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard quotes is provided.
  *
- * @see HubspotSDK\Services\Crm\Objects\QuotesService::create()
+ * @see HubSpotSDK\Services\Crm\Objects\QuotesService::create()
  *
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
  *
  * @phpstan-type QuoteCreateParamsShape = array{
  *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,

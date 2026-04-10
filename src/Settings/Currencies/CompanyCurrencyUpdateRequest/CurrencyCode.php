@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\CompanyCurrencyUpdateRequest;
+namespace HubSpotSDK\Settings\Currencies\CompanyCurrencyUpdateRequest;
 
 /**
  * The three-letter code representing a specific currency (ex. USD).

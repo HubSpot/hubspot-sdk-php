@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicAssociationFilterBranch\Filter;
-use HubspotSDK\Crm\Lists\PublicAssociationFilterBranch\FilterBranch;
-use HubspotSDK\Crm\Lists\PublicAssociationFilterBranch\FilterBranchType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicAssociationFilterBranch\Filter;
+use HubSpotSDK\Crm\Lists\PublicAssociationFilterBranch\FilterBranch;
+use HubSpotSDK\Crm\Lists\PublicAssociationFilterBranch\FilterBranchType;
 
 /**
- * @phpstan-import-type FilterVariants from \HubspotSDK\Crm\Lists\PublicAssociationFilterBranch\Filter
- * @phpstan-import-type FilterShape from \HubspotSDK\Crm\Lists\PublicAssociationFilterBranch\Filter
+ * @phpstan-import-type FilterVariants from \HubSpotSDK\Crm\Lists\PublicAssociationFilterBranch\Filter
+ * @phpstan-import-type FilterShape from \HubSpotSDK\Crm\Lists\PublicAssociationFilterBranch\Filter
  *
  * @phpstan-type PublicAssociationFilterBranchShape = array{
  *   associationCategory: string,

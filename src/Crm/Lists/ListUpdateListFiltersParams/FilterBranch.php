@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\ListUpdateListFiltersParams;
+namespace HubSpotSDK\Crm\Lists\ListUpdateListFiltersParams;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Crm\Lists\PublicAndFilterBranch;
-use HubspotSDK\Crm\Lists\PublicAssociationFilterBranch;
-use HubspotSDK\Crm\Lists\PublicNotAllFilterBranch;
-use HubspotSDK\Crm\Lists\PublicNotAnyFilterBranch;
-use HubspotSDK\Crm\Lists\PublicOrFilterBranch;
-use HubspotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch;
-use HubspotSDK\Crm\Lists\PublicRestrictedFilterBranch;
-use HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Crm\Lists\PublicAndFilterBranch;
+use HubSpotSDK\Crm\Lists\PublicAssociationFilterBranch;
+use HubSpotSDK\Crm\Lists\PublicNotAllFilterBranch;
+use HubSpotSDK\Crm\Lists\PublicNotAnyFilterBranch;
+use HubSpotSDK\Crm\Lists\PublicOrFilterBranch;
+use HubSpotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch;
+use HubSpotSDK\Crm\Lists\PublicRestrictedFilterBranch;
+use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch;
 
 /**
  * Updated filtering criteria for the list.
  *
- * @phpstan-import-type PublicOrFilterBranchShape from \HubspotSDK\Crm\Lists\PublicOrFilterBranch
- * @phpstan-import-type PublicAndFilterBranchShape from \HubspotSDK\Crm\Lists\PublicAndFilterBranch
- * @phpstan-import-type PublicNotAllFilterBranchShape from \HubspotSDK\Crm\Lists\PublicNotAllFilterBranch
- * @phpstan-import-type PublicNotAnyFilterBranchShape from \HubspotSDK\Crm\Lists\PublicNotAnyFilterBranch
- * @phpstan-import-type PublicRestrictedFilterBranchShape from \HubspotSDK\Crm\Lists\PublicRestrictedFilterBranch
- * @phpstan-import-type PublicUnifiedEventsFilterBranchShape from \HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch
- * @phpstan-import-type PublicPropertyAssociationFilterBranchShape from \HubspotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch
- * @phpstan-import-type PublicAssociationFilterBranchShape from \HubspotSDK\Crm\Lists\PublicAssociationFilterBranch
+ * @phpstan-import-type PublicOrFilterBranchShape from \HubSpotSDK\Crm\Lists\PublicOrFilterBranch
+ * @phpstan-import-type PublicAndFilterBranchShape from \HubSpotSDK\Crm\Lists\PublicAndFilterBranch
+ * @phpstan-import-type PublicNotAllFilterBranchShape from \HubSpotSDK\Crm\Lists\PublicNotAllFilterBranch
+ * @phpstan-import-type PublicNotAnyFilterBranchShape from \HubSpotSDK\Crm\Lists\PublicNotAnyFilterBranch
+ * @phpstan-import-type PublicRestrictedFilterBranchShape from \HubSpotSDK\Crm\Lists\PublicRestrictedFilterBranch
+ * @phpstan-import-type PublicUnifiedEventsFilterBranchShape from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch
+ * @phpstan-import-type PublicPropertyAssociationFilterBranchShape from \HubSpotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch
+ * @phpstan-import-type PublicAssociationFilterBranchShape from \HubSpotSDK\Crm\Lists\PublicAssociationFilterBranch
  *
  * @phpstan-type FilterBranchVariants = PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch
  * @phpstan-type FilterBranchShape = FilterBranchVariants|PublicOrFilterBranchShape|PublicAndFilterBranchShape|PublicNotAllFilterBranchShape|PublicNotAnyFilterBranchShape|PublicRestrictedFilterBranchShape|PublicUnifiedEventsFilterBranchShape|PublicPropertyAssociationFilterBranchShape|PublicAssociationFilterBranchShape

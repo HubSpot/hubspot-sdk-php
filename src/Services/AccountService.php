@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Account\CollectionResponseAPIUsageNoPaging;
-use HubspotSDK\Account\PortalInformationResponse;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\AccountContract;
-use HubspotSDK\Services\Account\ActivityService;
+use HubSpotSDK\Account\CollectionResponseAPIUsageNoPaging;
+use HubSpotSDK\Account\PortalInformationResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\AccountContract;
+use HubSpotSDK\Services\Account\ActivityService;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class AccountService implements AccountContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicRangedNumberPropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicRangedNumberPropertyOperation;
 
 /**
  * Specifies the type of operation (NUMBER_RANGED).

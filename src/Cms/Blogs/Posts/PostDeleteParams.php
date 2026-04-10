@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts;
+namespace HubSpotSDK\Cms\Blogs\Posts;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Delete a blog post by ID.
  *
- * @see HubspotSDK\Services\Cms\Blogs\PostsService::delete()
+ * @see HubSpotSDK\Services\Cms\Blogs\PostsService::delete()
  *
  * @phpstan-type PostDeleteParamsShape = array{archived?: bool|null}
  */

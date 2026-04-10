@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MoreThan;
+namespace HubSpotSDK\Cms\MediaBridge\MoreThan;
 
 enum Operator: string
 {

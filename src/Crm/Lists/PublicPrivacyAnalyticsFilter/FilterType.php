@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicPrivacyAnalyticsFilter;
+namespace HubSpotSDK\Crm\Lists\PublicPrivacyAnalyticsFilter;
 
 /**
  * Specifies the type of filter (PRIVACY).

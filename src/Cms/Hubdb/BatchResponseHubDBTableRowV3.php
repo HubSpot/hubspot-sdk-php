@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb;
+namespace HubSpotSDK\Cms\Hubdb;
 
-use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3\Status;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3\Status;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type HubDBTableRowV3Shape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3
+ * @phpstan-import-type HubDBTableRowV3Shape from \HubSpotSDK\Cms\Hubdb\HubDBTableRowV3
  *
  * @phpstan-type BatchResponseHubDBTableRowV3Shape = array{
  *   completedAt: \DateTimeInterface,

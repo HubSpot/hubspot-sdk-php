@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams;
+namespace HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams;
 
 enum Channel: string
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\CommunicationPreferenceGenerateLinksParams;
+namespace HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGenerateLinksParams;
 
 enum Channel: string
 {

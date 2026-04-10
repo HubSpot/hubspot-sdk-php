@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Batch;
+namespace HubSpotSDK\Marketing\Campaigns\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignInput;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignInput;
 
 /**
  * This endpoint creates a batch of campaigns. The maximum number of items in a batch request is 50.
  * The campaigns in the response are not guaranteed to be in the same order as they were provided in the request.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::create()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\BatchService::create()
  *
- * @phpstan-import-type PublicCampaignInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignInput
+ * @phpstan-import-type PublicCampaignInputShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignInput
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<PublicCampaignInput|PublicCampaignInputShape>

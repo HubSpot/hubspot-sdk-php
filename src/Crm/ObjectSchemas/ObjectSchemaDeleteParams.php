@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas;
+namespace HubSpotSDK\Crm\ObjectSchemas;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Remove a custom object schema from the account using its object type ID or fully qualified name.
  *
- * @see HubspotSDK\Services\Crm\ObjectSchemasService::delete()
+ * @see HubSpotSDK\Services\Crm\ObjectSchemasService::delete()
  *
  * @phpstan-type ObjectSchemaDeleteParamsShape = array{archived?: bool|null}
  */

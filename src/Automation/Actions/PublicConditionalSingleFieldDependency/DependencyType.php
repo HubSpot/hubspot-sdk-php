@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
+namespace HubSpotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
 
 /**
  * The type of dependency, with the default value being CONDITIONAL_SINGLE_FIELD.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams;
+namespace HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams;
 
 enum Service: string
 {

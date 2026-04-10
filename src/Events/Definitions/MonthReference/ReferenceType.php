@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\MonthReference;
+namespace HubSpotSDK\Events\Definitions\MonthReference;
 
 enum ReferenceType: string
 {

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences;
+namespace HubSpotSDK\CommunicationPreferences;
 
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams\Channel;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams\Channel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Unsubscribe a contact from all email subscriptions.
  *
- * @see HubspotSDK\Services\CommunicationPreferencesService::unsubscribeAll()
+ * @see HubSpotSDK\Services\CommunicationPreferencesService::unsubscribeAll()
  *
  * @phpstan-type CommunicationPreferenceUnsubscribeAllParamsShape = array{
  *   channel: Channel|value-of<Channel>,

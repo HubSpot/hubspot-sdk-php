@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\OptionDecoratorsExtensionData\OptionDecoratorStyle;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\OptionDecoratorsExtensionData\OptionDecoratorStyle;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type OptionDecorationsShape from \HubspotSDK\Cms\MediaBridge\OptionDecorations
+ * @phpstan-import-type OptionDecorationsShape from \HubSpotSDK\Cms\MediaBridge\OptionDecorations
  *
  * @phpstan-type OptionDecoratorsExtensionDataShape = array{
  *   optionDecorators: array<string,OptionDecorations|OptionDecorationsShape>,

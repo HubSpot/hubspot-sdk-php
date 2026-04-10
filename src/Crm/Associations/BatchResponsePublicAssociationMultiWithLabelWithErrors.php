@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations;
+namespace HubSpotSDK\Crm\Associations;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabelWithErrors\Status;
-use HubspotSDK\StandardError;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabelWithErrors\Status;
+use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type PublicAssociationMultiWithLabelShape from \HubspotSDK\Crm\Associations\PublicAssociationMultiWithLabel
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type PublicAssociationMultiWithLabelShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiWithLabel
+ * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponsePublicAssociationMultiWithLabelWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,

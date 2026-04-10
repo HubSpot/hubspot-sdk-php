@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Automation\Actions;
+namespace HubSpotSDK\Services\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\PublicActionDefinition;
-use HubspotSDK\Automation\Actions\PublicActionDefinitionRequiresObjectResponse;
-use HubspotSDK\Automation\Actions\PublicActionFunction;
-use HubspotSDK\Automation\Actions\PublicActionLabels;
-use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
-use HubspotSDK\Automation\Actions\PublicInputFieldDefinition;
-use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Automation\Actions\DefinitionsContract;
+use HubSpotSDK\Automation\Actions\PublicActionDefinition;
+use HubSpotSDK\Automation\Actions\PublicActionDefinitionRequiresObjectResponse;
+use HubSpotSDK\Automation\Actions\PublicActionFunction;
+use HubSpotSDK\Automation\Actions\PublicActionLabels;
+use HubSpotSDK\Automation\Actions\PublicExecutionTranslationRule;
+use HubSpotSDK\Automation\Actions\PublicInputFieldDefinition;
+use HubSpotSDK\Automation\Actions\PublicObjectRequestOptions;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Automation\Actions\DefinitionsContract;
 
 /**
- * @phpstan-import-type PublicActionFunctionShape from \HubspotSDK\Automation\Actions\PublicActionFunction
- * @phpstan-import-type InputFieldDependencyShape from \HubspotSDK\Automation\Actions\Definitions\DefinitionCreateParams\InputFieldDependency
- * @phpstan-import-type InputFieldDependencyShape from \HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency as InputFieldDependencyShape1
- * @phpstan-import-type PublicInputFieldDefinitionShape from \HubspotSDK\Automation\Actions\PublicInputFieldDefinition
- * @phpstan-import-type PublicActionLabelsShape from \HubspotSDK\Automation\Actions\PublicActionLabels
- * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubspotSDK\Automation\Actions\PublicExecutionTranslationRule
- * @phpstan-import-type PublicObjectRequestOptionsShape from \HubspotSDK\Automation\Actions\PublicObjectRequestOptions
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicActionFunctionShape from \HubSpotSDK\Automation\Actions\PublicActionFunction
+ * @phpstan-import-type InputFieldDependencyShape from \HubSpotSDK\Automation\Actions\Definitions\DefinitionCreateParams\InputFieldDependency
+ * @phpstan-import-type InputFieldDependencyShape from \HubSpotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency as InputFieldDependencyShape1
+ * @phpstan-import-type PublicInputFieldDefinitionShape from \HubSpotSDK\Automation\Actions\PublicInputFieldDefinition
+ * @phpstan-import-type PublicActionLabelsShape from \HubSpotSDK\Automation\Actions\PublicActionLabels
+ * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubSpotSDK\Automation\Actions\PublicExecutionTranslationRule
+ * @phpstan-import-type PublicObjectRequestOptionsShape from \HubSpotSDK\Automation\Actions\PublicObjectRequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class DefinitionsService implements DefinitionsContract
 {

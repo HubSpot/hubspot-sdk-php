@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicFormSubmissionFilter;
+namespace HubSpotSDK\Crm\Lists\PublicFormSubmissionFilter;
 
 /**
  * Specifies the operation to be performed (FILLED_OUT, NOT_FILLED_OUT).

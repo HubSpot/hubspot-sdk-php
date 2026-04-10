@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Crm;
 
-use HubspotSDK\ActionResponse;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Imports\PublicImportError;
-use HubspotSDK\Crm\Imports\PublicImportResponse;
-use HubspotSDK\Page;
+use HubSpotSDK\ActionResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Imports\PublicImportError;
+use HubSpotSDK\Crm\Imports\PublicImportResponse;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

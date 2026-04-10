@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams;
+namespace HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams;
 
 enum Type: string
 {

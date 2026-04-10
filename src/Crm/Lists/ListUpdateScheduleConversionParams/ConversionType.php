@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams;
+namespace HubSpotSDK\Crm\Lists\ListUpdateScheduleConversionParams;
 
 /**
  * Specifies the type of conversion (INACTIVITY).

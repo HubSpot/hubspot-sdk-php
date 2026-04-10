@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicSurveyMonkeyValueFilter;
+namespace HubSpotSDK\Crm\Lists\PublicSurveyMonkeyValueFilter;
 
 /**
  * Defines the type of filter (SURVEY_MONKEY_VALUE).

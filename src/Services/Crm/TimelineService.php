@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Timeline\AppEventResolutionResponse;
-use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\TimelineContract;
-use HubspotSDK\Services\Crm\Timeline\BatchService;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Timeline\AppEventResolutionResponse;
+use HubSpotSDK\Crm\Timeline\TimelineEventIFrame;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\TimelineContract;
+use HubSpotSDK\Services\Crm\Timeline\BatchService;
 
 /**
- * @phpstan-import-type TimelineEventIFrameShape from \HubspotSDK\Crm\Timeline\TimelineEventIFrame
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type TimelineEventIFrameShape from \HubSpotSDK\Crm\Timeline\TimelineEventIFrame
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class TimelineService implements TimelineContract
 {

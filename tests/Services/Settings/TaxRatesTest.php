@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Settings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\Settings\TaxRates\PublicTaxRateGroup;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\Settings\TaxRates\PublicTaxRateGroup;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

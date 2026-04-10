@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\FieldTypeDefinition;
+namespace HubSpotSDK\Automation\Actions\FieldTypeDefinition;
 
 /**
  * Specifies the data type of the field, with accepted values like bool, date, datetime, enumeration, json, number, object_coordinates, phone_number, string.

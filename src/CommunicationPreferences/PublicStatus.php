@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences;
+namespace HubSpotSDK\CommunicationPreferences;
 
-use HubspotSDK\CommunicationPreferences\PublicStatus\Channel;
-use HubspotSDK\CommunicationPreferences\PublicStatus\LegalBasis;
-use HubspotSDK\CommunicationPreferences\PublicStatus\SetStatusSuccessReason;
-use HubspotSDK\CommunicationPreferences\PublicStatus\Status;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\CommunicationPreferences\PublicStatus\Channel;
+use HubSpotSDK\CommunicationPreferences\PublicStatus\LegalBasis;
+use HubSpotSDK\CommunicationPreferences\PublicStatus\SetStatusSuccessReason;
+use HubSpotSDK\CommunicationPreferences\PublicStatus\Status;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicStatusShape = array{

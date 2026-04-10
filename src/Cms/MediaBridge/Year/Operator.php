@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Year;
+namespace HubSpotSDK\Cms\MediaBridge\Year;
 
 enum Operator: string
 {

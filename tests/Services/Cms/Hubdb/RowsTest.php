@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Cms\Hubdb;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+use HubSpotSDK\Cms\Hubdb\HubDBTableRowV3;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

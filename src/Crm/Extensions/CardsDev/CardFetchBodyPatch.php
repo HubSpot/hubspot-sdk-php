@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev;
+namespace HubSpotSDK\Crm\Extensions\CardsDev;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch\CardType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch\CardType;
 
 /**
- * @phpstan-import-type CardObjectTypeBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\CardObjectTypeBody
+ * @phpstan-import-type CardObjectTypeBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardObjectTypeBody
  *
  * @phpstan-type CardFetchBodyPatchShape = array{
  *   objectTypes: list<CardObjectTypeBody|CardObjectTypeBodyShape>,

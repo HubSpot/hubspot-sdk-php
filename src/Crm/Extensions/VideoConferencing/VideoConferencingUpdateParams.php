@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\VideoConferencing;
+namespace HubSpotSDK\Crm\Extensions\VideoConferencing;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create or update video conference extension settings for your app.
  *
- * @see HubspotSDK\Services\Crm\Extensions\VideoConferencingService::update()
+ * @see HubSpotSDK\Services\Crm\Extensions\VideoConferencingService::update()
  *
  * @phpstan-type VideoConferencingUpdateParamsShape = array{
  *   createMeetingURL: string,

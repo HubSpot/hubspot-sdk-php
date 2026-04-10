@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\BatchResponseRecordIDWithMembershipsWithErrors\Status;
-use HubspotSDK\StandardError;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\BatchResponseRecordIDWithMembershipsWithErrors\Status;
+use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type RecordIDWithMembershipsShape from \HubspotSDK\Crm\Lists\RecordIDWithMemberships
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type RecordIDWithMembershipsShape from \HubSpotSDK\Crm\Lists\RecordIDWithMemberships
+ * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponseRecordIDWithMembershipsWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,

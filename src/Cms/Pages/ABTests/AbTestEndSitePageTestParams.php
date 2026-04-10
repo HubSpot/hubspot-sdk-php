@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\ABTests;
+namespace HubSpotSDK\Cms\Pages\ABTests;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * End an active A/B test and designate a winner.
  *
- * @see HubspotSDK\Services\Cms\Pages\ABTestsService::endSitePageTest()
+ * @see HubSpotSDK\Services\Cms\Pages\ABTestsService::endSitePageTest()
  *
  * @phpstan-type AbTestEndSitePageTestParamsShape = array{
  *   abTestID: string, winnerID: string

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\AuditLogs\AuditLogExportParams\Format;
-use HubspotSDK\Cms\AuditLogs\CmsAuditLoggingExportFilters;
-use HubspotSDK\Cms\AuditLogs\PublicAuditLog;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\AuditLogsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\AuditLogs\AuditLogExportParams\Format;
+use HubSpotSDK\Cms\AuditLogs\CmsAuditLoggingExportFilters;
+use HubSpotSDK\Cms\AuditLogs\PublicAuditLog;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\AuditLogsContract;
 
 /**
- * @phpstan-import-type CmsAuditLoggingExportFiltersShape from \HubspotSDK\Cms\AuditLogs\CmsAuditLoggingExportFilters
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type CmsAuditLoggingExportFiltersShape from \HubSpotSDK\Cms\AuditLogs\CmsAuditLoggingExportFilters
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class AuditLogsService implements AuditLogsContract
 {

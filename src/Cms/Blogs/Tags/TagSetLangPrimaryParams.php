@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Tags;
+namespace HubSpotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Set a Blog Tag as the primary language of a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Blogs\TagsService::setLangPrimary()
+ * @see HubSpotSDK\Services\Cms\Blogs\TagsService::setLangPrimary()
  *
  * @phpstan-type TagSetLangPrimaryParamsShape = array{id: string}
  */

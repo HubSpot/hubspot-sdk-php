@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings;
+namespace HubSpotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Scheduler\Meetings\ExternalMeetingsLinkSettings\StartTimeIncrementMinutes;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Scheduler\Meetings\ExternalMeetingsLinkSettings\StartTimeIncrementMinutes;
 
 /**
- * @phpstan-import-type ExternalClosedRangeShape from \HubspotSDK\Scheduler\Meetings\ExternalClosedRange
- * @phpstan-import-type ExternalLinkFormFieldShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkFormField
- * @phpstan-import-type ExternalLinkDisplayInfoShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkDisplayInfo
- * @phpstan-import-type ExternalGuestSettingsShape from \HubspotSDK\Scheduler\Meetings\ExternalGuestSettings
- * @phpstan-import-type ExternalLegalConsentOptionsShape from \HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions
- * @phpstan-import-type ExternalMeetingsWelcomeScreenInfoShape from \HubspotSDK\Scheduler\Meetings\ExternalMeetingsWelcomeScreenInfo
+ * @phpstan-import-type ExternalClosedRangeShape from \HubSpotSDK\Scheduler\Meetings\ExternalClosedRange
+ * @phpstan-import-type ExternalLinkFormFieldShape from \HubSpotSDK\Scheduler\Meetings\ExternalLinkFormField
+ * @phpstan-import-type ExternalLinkDisplayInfoShape from \HubSpotSDK\Scheduler\Meetings\ExternalLinkDisplayInfo
+ * @phpstan-import-type ExternalGuestSettingsShape from \HubSpotSDK\Scheduler\Meetings\ExternalGuestSettings
+ * @phpstan-import-type ExternalLegalConsentOptionsShape from \HubSpotSDK\Scheduler\Meetings\ExternalLegalConsentOptions
+ * @phpstan-import-type ExternalMeetingsWelcomeScreenInfoShape from \HubSpotSDK\Scheduler\Meetings\ExternalMeetingsWelcomeScreenInfo
  *
  * @phpstan-type ExternalMeetingsLinkSettingsShape = array{
  *   availability: array<string,ExternalClosedRange|ExternalClosedRangeShape>,

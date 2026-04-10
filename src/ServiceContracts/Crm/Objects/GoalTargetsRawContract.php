@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetCreateParams;
-use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetGetParams;
-use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetListParams;
-use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetSearchParams;
-use HubspotSDK\Crm\Objects\GoalTargets\GoalTargetUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\GoalTargets\GoalTargetCreateParams;
+use HubSpotSDK\Crm\Objects\GoalTargets\GoalTargetGetParams;
+use HubSpotSDK\Crm\Objects\GoalTargets\GoalTargetListParams;
+use HubSpotSDK\Crm\Objects\GoalTargets\GoalTargetSearchParams;
+use HubSpotSDK\Crm\Objects\GoalTargets\GoalTargetUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface GoalTargetsRawContract
 {

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Owners\OwnerGetParams;
-use HubspotSDK\Crm\Owners\OwnerGetParams\IDProperty;
-use HubspotSDK\Crm\Owners\OwnerListParams;
-use HubspotSDK\Crm\Owners\PublicOwner;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\OwnersRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Owners\OwnerGetParams;
+use HubSpotSDK\Crm\Owners\OwnerGetParams\IDProperty;
+use HubSpotSDK\Crm\Owners\OwnerListParams;
+use HubSpotSDK\Crm\Owners\PublicOwner;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\OwnersRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class OwnersRawService implements OwnersRawContract
 {

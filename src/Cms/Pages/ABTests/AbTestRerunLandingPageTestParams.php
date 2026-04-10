@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\ABTests;
+namespace HubSpotSDK\Cms\Pages\ABTests;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Rerun a previous A/B test.
  *
- * @see HubspotSDK\Services\Cms\Pages\ABTestsService::rerunLandingPageTest()
+ * @see HubSpotSDK\Services\Cms\Pages\ABTestsService::rerunLandingPageTest()
  *
  * @phpstan-type AbTestRerunLandingPageTestParamsShape = array{
  *   abTestID: string, variationID: string

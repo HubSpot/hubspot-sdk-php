@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\Attachment;
-use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\Direction;
-use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\TruncationStatus;
-use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\Type;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage\Attachment;
+use HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage\Direction;
+use HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage\TruncationStatus;
+use HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type AttachmentVariants from \HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\Attachment
- * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage\Attachment
- * @phpstan-import-type PublicClientShape from \HubspotSDK\Conversations\CustomChannels\PublicClient
- * @phpstan-import-type PublicRecipientShape from \HubspotSDK\Conversations\CustomChannels\PublicRecipient
- * @phpstan-import-type PublicSenderShape from \HubspotSDK\Conversations\CustomChannels\PublicSender
- * @phpstan-import-type PublicMessageStatusShape from \HubspotSDK\Conversations\CustomChannels\PublicMessageStatus
+ * @phpstan-import-type AttachmentVariants from \HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage\Attachment
+ * @phpstan-import-type AttachmentShape from \HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage\Attachment
+ * @phpstan-import-type PublicClientShape from \HubSpotSDK\Conversations\CustomChannels\PublicClient
+ * @phpstan-import-type PublicRecipientShape from \HubSpotSDK\Conversations\CustomChannels\PublicRecipient
+ * @phpstan-import-type PublicSenderShape from \HubSpotSDK\Conversations\CustomChannels\PublicSender
+ * @phpstan-import-type PublicMessageStatusShape from \HubSpotSDK\Conversations\CustomChannels\PublicMessageStatus
  *
  * @phpstan-type PublicConversationsMessageShape = array{
  *   id: string,

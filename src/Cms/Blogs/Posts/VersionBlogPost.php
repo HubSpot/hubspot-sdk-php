@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts;
+namespace HubSpotSDK\Cms\Blogs\Posts;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\VersionUser;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\VersionUser;
 
 /**
- * @phpstan-import-type BlogPostShape from \HubspotSDK\Cms\Blogs\Posts\BlogPost
- * @phpstan-import-type VersionUserShape from \HubspotSDK\VersionUser
+ * @phpstan-import-type BlogPostShape from \HubSpotSDK\Cms\Blogs\Posts\BlogPost
+ * @phpstan-import-type VersionUserShape from \HubSpotSDK\VersionUser
  *
  * @phpstan-type VersionBlogPostShape = array{
  *   id: string,

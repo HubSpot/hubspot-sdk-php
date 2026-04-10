@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\PublicFieldTypeDefinition;
+namespace HubSpotSDK\Automation\Actions\PublicFieldTypeDefinition;
 
 /**
  * The type of field, with accepted values including booleancheckbox, calculation_equation, checkbox, date, file, html, number, phonenumber, radio, select, text, and textarea.

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\VisitorIdentification;
+namespace HubSpotSDK\Conversations\VisitorIdentification;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Generate an identification token for a website visitor who has been authenticated using your own system. An identification token returned from this API can be used to pass information about your already-authenticated visitor to the chat widget, so that it treats the visitor as a known contact. This allows support agents to recognize and assist the visitor more effectively.
  *
- * @see HubspotSDK\Services\Conversations\VisitorIdentificationService::generateToken()
+ * @see HubSpotSDK\Services\Conversations\VisitorIdentificationService::generateToken()
  *
  * @phpstan-type VisitorIdentificationGenerateTokenParamsShape = array{
  *   email: string, firstName?: string|null, lastName?: string|null

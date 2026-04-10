@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Cms\Pages;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
-use HubspotSDK\Cms\Pages\BatchResponsePage;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Pages\BatchResponseContentFolder;
+use HubSpotSDK\Cms\Pages\BatchResponsePage;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

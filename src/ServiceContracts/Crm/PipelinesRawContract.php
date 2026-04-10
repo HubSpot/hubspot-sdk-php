@@ -2,32 +2,32 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
-use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
-use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
-use HubspotSDK\Crm\Pipelines\Pipeline;
-use HubspotSDK\Crm\Pipelines\PipelineCreateParams;
-use HubspotSDK\Crm\Pipelines\PipelineCreateStageParams;
-use HubspotSDK\Crm\Pipelines\PipelineDeleteParams;
-use HubspotSDK\Crm\Pipelines\PipelineDeleteStageParams;
-use HubspotSDK\Crm\Pipelines\PipelineGetParams;
-use HubspotSDK\Crm\Pipelines\PipelineGetStageParams;
-use HubspotSDK\Crm\Pipelines\PipelineListAuditParams;
-use HubspotSDK\Crm\Pipelines\PipelineListStageAuditParams;
-use HubspotSDK\Crm\Pipelines\PipelineListStagesParams;
-use HubspotSDK\Crm\Pipelines\PipelineStage;
-use HubspotSDK\Crm\Pipelines\PipelineUpdateAllPropertiesParams;
-use HubspotSDK\Crm\Pipelines\PipelineUpdateParams;
-use HubspotSDK\Crm\Pipelines\PipelineUpdateStageAllPropertiesParams;
-use HubspotSDK\Crm\Pipelines\PipelineUpdateStageParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
+use HubSpotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
+use HubSpotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
+use HubSpotSDK\Crm\Pipelines\Pipeline;
+use HubSpotSDK\Crm\Pipelines\PipelineCreateParams;
+use HubSpotSDK\Crm\Pipelines\PipelineCreateStageParams;
+use HubSpotSDK\Crm\Pipelines\PipelineDeleteParams;
+use HubSpotSDK\Crm\Pipelines\PipelineDeleteStageParams;
+use HubSpotSDK\Crm\Pipelines\PipelineGetParams;
+use HubSpotSDK\Crm\Pipelines\PipelineGetStageParams;
+use HubSpotSDK\Crm\Pipelines\PipelineListAuditParams;
+use HubSpotSDK\Crm\Pipelines\PipelineListStageAuditParams;
+use HubSpotSDK\Crm\Pipelines\PipelineListStagesParams;
+use HubSpotSDK\Crm\Pipelines\PipelineStage;
+use HubSpotSDK\Crm\Pipelines\PipelineUpdateAllPropertiesParams;
+use HubSpotSDK\Crm\Pipelines\PipelineUpdateParams;
+use HubSpotSDK\Crm\Pipelines\PipelineUpdateStageAllPropertiesParams;
+use HubSpotSDK\Crm\Pipelines\PipelineUpdateStageParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface PipelinesRawContract
 {

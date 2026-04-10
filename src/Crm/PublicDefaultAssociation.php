@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm;
+namespace HubSpotSDK\Crm;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PublicObjectID;
+use HubSpotSDK\AssociationSpec;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\PublicObjectID;
 
 /**
- * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
- * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type AssociationSpecShape from \HubSpotSDK\AssociationSpec
+ * @phpstan-import-type PublicObjectIDShape from \HubSpotSDK\PublicObjectID
  *
  * @phpstan-type PublicDefaultAssociationShape = array{
  *   associationSpec: AssociationSpec|AssociationSpecShape,

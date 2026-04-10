@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas;
+namespace HubSpotSDK\Crm\ObjectSchemas;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ObjectSchemaShape from \HubspotSDK\Crm\ObjectSchemas\ObjectSchema
+ * @phpstan-import-type ObjectSchemaShape from \HubSpotSDK\Crm\ObjectSchemas\ObjectSchema
  *
  * @phpstan-type CollectionResponseObjectSchemaNoPagingShape = array{
  *   results: list<ObjectSchema|ObjectSchemaShape>

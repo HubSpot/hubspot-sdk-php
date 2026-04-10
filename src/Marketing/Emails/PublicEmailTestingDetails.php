@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSampleSizeDefault;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSamplingDefault;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbStatus;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSampleSizeDefault;
+use HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSamplingDefault;
+use HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails\AbStatus;
+use HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails\AbSuccessMetric;
 
 /**
  * @phpstan-type PublicEmailTestingDetailsShape = array{

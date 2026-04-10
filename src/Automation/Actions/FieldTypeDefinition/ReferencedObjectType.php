@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\FieldTypeDefinition;
+namespace HubSpotSDK\Automation\Actions\FieldTypeDefinition;
 
 /**
  * Indicates the type of object that the field references, with accepted values like OWNER.

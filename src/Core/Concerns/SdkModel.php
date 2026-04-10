@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Concerns;
+namespace HubSpotSDK\Core\Concerns;
 
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion;
-use HubspotSDK\Core\Conversion\CoerceState;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\ModelOf;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion;
+use HubSpotSDK\Core\Conversion\CoerceState;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\ModelOf;
+use HubSpotSDK\Core\Util;
 
 /**
  * @internal

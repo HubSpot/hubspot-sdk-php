@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\IndexedTimePoint\TimeType;
-use HubspotSDK\Events\Definitions\IndexedTimePoint\TimezoneSource;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\IndexedTimePoint\TimeType;
+use HubSpotSDK\Events\Definitions\IndexedTimePoint\TimezoneSource;
 
 /**
- * @phpstan-import-type IndexReferenceVariants from \HubspotSDK\Events\Definitions\IndexedTimePoint\IndexReference
- * @phpstan-import-type IndexReferenceShape from \HubspotSDK\Events\Definitions\IndexedTimePoint\IndexReference
- * @phpstan-import-type IndexOffsetShape from \HubspotSDK\Events\Definitions\IndexOffset
+ * @phpstan-import-type IndexReferenceVariants from \HubSpotSDK\Events\Definitions\IndexedTimePoint\IndexReference
+ * @phpstan-import-type IndexReferenceShape from \HubSpotSDK\Events\Definitions\IndexedTimePoint\IndexReference
+ * @phpstan-import-type IndexOffsetShape from \HubSpotSDK\Events\Definitions\IndexOffset
  *
  * @phpstan-type IndexedTimePointShape = array{
  *   indexReference: IndexReferenceShape,

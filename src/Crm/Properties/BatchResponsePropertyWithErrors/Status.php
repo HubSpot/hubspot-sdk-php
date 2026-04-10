@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\BatchResponsePropertyWithErrors;
+namespace HubSpotSDK\Crm\Properties\BatchResponsePropertyWithErrors;
 
 enum Status: string
 {

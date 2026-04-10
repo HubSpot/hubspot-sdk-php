@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing\Campaigns;
+namespace HubSpotSDK\Services\Marketing\Campaigns;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\Campaigns\PublicBudgetItem;
-use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\Campaigns\BudgetContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\Campaigns\PublicBudgetItem;
+use HubSpotSDK\Marketing\Campaigns\PublicBudgetTotals;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\Campaigns\BudgetContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BudgetService implements BudgetContract
 {

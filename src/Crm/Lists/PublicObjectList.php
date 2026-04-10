@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicObjectList\FilterBranch;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicObjectList\FilterBranch;
 
 /**
- * @phpstan-import-type FilterBranchVariants from \HubspotSDK\Crm\Lists\PublicObjectList\FilterBranch
- * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\PublicObjectList\FilterBranch
- * @phpstan-import-type PublicListPermissionsShape from \HubspotSDK\Crm\Lists\PublicListPermissions
- * @phpstan-import-type PublicMembershipSettingsShape from \HubspotSDK\Crm\Lists\PublicMembershipSettings
+ * @phpstan-import-type FilterBranchVariants from \HubSpotSDK\Crm\Lists\PublicObjectList\FilterBranch
+ * @phpstan-import-type FilterBranchShape from \HubSpotSDK\Crm\Lists\PublicObjectList\FilterBranch
+ * @phpstan-import-type PublicListPermissionsShape from \HubSpotSDK\Crm\Lists\PublicListPermissions
+ * @phpstan-import-type PublicMembershipSettingsShape from \HubSpotSDK\Crm\Lists\PublicMembershipSettings
  *
  * @phpstan-type PublicObjectListShape = array{
  *   listID: string,

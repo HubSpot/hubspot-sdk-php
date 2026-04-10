@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages;
+namespace HubSpotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a previous version of a landing page, specified by page ID and revision ID.
  *
- * @see HubspotSDK\Services\Cms\PagesService::getLandingPageRevision()
+ * @see HubSpotSDK\Services\Cms\PagesService::getLandingPageRevision()
  *
  * @phpstan-type PageGetLandingPageRevisionParamsShape = array{objectID: string}
  */

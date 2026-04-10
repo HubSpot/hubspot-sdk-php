@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationsSchema\Labels;
+namespace HubSpotSDK\Crm\AssociationsSchema\Labels;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a new label that describes the relationship between two specified CRM object types. This can help in categorizing and managing associations more effectively.
  *
- * @see HubspotSDK\Services\Crm\AssociationsSchema\LabelsService::createLabel()
+ * @see HubSpotSDK\Services\Crm\AssociationsSchema\LabelsService::createLabel()
  *
  * @phpstan-type LabelCreateLabelParamsShape = array{
  *   fromObjectType: string,

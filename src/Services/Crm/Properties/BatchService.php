@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Properties;
+namespace HubSpotSDK\Services\Crm\Properties;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
-use HubspotSDK\Crm\Properties\BatchResponseProperty;
-use HubspotSDK\Crm\Properties\PropertyCreate;
-use HubspotSDK\PropertyName;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Properties\BatchContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
+use HubSpotSDK\Crm\Properties\BatchResponseProperty;
+use HubSpotSDK\Crm\Properties\PropertyCreate;
+use HubSpotSDK\PropertyName;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Properties\BatchContract;
 
 /**
- * @phpstan-import-type PropertyCreateShape from \HubspotSDK\Crm\Properties\PropertyCreate
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ * @phpstan-import-type PropertyCreateShape from \HubSpotSDK\Crm\Properties\PropertyCreate
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type PropertyNameShape from \HubSpotSDK\PropertyName
  */
 final class BatchService implements BatchContract
 {

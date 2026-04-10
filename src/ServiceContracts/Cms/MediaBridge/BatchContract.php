@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
+namespace HubSpotSDK\ServiceContracts\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\Batch\BatchGetParams\DataSensitivity;
-use HubspotSDK\Cms\MediaBridge\BatchResponseProperty;
-use HubspotSDK\Cms\MediaBridge\PropertyCreate;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\PropertyName;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\MediaBridge\Batch\BatchGetParams\DataSensitivity;
+use HubSpotSDK\Cms\MediaBridge\BatchResponseProperty;
+use HubSpotSDK\Cms\MediaBridge\PropertyCreate;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\PropertyName;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PropertyCreateShape from \HubspotSDK\Cms\MediaBridge\PropertyCreate
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ * @phpstan-import-type PropertyCreateShape from \HubSpotSDK\Cms\MediaBridge\PropertyCreate
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type PropertyNameShape from \HubSpotSDK\PropertyName
  */
 interface BatchContract
 {

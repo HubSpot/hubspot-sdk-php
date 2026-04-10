@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams;
+namespace HubSpotSDK\Cms\Blogs\Tags\TagUpdateLangsParams;
 
 enum Language: string
 {

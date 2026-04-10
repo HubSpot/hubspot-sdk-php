@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\WebsitePages;
+namespace HubSpotSDK\Cms\Pages\WebsitePages;
 
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams\AbStatus;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams\ContentTypeCategory;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams\CurrentState;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams\Language;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\LayoutSection;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams\AbStatus;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams\CurrentState;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams\Language;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * Partially update the draft version of a website page, specified by page ID. You only need to specify the values for the details that you're modifying.
  *
- * @see HubspotSDK\Services\Cms\Pages\WebsitePagesService::updateDraft()
+ * @see HubSpotSDK\Services\Cms\Pages\WebsitePagesService::updateDraft()
  *
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
  *
  * @phpstan-type WebsitePageUpdateDraftParamsShape = array{
  *   id: string,

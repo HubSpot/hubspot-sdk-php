@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\Filter;
-use HubspotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\FilterBranch;
-use HubspotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\FilterBranchType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\Filter;
+use HubSpotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\FilterBranch;
+use HubSpotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\FilterBranchType;
 
 /**
- * @phpstan-import-type FilterVariants from \HubspotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\Filter
- * @phpstan-import-type FilterShape from \HubspotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\Filter
+ * @phpstan-import-type FilterVariants from \HubSpotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\Filter
+ * @phpstan-import-type FilterShape from \HubSpotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch\Filter
  *
  * @phpstan-type PublicPropertyAssociationFilterBranchShape = array{
  *   filterBranches: list<mixed>,

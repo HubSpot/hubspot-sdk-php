@@ -1,13 +1,13 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
 use Psr\Http\Message\RequestInterface;
 
 class APITimeoutException extends APIConnectionException
 {
     /** @var string */
-    protected const DESC = 'HubspotSDK API Timeout Exception';
+    protected const DESC = 'HubSpotSDK API Timeout Exception';
 
     public function __construct(
         RequestInterface $request,

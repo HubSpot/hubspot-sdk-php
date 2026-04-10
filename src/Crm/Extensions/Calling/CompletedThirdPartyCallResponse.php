@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling;
+namespace HubSpotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse\CallerIDMatch;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse\CallerIDMatch;
 
 /**
- * @phpstan-import-type CallerIDMatchVariants from \HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse\CallerIDMatch
- * @phpstan-import-type CallerIDMatchShape from \HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse\CallerIDMatch
+ * @phpstan-import-type CallerIDMatchVariants from \HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse\CallerIDMatch
+ * @phpstan-import-type CallerIDMatchShape from \HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse\CallerIDMatch
  *
  * @phpstan-type CompletedThirdPartyCallResponseShape = array{
  *   callerIDMatches: list<CallerIDMatchShape>

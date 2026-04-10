@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
+namespace HubSpotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
 
 /**
  * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".

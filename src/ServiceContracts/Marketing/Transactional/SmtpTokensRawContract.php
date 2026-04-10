@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\Transactional;
+namespace HubSpotSDK\ServiceContracts\Marketing\Transactional;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Transactional\SmtpAPITokenView;
-use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenCreateParams;
-use HubspotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenListParams;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Transactional\SmtpAPITokenView;
+use HubSpotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenCreateParams;
+use HubSpotSDK\Marketing\Transactional\SmtpTokens\SmtpTokenListParams;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface SmtpTokensRawContract
 {

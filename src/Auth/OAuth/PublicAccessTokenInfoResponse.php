@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Auth\OAuth;
+namespace HubSpotSDK\Auth\OAuth;
 
-use HubspotSDK\Auth\OAuth\PublicAccessTokenInfoResponse\TokenUse;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Auth\OAuth\PublicAccessTokenInfoResponse\TokenUse;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type SignedAccessTokenShape from \HubspotSDK\Auth\OAuth\SignedAccessToken
+ * @phpstan-import-type SignedAccessTokenShape from \HubSpotSDK\Auth\OAuth\SignedAccessToken
  *
  * @phpstan-type PublicAccessTokenInfoResponseShape = array{
  *   token: string,

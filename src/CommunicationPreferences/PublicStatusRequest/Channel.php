@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\PublicStatusRequest;
+namespace HubSpotSDK\CommunicationPreferences\PublicStatusRequest;
 
 /**
  * The type of communication channel. Currently, only `EMAIL` is supported.

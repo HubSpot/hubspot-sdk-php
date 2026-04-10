@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
 
 /**
  * Get aggregated statistics in intervals for a specified time span. Each interval contains aggregated statistics of the emails that were sent in that time.
  *
- * @see HubspotSDK\Services\Marketing\EmailsService::getHistogram()
+ * @see HubSpotSDK\Services\Marketing\EmailsService::getHistogram()
  *
  * @phpstan-type EmailGetHistogramParamsShape = array{
  *   emailIDs?: list<int>|null,
  *   endTimestamp?: string|null,
- *   interval?: null|\HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval|value-of<\HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval>,
+ *   interval?: null|\HubSpotSDK\Marketing\Emails\EmailGetHistogramParams\Interval|value-of<\HubSpotSDK\Marketing\Emails\EmailGetHistogramParams\Interval>,
  *   startTimestamp?: string|null,
  * }
  */

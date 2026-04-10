@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\BlogPost;
+namespace HubSpotSDK\Cms\Blogs\Posts\BlogPost;
 
 /**
  * A generated ENUM descibing the current state of this Blog Post. Should always match state.

@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\DefaultState;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\OverrideState;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdatePortalStateParams\FlagState;
-use HubspotSDK\Crm\FeatureFlags\FlagResponse;
-use HubspotSDK\Crm\FeatureFlags\FlagsForAppResponse;
-use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
-use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\FeatureFlagsContract;
-use HubspotSDK\Services\Crm\FeatureFlags\BatchService;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\DefaultState;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\OverrideState;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagUpdatePortalStateParams\FlagState;
+use HubSpotSDK\Crm\FeatureFlags\FlagResponse;
+use HubSpotSDK\Crm\FeatureFlags\FlagsForAppResponse;
+use HubSpotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
+use HubSpotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\FeatureFlagsContract;
+use HubSpotSDK\Services\Crm\FeatureFlags\BatchService;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class FeatureFlagsService implements FeatureFlagsContract
 {

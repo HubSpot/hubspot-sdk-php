@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\TimestampOfTargetPropertyVariable;
+namespace HubSpotSDK\Cms\MediaBridge\TimestampOfTargetPropertyVariable;
 
 enum Operator: string
 {

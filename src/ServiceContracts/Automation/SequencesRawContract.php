@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Automation;
+namespace HubSpotSDK\ServiceContracts\Automation;
 
-use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
-use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
-use HubspotSDK\Automation\Sequences\PublicSequenceLiteResponse;
-use HubspotSDK\Automation\Sequences\PublicSequenceResponse;
-use HubspotSDK\Automation\Sequences\SequenceCreateEnrollmentParams;
-use HubspotSDK\Automation\Sequences\SequenceGetParams;
-use HubspotSDK\Automation\Sequences\SequenceListParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
+use HubSpotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
+use HubSpotSDK\Automation\Sequences\PublicSequenceLiteResponse;
+use HubSpotSDK\Automation\Sequences\PublicSequenceResponse;
+use HubSpotSDK\Automation\Sequences\SequenceCreateEnrollmentParams;
+use HubSpotSDK\Automation\Sequences\SequenceGetParams;
+use HubSpotSDK\Automation\Sequences\SequenceListParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface SequencesRawContract
 {

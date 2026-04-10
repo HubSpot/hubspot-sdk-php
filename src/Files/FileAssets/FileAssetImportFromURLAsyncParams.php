@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\FileAssets;
+namespace HubSpotSDK\Files\FileAssets;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\Access;
-use HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationScope;
-use HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationStrategy;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\Access;
+use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationScope;
+use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationStrategy;
 
 /**
  * Asynchronously imports the file at the given URL into the file manager.
  *
- * @see HubspotSDK\Services\Files\FileAssetsService::importFromURLAsync()
+ * @see HubSpotSDK\Services\Files\FileAssetsService::importFromURLAsync()
  *
  * @phpstan-type FileAssetImportFromURLAsyncParamsShape = array{
  *   access: Access|value-of<Access>,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\ChirpAIContextObject;
+namespace HubSpotSDK\Automation\Actions\ChirpAIContextObject;
 
 enum UnstructuredSource: string
 {

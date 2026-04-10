@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\LandingPages;
+namespace HubSpotSDK\Cms\Pages\LandingPages;
 
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\ContentTypeCategory;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\CurrentState;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\Language;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\LayoutSection;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\CurrentState;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\Language;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * Partially updates the draft version of a single landing page, specified by its ID. You only need to specify the column values that you are modifying.
  *
- * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::updateDraft()
+ * @see HubSpotSDK\Services\Cms\Pages\LandingPagesService::updateDraft()
  *
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
  *
  * @phpstan-type LandingPageUpdateDraftParamsShape = array{
  *   id: string,

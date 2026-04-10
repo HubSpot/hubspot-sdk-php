@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Objects;
+namespace HubSpotSDK\Services\Crm\Objects;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\Companies\CompanyCreateParams;
-use HubspotSDK\Crm\Objects\Companies\CompanyGetParams;
-use HubspotSDK\Crm\Objects\Companies\CompanyListParams;
-use HubspotSDK\Crm\Objects\Companies\CompanyMergeParams;
-use HubspotSDK\Crm\Objects\Companies\CompanySearchParams;
-use HubspotSDK\Crm\Objects\Companies\CompanyUpdateParams;
-use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Objects\CompaniesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\FilterGroup;
+use HubSpotSDK\Crm\Objects\Companies\CompanyCreateParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanyGetParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanyListParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanyMergeParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanySearchParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanyUpdateParams;
+use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Objects\CompaniesRawContract;
 
 /**
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CompaniesRawService implements CompaniesRawContract
 {

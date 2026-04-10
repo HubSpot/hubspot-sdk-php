@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\StringLength;
+namespace HubSpotSDK\Cms\MediaBridge\StringLength;
 
 enum Operator: string
 {

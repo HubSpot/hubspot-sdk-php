@@ -1,11 +1,11 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class APIException extends HubspotSDKException
+class APIException extends HubSpotSDKException
 {
     public ?int $status = null;
 

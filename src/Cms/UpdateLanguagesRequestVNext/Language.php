@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\UpdateLanguagesRequestVNext;
+namespace HubSpotSDK\Cms\UpdateLanguagesRequestVNext;
 
 enum Language: string
 {

@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition\TrackingType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition\TrackingType;
 
 /**
- * @phpstan-import-type AssociationDefinitionShape from \HubspotSDK\Events\Definitions\AssociationDefinition
- * @phpstan-import-type BehavioralEventTypeDefinitionLabelsShape from \HubspotSDK\Events\Definitions\BehavioralEventTypeDefinitionLabels
- * @phpstan-import-type PropertyShape from \HubspotSDK\Events\Definitions\Property
- * @phpstan-import-type ComboEventRuleBranchShape from \HubspotSDK\Events\Definitions\ComboEventRuleBranch
- * @phpstan-import-type ExternalObjectResolutionMappingResponseShape from \HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingResponse
+ * @phpstan-import-type AssociationDefinitionShape from \HubSpotSDK\Events\Definitions\AssociationDefinition
+ * @phpstan-import-type BehavioralEventTypeDefinitionLabelsShape from \HubSpotSDK\Events\Definitions\BehavioralEventTypeDefinitionLabels
+ * @phpstan-import-type PropertyShape from \HubSpotSDK\Events\Definitions\Property
+ * @phpstan-import-type ComboEventRuleBranchShape from \HubSpotSDK\Events\Definitions\ComboEventRuleBranch
+ * @phpstan-import-type ExternalObjectResolutionMappingResponseShape from \HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingResponse
  *
  * @phpstan-type ExternalBehavioralEventTypeDefinitionShape = array{
  *   id: string,

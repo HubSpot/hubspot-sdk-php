@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Events;
+namespace HubSpotSDK\Services\Events;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Events\Occurrences\ExternalUnifiedEvent;
-use HubspotSDK\Events\Occurrences\OccurrenceListParams;
-use HubspotSDK\Events\Occurrences\OccurrenceListParams\ObjectProperty;
-use HubspotSDK\Events\Occurrences\OccurrenceListParams\Property;
-use HubspotSDK\Events\Occurrences\VisibleExternalEventTypeNames;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Events\OccurrencesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Events\Occurrences\ExternalUnifiedEvent;
+use HubSpotSDK\Events\Occurrences\OccurrenceListParams;
+use HubSpotSDK\Events\Occurrences\OccurrenceListParams\ObjectProperty;
+use HubSpotSDK\Events\Occurrences\OccurrenceListParams\Property;
+use HubSpotSDK\Events\Occurrences\VisibleExternalEventTypeNames;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Events\OccurrencesRawContract;
 
 /**
- * @phpstan-import-type ObjectPropertyShape from \HubspotSDK\Events\Occurrences\OccurrenceListParams\ObjectProperty
- * @phpstan-import-type PropertyShape from \HubspotSDK\Events\Occurrences\OccurrenceListParams\Property
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ObjectPropertyShape from \HubSpotSDK\Events\Occurrences\OccurrenceListParams\ObjectProperty
+ * @phpstan-import-type PropertyShape from \HubSpotSDK\Events\Occurrences\OccurrenceListParams\Property
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class OccurrencesRawService implements OccurrencesRawContract
 {

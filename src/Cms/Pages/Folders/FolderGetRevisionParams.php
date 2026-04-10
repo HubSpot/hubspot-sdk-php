@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\Folders;
+namespace HubSpotSDK\Cms\Pages\Folders;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a previous version of a folder, specified by the folder ID and revision ID.
  *
- * @see HubspotSDK\Services\Cms\Pages\FoldersService::getRevision()
+ * @see HubSpotSDK\Services\Cms\Pages\FoldersService::getRevision()
  *
  * @phpstan-type FolderGetRevisionParamsShape = array{objectID: string}
  */

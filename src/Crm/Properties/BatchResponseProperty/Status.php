@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\BatchResponseProperty;
+namespace HubSpotSDK\Crm\Properties\BatchResponseProperty;
 
 /**
  * The current status of the batch operation, with possible values being CANCELED, COMPLETE, PENDING, or PROCESSING.

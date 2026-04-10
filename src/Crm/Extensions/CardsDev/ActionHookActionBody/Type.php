@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\ActionHookActionBody;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\ActionHookActionBody;
 
 /**
  * The type of status.

@@ -2,35 +2,35 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs;
+namespace HubSpotSDK\Services\Cms\Blogs;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Posts\PostCloneParams;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
-use HubspotSDK\Cms\Blogs\Posts\PostDeleteParams;
-use HubspotSDK\Cms\Blogs\Posts\PostGetParams;
-use HubspotSDK\Cms\Blogs\Posts\PostListAuthorsParams;
-use HubspotSDK\Cms\Blogs\Posts\PostListParams;
-use HubspotSDK\Cms\Blogs\Posts\PostListTagsParams;
-use HubspotSDK\Cms\Blogs\Posts\PostQueryAuthorsParams;
-use HubspotSDK\Cms\Blogs\Posts\PostQueryParams;
-use HubspotSDK\Cms\Blogs\Posts\PostQueryTagsParams;
-use HubspotSDK\Cms\Blogs\Posts\PostScheduleParams;
-use HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams;
-use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\PostsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Posts\PostCloneParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
+use HubSpotSDK\Cms\Blogs\Posts\PostDeleteParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostGetParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostListAuthorsParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostListParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostListTagsParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostQueryAuthorsParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostQueryParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostQueryTagsParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostScheduleParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams;
+use HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\PostsRawContract;
 
 /**
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class PostsRawService implements PostsRawContract
 {

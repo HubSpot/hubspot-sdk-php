@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\TaxRates;
+namespace HubSpotSDK\Settings\TaxRates;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a paginated list of all tax rates set up in the account tax rate library.
  *
- * @see HubspotSDK\Services\Settings\TaxRatesService::list()
+ * @see HubSpotSDK\Services\Settings\TaxRatesService::list()
  *
  * @phpstan-type TaxRateListParamsShape = array{
  *   active?: bool|null, after?: string|null, limit?: int|null

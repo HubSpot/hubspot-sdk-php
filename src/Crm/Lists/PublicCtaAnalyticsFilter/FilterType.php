@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicCtaAnalyticsFilter;
+namespace HubSpotSDK\Crm\Lists\PublicCtaAnalyticsFilter;
 
 /**
  * Indicates the type of filter being applied, which is (CTA).

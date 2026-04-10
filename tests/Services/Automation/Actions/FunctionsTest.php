@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
-use HubspotSDK\Automation\Actions\PublicActionFunction;
-use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
+use HubSpotSDK\Automation\Actions\PublicActionFunction;
+use HubSpotSDK\Automation\Actions\PublicActionFunctionIdentifier;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\MarketingEvents;
+namespace HubSpotSDK\ServiceContracts\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\AttendanceCounters;
-use HubspotSDK\Marketing\MarketingEvents\ParticipationBreakdown;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\MarketingEvents\AttendanceCounters;
+use HubSpotSDK\Marketing\MarketingEvents\ParticipationBreakdown;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ParticipationsContract
 {

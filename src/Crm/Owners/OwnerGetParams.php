@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Owners;
+namespace HubSpotSDK\Crm\Owners;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Owners\OwnerGetParams\IDProperty;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Owners\OwnerGetParams\IDProperty;
 
 /**
  * Retrieve details of a specific owner using either their 'id' or 'userId'.
  *
- * @see HubspotSDK\Services\Crm\OwnersService::get()
+ * @see HubSpotSDK\Services\Crm\OwnersService::get()
  *
  * @phpstan-type OwnerGetParamsShape = array{
  *   archived?: bool|null, idProperty?: null|IDProperty|value-of<IDProperty>

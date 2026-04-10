@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Restores a previous revision of a marketing email. The current revision becomes old, and the restored revision is given a new version number.
  *
- * @see HubspotSDK\Services\Marketing\EmailsService::restoreRevision()
+ * @see HubSpotSDK\Services\Marketing\EmailsService::restoreRevision()
  *
  * @phpstan-type EmailRestoreRevisionParamsShape = array{emailID: string}
  */

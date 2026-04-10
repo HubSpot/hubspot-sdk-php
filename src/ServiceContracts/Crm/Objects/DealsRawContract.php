@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\Deals\DealCreateParams;
-use HubspotSDK\Crm\Objects\Deals\DealGetParams;
-use HubspotSDK\Crm\Objects\Deals\DealListParams;
-use HubspotSDK\Crm\Objects\Deals\DealMergeParams;
-use HubspotSDK\Crm\Objects\Deals\DealSearchParams;
-use HubspotSDK\Crm\Objects\Deals\DealUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\Deals\DealCreateParams;
+use HubSpotSDK\Crm\Objects\Deals\DealGetParams;
+use HubSpotSDK\Crm\Objects\Deals\DealListParams;
+use HubSpotSDK\Crm\Objects\Deals\DealMergeParams;
+use HubSpotSDK\Crm\Objects\Deals\DealSearchParams;
+use HubSpotSDK\Crm\Objects\Deals\DealUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface DealsRawContract
 {

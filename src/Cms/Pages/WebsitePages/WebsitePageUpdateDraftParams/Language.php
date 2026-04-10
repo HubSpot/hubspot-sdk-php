@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams;
+namespace HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams;
 
 /**
  * The explicitly defined ISO 639 language code of the page. If null, the page will default to the language of the Domain.

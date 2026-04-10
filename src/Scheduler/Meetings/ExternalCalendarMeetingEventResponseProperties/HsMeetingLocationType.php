@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties;
+namespace HubSpotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties;
 
 /**
  * The type of location for the meeting. Acceptable values are: ADDRESS, CUSTOM, PHONE.

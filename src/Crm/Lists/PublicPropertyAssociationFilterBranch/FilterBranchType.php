@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch;
+namespace HubSpotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch;
 
 /**
  * The type of the filter branch (PROPERTY_ASSOCIATION).

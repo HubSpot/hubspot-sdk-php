@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\FileActionResponse;
+namespace HubSpotSDK\Files\FileActionResponse;
 
 /**
  * Current status of the task.

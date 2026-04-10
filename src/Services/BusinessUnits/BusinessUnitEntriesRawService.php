@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\BusinessUnits;
+namespace HubSpotSDK\Services\BusinessUnits;
 
-use HubspotSDK\BusinessUnits\BusinessUnitEntries\BusinessUnitEntryGetByUserIDParams;
-use HubspotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\BusinessUnits\BusinessUnitEntriesRawContract;
+use HubSpotSDK\BusinessUnits\BusinessUnitEntries\BusinessUnitEntryGetByUserIDParams;
+use HubSpotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\BusinessUnits\BusinessUnitEntriesRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BusinessUnitEntriesRawService implements BusinessUnitEntriesRawContract
 {

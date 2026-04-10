@@ -2,46 +2,46 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms;
+namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\AssociationDefinition;
-use HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
-use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
-use HubspotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
-use HubspotSDK\Cms\MediaBridge\CollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
-use HubspotSDK\Cms\MediaBridge\Endpoints;
-use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
-use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
-use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\ExternalPlayContext;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\MediaType;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams\EventType;
-use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
-use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
-use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
-use HubspotSDK\Cms\MediaBridge\ObjectSchema;
-use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubspotSDK\Cms\MediaBridge\Property;
-use HubspotSDK\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\ObjectTypeDefinition;
-use HubspotSDK\ObjectTypeDefinitionLabels;
-use HubspotSDK\OptionInput;
-use HubspotSDK\PropertyGroup;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
+use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
+use HubSpotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
+use HubSpotSDK\Cms\MediaBridge\CollectionResponseObjectSchemaNoPaging;
+use HubSpotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
+use HubSpotSDK\Cms\MediaBridge\Endpoints;
+use HubSpotSDK\Cms\MediaBridge\EventVisibilityChange;
+use HubSpotSDK\Cms\MediaBridge\EventVisibilityResponse;
+use HubSpotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\ExternalPlayContext;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\MediaType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams\EventType;
+use HubSpotSDK\Cms\MediaBridge\MediaPlayedEvent;
+use HubSpotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
+use HubSpotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
+use HubSpotSDK\Cms\MediaBridge\ObjectSchema;
+use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
+use HubSpotSDK\Cms\MediaBridge\Property;
+use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\ObjectTypeDefinition;
+use HubSpotSDK\ObjectTypeDefinitionLabels;
+use HubSpotSDK\OptionInput;
+use HubSpotSDK\PropertyGroup;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type AttentionSpanCalculatedValuesShape from \HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues
- * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type EndpointsShape from \HubspotSDK\Cms\MediaBridge\Endpoints
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type AttentionSpanCalculatedValuesShape from \HubSpotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubSpotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type EndpointsShape from \HubSpotSDK\Cms\MediaBridge\Endpoints
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  */
 interface MediaBridgeContract
 {
@@ -101,15 +101,15 @@ interface MediaBridgeContract
     /**
      * @api
      *
-     * @param \HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\MediaType|value-of<\HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\MediaType> $mediaType
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\MediaType|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\MediaType> $mediaType
      * @param State|value-of<State> $state
-     * @param \HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\ExternalPlayContext|value-of<\HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\ExternalPlayContext> $externalPlayContext
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\ExternalPlayContext|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\ExternalPlayContext> $externalPlayContext
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createMediaPlayedEvent(
-        \HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\MediaType|string $mediaType,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\MediaType|string $mediaType,
         int $occurredTimestamp,
         string $sessionID,
         State|string $state,
@@ -117,7 +117,7 @@ interface MediaBridgeContract
         ?int $contactID = null,
         ?string $contactUtk = null,
         ?string $externalID = null,
-        \HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\ExternalPlayContext|string|null $externalPlayContext = null,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\ExternalPlayContext|string|null $externalPlayContext = null,
         ?string $iframeURL = null,
         ?int $mediaBridgeID = null,
         ?string $mediaName = null,
@@ -131,14 +131,14 @@ interface MediaBridgeContract
     /**
      * @api
      *
-     * @param \HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\MediaType|value-of<\HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\MediaType> $mediaType
-     * @param \HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\ExternalPlayContext|value-of<\HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\ExternalPlayContext> $externalPlayContext
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\MediaType|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\MediaType> $mediaType
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\ExternalPlayContext|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\ExternalPlayContext> $externalPlayContext
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createMediaPlayedPercentEvent(
-        \HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\MediaType|string $mediaType,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\MediaType|string $mediaType,
         int $occurredTimestamp,
         int $playedPercent,
         string $sessionID,
@@ -146,7 +146,7 @@ interface MediaBridgeContract
         ?int $contactID = null,
         ?string $contactUtk = null,
         ?string $externalID = null,
-        \HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\ExternalPlayContext|string|null $externalPlayContext = null,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\ExternalPlayContext|string|null $externalPlayContext = null,
         ?int $mediaBridgeID = null,
         ?string $mediaName = null,
         ?string $mediaURL = null,
@@ -159,7 +159,7 @@ interface MediaBridgeContract
     /**
      * @api
      *
-     * @param list<\HubspotSDK\Cms\MediaBridge\MediaBridgeCreateObjectTypeParams\MediaType|value-of<\HubspotSDK\Cms\MediaBridge\MediaBridgeCreateObjectTypeParams\MediaType>> $mediaTypes
+     * @param list<\HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateObjectTypeParams\MediaType|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateObjectTypeParams\MediaType>> $mediaTypes
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -395,7 +395,7 @@ interface MediaBridgeContract
     /**
      * @api
      *
-     * @param \HubspotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams\MediaType|string $mediaType Path param
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams\MediaType|string $mediaType Path param
      * @param int $appID Path param
      * @param bool $includeFullDefinition Query param
      * @param RequestOpts|null $requestOptions
@@ -403,7 +403,7 @@ interface MediaBridgeContract
      * @throws APIException
      */
     public function listObjectTypesByMediaType(
-        \HubspotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams\MediaType|string $mediaType,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams\MediaType|string $mediaType,
         int $appID,
         ?bool $includeFullDefinition = null,
         RequestOptions|array|null $requestOptions = null,
@@ -532,14 +532,14 @@ interface MediaBridgeContract
      * @param string $calculationFormula Body param
      * @param string $description Body param
      * @param int $displayOrder Body param
-     * @param \HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType|value-of<\HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType> $fieldType Body param
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType> $fieldType Body param
      * @param bool $formField Body param
      * @param string $groupName Body param
      * @param bool $hasUniqueValue Body param
      * @param bool $hidden Body param
      * @param string $label Body param
      * @param list<OptionInput|OptionInputShape> $options Body param
-     * @param \HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|value-of<\HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type> $type Body param
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type> $type Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -551,14 +551,14 @@ interface MediaBridgeContract
         ?string $calculationFormula = null,
         ?string $description = null,
         ?int $displayOrder = null,
-        \HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType|string|null $fieldType = null,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType|string|null $fieldType = null,
         ?bool $formField = null,
         ?string $groupName = null,
         ?bool $hasUniqueValue = null,
         ?bool $hidden = null,
         ?string $label = null,
         ?array $options = null,
-        \HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|string|null $type = null,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|string|null $type = null,
         RequestOptions|array|null $requestOptions = null,
     ): Property;
 

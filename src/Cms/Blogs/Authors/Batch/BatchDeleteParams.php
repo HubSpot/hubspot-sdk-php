@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors\Batch;
+namespace HubSpotSDK\Cms\Blogs\Authors\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Delete the Blog Author objects identified in the request body.
  *
- * @see HubspotSDK\Services\Cms\Blogs\Authors\BatchService::delete()
+ * @see HubSpotSDK\Services\Cms\Blogs\Authors\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<string>}
  */

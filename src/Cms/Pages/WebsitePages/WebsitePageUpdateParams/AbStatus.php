@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateParams;
+namespace HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateParams;
 
 /**
  * The status of the AB test associated with this page, if applicable.

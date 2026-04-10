@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyText;
+namespace HubSpotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyText;
 
 enum Operator: string
 {

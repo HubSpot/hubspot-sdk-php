@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\PublicActionRevision;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
+use HubSpotSDK\Automation\Actions\PublicActionRevision;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

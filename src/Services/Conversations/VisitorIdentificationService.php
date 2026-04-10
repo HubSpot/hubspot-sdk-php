@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Conversations;
+namespace HubSpotSDK\Services\Conversations;
 
-use HubspotSDK\Client;
-use HubspotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Conversations\VisitorIdentificationContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Conversations\VisitorIdentificationContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class VisitorIdentificationService implements VisitorIdentificationContract
 {

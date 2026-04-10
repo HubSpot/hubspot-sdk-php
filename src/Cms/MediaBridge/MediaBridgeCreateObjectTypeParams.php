@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateObjectTypeParams\MediaType;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateObjectTypeParams\MediaType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a new media object type.
  *
- * @see HubspotSDK\Services\Cms\MediaBridgeService::createObjectType()
+ * @see HubSpotSDK\Services\Cms\MediaBridgeService::createObjectType()
  *
  * @phpstan-type MediaBridgeCreateObjectTypeParamsShape = array{
  *   mediaTypes: list<MediaType|value-of<MediaType>>

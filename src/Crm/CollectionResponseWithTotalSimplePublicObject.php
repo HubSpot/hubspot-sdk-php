@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm;
+namespace HubSpotSDK\Crm;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Paging;
 
 /**
  * Represents a list of simple objects returned from an API request, along with the total count of objects available.
  *
- * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\SimplePublicObject
- * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ * @phpstan-import-type SimplePublicObjectShape from \HubSpotSDK\Crm\SimplePublicObject
+ * @phpstan-import-type PagingShape from \HubSpotSDK\Paging
  *
  * @phpstan-type CollectionResponseWithTotalSimplePublicObjectShape = array{
  *   results: list<SimplePublicObject|SimplePublicObjectShape>,

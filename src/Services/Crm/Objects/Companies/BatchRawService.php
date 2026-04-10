@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Objects\Companies;
+namespace HubSpotSDK\Services\Crm\Objects\Companies;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\Companies\Batch\BatchCreateParams;
-use HubspotSDK\Crm\Objects\Companies\Batch\BatchDeleteParams;
-use HubspotSDK\Crm\Objects\Companies\Batch\BatchGetParams;
-use HubspotSDK\Crm\Objects\Companies\Batch\BatchUpdateParams;
-use HubspotSDK\Crm\Objects\Companies\Batch\BatchUpsertParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Objects\Companies\BatchRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubSpotSDK\Crm\Objects\Companies\Batch\BatchCreateParams;
+use HubSpotSDK\Crm\Objects\Companies\Batch\BatchDeleteParams;
+use HubSpotSDK\Crm\Objects\Companies\Batch\BatchGetParams;
+use HubSpotSDK\Crm\Objects\Companies\Batch\BatchUpdateParams;
+use HubSpotSDK\Crm\Objects\Companies\Batch\BatchUpsertParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectID;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Objects\Companies\BatchRawContract;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
- * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
+ * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectID
  */
 final class BatchRawService implements BatchRawContract
 {

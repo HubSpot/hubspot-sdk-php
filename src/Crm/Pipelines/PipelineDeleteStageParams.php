@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Pipelines;
+namespace HubSpotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Delete a pipeline stage.
  *
- * @see HubspotSDK\Services\Crm\PipelinesService::deleteStage()
+ * @see HubSpotSDK\Services\Crm\PipelinesService::deleteStage()
  *
  * @phpstan-type PipelineDeleteStageParamsShape = array{
  *   objectType: string, pipelineID: string

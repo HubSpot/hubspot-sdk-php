@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Conversations\CustomChannels;
+namespace HubSpotSDK\Services\Conversations\CustomChannels;
 
-use HubspotSDK\Client;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams\DeliveryIdentifierType;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccount;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
-use HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams\DeliveryIdentifierType;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccount;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
+use HubSpotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountsContract;
 
 /**
- * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubSpotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class ChannelAccountsService implements ChannelAccountsContract
 {

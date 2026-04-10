@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Updates multiple Marketing Events on the portal based on their objectId, if they exist.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEventsService::updateBatch()
+ * @see HubSpotSDK\Services\Marketing\MarketingEventsService::updateBatch()
  *
- * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2
+ * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2
  *
  * @phpstan-type MarketingEventUpdateBatchParamsShape = array{
  *   inputs: list<MarketingEventPublicUpdateRequestFullV2|MarketingEventPublicUpdateRequestFullV2Shape>,

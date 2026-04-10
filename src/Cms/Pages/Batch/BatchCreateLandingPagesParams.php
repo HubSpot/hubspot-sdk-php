@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\Batch;
+namespace HubSpotSDK\Cms\Pages\Batch;
 
-use HubspotSDK\Cms\Pages\PageData;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a batch of landing pages as detailed in the request body.
  *
- * @see HubspotSDK\Services\Cms\Pages\BatchService::createLandingPages()
+ * @see HubSpotSDK\Services\Cms\Pages\BatchService::createLandingPages()
  *
  * @phpstan-type BatchCreateLandingPagesParamsShape = array{inputs: list<mixed>}
  */

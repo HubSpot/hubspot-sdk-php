@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\FeatureFlags\FlagResponse;
-use HubspotSDK\Crm\FeatureFlags\FlagsForAppResponse;
-use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
-use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\FeatureFlags\FlagResponse;
+use HubSpotSDK\Crm\FeatureFlags\FlagsForAppResponse;
+use HubSpotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
+use HubSpotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

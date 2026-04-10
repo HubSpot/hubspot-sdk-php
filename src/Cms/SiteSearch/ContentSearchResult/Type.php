@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SiteSearch\ContentSearchResult;
+namespace HubSpotSDK\Cms\SiteSearch\ContentSearchResult;
 
 /**
  * The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.

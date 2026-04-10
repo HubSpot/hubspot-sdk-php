@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Crm\ObjectLibraryContract;
-use HubspotSDK\Services\Crm\ObjectLibrary\EnablementService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Crm\ObjectLibraryContract;
+use HubSpotSDK\Services\Crm\ObjectLibrary\EnablementService;
 
 final class ObjectLibraryService implements ObjectLibraryContract
 {

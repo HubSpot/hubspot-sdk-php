@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations;
+namespace HubSpotSDK\Crm\Associations;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Associations\BatchResponseLabelsBetweenObjectPairWithErrors\Status;
-use HubspotSDK\Crm\LabelsBetweenObjectPair;
-use HubspotSDK\StandardError;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Associations\BatchResponseLabelsBetweenObjectPairWithErrors\Status;
+use HubSpotSDK\Crm\LabelsBetweenObjectPair;
+use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type LabelsBetweenObjectPairShape from \HubspotSDK\Crm\LabelsBetweenObjectPair
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type LabelsBetweenObjectPairShape from \HubSpotSDK\Crm\LabelsBetweenObjectPair
+ * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponseLabelsBetweenObjectPairWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,

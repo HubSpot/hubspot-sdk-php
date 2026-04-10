@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Timeline;
+namespace HubSpotSDK\Crm\Timeline;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type DeveloperQualifiedSymbolShape from \HubspotSDK\Crm\Timeline\DeveloperQualifiedSymbol
+ * @phpstan-import-type DeveloperQualifiedSymbolShape from \HubSpotSDK\Crm\Timeline\DeveloperQualifiedSymbol
  *
  * @phpstan-type AppEventResolutionResponseShape = array{
  *   developerQualifiedSymbol: DeveloperQualifiedSymbol|DeveloperQualifiedSymbolShape,

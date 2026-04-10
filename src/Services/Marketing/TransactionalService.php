@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing;
+namespace HubSpotSDK\Services\Marketing;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Marketing\TransactionalContract;
-use HubspotSDK\Services\Marketing\Transactional\SingleEmailService;
-use HubspotSDK\Services\Marketing\Transactional\SmtpTokensService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Marketing\TransactionalContract;
+use HubSpotSDK\Services\Marketing\Transactional\SingleEmailService;
+use HubSpotSDK\Services\Marketing\Transactional\SmtpTokensService;
 
 final class TransactionalService implements TransactionalContract
 {

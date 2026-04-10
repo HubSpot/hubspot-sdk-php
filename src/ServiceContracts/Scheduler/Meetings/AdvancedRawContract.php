@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Scheduler\Meetings;
+namespace HubSpotSDK\ServiceContracts\Scheduler\Meetings;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Scheduler\Meetings\Advanced\AdvancedBookParams;
-use HubspotSDK\Scheduler\Meetings\Advanced\AdvancedCreateParams;
-use HubspotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
-use HubspotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Scheduler\Meetings\Advanced\AdvancedBookParams;
+use HubSpotSDK\Scheduler\Meetings\Advanced\AdvancedCreateParams;
+use HubSpotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
+use HubSpotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface AdvancedRawContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
+namespace HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
 
 /**
  * The status of the AB test associated with this page, if applicable.

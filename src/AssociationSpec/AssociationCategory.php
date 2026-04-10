@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\AssociationSpec;
+namespace HubSpotSDK\AssociationSpec;
 
 /**
  * The category of the association, such as "HUBSPOT_DEFINED".

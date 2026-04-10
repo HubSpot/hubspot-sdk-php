@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing;
+namespace HubSpotSDK\ServiceContracts\Marketing;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseSearchPublicResponseWrapperNoPaging;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2;
-use HubspotSDK\Page;
-use HubspotSDK\PropertyValue;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\CollectionResponseSearchPublicResponseWrapperNoPaging;
+use HubSpotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2;
+use HubSpotSDK\Page;
+use HubSpotSDK\PropertyValue;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type MarketingEventPublicObjectIDDeleteRequestShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest
- * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier
- * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2
- * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams
- * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type MarketingEventPublicObjectIDDeleteRequestShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest
+ * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier
+ * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2
+ * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams
+ * @phpstan-import-type PropertyValueShape from \HubSpotSDK\PropertyValue
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface MarketingEventsContract
 {

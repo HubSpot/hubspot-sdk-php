@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type GroupShape = array{
@@ -15,7 +15,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   displayOrder: int,
  *   fulcrumPortalID: int,
  *   fulcrumTimestamp: int,
- *   hubspotDefined: bool,
+ *   hubSpotDefined: bool,
  *   name: string,
  *   portalID: int,
  * }
@@ -40,8 +40,8 @@ final class Group implements BaseModel
     #[Required]
     public int $fulcrumTimestamp;
 
-    #[Required]
-    public bool $hubspotDefined;
+    #[Required('hubspotDefined')]
+    public bool $hubSpotDefined;
 
     #[Required]
     public string $name;
@@ -60,7 +60,7 @@ final class Group implements BaseModel
      *   displayOrder: ...,
      *   fulcrumPortalID: ...,
      *   fulcrumTimestamp: ...,
-     *   hubspotDefined: ...,
+     *   hubSpotDefined: ...,
      *   name: ...,
      *   portalID: ...,
      * )
@@ -75,7 +75,7 @@ final class Group implements BaseModel
      *   ->withDisplayOrder(...)
      *   ->withFulcrumPortalID(...)
      *   ->withFulcrumTimestamp(...)
-     *   ->withHubspotDefined(...)
+     *   ->withHubSpotDefined(...)
      *   ->withName(...)
      *   ->withPortalID(...)
      * ```
@@ -96,7 +96,7 @@ final class Group implements BaseModel
         int $displayOrder,
         int $fulcrumPortalID,
         int $fulcrumTimestamp,
-        bool $hubspotDefined,
+        bool $hubSpotDefined,
         string $name,
         int $portalID,
     ): self {
@@ -107,7 +107,7 @@ final class Group implements BaseModel
         $self['displayOrder'] = $displayOrder;
         $self['fulcrumPortalID'] = $fulcrumPortalID;
         $self['fulcrumTimestamp'] = $fulcrumTimestamp;
-        $self['hubspotDefined'] = $hubspotDefined;
+        $self['hubSpotDefined'] = $hubSpotDefined;
         $self['name'] = $name;
         $self['portalID'] = $portalID;
 
@@ -154,10 +154,10 @@ final class Group implements BaseModel
         return $self;
     }
 
-    public function withHubspotDefined(bool $hubspotDefined): self
+    public function withHubSpotDefined(bool $hubSpotDefined): self
     {
         $self = clone $this;
-        $self['hubspotDefined'] = $hubspotDefined;
+        $self['hubSpotDefined'] = $hubSpotDefined;
 
         return $self;
     }

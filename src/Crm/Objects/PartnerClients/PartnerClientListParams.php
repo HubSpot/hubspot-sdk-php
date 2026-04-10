@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\PartnerClients;
+namespace HubSpotSDK\Crm\Objects\PartnerClients;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a list of partner clients with optional filtering by deleted status, associations, and specific properties. The response can be paginated using the 'after' parameter.
  *
- * @see HubspotSDK\Services\Crm\Objects\PartnerClientsService::list()
+ * @see HubSpotSDK\Services\Crm\Objects\PartnerClientsService::list()
  *
  * @phpstan-type PartnerClientListParamsShape = array{
  *   after?: string|null,

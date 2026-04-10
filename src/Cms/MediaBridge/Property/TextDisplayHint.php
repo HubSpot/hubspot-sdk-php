@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Property;
+namespace HubSpotSDK\Cms\MediaBridge\Property;
 
 /**
  * Hint for how the text is displayed and validated in HubSpot's UI. Can be: "unformatted_single_line", "multi_line", "email", "phone_number", "domain_name", "ip_address", "physical_address", or "postal_code".

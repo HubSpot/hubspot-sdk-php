@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\EventsContract;
-use HubspotSDK\Services\Events\DefinitionsService;
-use HubspotSDK\Services\Events\OccurrencesService;
-use HubspotSDK\Services\Events\SendService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\EventsContract;
+use HubSpotSDK\Services\Events\DefinitionsService;
+use HubSpotSDK\Services\Events\OccurrencesService;
+use HubSpotSDK\Services\Events\SendService;
 
 final class EventsService implements EventsContract
 {

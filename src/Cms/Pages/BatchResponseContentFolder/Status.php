@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\BatchResponseContentFolder;
+namespace HubSpotSDK\Cms\Pages\BatchResponseContentFolder;
 
 /**
  * Status of batch operation.

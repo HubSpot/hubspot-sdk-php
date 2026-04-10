@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Sequences;
+namespace HubSpotSDK\Automation\Sequences;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve details of a specific sequence by its ID.
  *
- * @see HubspotSDK\Services\Automation\SequencesService::get()
+ * @see HubSpotSDK\Services\Automation\SequencesService::get()
  *
  * @phpstan-type SequenceGetParamsShape = array{userID: string}
  */

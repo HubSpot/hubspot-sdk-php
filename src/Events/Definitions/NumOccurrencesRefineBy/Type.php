@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\NumOccurrencesRefineBy;
+namespace HubSpotSDK\Events\Definitions\NumOccurrencesRefineBy;
 
 enum Type: string
 {

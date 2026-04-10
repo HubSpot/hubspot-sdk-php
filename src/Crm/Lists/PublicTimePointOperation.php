@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicTimePointOperation\OperationType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicTimePointOperation\OperationType;
 
 /**
- * @phpstan-import-type TimePointVariants from \HubspotSDK\Crm\Lists\PublicTimePointOperation\TimePoint
- * @phpstan-import-type TimePointShape from \HubspotSDK\Crm\Lists\PublicTimePointOperation\TimePoint
+ * @phpstan-import-type TimePointVariants from \HubSpotSDK\Crm\Lists\PublicTimePointOperation\TimePoint
+ * @phpstan-import-type TimePointShape from \HubSpotSDK\Crm\Lists\PublicTimePointOperation\TimePoint
  *
  * @phpstan-type PublicTimePointOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,

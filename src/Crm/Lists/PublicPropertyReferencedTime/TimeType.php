@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicPropertyReferencedTime;
+namespace HubSpotSDK\Crm\Lists\PublicPropertyReferencedTime;
 
 /**
  * Defines the type of time (PROPERTY_REFERENCED).

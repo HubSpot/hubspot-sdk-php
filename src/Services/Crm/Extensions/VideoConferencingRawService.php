@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Extensions;
+namespace HubSpotSDK\Services\Crm\Extensions;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\VideoConferencing\ExternalSettings;
-use HubspotSDK\Crm\Extensions\VideoConferencing\VideoConferencingUpdateParams;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Extensions\VideoConferencingRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Extensions\VideoConferencing\ExternalSettings;
+use HubSpotSDK\Crm\Extensions\VideoConferencing\VideoConferencingUpdateParams;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Extensions\VideoConferencingRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class VideoConferencingRawService implements VideoConferencingRawContract
 {

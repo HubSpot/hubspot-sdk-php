@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\AutomationContract;
-use HubspotSDK\Services\Automation\ActionsService;
-use HubspotSDK\Services\Automation\SequencesService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\AutomationContract;
+use HubSpotSDK\Services\Automation\ActionsService;
+use HubSpotSDK\Services\Automation\SequencesService;
 
 final class AutomationService implements AutomationContract
 {

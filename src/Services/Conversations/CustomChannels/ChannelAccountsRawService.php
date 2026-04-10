@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Conversations\CustomChannels;
+namespace HubSpotSDK\Services\Conversations\CustomChannels;
 
-use HubspotSDK\Client;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreateParams;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams\DeliveryIdentifierType;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateStagingTokenParams;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccount;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
-use HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreateParams;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams\DeliveryIdentifierType;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateStagingTokenParams;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccount;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
+use HubSpotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Conversations\CustomChannels\ChannelAccountsRawContract;
 
 /**
- * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubSpotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class ChannelAccountsRawService implements ChannelAccountsRawContract
 {

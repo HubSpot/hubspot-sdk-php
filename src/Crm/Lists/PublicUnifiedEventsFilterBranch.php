@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Filter;
-use HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\FilterBranch;
-use HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\FilterBranchType;
-use HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Operator;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Filter;
+use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\FilterBranch;
+use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\FilterBranchType;
+use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Operator;
 
 /**
- * @phpstan-import-type FilterVariants from \HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Filter
- * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\CoalescingRefineBy
- * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\PruningRefineBy
- * @phpstan-import-type FilterShape from \HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Filter
- * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\CoalescingRefineBy
- * @phpstan-import-type PruningRefineByShape from \HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\PruningRefineBy
+ * @phpstan-import-type FilterVariants from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Filter
+ * @phpstan-import-type CoalescingRefineByVariants from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByVariants from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\PruningRefineBy
+ * @phpstan-import-type FilterShape from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Filter
+ * @phpstan-import-type CoalescingRefineByShape from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByShape from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\PruningRefineBy
  *
  * @phpstan-type PublicUnifiedEventsFilterBranchShape = array{
  *   eventTypeID: string,

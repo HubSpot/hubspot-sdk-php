@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Hubdb;
+namespace HubSpotSDK\Services\Cms\Hubdb;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
-use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
-use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
-use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Hubdb\RowsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+use HubSpotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
+use HubSpotSDK\Cms\Hubdb\HubDBTableRowV3;
+use HubSpotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
+use HubSpotSDK\Cms\Hubdb\HubDBTableRowV3Request;
+use HubSpotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
+use HubSpotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Hubdb\RowsContract;
 
 /**
- * @phpstan-import-type HubDBTableRowBatchCloneRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest
- * @phpstan-import-type HubDBTableRowV3RequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type HubDBTableRowV3BatchUpdateRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest
+ * @phpstan-import-type HubDBTableRowBatchCloneRequestShape from \HubSpotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest
+ * @phpstan-import-type HubDBTableRowV3RequestShape from \HubSpotSDK\Cms\Hubdb\HubDBTableRowV3Request
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type HubDBTableRowV3BatchUpdateRequestShape from \HubSpotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest
  */
 final class RowsService implements RowsContract
 {

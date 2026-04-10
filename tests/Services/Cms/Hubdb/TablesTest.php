@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Cms\Hubdb;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\HubDBTableV3;
-use HubspotSDK\Cms\Hubdb\ImportResult;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Hubdb\HubDBTableV3;
+use HubSpotSDK\Cms\Hubdb\ImportResult;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -169,7 +169,7 @@ final class TablesTest extends TestCase
         $result = $this->client->cms->hubdb->tables->cloneDraft(
             'tableIdOrName',
             copyRows: true,
-            isHubspotDefined: true
+            isHubSpotDefined: true
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -186,7 +186,7 @@ final class TablesTest extends TestCase
         $result = $this->client->cms->hubdb->tables->cloneDraft(
             'tableIdOrName',
             copyRows: true,
-            isHubspotDefined: true,
+            isHubSpotDefined: true,
             newLabel: 'newLabel',
             newName: 'newName',
         );

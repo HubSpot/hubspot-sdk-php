@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\IfNumber;
+namespace HubSpotSDK\Cms\MediaBridge\IfNumber;
 
 enum Operator: string
 {

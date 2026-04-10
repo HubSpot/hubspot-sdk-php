@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Objects;
+namespace HubSpotSDK\Services\Crm\Objects;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\GenericObjects\GenericObjectCreateParams;
-use HubspotSDK\Crm\Objects\GenericObjects\GenericObjectDeleteParams;
-use HubspotSDK\Crm\Objects\GenericObjects\GenericObjectGetParams;
-use HubspotSDK\Crm\Objects\GenericObjects\GenericObjectListParams;
-use HubspotSDK\Crm\Objects\GenericObjects\GenericObjectSearchParams;
-use HubspotSDK\Crm\Objects\GenericObjects\GenericObjectUpdateParams;
-use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Objects\GenericObjectsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\FilterGroup;
+use HubSpotSDK\Crm\Objects\GenericObjects\GenericObjectCreateParams;
+use HubSpotSDK\Crm\Objects\GenericObjects\GenericObjectDeleteParams;
+use HubSpotSDK\Crm\Objects\GenericObjects\GenericObjectGetParams;
+use HubSpotSDK\Crm\Objects\GenericObjects\GenericObjectListParams;
+use HubSpotSDK\Crm\Objects\GenericObjects\GenericObjectSearchParams;
+use HubSpotSDK\Crm\Objects\GenericObjects\GenericObjectUpdateParams;
+use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Objects\GenericObjectsRawContract;
 
 /**
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class GenericObjectsRawService implements GenericObjectsRawContract
 {

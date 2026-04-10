@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb;
+namespace HubSpotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type BoundedNextPageShape from \HubspotSDK\Cms\Hubdb\BoundedNextPage
+ * @phpstan-import-type BoundedNextPageShape from \HubSpotSDK\Cms\Hubdb\BoundedNextPage
  *
  * @phpstan-type BoundedPagingShape = array{
  *   next?: null|BoundedNextPage|BoundedNextPageShape

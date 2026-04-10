@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams;
+namespace HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams;
 
 /**
  * The type of communication channel, with 'EMAIL' as the only supported option.

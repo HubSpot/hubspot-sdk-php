@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Events;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\Definitions\Property;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
+use HubSpotSDK\Events\Definitions\Property;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Files;
+namespace HubSpotSDK\Services\Files;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Files\File;
-use HubspotSDK\Files\FileActionResponse;
-use HubspotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
-use HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationScope;
-use HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationStrategy;
-use HubspotSDK\Files\FileAssets\FileAssetUpdateParams\Access;
-use HubspotSDK\Files\FileStat;
-use HubspotSDK\Files\Folder;
-use HubspotSDK\Files\ImportFromURLTaskLocator;
-use HubspotSDK\Files\SignedURL;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Files\FileAssetsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Files\File;
+use HubSpotSDK\Files\FileActionResponse;
+use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
+use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationScope;
+use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationStrategy;
+use HubSpotSDK\Files\FileAssets\FileAssetUpdateParams\Access;
+use HubSpotSDK\Files\FileStat;
+use HubSpotSDK\Files\Folder;
+use HubSpotSDK\Files\ImportFromURLTaskLocator;
+use HubSpotSDK\Files\SignedURL;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Files\FileAssetsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class FileAssetsService implements FileAssetsContract
 {
@@ -253,7 +253,7 @@ final class FileAssetsService implements FileAssetsContract
      *
      * Asynchronously imports the file at the given URL into the file manager.
      *
-     * @param \HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\Access|value-of<\HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\Access> $access PUBLIC_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines can index the file. PUBLIC_NOT_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines *can't* index the file. PRIVATE: File is NOT publicly accessible. Requires a signed URL to see content. Search engines *can't* index the file.
+     * @param \HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\Access|value-of<\HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\Access> $access PUBLIC_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines can index the file. PUBLIC_NOT_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines *can't* index the file. PRIVATE: File is NOT publicly accessible. Requires a signed URL to see content. Search engines *can't* index the file.
      * @param DuplicateValidationScope|value-of<DuplicateValidationScope> $duplicateValidationScope ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.
      * @param DuplicateValidationStrategy|value-of<DuplicateValidationStrategy> $duplicateValidationStrategy NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
      * @param bool $overwrite If true, will overwrite existing file if one with the same name and extension exists in the given folder. The overwritten file will be deleted and the uploaded file will take its place with a new ID. If unset or set as false, the new file's name will be updated to prevent colliding with existing file if one exists with the same path, name, and extension
@@ -268,7 +268,7 @@ final class FileAssetsService implements FileAssetsContract
      * @throws APIException
      */
     public function importFromURLAsync(
-        \HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\Access|string $access,
+        \HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\Access|string $access,
         DuplicateValidationScope|string $duplicateValidationScope,
         DuplicateValidationStrategy|string $duplicateValidationStrategy,
         bool $overwrite,

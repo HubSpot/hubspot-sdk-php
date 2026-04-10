@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Carts;
+namespace HubSpotSDK\Crm\Objects\Carts;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Perform a partial update of a cart, specified by its ID. Alternatively, you can specify a cart by a unique property value using the `idProperty` query parameter. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
  *
- * @see HubspotSDK\Services\Crm\Objects\CartsService::update()
+ * @see HubSpotSDK\Services\Crm\Objects\CartsService::update()
  *
  * @phpstan-type CartUpdateParamsShape = array{
  *   properties: array<string,string>, idProperty?: string|null

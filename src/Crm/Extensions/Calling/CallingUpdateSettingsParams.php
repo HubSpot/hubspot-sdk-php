@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling;
+namespace HubSpotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Modify existing calling extension settings for the specified appId. Only the fields provided in the request will be updated.
  *
- * @see HubspotSDK\Services\Crm\Extensions\CallingService::updateSettings()
+ * @see HubSpotSDK\Services\Crm\Extensions\CallingService::updateSettings()
  *
  * @phpstan-type CallingUpdateSettingsParamsShape = array{
  *   height?: int|null,

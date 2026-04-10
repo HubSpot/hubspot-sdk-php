@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\ExtensionData\ExtensionStatusMap;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\ExtensionData\ExtensionStatusMap;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type CaseChangeTestExtensionDataShape from \HubspotSDK\Cms\MediaBridge\CaseChangeTestExtensionData
- * @phpstan-import-type OptionDecoratorsExtensionDataShape from \HubspotSDK\Cms\MediaBridge\OptionDecoratorsExtensionData
- * @phpstan-import-type RequiredPropertiesExtensionDataShape from \HubspotSDK\Cms\MediaBridge\RequiredPropertiesExtensionData
- * @phpstan-import-type SoftRequiredPropertiesExtensionDataShape from \HubspotSDK\Cms\MediaBridge\SoftRequiredPropertiesExtensionData
+ * @phpstan-import-type CaseChangeTestExtensionDataShape from \HubSpotSDK\Cms\MediaBridge\CaseChangeTestExtensionData
+ * @phpstan-import-type OptionDecoratorsExtensionDataShape from \HubSpotSDK\Cms\MediaBridge\OptionDecoratorsExtensionData
+ * @phpstan-import-type RequiredPropertiesExtensionDataShape from \HubSpotSDK\Cms\MediaBridge\RequiredPropertiesExtensionData
+ * @phpstan-import-type SoftRequiredPropertiesExtensionDataShape from \HubSpotSDK\Cms\MediaBridge\SoftRequiredPropertiesExtensionData
  *
  * @phpstan-type ExtensionDataShape = array{
  *   extensionStatusMap: array<string,ExtensionStatusMap|value-of<ExtensionStatusMap>>,

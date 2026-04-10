@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
+namespace HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
 
 enum ExternalPlayContext: string
 {

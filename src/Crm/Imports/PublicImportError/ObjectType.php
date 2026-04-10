@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Imports\PublicImportError;
+namespace HubSpotSDK\Crm\Imports\PublicImportError;
 
 /**
  * The CRM object type affected by this error.

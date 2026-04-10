@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms;
+namespace HubSpotSDK\Cms;
 
-use HubspotSDK\Cms\Styles\FlexboxPositioning;
-use HubspotSDK\Cms\Styles\VerticalAlignment;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Styles\FlexboxPositioning;
+use HubSpotSDK\Cms\Styles\VerticalAlignment;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type RgbaColorShape from \HubspotSDK\Cms\RgbaColor
- * @phpstan-import-type GradientShape from \HubspotSDK\Cms\Gradient
- * @phpstan-import-type BackgroundImageShape from \HubspotSDK\Cms\BackgroundImage
- * @phpstan-import-type BreakpointStylesShape from \HubspotSDK\Cms\BreakpointStyles
+ * @phpstan-import-type RgbaColorShape from \HubSpotSDK\Cms\RgbaColor
+ * @phpstan-import-type GradientShape from \HubSpotSDK\Cms\Gradient
+ * @phpstan-import-type BackgroundImageShape from \HubSpotSDK\Cms\BackgroundImage
+ * @phpstan-import-type BreakpointStylesShape from \HubSpotSDK\Cms\BreakpointStyles
  *
  * @phpstan-type StylesShape = array{
  *   backgroundColor: RgbaColor|RgbaColorShape,

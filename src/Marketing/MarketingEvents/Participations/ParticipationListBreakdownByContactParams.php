@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\Participations;
+namespace HubSpotSDK\Marketing\MarketingEvents\Participations;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Read Contact's participations by identifier - email or internal id.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEvents\ParticipationsService::listBreakdownByContact()
+ * @see HubSpotSDK\Services\Marketing\MarketingEvents\ParticipationsService::listBreakdownByContact()
  *
  * @phpstan-type ParticipationListBreakdownByContactParamsShape = array{
  *   after?: string|null, limit?: int|null, state?: string|null

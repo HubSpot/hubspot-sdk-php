@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
+namespace HubSpotSDK\Crm\FeatureFlags\BatchPortalEntry;
 
 /**
  * The flag state for this portal (e.g. ON or OFF).

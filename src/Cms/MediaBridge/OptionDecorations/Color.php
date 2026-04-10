@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\OptionDecorations;
+namespace HubSpotSDK\Cms\MediaBridge\OptionDecorations;
 
 enum Color: string
 {

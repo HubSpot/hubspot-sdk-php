@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\Objects\Subscriptions\SubscriptionCreateParams;
-use HubspotSDK\Crm\Objects\Subscriptions\SubscriptionGetParams;
-use HubspotSDK\Crm\Objects\Subscriptions\SubscriptionListParams;
-use HubspotSDK\Crm\Objects\Subscriptions\SubscriptionSearchParams;
-use HubspotSDK\Crm\Objects\Subscriptions\SubscriptionUpdateParams;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\Objects\Subscriptions\SubscriptionCreateParams;
+use HubSpotSDK\Crm\Objects\Subscriptions\SubscriptionGetParams;
+use HubSpotSDK\Crm\Objects\Subscriptions\SubscriptionListParams;
+use HubSpotSDK\Crm\Objects\Subscriptions\SubscriptionSearchParams;
+use HubSpotSDK\Crm\Objects\Subscriptions\SubscriptionUpdateParams;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface SubscriptionsRawContract
 {

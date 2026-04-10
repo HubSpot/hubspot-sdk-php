@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Get the details for existing oEmbed domains for your app.
  *
- * @see HubspotSDK\Services\Cms\MediaBridgeService::listOembedDomains()
+ * @see HubSpotSDK\Services\Cms\MediaBridgeService::listOembedDomains()
  *
  * @phpstan-type MediaBridgeListOembedDomainsParamsShape = array{
  *   domainPortalID?: int|null

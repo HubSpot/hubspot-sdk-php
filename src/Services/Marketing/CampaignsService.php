@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing;
+namespace HubSpotSDK\Services\Marketing;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\Campaigns\PublicCampaign;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\CampaignsContract;
-use HubspotSDK\Services\Marketing\Campaigns\AssetsService;
-use HubspotSDK\Services\Marketing\Campaigns\BatchService;
-use HubspotSDK\Services\Marketing\Campaigns\BudgetService;
-use HubspotSDK\Services\Marketing\Campaigns\MetricsService;
-use HubspotSDK\Services\Marketing\Campaigns\SpendService;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaign;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\CampaignsContract;
+use HubSpotSDK\Services\Marketing\Campaigns\AssetsService;
+use HubSpotSDK\Services\Marketing\Campaigns\BatchService;
+use HubSpotSDK\Services\Marketing\Campaigns\BudgetService;
+use HubSpotSDK\Services\Marketing\Campaigns\MetricsService;
+use HubSpotSDK\Services\Marketing\Campaigns\SpendService;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CampaignsService implements CampaignsContract
 {

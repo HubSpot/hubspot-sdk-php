@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Settings;
+namespace HubSpotSDK\Services\Settings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Settings\UsersContract;
-use HubspotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
-use HubspotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
-use HubspotSDK\Settings\Users\PublicUser;
-use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Settings\UsersContract;
+use HubSpotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
+use HubSpotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
+use HubSpotSDK\Settings\Users\PublicUser;
+use HubSpotSDK\Settings\Users\UserUpdateParams\IDProperty;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class UsersService implements UsersContract
 {
@@ -147,14 +147,14 @@ final class UsersService implements UsersContract
      *
      * Removes a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param \HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserDeleteParams\IDProperty> $idProperty
+     * @param \HubSpotSDK\Settings\Users\UserDeleteParams\IDProperty|value-of<\HubSpotSDK\Settings\Users\UserDeleteParams\IDProperty> $idProperty
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $userID,
-        \HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|string|null $idProperty = null,
+        \HubSpotSDK\Settings\Users\UserDeleteParams\IDProperty|string|null $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
     ): mixed {
         $params = Util::removeNulls(['idProperty' => $idProperty]);
@@ -170,14 +170,14 @@ final class UsersService implements UsersContract
      *
      * Retrieves a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
      *
-     * @param \HubspotSDK\Settings\Users\UserGetParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserGetParams\IDProperty> $idProperty
+     * @param \HubSpotSDK\Settings\Users\UserGetParams\IDProperty|value-of<\HubSpotSDK\Settings\Users\UserGetParams\IDProperty> $idProperty
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $userID,
-        \HubspotSDK\Settings\Users\UserGetParams\IDProperty|string|null $idProperty = null,
+        \HubSpotSDK\Settings\Users\UserGetParams\IDProperty|string|null $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
     ): PublicUser {
         $params = Util::removeNulls(['idProperty' => $idProperty]);

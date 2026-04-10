@@ -2,36 +2,36 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing;
+namespace HubSpotSDK\ServiceContracts\Marketing;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseSearchPublicResponseWrapperNoPaging;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventCreateParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDeleteBatchByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDeleteBatchParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDeleteByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventGetByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventListParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventSearchByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpdateBatchParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpdateByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpdateParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpsertBatchParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpsertByExternalEventIDParams;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\CollectionResponseSearchPublicResponseWrapperNoPaging;
+use HubSpotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventCreateParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDeleteBatchByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDeleteBatchParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDeleteByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventGetByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventListParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventSearchByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpdateBatchParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpdateByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpdateParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpsertBatchParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpsertByExternalEventIDParams;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface MarketingEventsRawContract
 {

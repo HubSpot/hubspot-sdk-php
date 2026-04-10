@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicListConversionInactivity;
+namespace HubSpotSDK\Crm\Lists\PublicListConversionInactivity;
 
 /**
  * Specifies the type of conversion (INACTIVITY).

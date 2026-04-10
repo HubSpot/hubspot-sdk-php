@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Calls;
+namespace HubSpotSDK\Crm\Objects\Calls;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
 
 /**
  * Create a call with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard calls is provided.
  *
- * @see HubspotSDK\Services\Crm\Objects\CallsService::create()
+ * @see HubSpotSDK\Services\Crm\Objects\CallsService::create()
  *
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
  *
  * @phpstan-type CallCreateParamsShape = array{
  *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,

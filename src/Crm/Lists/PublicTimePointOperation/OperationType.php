@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicTimePointOperation;
+namespace HubSpotSDK\Crm\Lists\PublicTimePointOperation;
 
 /**
  * Specifies the type of operation (TIME_POINT).

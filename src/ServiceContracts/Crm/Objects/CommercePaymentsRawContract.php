@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\CommercePayments\CommercePaymentCreateParams;
-use HubspotSDK\Crm\Objects\CommercePayments\CommercePaymentGetParams;
-use HubspotSDK\Crm\Objects\CommercePayments\CommercePaymentListParams;
-use HubspotSDK\Crm\Objects\CommercePayments\CommercePaymentSearchParams;
-use HubspotSDK\Crm\Objects\CommercePayments\CommercePaymentUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\CommercePayments\CommercePaymentCreateParams;
+use HubSpotSDK\Crm\Objects\CommercePayments\CommercePaymentGetParams;
+use HubSpotSDK\Crm\Objects\CommercePayments\CommercePaymentListParams;
+use HubSpotSDK\Crm\Objects\CommercePayments\CommercePaymentSearchParams;
+use HubSpotSDK\Crm\Objects\CommercePayments\CommercePaymentUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CommercePaymentsRawContract
 {

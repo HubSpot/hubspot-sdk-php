@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\PartnerServices;
+namespace HubSpotSDK\Crm\Objects\PartnerServices;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a list of associations for a specific partner service, filtered by the type of associated object.
  *
- * @see HubspotSDK\Services\Crm\Objects\PartnerServicesService::list()
+ * @see HubSpotSDK\Services\Crm\Objects\PartnerServicesService::list()
  *
  * @phpstan-type PartnerServiceListParamsShape = array{
  *   partnerServiceID: string, after?: string|null, limit?: int|null

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms;
+namespace HubSpotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type AngleShape from \HubspotSDK\Cms\Angle
- * @phpstan-import-type ColorStopShape from \HubspotSDK\Cms\ColorStop
- * @phpstan-import-type SideOrCornerShape from \HubspotSDK\Cms\SideOrCorner
+ * @phpstan-import-type AngleShape from \HubSpotSDK\Cms\Angle
+ * @phpstan-import-type ColorStopShape from \HubSpotSDK\Cms\ColorStop
+ * @phpstan-import-type SideOrCornerShape from \HubSpotSDK\Cms\SideOrCorner
  *
  * @phpstan-type GradientShape = array{
  *   angle: Angle|AngleShape,

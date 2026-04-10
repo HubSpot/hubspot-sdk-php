@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Imports\PublicImportError;
+namespace HubSpotSDK\Crm\Imports\PublicImportError;
 
 /**
  * The classification of what went wrong during import processing.

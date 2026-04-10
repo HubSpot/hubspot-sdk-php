@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks\BatchResponseSubscriptionResponseWithErrors;
+namespace HubSpotSDK\Webhooks\BatchResponseSubscriptionResponseWithErrors;
 
 enum Status: string
 {

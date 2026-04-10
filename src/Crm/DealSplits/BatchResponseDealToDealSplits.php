@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\DealSplits;
+namespace HubSpotSDK\Crm\DealSplits;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\DealSplits\BatchResponseDealToDealSplits\Status;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\DealSplits\BatchResponseDealToDealSplits\Status;
 
 /**
- * @phpstan-import-type DealToDealSplitsShape from \HubspotSDK\Crm\DealSplits\DealToDealSplits
+ * @phpstan-import-type DealToDealSplitsShape from \HubSpotSDK\Crm\DealSplits\DealToDealSplits
  *
  * @phpstan-type BatchResponseDealToDealSplitsShape = array{
  *   completedAt: \DateTimeInterface,

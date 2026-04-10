@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\StringFieldSchema;
+namespace HubSpotSDK\Automation\Actions\StringFieldSchema;
 
 /**
  * Specifies the format of the string, with accepted values: DATE, DATE_TIME, OBJECT_COORDINATE, TIME, URI.

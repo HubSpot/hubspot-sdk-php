@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SiteSearch;
+namespace HubSpotSDK\Cms\SiteSearch;
 
-use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Language;
-use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Length;
-use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Type;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams\Language;
+use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams\Length;
+use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Returns any website content matching the given search criteria for a given HubSpot account. Searches can be filtered by content type, domain, or URL path. Includes options for weighing results by recency and popularity, along with language support.
  *
- * @see HubspotSDK\Services\Cms\SiteSearchService::search()
+ * @see HubSpotSDK\Services\Cms\SiteSearchService::search()
  *
  * @phpstan-type SiteSearchSearchParamsShape = array{
  *   analytics?: bool|null,

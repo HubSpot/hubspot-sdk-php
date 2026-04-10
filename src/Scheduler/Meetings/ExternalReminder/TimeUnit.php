@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\ExternalReminder;
+namespace HubSpotSDK\Scheduler\Meetings\ExternalReminder;
 
 /**
  * Accepted values are: WEEKS, DAYS, HOURS, MINUTES.

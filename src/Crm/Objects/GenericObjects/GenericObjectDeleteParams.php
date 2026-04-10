@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\GenericObjects;
+namespace HubSpotSDK\Crm\Objects\GenericObjects;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Move an Object identified by `{objectId}` to the recycling bin.
  *
- * @see HubspotSDK\Services\Crm\Objects\GenericObjectsService::delete()
+ * @see HubSpotSDK\Services\Crm\Objects\GenericObjectsService::delete()
  *
  * @phpstan-type GenericObjectDeleteParamsShape = array{objectType: string}
  */

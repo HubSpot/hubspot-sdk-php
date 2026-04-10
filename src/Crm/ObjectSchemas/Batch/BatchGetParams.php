@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas\Batch;
+namespace HubSpotSDK\Crm\ObjectSchemas\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve details of multiple custom object schemas by providing a batch request with specified inputs. This operation allows you to fetch schema information, including properties and associations, for multiple custom objects in a single API call.
  *
- * @see HubspotSDK\Services\Crm\ObjectSchemas\BatchService::get()
+ * @see HubSpotSDK\Services\Crm\ObjectSchemas\BatchService::get()
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   includeAssociationDefinitions: bool,

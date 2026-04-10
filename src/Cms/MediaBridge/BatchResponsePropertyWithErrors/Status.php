@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\BatchResponsePropertyWithErrors;
+namespace HubSpotSDK\Cms\MediaBridge\BatchResponsePropertyWithErrors;
 
 enum Status: string
 {

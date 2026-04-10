@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files;
+namespace HubSpotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Files\FileActionResponse\Status;
-use HubspotSDK\StandardError;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Files\FileActionResponse\Status;
+use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
- * @phpstan-import-type FileShape from \HubspotSDK\Files\File
+ * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
+ * @phpstan-import-type FileShape from \HubSpotSDK\Files\File
  *
  * @phpstan-type FileActionResponseShape = array{
  *   completedAt: \DateTimeInterface,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicComparativeDatePropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicComparativeDatePropertyOperation;
 
 /**
  * The type of operation (COMPARATIVE_DATE).

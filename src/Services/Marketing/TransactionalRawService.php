@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing;
+namespace HubSpotSDK\Services\Marketing;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Marketing\TransactionalRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Marketing\TransactionalRawContract;
 
 final class TransactionalRawService implements TransactionalRawContract
 {

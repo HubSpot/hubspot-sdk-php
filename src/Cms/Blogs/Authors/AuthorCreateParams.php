@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors;
+namespace HubSpotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Cms\Blogs\Authors\AuthorCreateParams\Language;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorCreateParams\Language;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a new Blog Author.
  *
- * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::create()
+ * @see HubSpotSDK\Services\Cms\Blogs\AuthorsService::create()
  *
  * @phpstan-type AuthorCreateParamsShape = array{
  *   id: string,

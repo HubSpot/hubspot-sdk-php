@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\OptionInput;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\OptionInput;
 
 /**
  * Update an existing property for an object type.
  *
- * @see HubspotSDK\Services\Cms\MediaBridgeService::updateProperty()
+ * @see HubSpotSDK\Services\Cms\MediaBridgeService::updateProperty()
  *
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  *
  * @phpstan-type MediaBridgeUpdatePropertyParamsShape = array{
  *   appID: int,

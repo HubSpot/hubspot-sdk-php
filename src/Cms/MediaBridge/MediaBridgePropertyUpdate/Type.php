@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate;
+namespace HubSpotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate;
 
 enum Type: string
 {

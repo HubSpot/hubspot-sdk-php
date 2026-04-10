@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\Statuses\Batch;
+namespace HubSpotSDK\CommunicationPreferences\Statuses\Batch;
 
-use HubspotSDK\CommunicationPreferences\PublicStatusRequest;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\CommunicationPreferences\PublicStatusRequest;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update the subscription status for a set of contacts.
  *
- * @see HubspotSDK\Services\CommunicationPreferences\Statuses\BatchService::updateStatuses()
+ * @see HubSpotSDK\Services\CommunicationPreferences\Statuses\BatchService::updateStatuses()
  *
- * @phpstan-import-type PublicStatusRequestShape from \HubspotSDK\CommunicationPreferences\PublicStatusRequest
+ * @phpstan-import-type PublicStatusRequestShape from \HubSpotSDK\CommunicationPreferences\PublicStatusRequest
  *
  * @phpstan-type BatchUpdateStatusesParamsShape = array{
  *   inputs: list<PublicStatusRequest|PublicStatusRequestShape>

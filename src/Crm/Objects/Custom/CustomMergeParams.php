@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Custom;
+namespace HubSpotSDK\Crm\Objects\Custom;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Merge two CRM objects of the same type by specifying one as the primary object and the other as the object to be merged into it.
  *
- * @see HubspotSDK\Services\Crm\Objects\CustomService::merge()
+ * @see HubSpotSDK\Services\Crm\Objects\CustomService::merge()
  *
  * @phpstan-type CustomMergeParamsShape = array{
  *   objectIDToMerge: string, primaryObjectID: string

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type OperationVariants from \HubspotSDK\Crm\Lists\PublicEventFilterMetadata\Operation
- * @phpstan-import-type OperationShape from \HubspotSDK\Crm\Lists\PublicEventFilterMetadata\Operation
+ * @phpstan-import-type OperationVariants from \HubSpotSDK\Crm\Lists\PublicEventFilterMetadata\Operation
+ * @phpstan-import-type OperationShape from \HubSpotSDK\Crm\Lists\PublicEventFilterMetadata\Operation
  *
  * @phpstan-type PublicEventFilterMetadataShape = array{
  *   operation: OperationShape, property: string

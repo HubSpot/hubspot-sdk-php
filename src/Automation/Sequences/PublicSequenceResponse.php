@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Sequences;
+namespace HubSpotSDK\Automation\Sequences;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicSequenceStepDependencyResponseShape from \HubspotSDK\Automation\Sequences\PublicSequenceStepDependencyResponse
- * @phpstan-import-type PublicSequenceStepResponseShape from \HubspotSDK\Automation\Sequences\PublicSequenceStepResponse
- * @phpstan-import-type PublicSequenceSettingsResponseShape from \HubspotSDK\Automation\Sequences\PublicSequenceSettingsResponse
+ * @phpstan-import-type PublicSequenceStepDependencyResponseShape from \HubSpotSDK\Automation\Sequences\PublicSequenceStepDependencyResponse
+ * @phpstan-import-type PublicSequenceStepResponseShape from \HubSpotSDK\Automation\Sequences\PublicSequenceStepResponse
+ * @phpstan-import-type PublicSequenceSettingsResponseShape from \HubSpotSDK\Automation\Sequences\PublicSequenceSettingsResponse
  *
  * @phpstan-type PublicSequenceResponseShape = array{
  *   id: string,

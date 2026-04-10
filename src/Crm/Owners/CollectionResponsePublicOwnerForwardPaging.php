@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Owners;
+namespace HubSpotSDK\Crm\Owners;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ForwardPaging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\ForwardPaging;
 
 /**
- * @phpstan-import-type PublicOwnerShape from \HubspotSDK\Crm\Owners\PublicOwner
- * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ * @phpstan-import-type PublicOwnerShape from \HubSpotSDK\Crm\Owners\PublicOwner
+ * @phpstan-import-type ForwardPagingShape from \HubSpotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicOwnerForwardPagingShape = array{
  *   results: list<PublicOwner|PublicOwnerShape>,

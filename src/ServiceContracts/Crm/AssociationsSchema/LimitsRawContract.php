@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\AssociationsSchema;
+namespace HubSpotSDK\ServiceContracts\Crm\AssociationsSchema;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
-use HubspotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
-use HubspotSDK\Crm\AssociationsSchema\Limits\LimitBatchDeleteParams;
-use HubspotSDK\Crm\AssociationsSchema\Limits\LimitBatchUpdateParams;
-use HubspotSDK\Crm\AssociationsSchema\Limits\LimitGetByObjectTypesParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
+use HubSpotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
+use HubSpotSDK\Crm\AssociationsSchema\Limits\LimitBatchDeleteParams;
+use HubSpotSDK\Crm\AssociationsSchema\Limits\LimitBatchUpdateParams;
+use HubSpotSDK\Crm\AssociationsSchema\Limits\LimitGetByObjectTypesParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface LimitsRawContract
 {

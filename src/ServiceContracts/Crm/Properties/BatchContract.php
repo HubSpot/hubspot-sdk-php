@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Properties;
+namespace HubSpotSDK\ServiceContracts\Crm\Properties;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
-use HubspotSDK\Crm\Properties\BatchResponseProperty;
-use HubspotSDK\Crm\Properties\PropertyCreate;
-use HubspotSDK\PropertyName;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
+use HubSpotSDK\Crm\Properties\BatchResponseProperty;
+use HubSpotSDK\Crm\Properties\PropertyCreate;
+use HubSpotSDK\PropertyName;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PropertyCreateShape from \HubspotSDK\Crm\Properties\PropertyCreate
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ * @phpstan-import-type PropertyCreateShape from \HubSpotSDK\Crm\Properties\PropertyCreate
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type PropertyNameShape from \HubSpotSDK\PropertyName
  */
 interface BatchContract
 {

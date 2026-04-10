@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\Campaigns;
+namespace HubSpotSDK\ServiceContracts\Marketing\Campaigns;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\PublicSpendItem;
-use HubspotSDK\Marketing\Campaigns\Spend\SpendCreateParams;
-use HubspotSDK\Marketing\Campaigns\Spend\SpendDeleteParams;
-use HubspotSDK\Marketing\Campaigns\Spend\SpendGetParams;
-use HubspotSDK\Marketing\Campaigns\Spend\SpendUpdateParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Campaigns\PublicSpendItem;
+use HubSpotSDK\Marketing\Campaigns\Spend\SpendCreateParams;
+use HubSpotSDK\Marketing\Campaigns\Spend\SpendDeleteParams;
+use HubSpotSDK\Marketing\Campaigns\Spend\SpendGetParams;
+use HubSpotSDK\Marketing\Campaigns\Spend\SpendUpdateParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface SpendRawContract
 {

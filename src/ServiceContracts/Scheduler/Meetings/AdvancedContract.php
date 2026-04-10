@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Scheduler\Meetings;
+namespace HubSpotSDK\ServiceContracts\Scheduler\Meetings;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest;
-use HubspotSDK\Scheduler\Meetings\ExternalBookingFormField;
-use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties;
-use HubspotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
-use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
-use HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
-use HubspotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest;
+use HubSpotSDK\Scheduler\Meetings\ExternalBookingFormField;
+use HubSpotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties;
+use HubSpotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
+use HubSpotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
+use HubSpotSDK\Scheduler\Meetings\ExternalLegalConsentResponse;
+use HubSpotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
 
 /**
- * @phpstan-import-type ExternalAssociationCreateRequestShape from \HubspotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest
- * @phpstan-import-type ExternalEmailReminderScheduleShape from \HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule
- * @phpstan-import-type ExternalCalendarMeetingEventCreatePropertiesShape from \HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties
- * @phpstan-import-type ExternalBookingFormFieldShape from \HubspotSDK\Scheduler\Meetings\ExternalBookingFormField
- * @phpstan-import-type ExternalLegalConsentResponseShape from \HubspotSDK\Scheduler\Meetings\ExternalLegalConsentResponse
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ExternalAssociationCreateRequestShape from \HubSpotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest
+ * @phpstan-import-type ExternalEmailReminderScheduleShape from \HubSpotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule
+ * @phpstan-import-type ExternalCalendarMeetingEventCreatePropertiesShape from \HubSpotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties
+ * @phpstan-import-type ExternalBookingFormFieldShape from \HubSpotSDK\Scheduler\Meetings\ExternalBookingFormField
+ * @phpstan-import-type ExternalLegalConsentResponseShape from \HubSpotSDK\Scheduler\Meetings\ExternalLegalConsentResponse
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface AdvancedContract
 {

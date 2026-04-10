@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Exports;
+namespace HubSpotSDK\Crm\Exports;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Exports\PublicExportViewRequest\ExportInternalValuesOption;
-use HubspotSDK\Crm\Exports\PublicExportViewRequest\ExportType;
-use HubspotSDK\Crm\Exports\PublicExportViewRequest\Format;
-use HubspotSDK\Crm\Exports\PublicExportViewRequest\Language;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Exports\PublicExportViewRequest\ExportInternalValuesOption;
+use HubSpotSDK\Crm\Exports\PublicExportViewRequest\ExportType;
+use HubSpotSDK\Crm\Exports\PublicExportViewRequest\Format;
+use HubSpotSDK\Crm\Exports\PublicExportViewRequest\Language;
 
 /**
- * @phpstan-import-type PublicCrmSearchRequestShape from \HubspotSDK\Crm\Exports\PublicCrmSearchRequest
+ * @phpstan-import-type PublicCrmSearchRequestShape from \HubSpotSDK\Crm\Exports\PublicCrmSearchRequest
  *
  * @phpstan-type PublicExportViewRequestShape = array{
  *   associatedObjectType: list<string>,

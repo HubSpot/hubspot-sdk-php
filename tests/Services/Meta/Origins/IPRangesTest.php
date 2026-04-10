@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Meta\Origins;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

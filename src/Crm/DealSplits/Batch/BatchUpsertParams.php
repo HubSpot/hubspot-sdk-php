@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\DealSplits\Batch;
+namespace HubSpotSDK\Crm\DealSplits\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest;
 
 /**
  * Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places.
  *
- * @see HubspotSDK\Services\Crm\DealSplits\BatchService::upsert()
+ * @see HubSpotSDK\Services\Crm\DealSplits\BatchService::upsert()
  *
- * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubspotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest
+ * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubSpotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest
  *
  * @phpstan-type BatchUpsertParamsShape = array{
  *   inputs: list<PublicDealSplitsCreateRequest|PublicDealSplitsCreateRequestShape>

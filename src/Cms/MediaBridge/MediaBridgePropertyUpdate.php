@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate\FieldType;
-use HubspotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate\Type;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\OptionInput;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate\FieldType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\OptionInput;
 
 /**
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  *
  * @phpstan-type MediaBridgePropertyUpdateShape = array{
  *   calculationFormula?: string|null,

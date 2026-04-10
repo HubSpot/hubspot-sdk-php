@@ -2,67 +2,67 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Lists\APICollectionResponseRecordListMembership;
-use HubspotSDK\Crm\Lists\BatchResponseRecordIDWithMemberships;
-use HubspotSDK\Crm\Lists\JoinTimeAndRecordID;
-use HubspotSDK\Crm\Lists\ListAddAndRemoveMembershipsParams;
-use HubspotSDK\Crm\Lists\ListAddMembershipsFromParams;
-use HubspotSDK\Crm\Lists\ListAddMembershipsParams;
-use HubspotSDK\Crm\Lists\ListBatchReadMembershipsParams;
-use HubspotSDK\Crm\Lists\ListCreateFolderParams;
-use HubspotSDK\Crm\Lists\ListCreateIDMappingParams;
-use HubspotSDK\Crm\Lists\ListCreateParams;
-use HubspotSDK\Crm\Lists\ListCreateResponse;
-use HubspotSDK\Crm\Lists\ListFetchResponse;
-use HubspotSDK\Crm\Lists\ListFolderCreateResponse;
-use HubspotSDK\Crm\Lists\ListFolderFetchResponse;
-use HubspotSDK\Crm\Lists\ListGetByObjectTypeAndNameParams;
-use HubspotSDK\Crm\Lists\ListGetIDMappingParams;
-use HubspotSDK\Crm\Lists\ListGetMembershipsJoinOrderParams;
-use HubspotSDK\Crm\Lists\ListGetParams;
-use HubspotSDK\Crm\Lists\ListGetRecordMembershipsParams;
-use HubspotSDK\Crm\Lists\ListGetSizeAndEditsHistoryBetweenParams;
-use HubspotSDK\Crm\Lists\ListListBySearchParams;
-use HubspotSDK\Crm\Lists\ListListFoldersParams;
-use HubspotSDK\Crm\Lists\ListListMembershipsParams;
-use HubspotSDK\Crm\Lists\ListListParams;
-use HubspotSDK\Crm\Lists\ListMoveFolderParams;
-use HubspotSDK\Crm\Lists\ListMoveListParams;
-use HubspotSDK\Crm\Lists\ListRemoveMembershipsParams;
-use HubspotSDK\Crm\Lists\ListRenameFolderParams;
-use HubspotSDK\Crm\Lists\ListsByIDResponse;
-use HubspotSDK\Crm\Lists\ListSearchResponse;
-use HubspotSDK\Crm\Lists\ListSizeAndEditHistoryResponse;
-use HubspotSDK\Crm\Lists\ListUpdateListFiltersParams;
-use HubspotSDK\Crm\Lists\ListUpdateListNameParams;
-use HubspotSDK\Crm\Lists\ListUpdateResponse;
-use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams;
-use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams\ConversionType;
-use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams\TimeUnit;
-use HubspotSDK\Crm\Lists\MembershipsUpdateResponse;
-use HubspotSDK\Crm\Lists\PublicBatchMigrationMapping;
-use HubspotSDK\Crm\Lists\PublicListConversionResponse;
-use HubspotSDK\Crm\Lists\PublicListPermissions;
-use HubspotSDK\Crm\Lists\PublicMembershipSettings;
-use HubspotSDK\Crm\Lists\PublicMigrationMapping;
-use HubspotSDK\Crm\Lists\RecordIDInput;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\ListsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Lists\APICollectionResponseRecordListMembership;
+use HubSpotSDK\Crm\Lists\BatchResponseRecordIDWithMemberships;
+use HubSpotSDK\Crm\Lists\JoinTimeAndRecordID;
+use HubSpotSDK\Crm\Lists\ListAddAndRemoveMembershipsParams;
+use HubSpotSDK\Crm\Lists\ListAddMembershipsFromParams;
+use HubSpotSDK\Crm\Lists\ListAddMembershipsParams;
+use HubSpotSDK\Crm\Lists\ListBatchReadMembershipsParams;
+use HubSpotSDK\Crm\Lists\ListCreateFolderParams;
+use HubSpotSDK\Crm\Lists\ListCreateIDMappingParams;
+use HubSpotSDK\Crm\Lists\ListCreateParams;
+use HubSpotSDK\Crm\Lists\ListCreateResponse;
+use HubSpotSDK\Crm\Lists\ListFetchResponse;
+use HubSpotSDK\Crm\Lists\ListFolderCreateResponse;
+use HubSpotSDK\Crm\Lists\ListFolderFetchResponse;
+use HubSpotSDK\Crm\Lists\ListGetByObjectTypeAndNameParams;
+use HubSpotSDK\Crm\Lists\ListGetIDMappingParams;
+use HubSpotSDK\Crm\Lists\ListGetMembershipsJoinOrderParams;
+use HubSpotSDK\Crm\Lists\ListGetParams;
+use HubSpotSDK\Crm\Lists\ListGetRecordMembershipsParams;
+use HubSpotSDK\Crm\Lists\ListGetSizeAndEditsHistoryBetweenParams;
+use HubSpotSDK\Crm\Lists\ListListBySearchParams;
+use HubSpotSDK\Crm\Lists\ListListFoldersParams;
+use HubSpotSDK\Crm\Lists\ListListMembershipsParams;
+use HubSpotSDK\Crm\Lists\ListListParams;
+use HubSpotSDK\Crm\Lists\ListMoveFolderParams;
+use HubSpotSDK\Crm\Lists\ListMoveListParams;
+use HubSpotSDK\Crm\Lists\ListRemoveMembershipsParams;
+use HubSpotSDK\Crm\Lists\ListRenameFolderParams;
+use HubSpotSDK\Crm\Lists\ListsByIDResponse;
+use HubSpotSDK\Crm\Lists\ListSearchResponse;
+use HubSpotSDK\Crm\Lists\ListSizeAndEditHistoryResponse;
+use HubSpotSDK\Crm\Lists\ListUpdateListFiltersParams;
+use HubSpotSDK\Crm\Lists\ListUpdateListNameParams;
+use HubSpotSDK\Crm\Lists\ListUpdateResponse;
+use HubSpotSDK\Crm\Lists\ListUpdateScheduleConversionParams;
+use HubSpotSDK\Crm\Lists\ListUpdateScheduleConversionParams\ConversionType;
+use HubSpotSDK\Crm\Lists\ListUpdateScheduleConversionParams\TimeUnit;
+use HubSpotSDK\Crm\Lists\MembershipsUpdateResponse;
+use HubSpotSDK\Crm\Lists\PublicBatchMigrationMapping;
+use HubSpotSDK\Crm\Lists\PublicListConversionResponse;
+use HubSpotSDK\Crm\Lists\PublicListPermissions;
+use HubSpotSDK\Crm\Lists\PublicMembershipSettings;
+use HubSpotSDK\Crm\Lists\PublicMigrationMapping;
+use HubSpotSDK\Crm\Lists\RecordIDInput;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\ListsRawContract;
 
 /**
- * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListCreateParams\FilterBranch
- * @phpstan-import-type PublicListPermissionsShape from \HubspotSDK\Crm\Lists\PublicListPermissions
- * @phpstan-import-type PublicMembershipSettingsShape from \HubspotSDK\Crm\Lists\PublicMembershipSettings
- * @phpstan-import-type RecordIDInputShape from \HubspotSDK\Crm\Lists\RecordIDInput
- * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch as FilterBranchShape1
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type FilterBranchShape from \HubSpotSDK\Crm\Lists\ListCreateParams\FilterBranch
+ * @phpstan-import-type PublicListPermissionsShape from \HubSpotSDK\Crm\Lists\PublicListPermissions
+ * @phpstan-import-type PublicMembershipSettingsShape from \HubSpotSDK\Crm\Lists\PublicMembershipSettings
+ * @phpstan-import-type RecordIDInputShape from \HubSpotSDK\Crm\Lists\RecordIDInput
+ * @phpstan-import-type FilterBranchShape from \HubSpotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch as FilterBranchShape1
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class ListsRawService implements ListsRawContract
 {

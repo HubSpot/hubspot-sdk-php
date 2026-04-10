@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\MetaRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\MetaRawContract;
 
 final class MetaRawService implements MetaRawContract
 {

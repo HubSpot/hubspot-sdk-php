@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Marketing\Campaigns;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaign;
-use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\Campaigns\BatchResponsePublicCampaign;
+use HubSpotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

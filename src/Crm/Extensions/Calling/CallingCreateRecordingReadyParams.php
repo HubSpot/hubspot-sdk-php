@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling;
+namespace HubSpotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * This endpoint is used to mark a call recording as ready. It requires the engagementId to identify the specific recording.
  *
- * @see HubspotSDK\Services\Crm\Extensions\CallingService::createRecordingReady()
+ * @see HubSpotSDK\Services\Crm\Extensions\CallingService::createRecordingReady()
  *
  * @phpstan-type CallingCreateRecordingReadyParamsShape = array{engagementID: int}
  */

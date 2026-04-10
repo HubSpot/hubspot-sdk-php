@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Owners\OwnerGetParams;
+namespace HubSpotSDK\Crm\Owners\OwnerGetParams;
 
 enum IDProperty: string
 {

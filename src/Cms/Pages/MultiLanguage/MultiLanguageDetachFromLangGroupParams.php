@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\MultiLanguage;
+namespace HubSpotSDK\Cms\Pages\MultiLanguage;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Detach a website page from a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Pages\MultiLanguageService::detachFromLangGroup()
+ * @see HubSpotSDK\Services\Cms\Pages\MultiLanguageService::detachFromLangGroup()
  *
  * @phpstan-type MultiLanguageDetachFromLangGroupParamsShape = array{id: string}
  */

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Size;
+namespace HubSpotSDK\Cms\Size;
 
 enum Units: string
 {

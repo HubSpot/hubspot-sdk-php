@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\TimeBetween;
+namespace HubSpotSDK\Cms\MediaBridge\TimeBetween;
 
 enum Operator: string
 {

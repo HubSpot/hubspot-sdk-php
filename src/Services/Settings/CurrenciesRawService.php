@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Settings;
+namespace HubSpotSDK\Services\Settings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Settings\CurrenciesRawContract;
-use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
-use HubspotSDK\Settings\Currencies\CompanyCurrency;
-use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams;
-use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams\CurrencyCode;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Settings\CurrenciesRawContract;
+use HubSpotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
+use HubSpotSDK\Settings\Currencies\CompanyCurrency;
+use HubSpotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams;
+use HubSpotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams\CurrencyCode;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CurrenciesRawService implements CurrenciesRawContract
 {

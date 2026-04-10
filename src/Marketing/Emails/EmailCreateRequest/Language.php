@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\EmailCreateRequest;
+namespace HubSpotSDK\Marketing\Emails\EmailCreateRequest;
 
 /**
  * The language code for the email, such as 'en' for English.

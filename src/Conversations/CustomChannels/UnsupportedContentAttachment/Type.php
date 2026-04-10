@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
+namespace HubSpotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
 
 enum Type: string
 {

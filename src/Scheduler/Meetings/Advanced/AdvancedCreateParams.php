@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\Advanced;
+namespace HubSpotSDK\Scheduler\Meetings\Advanced;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest;
-use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties;
-use HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest;
+use HubSpotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties;
+use HubSpotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule;
 
 /**
  * Create a new calendar event and meeting object by providing the necessary details such as associations, email reminders, meeting object properties, and timezone.
  *
- * @see HubspotSDK\Services\Scheduler\Meetings\AdvancedService::create()
+ * @see HubSpotSDK\Services\Scheduler\Meetings\AdvancedService::create()
  *
- * @phpstan-import-type ExternalAssociationCreateRequestShape from \HubspotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest
- * @phpstan-import-type ExternalEmailReminderScheduleShape from \HubspotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule
- * @phpstan-import-type ExternalCalendarMeetingEventCreatePropertiesShape from \HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties
+ * @phpstan-import-type ExternalAssociationCreateRequestShape from \HubSpotSDK\Scheduler\Meetings\ExternalAssociationCreateRequest
+ * @phpstan-import-type ExternalEmailReminderScheduleShape from \HubSpotSDK\Scheduler\Meetings\ExternalEmailReminderSchedule
+ * @phpstan-import-type ExternalCalendarMeetingEventCreatePropertiesShape from \HubSpotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventCreateProperties
  *
  * @phpstan-type AdvancedCreateParamsShape = array{
  *   organizerUserID: string,

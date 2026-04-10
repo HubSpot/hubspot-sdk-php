@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Budget;
+namespace HubSpotSDK\Marketing\Campaigns\Budget;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Add a new budget item to the campaign.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::create()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\BudgetService::create()
  *
  * @phpstan-type BudgetCreateParamsShape = array{
  *   amount: float, name: string, order: int, description?: string|null

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Settings;
+namespace HubSpotSDK\Cms\Blogs\Settings;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Paging;
 
 /**
- * @phpstan-import-type BlogShape from \HubspotSDK\Cms\Blogs\Settings\Blog
- * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ * @phpstan-import-type BlogShape from \HubSpotSDK\Cms\Blogs\Settings\Blog
+ * @phpstan-import-type PagingShape from \HubSpotSDK\Paging
  *
  * @phpstan-type CollectionResponseWithTotalBlogShape = array{
  *   results: list<Blog|BlogShape>, total: int, paging?: null|Paging|PagingShape

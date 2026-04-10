@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Power;
+namespace HubSpotSDK\Cms\MediaBridge\Power;
 
 enum Operator: string
 {

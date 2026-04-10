@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Meta;
+namespace HubSpotSDK\ServiceContracts\Meta;
 
 interface OriginsContract {}

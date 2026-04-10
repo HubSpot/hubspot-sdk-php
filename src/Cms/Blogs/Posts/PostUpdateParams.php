@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts;
+namespace HubSpotSDK\Cms\Blogs\Posts;
 
-use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\AbStatus;
-use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\ContentTypeCategory;
-use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\CurrentState;
-use HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\Language;
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\AbStatus;
+use HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\CurrentState;
+use HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\Language;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\LayoutSection;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * Partially updates a single blog post by ID. You only need to specify the values that you want to update.
  *
- * @see HubspotSDK\Services\Cms\Blogs\PostsService::update()
+ * @see HubSpotSDK\Services\Cms\Blogs\PostsService::update()
  *
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
  *
  * @phpstan-type PostUpdateParamsShape = array{
  *   id: string,

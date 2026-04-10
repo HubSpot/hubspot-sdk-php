@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\PropertyReferencedTime\ReferenceType;
-use HubspotSDK\Events\Definitions\PropertyReferencedTime\TimeType;
-use HubspotSDK\Events\Definitions\PropertyReferencedTime\TimezoneSource;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\PropertyReferencedTime\ReferenceType;
+use HubSpotSDK\Events\Definitions\PropertyReferencedTime\TimeType;
+use HubSpotSDK\Events\Definitions\PropertyReferencedTime\TimezoneSource;
 
 /**
  * @phpstan-type PropertyReferencedTimeShape = array{

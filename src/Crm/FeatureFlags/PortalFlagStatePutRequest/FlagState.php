@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags\PortalFlagStatePutRequest;
+namespace HubSpotSDK\Crm\FeatureFlags\PortalFlagStatePutRequest;
 
 /**
  * The state that the given flag should be in for this portal.

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK;
+namespace HubSpotSDK;
 
-use HubspotSDK\AssociationSpec\AssociationCategory;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\AssociationSpec\AssociationCategory;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Defines the type, direction, and details of the relationship between two CRM objects.

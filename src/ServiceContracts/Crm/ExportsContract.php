@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
-use HubspotSDK\Crm\Exports\PublicExportResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\TaskLocator;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
+use HubSpotSDK\Crm\Exports\PublicExportResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\TaskLocator;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ExportsContract
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions;
+namespace HubSpotSDK\Automation\Actions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type CallbackCompletionBatchRequestShape from \HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest
+ * @phpstan-import-type CallbackCompletionBatchRequestShape from \HubSpotSDK\Automation\Actions\CallbackCompletionBatchRequest
  *
  * @phpstan-type BatchInputCallbackCompletionBatchRequestShape = array{
  *   inputs: list<CallbackCompletionBatchRequest|CallbackCompletionBatchRequestShape>,

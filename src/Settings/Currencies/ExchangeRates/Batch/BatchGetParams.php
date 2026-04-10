@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\ExchangeRates\Batch;
+namespace HubSpotSDK\Settings\Currencies\ExchangeRates\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PublicObjectID;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\PublicObjectID;
 
 /**
  * Retrieve the details of multiple exchange rates in a single request, specified by their IDs.
  *
- * @see HubspotSDK\Services\Settings\Currencies\ExchangeRates\BatchService::get()
+ * @see HubSpotSDK\Services\Settings\Currencies\ExchangeRates\BatchService::get()
  *
- * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type PublicObjectIDShape from \HubSpotSDK\PublicObjectID
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<PublicObjectID|PublicObjectIDShape>

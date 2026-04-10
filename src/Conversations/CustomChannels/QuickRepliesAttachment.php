@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment\Type;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\QuickRepliesAttachment\Type;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type QuickReplyShape from \HubspotSDK\Conversations\CustomChannels\QuickReply
+ * @phpstan-import-type QuickReplyShape from \HubSpotSDK\Conversations\CustomChannels\QuickReply
  *
  * @phpstan-type QuickRepliesAttachmentShape = array{
  *   quickReplies: list<QuickReply|QuickReplyShape>, type: Type|value-of<Type>

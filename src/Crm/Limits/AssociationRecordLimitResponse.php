@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Limits;
+namespace HubSpotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type AtLimitRecordSampleShape from \HubspotSDK\Crm\Limits\AtLimitRecordSample
- * @phpstan-import-type NearLimitRecordSampleShape from \HubspotSDK\Crm\Limits\NearLimitRecordSample
+ * @phpstan-import-type AtLimitRecordSampleShape from \HubSpotSDK\Crm\Limits\AtLimitRecordSample
+ * @phpstan-import-type NearLimitRecordSampleShape from \HubSpotSDK\Crm\Limits\NearLimitRecordSample
  *
  * @phpstan-type AssociationRecordLimitResponseShape = array{
  *   atLimitFromRecordSamples: list<AtLimitRecordSample|AtLimitRecordSampleShape>,

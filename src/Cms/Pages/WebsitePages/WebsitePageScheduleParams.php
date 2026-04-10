@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\WebsitePages;
+namespace HubSpotSDK\Cms\Pages\WebsitePages;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Schedule a website page to published at a future time.
  *
- * @see HubspotSDK\Services\Cms\Pages\WebsitePagesService::schedule()
+ * @see HubSpotSDK\Services\Cms\Pages\WebsitePagesService::schedule()
  *
  * @phpstan-type WebsitePageScheduleParamsShape = array{
  *   id: string, publishDate: \DateTimeInterface

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\IsPipelineStageClosed;
+namespace HubSpotSDK\Cms\MediaBridge\IsPipelineStageClosed;
 
 enum Operator: string
 {

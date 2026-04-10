@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\NumberToString;
+namespace HubSpotSDK\Cms\MediaBridge\NumberToString;
 
 enum Operator: string
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\DateTimePropertyOperation;
+namespace HubSpotSDK\Events\Definitions\DateTimePropertyOperation;
 
 enum PropertyType: string
 {

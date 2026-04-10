@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Associations\AssociationDeleteParams;
-use HubspotSDK\Crm\Associations\AssociationListParams;
-use HubspotSDK\Crm\Associations\AssociationSearchParams;
-use HubspotSDK\Crm\Associations\AssociationUpdateAssociationLabelsParams;
-use HubspotSDK\Crm\Associations\ReportCreationResponse;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\LabelsBetweenObjectPair;
-use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Associations\AssociationDeleteParams;
+use HubSpotSDK\Crm\Associations\AssociationListParams;
+use HubSpotSDK\Crm\Associations\AssociationSearchParams;
+use HubSpotSDK\Crm\Associations\AssociationUpdateAssociationLabelsParams;
+use HubSpotSDK\Crm\Associations\ReportCreationResponse;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\LabelsBetweenObjectPair;
+use HubSpotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface AssociationsRawContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags\FlagPutRequest;
+namespace HubSpotSDK\Crm\FeatureFlags\FlagPutRequest;
 
 /**
  * The state that the flag should have if there are no overrides for a particular portal.

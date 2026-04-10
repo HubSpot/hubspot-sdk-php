@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicUnifiedEventsFilter;
+namespace HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilter;
 
 /**
  * Indicates the type of filter being applied (UNIFIED_EVENTS).

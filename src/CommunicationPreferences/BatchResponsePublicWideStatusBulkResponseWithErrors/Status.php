@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\BatchResponsePublicWideStatusBulkResponseWithErrors;
+namespace HubSpotSDK\CommunicationPreferences\BatchResponsePublicWideStatusBulkResponseWithErrors;
 
 /**
  * The current status of the operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.

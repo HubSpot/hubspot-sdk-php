@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicAdsTimeFilter\FilterType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicAdsTimeFilter\FilterType;
 
 /**
- * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\Crm\Lists\PublicAdsTimeFilter\PruningRefineBy
- * @phpstan-import-type PruningRefineByShape from \HubspotSDK\Crm\Lists\PublicAdsTimeFilter\PruningRefineBy
+ * @phpstan-import-type PruningRefineByVariants from \HubSpotSDK\Crm\Lists\PublicAdsTimeFilter\PruningRefineBy
+ * @phpstan-import-type PruningRefineByShape from \HubSpotSDK\Crm\Lists\PublicAdsTimeFilter\PruningRefineBy
  *
  * @phpstan-type PublicAdsTimeFilterShape = array{
  *   filterType: FilterType|value-of<FilterType>,

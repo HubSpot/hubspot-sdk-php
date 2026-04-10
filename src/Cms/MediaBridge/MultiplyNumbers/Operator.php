@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MultiplyNumbers;
+namespace HubSpotSDK\Cms\MediaBridge\MultiplyNumbers;
 
 enum Operator: string
 {

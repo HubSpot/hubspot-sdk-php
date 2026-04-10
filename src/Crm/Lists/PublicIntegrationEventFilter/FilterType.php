@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicIntegrationEventFilter;
+namespace HubSpotSDK\Crm\Lists\PublicIntegrationEventFilter;
 
 /**
  * Indicates the type of filter (INTEGRATION_EVENT).

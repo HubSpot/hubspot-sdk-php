@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Property1;
+namespace HubSpotSDK\Cms\MediaBridge\Property1;
 
 enum DateDisplayHint: string
 {

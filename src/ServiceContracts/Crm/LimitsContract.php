@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Limits\AssociationRecordLimitResponse;
-use HubspotSDK\Crm\Limits\CalculatedPropertyLimitResponse;
-use HubspotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPaging;
-use HubspotSDK\Crm\Limits\CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
-use HubspotSDK\Crm\Limits\CustomObjectLimitResponse;
-use HubspotSDK\Crm\Limits\CustomPropertyLimitResponse;
-use HubspotSDK\Crm\Limits\PipelineLimitResponse;
-use HubspotSDK\Crm\Limits\RecordLimitResponse;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Limits\AssociationRecordLimitResponse;
+use HubSpotSDK\Crm\Limits\CalculatedPropertyLimitResponse;
+use HubSpotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPaging;
+use HubSpotSDK\Crm\Limits\CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
+use HubSpotSDK\Crm\Limits\CustomObjectLimitResponse;
+use HubSpotSDK\Crm\Limits\CustomPropertyLimitResponse;
+use HubSpotSDK\Crm\Limits\PipelineLimitResponse;
+use HubSpotSDK\Crm\Limits\RecordLimitResponse;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface LimitsContract
 {

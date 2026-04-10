@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Automation\Actions;
+namespace HubSpotSDK\ServiceContracts\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteBatchParams;
-use HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Automation\Actions\Callbacks\CallbackCompleteBatchParams;
+use HubSpotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CallbacksRawContract
 {

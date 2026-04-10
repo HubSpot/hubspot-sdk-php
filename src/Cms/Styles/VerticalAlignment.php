@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Styles;
+namespace HubSpotSDK\Cms\Styles;
 
 /**
  * Specifies the vertical alignment of elements within the section.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Conversion\Contracts;
+namespace HubSpotSDK\Core\Conversion\Contracts;
 
 /**
  * @internal

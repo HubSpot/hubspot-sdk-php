@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects\Projects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects\Projects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\Projects\Batch\BatchCreateParams;
-use HubspotSDK\Crm\Objects\Projects\Batch\BatchDeleteParams;
-use HubspotSDK\Crm\Objects\Projects\Batch\BatchGetParams;
-use HubspotSDK\Crm\Objects\Projects\Batch\BatchUpdateParams;
-use HubspotSDK\Crm\Objects\Projects\Batch\BatchUpsertParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubSpotSDK\Crm\Objects\Projects\Batch\BatchCreateParams;
+use HubSpotSDK\Crm\Objects\Projects\Batch\BatchDeleteParams;
+use HubSpotSDK\Crm\Objects\Projects\Batch\BatchGetParams;
+use HubSpotSDK\Crm\Objects\Projects\Batch\BatchUpdateParams;
+use HubSpotSDK\Crm\Objects\Projects\Batch\BatchUpsertParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

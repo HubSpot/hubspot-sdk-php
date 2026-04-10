@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\BusinessUnits\BusinessUnitEntries;
+namespace HubSpotSDK\BusinessUnits\BusinessUnitEntries;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve the brands that a specific user can access.
  *
- * @see HubspotSDK\Services\BusinessUnits\BusinessUnitEntriesService::getByUserID()
+ * @see HubSpotSDK\Services\BusinessUnits\BusinessUnitEntriesService::getByUserID()
  *
  * @phpstan-type BusinessUnitEntryGetByUserIDParamsShape = array{
  *   name?: list<string>|null, properties?: list<string>|null

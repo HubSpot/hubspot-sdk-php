@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings;
+namespace HubSpotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ExternalCalendarMeetingEventResponsePropertiesShape from \HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties
+ * @phpstan-import-type ExternalCalendarMeetingEventResponsePropertiesShape from \HubSpotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties
  *
  * @phpstan-type ExternalCalenderMeetingEventResponseShape = array{
  *   id: string,

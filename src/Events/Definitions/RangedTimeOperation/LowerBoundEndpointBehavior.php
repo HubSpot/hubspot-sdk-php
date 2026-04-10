@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\RangedTimeOperation;
+namespace HubSpotSDK\Events\Definitions\RangedTimeOperation;
 
 enum LowerBoundEndpointBehavior: string
 {

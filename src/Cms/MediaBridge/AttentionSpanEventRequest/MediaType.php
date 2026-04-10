@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\AttentionSpanEventRequest;
+namespace HubSpotSDK\Cms\MediaBridge\AttentionSpanEventRequest;
 
 enum MediaType: string
 {

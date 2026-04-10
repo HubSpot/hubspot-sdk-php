@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Auth\OAuth;
+namespace HubSpotSDK\Auth\OAuth;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-import-type PublicAccessTokenInfoResponseShape from \HubspotSDK\Auth\OAuth\PublicAccessTokenInfoResponse
- * @phpstan-import-type PublicRefreshTokenInfoResponseShape from \HubspotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse
+ * @phpstan-import-type PublicAccessTokenInfoResponseShape from \HubSpotSDK\Auth\OAuth\PublicAccessTokenInfoResponse
+ * @phpstan-import-type PublicRefreshTokenInfoResponseShape from \HubSpotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse
  *
  * @phpstan-type TokenInfoResponseBaseIfVariants = PublicAccessTokenInfoResponse|PublicRefreshTokenInfoResponse
  * @phpstan-type TokenInfoResponseBaseIfShape = TokenInfoResponseBaseIfVariants|PublicAccessTokenInfoResponseShape|PublicRefreshTokenInfoResponseShape

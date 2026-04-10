@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks;
+namespace HubSpotSDK\Webhooks;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-import-type ObjectSubscriptionUpsertRequestShape from \HubspotSDK\Webhooks\ObjectSubscriptionUpsertRequest
- * @phpstan-import-type AssociationSubscriptionUpsertRequestShape from \HubspotSDK\Webhooks\AssociationSubscriptionUpsertRequest
- * @phpstan-import-type AppLifecycleEventSubscriptionUpsertRequestShape from \HubspotSDK\Webhooks\AppLifecycleEventSubscriptionUpsertRequest
- * @phpstan-import-type ListMembershipSubscriptionUpsertRequestShape from \HubspotSDK\Webhooks\ListMembershipSubscriptionUpsertRequest
+ * @phpstan-import-type ObjectSubscriptionUpsertRequestShape from \HubSpotSDK\Webhooks\ObjectSubscriptionUpsertRequest
+ * @phpstan-import-type AssociationSubscriptionUpsertRequestShape from \HubSpotSDK\Webhooks\AssociationSubscriptionUpsertRequest
+ * @phpstan-import-type AppLifecycleEventSubscriptionUpsertRequestShape from \HubSpotSDK\Webhooks\AppLifecycleEventSubscriptionUpsertRequest
+ * @phpstan-import-type ListMembershipSubscriptionUpsertRequestShape from \HubSpotSDK\Webhooks\ListMembershipSubscriptionUpsertRequest
  *
  * @phpstan-type SubscriptionUpsertRequestVariants = ObjectSubscriptionUpsertRequest|AssociationSubscriptionUpsertRequest|AppLifecycleEventSubscriptionUpsertRequest|ListMembershipSubscriptionUpsertRequest
  * @phpstan-type SubscriptionUpsertRequestShape = SubscriptionUpsertRequestVariants|ObjectSubscriptionUpsertRequestShape|AssociationSubscriptionUpsertRequestShape|AppLifecycleEventSubscriptionUpsertRequestShape|ListMembershipSubscriptionUpsertRequestShape

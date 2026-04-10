@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing\Transactional;
+namespace HubSpotSDK\Services\Marketing\Transactional;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\EmailSendStatusView;
-use HubspotSDK\Marketing\PublicSingleSendEmail;
-use HubspotSDK\Marketing\Transactional\SingleEmail\SingleEmailSendParams;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\Transactional\SingleEmailRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\EmailSendStatusView;
+use HubSpotSDK\Marketing\PublicSingleSendEmail;
+use HubSpotSDK\Marketing\Transactional\SingleEmail\SingleEmailSendParams;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\Transactional\SingleEmailRawContract;
 
 /**
- * @phpstan-import-type PublicSingleSendEmailShape from \HubspotSDK\Marketing\PublicSingleSendEmail
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicSingleSendEmailShape from \HubSpotSDK\Marketing\PublicSingleSendEmail
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class SingleEmailRawService implements SingleEmailRawContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\ParseNumber;
+namespace HubSpotSDK\Cms\MediaBridge\ParseNumber;
 
 enum Operator: string
 {

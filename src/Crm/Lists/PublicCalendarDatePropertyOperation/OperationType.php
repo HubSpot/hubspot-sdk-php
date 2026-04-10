@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicCalendarDatePropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicCalendarDatePropertyOperation;
 
 /**
  * The type of operation, which is (CALENDAR_DATE).

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\FormatFullName;
+namespace HubSpotSDK\Cms\MediaBridge\FormatFullName;
 
 enum Operator: string
 {

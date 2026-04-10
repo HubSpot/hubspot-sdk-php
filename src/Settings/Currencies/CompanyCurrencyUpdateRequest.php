@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies;
+namespace HubSpotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\CompanyCurrencyUpdateRequest\CurrencyCode;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\CompanyCurrencyUpdateRequest\CurrencyCode;
 
 /**
  * @phpstan-type CompanyCurrencyUpdateRequestShape = array{

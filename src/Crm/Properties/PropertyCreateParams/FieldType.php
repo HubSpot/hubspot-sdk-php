@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\PropertyCreateParams;
+namespace HubSpotSDK\Crm\Properties\PropertyCreateParams;
 
 /**
  * Controls how the property appears in HubSpot.

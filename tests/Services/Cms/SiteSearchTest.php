@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Cms;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\SiteSearch\IndexedData;
-use HubspotSDK\Cms\SiteSearch\PublicSearchResults;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\SiteSearch\IndexedData;
+use HubSpotSDK\Cms\SiteSearch\PublicSearchResults;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

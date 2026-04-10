@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing\MarketingEvents;
+namespace HubSpotSDK\Services\Marketing\MarketingEvents;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventSubscriber;
-use HubspotSDK\Marketing\MarketingEvents\SubscriberState\SubscriberStateRecordByEmailParams;
-use HubspotSDK\Marketing\MarketingEvents\SubscriberState\SubscriberStateRecordByIDParams;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\MarketingEvents\SubscriberStateRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventSubscriber;
+use HubSpotSDK\Marketing\MarketingEvents\SubscriberState\SubscriberStateRecordByEmailParams;
+use HubSpotSDK\Marketing\MarketingEvents\SubscriberState\SubscriberStateRecordByIDParams;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\MarketingEvents\SubscriberStateRawContract;
 
 /**
- * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber
- * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventSubscriber
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber
+ * @phpstan-import-type MarketingEventSubscriberShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventSubscriber
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class SubscriberStateRawService implements SubscriberStateRawContract
 {

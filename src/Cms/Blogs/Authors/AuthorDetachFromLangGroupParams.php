@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors;
+namespace HubSpotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Detach a Blog Author from a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::detachFromLangGroup()
+ * @see HubSpotSDK\Services\Cms\Blogs\AuthorsService::detachFromLangGroup()
  *
  * @phpstan-type AuthorDetachFromLangGroupParamsShape = array{id: string}
  */

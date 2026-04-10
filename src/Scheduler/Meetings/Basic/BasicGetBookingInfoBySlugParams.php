@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\Basic;
+namespace HubSpotSDK\Scheduler\Meetings\Basic;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Get details about the initial information necessary for a meeting scheduler.
  *
- * @see HubspotSDK\Services\Scheduler\Meetings\BasicService::getBookingInfoBySlug()
+ * @see HubSpotSDK\Services\Scheduler\Meetings\BasicService::getBookingInfoBySlug()
  *
  * @phpstan-type BasicGetBookingInfoBySlugParamsShape = array{timezone: string}
  */

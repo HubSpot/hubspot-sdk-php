@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
+namespace HubSpotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
 
 /**
  * Valid status are SENT, FAILED, and READ.

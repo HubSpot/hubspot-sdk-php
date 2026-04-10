@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicEmailSubscriptionFilter;
+namespace HubSpotSDK\Crm\Lists\PublicEmailSubscriptionFilter;
 
 /**
  * Indicates the type of filter (EMAIL_SUBSCRIPTION).

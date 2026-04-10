@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK;
+namespace HubSpotSDK;
 
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
-use HubspotSDK\Core\BaseClient;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Services\AccountService;
-use HubspotSDK\Services\AuthService;
-use HubspotSDK\Services\AutomationService;
-use HubspotSDK\Services\BusinessUnitsService;
-use HubspotSDK\Services\CmsService;
-use HubspotSDK\Services\CommunicationPreferencesService;
-use HubspotSDK\Services\ConversationsService;
-use HubspotSDK\Services\CrmService;
-use HubspotSDK\Services\EventsService;
-use HubspotSDK\Services\FilesService;
-use HubspotSDK\Services\MarketingService;
-use HubspotSDK\Services\MetaService;
-use HubspotSDK\Services\SchedulerService;
-use HubspotSDK\Services\SettingsService;
-use HubspotSDK\Services\WebhooksService;
+use HubSpotSDK\Core\BaseClient;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Services\AccountService;
+use HubSpotSDK\Services\AuthService;
+use HubSpotSDK\Services\AutomationService;
+use HubSpotSDK\Services\BusinessUnitsService;
+use HubSpotSDK\Services\CmsService;
+use HubSpotSDK\Services\CommunicationPreferencesService;
+use HubSpotSDK\Services\ConversationsService;
+use HubSpotSDK\Services\CrmService;
+use HubSpotSDK\Services\EventsService;
+use HubSpotSDK\Services\FilesService;
+use HubSpotSDK\Services\MarketingService;
+use HubSpotSDK\Services\MetaService;
+use HubSpotSDK\Services\SchedulerService;
+use HubSpotSDK\Services\SettingsService;
+use HubSpotSDK\Services\WebhooksService;
 
 /**
- * @phpstan-import-type NormalizedRequest from \HubspotSDK\Core\BaseClient
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type NormalizedRequest from \HubSpotSDK\Core\BaseClient
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 class Client extends BaseClient
 {

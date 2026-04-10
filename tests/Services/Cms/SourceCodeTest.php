@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Cms;
 
-use HubspotSDK\ActionResponse;
-use HubspotSDK\Client;
-use HubspotSDK\Cms\SourceCode\AssetFileMetadata;
-use HubspotSDK\Core\Util;
-use HubspotSDK\TaskLocator;
+use HubSpotSDK\ActionResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\SourceCode\AssetFileMetadata;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\TaskLocator;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

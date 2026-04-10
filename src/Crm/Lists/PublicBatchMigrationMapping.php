@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicMigrationMappingShape from \HubspotSDK\Crm\Lists\PublicMigrationMapping
+ * @phpstan-import-type PublicMigrationMappingShape from \HubSpotSDK\Crm\Lists\PublicMigrationMapping
  *
  * @phpstan-type PublicBatchMigrationMappingShape = array{
  *   legacyListIDsToIDsMapping: list<PublicMigrationMapping|PublicMigrationMappingShape>,

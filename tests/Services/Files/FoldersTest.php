@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Files;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Files\Folder;
-use HubspotSDK\Files\FolderActionResponse;
-use HubspotSDK\Files\FolderUpdateTaskLocator;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Files\Folder;
+use HubSpotSDK\Files\FolderActionResponse;
+use HubSpotSDK\Files\FolderUpdateTaskLocator;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\FileAssets;
+namespace HubSpotSDK\Files\FileAssets;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.
  *
- * @see HubspotSDK\Services\Files\FileAssetsService::replace()
+ * @see HubSpotSDK\Services\Files\FileAssetsService::replace()
  *
  * @phpstan-type FileAssetReplaceParamsShape = array{
  *   charsetHunch?: string|null, file?: string|null, options?: string|null

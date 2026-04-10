@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors;
+namespace HubSpotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\Language;
-use HubspotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\Language;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\PrimaryLanguage;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Attach a Blog Author to a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::attachToLangGroup()
+ * @see HubSpotSDK\Services\Cms\Blogs\AuthorsService::attachToLangGroup()
  *
  * @phpstan-type AuthorAttachToLangGroupParamsShape = array{
  *   id: string,

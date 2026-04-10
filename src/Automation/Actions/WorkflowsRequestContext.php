@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions;
+namespace HubSpotSDK\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\WorkflowsRequestContext\Source;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Actions\WorkflowsRequestContext\Source;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ActionExecutionIndexIdentifierShape from \HubspotSDK\Automation\Actions\ActionExecutionIndexIdentifier
+ * @phpstan-import-type ActionExecutionIndexIdentifierShape from \HubSpotSDK\Automation\Actions\ActionExecutionIndexIdentifier
  *
  * @phpstan-type WorkflowsRequestContextShape = array{
  *   source: Source|value-of<Source>,

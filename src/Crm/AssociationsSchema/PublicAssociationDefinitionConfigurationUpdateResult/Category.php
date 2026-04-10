@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateResult;
+namespace HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateResult;
 
 /**
  * The category of the association, which can be HUBSPOT_DEFINED, INTEGRATOR_DEFINED, or USER_DEFINED.

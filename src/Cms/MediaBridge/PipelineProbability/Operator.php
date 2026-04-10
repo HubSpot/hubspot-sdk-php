@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\PipelineProbability;
+namespace HubSpotSDK\Cms\MediaBridge\PipelineProbability;
 
 enum Operator: string
 {

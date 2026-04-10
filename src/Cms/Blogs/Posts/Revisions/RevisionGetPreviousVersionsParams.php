@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\Revisions;
+namespace HubSpotSDK\Cms\Blogs\Posts\Revisions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve all the previous versions of a blog post.
  *
- * @see HubspotSDK\Services\Cms\Blogs\Posts\RevisionsService::getPreviousVersions()
+ * @see HubSpotSDK\Services\Cms\Blogs\Posts\RevisionsService::getPreviousVersions()
  *
  * @phpstan-type RevisionGetPreviousVersionsParamsShape = array{
  *   after?: string|null, before?: string|null, limit?: int|null

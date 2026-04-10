@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\PropertyGetParams;
+namespace HubSpotSDK\Crm\Properties\PropertyGetParams;
 
 enum DataSensitivity: string
 {

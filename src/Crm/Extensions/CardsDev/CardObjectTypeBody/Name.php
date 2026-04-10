@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\CardObjectTypeBody;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\CardObjectTypeBody;
 
 /**
  * A CRM object type where this card should be displayed.

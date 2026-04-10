@@ -2,12 +2,12 @@
 
 namespace Tests\Services\CommunicationPreferences\Statuses;
 
-use HubspotSDK\Client;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicBulkOptOutFromAllResponse;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicStatus;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicStatusBulkResponse;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicWideStatusBulkResponse;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Client;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicBulkOptOutFromAllResponse;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicStatus;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicStatusBulkResponse;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicWideStatusBulkResponse;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

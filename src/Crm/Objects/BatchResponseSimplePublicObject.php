@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects;
+namespace HubSpotSDK\Crm\Objects;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject\Status;
-use HubspotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObject\Status;
+use HubSpotSDK\Crm\SimplePublicObject;
 
 /**
  * A public object batch response object.
  *
- * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\SimplePublicObject
+ * @phpstan-import-type SimplePublicObjectShape from \HubSpotSDK\Crm\SimplePublicObject
  *
  * @phpstan-type BatchResponseSimplePublicObjectShape = array{
  *   completedAt: \DateTimeInterface,

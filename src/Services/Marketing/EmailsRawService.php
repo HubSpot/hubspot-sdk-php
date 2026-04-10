@@ -2,56 +2,56 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing;
+namespace HubSpotSDK\Services\Marketing;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
-use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticInterval;
-use HubspotSDK\Marketing\Emails\EmailCloneParams;
-use HubspotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
-use HubspotSDK\Marketing\Emails\EmailCreateParams;
-use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
-use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
-use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
-use HubspotSDK\Marketing\Emails\EmailDeleteParams;
-use HubspotSDK\Marketing\Emails\EmailGetAbTestVariationParams;
-use HubspotSDK\Marketing\Emails\EmailGetHistogramParams;
-use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
-use HubspotSDK\Marketing\Emails\EmailGetParams;
-use HubspotSDK\Marketing\Emails\EmailGetRevisionParams;
-use HubspotSDK\Marketing\Emails\EmailListParams;
-use HubspotSDK\Marketing\Emails\EmailListParams\Type;
-use HubspotSDK\Marketing\Emails\EmailListRevisionsParams;
-use HubspotSDK\Marketing\Emails\EmailRestoreRevisionParams;
-use HubspotSDK\Marketing\Emails\EmailRestoreRevisionToDraftParams;
-use HubspotSDK\Marketing\Emails\EmailUpdateDraftParams;
-use HubspotSDK\Marketing\Emails\EmailUpdateParams;
-use HubspotSDK\Marketing\Emails\PublicEmail;
-use HubspotSDK\Marketing\Emails\PublicEmailContent;
-use HubspotSDK\Marketing\Emails\PublicEmailFromDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailToDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailVersion;
-use HubspotSDK\Marketing\Emails\PublicRssEmailDetails;
-use HubspotSDK\Marketing\Emails\PublicWebversionDetails;
-use HubspotSDK\Marketing\Emails\VersionPublicEmail;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\EmailsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\Emails\AggregateEmailStatistics;
+use HubSpotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticInterval;
+use HubSpotSDK\Marketing\Emails\EmailCloneParams;
+use HubSpotSDK\Marketing\Emails\EmailCreateAbTestVariationParams;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams\Language;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams\State;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
+use HubSpotSDK\Marketing\Emails\EmailDeleteParams;
+use HubSpotSDK\Marketing\Emails\EmailGetAbTestVariationParams;
+use HubSpotSDK\Marketing\Emails\EmailGetHistogramParams;
+use HubSpotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
+use HubSpotSDK\Marketing\Emails\EmailGetParams;
+use HubSpotSDK\Marketing\Emails\EmailGetRevisionParams;
+use HubSpotSDK\Marketing\Emails\EmailListParams;
+use HubSpotSDK\Marketing\Emails\EmailListParams\Type;
+use HubSpotSDK\Marketing\Emails\EmailListRevisionsParams;
+use HubSpotSDK\Marketing\Emails\EmailRestoreRevisionParams;
+use HubSpotSDK\Marketing\Emails\EmailRestoreRevisionToDraftParams;
+use HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams;
+use HubSpotSDK\Marketing\Emails\EmailUpdateParams;
+use HubSpotSDK\Marketing\Emails\PublicEmail;
+use HubSpotSDK\Marketing\Emails\PublicEmailContent;
+use HubSpotSDK\Marketing\Emails\PublicEmailFromDetails;
+use HubSpotSDK\Marketing\Emails\PublicEmailSubscriptionDetails;
+use HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails;
+use HubSpotSDK\Marketing\Emails\PublicEmailToDetails;
+use HubSpotSDK\Marketing\Emails\PublicEmailVersion;
+use HubSpotSDK\Marketing\Emails\PublicRssEmailDetails;
+use HubSpotSDK\Marketing\Emails\PublicWebversionDetails;
+use HubSpotSDK\Marketing\Emails\VersionPublicEmail;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\EmailsRawContract;
 
 /**
- * @phpstan-import-type PublicEmailContentShape from \HubspotSDK\Marketing\Emails\PublicEmailContent
- * @phpstan-import-type PublicEmailFromDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailFromDetails
- * @phpstan-import-type PublicRssEmailDetailsShape from \HubspotSDK\Marketing\Emails\PublicRssEmailDetails
- * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
- * @phpstan-import-type PublicEmailTestingDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailTestingDetails
- * @phpstan-import-type PublicEmailToDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailToDetails
- * @phpstan-import-type PublicWebversionDetailsShape from \HubspotSDK\Marketing\Emails\PublicWebversionDetails
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicEmailContentShape from \HubSpotSDK\Marketing\Emails\PublicEmailContent
+ * @phpstan-import-type PublicEmailFromDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailFromDetails
+ * @phpstan-import-type PublicRssEmailDetailsShape from \HubSpotSDK\Marketing\Emails\PublicRssEmailDetails
+ * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
+ * @phpstan-import-type PublicEmailTestingDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails
+ * @phpstan-import-type PublicEmailToDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailToDetails
+ * @phpstan-import-type PublicWebversionDetailsShape from \HubSpotSDK\Marketing\Emails\PublicWebversionDetails
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class EmailsRawService implements EmailsRawContract
 {

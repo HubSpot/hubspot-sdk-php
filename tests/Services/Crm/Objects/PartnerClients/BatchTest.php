@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Crm\Objects\PartnerClients;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObject;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

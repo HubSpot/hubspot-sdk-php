@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type CalculationExpressionVariants from \HubspotSDK\Cms\MediaBridge\PropertyDefinition\CalculationExpression
- * @phpstan-import-type PropertyShape from \HubspotSDK\Cms\MediaBridge\Property
- * @phpstan-import-type CalculationExpressionShape from \HubspotSDK\Cms\MediaBridge\PropertyDefinition\CalculationExpression
- * @phpstan-import-type PropertyDefinitionSourceShape from \HubspotSDK\Cms\MediaBridge\PropertyDefinitionSource
- * @phpstan-import-type ExtensionDataShape from \HubspotSDK\Cms\MediaBridge\ExtensionData
- * @phpstan-import-type ExternalOptionsMetaDataShape from \HubspotSDK\Cms\MediaBridge\ExternalOptionsMetaData
- * @phpstan-import-type FieldLevelPermissionShape from \HubspotSDK\Cms\MediaBridge\FieldLevelPermission
- * @phpstan-import-type DefinitionSourceShape from \HubspotSDK\Cms\MediaBridge\DefinitionSource
- * @phpstan-import-type DefaultRequirementsShape from \HubspotSDK\Cms\MediaBridge\DefaultRequirements
- * @phpstan-import-type RollupExpressionShape from \HubspotSDK\Cms\MediaBridge\RollupExpression
+ * @phpstan-import-type CalculationExpressionVariants from \HubSpotSDK\Cms\MediaBridge\PropertyDefinition\CalculationExpression
+ * @phpstan-import-type PropertyShape from \HubSpotSDK\Cms\MediaBridge\Property
+ * @phpstan-import-type CalculationExpressionShape from \HubSpotSDK\Cms\MediaBridge\PropertyDefinition\CalculationExpression
+ * @phpstan-import-type PropertyDefinitionSourceShape from \HubSpotSDK\Cms\MediaBridge\PropertyDefinitionSource
+ * @phpstan-import-type ExtensionDataShape from \HubSpotSDK\Cms\MediaBridge\ExtensionData
+ * @phpstan-import-type ExternalOptionsMetaDataShape from \HubSpotSDK\Cms\MediaBridge\ExternalOptionsMetaData
+ * @phpstan-import-type FieldLevelPermissionShape from \HubSpotSDK\Cms\MediaBridge\FieldLevelPermission
+ * @phpstan-import-type DefinitionSourceShape from \HubSpotSDK\Cms\MediaBridge\DefinitionSource
+ * @phpstan-import-type DefaultRequirementsShape from \HubSpotSDK\Cms\MediaBridge\DefaultRequirements
+ * @phpstan-import-type RollupExpressionShape from \HubSpotSDK\Cms\MediaBridge\RollupExpression
  *
  * @phpstan-type PropertyDefinitionShape = array{
  *   objectTypeID: string,

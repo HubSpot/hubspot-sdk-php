@@ -2,159 +2,159 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MoreThanOrEqual;
+namespace HubSpotSDK\Cms\MediaBridge\MoreThanOrEqual;
 
-use HubspotSDK\Cms\MediaBridge\AbsoluteValue;
-use HubspotSDK\Cms\MediaBridge\AddNumbers;
-use HubspotSDK\Cms\MediaBridge\AddTime;
-use HubspotSDK\Cms\MediaBridge\And_;
-use HubspotSDK\Cms\MediaBridge\BeginsWith;
-use HubspotSDK\Cms\MediaBridge\BooleanPropertyVariable;
-use HubspotSDK\Cms\MediaBridge\BooleanTargetPropertyVariable;
-use HubspotSDK\Cms\MediaBridge\ConcatStrings;
-use HubspotSDK\Cms\MediaBridge\ConstantBoolean;
-use HubspotSDK\Cms\MediaBridge\ConstantNumber;
-use HubspotSDK\Cms\MediaBridge\ConstantString;
-use HubspotSDK\Cms\MediaBridge\Contains;
-use HubspotSDK\Cms\MediaBridge\Date;
-use HubspotSDK\Cms\MediaBridge\DatedExchangeRate;
-use HubspotSDK\Cms\MediaBridge\DivideNumbers;
-use HubspotSDK\Cms\MediaBridge\Euler;
-use HubspotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyHTML;
-use HubspotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyText;
-use HubspotSDK\Cms\MediaBridge\ExtractMostRecentPlainTextEmailReply;
-use HubspotSDK\Cms\MediaBridge\FetchCurrencyDecimalPlaces;
-use HubspotSDK\Cms\MediaBridge\FetchExchangeRate;
-use HubspotSDK\Cms\MediaBridge\FetchSingleCurrencyPortalCurrency;
-use HubspotSDK\Cms\MediaBridge\FormatFullName;
-use HubspotSDK\Cms\MediaBridge\FormatPhoneNumber;
-use HubspotSDK\Cms\MediaBridge\FormatSearchablePhoneNumber;
-use HubspotSDK\Cms\MediaBridge\HasEmailReply;
-use HubspotSDK\Cms\MediaBridge\HasPlainTextEmailReply;
-use HubspotSDK\Cms\MediaBridge\IfBoolean;
-use HubspotSDK\Cms\MediaBridge\IfNumber;
-use HubspotSDK\Cms\MediaBridge\IfString;
-use HubspotSDK\Cms\MediaBridge\IsEngagementType;
-use HubspotSDK\Cms\MediaBridge\IsPipelineStageClosed;
-use HubspotSDK\Cms\MediaBridge\IsPresent;
-use HubspotSDK\Cms\MediaBridge\LessThan;
-use HubspotSDK\Cms\MediaBridge\LessThanOrEqual;
-use HubspotSDK\Cms\MediaBridge\LowerCase;
-use HubspotSDK\Cms\MediaBridge\MaxNumbers;
-use HubspotSDK\Cms\MediaBridge\MinNumbers;
-use HubspotSDK\Cms\MediaBridge\Month;
-use HubspotSDK\Cms\MediaBridge\MoreThan;
-use HubspotSDK\Cms\MediaBridge\MoreThanOrEqual;
-use HubspotSDK\Cms\MediaBridge\MultiplyNumbers;
-use HubspotSDK\Cms\MediaBridge\Not;
-use HubspotSDK\Cms\MediaBridge\Now;
-use HubspotSDK\Cms\MediaBridge\NumberEquals;
-use HubspotSDK\Cms\MediaBridge\NumberPropertyVariable;
-use HubspotSDK\Cms\MediaBridge\NumberTargetPropertyVariable;
-use HubspotSDK\Cms\MediaBridge\NumberToString;
-use HubspotSDK\Cms\MediaBridge\Or_;
-use HubspotSDK\Cms\MediaBridge\ParseNumber;
-use HubspotSDK\Cms\MediaBridge\PeriodToMonths;
-use HubspotSDK\Cms\MediaBridge\PeriodToWeeks;
-use HubspotSDK\Cms\MediaBridge\PipelineProbability;
-use HubspotSDK\Cms\MediaBridge\Power;
-use HubspotSDK\Cms\MediaBridge\RoundDownNumbers;
-use HubspotSDK\Cms\MediaBridge\RoundNearestNumbers;
-use HubspotSDK\Cms\MediaBridge\RoundUpNumbers;
-use HubspotSDK\Cms\MediaBridge\SetContainsString;
-use HubspotSDK\Cms\MediaBridge\SquareRoot;
-use HubspotSDK\Cms\MediaBridge\StringEquals;
-use HubspotSDK\Cms\MediaBridge\StringLength;
-use HubspotSDK\Cms\MediaBridge\StringPropertyVariable;
-use HubspotSDK\Cms\MediaBridge\StringTargetPropertyVariable;
-use HubspotSDK\Cms\MediaBridge\Substring;
-use HubspotSDK\Cms\MediaBridge\SubtractNumbers;
-use HubspotSDK\Cms\MediaBridge\SubtractTime;
-use HubspotSDK\Cms\MediaBridge\TimeBetween;
-use HubspotSDK\Cms\MediaBridge\TimeBetweenSkipWeekends;
-use HubspotSDK\Cms\MediaBridge\TimestampOfPropertyVariable;
-use HubspotSDK\Cms\MediaBridge\TimestampOfTargetPropertyVariable;
-use HubspotSDK\Cms\MediaBridge\UpperCase;
-use HubspotSDK\Cms\MediaBridge\Xor_;
-use HubspotSDK\Cms\MediaBridge\Year;
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Cms\MediaBridge\AbsoluteValue;
+use HubSpotSDK\Cms\MediaBridge\AddNumbers;
+use HubSpotSDK\Cms\MediaBridge\AddTime;
+use HubSpotSDK\Cms\MediaBridge\And_;
+use HubSpotSDK\Cms\MediaBridge\BeginsWith;
+use HubSpotSDK\Cms\MediaBridge\BooleanPropertyVariable;
+use HubSpotSDK\Cms\MediaBridge\BooleanTargetPropertyVariable;
+use HubSpotSDK\Cms\MediaBridge\ConcatStrings;
+use HubSpotSDK\Cms\MediaBridge\ConstantBoolean;
+use HubSpotSDK\Cms\MediaBridge\ConstantNumber;
+use HubSpotSDK\Cms\MediaBridge\ConstantString;
+use HubSpotSDK\Cms\MediaBridge\Contains;
+use HubSpotSDK\Cms\MediaBridge\Date;
+use HubSpotSDK\Cms\MediaBridge\DatedExchangeRate;
+use HubSpotSDK\Cms\MediaBridge\DivideNumbers;
+use HubSpotSDK\Cms\MediaBridge\Euler;
+use HubSpotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyHTML;
+use HubSpotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyText;
+use HubSpotSDK\Cms\MediaBridge\ExtractMostRecentPlainTextEmailReply;
+use HubSpotSDK\Cms\MediaBridge\FetchCurrencyDecimalPlaces;
+use HubSpotSDK\Cms\MediaBridge\FetchExchangeRate;
+use HubSpotSDK\Cms\MediaBridge\FetchSingleCurrencyPortalCurrency;
+use HubSpotSDK\Cms\MediaBridge\FormatFullName;
+use HubSpotSDK\Cms\MediaBridge\FormatPhoneNumber;
+use HubSpotSDK\Cms\MediaBridge\FormatSearchablePhoneNumber;
+use HubSpotSDK\Cms\MediaBridge\HasEmailReply;
+use HubSpotSDK\Cms\MediaBridge\HasPlainTextEmailReply;
+use HubSpotSDK\Cms\MediaBridge\IfBoolean;
+use HubSpotSDK\Cms\MediaBridge\IfNumber;
+use HubSpotSDK\Cms\MediaBridge\IfString;
+use HubSpotSDK\Cms\MediaBridge\IsEngagementType;
+use HubSpotSDK\Cms\MediaBridge\IsPipelineStageClosed;
+use HubSpotSDK\Cms\MediaBridge\IsPresent;
+use HubSpotSDK\Cms\MediaBridge\LessThan;
+use HubSpotSDK\Cms\MediaBridge\LessThanOrEqual;
+use HubSpotSDK\Cms\MediaBridge\LowerCase;
+use HubSpotSDK\Cms\MediaBridge\MaxNumbers;
+use HubSpotSDK\Cms\MediaBridge\MinNumbers;
+use HubSpotSDK\Cms\MediaBridge\Month;
+use HubSpotSDK\Cms\MediaBridge\MoreThan;
+use HubSpotSDK\Cms\MediaBridge\MoreThanOrEqual;
+use HubSpotSDK\Cms\MediaBridge\MultiplyNumbers;
+use HubSpotSDK\Cms\MediaBridge\Not;
+use HubSpotSDK\Cms\MediaBridge\Now;
+use HubSpotSDK\Cms\MediaBridge\NumberEquals;
+use HubSpotSDK\Cms\MediaBridge\NumberPropertyVariable;
+use HubSpotSDK\Cms\MediaBridge\NumberTargetPropertyVariable;
+use HubSpotSDK\Cms\MediaBridge\NumberToString;
+use HubSpotSDK\Cms\MediaBridge\Or_;
+use HubSpotSDK\Cms\MediaBridge\ParseNumber;
+use HubSpotSDK\Cms\MediaBridge\PeriodToMonths;
+use HubSpotSDK\Cms\MediaBridge\PeriodToWeeks;
+use HubSpotSDK\Cms\MediaBridge\PipelineProbability;
+use HubSpotSDK\Cms\MediaBridge\Power;
+use HubSpotSDK\Cms\MediaBridge\RoundDownNumbers;
+use HubSpotSDK\Cms\MediaBridge\RoundNearestNumbers;
+use HubSpotSDK\Cms\MediaBridge\RoundUpNumbers;
+use HubSpotSDK\Cms\MediaBridge\SetContainsString;
+use HubSpotSDK\Cms\MediaBridge\SquareRoot;
+use HubSpotSDK\Cms\MediaBridge\StringEquals;
+use HubSpotSDK\Cms\MediaBridge\StringLength;
+use HubSpotSDK\Cms\MediaBridge\StringPropertyVariable;
+use HubSpotSDK\Cms\MediaBridge\StringTargetPropertyVariable;
+use HubSpotSDK\Cms\MediaBridge\Substring;
+use HubSpotSDK\Cms\MediaBridge\SubtractNumbers;
+use HubSpotSDK\Cms\MediaBridge\SubtractTime;
+use HubSpotSDK\Cms\MediaBridge\TimeBetween;
+use HubSpotSDK\Cms\MediaBridge\TimeBetweenSkipWeekends;
+use HubSpotSDK\Cms\MediaBridge\TimestampOfPropertyVariable;
+use HubSpotSDK\Cms\MediaBridge\TimestampOfTargetPropertyVariable;
+use HubSpotSDK\Cms\MediaBridge\UpperCase;
+use HubSpotSDK\Cms\MediaBridge\Xor_;
+use HubSpotSDK\Cms\MediaBridge\Year;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-import-type ConstantBooleanShape from \HubspotSDK\Cms\MediaBridge\ConstantBoolean
- * @phpstan-import-type ConstantNumberShape from \HubspotSDK\Cms\MediaBridge\ConstantNumber
- * @phpstan-import-type ConstantStringShape from \HubspotSDK\Cms\MediaBridge\ConstantString
- * @phpstan-import-type BooleanPropertyVariableShape from \HubspotSDK\Cms\MediaBridge\BooleanPropertyVariable
- * @phpstan-import-type StringPropertyVariableShape from \HubspotSDK\Cms\MediaBridge\StringPropertyVariable
- * @phpstan-import-type NumberPropertyVariableShape from \HubspotSDK\Cms\MediaBridge\NumberPropertyVariable
- * @phpstan-import-type TimestampOfPropertyVariableShape from \HubspotSDK\Cms\MediaBridge\TimestampOfPropertyVariable
- * @phpstan-import-type BooleanTargetPropertyVariableShape from \HubspotSDK\Cms\MediaBridge\BooleanTargetPropertyVariable
- * @phpstan-import-type StringTargetPropertyVariableShape from \HubspotSDK\Cms\MediaBridge\StringTargetPropertyVariable
- * @phpstan-import-type NumberTargetPropertyVariableShape from \HubspotSDK\Cms\MediaBridge\NumberTargetPropertyVariable
- * @phpstan-import-type TimestampOfTargetPropertyVariableShape from \HubspotSDK\Cms\MediaBridge\TimestampOfTargetPropertyVariable
- * @phpstan-import-type AddNumbersShape from \HubspotSDK\Cms\MediaBridge\AddNumbers
- * @phpstan-import-type SubtractNumbersShape from \HubspotSDK\Cms\MediaBridge\SubtractNumbers
- * @phpstan-import-type MultiplyNumbersShape from \HubspotSDK\Cms\MediaBridge\MultiplyNumbers
- * @phpstan-import-type DivideNumbersShape from \HubspotSDK\Cms\MediaBridge\DivideNumbers
- * @phpstan-import-type RoundDownNumbersShape from \HubspotSDK\Cms\MediaBridge\RoundDownNumbers
- * @phpstan-import-type RoundUpNumbersShape from \HubspotSDK\Cms\MediaBridge\RoundUpNumbers
- * @phpstan-import-type RoundNearestNumbersShape from \HubspotSDK\Cms\MediaBridge\RoundNearestNumbers
- * @phpstan-import-type UpperCaseShape from \HubspotSDK\Cms\MediaBridge\UpperCase
- * @phpstan-import-type LowerCaseShape from \HubspotSDK\Cms\MediaBridge\LowerCase
- * @phpstan-import-type ConcatStringsShape from \HubspotSDK\Cms\MediaBridge\ConcatStrings
- * @phpstan-import-type ContainsShape from \HubspotSDK\Cms\MediaBridge\Contains
- * @phpstan-import-type BeginsWithShape from \HubspotSDK\Cms\MediaBridge\BeginsWith
- * @phpstan-import-type NumberToStringShape from \HubspotSDK\Cms\MediaBridge\NumberToString
- * @phpstan-import-type ParseNumberShape from \HubspotSDK\Cms\MediaBridge\ParseNumber
- * @phpstan-import-type FetchExchangeRateShape from \HubspotSDK\Cms\MediaBridge\FetchExchangeRate
- * @phpstan-import-type FetchCurrencyDecimalPlacesShape from \HubspotSDK\Cms\MediaBridge\FetchCurrencyDecimalPlaces
- * @phpstan-import-type FetchSingleCurrencyPortalCurrencyShape from \HubspotSDK\Cms\MediaBridge\FetchSingleCurrencyPortalCurrency
- * @phpstan-import-type DatedExchangeRateShape from \HubspotSDK\Cms\MediaBridge\DatedExchangeRate
- * @phpstan-import-type PipelineProbabilityShape from \HubspotSDK\Cms\MediaBridge\PipelineProbability
- * @phpstan-import-type MaxNumbersShape from \HubspotSDK\Cms\MediaBridge\MaxNumbers
- * @phpstan-import-type MinNumbersShape from \HubspotSDK\Cms\MediaBridge\MinNumbers
- * @phpstan-import-type LessThanShape from \HubspotSDK\Cms\MediaBridge\LessThan
- * @phpstan-import-type LessThanOrEqualShape from \HubspotSDK\Cms\MediaBridge\LessThanOrEqual
- * @phpstan-import-type MoreThanShape from \HubspotSDK\Cms\MediaBridge\MoreThan
- * @phpstan-import-type MoreThanOrEqualShape from \HubspotSDK\Cms\MediaBridge\MoreThanOrEqual
- * @phpstan-import-type NumberEqualsShape from \HubspotSDK\Cms\MediaBridge\NumberEquals
- * @phpstan-import-type StringEqualsShape from \HubspotSDK\Cms\MediaBridge\StringEquals
- * @phpstan-import-type IsPipelineStageClosedShape from \HubspotSDK\Cms\MediaBridge\IsPipelineStageClosed
- * @phpstan-import-type NotShape from \HubspotSDK\Cms\MediaBridge\Not
- * @phpstan-import-type DateShape from \HubspotSDK\Cms\MediaBridge\Date
- * @phpstan-import-type MonthShape from \HubspotSDK\Cms\MediaBridge\Month
- * @phpstan-import-type YearShape from \HubspotSDK\Cms\MediaBridge\Year
- * @phpstan-import-type NowShape from \HubspotSDK\Cms\MediaBridge\Now
- * @phpstan-import-type TimeBetweenShape from \HubspotSDK\Cms\MediaBridge\TimeBetween
- * @phpstan-import-type TimeBetweenSkipWeekendsShape from \HubspotSDK\Cms\MediaBridge\TimeBetweenSkipWeekends
- * @phpstan-import-type PeriodToMonthsShape from \HubspotSDK\Cms\MediaBridge\PeriodToMonths
- * @phpstan-import-type PeriodToWeeksShape from \HubspotSDK\Cms\MediaBridge\PeriodToWeeks
- * @phpstan-import-type AndShape from \HubspotSDK\Cms\MediaBridge\And_
- * @phpstan-import-type OrShape from \HubspotSDK\Cms\MediaBridge\Or_
- * @phpstan-import-type XorShape from \HubspotSDK\Cms\MediaBridge\Xor_
- * @phpstan-import-type IfStringShape from \HubspotSDK\Cms\MediaBridge\IfString
- * @phpstan-import-type IfNumberShape from \HubspotSDK\Cms\MediaBridge\IfNumber
- * @phpstan-import-type IfBooleanShape from \HubspotSDK\Cms\MediaBridge\IfBoolean
- * @phpstan-import-type IsPresentShape from \HubspotSDK\Cms\MediaBridge\IsPresent
- * @phpstan-import-type HasEmailReplyShape from \HubspotSDK\Cms\MediaBridge\HasEmailReply
- * @phpstan-import-type HasPlainTextEmailReplyShape from \HubspotSDK\Cms\MediaBridge\HasPlainTextEmailReply
- * @phpstan-import-type ExtractMostRecentEmailReplyHTMLShape from \HubspotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyHTML
- * @phpstan-import-type ExtractMostRecentEmailReplyTextShape from \HubspotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyText
- * @phpstan-import-type ExtractMostRecentPlainTextEmailReplyShape from \HubspotSDK\Cms\MediaBridge\ExtractMostRecentPlainTextEmailReply
- * @phpstan-import-type SetContainsStringShape from \HubspotSDK\Cms\MediaBridge\SetContainsString
- * @phpstan-import-type IsEngagementTypeShape from \HubspotSDK\Cms\MediaBridge\IsEngagementType
- * @phpstan-import-type FormatFullNameShape from \HubspotSDK\Cms\MediaBridge\FormatFullName
- * @phpstan-import-type FormatPhoneNumberShape from \HubspotSDK\Cms\MediaBridge\FormatPhoneNumber
- * @phpstan-import-type FormatSearchablePhoneNumberShape from \HubspotSDK\Cms\MediaBridge\FormatSearchablePhoneNumber
- * @phpstan-import-type AbsoluteValueShape from \HubspotSDK\Cms\MediaBridge\AbsoluteValue
- * @phpstan-import-type SquareRootShape from \HubspotSDK\Cms\MediaBridge\SquareRoot
- * @phpstan-import-type PowerShape from \HubspotSDK\Cms\MediaBridge\Power
- * @phpstan-import-type SubstringShape from \HubspotSDK\Cms\MediaBridge\Substring
- * @phpstan-import-type EulerShape from \HubspotSDK\Cms\MediaBridge\Euler
- * @phpstan-import-type StringLengthShape from \HubspotSDK\Cms\MediaBridge\StringLength
- * @phpstan-import-type AddTimeShape from \HubspotSDK\Cms\MediaBridge\AddTime
- * @phpstan-import-type SubtractTimeShape from \HubspotSDK\Cms\MediaBridge\SubtractTime
+ * @phpstan-import-type ConstantBooleanShape from \HubSpotSDK\Cms\MediaBridge\ConstantBoolean
+ * @phpstan-import-type ConstantNumberShape from \HubSpotSDK\Cms\MediaBridge\ConstantNumber
+ * @phpstan-import-type ConstantStringShape from \HubSpotSDK\Cms\MediaBridge\ConstantString
+ * @phpstan-import-type BooleanPropertyVariableShape from \HubSpotSDK\Cms\MediaBridge\BooleanPropertyVariable
+ * @phpstan-import-type StringPropertyVariableShape from \HubSpotSDK\Cms\MediaBridge\StringPropertyVariable
+ * @phpstan-import-type NumberPropertyVariableShape from \HubSpotSDK\Cms\MediaBridge\NumberPropertyVariable
+ * @phpstan-import-type TimestampOfPropertyVariableShape from \HubSpotSDK\Cms\MediaBridge\TimestampOfPropertyVariable
+ * @phpstan-import-type BooleanTargetPropertyVariableShape from \HubSpotSDK\Cms\MediaBridge\BooleanTargetPropertyVariable
+ * @phpstan-import-type StringTargetPropertyVariableShape from \HubSpotSDK\Cms\MediaBridge\StringTargetPropertyVariable
+ * @phpstan-import-type NumberTargetPropertyVariableShape from \HubSpotSDK\Cms\MediaBridge\NumberTargetPropertyVariable
+ * @phpstan-import-type TimestampOfTargetPropertyVariableShape from \HubSpotSDK\Cms\MediaBridge\TimestampOfTargetPropertyVariable
+ * @phpstan-import-type AddNumbersShape from \HubSpotSDK\Cms\MediaBridge\AddNumbers
+ * @phpstan-import-type SubtractNumbersShape from \HubSpotSDK\Cms\MediaBridge\SubtractNumbers
+ * @phpstan-import-type MultiplyNumbersShape from \HubSpotSDK\Cms\MediaBridge\MultiplyNumbers
+ * @phpstan-import-type DivideNumbersShape from \HubSpotSDK\Cms\MediaBridge\DivideNumbers
+ * @phpstan-import-type RoundDownNumbersShape from \HubSpotSDK\Cms\MediaBridge\RoundDownNumbers
+ * @phpstan-import-type RoundUpNumbersShape from \HubSpotSDK\Cms\MediaBridge\RoundUpNumbers
+ * @phpstan-import-type RoundNearestNumbersShape from \HubSpotSDK\Cms\MediaBridge\RoundNearestNumbers
+ * @phpstan-import-type UpperCaseShape from \HubSpotSDK\Cms\MediaBridge\UpperCase
+ * @phpstan-import-type LowerCaseShape from \HubSpotSDK\Cms\MediaBridge\LowerCase
+ * @phpstan-import-type ConcatStringsShape from \HubSpotSDK\Cms\MediaBridge\ConcatStrings
+ * @phpstan-import-type ContainsShape from \HubSpotSDK\Cms\MediaBridge\Contains
+ * @phpstan-import-type BeginsWithShape from \HubSpotSDK\Cms\MediaBridge\BeginsWith
+ * @phpstan-import-type NumberToStringShape from \HubSpotSDK\Cms\MediaBridge\NumberToString
+ * @phpstan-import-type ParseNumberShape from \HubSpotSDK\Cms\MediaBridge\ParseNumber
+ * @phpstan-import-type FetchExchangeRateShape from \HubSpotSDK\Cms\MediaBridge\FetchExchangeRate
+ * @phpstan-import-type FetchCurrencyDecimalPlacesShape from \HubSpotSDK\Cms\MediaBridge\FetchCurrencyDecimalPlaces
+ * @phpstan-import-type FetchSingleCurrencyPortalCurrencyShape from \HubSpotSDK\Cms\MediaBridge\FetchSingleCurrencyPortalCurrency
+ * @phpstan-import-type DatedExchangeRateShape from \HubSpotSDK\Cms\MediaBridge\DatedExchangeRate
+ * @phpstan-import-type PipelineProbabilityShape from \HubSpotSDK\Cms\MediaBridge\PipelineProbability
+ * @phpstan-import-type MaxNumbersShape from \HubSpotSDK\Cms\MediaBridge\MaxNumbers
+ * @phpstan-import-type MinNumbersShape from \HubSpotSDK\Cms\MediaBridge\MinNumbers
+ * @phpstan-import-type LessThanShape from \HubSpotSDK\Cms\MediaBridge\LessThan
+ * @phpstan-import-type LessThanOrEqualShape from \HubSpotSDK\Cms\MediaBridge\LessThanOrEqual
+ * @phpstan-import-type MoreThanShape from \HubSpotSDK\Cms\MediaBridge\MoreThan
+ * @phpstan-import-type MoreThanOrEqualShape from \HubSpotSDK\Cms\MediaBridge\MoreThanOrEqual
+ * @phpstan-import-type NumberEqualsShape from \HubSpotSDK\Cms\MediaBridge\NumberEquals
+ * @phpstan-import-type StringEqualsShape from \HubSpotSDK\Cms\MediaBridge\StringEquals
+ * @phpstan-import-type IsPipelineStageClosedShape from \HubSpotSDK\Cms\MediaBridge\IsPipelineStageClosed
+ * @phpstan-import-type NotShape from \HubSpotSDK\Cms\MediaBridge\Not
+ * @phpstan-import-type DateShape from \HubSpotSDK\Cms\MediaBridge\Date
+ * @phpstan-import-type MonthShape from \HubSpotSDK\Cms\MediaBridge\Month
+ * @phpstan-import-type YearShape from \HubSpotSDK\Cms\MediaBridge\Year
+ * @phpstan-import-type NowShape from \HubSpotSDK\Cms\MediaBridge\Now
+ * @phpstan-import-type TimeBetweenShape from \HubSpotSDK\Cms\MediaBridge\TimeBetween
+ * @phpstan-import-type TimeBetweenSkipWeekendsShape from \HubSpotSDK\Cms\MediaBridge\TimeBetweenSkipWeekends
+ * @phpstan-import-type PeriodToMonthsShape from \HubSpotSDK\Cms\MediaBridge\PeriodToMonths
+ * @phpstan-import-type PeriodToWeeksShape from \HubSpotSDK\Cms\MediaBridge\PeriodToWeeks
+ * @phpstan-import-type AndShape from \HubSpotSDK\Cms\MediaBridge\And_
+ * @phpstan-import-type OrShape from \HubSpotSDK\Cms\MediaBridge\Or_
+ * @phpstan-import-type XorShape from \HubSpotSDK\Cms\MediaBridge\Xor_
+ * @phpstan-import-type IfStringShape from \HubSpotSDK\Cms\MediaBridge\IfString
+ * @phpstan-import-type IfNumberShape from \HubSpotSDK\Cms\MediaBridge\IfNumber
+ * @phpstan-import-type IfBooleanShape from \HubSpotSDK\Cms\MediaBridge\IfBoolean
+ * @phpstan-import-type IsPresentShape from \HubSpotSDK\Cms\MediaBridge\IsPresent
+ * @phpstan-import-type HasEmailReplyShape from \HubSpotSDK\Cms\MediaBridge\HasEmailReply
+ * @phpstan-import-type HasPlainTextEmailReplyShape from \HubSpotSDK\Cms\MediaBridge\HasPlainTextEmailReply
+ * @phpstan-import-type ExtractMostRecentEmailReplyHTMLShape from \HubSpotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyHTML
+ * @phpstan-import-type ExtractMostRecentEmailReplyTextShape from \HubSpotSDK\Cms\MediaBridge\ExtractMostRecentEmailReplyText
+ * @phpstan-import-type ExtractMostRecentPlainTextEmailReplyShape from \HubSpotSDK\Cms\MediaBridge\ExtractMostRecentPlainTextEmailReply
+ * @phpstan-import-type SetContainsStringShape from \HubSpotSDK\Cms\MediaBridge\SetContainsString
+ * @phpstan-import-type IsEngagementTypeShape from \HubSpotSDK\Cms\MediaBridge\IsEngagementType
+ * @phpstan-import-type FormatFullNameShape from \HubSpotSDK\Cms\MediaBridge\FormatFullName
+ * @phpstan-import-type FormatPhoneNumberShape from \HubSpotSDK\Cms\MediaBridge\FormatPhoneNumber
+ * @phpstan-import-type FormatSearchablePhoneNumberShape from \HubSpotSDK\Cms\MediaBridge\FormatSearchablePhoneNumber
+ * @phpstan-import-type AbsoluteValueShape from \HubSpotSDK\Cms\MediaBridge\AbsoluteValue
+ * @phpstan-import-type SquareRootShape from \HubSpotSDK\Cms\MediaBridge\SquareRoot
+ * @phpstan-import-type PowerShape from \HubSpotSDK\Cms\MediaBridge\Power
+ * @phpstan-import-type SubstringShape from \HubSpotSDK\Cms\MediaBridge\Substring
+ * @phpstan-import-type EulerShape from \HubSpotSDK\Cms\MediaBridge\Euler
+ * @phpstan-import-type StringLengthShape from \HubSpotSDK\Cms\MediaBridge\StringLength
+ * @phpstan-import-type AddTimeShape from \HubSpotSDK\Cms\MediaBridge\AddTime
+ * @phpstan-import-type SubtractTimeShape from \HubSpotSDK\Cms\MediaBridge\SubtractTime
  *
  * @phpstan-type InputVariants = mixed|ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|FetchSingleCurrencyPortalCurrency|Now|IsEngagementType|Euler
  * @phpstan-type InputShape = InputVariants|ConstantBooleanShape|ConstantNumberShape|ConstantStringShape|BooleanPropertyVariableShape|StringPropertyVariableShape|NumberPropertyVariableShape|TimestampOfPropertyVariableShape|BooleanTargetPropertyVariableShape|StringTargetPropertyVariableShape|NumberTargetPropertyVariableShape|TimestampOfTargetPropertyVariableShape|AddNumbersShape|SubtractNumbersShape|MultiplyNumbersShape|DivideNumbersShape|RoundDownNumbersShape|RoundUpNumbersShape|RoundNearestNumbersShape|UpperCaseShape|LowerCaseShape|ConcatStringsShape|ContainsShape|BeginsWithShape|NumberToStringShape|ParseNumberShape|FetchExchangeRateShape|FetchCurrencyDecimalPlacesShape|FetchSingleCurrencyPortalCurrencyShape|DatedExchangeRateShape|PipelineProbabilityShape|MaxNumbersShape|MinNumbersShape|LessThanShape|LessThanOrEqualShape|MoreThanShape|MoreThanOrEqualShape|NumberEqualsShape|StringEqualsShape|IsPipelineStageClosedShape|NotShape|DateShape|MonthShape|YearShape|NowShape|TimeBetweenShape|TimeBetweenSkipWeekendsShape|PeriodToMonthsShape|PeriodToWeeksShape|AndShape|OrShape|XorShape|IfStringShape|IfNumberShape|IfBooleanShape|IsPresentShape|HasEmailReplyShape|HasPlainTextEmailReplyShape|ExtractMostRecentEmailReplyHTMLShape|ExtractMostRecentEmailReplyTextShape|ExtractMostRecentPlainTextEmailReplyShape|SetContainsStringShape|IsEngagementTypeShape|FormatFullNameShape|FormatPhoneNumberShape|FormatSearchablePhoneNumberShape|AbsoluteValueShape|SquareRootShape|PowerShape|SubstringShape|EulerShape|StringLengthShape|AddTimeShape|SubtractTimeShape

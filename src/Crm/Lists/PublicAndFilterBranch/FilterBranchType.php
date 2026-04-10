@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicAndFilterBranch;
+namespace HubSpotSDK\Crm\Lists\PublicAndFilterBranch;
 
 /**
  * Type of filter branch (AND).

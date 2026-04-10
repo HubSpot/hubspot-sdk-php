@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\CurrencyPairUpdate;
+namespace HubSpotSDK\Settings\Currencies\CurrencyPairUpdate;
 
 /**
  * This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from.

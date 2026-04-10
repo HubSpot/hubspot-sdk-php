@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\DatedExchangeRate;
+namespace HubSpotSDK\Cms\MediaBridge\DatedExchangeRate;
 
 enum Operator: string
 {

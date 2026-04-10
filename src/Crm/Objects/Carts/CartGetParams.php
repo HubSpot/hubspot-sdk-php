@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Carts;
+namespace HubSpotSDK\Crm\Objects\Carts;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a cart by its ID. You can control what is returned via the `properties` query parameter.
  *
- * @see HubspotSDK\Services\Crm\Objects\CartsService::get()
+ * @see HubSpotSDK\Services\Crm\Objects\CartsService::get()
  *
  * @phpstan-type CartGetParamsShape = array{
  *   archived?: bool|null,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Sequences\PublicSequenceStepResponse;
+namespace HubSpotSDK\Automation\Sequences\PublicSequenceStepResponse;
 
 /**
  * The type of action to be performed in the sequence step.

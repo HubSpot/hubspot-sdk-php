@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Batch;
+namespace HubSpotSDK\Cms\MediaBridge\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyName;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\PropertyName;
 
 /**
  * Archive a batch of existing properties for the specified types.
  *
- * @see HubspotSDK\Services\Cms\MediaBridge\BatchService::delete()
+ * @see HubSpotSDK\Services\Cms\MediaBridge\BatchService::delete()
  *
- * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ * @phpstan-import-type PropertyNameShape from \HubSpotSDK\PropertyName
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   appID: int, inputs: list<PropertyName|PropertyNameShape>

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Settings;
+namespace HubSpotSDK\Cms\Blogs\Settings;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Get a specific blog revision.
  *
- * @see HubspotSDK\Services\Cms\Blogs\SettingsService::getRevision()
+ * @see HubSpotSDK\Services\Cms\Blogs\SettingsService::getRevision()
  *
  * @phpstan-type SettingGetRevisionParamsShape = array{blogID: string}
  */

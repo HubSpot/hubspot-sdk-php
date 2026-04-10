@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms;
+namespace HubSpotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
- * @phpstan-import-type RowMetaDataShape from \HubspotSDK\Cms\RowMetaData
- * @phpstan-import-type StylesShape from \HubspotSDK\Cms\Styles
+ * @phpstan-import-type RowMetaDataShape from \HubSpotSDK\Cms\RowMetaData
+ * @phpstan-import-type StylesShape from \HubSpotSDK\Cms\Styles
  *
  * @phpstan-type LayoutSectionShape = array{
  *   cells: list<mixed>,

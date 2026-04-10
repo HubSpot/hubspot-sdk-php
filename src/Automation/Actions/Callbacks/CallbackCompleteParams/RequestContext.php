@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
+namespace HubSpotSDK\Automation\Actions\Callbacks\CallbackCompleteParams;
 
-use HubspotSDK\Automation\Actions\AgentRequestContext;
-use HubspotSDK\Automation\Actions\CopilotRequestContext;
-use HubspotSDK\Automation\Actions\StandaloneRequestContext;
-use HubspotSDK\Automation\Actions\TestRequestContext;
-use HubspotSDK\Automation\Actions\WorkflowsRequestContext;
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Automation\Actions\AgentRequestContext;
+use HubSpotSDK\Automation\Actions\CopilotRequestContext;
+use HubSpotSDK\Automation\Actions\StandaloneRequestContext;
+use HubSpotSDK\Automation\Actions\TestRequestContext;
+use HubSpotSDK\Automation\Actions\WorkflowsRequestContext;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
  * Specifies the context in which the request is made, which can be one of several predefined contexts.
  *
- * @phpstan-import-type WorkflowsRequestContextShape from \HubspotSDK\Automation\Actions\WorkflowsRequestContext
- * @phpstan-import-type AgentRequestContextShape from \HubspotSDK\Automation\Actions\AgentRequestContext
- * @phpstan-import-type CopilotRequestContextShape from \HubspotSDK\Automation\Actions\CopilotRequestContext
- * @phpstan-import-type StandaloneRequestContextShape from \HubspotSDK\Automation\Actions\StandaloneRequestContext
- * @phpstan-import-type TestRequestContextShape from \HubspotSDK\Automation\Actions\TestRequestContext
+ * @phpstan-import-type WorkflowsRequestContextShape from \HubSpotSDK\Automation\Actions\WorkflowsRequestContext
+ * @phpstan-import-type AgentRequestContextShape from \HubSpotSDK\Automation\Actions\AgentRequestContext
+ * @phpstan-import-type CopilotRequestContextShape from \HubSpotSDK\Automation\Actions\CopilotRequestContext
+ * @phpstan-import-type StandaloneRequestContextShape from \HubSpotSDK\Automation\Actions\StandaloneRequestContext
+ * @phpstan-import-type TestRequestContextShape from \HubSpotSDK\Automation\Actions\TestRequestContext
  *
  * @phpstan-type RequestContextVariants = WorkflowsRequestContext|AgentRequestContext|CopilotRequestContext|StandaloneRequestContext|TestRequestContext
  * @phpstan-type RequestContextShape = RequestContextVariants|WorkflowsRequestContextShape|AgentRequestContextShape|CopilotRequestContextShape|StandaloneRequestContextShape|TestRequestContextShape

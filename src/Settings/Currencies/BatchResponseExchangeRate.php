@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies;
+namespace HubSpotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate\Status;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\BatchResponseExchangeRate\Status;
 
 /**
- * @phpstan-import-type ExchangeRateShape from \HubspotSDK\Settings\Currencies\ExchangeRate
+ * @phpstan-import-type ExchangeRateShape from \HubSpotSDK\Settings\Currencies\ExchangeRate
  *
  * @phpstan-type BatchResponseExchangeRateShape = array{
  *   completedAt: \DateTimeInterface,

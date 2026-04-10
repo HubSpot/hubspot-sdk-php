@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\PublicRssEmailDetails;
+namespace HubSpotSDK\Marketing\Emails\PublicRssEmailDetails;
 
 enum BlogLayout: string
 {

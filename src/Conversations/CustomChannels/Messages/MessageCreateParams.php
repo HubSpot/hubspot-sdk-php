@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\Messages;
+namespace HubSpotSDK\Conversations\CustomChannels\Messages;
 
-use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
-use HubspotSDK\Conversations\CustomChannels\PreResolvedContacts;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
+use HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Publish a message over your custom channel.
  *
- * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::create()
+ * @see HubSpotSDK\Services\Conversations\CustomChannels\MessagesService::create()
  *
- * @phpstan-import-type AttachmentVariants from \HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
- * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
- * @phpstan-import-type ChannelIntegrationParticipantShape from \HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
- * @phpstan-import-type PreResolvedContactsShape from \HubspotSDK\Conversations\CustomChannels\PreResolvedContacts
+ * @phpstan-import-type AttachmentVariants from \HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
+ * @phpstan-import-type AttachmentShape from \HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
+ * @phpstan-import-type ChannelIntegrationParticipantShape from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
+ * @phpstan-import-type PreResolvedContactsShape from \HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts
  *
  * @phpstan-type MessageCreateParamsShape = array{
  *   attachments: list<AttachmentShape>,

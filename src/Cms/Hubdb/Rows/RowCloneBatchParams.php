@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Rows;
+namespace HubSpotSDK\Cms\Hubdb\Rows;
 
-use HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Clones rows in the draft version of the specified table, given a set of row ids. Maximum of 100 row ids per call.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\RowsService::cloneBatch()
+ * @see HubSpotSDK\Services\Cms\Hubdb\RowsService::cloneBatch()
  *
- * @phpstan-import-type HubDBTableRowBatchCloneRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest
+ * @phpstan-import-type HubDBTableRowBatchCloneRequestShape from \HubSpotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest
  *
  * @phpstan-type RowCloneBatchParamsShape = array{
  *   inputs: list<HubDBTableRowBatchCloneRequest|HubDBTableRowBatchCloneRequestShape>,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicLocation;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicLocation;
 
 enum Type: string
 {

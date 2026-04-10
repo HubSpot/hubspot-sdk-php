@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\GoalTargets;
+namespace HubSpotSDK\Crm\Objects\GoalTargets;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a goal target by its ID. You can specify what is returned using the `properties` query parameter.
  *
- * @see HubspotSDK\Services\Crm\Objects\GoalTargetsService::get()
+ * @see HubSpotSDK\Services\Crm\Objects\GoalTargetsService::get()
  *
  * @phpstan-type GoalTargetGetParamsShape = array{
  *   archived?: bool|null,

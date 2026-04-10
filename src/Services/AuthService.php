@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\AuthContract;
-use HubspotSDK\Services\Auth\OAuthService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\AuthContract;
+use HubSpotSDK\Services\Auth\OAuthService;
 
 final class AuthService implements AuthContract
 {

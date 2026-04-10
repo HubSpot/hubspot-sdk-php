@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SourceCode;
+namespace HubSpotSDK\Cms\SourceCode;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Gets the metadata object for the file at the specified path in the specified environment.
  *
- * @see HubspotSDK\Services\Cms\SourceCodeService::getMetadata()
+ * @see HubSpotSDK\Services\Cms\SourceCodeService::getMetadata()
  *
  * @phpstan-type SourceCodeGetMetadataParamsShape = array{
  *   environment: string, properties?: string|null

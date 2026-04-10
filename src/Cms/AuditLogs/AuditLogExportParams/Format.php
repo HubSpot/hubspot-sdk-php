@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\AuditLogs\AuditLogExportParams;
+namespace HubSpotSDK\Cms\AuditLogs\AuditLogExportParams;
 
 enum Format: string
 {

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\BusinessUnits;
+namespace HubSpotSDK\Services\BusinessUnits;
 
-use HubspotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\BusinessUnits\BusinessUnitEntriesContract;
+use HubSpotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\BusinessUnits\BusinessUnitEntriesContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BusinessUnitEntriesService implements BusinessUnitEntriesContract
 {

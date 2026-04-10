@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Extensions;
+namespace HubSpotSDK\ServiceContracts\Crm\Extensions;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\VideoConferencing\ExternalSettings;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Extensions\VideoConferencing\ExternalSettings;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface VideoConferencingContract
 {

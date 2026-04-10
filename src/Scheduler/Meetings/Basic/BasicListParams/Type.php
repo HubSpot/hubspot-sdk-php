@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\Basic\BasicListParams;
+namespace HubSpotSDK\Scheduler\Meetings\Basic\BasicListParams;
 
 enum Type: string
 {

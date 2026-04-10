@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
+namespace HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
 
 enum TranscriptSource: string
 {

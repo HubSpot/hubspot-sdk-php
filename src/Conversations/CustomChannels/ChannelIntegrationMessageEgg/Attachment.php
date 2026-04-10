@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg;
+namespace HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg;
 
-use HubspotSDK\Conversations\CustomChannels\ContactAttachment;
-use HubspotSDK\Conversations\CustomChannels\FileAttachment;
-use HubspotSDK\Conversations\CustomChannels\LocationAttachment;
-use HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment;
-use HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
-use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
-use HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Conversations\CustomChannels\ContactAttachment;
+use HubSpotSDK\Conversations\CustomChannels\FileAttachment;
+use HubSpotSDK\Conversations\CustomChannels\LocationAttachment;
+use HubSpotSDK\Conversations\CustomChannels\MessageHeaderAttachment;
+use HubSpotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
+use HubSpotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
+use HubSpotSDK\Conversations\CustomChannels\UnsupportedContentAttachment;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-import-type FileAttachmentShape from \HubspotSDK\Conversations\CustomChannels\FileAttachment
- * @phpstan-import-type LocationAttachmentShape from \HubspotSDK\Conversations\CustomChannels\LocationAttachment
- * @phpstan-import-type ContactAttachmentShape from \HubspotSDK\Conversations\CustomChannels\ContactAttachment
- * @phpstan-import-type UnsupportedContentAttachmentShape from \HubspotSDK\Conversations\CustomChannels\UnsupportedContentAttachment
- * @phpstan-import-type MessageHeaderAttachmentShape from \HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment
- * @phpstan-import-type QuickRepliesAttachmentShape from \HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment
- * @phpstan-import-type SocialMetadataIntegrationAttachmentShape from \HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment
+ * @phpstan-import-type FileAttachmentShape from \HubSpotSDK\Conversations\CustomChannels\FileAttachment
+ * @phpstan-import-type LocationAttachmentShape from \HubSpotSDK\Conversations\CustomChannels\LocationAttachment
+ * @phpstan-import-type ContactAttachmentShape from \HubSpotSDK\Conversations\CustomChannels\ContactAttachment
+ * @phpstan-import-type UnsupportedContentAttachmentShape from \HubSpotSDK\Conversations\CustomChannels\UnsupportedContentAttachment
+ * @phpstan-import-type MessageHeaderAttachmentShape from \HubSpotSDK\Conversations\CustomChannels\MessageHeaderAttachment
+ * @phpstan-import-type QuickRepliesAttachmentShape from \HubSpotSDK\Conversations\CustomChannels\QuickRepliesAttachment
+ * @phpstan-import-type SocialMetadataIntegrationAttachmentShape from \HubSpotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment
  *
  * @phpstan-type AttachmentVariants = FileAttachment|LocationAttachment|ContactAttachment|UnsupportedContentAttachment|MessageHeaderAttachment|QuickRepliesAttachment|SocialMetadataIntegrationAttachment
  * @phpstan-type AttachmentShape = AttachmentVariants|FileAttachmentShape|LocationAttachmentShape|ContactAttachmentShape|UnsupportedContentAttachmentShape|MessageHeaderAttachmentShape|QuickRepliesAttachmentShape|SocialMetadataIntegrationAttachmentShape

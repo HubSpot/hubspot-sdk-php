@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\PropertiesValidations;
+namespace HubSpotSDK\Crm\PropertiesValidations;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update a specific validation rule for a property identified by its name and rule type.
  *
- * @see HubspotSDK\Services\Crm\PropertiesValidationsService::updateByObjectTypeIDPropertyNameAndRuleType()
+ * @see HubSpotSDK\Services\Crm\PropertiesValidationsService::updateByObjectTypeIDPropertyNameAndRuleType()
  *
  * @phpstan-type PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParamsShape = array{
  *   objectTypeID: string,

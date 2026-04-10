@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Extensions;
+namespace HubSpotSDK\Services\Crm\Extensions;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams\FinalCallStatus;
-use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
-use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
-use HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
-use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
-use HubspotSDK\Crm\Extensions\Calling\SettingsResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Extensions\CallingContract;
-use HubspotSDK\Services\Crm\Extensions\Calling\TranscriptsService;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams\FinalCallStatus;
+use HubSpotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
+use HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
+use HubSpotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
+use HubSpotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
+use HubSpotSDK\Crm\Extensions\Calling\SettingsResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Extensions\CallingContract;
+use HubSpotSDK\Services\Crm\Extensions\Calling\TranscriptsService;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type FormattedPhoneNumberShape from \HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type FormattedPhoneNumberShape from \HubSpotSDK\Crm\Extensions\Calling\FormattedPhoneNumber
  */
 final class CallingService implements CallingContract
 {

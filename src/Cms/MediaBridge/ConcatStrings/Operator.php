@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\ConcatStrings;
+namespace HubSpotSDK\Cms\MediaBridge\ConcatStrings;
 
 enum Operator: string
 {

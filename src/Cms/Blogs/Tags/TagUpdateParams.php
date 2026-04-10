@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Tags;
+namespace HubSpotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Tags\TagUpdateParams\Language;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Sparse updates a single Blog Tag object identified by the id in the path.
  * All the column values need not be specified. Only the that need to be modified can be specified.
  *
- * @see HubspotSDK\Services\Cms\Blogs\TagsService::update()
+ * @see HubSpotSDK\Services\Cms\Blogs\TagsService::update()
  *
  * @phpstan-type TagUpdateParamsShape = array{
  *   id: string,

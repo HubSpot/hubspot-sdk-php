@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\ConversationsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\ConversationsRawContract;
 
 final class ConversationsRawService implements ConversationsRawContract
 {

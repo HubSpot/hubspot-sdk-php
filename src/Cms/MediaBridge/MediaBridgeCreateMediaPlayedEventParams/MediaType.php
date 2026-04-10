@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams;
+namespace HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams;
 
 enum MediaType: string
 {

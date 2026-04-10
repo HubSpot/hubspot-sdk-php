@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
+namespace HubSpotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
 
 /**
  * The data type of the property.

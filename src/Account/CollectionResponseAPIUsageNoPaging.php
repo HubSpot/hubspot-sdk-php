@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Account;
+namespace HubSpotSDK\Account;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type APIUsageShape from \HubspotSDK\Account\APIUsage
+ * @phpstan-import-type APIUsageShape from \HubSpotSDK\Account\APIUsage
  *
  * @phpstan-type CollectionResponseAPIUsageNoPagingShape = array{
  *   results: list<APIUsage|APIUsageShape>

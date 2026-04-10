@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts;
+namespace HubSpotSDK\Cms\Blogs\Posts;
 
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\LayoutSection;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * Create a new blog post, specifying its content in the request body.
  *
- * @see HubspotSDK\Services\Cms\Blogs\PostsService::create()
+ * @see HubSpotSDK\Services\Cms\Blogs\PostsService::create()
  *
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
  *
  * @phpstan-type PostCreateParamsShape = array{
  *   id: string,

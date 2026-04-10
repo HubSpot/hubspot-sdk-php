@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing\MarketingEvents;
+namespace HubSpotSDK\Services\Marketing\MarketingEvents;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\MarketingEvents\EventsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\MarketingEvents\EventsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class EventsService implements EventsContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicFile;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicFile;
 
 enum Type: string
 {

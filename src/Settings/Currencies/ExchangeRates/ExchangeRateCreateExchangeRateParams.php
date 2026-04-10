@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\ExchangeRates;
+namespace HubSpotSDK\Settings\Currencies\ExchangeRates;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams\FromCurrencyCode;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams\FromCurrencyCode;
 
 /**
  * Create a new exchange rate with specified conversion rate and currency codes.
  *
- * @see HubspotSDK\Services\Settings\Currencies\ExchangeRatesService::createExchangeRate()
+ * @see HubSpotSDK\Services\Settings\Currencies\ExchangeRatesService::createExchangeRate()
  *
  * @phpstan-type ExchangeRateCreateExchangeRateParamsShape = array{
  *   conversionRate: float,

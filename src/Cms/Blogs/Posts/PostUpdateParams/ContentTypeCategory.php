@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
+namespace HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams;
 
 /**
  * An ENUM descibing the type of this object. Should always be BLOG_POST.

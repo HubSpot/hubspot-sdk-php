@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Automation\Actions;
+namespace HubSpotSDK\ServiceContracts\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\PublicActionRevision;
-use HubspotSDK\Automation\Actions\Revisions\RevisionGetParams;
-use HubspotSDK\Automation\Actions\Revisions\RevisionListParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Automation\Actions\PublicActionRevision;
+use HubSpotSDK\Automation\Actions\Revisions\RevisionGetParams;
+use HubSpotSDK\Automation\Actions\Revisions\RevisionListParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface RevisionsRawContract
 {

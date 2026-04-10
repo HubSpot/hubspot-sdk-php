@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions;
+namespace HubSpotSDK\Automation\Actions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicActionDefinitionShape from \HubspotSDK\Automation\Actions\PublicActionDefinition
+ * @phpstan-import-type PublicActionDefinitionShape from \HubSpotSDK\Automation\Actions\PublicActionDefinition
  *
  * @phpstan-type PublicActionRevisionShape = array{
  *   id: string,

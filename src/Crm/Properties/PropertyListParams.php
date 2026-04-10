@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties;
+namespace HubSpotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Properties\PropertyListParams\DataSensitivity;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Properties\PropertyListParams\DataSensitivity;
 
 /**
  * Read all existing properties for the specified object type and HubSpot account.
  *
- * @see HubspotSDK\Services\Crm\PropertiesService::list()
+ * @see HubSpotSDK\Services\Crm\PropertiesService::list()
  *
  * @phpstan-type PropertyListParamsShape = array{
  *   archived?: bool|null,

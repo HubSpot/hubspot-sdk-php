@@ -3,7 +3,7 @@
 namespace Tests\Core;
 
 use Http\Discovery\Psr17FactoryDiscovery;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

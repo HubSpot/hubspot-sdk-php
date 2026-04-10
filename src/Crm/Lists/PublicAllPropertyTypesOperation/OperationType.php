@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicAllPropertyTypesOperation;
+namespace HubSpotSDK\Crm\Lists\PublicAllPropertyTypesOperation;
 
 /**
  * Type of operation (ALL_PROPERTY).

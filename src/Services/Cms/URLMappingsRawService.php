@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\URLMappings\URLMappingCreateParams;
-use HubspotSDK\Cms\URLMappings\URLMappingCreateParams\CosObjectType;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\URLMappingsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\URLMappings\URLMappingCreateParams;
+use HubSpotSDK\Cms\URLMappings\URLMappingCreateParams\CosObjectType;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\URLMappingsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class URLMappingsRawService implements URLMappingsRawContract
 {

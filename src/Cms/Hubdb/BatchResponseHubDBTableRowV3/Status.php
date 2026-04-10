@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+namespace HubSpotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
 
 /**
  * The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.

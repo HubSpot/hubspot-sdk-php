@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Meta\Origins;
+namespace HubSpotSDK\ServiceContracts\Meta\Origins;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface IPRangesRawContract
 {

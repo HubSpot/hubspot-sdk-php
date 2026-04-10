@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors;
+namespace HubSpotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve the Blog Author object identified by the id in the path.
  *
- * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::get()
+ * @see HubSpotSDK\Services\Cms\Blogs\AuthorsService::get()
  *
  * @phpstan-type AuthorGetParamsShape = array{
  *   archived?: bool|null, property?: string|null

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences;
+namespace HubSpotSDK\CommunicationPreferences;
 
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\Channel;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\LegalBasis;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\StatusState;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\Channel;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\LegalBasis;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\StatusState;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Set the subscription status of a specific contact.
  *
- * @see HubspotSDK\Services\CommunicationPreferencesService::updateStatus()
+ * @see HubSpotSDK\Services\CommunicationPreferencesService::updateStatus()
  *
  * @phpstan-type CommunicationPreferenceUpdateStatusParamsShape = array{
  *   channel: Channel|value-of<Channel>,

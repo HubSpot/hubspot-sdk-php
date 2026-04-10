@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\TopLevelActions;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\TopLevelActions;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Crm\Extensions\CardsDev\ActionHookActionBody;
-use HubspotSDK\Crm\Extensions\CardsDev\IFrameActionBody;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Crm\Extensions\CardsDev\ActionHookActionBody;
+use HubSpotSDK\Crm\Extensions\CardsDev\IFrameActionBody;
 
 /**
  * Defines the primary action for a card, which can be either an action hook or an iframe.
  *
- * @phpstan-import-type ActionHookActionBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\ActionHookActionBody
- * @phpstan-import-type IFrameActionBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\IFrameActionBody
+ * @phpstan-import-type ActionHookActionBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\ActionHookActionBody
+ * @phpstan-import-type IFrameActionBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\IFrameActionBody
  *
  * @phpstan-type PrimaryVariants = ActionHookActionBody|IFrameActionBody
  * @phpstan-type PrimaryShape = PrimaryVariants|ActionHookActionBodyShape|IFrameActionBodyShape

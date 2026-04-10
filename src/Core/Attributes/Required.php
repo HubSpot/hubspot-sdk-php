@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Attributes;
+namespace HubSpotSDK\Core\Attributes;
 
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Core\Conversion\EnumOf;
-use HubspotSDK\Core\Conversion\ListOf;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Conversion\EnumOf;
+use HubSpotSDK\Core\Conversion\ListOf;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * @internal

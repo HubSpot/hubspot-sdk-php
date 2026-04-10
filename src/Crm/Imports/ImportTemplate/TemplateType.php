@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Imports\ImportTemplate;
+namespace HubSpotSDK\Crm\Imports\ImportTemplate;
 
 /**
  * The classification of what type of template this represents, and what is its origin or purpose.

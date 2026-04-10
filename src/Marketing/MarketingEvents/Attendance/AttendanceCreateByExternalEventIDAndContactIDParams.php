@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\Attendance;
+namespace HubSpotSDK\Marketing\MarketingEvents\Attendance;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventSubscriber;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventSubscriber;
 
 /**
  * Records the participation of multiple HubSpot contacts in a Marketing Event using their HubSpot contact IDs.
@@ -22,9 +22,9 @@ use HubspotSDK\Marketing\MarketingEvents\MarketingEventSubscriber;
  * - joinedAt
  * - leftAt
  *
- * @see HubspotSDK\Services\Marketing\MarketingEvents\AttendanceService::createByExternalEventIDAndContactID()
+ * @see HubSpotSDK\Services\Marketing\MarketingEvents\AttendanceService::createByExternalEventIDAndContactID()
  *
- * @phpstan-import-type MarketingEventSubscriberShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventSubscriber
+ * @phpstan-import-type MarketingEventSubscriberShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventSubscriber
  *
  * @phpstan-type AttendanceCreateByExternalEventIDAndContactIDParamsShape = array{
  *   externalEventID: string,

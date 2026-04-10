@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\Batch;
+namespace HubSpotSDK\Cms\Pages\Batch;
 
-use HubspotSDK\Cms\Pages\ContentFolder;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Pages\ContentFolder;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a batch of folders as detailed in the request body.
  *
- * @see HubspotSDK\Services\Cms\Pages\BatchService::createFolders()
+ * @see HubSpotSDK\Services\Cms\Pages\BatchService::createFolders()
  *
- * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
+ * @phpstan-import-type ContentFolderShape from \HubSpotSDK\Cms\Pages\ContentFolder
  *
  * @phpstan-type BatchCreateFoldersParamsShape = array{
  *   inputs: list<ContentFolder|ContentFolderShape>

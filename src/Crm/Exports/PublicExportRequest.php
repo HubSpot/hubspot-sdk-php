@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Exports;
+namespace HubSpotSDK\Crm\Exports;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-import-type PublicExportViewRequestShape from \HubspotSDK\Crm\Exports\PublicExportViewRequest
- * @phpstan-import-type PublicExportListRequestShape from \HubspotSDK\Crm\Exports\PublicExportListRequest
+ * @phpstan-import-type PublicExportViewRequestShape from \HubSpotSDK\Crm\Exports\PublicExportViewRequest
+ * @phpstan-import-type PublicExportListRequestShape from \HubSpotSDK\Crm\Exports\PublicExportListRequest
  *
  * @phpstan-type PublicExportRequestVariants = PublicExportViewRequest|PublicExportListRequest
  * @phpstan-type PublicExportRequestShape = PublicExportRequestVariants|PublicExportViewRequestShape|PublicExportListRequestShape

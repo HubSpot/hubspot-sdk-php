@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\RelativeComparativeTimestampRefineBy\Comparison;
-use HubspotSDK\Events\Definitions\RelativeComparativeTimestampRefineBy\Type;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\RelativeComparativeTimestampRefineBy\Comparison;
+use HubSpotSDK\Events\Definitions\RelativeComparativeTimestampRefineBy\Type;
 
 /**
- * @phpstan-import-type TimeOffsetShape from \HubspotSDK\Events\Definitions\TimeOffset
+ * @phpstan-import-type TimeOffsetShape from \HubSpotSDK\Events\Definitions\TimeOffset
  *
  * @phpstan-type RelativeComparativeTimestampRefineByShape = array{
  *   comparison: Comparison|value-of<Comparison>,

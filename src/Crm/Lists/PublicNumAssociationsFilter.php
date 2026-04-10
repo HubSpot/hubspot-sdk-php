@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicNumAssociationsFilter\FilterType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicNumAssociationsFilter\FilterType;
 
 /**
- * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\Crm\Lists\PublicNumAssociationsFilter\CoalescingRefineBy
- * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\Crm\Lists\PublicNumAssociationsFilter\CoalescingRefineBy
+ * @phpstan-import-type CoalescingRefineByVariants from \HubSpotSDK\Crm\Lists\PublicNumAssociationsFilter\CoalescingRefineBy
+ * @phpstan-import-type CoalescingRefineByShape from \HubSpotSDK\Crm\Lists\PublicNumAssociationsFilter\CoalescingRefineBy
  *
  * @phpstan-type PublicNumAssociationsFilterShape = array{
  *   associationCategory: string,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicDateTimePropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicDateTimePropertyOperation;
 
 /**
  * The type of operation (DATETIME).

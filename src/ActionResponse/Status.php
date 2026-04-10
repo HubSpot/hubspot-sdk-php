@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ActionResponse;
+namespace HubSpotSDK\ActionResponse;
 
 /**
  * The current status of the action, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.

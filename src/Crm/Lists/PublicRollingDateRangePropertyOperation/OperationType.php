@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicRollingDateRangePropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicRollingDateRangePropertyOperation;
 
 /**
  * Specifies the type of operation (ROLLING_DATE_RANGE).

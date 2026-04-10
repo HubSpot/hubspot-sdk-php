@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\Events;
+namespace HubSpotSDK\Marketing\MarketingEvents\Events;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Mark a marketing event as cancelled.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEvents\EventsService::cancelByExternalEventID()
+ * @see HubSpotSDK\Services\Marketing\MarketingEvents\EventsService::cancelByExternalEventID()
  *
  * @phpstan-type EventCancelByExternalEventIDParamsShape = array{
  *   externalAccountID: string

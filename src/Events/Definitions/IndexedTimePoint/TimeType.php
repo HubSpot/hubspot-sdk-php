@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\IndexedTimePoint;
+namespace HubSpotSDK\Events\Definitions\IndexedTimePoint;
 
 enum TimeType: string
 {

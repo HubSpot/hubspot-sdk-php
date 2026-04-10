@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Hubdb;
+namespace HubSpotSDK\Services\Cms\Hubdb;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\ColumnRequest;
-use HubspotSDK\Cms\Hubdb\HubDBTableV3;
-use HubspotSDK\Cms\Hubdb\ImportResult;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Hubdb\TablesContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Hubdb\ColumnRequest;
+use HubSpotSDK\Cms\Hubdb\HubDBTableV3;
+use HubSpotSDK\Cms\Hubdb\ImportResult;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Hubdb\TablesContract;
 
 /**
- * @phpstan-import-type ColumnRequestShape from \HubspotSDK\Cms\Hubdb\ColumnRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ColumnRequestShape from \HubSpotSDK\Cms\Hubdb\ColumnRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class TablesService implements TablesContract
 {
@@ -158,7 +158,7 @@ final class TablesService implements TablesContract
      * Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the request body. This will create the cloned table as a draft.
      *
      * @param bool $copyRows Specifies whether to copy the rows during clone
-     * @param bool $isHubspotDefined indicates whether the table is defined by HubSpot
+     * @param bool $isHubSpotDefined indicates whether the table is defined by HubSpot
      * @param string $newLabel The new label for the cloned table
      * @param string $newName The new name for the cloned table
      * @param RequestOpts|null $requestOptions
@@ -168,7 +168,7 @@ final class TablesService implements TablesContract
     public function cloneDraft(
         string $tableIDOrName,
         bool $copyRows,
-        bool $isHubspotDefined,
+        bool $isHubSpotDefined,
         ?string $newLabel = null,
         ?string $newName = null,
         RequestOptions|array|null $requestOptions = null,
@@ -176,7 +176,7 @@ final class TablesService implements TablesContract
         $params = Util::removeNulls(
             [
                 'copyRows' => $copyRows,
-                'isHubspotDefined' => $isHubspotDefined,
+                'isHubSpotDefined' => $isHubSpotDefined,
                 'newLabel' => $newLabel,
                 'newName' => $newName,
             ],

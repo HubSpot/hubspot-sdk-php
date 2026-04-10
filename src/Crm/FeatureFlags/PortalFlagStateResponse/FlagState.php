@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
+namespace HubSpotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
 
 /**
  * The state of the flag for this portal.

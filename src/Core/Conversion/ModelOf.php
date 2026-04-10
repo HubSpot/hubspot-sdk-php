@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Conversion;
+namespace HubSpotSDK\Core\Conversion;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
 
 /**
  * @internal

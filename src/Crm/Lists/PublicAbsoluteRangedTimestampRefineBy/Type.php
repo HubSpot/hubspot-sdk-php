@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicAbsoluteRangedTimestampRefineBy;
+namespace HubSpotSDK\Crm\Lists\PublicAbsoluteRangedTimestampRefineBy;
 
 /**
  * type of refine by criteria (ABSOLUTE_RANGED).

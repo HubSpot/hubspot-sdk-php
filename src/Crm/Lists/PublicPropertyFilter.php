@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicPropertyFilter\FilterType;
-use HubspotSDK\Crm\Lists\PublicPropertyFilter\Operation;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicPropertyFilter\FilterType;
+use HubSpotSDK\Crm\Lists\PublicPropertyFilter\Operation;
 
 /**
- * @phpstan-import-type OperationVariants from \HubspotSDK\Crm\Lists\PublicPropertyFilter\Operation
- * @phpstan-import-type OperationShape from \HubspotSDK\Crm\Lists\PublicPropertyFilter\Operation
+ * @phpstan-import-type OperationVariants from \HubSpotSDK\Crm\Lists\PublicPropertyFilter\Operation
+ * @phpstan-import-type OperationShape from \HubSpotSDK\Crm\Lists\PublicPropertyFilter\Operation
  *
  * @phpstan-type PublicPropertyFilterShape = array{
  *   filterType: FilterType|value-of<FilterType>,

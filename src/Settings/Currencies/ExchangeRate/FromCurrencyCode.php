@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\ExchangeRate;
+namespace HubSpotSDK\Settings\Currencies\ExchangeRate;
 
 /**
  * This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicWeekReference;
+namespace HubSpotSDK\Crm\Lists\PublicWeekReference;
 
 /**
  * Indicates the type of reference (WEEK).

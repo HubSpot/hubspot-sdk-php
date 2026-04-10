@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Settings;
+namespace HubSpotSDK\ServiceContracts\Settings;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
-use HubspotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
-use HubspotSDK\Settings\Users\PublicUser;
-use HubspotSDK\Settings\Users\UserUpdateParams\IDProperty;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
+use HubSpotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
+use HubSpotSDK\Settings\Users\PublicUser;
+use HubSpotSDK\Settings\Users\UserUpdateParams\IDProperty;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface UsersContract
 {
@@ -87,28 +87,28 @@ interface UsersContract
     /**
      * @api
      *
-     * @param \HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserDeleteParams\IDProperty> $idProperty
+     * @param \HubSpotSDK\Settings\Users\UserDeleteParams\IDProperty|value-of<\HubSpotSDK\Settings\Users\UserDeleteParams\IDProperty> $idProperty
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function delete(
         string $userID,
-        \HubspotSDK\Settings\Users\UserDeleteParams\IDProperty|string|null $idProperty = null,
+        \HubSpotSDK\Settings\Users\UserDeleteParams\IDProperty|string|null $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
     ): mixed;
 
     /**
      * @api
      *
-     * @param \HubspotSDK\Settings\Users\UserGetParams\IDProperty|value-of<\HubspotSDK\Settings\Users\UserGetParams\IDProperty> $idProperty
+     * @param \HubSpotSDK\Settings\Users\UserGetParams\IDProperty|value-of<\HubSpotSDK\Settings\Users\UserGetParams\IDProperty> $idProperty
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function get(
         string $userID,
-        \HubspotSDK\Settings\Users\UserGetParams\IDProperty|string|null $idProperty = null,
+        \HubSpotSDK\Settings\Users\UserGetParams\IDProperty|string|null $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
     ): PublicUser;
 

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CustomChannels\PublicMessageStatus\StatusType;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\PublicMessageStatus\StatusType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicMessageFailureDetailsShape from \HubspotSDK\Conversations\CustomChannels\PublicMessageFailureDetails
+ * @phpstan-import-type PublicMessageFailureDetailsShape from \HubSpotSDK\Conversations\CustomChannels\PublicMessageFailureDetails
  *
  * @phpstan-type PublicMessageStatusShape = array{
  *   statusType: StatusType|value-of<StatusType>,

@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Crm\DealSplits;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\DealSplits\BatchResponseDealToDealSplits;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\DealSplits\BatchResponseDealToDealSplits;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

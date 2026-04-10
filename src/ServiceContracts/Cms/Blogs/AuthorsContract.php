@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Blogs;
+namespace HubSpotSDK\ServiceContracts\Cms\Blogs;
 
-use HubspotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Cms\Blogs\Authors\AuthorCreateParams\Language;
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\PrimaryLanguage;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorCreateParams\Language;
+use HubSpotSDK\Cms\Blogs\Authors\BlogAuthor;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type BlogAuthorShape from \HubSpotSDK\Cms\Blogs\Authors\BlogAuthor
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface AuthorsContract
 {
@@ -74,7 +74,7 @@ interface AuthorsContract
      * @param string $email body param: Email address of the Blog Author
      * @param string $facebook body param: URL to the Blog Author's Facebook page
      * @param string $fullName body param: The full, unabbreviated name of the blog author, typically their first and last name combined
-     * @param \HubspotSDK\Cms\Blogs\Authors\AuthorUpdateParams\Language|value-of<\HubspotSDK\Cms\Blogs\Authors\AuthorUpdateParams\Language> $language body param: The explicitly defined ISO 639 language code of the blog author
+     * @param \HubSpotSDK\Cms\Blogs\Authors\AuthorUpdateParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Authors\AuthorUpdateParams\Language> $language body param: The explicitly defined ISO 639 language code of the blog author
      * @param string $linkedin body param: URL to the blog author's LinkedIn page
      * @param string $name Body param: The name field for the blog author. (This appears to be a shorter or alternative name field compared to fullName.)
      * @param string $slug Body param: A URL-friendly identifier for the blog author that can be used to reference the author in URLs. Typically generated from the author's name and contains lowercase letters, hyphens, and underscores.
@@ -98,7 +98,7 @@ interface AuthorsContract
         string $email,
         string $facebook,
         string $fullName,
-        \HubspotSDK\Cms\Blogs\Authors\AuthorUpdateParams\Language|string $language,
+        \HubSpotSDK\Cms\Blogs\Authors\AuthorUpdateParams\Language|string $language,
         string $linkedin,
         string $name,
         string $slug,
@@ -154,7 +154,7 @@ interface AuthorsContract
      * @api
      *
      * @param string $id ID of the object to add to a multi-language group
-     * @param \HubspotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\Language|value-of<\HubspotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
+     * @param \HubSpotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
      * @param string $primaryID ID of primary language object in multi-language group
      * @param PrimaryLanguage|value-of<PrimaryLanguage> $primaryLanguage primary language of the multi-language group
      * @param RequestOpts|null $requestOptions
@@ -163,7 +163,7 @@ interface AuthorsContract
      */
     public function attachToLangGroup(
         string $id,
-        \HubspotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\Language|string $language,
+        \HubSpotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams\Language|string $language,
         string $primaryID,
         PrimaryLanguage|string|null $primaryLanguage = null,
         RequestOptions|array|null $requestOptions = null,
@@ -388,7 +388,7 @@ interface AuthorsContract
     /**
      * @api
      *
-     * @param array<string,\HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams\Language|value-of<\HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
+     * @param array<string,\HubSpotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
      * @param string $primaryID ID of the primary object in the multi-language group
      * @param RequestOpts|null $requestOptions
      *

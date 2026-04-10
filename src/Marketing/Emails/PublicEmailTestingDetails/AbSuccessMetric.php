@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
+namespace HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails;
 
 /**
  * Metric to determine the version that will be sent to the remaining contacts.

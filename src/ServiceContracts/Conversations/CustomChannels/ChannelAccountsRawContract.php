@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Conversations\CustomChannels;
+namespace HubSpotSDK\ServiceContracts\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreateParams;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
-use HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateStagingTokenParams;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccount;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountCreateParams;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateParams;
+use HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountUpdateStagingTokenParams;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccount;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ChannelAccountsRawContract
 {

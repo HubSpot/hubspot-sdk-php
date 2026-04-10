@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\RelativeRangedTimestampRefineBy\RangeType;
-use HubspotSDK\Events\Definitions\RelativeRangedTimestampRefineBy\Type;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\RelativeRangedTimestampRefineBy\RangeType;
+use HubSpotSDK\Events\Definitions\RelativeRangedTimestampRefineBy\Type;
 
 /**
- * @phpstan-import-type TimeOffsetShape from \HubspotSDK\Events\Definitions\TimeOffset
+ * @phpstan-import-type TimeOffsetShape from \HubSpotSDK\Events\Definitions\TimeOffset
  *
  * @phpstan-type RelativeRangedTimestampRefineByShape = array{
  *   lowerBoundOffset: TimeOffset|TimeOffsetShape,

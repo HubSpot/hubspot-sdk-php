@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Companies;
+namespace HubSpotSDK\Crm\Objects\Companies;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve all companies, using query parameters to control the information that gets returned.
  *
- * @see HubspotSDK\Services\Crm\Objects\CompaniesService::list()
+ * @see HubSpotSDK\Services\Crm\Objects\CompaniesService::list()
  *
  * @phpstan-type CompanyListParamsShape = array{
  *   after?: string|null,

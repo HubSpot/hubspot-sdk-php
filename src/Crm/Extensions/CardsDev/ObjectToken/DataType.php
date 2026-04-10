@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\ObjectToken;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\ObjectToken;
 
 /**
  * Type of data represented by this property.

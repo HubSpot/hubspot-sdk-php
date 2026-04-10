@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\TimeBetweenSkipWeekends;
+namespace HubSpotSDK\Cms\MediaBridge\TimeBetweenSkipWeekends;
 
 enum Operator: string
 {

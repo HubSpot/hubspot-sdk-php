@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Files;
+namespace HubSpotSDK\ServiceContracts\Files;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Files\Folder;
-use HubspotSDK\Files\FolderActionResponse;
-use HubspotSDK\Files\Folders\FolderGetByIDParams;
-use HubspotSDK\Files\Folders\FolderGetByPathParams;
-use HubspotSDK\Files\Folders\FolderSearchParams;
-use HubspotSDK\Files\Folders\FolderUpdateAsyncByIDParams;
-use HubspotSDK\Files\Folders\FolderUpdateByIDParams;
-use HubspotSDK\Files\FolderUpdateTaskLocator;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Files\Folder;
+use HubSpotSDK\Files\FolderActionResponse;
+use HubSpotSDK\Files\Folders\FolderGetByIDParams;
+use HubSpotSDK\Files\Folders\FolderGetByPathParams;
+use HubSpotSDK\Files\Folders\FolderSearchParams;
+use HubSpotSDK\Files\Folders\FolderUpdateAsyncByIDParams;
+use HubSpotSDK\Files\Folders\FolderUpdateByIDParams;
+use HubSpotSDK\Files\FolderUpdateTaskLocator;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface FoldersRawContract
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Automation;
+namespace HubSpotSDK\Services\Automation;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Automation\ActionsContract;
-use HubspotSDK\Services\Automation\Actions\CallbacksService;
-use HubspotSDK\Services\Automation\Actions\DefinitionsService;
-use HubspotSDK\Services\Automation\Actions\FunctionsService;
-use HubspotSDK\Services\Automation\Actions\RevisionsService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Automation\ActionsContract;
+use HubSpotSDK\Services\Automation\Actions\CallbacksService;
+use HubSpotSDK\Services\Automation\Actions\DefinitionsService;
+use HubSpotSDK\Services\Automation\Actions\FunctionsService;
+use HubSpotSDK\Services\Automation\Actions\RevisionsService;
 
 final class ActionsService implements ActionsContract
 {

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicRelativeComparativeTimestampRefineBy\Type;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicRelativeComparativeTimestampRefineBy\Type;
 
 /**
- * @phpstan-import-type PublicTimeOffsetShape from \HubspotSDK\Crm\Lists\PublicTimeOffset
+ * @phpstan-import-type PublicTimeOffsetShape from \HubSpotSDK\Crm\Lists\PublicTimeOffset
  *
  * @phpstan-type PublicRelativeComparativeTimestampRefineByShape = array{
  *   comparison: string,

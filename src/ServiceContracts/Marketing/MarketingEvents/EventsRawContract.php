@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\MarketingEvents;
+namespace HubSpotSDK\ServiceContracts\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\Events\EventCancelByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\Events\EventCompleteByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\MarketingEvents\Events\EventCancelByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\Events\EventCompleteByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface EventsRawContract
 {

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies;
+namespace HubSpotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams\CurrencyCode;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\CurrencyUpdateCompanyCurrencyParams\CurrencyCode;
 
 /**
  * Set or update the primary company currency.
  *
- * @see HubspotSDK\Services\Settings\CurrenciesService::updateCompanyCurrency()
+ * @see HubSpotSDK\Services\Settings\CurrenciesService::updateCompanyCurrency()
  *
  * @phpstan-type CurrencyUpdateCompanyCurrencyParamsShape = array{
  *   currencyCode: CurrencyCode|value-of<CurrencyCode>

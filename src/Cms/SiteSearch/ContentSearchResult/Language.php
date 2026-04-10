@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SiteSearch\ContentSearchResult;
+namespace HubSpotSDK\Cms\SiteSearch\ContentSearchResult;
 
 /**
  * The document's language.

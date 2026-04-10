@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns;
+namespace HubSpotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ForwardPaging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\ForwardPaging;
 
 /**
- * @phpstan-import-type PublicCampaignAssetShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignAsset
- * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ * @phpstan-import-type PublicCampaignAssetShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignAsset
+ * @phpstan-import-type ForwardPagingShape from \HubSpotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicCampaignAssetForwardPagingShape = array{
  *   results: list<PublicCampaignAsset|PublicCampaignAssetShape>,

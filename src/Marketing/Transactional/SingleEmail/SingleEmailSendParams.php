@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Transactional\SingleEmail;
+namespace HubSpotSDK\Marketing\Transactional\SingleEmail;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\PublicSingleSendEmail;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\PublicSingleSendEmail;
 
 /**
  * Asynchronously send a transactional email. Returns the status of the email send with a statusId that can be used to continuously query for the status using the Email Send Status API.
  *
- * @see HubspotSDK\Services\Marketing\Transactional\SingleEmailService::send()
+ * @see HubSpotSDK\Services\Marketing\Transactional\SingleEmailService::send()
  *
- * @phpstan-import-type PublicSingleSendEmailShape from \HubspotSDK\Marketing\PublicSingleSendEmail
+ * @phpstan-import-type PublicSingleSendEmailShape from \HubSpotSDK\Marketing\PublicSingleSendEmail
  *
  * @phpstan-type SingleEmailSendParamsShape = array{
  *   contactProperties: array<string,string>,

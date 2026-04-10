@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev;
+namespace HubSpotSDK\Crm\Extensions\CardsDev;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\CardsDev\ActionHookActionBody\HTTPMethod;
-use HubspotSDK\Crm\Extensions\CardsDev\ActionHookActionBody\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Extensions\CardsDev\ActionHookActionBody\HTTPMethod;
+use HubSpotSDK\Crm\Extensions\CardsDev\ActionHookActionBody\Type;
 
 /**
- * @phpstan-import-type ActionConfirmationBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\ActionConfirmationBody
+ * @phpstan-import-type ActionConfirmationBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\ActionConfirmationBody
  *
  * @phpstan-type ActionHookActionBodyShape = array{
  *   httpMethod: HTTPMethod|value-of<HTTPMethod>,

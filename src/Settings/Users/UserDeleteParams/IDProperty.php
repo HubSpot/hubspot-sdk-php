@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Users\UserDeleteParams;
+namespace HubSpotSDK\Settings\Users\UserDeleteParams;
 
 enum IDProperty: string
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SideOrCorner;
+namespace HubSpotSDK\Cms\SideOrCorner;
 
 /**
  * Specifies the vertical side of an element.

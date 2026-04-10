@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\BlogPost;
+namespace HubSpotSDK\Cms\Blogs\Posts\BlogPost;
 
 /**
  * The status of the AB test associated with this blog post, if applicable.

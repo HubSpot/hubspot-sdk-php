@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Definitions;
+namespace HubSpotSDK\Automation\Actions\Definitions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve whether a custom action definition requires an object.
  *
- * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::getRequiresObject()
+ * @see HubSpotSDK\Services\Automation\Actions\DefinitionsService::getRequiresObject()
  *
  * @phpstan-type DefinitionGetRequiresObjectParamsShape = array{appID: int}
  */

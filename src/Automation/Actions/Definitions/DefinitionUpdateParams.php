@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Definitions;
+namespace HubSpotSDK\Automation\Actions\Definitions;
 
-use HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency;
-use HubspotSDK\Automation\Actions\OutputFieldDefinition;
-use HubspotSDK\Automation\Actions\PublicActionLabels;
-use HubspotSDK\Automation\Actions\PublicExecutionTranslationRule;
-use HubspotSDK\Automation\Actions\PublicInputFieldDefinition;
-use HubspotSDK\Automation\Actions\PublicObjectRequestOptions;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency;
+use HubSpotSDK\Automation\Actions\OutputFieldDefinition;
+use HubSpotSDK\Automation\Actions\PublicActionLabels;
+use HubSpotSDK\Automation\Actions\PublicExecutionTranslationRule;
+use HubSpotSDK\Automation\Actions\PublicInputFieldDefinition;
+use HubSpotSDK\Automation\Actions\PublicObjectRequestOptions;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update an existing action definition by ID.
  *
- * @see HubspotSDK\Services\Automation\Actions\DefinitionsService::update()
+ * @see HubSpotSDK\Services\Automation\Actions\DefinitionsService::update()
  *
- * @phpstan-import-type InputFieldDependencyVariants from \HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency
- * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubspotSDK\Automation\Actions\PublicExecutionTranslationRule
- * @phpstan-import-type InputFieldDependencyShape from \HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency
- * @phpstan-import-type PublicInputFieldDefinitionShape from \HubspotSDK\Automation\Actions\PublicInputFieldDefinition
- * @phpstan-import-type PublicActionLabelsShape from \HubspotSDK\Automation\Actions\PublicActionLabels
- * @phpstan-import-type PublicObjectRequestOptionsShape from \HubspotSDK\Automation\Actions\PublicObjectRequestOptions
+ * @phpstan-import-type InputFieldDependencyVariants from \HubSpotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency
+ * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubSpotSDK\Automation\Actions\PublicExecutionTranslationRule
+ * @phpstan-import-type InputFieldDependencyShape from \HubSpotSDK\Automation\Actions\Definitions\DefinitionUpdateParams\InputFieldDependency
+ * @phpstan-import-type PublicInputFieldDefinitionShape from \HubSpotSDK\Automation\Actions\PublicInputFieldDefinition
+ * @phpstan-import-type PublicActionLabelsShape from \HubSpotSDK\Automation\Actions\PublicActionLabels
+ * @phpstan-import-type PublicObjectRequestOptionsShape from \HubSpotSDK\Automation\Actions\PublicObjectRequestOptions
  *
  * @phpstan-type DefinitionUpdateParamsShape = array{
  *   appID: int,

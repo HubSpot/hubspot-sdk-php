@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicRangedDatePropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicRangedDatePropertyOperation;
 
 /**
  * Specifies the type of operation (RANGED_DATE).

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Concerns;
+namespace HubSpotSDK\Core\Concerns;
 
-use HubspotSDK\Core\Conversion;
-use HubspotSDK\Core\Conversion\DumpState;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Conversion;
+use HubSpotSDK\Core\Conversion\DumpState;
+use HubSpotSDK\RequestOptions;
 
 /**
  * @internal

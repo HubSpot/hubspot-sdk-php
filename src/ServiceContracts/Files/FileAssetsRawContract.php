@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Files;
+namespace HubSpotSDK\ServiceContracts\Files;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Files\File;
-use HubspotSDK\Files\FileActionResponse;
-use HubspotSDK\Files\FileAssets\FileAssetCreateParams;
-use HubspotSDK\Files\FileAssets\FileAssetGetByPathParams;
-use HubspotSDK\Files\FileAssets\FileAssetGetParams;
-use HubspotSDK\Files\FileAssets\FileAssetGetSignedURLParams;
-use HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams;
-use HubspotSDK\Files\FileAssets\FileAssetReplaceParams;
-use HubspotSDK\Files\FileAssets\FileAssetSearchParams;
-use HubspotSDK\Files\FileAssets\FileAssetUpdateParams;
-use HubspotSDK\Files\FileAssets\FileAssetUploadParams;
-use HubspotSDK\Files\FileStat;
-use HubspotSDK\Files\Folder;
-use HubspotSDK\Files\ImportFromURLTaskLocator;
-use HubspotSDK\Files\SignedURL;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Files\File;
+use HubSpotSDK\Files\FileActionResponse;
+use HubSpotSDK\Files\FileAssets\FileAssetCreateParams;
+use HubSpotSDK\Files\FileAssets\FileAssetGetByPathParams;
+use HubSpotSDK\Files\FileAssets\FileAssetGetParams;
+use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams;
+use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams;
+use HubSpotSDK\Files\FileAssets\FileAssetReplaceParams;
+use HubSpotSDK\Files\FileAssets\FileAssetSearchParams;
+use HubSpotSDK\Files\FileAssets\FileAssetUpdateParams;
+use HubSpotSDK\Files\FileAssets\FileAssetUploadParams;
+use HubSpotSDK\Files\FileStat;
+use HubSpotSDK\Files\Folder;
+use HubSpotSDK\Files\ImportFromURLTaskLocator;
+use HubSpotSDK\Files\SignedURL;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface FileAssetsRawContract
 {

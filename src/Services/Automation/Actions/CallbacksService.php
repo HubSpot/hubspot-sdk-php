@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Automation\Actions;
+namespace HubSpotSDK\Services\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\AgentRequestContext;
-use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
-use HubspotSDK\Automation\Actions\CopilotRequestContext;
-use HubspotSDK\Automation\Actions\StandaloneRequestContext;
-use HubspotSDK\Automation\Actions\TestRequestContext;
-use HubspotSDK\Automation\Actions\WorkflowsRequestContext;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Automation\Actions\CallbacksContract;
+use HubSpotSDK\Automation\Actions\AgentRequestContext;
+use HubSpotSDK\Automation\Actions\CallbackCompletionBatchRequest;
+use HubSpotSDK\Automation\Actions\CopilotRequestContext;
+use HubSpotSDK\Automation\Actions\StandaloneRequestContext;
+use HubSpotSDK\Automation\Actions\TestRequestContext;
+use HubSpotSDK\Automation\Actions\WorkflowsRequestContext;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Automation\Actions\CallbacksContract;
 
 /**
- * @phpstan-import-type RequestContextShape from \HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams\RequestContext
- * @phpstan-import-type CallbackCompletionBatchRequestShape from \HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestContextShape from \HubSpotSDK\Automation\Actions\Callbacks\CallbackCompleteParams\RequestContext
+ * @phpstan-import-type CallbackCompletionBatchRequestShape from \HubSpotSDK\Automation\Actions\CallbackCompletionBatchRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CallbacksService implements CallbacksContract
 {

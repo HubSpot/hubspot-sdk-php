@@ -2,36 +2,36 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Hubdb;
+namespace HubSpotSDK\Services\Cms\Hubdb;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Hubdb\ColumnRequest;
-use HubspotSDK\Cms\Hubdb\HubDBTableV3;
-use HubspotSDK\Cms\Hubdb\ImportResult;
-use HubspotSDK\Cms\Hubdb\Tables\TableCloneDraftParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableCreateParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableDeleteVersionParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableExportDraftParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableExportParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableGetDraftParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableGetParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableImportDraftParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableListDraftParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableListParams;
-use HubspotSDK\Cms\Hubdb\Tables\TablePublishDraftParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableResetDraftParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableUnpublishParams;
-use HubspotSDK\Cms\Hubdb\Tables\TableUpdateDraftParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Hubdb\TablesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Hubdb\ColumnRequest;
+use HubSpotSDK\Cms\Hubdb\HubDBTableV3;
+use HubSpotSDK\Cms\Hubdb\ImportResult;
+use HubSpotSDK\Cms\Hubdb\Tables\TableCloneDraftParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableCreateParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableDeleteVersionParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableExportDraftParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableExportParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableGetDraftParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableGetParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableImportDraftParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableListDraftParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableListParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TablePublishDraftParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableResetDraftParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableUnpublishParams;
+use HubSpotSDK\Cms\Hubdb\Tables\TableUpdateDraftParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Hubdb\TablesRawContract;
 
 /**
- * @phpstan-import-type ColumnRequestShape from \HubspotSDK\Cms\Hubdb\ColumnRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ColumnRequestShape from \HubSpotSDK\Cms\Hubdb\ColumnRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class TablesRawService implements TablesRawContract
 {
@@ -156,7 +156,7 @@ final class TablesRawService implements TablesRawContract
      * Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the request body. This will create the cloned table as a draft.
      *
      * @param array{
-     *   copyRows: bool, isHubspotDefined: bool, newLabel?: string, newName?: string
+     *   copyRows: bool, isHubSpotDefined: bool, newLabel?: string, newName?: string
      * }|TableCloneDraftParams $params
      * @param RequestOpts|null $requestOptions
      *

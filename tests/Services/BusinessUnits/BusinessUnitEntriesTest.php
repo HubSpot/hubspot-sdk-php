@@ -2,9 +2,9 @@
 
 namespace Tests\Services\BusinessUnits;
 
-use HubspotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
+namespace HubSpotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
 
 enum TokenUse: string
 {

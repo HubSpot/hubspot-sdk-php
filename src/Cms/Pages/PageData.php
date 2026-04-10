@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages;
+namespace HubSpotSDK\Cms\Pages;
 
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\PageData\AbStatus;
-use HubspotSDK\Cms\Pages\PageData\ContentTypeCategory;
-use HubspotSDK\Cms\Pages\PageData\CurrentState;
-use HubspotSDK\Cms\Pages\PageData\Language;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\LayoutSection;
+use HubSpotSDK\Cms\Pages\PageData\AbStatus;
+use HubSpotSDK\Cms\Pages\PageData\ContentTypeCategory;
+use HubSpotSDK\Cms\Pages\PageData\CurrentState;
+use HubSpotSDK\Cms\Pages\PageData\Language;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
  *
  * @phpstan-type PageDataShape = array{
  *   id: string,

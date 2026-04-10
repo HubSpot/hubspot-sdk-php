@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\Statuses\Batch;
+namespace HubSpotSDK\CommunicationPreferences\Statuses\Batch;
 
-use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams\Channel;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams\Channel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Checks whether a set of contacts have opted out of all communications.
  *
- * @see HubspotSDK\Services\CommunicationPreferences\Statuses\BatchService::getUnsubscribeAllStatuses()
+ * @see HubSpotSDK\Services\CommunicationPreferences\Statuses\BatchService::getUnsubscribeAllStatuses()
  *
  * @phpstan-type BatchGetUnsubscribeAllStatusesParamsShape = array{
  *   channel: Channel|value-of<Channel>,

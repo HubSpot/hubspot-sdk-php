@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Sequences;
+namespace HubSpotSDK\Automation\Sequences;
 
-use HubspotSDK\Automation\Sequences\PublicSequenceSettingsResponse\EligibleFollowUpDays;
-use HubspotSDK\Automation\Sequences\PublicSequenceSettingsResponse\SellingStrategy;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Sequences\PublicSequenceSettingsResponse\EligibleFollowUpDays;
+use HubSpotSDK\Automation\Sequences\PublicSequenceSettingsResponse\SellingStrategy;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicSequenceSettingsResponseShape = array{

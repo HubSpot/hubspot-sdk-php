@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\FileAssets\FileAssetGetSignedURLParams;
+namespace HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams;
 
 enum Size: string
 {

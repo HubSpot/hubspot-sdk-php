@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\PublicStatusRequest;
+namespace HubSpotSDK\CommunicationPreferences\PublicStatusRequest;
 
 /**
  * The legal basis for communication.

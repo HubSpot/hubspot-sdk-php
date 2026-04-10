@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\CommunicationPreferences;
+namespace HubSpotSDK\Services\CommunicationPreferences;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\CommunicationPreferences\StatusesContract;
-use HubspotSDK\Services\CommunicationPreferences\Statuses\BatchService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\CommunicationPreferences\StatusesContract;
+use HubSpotSDK\Services\CommunicationPreferences\Statuses\BatchService;
 
 final class StatusesService implements StatusesContract
 {

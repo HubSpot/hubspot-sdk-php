@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Timeline;
+namespace HubSpotSDK\Crm\Timeline;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Crm\TimelineService::createProjectType()
+ * @see HubSpotSDK\Services\Crm\TimelineService::createProjectType()
  *
  * @phpstan-type TimelineCreateProjectTypeParamsShape = array{
  *   developerSymbol: string, projectName: string

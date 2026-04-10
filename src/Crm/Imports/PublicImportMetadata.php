@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Imports;
+namespace HubSpotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicObjectListRecordShape from \HubspotSDK\Crm\Imports\PublicObjectListRecord
+ * @phpstan-import-type PublicObjectListRecordShape from \HubSpotSDK\Crm\Imports\PublicObjectListRecord
  *
  * @phpstan-type PublicImportMetadataShape = array{
  *   counters: array<string,int>,

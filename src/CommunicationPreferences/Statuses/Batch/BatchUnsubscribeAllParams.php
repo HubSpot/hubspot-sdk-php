@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\Statuses\Batch;
+namespace HubSpotSDK\CommunicationPreferences\Statuses\Batch;
 
-use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Unsubscribe a set of contacts from all email subscriptions.
  *
- * @see HubspotSDK\Services\CommunicationPreferences\Statuses\BatchService::unsubscribeAll()
+ * @see HubSpotSDK\Services\CommunicationPreferences\Statuses\BatchService::unsubscribeAll()
  *
  * @phpstan-type BatchUnsubscribeAllParamsShape = array{
  *   channel: Channel|value-of<Channel>,

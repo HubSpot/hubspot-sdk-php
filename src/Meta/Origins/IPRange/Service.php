@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Meta\Origins\IPRange;
+namespace HubSpotSDK\Meta\Origins\IPRange;
 
 /**
  * The service associated with the IP range, such as EMAIL, API, DNS, or WEB_SCRAPING.

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Cms\HubdbRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Cms\HubdbRawContract;
 
 final class HubdbRawService implements HubdbRawContract
 {

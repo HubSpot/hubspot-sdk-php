@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicQuarterReference;
+namespace HubSpotSDK\Crm\Lists\PublicQuarterReference;
 
 /**
  * Indicates the type of reference (QUARTER).

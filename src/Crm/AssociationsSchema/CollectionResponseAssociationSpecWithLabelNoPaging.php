@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationsSchema;
+namespace HubSpotSDK\Crm\AssociationsSchema;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\AssociationSpecWithLabel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\AssociationSpecWithLabel;
 
 /**
- * @phpstan-import-type AssociationSpecWithLabelShape from \HubspotSDK\Crm\AssociationSpecWithLabel
+ * @phpstan-import-type AssociationSpecWithLabelShape from \HubSpotSDK\Crm\AssociationSpecWithLabel
  *
  * @phpstan-type CollectionResponseAssociationSpecWithLabelNoPagingShape = array{
  *   results: list<AssociationSpecWithLabel|AssociationSpecWithLabelShape>

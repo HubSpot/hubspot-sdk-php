@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\Groups;
+namespace HubSpotSDK\Crm\Properties\Groups;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Read a property group identified by {groupName}.
  *
- * @see HubspotSDK\Services\Crm\Properties\GroupsService::get()
+ * @see HubSpotSDK\Services\Crm\Properties\GroupsService::get()
  *
  * @phpstan-type GroupGetParamsShape = array{
  *   objectType: string, locale?: string|null

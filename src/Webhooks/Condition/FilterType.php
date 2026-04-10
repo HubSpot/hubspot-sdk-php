@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks\Condition;
+namespace HubSpotSDK\Webhooks\Condition;
 
 enum FilterType: string
 {

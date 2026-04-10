@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs\Posts;
+namespace HubSpotSDK\Services\Cms\Blogs\Posts;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Posts\Revisions\RevisionGetPreviousVersionParams;
-use HubspotSDK\Cms\Blogs\Posts\Revisions\RevisionGetPreviousVersionsParams;
-use HubspotSDK\Cms\Blogs\Posts\Revisions\RevisionRestorePreviousVersionParams;
-use HubspotSDK\Cms\Blogs\Posts\Revisions\RevisionRestorePreviousVersionToDraftParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\Posts\RevisionsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Posts\Revisions\RevisionGetPreviousVersionParams;
+use HubSpotSDK\Cms\Blogs\Posts\Revisions\RevisionGetPreviousVersionsParams;
+use HubSpotSDK\Cms\Blogs\Posts\Revisions\RevisionRestorePreviousVersionParams;
+use HubSpotSDK\Cms\Blogs\Posts\Revisions\RevisionRestorePreviousVersionToDraftParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\Posts\RevisionsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class RevisionsRawService implements RevisionsRawContract
 {

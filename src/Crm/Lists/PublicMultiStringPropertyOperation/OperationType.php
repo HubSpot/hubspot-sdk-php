@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicMultiStringPropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicMultiStringPropertyOperation;
 
 /**
  * Specifies the type of operation (MULTISTRING).

@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Pages;
+namespace HubSpotSDK\Services\Cms\Pages;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
-use HubspotSDK\Cms\Pages\PageData;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Pages\LandingPagesContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
+use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Pages\LandingPagesContract;
 
 /**
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class LandingPagesService implements LandingPagesContract
 {
@@ -238,7 +238,7 @@ final class LandingPagesService implements LandingPagesContract
      *
      * @param string $objectID Path param
      * @param string $id body param: The unique ID of the page
-     * @param \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus|value-of<\HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus> $abStatus Body param: The status of the AB test associated with this page, if applicable
+     * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus> $abStatus Body param: The status of the AB test associated with this page, if applicable
      * @param string $abTestID Body param: The ID of the AB test associated with this page, if applicable
      * @param \DateTimeInterface $archivedAt body param: The timestamp (ISO8601 format) when this page was deleted
      * @param bool $archivedInDashboard body param: If True, the page will not show up in your dashboard, although the page could still be live
@@ -247,11 +247,11 @@ final class LandingPagesService implements LandingPagesContract
      * @param string $campaign body param: The GUID of the marketing campaign this page is a part of
      * @param int $categoryID Body param: ID of the type of object this is. Should always .
      * @param string $contentGroupID body param: The unique identifier for the content group associated with the page
-     * @param \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\ContentTypeCategory|value-of<\HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\ContentTypeCategory> $contentTypeCategory Body param: An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
+     * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\ContentTypeCategory|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\ContentTypeCategory> $contentTypeCategory Body param: An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
      * @param \DateTimeInterface $created body param: The timestamp indicating when the page was created
      * @param string $createdByID body param: The ID of the user that created this page
      * @param bool $currentlyPublished body param: Indicates whether the page is currently published
-     * @param \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\CurrentState|value-of<\HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\CurrentState> $currentState body param: A generated ENUM descibing the current state of this page
+     * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\CurrentState|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\CurrentState> $currentState body param: A generated ENUM descibing the current state of this page
      * @param string $domain Body param: The domain this page will resolve to. If null, the page will default to the primary domain for this content type.
      * @param string $dynamicPageDataSourceID body param: The identifier for the data source used by the dynamic page
      * @param int $dynamicPageDataSourceType body param: The type of data source used by the dynamic page
@@ -265,7 +265,7 @@ final class LandingPagesService implements LandingPagesContract
      * @param string $headHTML Body param: Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
      * @param string $htmlTitle body param: The html title of this page
      * @param bool $includeDefaultCustomCss body param: Boolean to determine whether or not the Primary CSS Files should be applied
-     * @param \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\Language|value-of<\HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\Language> $language Body param: The explicitly defined ISO 639 language code of the page. If null, the page will default to the language of the Domain.
+     * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\Language|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\Language> $language Body param: The explicitly defined ISO 639 language code of the page. If null, the page will default to the language of the Domain.
      * @param array<string,mixed> $layoutSections body param: A structure detailing the layout sections of the page
      * @param string $linkRelCanonicalURL body param: Optional override to set the URL to be used in the rel=canonical link tag on the page
      * @param string $mabExperimentID Body param: The ID of the MAB test (or dynamic test) associated with this page, if applicable
@@ -302,7 +302,7 @@ final class LandingPagesService implements LandingPagesContract
     public function update(
         string $objectID,
         string $id,
-        \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus|string $abStatus,
+        \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus|string $abStatus,
         string $abTestID,
         \DateTimeInterface $archivedAt,
         bool $archivedInDashboard,
@@ -311,11 +311,11 @@ final class LandingPagesService implements LandingPagesContract
         string $campaign,
         int $categoryID,
         string $contentGroupID,
-        \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\ContentTypeCategory|string $contentTypeCategory,
+        \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\ContentTypeCategory|string $contentTypeCategory,
         \DateTimeInterface $created,
         string $createdByID,
         bool $currentlyPublished,
-        \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\CurrentState|string $currentState,
+        \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\CurrentState|string $currentState,
         string $domain,
         string $dynamicPageDataSourceID,
         int $dynamicPageDataSourceType,
@@ -329,7 +329,7 @@ final class LandingPagesService implements LandingPagesContract
         string $headHTML,
         string $htmlTitle,
         bool $includeDefaultCustomCss,
-        \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\Language|string $language,
+        \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\Language|string $language,
         array $layoutSections,
         string $linkRelCanonicalURL,
         string $mabExperimentID,
@@ -641,7 +641,7 @@ final class LandingPagesService implements LandingPagesContract
      * Partially updates the draft version of a single landing page, specified by its ID. You only need to specify the column values that you are modifying.
      *
      * @param string $id the unique ID of the page
-     * @param \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus|value-of<\HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus> $abStatus The status of the AB test associated with this page, if applicable
+     * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus> $abStatus The status of the AB test associated with this page, if applicable
      * @param string $abTestID The ID of the AB test associated with this page, if applicable
      * @param \DateTimeInterface $archivedAt the timestamp (ISO8601 format) when this page was deleted
      * @param bool $archivedInDashboard if True, the page will not show up in your dashboard, although the page could still be live
@@ -650,11 +650,11 @@ final class LandingPagesService implements LandingPagesContract
      * @param string $campaign the GUID of the marketing campaign this page is a part of
      * @param int $categoryID ID of the type of object this is. Should always .
      * @param string $contentGroupID the unique identifier for the content group associated with the page
-     * @param \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\ContentTypeCategory|value-of<\HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
+     * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\ContentTypeCategory|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
      * @param \DateTimeInterface $created the timestamp indicating when the page was created
      * @param string $createdByID the ID of the user that created this page
      * @param bool $currentlyPublished indicates whether the page is currently published
-     * @param \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\CurrentState|value-of<\HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\CurrentState> $currentState a generated ENUM descibing the current state of this page
+     * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\CurrentState|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\CurrentState> $currentState a generated ENUM descibing the current state of this page
      * @param string $domain The domain this page will resolve to. If null, the page will default to the primary domain for this content type.
      * @param string $dynamicPageDataSourceID the identifier for the data source used by the dynamic page
      * @param int $dynamicPageDataSourceType the type of data source used by the dynamic page
@@ -668,7 +668,7 @@ final class LandingPagesService implements LandingPagesContract
      * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
      * @param string $htmlTitle the html title of this page
      * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
-     * @param \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\Language|value-of<\HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\Language> $language The explicitly defined ISO 639 language code of the page. If null, the page will default to the language of the Domain.
+     * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\Language|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\Language> $language The explicitly defined ISO 639 language code of the page. If null, the page will default to the language of the Domain.
      * @param array<string,mixed> $layoutSections a structure detailing the layout sections of the page
      * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
      * @param string $mabExperimentID The ID of the MAB test (or dynamic test) associated with this page, if applicable
@@ -704,7 +704,7 @@ final class LandingPagesService implements LandingPagesContract
     public function updateDraft(
         string $objectID,
         string $id,
-        \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus|string $abStatus,
+        \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus|string $abStatus,
         string $abTestID,
         \DateTimeInterface $archivedAt,
         bool $archivedInDashboard,
@@ -713,11 +713,11 @@ final class LandingPagesService implements LandingPagesContract
         string $campaign,
         int $categoryID,
         string $contentGroupID,
-        \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\ContentTypeCategory|string $contentTypeCategory,
+        \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\ContentTypeCategory|string $contentTypeCategory,
         \DateTimeInterface $created,
         string $createdByID,
         bool $currentlyPublished,
-        \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\CurrentState|string $currentState,
+        \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\CurrentState|string $currentState,
         string $domain,
         string $dynamicPageDataSourceID,
         int $dynamicPageDataSourceType,
@@ -731,7 +731,7 @@ final class LandingPagesService implements LandingPagesContract
         string $headHTML,
         string $htmlTitle,
         bool $includeDefaultCustomCss,
-        \HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\Language|string $language,
+        \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\Language|string $language,
         array $layoutSections,
         string $linkRelCanonicalURL,
         string $mabExperimentID,

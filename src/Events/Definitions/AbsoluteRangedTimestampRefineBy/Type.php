@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\AbsoluteRangedTimestampRefineBy;
+namespace HubSpotSDK\Events\Definitions\AbsoluteRangedTimestampRefineBy;
 
 enum Type: string
 {

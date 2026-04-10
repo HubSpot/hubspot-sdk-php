@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions;
+namespace HubSpotSDK\Automation\Actions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type RequestContextVariants from \HubspotSDK\Automation\Actions\CallbackCompletionRequest\RequestContext
- * @phpstan-import-type RequestContextShape from \HubspotSDK\Automation\Actions\CallbackCompletionRequest\RequestContext
+ * @phpstan-import-type RequestContextVariants from \HubSpotSDK\Automation\Actions\CallbackCompletionRequest\RequestContext
+ * @phpstan-import-type RequestContextShape from \HubSpotSDK\Automation\Actions\CallbackCompletionRequest\RequestContext
  *
  * @phpstan-type CallbackCompletionRequestShape = array{
  *   outputFields: array<string,string>,

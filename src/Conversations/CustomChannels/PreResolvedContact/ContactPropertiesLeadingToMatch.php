@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PreResolvedContact;
+namespace HubSpotSDK\Conversations\CustomChannels\PreResolvedContact;
 
 enum ContactPropertiesLeadingToMatch: string
 {

@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Associations;
+namespace HubSpotSDK\Services\Crm\Associations;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
-use HubspotSDK\Crm\Associations\PublicAssociationMultiArchive;
-use HubspotSDK\Crm\Associations\PublicAssociationMultiPost;
-use HubspotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
-use HubspotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest;
-use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Associations\BatchContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
+use HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive;
+use HubSpotSDK\Crm\Associations\PublicAssociationMultiPost;
+use HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
+use HubSpotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest;
+use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Associations\BatchContract;
 
 /**
- * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubspotSDK\Crm\Associations\PublicAssociationMultiArchive
- * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubspotSDK\Crm\Associations\PublicDefaultAssociationMultiPost
- * @phpstan-import-type PublicAssociationMultiPostShape from \HubspotSDK\Crm\Associations\PublicAssociationMultiPost
- * @phpstan-import-type PublicFetchAssociationsBatchRequestShape from \HubspotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive
+ * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost
+ * @phpstan-import-type PublicAssociationMultiPostShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiPost
+ * @phpstan-import-type PublicFetchAssociationsBatchRequestShape from \HubSpotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchService implements BatchContract
 {

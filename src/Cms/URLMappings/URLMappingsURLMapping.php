@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\URLMappings;
+namespace HubSpotSDK\Cms\URLMappings;
 
-use HubspotSDK\Cms\URLMappings\URLMappingsURLMapping\CosObjectType;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\URLMappings\URLMappingsURLMapping\CosObjectType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type URLMappingsURLMappingShape = array{

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Meta\Origins;
+namespace HubSpotSDK\ServiceContracts\Meta\Origins;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams\Direction;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams\Service;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams\Direction;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams\Service;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface IPRangesContract
 {
@@ -33,8 +33,8 @@ interface IPRangesContract
     /**
      * @api
      *
-     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction>> $direction
-     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service>> $service
+     * @param list<\HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction|value-of<\HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction>> $direction
+     * @param list<\HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service|value-of<\HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service>> $service
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

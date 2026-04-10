@@ -2,32 +2,32 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Pages;
+namespace HubSpotSDK\Services\Cms\Pages;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCloneParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageDeleteParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageGetParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageListParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
-use HubspotSDK\Cms\Pages\PageData;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Pages\LandingPagesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCloneParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageDeleteParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageGetParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageListParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
+use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Pages\LandingPagesRawContract;
 
 /**
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class LandingPagesRawService implements LandingPagesRawContract
 {

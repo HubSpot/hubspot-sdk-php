@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\DoubleFieldSchema;
+namespace HubSpotSDK\Automation\Actions\DoubleFieldSchema;
 
 /**
  * Indicates the field type as DOUBLE.

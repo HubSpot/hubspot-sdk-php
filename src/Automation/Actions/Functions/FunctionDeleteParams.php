@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Functions;
+namespace HubSpotSDK\Automation\Actions\Functions;
 
-use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams\FunctionType;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Actions\Functions\FunctionDeleteParams\FunctionType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Archive a function for a specific definition.
  *
- * @see HubspotSDK\Services\Automation\Actions\FunctionsService::delete()
+ * @see HubSpotSDK\Services\Automation\Actions\FunctionsService::delete()
  *
  * @phpstan-type FunctionDeleteParamsShape = array{
  *   appID: int,

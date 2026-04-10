@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\CommunicationPreferenceGetStatusesParams;
+namespace HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetStatusesParams;
 
 enum Channel: string
 {

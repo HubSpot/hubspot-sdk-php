@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicDatePoint;
+namespace HubSpotSDK\Crm\Lists\PublicDatePoint;
 
 /**
  * Specifies the type of time (DATE).

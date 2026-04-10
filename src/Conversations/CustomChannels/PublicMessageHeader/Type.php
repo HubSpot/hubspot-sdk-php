@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicMessageHeader;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicMessageHeader;
 
 enum Type: string
 {

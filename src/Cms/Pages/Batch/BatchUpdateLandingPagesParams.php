@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\Batch;
+namespace HubSpotSDK\Cms\Pages\Batch;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update a batch of landing pages as specified in the request body.
  *
- * @see HubspotSDK\Services\Cms\Pages\BatchService::updateLandingPages()
+ * @see HubSpotSDK\Services\Cms\Pages\BatchService::updateLandingPages()
  *
  * @phpstan-type BatchUpdateLandingPagesParamsShape = array{
  *   inputs: list<mixed>, archived?: bool|null

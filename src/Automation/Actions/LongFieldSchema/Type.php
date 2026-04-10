@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\LongFieldSchema;
+namespace HubSpotSDK\Automation\Actions\LongFieldSchema;
 
 /**
  * The type of the field, which is LONG by default.

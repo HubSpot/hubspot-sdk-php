@@ -2,49 +2,49 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing;
+namespace HubSpotSDK\Services\Marketing;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseSearchPublicResponseWrapperNoPaging;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventCreateParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDeleteBatchByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDeleteBatchParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDeleteByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventGetByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventListParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventSearchByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpdateBatchParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpdateByExternalEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpdateParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpsertBatchParams;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventUpsertByExternalEventIDParams;
-use HubspotSDK\Page;
-use HubspotSDK\PropertyValue;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\MarketingEventsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\CollectionResponseSearchPublicResponseWrapperNoPaging;
+use HubSpotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventCreateParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDeleteBatchByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDeleteBatchParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDeleteByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventGetByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventListParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventSearchByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpdateBatchParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpdateByExternalEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpdateParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpsertBatchParams;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventUpsertByExternalEventIDParams;
+use HubSpotSDK\Page;
+use HubSpotSDK\PropertyValue;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\MarketingEventsRawContract;
 
 /**
- * @phpstan-import-type MarketingEventPublicObjectIDDeleteRequestShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest
- * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier
- * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2
- * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams
- * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type MarketingEventPublicObjectIDDeleteRequestShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest
+ * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier
+ * @phpstan-import-type MarketingEventPublicUpdateRequestFullV2Shape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicUpdateRequestFullV2
+ * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams
+ * @phpstan-import-type PropertyValueShape from \HubSpotSDK\PropertyValue
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class MarketingEventsRawService implements MarketingEventsRawContract
 {

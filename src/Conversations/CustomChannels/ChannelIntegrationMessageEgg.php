@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\Attachment;
-use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\MessageDirection;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\Attachment;
+use HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\MessageDirection;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type AttachmentVariants from \HubspotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\Attachment
- * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\Attachment
- * @phpstan-import-type ChannelIntegrationParticipantShape from \HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
- * @phpstan-import-type PreResolvedContactsShape from \HubspotSDK\Conversations\CustomChannels\PreResolvedContacts
+ * @phpstan-import-type AttachmentVariants from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\Attachment
+ * @phpstan-import-type AttachmentShape from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\Attachment
+ * @phpstan-import-type ChannelIntegrationParticipantShape from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
+ * @phpstan-import-type PreResolvedContactsShape from \HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts
  *
  * @phpstan-type ChannelIntegrationMessageEggShape = array{
  *   attachments: list<AttachmentShape>,

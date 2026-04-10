@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing\Campaigns;
+namespace HubSpotSDK\Services\Marketing\Campaigns;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\ContactReference;
-use HubspotSDK\Marketing\Campaigns\Metrics\MetricGetAttributionMetricsParams;
-use HubspotSDK\Marketing\Campaigns\Metrics\MetricGetRevenueAttributionParams;
-use HubspotSDK\Marketing\Campaigns\Metrics\MetricListContactIDsByTypeParams;
-use HubspotSDK\Marketing\Campaigns\MetricsCounters;
-use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\Campaigns\MetricsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Campaigns\ContactReference;
+use HubSpotSDK\Marketing\Campaigns\Metrics\MetricGetAttributionMetricsParams;
+use HubSpotSDK\Marketing\Campaigns\Metrics\MetricGetRevenueAttributionParams;
+use HubSpotSDK\Marketing\Campaigns\Metrics\MetricListContactIDsByTypeParams;
+use HubSpotSDK\Marketing\Campaigns\MetricsCounters;
+use HubSpotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\Campaigns\MetricsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class MetricsRawService implements MetricsRawContract
 {

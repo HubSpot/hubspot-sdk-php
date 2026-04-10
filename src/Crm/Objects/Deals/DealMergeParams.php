@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Deals;
+namespace HubSpotSDK\Crm\Objects\Deals;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Combine two deals of the same type into a single deal.
  *
- * @see HubspotSDK\Services\Crm\Objects\DealsService::merge()
+ * @see HubSpotSDK\Services\Crm\Objects\DealsService::merge()
  *
  * @phpstan-type DealMergeParamsShape = array{
  *   objectIDToMerge: string, primaryObjectID: string

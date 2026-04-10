@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Properties;
+namespace HubSpotSDK\ServiceContracts\Crm\Properties;
 
-use HubspotSDK\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Properties\Groups\GroupCreateParams;
-use HubspotSDK\Crm\Properties\Groups\GroupDeleteParams;
-use HubspotSDK\Crm\Properties\Groups\GroupGetParams;
-use HubspotSDK\Crm\Properties\Groups\GroupListParams;
-use HubspotSDK\Crm\Properties\Groups\GroupUpdateParams;
-use HubspotSDK\PropertyGroup;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Properties\Groups\GroupCreateParams;
+use HubSpotSDK\Crm\Properties\Groups\GroupDeleteParams;
+use HubSpotSDK\Crm\Properties\Groups\GroupGetParams;
+use HubSpotSDK\Crm\Properties\Groups\GroupListParams;
+use HubSpotSDK\Crm\Properties\Groups\GroupUpdateParams;
+use HubSpotSDK\PropertyGroup;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface GroupsRawContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Account\APIUsage;
+namespace HubSpotSDK\Account\APIUsage;
 
 /**
  * Status of fetching the information, including if the data came from the cache.

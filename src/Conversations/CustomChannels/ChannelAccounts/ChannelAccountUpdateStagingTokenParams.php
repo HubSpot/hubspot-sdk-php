@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\ChannelAccounts;
+namespace HubSpotSDK\Conversations\CustomChannels\ChannelAccounts;
 
-use HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update a channel account staging token's account name and delivery identifier. This information will be applied to the channel account created from this staging token. This is used for public apps.
  *
- * @see HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::updateStagingToken()
+ * @see HubSpotSDK\Services\Conversations\CustomChannels\ChannelAccountsService::updateStagingToken()
  *
- * @phpstan-import-type PublicDeliveryIdentifierShape from \HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier
+ * @phpstan-import-type PublicDeliveryIdentifierShape from \HubSpotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier
  *
  * @phpstan-type ChannelAccountUpdateStagingTokenParamsShape = array{
  *   channelID: int,

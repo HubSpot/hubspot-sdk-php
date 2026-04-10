@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties;
+namespace HubSpotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Properties\PropertyUpdateParams\FieldType;
-use HubspotSDK\Crm\Properties\PropertyUpdateParams\Type;
-use HubspotSDK\OptionInput;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Properties\PropertyUpdateParams\FieldType;
+use HubSpotSDK\Crm\Properties\PropertyUpdateParams\Type;
+use HubSpotSDK\OptionInput;
 
 /**
  * Perform a partial update of a property identified by { propertyName }. Provided fields will be overwritten.
  *
- * @see HubspotSDK\Services\Crm\PropertiesService::update()
+ * @see HubSpotSDK\Services\Crm\PropertiesService::update()
  *
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  *
  * @phpstan-type PropertyUpdateParamsShape = array{
  *   objectType: string,

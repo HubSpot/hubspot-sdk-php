@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailCreateParams;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailGetParams;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailListParams;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailSearchParams;
-use HubspotSDK\Crm\Objects\PostalMail\PostalMailUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\PostalMail\PostalMailCreateParams;
+use HubSpotSDK\Crm\Objects\PostalMail\PostalMailGetParams;
+use HubSpotSDK\Crm\Objects\PostalMail\PostalMailListParams;
+use HubSpotSDK\Crm\Objects\PostalMail\PostalMailSearchParams;
+use HubSpotSDK\Crm\Objects\PostalMail\PostalMailUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface PostalMailRawContract
 {

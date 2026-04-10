@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\RangedNumberPropertyOperation;
+namespace HubSpotSDK\Events\Definitions\RangedNumberPropertyOperation;
 
 enum Operator: string
 {

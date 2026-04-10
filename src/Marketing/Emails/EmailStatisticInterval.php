@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type EmailStatisticsDataShape from \HubspotSDK\Marketing\Emails\EmailStatisticsData
- * @phpstan-import-type IntervalShape from \HubspotSDK\Marketing\Emails\Interval
+ * @phpstan-import-type EmailStatisticsDataShape from \HubSpotSDK\Marketing\Emails\EmailStatisticsData
+ * @phpstan-import-type IntervalShape from \HubSpotSDK\Marketing\Emails\Interval
  *
  * @phpstan-type EmailStatisticIntervalShape = array{
  *   aggregations: EmailStatisticsData|EmailStatisticsDataShape,

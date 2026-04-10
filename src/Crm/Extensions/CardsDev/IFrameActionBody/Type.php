@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\IFrameActionBody;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\IFrameActionBody;
 
 /**
  * The type of status.

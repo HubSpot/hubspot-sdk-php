@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Cms\MediaBridge;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\MediaBridge\BatchResponseProperty;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\MediaBridge\BatchResponseProperty;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

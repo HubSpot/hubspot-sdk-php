@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\FormatSearchablePhoneNumber;
+namespace HubSpotSDK\Cms\MediaBridge\FormatSearchablePhoneNumber;
 
 enum Operator: string
 {

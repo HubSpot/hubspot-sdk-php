@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsPublicStatus;
-use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsPublicWideStatus;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceGenerateLinksParams;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceGenerateLinksParams\Channel;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceGetStatusesParams;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceGetUnsubscribeAllStatusParams;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\LegalBasis;
-use HubspotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\StatusState;
-use HubspotSDK\CommunicationPreferences\LinkGenerationResponse;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\CommunicationPreferencesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsPublicStatus;
+use HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsPublicWideStatus;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGenerateLinksParams;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGenerateLinksParams\Channel;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetStatusesParams;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetUnsubscribeAllStatusParams;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\LegalBasis;
+use HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\StatusState;
+use HubSpotSDK\CommunicationPreferences\LinkGenerationResponse;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\CommunicationPreferencesRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CommunicationPreferencesRawService implements CommunicationPreferencesRawContract
 {

@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Pages;
+namespace HubSpotSDK\Services\Cms\Pages;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\Pages\PageData;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCloneParams;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\AbStatus;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\ContentTypeCategory;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\CurrentState;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\Language;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageDeleteParams;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageGetParams;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageListParams;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageScheduleParams;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageSetNewLangPrimaryParams;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams;
-use HubspotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Pages\WebsitePagesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCloneParams;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\AbStatus;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\CurrentState;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\Language;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageDeleteParams;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageGetParams;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageListParams;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageScheduleParams;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageSetNewLangPrimaryParams;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams;
+use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Pages\WebsitePagesRawContract;
 
 /**
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class WebsitePagesRawService implements WebsitePagesRawContract
 {

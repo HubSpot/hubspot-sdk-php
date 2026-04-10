@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicRelativeRangedTimestampRefineBy;
+namespace HubSpotSDK\Crm\Lists\PublicRelativeRangedTimestampRefineBy;
 
 /**
  * Indicates the type of refinement (RELATIVE_RANGED).

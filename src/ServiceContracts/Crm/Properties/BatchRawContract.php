@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Properties;
+namespace HubSpotSDK\ServiceContracts\Crm\Properties;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Properties\Batch\BatchCreateParams;
-use HubspotSDK\Crm\Properties\Batch\BatchDeleteParams;
-use HubspotSDK\Crm\Properties\Batch\BatchGetParams;
-use HubspotSDK\Crm\Properties\BatchResponseProperty;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Properties\Batch\BatchCreateParams;
+use HubSpotSDK\Crm\Properties\Batch\BatchDeleteParams;
+use HubSpotSDK\Crm\Properties\Batch\BatchGetParams;
+use HubSpotSDK\Crm\Properties\BatchResponseProperty;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

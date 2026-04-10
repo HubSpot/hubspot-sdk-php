@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Pages;
+namespace HubSpotSDK\ServiceContracts\Cms\Pages;
 
-use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
-use HubspotSDK\Cms\Pages\ContentFolder;
-use HubspotSDK\Cms\Pages\ContentFolderVersion;
-use HubspotSDK\Cms\Pages\Folders\FolderBatchGetParams;
-use HubspotSDK\Cms\Pages\Folders\FolderCreateParams;
-use HubspotSDK\Cms\Pages\Folders\FolderDeleteParams;
-use HubspotSDK\Cms\Pages\Folders\FolderGetParams;
-use HubspotSDK\Cms\Pages\Folders\FolderGetRevisionParams;
-use HubspotSDK\Cms\Pages\Folders\FolderListParams;
-use HubspotSDK\Cms\Pages\Folders\FolderListRevisionsParams;
-use HubspotSDK\Cms\Pages\Folders\FolderRestoreRevisionParams;
-use HubspotSDK\Cms\Pages\Folders\FolderUpdateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Pages\BatchResponseContentFolder;
+use HubSpotSDK\Cms\Pages\ContentFolder;
+use HubSpotSDK\Cms\Pages\ContentFolderVersion;
+use HubSpotSDK\Cms\Pages\Folders\FolderBatchGetParams;
+use HubSpotSDK\Cms\Pages\Folders\FolderCreateParams;
+use HubSpotSDK\Cms\Pages\Folders\FolderDeleteParams;
+use HubSpotSDK\Cms\Pages\Folders\FolderGetParams;
+use HubSpotSDK\Cms\Pages\Folders\FolderGetRevisionParams;
+use HubSpotSDK\Cms\Pages\Folders\FolderListParams;
+use HubSpotSDK\Cms\Pages\Folders\FolderListRevisionsParams;
+use HubSpotSDK\Cms\Pages\Folders\FolderRestoreRevisionParams;
+use HubSpotSDK\Cms\Pages\Folders\FolderUpdateParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface FoldersRawContract
 {

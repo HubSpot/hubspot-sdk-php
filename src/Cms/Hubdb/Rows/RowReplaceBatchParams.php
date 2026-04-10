@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Rows;
+namespace HubSpotSDK\Cms\Hubdb\Rows;
 
-use HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Replaces multiple rows as a batch in the draft version of the table, with a maximum of 100 rows per call. See the endpoint `PUT /tables/{tableIdOrName}/rows/{rowId}/draft` for details on updating a single row.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\RowsService::replaceBatch()
+ * @see HubSpotSDK\Services\Cms\Hubdb\RowsService::replaceBatch()
  *
- * @phpstan-import-type HubDBTableRowV3BatchUpdateRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest
+ * @phpstan-import-type HubDBTableRowV3BatchUpdateRequestShape from \HubSpotSDK\Cms\Hubdb\HubDBTableRowV3BatchUpdateRequest
  *
  * @phpstan-type RowReplaceBatchParamsShape = array{
  *   inputs: list<HubDBTableRowV3BatchUpdateRequest|HubDBTableRowV3BatchUpdateRequestShape>,

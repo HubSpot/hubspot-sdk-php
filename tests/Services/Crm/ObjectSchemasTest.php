@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Crm;
 
-use HubspotSDK\AssociationDefinition;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchema;
-use HubspotSDK\ObjectTypeDefinition;
+use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchema;
+use HubSpotSDK\ObjectTypeDefinition;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

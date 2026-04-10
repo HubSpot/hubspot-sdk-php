@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicComparativePropertyUpdatedOperation;
+namespace HubSpotSDK\Crm\Lists\PublicComparativePropertyUpdatedOperation;
 
 /**
  * Specifies the type of operation (COMPARATIVE_PROPERTY_UPDATED).

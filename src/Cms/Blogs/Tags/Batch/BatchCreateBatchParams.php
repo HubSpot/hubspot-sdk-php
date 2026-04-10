@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Tags\Batch;
+namespace HubSpotSDK\Cms\Blogs\Tags\Batch;
 
-use HubspotSDK\Cms\Blogs\Tags\Tag;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Tags\Tag;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create the Blog Tag objects detailed in the request body.
  *
- * @see HubspotSDK\Services\Cms\Blogs\Tags\BatchService::createBatch()
+ * @see HubSpotSDK\Services\Cms\Blogs\Tags\BatchService::createBatch()
  *
- * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
+ * @phpstan-import-type TagShape from \HubSpotSDK\Cms\Blogs\Tags\Tag
  *
  * @phpstan-type BatchCreateBatchParamsShape = array{inputs: list<Tag|TagShape>}
  */

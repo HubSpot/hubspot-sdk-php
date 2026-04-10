@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\SiteSearch\IndexedData;
-use HubspotSDK\Cms\SiteSearch\PublicSearchResults;
-use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Language;
-use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Length;
-use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams\Type;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\SiteSearchContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\SiteSearch\IndexedData;
+use HubSpotSDK\Cms\SiteSearch\PublicSearchResults;
+use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams\Language;
+use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams\Length;
+use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams\Type;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\SiteSearchContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class SiteSearchService implements SiteSearchContract
 {

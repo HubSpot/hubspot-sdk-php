@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\ExternalMeetingsUser;
+namespace HubSpotSDK\Scheduler\Meetings\ExternalMeetingsUser;
 
 /**
  * The calendar provider associated with the user. Accepted values are: GOOGLE, OFFICE365, EXCHANGE, UNKNOWN.

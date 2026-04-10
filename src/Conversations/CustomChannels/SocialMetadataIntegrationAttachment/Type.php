@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
+namespace HubSpotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment;
 
 enum Type: string
 {

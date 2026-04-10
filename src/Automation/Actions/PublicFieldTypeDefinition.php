@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions;
+namespace HubSpotSDK\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\PublicFieldTypeDefinition\FieldType;
-use HubspotSDK\Automation\Actions\PublicFieldTypeDefinition\ReferencedObjectType;
-use HubspotSDK\Automation\Actions\PublicFieldTypeDefinition\Type;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Actions\PublicFieldTypeDefinition\FieldType;
+use HubSpotSDK\Automation\Actions\PublicFieldTypeDefinition\ReferencedObjectType;
+use HubSpotSDK\Automation\Actions\PublicFieldTypeDefinition\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicOptionShape from \HubspotSDK\Automation\Actions\PublicOption
+ * @phpstan-import-type PublicOptionShape from \HubSpotSDK\Automation\Actions\PublicOption
  *
  * @phpstan-type PublicFieldTypeDefinitionShape = array{
  *   name: string,

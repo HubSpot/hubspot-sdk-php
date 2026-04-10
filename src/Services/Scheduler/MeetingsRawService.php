@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Scheduler;
+namespace HubSpotSDK\Services\Scheduler;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Scheduler\MeetingsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Scheduler\MeetingsRawContract;
 
 final class MeetingsRawService implements MeetingsRawContract
 {

@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing\Campaigns;
+namespace HubSpotSDK\Services\Marketing\Campaigns;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\Batch\BatchCreateParams;
-use HubspotSDK\Marketing\Campaigns\Batch\BatchDeleteParams;
-use HubspotSDK\Marketing\Campaigns\Batch\BatchGetParams;
-use HubspotSDK\Marketing\Campaigns\Batch\BatchUpdateParams;
-use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaign;
-use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignInput;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\Campaigns\BatchRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Campaigns\Batch\BatchCreateParams;
+use HubSpotSDK\Marketing\Campaigns\Batch\BatchDeleteParams;
+use HubSpotSDK\Marketing\Campaigns\Batch\BatchGetParams;
+use HubSpotSDK\Marketing\Campaigns\Batch\BatchUpdateParams;
+use HubSpotSDK\Marketing\Campaigns\BatchResponsePublicCampaign;
+use HubSpotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignInput;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignReadInput;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\Campaigns\BatchRawContract;
 
 /**
- * @phpstan-import-type PublicCampaignInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignInput
- * @phpstan-import-type PublicCampaignBatchUpdateItemShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem
- * @phpstan-import-type PublicCampaignDeleteInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput
- * @phpstan-import-type PublicCampaignReadInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicCampaignInputShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignInput
+ * @phpstan-import-type PublicCampaignBatchUpdateItemShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem
+ * @phpstan-import-type PublicCampaignDeleteInputShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignDeleteInput
+ * @phpstan-import-type PublicCampaignReadInputShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignReadInput
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
 {

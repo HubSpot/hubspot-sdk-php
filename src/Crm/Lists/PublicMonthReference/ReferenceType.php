@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicMonthReference;
+namespace HubSpotSDK\Crm\Lists\PublicMonthReference;
 
 /**
  * Indicates the type of reference, (MONTH).

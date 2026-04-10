@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\PropertiesValidations\CollectionResponsePublicPropertyValidationRuleMapNoPaging;
-use HubspotSDK\Crm\PropertiesValidations\CollectionResponsePublicPropertyValidationRuleNoPaging;
-use HubspotSDK\Crm\PropertiesValidations\PropertiesValidationGetByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType;
-use HubspotSDK\Crm\PropertiesValidations\PublicPropertyValidationRule;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\PropertiesValidationsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\PropertiesValidations\CollectionResponsePublicPropertyValidationRuleMapNoPaging;
+use HubSpotSDK\Crm\PropertiesValidations\CollectionResponsePublicPropertyValidationRuleNoPaging;
+use HubSpotSDK\Crm\PropertiesValidations\PropertiesValidationGetByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType;
+use HubSpotSDK\Crm\PropertiesValidations\PublicPropertyValidationRule;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\PropertiesValidationsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class PropertiesValidationsService implements PropertiesValidationsContract
 {
@@ -104,7 +104,7 @@ final class PropertiesValidationsService implements PropertiesValidationsContrac
      *
      * Update a specific validation rule for a property identified by its name and rule type.
      *
-     * @param \HubspotSDK\Crm\PropertiesValidations\PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType|value-of<\HubspotSDK\Crm\PropertiesValidations\PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType> $ruleType Path param
+     * @param \HubSpotSDK\Crm\PropertiesValidations\PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType|value-of<\HubSpotSDK\Crm\PropertiesValidations\PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType> $ruleType Path param
      * @param string $objectTypeID Path param
      * @param string $propertyName Path param
      * @param list<string> $ruleArguments body param: A list of arguments that define the constraints for the validation rule
@@ -114,7 +114,7 @@ final class PropertiesValidationsService implements PropertiesValidationsContrac
      * @throws APIException
      */
     public function updateByObjectTypeIDPropertyNameAndRuleType(
-        \HubspotSDK\Crm\PropertiesValidations\PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType|string $ruleType,
+        \HubSpotSDK\Crm\PropertiesValidations\PropertiesValidationUpdateByObjectTypeIDPropertyNameAndRuleTypeParams\RuleType|string $ruleType,
         string $objectTypeID,
         string $propertyName,
         array $ruleArguments,

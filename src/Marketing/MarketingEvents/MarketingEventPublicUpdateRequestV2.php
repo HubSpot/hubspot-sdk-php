@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyValue;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\PropertyValue;
 
 /**
- * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue
+ * @phpstan-import-type PropertyValueShape from \HubSpotSDK\PropertyValue
  *
  * @phpstan-type MarketingEventPublicUpdateRequestV2Shape = array{
  *   customProperties: list<PropertyValue|PropertyValueShape>,

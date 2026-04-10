@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\PublicWideStatus;
+namespace HubSpotSDK\CommunicationPreferences\PublicWideStatus;
 
 /**
  * The type of wide status, which can be 'PORTAL_WIDE' or 'BUSINESS_UNIT_WIDE'.

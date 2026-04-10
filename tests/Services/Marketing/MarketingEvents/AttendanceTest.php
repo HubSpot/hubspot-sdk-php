@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Marketing\MarketingEvents;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseSubscriberEmailResponse;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseSubscriberVidResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseSubscriberEmailResponse;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseSubscriberVidResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

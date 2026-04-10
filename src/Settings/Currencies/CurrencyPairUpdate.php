@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies;
+namespace HubSpotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\CurrencyPairUpdate\FromCurrencyCode;
-use HubspotSDK\Settings\Currencies\CurrencyPairUpdate\ToCurrencyCode;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\CurrencyPairUpdate\FromCurrencyCode;
+use HubSpotSDK\Settings\Currencies\CurrencyPairUpdate\ToCurrencyCode;
 
 /**
  * @phpstan-type CurrencyPairUpdateShape = array{

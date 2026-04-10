@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch;
+namespace HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch;
 
 /**
  * The type of the filter branch (UNIFIED_EVENTS).

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Timeline\Batch;
+namespace HubSpotSDK\Crm\Timeline\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Timeline\AppEventOccurrence;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Timeline\AppEventOccurrence;
 
 /**
- * @see HubspotSDK\Services\Crm\Timeline\BatchService::create()
+ * @see HubSpotSDK\Services\Crm\Timeline\BatchService::create()
  *
- * @phpstan-import-type AppEventOccurrenceShape from \HubspotSDK\Crm\Timeline\AppEventOccurrence
+ * @phpstan-import-type AppEventOccurrenceShape from \HubSpotSDK\Crm\Timeline\AppEventOccurrence
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<AppEventOccurrence|AppEventOccurrenceShape>

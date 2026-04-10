@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\MarketingEvents;
+namespace HubSpotSDK\ServiceContracts\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\SubscriberState\SubscriberStateRecordByEmailParams;
-use HubspotSDK\Marketing\MarketingEvents\SubscriberState\SubscriberStateRecordByIDParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\MarketingEvents\SubscriberState\SubscriberStateRecordByEmailParams;
+use HubSpotSDK\Marketing\MarketingEvents\SubscriberState\SubscriberStateRecordByIDParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface SubscriberStateRawContract
 {

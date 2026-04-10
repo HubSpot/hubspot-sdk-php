@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\BatchResponseExchangeRateWithErrors;
+namespace HubSpotSDK\Settings\Currencies\BatchResponseExchangeRateWithErrors;
 
 /**
  * The current status of the response (e.g. COMPLETED).

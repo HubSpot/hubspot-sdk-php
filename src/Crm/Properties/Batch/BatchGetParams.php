@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\Batch;
+namespace HubSpotSDK\Crm\Properties\Batch;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
-use HubspotSDK\PropertyName;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Properties\Batch\BatchGetParams\DataSensitivity;
+use HubSpotSDK\PropertyName;
 
 /**
  * Read a provided list of properties.
  *
- * @see HubspotSDK\Services\Crm\Properties\BatchService::get()
+ * @see HubSpotSDK\Services\Crm\Properties\BatchService::get()
  *
- * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ * @phpstan-import-type PropertyNameShape from \HubSpotSDK\PropertyName
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   archived: bool,

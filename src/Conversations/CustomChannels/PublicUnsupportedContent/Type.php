@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicUnsupportedContent;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicUnsupportedContent;
 
 enum Type: string
 {

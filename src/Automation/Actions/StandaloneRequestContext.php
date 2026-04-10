@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions;
+namespace HubSpotSDK\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\StandaloneRequestContext\Source;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Actions\StandaloneRequestContext\Source;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ChirpAIContextObjectShape from \HubspotSDK\Automation\Actions\ChirpAIContextObject
+ * @phpstan-import-type ChirpAIContextObjectShape from \HubSpotSDK\Automation\Actions\ChirpAIContextObject
  *
  * @phpstan-type StandaloneRequestContextShape = array{
  *   chirpAIContextObject: ChirpAIContextObject|ChirpAIContextObjectShape,

@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\Objects\Taxes\TaxCreateParams;
-use HubspotSDK\Crm\Objects\Taxes\TaxGetParams;
-use HubspotSDK\Crm\Objects\Taxes\TaxListParams;
-use HubspotSDK\Crm\Objects\Taxes\TaxSearchParams;
-use HubspotSDK\Crm\Objects\Taxes\TaxUpdateParams;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\Objects\Taxes\TaxCreateParams;
+use HubSpotSDK\Crm\Objects\Taxes\TaxGetParams;
+use HubSpotSDK\Crm\Objects\Taxes\TaxListParams;
+use HubSpotSDK\Crm\Objects\Taxes\TaxSearchParams;
+use HubSpotSDK\Crm\Objects\Taxes\TaxUpdateParams;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface TaxesRawContract
 {

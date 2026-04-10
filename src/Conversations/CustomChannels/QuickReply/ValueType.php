@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\QuickReply;
+namespace HubSpotSDK\Conversations\CustomChannels\QuickReply;
 
 enum ValueType: string
 {

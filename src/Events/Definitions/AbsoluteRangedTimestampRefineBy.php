@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\AbsoluteRangedTimestampRefineBy\RangeType;
-use HubspotSDK\Events\Definitions\AbsoluteRangedTimestampRefineBy\Type;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\AbsoluteRangedTimestampRefineBy\RangeType;
+use HubSpotSDK\Events\Definitions\AbsoluteRangedTimestampRefineBy\Type;
 
 /**
  * @phpstan-type AbsoluteRangedTimestampRefineByShape = array{

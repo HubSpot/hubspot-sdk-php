@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\PublicEmail;
+namespace HubSpotSDK\Marketing\Emails\PublicEmail;
 
 /**
  * The email type, this is derived from other properties on the email such as subcategory.

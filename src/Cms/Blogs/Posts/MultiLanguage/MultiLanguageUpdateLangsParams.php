@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\MultiLanguage;
+namespace HubSpotSDK\Cms\Blogs\Posts\MultiLanguage;
 
-use HubspotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageUpdateLangsParams\Language;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageUpdateLangsParams\Language;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Explicitly set new languages for each post in a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
  *
- * @see HubspotSDK\Services\Cms\Blogs\Posts\MultiLanguageService::updateLangs()
+ * @see HubSpotSDK\Services\Cms\Blogs\Posts\MultiLanguageService::updateLangs()
  *
  * @phpstan-type MultiLanguageUpdateLangsParamsShape = array{
  *   languages: array<string,Language|value-of<Language>>, primaryID: string

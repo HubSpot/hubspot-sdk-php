@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties;
+namespace HubSpotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Property;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Property;
 
 /**
- * @phpstan-import-type PropertyShape from \HubspotSDK\Crm\Property
+ * @phpstan-import-type PropertyShape from \HubSpotSDK\Crm\Property
  *
  * @phpstan-type CollectionResponsePropertyNoPagingShape = array{
  *   results: list<Property|PropertyShape>

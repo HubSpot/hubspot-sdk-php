@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Sequences\PublicTaskPatternResponse;
+namespace HubSpotSDK\Automation\Sequences\PublicTaskPatternResponse;
 
 /**
  * The type of task, such as an email or call.

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Auth\OAuth;
+namespace HubSpotSDK\Auth\OAuth;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Returns validity and metadata for access and refresh tokens.
  *
- * @see HubspotSDK\Services\Auth\OAuthService::introspectToken()
+ * @see HubSpotSDK\Services\Auth\OAuthService::introspectToken()
  *
  * @phpstan-type OAuthIntrospectTokenParamsShape = array{
  *   token?: string|null,

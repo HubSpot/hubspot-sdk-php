@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\AddTime\Input;
-use HubspotSDK\Cms\MediaBridge\AddTime\Operator;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\AddTime\Input;
+use HubSpotSDK\Cms\MediaBridge\AddTime\Operator;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type StringToCheckVariants from \HubspotSDK\Cms\MediaBridge\AddTime\StringToCheck
- * @phpstan-import-type StringToCheckShape from \HubspotSDK\Cms\MediaBridge\AddTime\StringToCheck
+ * @phpstan-import-type StringToCheckVariants from \HubSpotSDK\Cms\MediaBridge\AddTime\StringToCheck
+ * @phpstan-import-type StringToCheckShape from \HubSpotSDK\Cms\MediaBridge\AddTime\StringToCheck
  *
  * @phpstan-type AddTimeShape = array{
  *   operator: Operator|value-of<Operator>,

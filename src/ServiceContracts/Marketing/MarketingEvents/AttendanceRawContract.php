@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\MarketingEvents;
+namespace HubSpotSDK\ServiceContracts\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\Attendance\AttendanceCreateByEventIDAndContactIDParams;
-use HubspotSDK\Marketing\MarketingEvents\Attendance\AttendanceCreateByEventIDAndEmailParams;
-use HubspotSDK\Marketing\MarketingEvents\Attendance\AttendanceCreateByExternalEventIDAndContactIDParams;
-use HubspotSDK\Marketing\MarketingEvents\Attendance\AttendanceCreateByExternalEventIDAndEmailParams;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseSubscriberEmailResponse;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseSubscriberVidResponse;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\MarketingEvents\Attendance\AttendanceCreateByEventIDAndContactIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\Attendance\AttendanceCreateByEventIDAndEmailParams;
+use HubSpotSDK\Marketing\MarketingEvents\Attendance\AttendanceCreateByExternalEventIDAndContactIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\Attendance\AttendanceCreateByExternalEventIDAndEmailParams;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseSubscriberEmailResponse;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseSubscriberVidResponse;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface AttendanceRawContract
 {

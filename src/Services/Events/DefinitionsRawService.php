@@ -2,34 +2,34 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Events;
+namespace HubSpotSDK\Services\Events;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
-use HubspotSDK\Events\Definitions\DefinitionCreateParams;
-use HubspotSDK\Events\Definitions\DefinitionCreatePropertyParams;
-use HubspotSDK\Events\Definitions\DefinitionDeletePropertyParams;
-use HubspotSDK\Events\Definitions\DefinitionListParams;
-use HubspotSDK\Events\Definitions\DefinitionSendBatchParams;
-use HubspotSDK\Events\Definitions\DefinitionUpdateParams;
-use HubspotSDK\Events\Definitions\DefinitionUpdatePropertyParams;
-use HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
-use HubspotSDK\Events\Definitions\Property;
-use HubspotSDK\OptionInput;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Events\DefinitionsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest;
+use HubSpotSDK\Events\Definitions\DefinitionCreateParams;
+use HubSpotSDK\Events\Definitions\DefinitionCreatePropertyParams;
+use HubSpotSDK\Events\Definitions\DefinitionDeletePropertyParams;
+use HubSpotSDK\Events\Definitions\DefinitionListParams;
+use HubSpotSDK\Events\Definitions\DefinitionSendBatchParams;
+use HubSpotSDK\Events\Definitions\DefinitionUpdateParams;
+use HubSpotSDK\Events\Definitions\DefinitionUpdatePropertyParams;
+use HubSpotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate;
+use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
+use HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
+use HubSpotSDK\Events\Definitions\Property;
+use HubSpotSDK\OptionInput;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Events\DefinitionsRawContract;
 
 /**
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest
- * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubSpotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest
+ * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  */
 final class DefinitionsRawService implements DefinitionsRawContract
 {

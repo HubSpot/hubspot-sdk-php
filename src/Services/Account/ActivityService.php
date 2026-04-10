@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Account;
+namespace HubSpotSDK\Services\Account;
 
-use HubspotSDK\Account\Activity\HydratedCriticalAction;
-use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
-use HubspotSDK\Account\Activity\PublicLoginAudit;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Account\ActivityContract;
+use HubSpotSDK\Account\Activity\HydratedCriticalAction;
+use HubSpotSDK\Account\Activity\PublicAPIUserActionEvent;
+use HubSpotSDK\Account\Activity\PublicLoginAudit;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Account\ActivityContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class ActivityService implements ActivityContract
 {

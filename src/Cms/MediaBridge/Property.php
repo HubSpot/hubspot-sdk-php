@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\AutomationActionsOption;
-use HubspotSDK\Cms\MediaBridge\Property\DataSensitivity;
-use HubspotSDK\Cms\MediaBridge\Property\DateDisplayHint;
-use HubspotSDK\Cms\MediaBridge\Property\DisplayMode;
-use HubspotSDK\Cms\MediaBridge\Property\NumberDisplayHint;
-use HubspotSDK\Cms\MediaBridge\Property\OptionSortStrategy;
-use HubspotSDK\Cms\MediaBridge\Property\ReferencedObjectType;
-use HubspotSDK\Cms\MediaBridge\Property\SearchTextAnalysisMode;
-use HubspotSDK\Cms\MediaBridge\Property\TextDisplayHint;
-use HubspotSDK\Cms\MediaBridge\Property\Type;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\AutomationActionsOption;
+use HubSpotSDK\Cms\MediaBridge\Property\DataSensitivity;
+use HubSpotSDK\Cms\MediaBridge\Property\DateDisplayHint;
+use HubSpotSDK\Cms\MediaBridge\Property\DisplayMode;
+use HubSpotSDK\Cms\MediaBridge\Property\NumberDisplayHint;
+use HubSpotSDK\Cms\MediaBridge\Property\OptionSortStrategy;
+use HubSpotSDK\Cms\MediaBridge\Property\ReferencedObjectType;
+use HubSpotSDK\Cms\MediaBridge\Property\SearchTextAnalysisMode;
+use HubSpotSDK\Cms\MediaBridge\Property\TextDisplayHint;
+use HubSpotSDK\Cms\MediaBridge\Property\Type;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * A HubSpot property.
  *
- * @phpstan-import-type ObjectTypeIDProtoShape from \HubspotSDK\Cms\MediaBridge\ObjectTypeIDProto
- * @phpstan-import-type AutomationActionsOptionShape from \HubspotSDK\AutomationActionsOption
+ * @phpstan-import-type ObjectTypeIDProtoShape from \HubSpotSDK\Cms\MediaBridge\ObjectTypeIDProto
+ * @phpstan-import-type AutomationActionsOptionShape from \HubSpotSDK\AutomationActionsOption
  *
  * @phpstan-type PropertyShape = array{
  *   allowedObjectTypes: list<ObjectTypeIDProto|ObjectTypeIDProtoShape>,
@@ -49,7 +49,7 @@ use HubspotSDK\Core\Contracts\BaseModel;
  *   groupName: string,
  *   hasUniqueValue: bool,
  *   hidden: bool,
- *   hubspotDefined: bool,
+ *   hubSpotDefined: bool,
  *   isCustomizedDefault: bool,
  *   isMultiValued: bool,
  *   isPartial: bool,
@@ -221,8 +221,8 @@ final class Property implements BaseModel
     /**
      * A boolean value set to true for HubSpot default properties.
      */
-    #[Required]
-    public bool $hubspotDefined;
+    #[Required('hubspotDefined')]
+    public bool $hubSpotDefined;
 
     /**
      * For default properties, whether the property has been customized. Equivalent to the 'isCustomizedDefault' field.
@@ -395,7 +395,7 @@ final class Property implements BaseModel
      *   groupName: ...,
      *   hasUniqueValue: ...,
      *   hidden: ...,
-     *   hubspotDefined: ...,
+     *   hubSpotDefined: ...,
      *   isCustomizedDefault: ...,
      *   isMultiValued: ...,
      *   isPartial: ...,
@@ -449,7 +449,7 @@ final class Property implements BaseModel
      *   ->withGroupName(...)
      *   ->withHasUniqueValue(...)
      *   ->withHidden(...)
-     *   ->withHubspotDefined(...)
+     *   ->withHubSpotDefined(...)
      *   ->withIsCustomizedDefault(...)
      *   ->withIsMultiValued(...)
      *   ->withIsPartial(...)
@@ -522,7 +522,7 @@ final class Property implements BaseModel
         string $groupName,
         bool $hasUniqueValue,
         bool $hidden,
-        bool $hubspotDefined,
+        bool $hubSpotDefined,
         bool $isCustomizedDefault,
         bool $isMultiValued,
         bool $isPartial,
@@ -572,7 +572,7 @@ final class Property implements BaseModel
         $self['groupName'] = $groupName;
         $self['hasUniqueValue'] = $hasUniqueValue;
         $self['hidden'] = $hidden;
-        $self['hubspotDefined'] = $hubspotDefined;
+        $self['hubSpotDefined'] = $hubSpotDefined;
         $self['isCustomizedDefault'] = $isCustomizedDefault;
         $self['isMultiValued'] = $isMultiValued;
         $self['isPartial'] = $isPartial;
@@ -867,10 +867,10 @@ final class Property implements BaseModel
     /**
      * A boolean value set to true for HubSpot default properties.
      */
-    public function withHubspotDefined(bool $hubspotDefined): self
+    public function withHubSpotDefined(bool $hubSpotDefined): self
     {
         $self = clone $this;
-        $self['hubspotDefined'] = $hubspotDefined;
+        $self['hubSpotDefined'] = $hubSpotDefined;
 
         return $self;
     }

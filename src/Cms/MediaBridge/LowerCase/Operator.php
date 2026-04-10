@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\LowerCase;
+namespace HubSpotSDK\Cms\MediaBridge\LowerCase;
 
 enum Operator: string
 {

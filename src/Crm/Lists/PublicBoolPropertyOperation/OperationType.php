@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicBoolPropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicBoolPropertyOperation;
 
 /**
  * Specifies the type of operation (BOOL).

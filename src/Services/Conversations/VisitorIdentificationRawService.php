@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Conversations;
+namespace HubSpotSDK\Services\Conversations;
 
-use HubspotSDK\Client;
-use HubspotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
-use HubspotSDK\Conversations\VisitorIdentification\VisitorIdentificationGenerateTokenParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Conversations\VisitorIdentificationRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
+use HubSpotSDK\Conversations\VisitorIdentification\VisitorIdentificationGenerateTokenParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Conversations\VisitorIdentificationRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class VisitorIdentificationRawService implements VisitorIdentificationRawContract
 {

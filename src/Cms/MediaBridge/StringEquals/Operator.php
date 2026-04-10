@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\StringEquals;
+namespace HubSpotSDK\Cms\MediaBridge\StringEquals;
 
 enum Operator: string
 {

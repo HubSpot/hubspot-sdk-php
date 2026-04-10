@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
+namespace HubSpotSDK\Marketing\Campaigns\PublicBudgetTotals;
 
 /**
  * The currency code used for the budget and spend amounts, following ISO 4217 standards.

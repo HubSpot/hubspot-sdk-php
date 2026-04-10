@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicNumOccurrencesRefineBy;
+namespace HubSpotSDK\Crm\Lists\PublicNumOccurrencesRefineBy;
 
 /**
  * The type of refinement (NUM_OCCURRENCES).

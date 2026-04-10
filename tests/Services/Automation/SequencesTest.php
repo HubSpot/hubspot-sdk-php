@@ -2,13 +2,13 @@
 
 namespace Tests\Services\Automation;
 
-use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
-use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
-use HubspotSDK\Automation\Sequences\PublicSequenceLiteResponse;
-use HubspotSDK\Automation\Sequences\PublicSequenceResponse;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
+use HubSpotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
+use HubSpotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
+use HubSpotSDK\Automation\Sequences\PublicSequenceLiteResponse;
+use HubSpotSDK\Automation\Sequences\PublicSequenceResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

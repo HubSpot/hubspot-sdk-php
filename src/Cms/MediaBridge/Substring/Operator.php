@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Substring;
+namespace HubSpotSDK\Cms\MediaBridge\Substring;
 
 enum Operator: string
 {

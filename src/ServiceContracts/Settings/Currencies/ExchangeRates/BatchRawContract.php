@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Settings\Currencies\ExchangeRates;
+namespace HubSpotSDK\ServiceContracts\Settings\Currencies\ExchangeRates;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate;
-use HubspotSDK\Settings\Currencies\ExchangeRates\Batch\BatchCreateParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\Batch\BatchGetParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\Batch\BatchUpdateParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Settings\Currencies\BatchResponseExchangeRate;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\Batch\BatchCreateParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\Batch\BatchGetParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\Batch\BatchUpdateParams;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

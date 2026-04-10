@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\DivideNumbers;
+namespace HubSpotSDK\Cms\MediaBridge\DivideNumbers;
 
 enum Operator: string
 {

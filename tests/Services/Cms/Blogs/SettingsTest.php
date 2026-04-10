@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Cms\Blogs;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\BlogVersion;
-use HubspotSDK\Cms\Blogs\Settings\VersionBlog;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Settings\Blog;
+use HubSpotSDK\Cms\Blogs\Settings\BlogVersion;
+use HubSpotSDK\Cms\Blogs\Settings\VersionBlog;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

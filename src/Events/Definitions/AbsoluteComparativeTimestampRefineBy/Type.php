@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\AbsoluteComparativeTimestampRefineBy;
+namespace HubSpotSDK\Events\Definitions\AbsoluteComparativeTimestampRefineBy;
 
 enum Type: string
 {

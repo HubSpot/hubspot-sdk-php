@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\Property1\DataSensitivity;
-use HubspotSDK\Cms\MediaBridge\Property1\DateDisplayHint;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyModificationMetadata;
+use HubSpotSDK\Cms\MediaBridge\Property1\DataSensitivity;
+use HubSpotSDK\Cms\MediaBridge\Property1\DateDisplayHint;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\PropertyModificationMetadata;
 
 /**
- * @phpstan-import-type Option1Shape from \HubspotSDK\Cms\MediaBridge\Option1
- * @phpstan-import-type PropertyModificationMetadataShape from \HubspotSDK\PropertyModificationMetadata
+ * @phpstan-import-type Option1Shape from \HubSpotSDK\Cms\MediaBridge\Option1
+ * @phpstan-import-type PropertyModificationMetadataShape from \HubSpotSDK\PropertyModificationMetadata
  *
  * @phpstan-type Property1Shape = array{
  *   description: string,
@@ -37,7 +37,7 @@ use HubspotSDK\PropertyModificationMetadata;
  *   formField?: bool|null,
  *   hasUniqueValue?: bool|null,
  *   hidden?: bool|null,
- *   hubspotDefined?: bool|null,
+ *   hubSpotDefined?: bool|null,
  *   modificationMetadata?: null|PropertyModificationMetadata|PropertyModificationMetadataShape,
  *   referencedObjectType?: string|null,
  *   sensitiveDataCategories?: list<string>|null,
@@ -114,8 +114,8 @@ final class Property1 implements BaseModel
     #[Optional]
     public ?bool $hidden;
 
-    #[Optional]
-    public ?bool $hubspotDefined;
+    #[Optional('hubspotDefined')]
+    public ?bool $hubSpotDefined;
 
     #[Optional]
     public ?PropertyModificationMetadata $modificationMetadata;
@@ -202,7 +202,7 @@ final class Property1 implements BaseModel
         ?bool $formField = null,
         ?bool $hasUniqueValue = null,
         ?bool $hidden = null,
-        ?bool $hubspotDefined = null,
+        ?bool $hubSpotDefined = null,
         PropertyModificationMetadata|array|null $modificationMetadata = null,
         ?string $referencedObjectType = null,
         ?array $sensitiveDataCategories = null,
@@ -233,7 +233,7 @@ final class Property1 implements BaseModel
         null !== $formField && $self['formField'] = $formField;
         null !== $hasUniqueValue && $self['hasUniqueValue'] = $hasUniqueValue;
         null !== $hidden && $self['hidden'] = $hidden;
-        null !== $hubspotDefined && $self['hubspotDefined'] = $hubspotDefined;
+        null !== $hubSpotDefined && $self['hubSpotDefined'] = $hubSpotDefined;
         null !== $modificationMetadata && $self['modificationMetadata'] = $modificationMetadata;
         null !== $referencedObjectType && $self['referencedObjectType'] = $referencedObjectType;
         null !== $sensitiveDataCategories && $self['sensitiveDataCategories'] = $sensitiveDataCategories;
@@ -415,10 +415,10 @@ final class Property1 implements BaseModel
         return $self;
     }
 
-    public function withHubspotDefined(bool $hubspotDefined): self
+    public function withHubSpotDefined(bool $hubSpotDefined): self
     {
         $self = clone $this;
-        $self['hubspotDefined'] = $hubspotDefined;
+        $self['hubSpotDefined'] = $hubSpotDefined;
 
         return $self;
     }

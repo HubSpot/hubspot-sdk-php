@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicWebinarFilter;
+namespace HubSpotSDK\Crm\Lists\PublicWebinarFilter;
 
 /**
  * Indicates the type of filter, (WEBINAR).

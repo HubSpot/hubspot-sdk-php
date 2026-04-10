@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling;
+namespace HubSpotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Calling\ContactCallerID\CallerIDType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Extensions\Calling\ContactCallerID\CallerIDType;
 
 /**
- * @phpstan-import-type ObjectCoordinatesShape from \HubspotSDK\Crm\Extensions\Calling\ObjectCoordinates
+ * @phpstan-import-type ObjectCoordinatesShape from \HubSpotSDK\Crm\Extensions\Calling\ObjectCoordinates
  *
  * @phpstan-type ContactCallerIDShape = array{
  *   callerIDType: CallerIDType|value-of<CallerIDType>,

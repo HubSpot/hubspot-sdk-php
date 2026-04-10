@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Revisions;
+namespace HubSpotSDK\Automation\Actions\Revisions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a specific revision of a definition by revision ID.
  *
- * @see HubspotSDK\Services\Automation\Actions\RevisionsService::get()
+ * @see HubSpotSDK\Services\Automation\Actions\RevisionsService::get()
  *
  * @phpstan-type RevisionGetParamsShape = array{appID: int, definitionID: string}
  */

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyValue;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\PropertyValue;
 
 /**
  * Updates the details of an existing Marketing Event identified by its objectId, if it exists.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEventsService::update()
+ * @see HubSpotSDK\Services\Marketing\MarketingEventsService::update()
  *
- * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue
+ * @phpstan-import-type PropertyValueShape from \HubSpotSDK\PropertyValue
  *
  * @phpstan-type MarketingEventUpdateParamsShape = array{
  *   customProperties: list<PropertyValue|PropertyValueShape>,

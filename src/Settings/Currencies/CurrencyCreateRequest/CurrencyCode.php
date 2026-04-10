@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\CurrencyCreateRequest;
+namespace HubSpotSDK\Settings\Currencies\CurrencyCreateRequest;
 
 /**
  * The currency code being added to the HubSpot portal for use with central exchange rates.

@@ -1,22 +1,22 @@
 <?php
 
-namespace HubspotSDK;
+namespace HubSpotSDK;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkPage;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Contracts\BasePage;
-use HubspotSDK\Core\Conversion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Core\Conversion\ListOf;
-use HubspotSDK\Page\Paging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkPage;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Contracts\BasePage;
+use HubSpotSDK\Core\Conversion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Conversion\ListOf;
+use HubSpotSDK\Page\Paging;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * @phpstan-type PageShape = array{
- *   results?: list<mixed>|null, paging?: \HubspotSDK\Page\Paging|null
+ *   results?: list<mixed>|null, paging?: \HubSpotSDK\Page\Paging|null
  * }
  *
  * @template TItem

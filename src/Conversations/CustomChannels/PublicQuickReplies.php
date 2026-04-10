@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CustomChannels\PublicQuickReplies\Type;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\PublicQuickReplies\Type;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type QuickReplyShape from \HubspotSDK\Conversations\CustomChannels\QuickReply
+ * @phpstan-import-type QuickReplyShape from \HubSpotSDK\Conversations\CustomChannels\QuickReply
  *
  * @phpstan-type PublicQuickRepliesShape = array{
  *   allowMultiSelect: bool,

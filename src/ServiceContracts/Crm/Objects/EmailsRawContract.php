@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\Emails\EmailCreateParams;
-use HubspotSDK\Crm\Objects\Emails\EmailGetParams;
-use HubspotSDK\Crm\Objects\Emails\EmailListParams;
-use HubspotSDK\Crm\Objects\Emails\EmailSearchParams;
-use HubspotSDK\Crm\Objects\Emails\EmailUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\Emails\EmailCreateParams;
+use HubSpotSDK\Crm\Objects\Emails\EmailGetParams;
+use HubSpotSDK\Crm\Objects\Emails\EmailListParams;
+use HubSpotSDK\Crm\Objects\Emails\EmailSearchParams;
+use HubSpotSDK\Crm\Objects\Emails\EmailUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface EmailsRawContract
 {

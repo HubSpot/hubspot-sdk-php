@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicAbsoluteComparativeTimestampRefineBy;
+namespace HubSpotSDK\Crm\Lists\PublicAbsoluteComparativeTimestampRefineBy;
 
 /**
  * type of refine by criteria (ABSOLUTE_COMPARATIVE).

@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Batch;
+namespace HubSpotSDK\Marketing\Campaigns\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem;
 
 /**
  * This endpoint updates a batch of campaigns based on the provided input data.
  * The maximum number of items in a batch request is 50.
  * If an empty string ("") is passed for any property in the Batch Update, it will reset that property's value.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::update()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\BatchService::update()
  *
- * @phpstan-import-type PublicCampaignBatchUpdateItemShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem
+ * @phpstan-import-type PublicCampaignBatchUpdateItemShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignBatchUpdateItem
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<PublicCampaignBatchUpdateItem|PublicCampaignBatchUpdateItemShape>

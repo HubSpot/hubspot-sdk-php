@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ContactAddressShape from \HubspotSDK\Conversations\CustomChannels\ContactAddress
- * @phpstan-import-type ContactEmailShape from \HubspotSDK\Conversations\CustomChannels\ContactEmail
- * @phpstan-import-type ContactPhoneShape from \HubspotSDK\Conversations\CustomChannels\ContactPhone
- * @phpstan-import-type ContactURLShape from \HubspotSDK\Conversations\CustomChannels\ContactURL
- * @phpstan-import-type ContactNameShape from \HubspotSDK\Conversations\CustomChannels\ContactName
- * @phpstan-import-type ContactOrgShape from \HubspotSDK\Conversations\CustomChannels\ContactOrg
+ * @phpstan-import-type ContactAddressShape from \HubSpotSDK\Conversations\CustomChannels\ContactAddress
+ * @phpstan-import-type ContactEmailShape from \HubSpotSDK\Conversations\CustomChannels\ContactEmail
+ * @phpstan-import-type ContactPhoneShape from \HubSpotSDK\Conversations\CustomChannels\ContactPhone
+ * @phpstan-import-type ContactURLShape from \HubSpotSDK\Conversations\CustomChannels\ContactURL
+ * @phpstan-import-type ContactNameShape from \HubSpotSDK\Conversations\CustomChannels\ContactName
+ * @phpstan-import-type ContactOrgShape from \HubSpotSDK\Conversations\CustomChannels\ContactOrg
  *
  * @phpstan-type ContactProfileShape = array{
  *   addresses: list<ContactAddress|ContactAddressShape>,

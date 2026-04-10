@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Properties;
+namespace HubSpotSDK\Services\Crm\Properties;
 
-use HubspotSDK\Client;
-use HubspotSDK\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\PropertyGroup;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Properties\GroupsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\PropertyGroup;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Properties\GroupsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class GroupsService implements GroupsContract
 {

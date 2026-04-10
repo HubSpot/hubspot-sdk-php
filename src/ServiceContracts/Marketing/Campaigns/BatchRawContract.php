@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\Campaigns;
+namespace HubSpotSDK\ServiceContracts\Marketing\Campaigns;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\Batch\BatchCreateParams;
-use HubspotSDK\Marketing\Campaigns\Batch\BatchDeleteParams;
-use HubspotSDK\Marketing\Campaigns\Batch\BatchGetParams;
-use HubspotSDK\Marketing\Campaigns\Batch\BatchUpdateParams;
-use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaign;
-use HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Campaigns\Batch\BatchCreateParams;
+use HubSpotSDK\Marketing\Campaigns\Batch\BatchDeleteParams;
+use HubSpotSDK\Marketing\Campaigns\Batch\BatchGetParams;
+use HubSpotSDK\Marketing\Campaigns\Batch\BatchUpdateParams;
+use HubSpotSDK\Marketing\Campaigns\BatchResponsePublicCampaign;
+use HubSpotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

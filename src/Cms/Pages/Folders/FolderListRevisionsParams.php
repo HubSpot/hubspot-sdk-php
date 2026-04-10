@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\Folders;
+namespace HubSpotSDK\Cms\Pages\Folders;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieves all the previous versions of a landing page folder.
  *
- * @see HubspotSDK\Services\Cms\Pages\FoldersService::listRevisions()
+ * @see HubSpotSDK\Services\Cms\Pages\FoldersService::listRevisions()
  *
  * @phpstan-type FolderListRevisionsParamsShape = array{
  *   after?: string|null, before?: string|null, limit?: int|null

@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Crm\Extensions\Calling;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

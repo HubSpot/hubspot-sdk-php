@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Now;
+namespace HubSpotSDK\Cms\MediaBridge\Now;
 
 enum Operator: string
 {

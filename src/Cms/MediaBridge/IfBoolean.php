@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\IfBoolean\Input;
-use HubspotSDK\Cms\MediaBridge\IfBoolean\Operator;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\IfBoolean\Input;
+use HubSpotSDK\Cms\MediaBridge\IfBoolean\Operator;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type IfExpressionVariants from \HubspotSDK\Cms\MediaBridge\IfBoolean\IfExpression
- * @phpstan-import-type ElseExpressionVariants from \HubspotSDK\Cms\MediaBridge\IfBoolean\ElseExpression
- * @phpstan-import-type IfExpressionShape from \HubspotSDK\Cms\MediaBridge\IfBoolean\IfExpression
- * @phpstan-import-type ElseExpressionShape from \HubspotSDK\Cms\MediaBridge\IfBoolean\ElseExpression
+ * @phpstan-import-type IfExpressionVariants from \HubSpotSDK\Cms\MediaBridge\IfBoolean\IfExpression
+ * @phpstan-import-type ElseExpressionVariants from \HubSpotSDK\Cms\MediaBridge\IfBoolean\ElseExpression
+ * @phpstan-import-type IfExpressionShape from \HubSpotSDK\Cms\MediaBridge\IfBoolean\IfExpression
+ * @phpstan-import-type ElseExpressionShape from \HubSpotSDK\Cms\MediaBridge\IfBoolean\ElseExpression
  *
  * @phpstan-type IfBooleanShape = array{
  *   enclosedInParentheses: bool,

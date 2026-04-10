@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\AssociationsSchema;
+namespace HubSpotSDK\ServiceContracts\Crm\AssociationsSchema;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionUserConfiguration;
-use HubspotSDK\Crm\AssociationsSchema\CollectionResponseAssociationSpecWithLabelNoPaging;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelBatchCreateParams;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelCreateLabelParams;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelDeleteLabelParams;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelListLabelsParams;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelUpdateLabelParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionUserConfiguration;
+use HubSpotSDK\Crm\AssociationsSchema\CollectionResponseAssociationSpecWithLabelNoPaging;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelBatchCreateParams;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelCreateLabelParams;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelDeleteLabelParams;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelListLabelsParams;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelUpdateLabelParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface LabelsRawContract
 {

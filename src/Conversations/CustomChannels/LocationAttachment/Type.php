@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\LocationAttachment;
+namespace HubSpotSDK\Conversations\CustomChannels\LocationAttachment;
 
 enum Type: string
 {

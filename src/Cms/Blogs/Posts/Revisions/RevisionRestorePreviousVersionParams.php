@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\Revisions;
+namespace HubSpotSDK\Cms\Blogs\Posts\Revisions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Restores a blog post to one of its previous versions.
  *
- * @see HubspotSDK\Services\Cms\Blogs\Posts\RevisionsService::restorePreviousVersion()
+ * @see HubSpotSDK\Services\Cms\Blogs\Posts\RevisionsService::restorePreviousVersion()
  *
  * @phpstan-type RevisionRestorePreviousVersionParamsShape = array{
  *   objectID: string

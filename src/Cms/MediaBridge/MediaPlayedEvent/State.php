@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
+namespace HubSpotSDK\Cms\MediaBridge\MediaPlayedEvent;
 
 enum State: string
 {

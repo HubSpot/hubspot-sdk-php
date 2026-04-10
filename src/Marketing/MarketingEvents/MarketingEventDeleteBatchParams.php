@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Deletes multiple Marketing Events from the portal based on their objectId, if they exist.
@@ -16,9 +16,9 @@ use HubspotSDK\Core\Contracts\BaseModel;
  * 204: Returned if all specified Marketing Events were successfully deleted.
  * 207: Returned if some objectIds did not correspond to any existing Marketing Events.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEventsService::deleteBatch()
+ * @see HubSpotSDK\Services\Marketing\MarketingEventsService::deleteBatch()
  *
- * @phpstan-import-type MarketingEventPublicObjectIDDeleteRequestShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest
+ * @phpstan-import-type MarketingEventPublicObjectIDDeleteRequestShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicObjectIDDeleteRequest
  *
  * @phpstan-type MarketingEventDeleteBatchParamsShape = array{
  *   inputs: list<MarketingEventPublicObjectIDDeleteRequest|MarketingEventPublicObjectIDDeleteRequestShape>,

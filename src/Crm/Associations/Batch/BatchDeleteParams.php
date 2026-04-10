@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations\Batch;
+namespace HubSpotSDK\Crm\Associations\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Associations\PublicAssociationMultiArchive;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive;
 
 /**
  * Batch delete associations for objects.
  *
- * @see HubspotSDK\Services\Crm\Associations\BatchService::delete()
+ * @see HubSpotSDK\Services\Crm\Associations\BatchService::delete()
  *
- * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubspotSDK\Crm\Associations\PublicAssociationMultiArchive
+ * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   fromObjectType: string,

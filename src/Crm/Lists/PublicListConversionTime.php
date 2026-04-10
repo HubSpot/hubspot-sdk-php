@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-import-type PublicListConversionDateShape from \HubspotSDK\Crm\Lists\PublicListConversionDate
- * @phpstan-import-type PublicListConversionInactivityShape from \HubspotSDK\Crm\Lists\PublicListConversionInactivity
+ * @phpstan-import-type PublicListConversionDateShape from \HubSpotSDK\Crm\Lists\PublicListConversionDate
+ * @phpstan-import-type PublicListConversionInactivityShape from \HubSpotSDK\Crm\Lists\PublicListConversionInactivity
  *
  * @phpstan-type PublicListConversionTimeVariants = PublicListConversionDate|PublicListConversionInactivity
  * @phpstan-type PublicListConversionTimeShape = PublicListConversionTimeVariants|PublicListConversionDateShape|PublicListConversionInactivityShape

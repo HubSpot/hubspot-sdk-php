@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Account;
 
-use HubspotSDK\Account\Activity\HydratedCriticalAction;
-use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
-use HubspotSDK\Account\Activity\PublicLoginAudit;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
+use HubSpotSDK\Account\Activity\HydratedCriticalAction;
+use HubSpotSDK\Account\Activity\PublicAPIUserActionEvent;
+use HubSpotSDK\Account\Activity\PublicLoginAudit;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

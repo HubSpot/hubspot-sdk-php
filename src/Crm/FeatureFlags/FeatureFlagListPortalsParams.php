@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags;
+namespace HubSpotSDK\Crm\FeatureFlags;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a list of HubSpot accounts with an account-level flag setting for the specified app. No request body is included.
  *
- * @see HubspotSDK\Services\Crm\FeatureFlagsService::listPortals()
+ * @see HubSpotSDK\Services\Crm\FeatureFlagsService::listPortals()
  *
  * @phpstan-type FeatureFlagListPortalsParamsShape = array{
  *   appID: int, limit?: int|null, startPortalID?: int|null

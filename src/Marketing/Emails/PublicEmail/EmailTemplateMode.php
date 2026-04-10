@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\PublicEmail;
+namespace HubSpotSDK\Marketing\Emails\PublicEmail;
 
 enum EmailTemplateMode: string
 {

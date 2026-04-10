@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\Batch\BatchGetParams;
+namespace HubSpotSDK\Crm\Properties\Batch\BatchGetParams;
 
 enum DataSensitivity: string
 {

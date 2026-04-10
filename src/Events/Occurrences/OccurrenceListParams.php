@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Occurrences;
+namespace HubSpotSDK\Events\Occurrences;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Occurrences\OccurrenceListParams\ObjectProperty;
-use HubspotSDK\Events\Occurrences\OccurrenceListParams\Property;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Occurrences\OccurrenceListParams\ObjectProperty;
+use HubSpotSDK\Events\Occurrences\OccurrenceListParams\Property;
 
 /**
  * Retrieve event occurrences for the specified time frame. This endpoint allows filtering by various parameters such as object type, event type, and occurrence time. It supports pagination and sorting of results.
  *
- * @see HubspotSDK\Services\Events\OccurrencesService::list()
+ * @see HubSpotSDK\Services\Events\OccurrencesService::list()
  *
- * @phpstan-import-type ObjectPropertyShape from \HubspotSDK\Events\Occurrences\OccurrenceListParams\ObjectProperty
- * @phpstan-import-type PropertyShape from \HubspotSDK\Events\Occurrences\OccurrenceListParams\Property
+ * @phpstan-import-type ObjectPropertyShape from \HubSpotSDK\Events\Occurrences\OccurrenceListParams\ObjectProperty
+ * @phpstan-import-type PropertyShape from \HubSpotSDK\Events\Occurrences\OccurrenceListParams\Property
  *
  * @phpstan-type OccurrenceListParamsShape = array{
  *   id?: list<string>|null,

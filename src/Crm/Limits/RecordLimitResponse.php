@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Limits;
+namespace HubSpotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type CustomObjectRecordLimitResponseShape from \HubspotSDK\Crm\Limits\CustomObjectRecordLimitResponse
- * @phpstan-import-type LimitAndUsageForObjectTypeShape from \HubspotSDK\Crm\Limits\LimitAndUsageForObjectType
+ * @phpstan-import-type CustomObjectRecordLimitResponseShape from \HubSpotSDK\Crm\Limits\CustomObjectRecordLimitResponse
+ * @phpstan-import-type LimitAndUsageForObjectTypeShape from \HubSpotSDK\Crm\Limits\LimitAndUsageForObjectType
  *
  * @phpstan-type RecordLimitResponseShape = array{
  *   customObjectTypes: CustomObjectRecordLimitResponse|CustomObjectRecordLimitResponseShape,
- *   hubspotDefinedObjectTypes: list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape>,
+ *   hubSpotDefinedObjectTypes: list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape>,
  * }
  */
 final class RecordLimitResponse implements BaseModel
@@ -25,9 +25,12 @@ final class RecordLimitResponse implements BaseModel
     #[Required]
     public CustomObjectRecordLimitResponse $customObjectTypes;
 
-    /** @var list<LimitAndUsageForObjectType> $hubspotDefinedObjectTypes */
-    #[Required(list: LimitAndUsageForObjectType::class)]
-    public array $hubspotDefinedObjectTypes;
+    /** @var list<LimitAndUsageForObjectType> $hubSpotDefinedObjectTypes */
+    #[Required(
+        'hubspotDefinedObjectTypes',
+        list: LimitAndUsageForObjectType::class
+    )]
+    public array $hubSpotDefinedObjectTypes;
 
     /**
      * `new RecordLimitResponse()` is missing required properties by the API.
@@ -35,7 +38,7 @@ final class RecordLimitResponse implements BaseModel
      * To enforce required parameters use
      * ```
      * RecordLimitResponse::with(
-     *   customObjectTypes: ..., hubspotDefinedObjectTypes: ...
+     *   customObjectTypes: ..., hubSpotDefinedObjectTypes: ...
      * )
      * ```
      *
@@ -44,7 +47,7 @@ final class RecordLimitResponse implements BaseModel
      * ```
      * (new RecordLimitResponse)
      *   ->withCustomObjectTypes(...)
-     *   ->withHubspotDefinedObjectTypes(...)
+     *   ->withHubSpotDefinedObjectTypes(...)
      * ```
      */
     public function __construct()
@@ -58,16 +61,16 @@ final class RecordLimitResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param CustomObjectRecordLimitResponse|CustomObjectRecordLimitResponseShape $customObjectTypes
-     * @param list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape> $hubspotDefinedObjectTypes
+     * @param list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape> $hubSpotDefinedObjectTypes
      */
     public static function with(
         CustomObjectRecordLimitResponse|array $customObjectTypes,
-        array $hubspotDefinedObjectTypes,
+        array $hubSpotDefinedObjectTypes,
     ): self {
         $self = new self;
 
         $self['customObjectTypes'] = $customObjectTypes;
-        $self['hubspotDefinedObjectTypes'] = $hubspotDefinedObjectTypes;
+        $self['hubSpotDefinedObjectTypes'] = $hubSpotDefinedObjectTypes;
 
         return $self;
     }
@@ -85,13 +88,13 @@ final class RecordLimitResponse implements BaseModel
     }
 
     /**
-     * @param list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape> $hubspotDefinedObjectTypes
+     * @param list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape> $hubSpotDefinedObjectTypes
      */
-    public function withHubspotDefinedObjectTypes(
-        array $hubspotDefinedObjectTypes
+    public function withHubSpotDefinedObjectTypes(
+        array $hubSpotDefinedObjectTypes
     ): self {
         $self = clone $this;
-        $self['hubspotDefinedObjectTypes'] = $hubspotDefinedObjectTypes;
+        $self['hubSpotDefinedObjectTypes'] = $hubSpotDefinedObjectTypes;
 
         return $self;
     }

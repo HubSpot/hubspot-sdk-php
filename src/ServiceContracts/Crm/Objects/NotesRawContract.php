@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\Notes\NoteCreateParams;
-use HubspotSDK\Crm\Objects\Notes\NoteGetParams;
-use HubspotSDK\Crm\Objects\Notes\NoteListParams;
-use HubspotSDK\Crm\Objects\Notes\NoteSearchParams;
-use HubspotSDK\Crm\Objects\Notes\NoteUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\Notes\NoteCreateParams;
+use HubSpotSDK\Crm\Objects\Notes\NoteGetParams;
+use HubSpotSDK\Crm\Objects\Notes\NoteListParams;
+use HubSpotSDK\Crm\Objects\Notes\NoteSearchParams;
+use HubSpotSDK\Crm\Objects\Notes\NoteUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface NotesRawContract
 {

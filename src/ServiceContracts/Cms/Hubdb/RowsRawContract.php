@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Hubdb;
+namespace HubSpotSDK\ServiceContracts\Cms\Hubdb;
 
-use HubspotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\HubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
-use HubspotSDK\Cms\Hubdb\Rows\RowCloneBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowCloneDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowCreateBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowCreateParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowDeleteDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowGetBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowGetDraftBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowGetDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowGetParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowListParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowPurgeBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowReplaceBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowUpdateBatchParams;
-use HubspotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
-use HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Hubdb\BatchResponseHubDBTableRowV3;
+use HubSpotSDK\Cms\Hubdb\HubDBTableRowV3;
+use HubSpotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3;
+use HubSpotSDK\Cms\Hubdb\Rows\RowCloneBatchParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowCloneDraftParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowCreateBatchParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowCreateParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowDeleteDraftParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowGetBatchParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowGetDraftBatchParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowGetDraftParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowGetParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowListParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowPurgeBatchParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowReplaceBatchParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowReplaceDraftParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowUpdateBatchParams;
+use HubSpotSDK\Cms\Hubdb\Rows\RowUpdateDraftParams;
+use HubSpotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface RowsRawContract
 {

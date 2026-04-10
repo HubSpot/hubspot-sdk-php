@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Scheduler\Meetings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
-use HubspotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Scheduler\Meetings\ExternalCalenderMeetingEventResponse;
+use HubSpotSDK\Scheduler\Meetings\ExternalMeetingBookingResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -63,7 +63,7 @@ final class AdvancedTest extends TestCase
                 ),
                 'hsMeetingTitle' => 'hs_meeting_title',
                 'hsTimestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'hubspotOwnerID' => 'hubspot_owner_id',
+                'hubSpotOwnerID' => 'hubspot_owner_id',
             ],
             timezone: 'timezone',
         );
@@ -109,7 +109,7 @@ final class AdvancedTest extends TestCase
                 ),
                 'hsMeetingTitle' => 'hs_meeting_title',
                 'hsTimestamp' => new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
-                'hubspotOwnerID' => 'hubspot_owner_id',
+                'hubSpotOwnerID' => 'hubspot_owner_id',
                 'hsActivityType' => 'hs_activity_type',
                 'hsAttachmentIDs' => ['string'],
                 'hsAttendeeOwnerIDs' => ['string'],

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Tags;
+namespace HubSpotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams\Language;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Tags\TagUpdateLangsParams\Language;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Explicitly set new languages for each Blog Tag in a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Blogs\TagsService::updateLangs()
+ * @see HubSpotSDK\Services\Cms\Blogs\TagsService::updateLangs()
  *
  * @phpstan-type TagUpdateLangsParamsShape = array{
  *   languages: array<string,Language|value-of<Language>>, primaryID: string

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Exports\PublicExportResponse;
+namespace HubSpotSDK\Crm\Exports\PublicExportResponse;
 
 /**
  * The current state of the export process.

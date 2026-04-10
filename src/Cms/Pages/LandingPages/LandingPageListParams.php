@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\LandingPages;
+namespace HubSpotSDK\Cms\Pages\LandingPages;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Get the list of landing pages. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
  *
- * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::list()
+ * @see HubSpotSDK\Services\Cms\Pages\LandingPagesService::list()
  *
  * @phpstan-type LandingPageListParamsShape = array{
  *   after?: string|null,

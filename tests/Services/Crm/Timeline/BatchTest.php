@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Crm\Timeline;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Timeline\BatchResponseAppEventOccurrence;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Timeline\BatchResponseAppEventOccurrence;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

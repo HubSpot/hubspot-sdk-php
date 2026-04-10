@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Folders;
+namespace HubSpotSDK\Files\Folders;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update properties of folder by given ID. This action happens asynchronously and will update all of the folder's children as well.
  *
- * @see HubspotSDK\Services\Files\FoldersService::updateAsyncByID()
+ * @see HubSpotSDK\Services\Files\FoldersService::updateAsyncByID()
  *
  * @phpstan-type FolderUpdateAsyncByIDParamsShape = array{
  *   id: string, name?: string|null, parentFolderID?: int|null

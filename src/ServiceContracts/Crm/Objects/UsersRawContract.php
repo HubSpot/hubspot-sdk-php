@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\Objects\Users\UserCreateParams;
-use HubspotSDK\Crm\Objects\Users\UserGetParams;
-use HubspotSDK\Crm\Objects\Users\UserListParams;
-use HubspotSDK\Crm\Objects\Users\UserSearchParams;
-use HubspotSDK\Crm\Objects\Users\UserUpdateParams;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\Objects\Users\UserCreateParams;
+use HubSpotSDK\Crm\Objects\Users\UserGetParams;
+use HubSpotSDK\Crm\Objects\Users\UserListParams;
+use HubSpotSDK\Crm\Objects\Users\UserSearchParams;
+use HubSpotSDK\Crm\Objects\Users\UserUpdateParams;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface UsersRawContract
 {

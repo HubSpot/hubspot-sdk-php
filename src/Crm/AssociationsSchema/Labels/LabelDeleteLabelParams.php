@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationsSchema\Labels;
+namespace HubSpotSDK\Crm\AssociationsSchema\Labels;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Remove a specific label from the association between two CRM object types.
  *
- * @see HubspotSDK\Services\Crm\AssociationsSchema\LabelsService::deleteLabel()
+ * @see HubSpotSDK\Services\Crm\AssociationsSchema\LabelsService::deleteLabel()
  *
  * @phpstan-type LabelDeleteLabelParamsShape = array{
  *   fromObjectType: string, toObjectType: string

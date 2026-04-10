@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\PublicInputFieldDefinition;
+namespace HubSpotSDK\Automation\Actions\PublicInputFieldDefinition;
 
 enum SupportedValueType: string
 {

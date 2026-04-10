@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEventRequest;
+namespace HubSpotSDK\Cms\MediaBridge\MediaPlayedPercentageEventRequest;
 
 enum MediaType: string
 {

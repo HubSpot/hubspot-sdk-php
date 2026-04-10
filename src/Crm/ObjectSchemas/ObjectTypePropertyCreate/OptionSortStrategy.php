@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
+namespace HubSpotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
 
 /**
  * Controls how the property options will be sorted in the HubSpot UI.

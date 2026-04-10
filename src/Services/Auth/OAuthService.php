@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Auth;
+namespace HubSpotSDK\Services\Auth;
 
-use HubspotSDK\Auth\OAuth\OAuthCreateTokenParams\GrantType;
-use HubspotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
-use HubspotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Auth\OAuthContract;
+use HubSpotSDK\Auth\OAuth\OAuthCreateTokenParams\GrantType;
+use HubSpotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
+use HubSpotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Auth\OAuthContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class OAuthService implements OAuthContract
 {

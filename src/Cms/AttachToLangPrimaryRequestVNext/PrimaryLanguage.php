@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\AttachToLangPrimaryRequestVNext;
+namespace HubSpotSDK\Cms\AttachToLangPrimaryRequestVNext;
 
 /**
  * Primary language of the multi-language group.
