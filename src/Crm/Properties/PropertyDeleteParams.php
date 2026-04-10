@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties;
+namespace HubSpotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Move a property identified by {propertyName} to the recycling bin.
  *
- * @see HubspotSDK\Services\Crm\PropertiesService::delete()
+ * @see HubSpotSDK\Services\Crm\PropertiesService::delete()
  *
  * @phpstan-type PropertyDeleteParamsShape = array{objectType: string}
  */

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev;
+namespace HubSpotSDK\Crm\Extensions\CardsDev;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.
  *
- * @see HubspotSDK\Services\Crm\Extensions\CardsDevService::delete()
+ * @see HubSpotSDK\Services\Crm\Extensions\CardsDevService::delete()
  *
  * @phpstan-type CardsDevDeleteParamsShape = array{appID: int}
  */

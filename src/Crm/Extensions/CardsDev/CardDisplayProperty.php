@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev;
+namespace HubSpotSDK\Crm\Extensions\CardsDev;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\CardsDev\CardDisplayProperty\DataType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardDisplayProperty\DataType;
 
 /**
- * @phpstan-import-type DisplayOptionShape from \HubspotSDK\Crm\Extensions\CardsDev\DisplayOption
+ * @phpstan-import-type DisplayOptionShape from \HubSpotSDK\Crm\Extensions\CardsDev\DisplayOption
  *
  * @phpstan-type CardDisplayPropertyShape = array{
  *   dataType: DataType|value-of<DataType>,

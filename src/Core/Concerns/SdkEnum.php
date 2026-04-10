@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Concerns;
+namespace HubSpotSDK\Core\Concerns;
 
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\EnumOf;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\EnumOf;
 
 /**
  * @internal

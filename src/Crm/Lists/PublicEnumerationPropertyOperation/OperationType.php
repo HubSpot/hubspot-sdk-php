@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicEnumerationPropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicEnumerationPropertyOperation;
 
 /**
  * Specifies the type of operation (ENUMERATION).

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Pipelines;
+namespace HubSpotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Return a single pipeline object identified by its unique `{pipelineId}`.
  *
- * @see HubspotSDK\Services\Crm\PipelinesService::get()
+ * @see HubSpotSDK\Services\Crm\PipelinesService::get()
  *
  * @phpstan-type PipelineGetParamsShape = array{objectType: string}
  */

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\ObjectLibrary;
+namespace HubSpotSDK\Services\Crm\ObjectLibrary;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\ObjectLibrary\Enablement\ObjectTypeEnablementPublicResponse;
-use HubspotSDK\Crm\ObjectLibrary\Enablement\PortalObjectTypeEnablementPublicResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\ObjectLibrary\EnablementRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\ObjectLibrary\Enablement\ObjectTypeEnablementPublicResponse;
+use HubSpotSDK\Crm\ObjectLibrary\Enablement\PortalObjectTypeEnablementPublicResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\ObjectLibrary\EnablementRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class EnablementRawService implements EnablementRawContract
 {

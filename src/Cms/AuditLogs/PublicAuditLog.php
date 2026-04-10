@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\AuditLogs;
+namespace HubSpotSDK\Cms\AuditLogs;
 
-use HubspotSDK\Cms\AuditLogs\PublicAuditLog\Event;
-use HubspotSDK\Cms\AuditLogs\PublicAuditLog\ObjectType;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\AuditLogs\PublicAuditLog\Event;
+use HubSpotSDK\Cms\AuditLogs\PublicAuditLog\ObjectType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicAuditLogShape = array{

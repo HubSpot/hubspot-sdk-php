@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\ExternalPlayContext;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\MediaType;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\ExternalPlayContext;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\MediaType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create an event for when a user begins playing a piece of media.
  *
- * @see HubspotSDK\Services\Cms\MediaBridgeService::createMediaPlayedEvent()
+ * @see HubSpotSDK\Services\Cms\MediaBridgeService::createMediaPlayedEvent()
  *
  * @phpstan-type MediaBridgeCreateMediaPlayedEventParamsShape = array{
  *   mediaType: MediaType|value-of<MediaType>,

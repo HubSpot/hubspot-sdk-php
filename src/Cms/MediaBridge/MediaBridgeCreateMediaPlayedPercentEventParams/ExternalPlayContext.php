@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams;
+namespace HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams;
 
 enum ExternalPlayContext: string
 {

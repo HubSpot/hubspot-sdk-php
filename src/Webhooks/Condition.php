@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks;
+namespace HubSpotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Webhooks\Condition\FilterType;
-use HubspotSDK\Webhooks\Condition\Operator;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Webhooks\Condition\FilterType;
+use HubSpotSDK\Webhooks\Condition\Operator;
 
 /**
  * @phpstan-type ConditionShape = array{

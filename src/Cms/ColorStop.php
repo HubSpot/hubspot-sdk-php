@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms;
+namespace HubSpotSDK\Cms;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type RgbaColorShape from \HubspotSDK\Cms\RgbaColor
+ * @phpstan-import-type RgbaColorShape from \HubSpotSDK\Cms\RgbaColor
  *
  * @phpstan-type ColorStopShape = array{color: RgbaColor|RgbaColorShape}
  */

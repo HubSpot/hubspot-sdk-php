@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing\Campaigns;
+namespace HubSpotSDK\Services\Marketing\Campaigns;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\PublicSpendItem;
-use HubspotSDK\Marketing\Campaigns\Spend\SpendCreateParams;
-use HubspotSDK\Marketing\Campaigns\Spend\SpendDeleteParams;
-use HubspotSDK\Marketing\Campaigns\Spend\SpendGetParams;
-use HubspotSDK\Marketing\Campaigns\Spend\SpendUpdateParams;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\Campaigns\SpendRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Campaigns\PublicSpendItem;
+use HubSpotSDK\Marketing\Campaigns\Spend\SpendCreateParams;
+use HubSpotSDK\Marketing\Campaigns\Spend\SpendDeleteParams;
+use HubSpotSDK\Marketing\Campaigns\Spend\SpendGetParams;
+use HubSpotSDK\Marketing\Campaigns\Spend\SpendUpdateParams;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\Campaigns\SpendRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class SpendRawService implements SpendRawContract
 {

@@ -2,18 +2,18 @@
 
 namespace Tests\Services\Marketing;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseSearchPublicResponseWrapperNoPaging;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponse;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponseV2;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\CollectionResponseSearchPublicResponseWrapperNoPaging;
+use HubSpotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalMarketingEventIdentifiersResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponse;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicReadResponseV2;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

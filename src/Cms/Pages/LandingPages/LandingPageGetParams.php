@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\LandingPages;
+namespace HubSpotSDK\Cms\Pages\LandingPages;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a landing page, specified by its ID.
  *
- * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::get()
+ * @see HubSpotSDK\Services\Cms\Pages\LandingPagesService::get()
  *
  * @phpstan-type LandingPageGetParamsShape = array{
  *   archived?: bool|null, property?: string|null

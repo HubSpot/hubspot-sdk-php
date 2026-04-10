@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors;
+namespace HubSpotSDK\Cms\Blogs\Authors;
 
-use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams\Language;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams\Language;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Explicitly set new languages for each Blog Author in a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Blogs\AuthorsService::updateLanguages()
+ * @see HubSpotSDK\Services\Cms\Blogs\AuthorsService::updateLanguages()
  *
  * @phpstan-type AuthorUpdateLanguagesParamsShape = array{
  *   languages: array<string,Language|value-of<Language>>, primaryID: string

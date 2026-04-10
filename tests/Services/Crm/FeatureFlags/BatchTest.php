@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Crm\FeatureFlags;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

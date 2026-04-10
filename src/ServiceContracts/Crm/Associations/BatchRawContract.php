@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Associations;
+namespace HubSpotSDK\ServiceContracts\Crm\Associations;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Associations\Batch\BatchCreateDefaultParams;
-use HubspotSDK\Crm\Associations\Batch\BatchCreateParams;
-use HubspotSDK\Crm\Associations\Batch\BatchDeleteLabelsParams;
-use HubspotSDK\Crm\Associations\Batch\BatchDeleteParams;
-use HubspotSDK\Crm\Associations\Batch\BatchGetParams;
-use HubspotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
-use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Associations\Batch\BatchCreateDefaultParams;
+use HubSpotSDK\Crm\Associations\Batch\BatchCreateParams;
+use HubSpotSDK\Crm\Associations\Batch\BatchDeleteLabelsParams;
+use HubSpotSDK\Crm\Associations\Batch\BatchDeleteParams;
+use HubSpotSDK\Crm\Associations\Batch\BatchGetParams;
+use HubSpotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
+use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

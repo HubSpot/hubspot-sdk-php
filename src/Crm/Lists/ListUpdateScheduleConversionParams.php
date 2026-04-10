@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams\ConversionType;
-use HubspotSDK\Crm\Lists\ListUpdateScheduleConversionParams\TimeUnit;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\ListUpdateScheduleConversionParams\ConversionType;
+use HubSpotSDK\Crm\Lists\ListUpdateScheduleConversionParams\TimeUnit;
 
 /**
- * @see HubspotSDK\Services\Crm\ListsService::updateScheduleConversion()
+ * @see HubSpotSDK\Services\Crm\ListsService::updateScheduleConversion()
  *
  * @phpstan-type ListUpdateScheduleConversionParamsShape = array{
  *   conversionType: ConversionType|value-of<ConversionType>,

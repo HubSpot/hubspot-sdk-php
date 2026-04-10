@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\AgentRequestContext;
+namespace HubSpotSDK\Automation\Actions\AgentRequestContext;
 
 /**
  * Indicates the source of the request, with the default value being 'AGENTS'.

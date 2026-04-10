@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Blogs\Settings;
+namespace HubSpotSDK\ServiceContracts\Cms\Blogs\Settings;
 
-use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageCreateLanguageVariationParams;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageDetachFromLangGroupParams;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageSetNewLangPrimaryParams;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Blogs\Settings\Blog;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageCreateLanguageVariationParams;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageDetachFromLangGroupParams;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageSetNewLangPrimaryParams;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface MultiLanguageRawContract
 {

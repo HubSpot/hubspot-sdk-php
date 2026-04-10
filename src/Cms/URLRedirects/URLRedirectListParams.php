@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\URLRedirects;
+namespace HubSpotSDK\Cms\URLRedirects;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a list of URL redirects configured in your HubSpot account. This endpoint allows you to filter redirects based on their creation or update timestamps, and sort the results. It supports pagination and can include archived redirects if specified.
  *
- * @see HubspotSDK\Services\Cms\URLRedirectsService::list()
+ * @see HubSpotSDK\Services\Cms\URLRedirectsService::list()
  *
  * @phpstan-type URLRedirectListParamsShape = array{
  *   after?: string|null,

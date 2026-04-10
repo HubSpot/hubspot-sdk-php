@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\SettingsContract;
-use HubspotSDK\Services\Settings\CurrenciesService;
-use HubspotSDK\Services\Settings\TaxRatesService;
-use HubspotSDK\Services\Settings\UsersService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\SettingsContract;
+use HubSpotSDK\Services\Settings\CurrenciesService;
+use HubSpotSDK\Services\Settings\TaxRatesService;
+use HubSpotSDK\Services\Settings\UsersService;
 
 final class SettingsService implements SettingsContract
 {

@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Crm\Extensions;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
-use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
-use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
-use HubspotSDK\Crm\Extensions\Calling\SettingsResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
+use HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
+use HubSpotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
+use HubSpotSDK\Crm\Extensions\Calling\SettingsResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

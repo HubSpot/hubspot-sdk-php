@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\ComboEventRuleBranch;
+namespace HubSpotSDK\Events\Definitions\ComboEventRuleBranch;
 
 enum OperationType: string
 {

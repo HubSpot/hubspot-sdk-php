@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Events;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Events\Occurrences\ExternalUnifiedEvent;
-use HubspotSDK\Events\Occurrences\VisibleExternalEventTypeNames;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Events\Occurrences\ExternalUnifiedEvent;
+use HubSpotSDK\Events\Occurrences\VisibleExternalEventTypeNames;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

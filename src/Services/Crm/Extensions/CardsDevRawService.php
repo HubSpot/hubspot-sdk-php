@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Extensions;
+namespace HubSpotSDK\Services\Crm\Extensions;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\CardsDev\CardActions;
-use HubspotSDK\Crm\Extensions\CardsDev\CardDisplayBody;
-use HubspotSDK\Crm\Extensions\CardsDev\CardFetchBody;
-use HubspotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch;
-use HubspotSDK\Crm\Extensions\CardsDev\CardMigrateViewsResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevCreateParams;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevDeleteParams;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevGetByIDParams;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevMigrateViewsParams;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevUpdateParams;
-use HubspotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\PublicCardListResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\PublicCardResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Extensions\CardsDevRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardActions;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardDisplayBody;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBody;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardMigrateViewsResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevCreateParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevDeleteParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevGetByIDParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevMigrateViewsParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevUpdateParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\PublicCardListResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\PublicCardResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Extensions\CardsDevRawContract;
 
 /**
- * @phpstan-import-type CardFetchBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\CardFetchBody
- * @phpstan-import-type CardFetchBodyPatchShape from \HubspotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch
- * @phpstan-import-type CardActionsShape from \HubspotSDK\Crm\Extensions\CardsDev\CardActions
- * @phpstan-import-type CardDisplayBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\CardDisplayBody
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type CardFetchBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBody
+ * @phpstan-import-type CardFetchBodyPatchShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch
+ * @phpstan-import-type CardActionsShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardActions
+ * @phpstan-import-type CardDisplayBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardDisplayBody
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CardsDevRawService implements CardsDevRawContract
 {

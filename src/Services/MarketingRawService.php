@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\MarketingRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\MarketingRawContract;
 
 final class MarketingRawService implements MarketingRawContract
 {

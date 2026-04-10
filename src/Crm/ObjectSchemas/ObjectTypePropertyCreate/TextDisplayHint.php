@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
+namespace HubSpotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
 
 /**
  * Controls how text properties are formatted in the HubSpot UI.

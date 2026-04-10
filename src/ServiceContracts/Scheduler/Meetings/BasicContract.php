@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Scheduler\Meetings;
+namespace HubSpotSDK\ServiceContracts\Scheduler\Meetings;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Scheduler\Meetings\Basic\BasicListParams\Type;
-use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
-use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
-use HubspotSDK\Scheduler\Meetings\ExternalLinkMetadata;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Scheduler\Meetings\Basic\BasicListParams\Type;
+use HubSpotSDK\Scheduler\Meetings\ExternalBookingInfo;
+use HubSpotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
+use HubSpotSDK\Scheduler\Meetings\ExternalLinkMetadata;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BasicContract
 {

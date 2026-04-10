@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Tags;
+namespace HubSpotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language;
-use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language;
+use HubSpotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\PrimaryLanguage;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Attach a Blog Tag to a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Blogs\TagsService::attachToLangGroup()
+ * @see HubSpotSDK\Services\Cms\Blogs\TagsService::attachToLangGroup()
  *
  * @phpstan-type TagAttachToLangGroupParamsShape = array{
  *   id: string,

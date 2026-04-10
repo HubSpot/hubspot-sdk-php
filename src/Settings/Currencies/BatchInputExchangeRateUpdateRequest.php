@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies;
+namespace HubSpotSDK\Settings\Currencies;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ExchangeRateUpdateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest
+ * @phpstan-import-type ExchangeRateUpdateRequestShape from \HubSpotSDK\Settings\Currencies\ExchangeRateUpdateRequest
  *
  * @phpstan-type BatchInputExchangeRateUpdateRequestShape = array{
  *   inputs: list<ExchangeRateUpdateRequest|ExchangeRateUpdateRequestShape>

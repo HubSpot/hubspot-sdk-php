@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Companies\Batch;
+namespace HubSpotSDK\Crm\Objects\Companies\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
  * Delete a batch of companies by ID. Deleted companies can be restored within 90 days of deletion. Learn more about [restoring records](https://knowledge.hubspot.com/records/restore-deleted-records).
  *
- * @see HubspotSDK\Services\Crm\Objects\Companies\BatchService::delete()
+ * @see HubSpotSDK\Services\Crm\Objects\Companies\BatchService::delete()
  *
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectID
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages;
+namespace HubSpotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve all the previous versions of a landing page, specified by page ID.
  *
- * @see HubspotSDK\Services\Cms\PagesService::listLandingPageRevisions()
+ * @see HubSpotSDK\Services\Cms\PagesService::listLandingPageRevisions()
  *
  * @phpstan-type PageListLandingPageRevisionsParamsShape = array{
  *   after?: string|null, before?: string|null, limit?: int|null

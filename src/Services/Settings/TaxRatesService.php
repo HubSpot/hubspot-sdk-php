@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Settings;
+namespace HubSpotSDK\Services\Settings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Settings\TaxRatesContract;
-use HubspotSDK\Settings\TaxRates\PublicTaxRateGroup;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Settings\TaxRatesContract;
+use HubSpotSDK\Settings\TaxRates\PublicTaxRateGroup;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class TaxRatesService implements TaxRatesContract
 {

@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\ExchangeRates\Batch;
+namespace HubSpotSDK\Settings\Currencies\ExchangeRates\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\ExchangeRateCreateRequest;
 
 /**
  * Create multiple exchange rates in a single request.
  *
- * @see HubspotSDK\Services\Settings\Currencies\ExchangeRates\BatchService::create()
+ * @see HubSpotSDK\Services\Settings\Currencies\ExchangeRates\BatchService::create()
  *
- * @phpstan-import-type ExchangeRateCreateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest
+ * @phpstan-import-type ExchangeRateCreateRequestShape from \HubSpotSDK\Settings\Currencies\ExchangeRateCreateRequest
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<ExchangeRateCreateRequest|ExchangeRateCreateRequestShape>

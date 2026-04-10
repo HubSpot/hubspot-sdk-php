@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\SocialMetadata;
+namespace HubSpotSDK\Conversations\CustomChannels\SocialMetadata;
 
 enum MediaType: string
 {

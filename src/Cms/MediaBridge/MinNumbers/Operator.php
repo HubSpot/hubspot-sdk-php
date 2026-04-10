@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MinNumbers;
+namespace HubSpotSDK\Cms\MediaBridge\MinNumbers;
 
 enum Operator: string
 {

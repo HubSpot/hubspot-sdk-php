@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts;
+namespace HubSpotSDK\ServiceContracts;
 
-use HubspotSDK\Account\CollectionResponseAPIUsageNoPaging;
-use HubspotSDK\Account\PortalInformationResponse;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Account\CollectionResponseAPIUsageNoPaging;
+use HubSpotSDK\Account\PortalInformationResponse;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface AccountRawContract
 {

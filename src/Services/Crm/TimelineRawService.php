@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Timeline\AppEventResolutionResponse;
-use HubspotSDK\Crm\Timeline\TimelineCreateEventParams;
-use HubspotSDK\Crm\Timeline\TimelineCreateProjectTypeParams;
-use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\TimelineRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Timeline\AppEventResolutionResponse;
+use HubSpotSDK\Crm\Timeline\TimelineCreateEventParams;
+use HubSpotSDK\Crm\Timeline\TimelineCreateProjectTypeParams;
+use HubSpotSDK\Crm\Timeline\TimelineEventIFrame;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\TimelineRawContract;
 
 /**
- * @phpstan-import-type TimelineEventIFrameShape from \HubspotSDK\Crm\Timeline\TimelineEventIFrame
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type TimelineEventIFrameShape from \HubSpotSDK\Crm\Timeline\TimelineEventIFrame
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class TimelineRawService implements TimelineRawContract
 {

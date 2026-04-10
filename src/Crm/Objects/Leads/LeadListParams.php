@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Leads;
+namespace HubSpotSDK\Crm\Objects\Leads;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Read a page of leads. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Services\Crm\Objects\LeadsService::list()
+ * @see HubSpotSDK\Services\Crm\Objects\LeadsService::list()
  *
  * @phpstan-type LeadListParamsShape = array{
  *   after?: string|null,

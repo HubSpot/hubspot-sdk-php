@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\DealSplits;
+namespace HubSpotSDK\Services\Crm\DealSplits;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\DealSplits\BatchResponseDealToDealSplits;
-use HubspotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest;
-use HubspotSDK\PublicObjectID;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\DealSplits\BatchContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\DealSplits\BatchResponseDealToDealSplits;
+use HubSpotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest;
+use HubSpotSDK\PublicObjectID;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\DealSplits\BatchContract;
 
 /**
- * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
- * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubspotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicObjectIDShape from \HubSpotSDK\PublicObjectID
+ * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubSpotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchService implements BatchContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\ExternalLegalConsentOptions;
+namespace HubSpotSDK\Scheduler\Meetings\ExternalLegalConsentOptions;
 
 /**
  * The type of consent required for processing. Accepted values are: IMPLICIT, REQUIRED_CHECKBOX.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\InboundDBObjectType;
+namespace HubSpotSDK\Cms\MediaBridge\InboundDBObjectType;
 
 enum PermissioningType: string
 {

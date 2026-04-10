@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs\Authors;
+namespace HubSpotSDK\Services\Cms\Blogs\Authors;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\Authors\BatchContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Authors\BlogAuthor;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\Authors\BatchContract;
 
 /**
- * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type BlogAuthorShape from \HubSpotSDK\Cms\Blogs\Authors\BlogAuthor
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchService implements BatchContract
 {

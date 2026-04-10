@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects\PartnerClients;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects\PartnerClients;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectID;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectID
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchContract
 {

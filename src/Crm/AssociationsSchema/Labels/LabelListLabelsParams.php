@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationsSchema\Labels;
+namespace HubSpotSDK\Crm\AssociationsSchema\Labels;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve all labels that describe the relationships between two specified CRM object types. These labels provide context about the nature of the associations.
  *
- * @see HubspotSDK\Services\Crm\AssociationsSchema\LabelsService::listLabels()
+ * @see HubSpotSDK\Services\Crm\AssociationsSchema\LabelsService::listLabels()
  *
  * @phpstan-type LabelListLabelsParamsShape = array{fromObjectType: string}
  */

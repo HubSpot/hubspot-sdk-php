@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\FileAttachment;
+namespace HubSpotSDK\Conversations\CustomChannels\FileAttachment;
 
 enum FileUsageType: string
 {

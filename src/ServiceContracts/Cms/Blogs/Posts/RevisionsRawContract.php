@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Blogs\Posts;
+namespace HubSpotSDK\ServiceContracts\Cms\Blogs\Posts;
 
-use HubspotSDK\Cms\Blogs\Posts\Revisions\RevisionGetPreviousVersionParams;
-use HubspotSDK\Cms\Blogs\Posts\Revisions\RevisionGetPreviousVersionsParams;
-use HubspotSDK\Cms\Blogs\Posts\Revisions\RevisionRestorePreviousVersionParams;
-use HubspotSDK\Cms\Blogs\Posts\Revisions\RevisionRestorePreviousVersionToDraftParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Blogs\Posts\Revisions\RevisionGetPreviousVersionParams;
+use HubSpotSDK\Cms\Blogs\Posts\Revisions\RevisionGetPreviousVersionsParams;
+use HubSpotSDK\Cms\Blogs\Posts\Revisions\RevisionRestorePreviousVersionParams;
+use HubSpotSDK\Cms\Blogs\Posts\Revisions\RevisionRestorePreviousVersionToDraftParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface RevisionsRawContract
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Pipelines;
+namespace HubSpotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PipelineStageInputShape from \HubspotSDK\Crm\Pipelines\PipelineStageInput
+ * @phpstan-import-type PipelineStageInputShape from \HubSpotSDK\Crm\Pipelines\PipelineStageInput
  *
  * @phpstan-type PipelineReplaceInputShape = array{
  *   displayOrder: int,

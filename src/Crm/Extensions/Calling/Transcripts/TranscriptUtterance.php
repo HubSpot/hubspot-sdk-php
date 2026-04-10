@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling\Transcripts;
+namespace HubSpotSDK\Crm\Extensions\Calling\Transcripts;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type SpeakerShape from \HubspotSDK\Crm\Extensions\Calling\Transcripts\Speaker
+ * @phpstan-import-type SpeakerShape from \HubSpotSDK\Crm\Extensions\Calling\Transcripts\Speaker
  *
  * @phpstan-type TranscriptUtteranceShape = array{
  *   id: string,

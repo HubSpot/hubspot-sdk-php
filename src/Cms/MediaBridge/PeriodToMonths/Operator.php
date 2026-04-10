@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\PeriodToMonths;
+namespace HubSpotSDK\Cms\MediaBridge\PeriodToMonths;
 
 enum Operator: string
 {

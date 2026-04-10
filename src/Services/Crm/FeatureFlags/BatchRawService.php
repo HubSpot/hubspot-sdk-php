@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\FeatureFlags;
+namespace HubSpotSDK\Services\Crm\FeatureFlags;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\FeatureFlags\Batch\BatchDeleteParams;
-use HubspotSDK\Crm\FeatureFlags\Batch\BatchUpsertParams;
-use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
-use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\FeatureFlags\BatchRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\FeatureFlags\Batch\BatchDeleteParams;
+use HubSpotSDK\Crm\FeatureFlags\Batch\BatchUpsertParams;
+use HubSpotSDK\Crm\FeatureFlags\BatchPortalEntry;
+use HubSpotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\FeatureFlags\BatchRawContract;
 
 /**
- * @phpstan-import-type BatchPortalEntryShape from \HubspotSDK\Crm\FeatureFlags\BatchPortalEntry
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type BatchPortalEntryShape from \HubSpotSDK\Crm\FeatureFlags\BatchPortalEntry
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
 {

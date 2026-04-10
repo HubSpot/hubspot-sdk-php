@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\ListFilterUpdateRequest\FilterBranch;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\ListFilterUpdateRequest\FilterBranch;
 
 /**
- * @phpstan-import-type FilterBranchVariants from \HubspotSDK\Crm\Lists\ListFilterUpdateRequest\FilterBranch
- * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListFilterUpdateRequest\FilterBranch
+ * @phpstan-import-type FilterBranchVariants from \HubSpotSDK\Crm\Lists\ListFilterUpdateRequest\FilterBranch
+ * @phpstan-import-type FilterBranchShape from \HubSpotSDK\Crm\Lists\ListFilterUpdateRequest\FilterBranch
  *
  * @phpstan-type ListFilterUpdateRequestShape = array{
  *   filterBranch: FilterBranchShape

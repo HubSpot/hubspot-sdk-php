@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams;
+namespace HubSpotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams;
 
 /**
  * The state that the flag should have if there are no overrides for a particular portal.

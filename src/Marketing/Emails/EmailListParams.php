@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\EmailListParams\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Emails\EmailListParams\Type;
 
 /**
- * @see HubspotSDK\Services\Marketing\EmailsService::list()
+ * @see HubSpotSDK\Services\Marketing\EmailsService::list()
  *
  * @phpstan-type EmailListParamsShape = array{
  *   after?: string|null,

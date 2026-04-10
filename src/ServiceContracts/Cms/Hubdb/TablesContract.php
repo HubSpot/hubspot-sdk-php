@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Hubdb;
+namespace HubSpotSDK\ServiceContracts\Cms\Hubdb;
 
-use HubspotSDK\Cms\Hubdb\ColumnRequest;
-use HubspotSDK\Cms\Hubdb\HubDBTableV3;
-use HubspotSDK\Cms\Hubdb\ImportResult;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Hubdb\ColumnRequest;
+use HubSpotSDK\Cms\Hubdb\HubDBTableV3;
+use HubSpotSDK\Cms\Hubdb\ImportResult;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type ColumnRequestShape from \HubspotSDK\Cms\Hubdb\ColumnRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ColumnRequestShape from \HubSpotSDK\Cms\Hubdb\ColumnRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface TablesContract
 {
@@ -89,7 +89,7 @@ interface TablesContract
      * @api
      *
      * @param bool $copyRows Specifies whether to copy the rows during clone
-     * @param bool $isHubspotDefined indicates whether the table is defined by HubSpot
+     * @param bool $isHubSpotDefined indicates whether the table is defined by HubSpot
      * @param string $newLabel The new label for the cloned table
      * @param string $newName The new name for the cloned table
      * @param RequestOpts|null $requestOptions
@@ -99,7 +99,7 @@ interface TablesContract
     public function cloneDraft(
         string $tableIDOrName,
         bool $copyRows,
-        bool $isHubspotDefined,
+        bool $isHubSpotDefined,
         ?string $newLabel = null,
         ?string $newName = null,
         RequestOptions|array|null $requestOptions = null,

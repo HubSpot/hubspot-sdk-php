@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\Leads\LeadCreateParams;
-use HubspotSDK\Crm\Objects\Leads\LeadGetParams;
-use HubspotSDK\Crm\Objects\Leads\LeadListParams;
-use HubspotSDK\Crm\Objects\Leads\LeadSearchParams;
-use HubspotSDK\Crm\Objects\Leads\LeadUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\Leads\LeadCreateParams;
+use HubSpotSDK\Crm\Objects\Leads\LeadGetParams;
+use HubSpotSDK\Crm\Objects\Leads\LeadListParams;
+use HubSpotSDK\Crm\Objects\Leads\LeadSearchParams;
+use HubSpotSDK\Crm\Objects\Leads\LeadUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface LeadsRawContract
 {

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Custom;
+namespace HubSpotSDK\Crm\Objects\Custom;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Read a page of objects. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Services\Crm\Objects\CustomService::list()
+ * @see HubSpotSDK\Services\Crm\Objects\CustomService::list()
  *
  * @phpstan-type CustomListParamsShape = array{
  *   after?: string|null,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\MessageHeaderAttachment;
+namespace HubSpotSDK\Conversations\CustomChannels\MessageHeaderAttachment;
 
 enum Type: string
 {

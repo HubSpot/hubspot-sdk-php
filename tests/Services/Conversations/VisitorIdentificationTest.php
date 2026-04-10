@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Conversations;
 
-use HubspotSDK\Client;
-use HubspotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Client;
+use HubSpotSDK\Conversations\VisitorIdentification\IdentificationTokenResponse;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Account\Activity;
+namespace HubSpotSDK\Account\Activity;
 
-use HubspotSDK\Account\Activity\HydratedCriticalAction\Type;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Account\Activity\HydratedCriticalAction\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HydratedCriticalActionShape = array{

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns;
+namespace HubSpotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicCampaignInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignInput
+ * @phpstan-import-type PublicCampaignInputShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignInput
  *
  * @phpstan-type BatchInputPublicCampaignInputShape = array{
  *   inputs: list<PublicCampaignInput|PublicCampaignInputShape>

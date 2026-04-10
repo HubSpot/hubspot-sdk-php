@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams;
+namespace HubSpotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams;
 
 /**
  * Primary language of the multi-language group.

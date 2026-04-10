@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\CommunicationPreferences;
+namespace HubSpotSDK\Services\CommunicationPreferences;
 
-use HubspotSDK\Client;
-use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsSubscriptionDefinition;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\CommunicationPreferences\DefinitionsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsSubscriptionDefinition;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\CommunicationPreferences\DefinitionsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class DefinitionsService implements DefinitionsContract
 {

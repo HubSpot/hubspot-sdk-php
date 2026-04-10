@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationsSchema\Limits;
+namespace HubSpotSDK\Crm\AssociationsSchema\Limits;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
 
 /**
  * Batch update association limits that have been configured between two object types.
  *
- * @see HubspotSDK\Services\Crm\AssociationsSchema\LimitsService::batchUpdate()
+ * @see HubSpotSDK\Services\Crm\AssociationsSchema\LimitsService::batchUpdate()
  *
- * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateRequestShape from \HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateRequestShape from \HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest
  *
  * @phpstan-type LimitBatchUpdateParamsShape = array{
  *   fromObjectType: string,

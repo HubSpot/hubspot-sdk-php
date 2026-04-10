@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\AuditLogs;
+namespace HubSpotSDK\Cms\AuditLogs;
 
-use HubspotSDK\Cms\AuditLogs\AuditLogExportParams\Format;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\AuditLogs\AuditLogExportParams\Format;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Cms\AuditLogsService::export()
+ * @see HubSpotSDK\Services\Cms\AuditLogsService::export()
  *
- * @phpstan-import-type CmsAuditLoggingExportFiltersShape from \HubspotSDK\Cms\AuditLogs\CmsAuditLoggingExportFilters
+ * @phpstan-import-type CmsAuditLoggingExportFiltersShape from \HubSpotSDK\Cms\AuditLogs\CmsAuditLoggingExportFilters
  *
  * @phpstan-type AuditLogExportParamsShape = array{
  *   email: string,

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Rows;
+namespace HubSpotSDK\Cms\Hubdb\Rows;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Permanently delete rows from the draft version of a table, given a set of row IDs. Maximum of 100 row IDs per call.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\RowsService::purgeBatch()
+ * @see HubSpotSDK\Services\Cms\Hubdb\RowsService::purgeBatch()
  *
  * @phpstan-type RowPurgeBatchParamsShape = array{inputs: list<string>}
  */

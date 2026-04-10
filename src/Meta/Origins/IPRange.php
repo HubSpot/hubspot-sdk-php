@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Meta\Origins;
+namespace HubSpotSDK\Meta\Origins;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Meta\Origins\IPRange\Direction;
-use HubspotSDK\Meta\Origins\IPRange\Service;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Meta\Origins\IPRange\Direction;
+use HubSpotSDK\Meta\Origins\IPRange\Service;
 
 /**
  * @phpstan-type IPRangeShape = array{

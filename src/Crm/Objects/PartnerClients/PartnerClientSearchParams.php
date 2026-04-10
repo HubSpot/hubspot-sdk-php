@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\PartnerClients;
+namespace HubSpotSDK\Crm\Objects\PartnerClients;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\FilterGroup;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\FilterGroup;
 
 /**
  * Execute a search for partner clients based on defined filters, properties, and sorting options. This endpoint allows you to retrieve partner client data that matches the search criteria, facilitating integration and data synchronization with third-party systems.
  *
- * @see HubspotSDK\Services\Crm\Objects\PartnerClientsService::search()
+ * @see HubSpotSDK\Services\Crm\Objects\PartnerClientsService::search()
  *
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
  *
  * @phpstan-type PartnerClientSearchParamsShape = array{
  *   after: string,

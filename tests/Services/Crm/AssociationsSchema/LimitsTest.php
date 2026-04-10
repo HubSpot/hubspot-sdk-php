@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Crm\AssociationsSchema;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
-use HubspotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
+use HubSpotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

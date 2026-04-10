@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Account\Activity;
+namespace HubSpotSDK\Account\Activity;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve logs of user actions related to [login activity](https://knowledge.hubspot.com/account-management/view-and-export-account-activity-history#account-login-history).
  *
- * @see HubspotSDK\Services\Account\ActivityService::listLoginActivities()
+ * @see HubSpotSDK\Services\Account\ActivityService::listLoginActivities()
  *
  * @phpstan-type ActivityListLoginActivitiesParamsShape = array{
  *   after?: string|null, limit?: int|null, userID?: int|null

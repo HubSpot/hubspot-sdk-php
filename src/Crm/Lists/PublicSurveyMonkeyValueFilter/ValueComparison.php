@@ -2,49 +2,49 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicSurveyMonkeyValueFilter;
+namespace HubSpotSDK\Crm\Lists\PublicSurveyMonkeyValueFilter;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Crm\Lists\PublicAllPropertyTypesOperation;
-use HubspotSDK\Crm\Lists\PublicBoolPropertyOperation;
-use HubspotSDK\Crm\Lists\PublicCalendarDatePropertyOperation;
-use HubspotSDK\Crm\Lists\PublicComparativeDatePropertyOperation;
-use HubspotSDK\Crm\Lists\PublicComparativePropertyUpdatedOperation;
-use HubspotSDK\Crm\Lists\PublicDatePropertyOperation;
-use HubspotSDK\Crm\Lists\PublicDateTimePropertyOperation;
-use HubspotSDK\Crm\Lists\PublicEnumerationPropertyOperation;
-use HubspotSDK\Crm\Lists\PublicMultiStringPropertyOperation;
-use HubspotSDK\Crm\Lists\PublicNumberPropertyOperation;
-use HubspotSDK\Crm\Lists\PublicRangedDatePropertyOperation;
-use HubspotSDK\Crm\Lists\PublicRangedNumberPropertyOperation;
-use HubspotSDK\Crm\Lists\PublicRangedTimeOperation;
-use HubspotSDK\Crm\Lists\PublicRollingDateRangePropertyOperation;
-use HubspotSDK\Crm\Lists\PublicRollingPropertyUpdatedOperation;
-use HubspotSDK\Crm\Lists\PublicStringPropertyOperation;
-use HubspotSDK\Crm\Lists\PublicTimePointOperation;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Crm\Lists\PublicAllPropertyTypesOperation;
+use HubSpotSDK\Crm\Lists\PublicBoolPropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicCalendarDatePropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicComparativeDatePropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicComparativePropertyUpdatedOperation;
+use HubSpotSDK\Crm\Lists\PublicDatePropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicDateTimePropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicEnumerationPropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicMultiStringPropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicNumberPropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicRangedDatePropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicRangedNumberPropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicRangedTimeOperation;
+use HubSpotSDK\Crm\Lists\PublicRollingDateRangePropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicRollingPropertyUpdatedOperation;
+use HubSpotSDK\Crm\Lists\PublicStringPropertyOperation;
+use HubSpotSDK\Crm\Lists\PublicTimePointOperation;
 
 /**
  * Specifies the operation used to compare the survey answer value.
  *
- * @phpstan-import-type PublicBoolPropertyOperationShape from \HubspotSDK\Crm\Lists\PublicBoolPropertyOperation
- * @phpstan-import-type PublicNumberPropertyOperationShape from \HubspotSDK\Crm\Lists\PublicNumberPropertyOperation
- * @phpstan-import-type PublicStringPropertyOperationShape from \HubspotSDK\Crm\Lists\PublicStringPropertyOperation
- * @phpstan-import-type PublicDateTimePropertyOperationShape from \HubspotSDK\Crm\Lists\PublicDateTimePropertyOperation
- * @phpstan-import-type PublicRangedDatePropertyOperationShape from \HubspotSDK\Crm\Lists\PublicRangedDatePropertyOperation
- * @phpstan-import-type PublicComparativePropertyUpdatedOperationShape from \HubspotSDK\Crm\Lists\PublicComparativePropertyUpdatedOperation
- * @phpstan-import-type PublicComparativeDatePropertyOperationShape from \HubspotSDK\Crm\Lists\PublicComparativeDatePropertyOperation
- * @phpstan-import-type PublicRollingDateRangePropertyOperationShape from \HubspotSDK\Crm\Lists\PublicRollingDateRangePropertyOperation
- * @phpstan-import-type PublicRollingPropertyUpdatedOperationShape from \HubspotSDK\Crm\Lists\PublicRollingPropertyUpdatedOperation
- * @phpstan-import-type PublicEnumerationPropertyOperationShape from \HubspotSDK\Crm\Lists\PublicEnumerationPropertyOperation
- * @phpstan-import-type PublicAllPropertyTypesOperationShape from \HubspotSDK\Crm\Lists\PublicAllPropertyTypesOperation
- * @phpstan-import-type PublicRangedNumberPropertyOperationShape from \HubspotSDK\Crm\Lists\PublicRangedNumberPropertyOperation
- * @phpstan-import-type PublicMultiStringPropertyOperationShape from \HubspotSDK\Crm\Lists\PublicMultiStringPropertyOperation
- * @phpstan-import-type PublicDatePropertyOperationShape from \HubspotSDK\Crm\Lists\PublicDatePropertyOperation
- * @phpstan-import-type PublicCalendarDatePropertyOperationShape from \HubspotSDK\Crm\Lists\PublicCalendarDatePropertyOperation
- * @phpstan-import-type PublicTimePointOperationShape from \HubspotSDK\Crm\Lists\PublicTimePointOperation
- * @phpstan-import-type PublicRangedTimeOperationShape from \HubspotSDK\Crm\Lists\PublicRangedTimeOperation
+ * @phpstan-import-type PublicBoolPropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicBoolPropertyOperation
+ * @phpstan-import-type PublicNumberPropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicNumberPropertyOperation
+ * @phpstan-import-type PublicStringPropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicStringPropertyOperation
+ * @phpstan-import-type PublicDateTimePropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicDateTimePropertyOperation
+ * @phpstan-import-type PublicRangedDatePropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicRangedDatePropertyOperation
+ * @phpstan-import-type PublicComparativePropertyUpdatedOperationShape from \HubSpotSDK\Crm\Lists\PublicComparativePropertyUpdatedOperation
+ * @phpstan-import-type PublicComparativeDatePropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicComparativeDatePropertyOperation
+ * @phpstan-import-type PublicRollingDateRangePropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicRollingDateRangePropertyOperation
+ * @phpstan-import-type PublicRollingPropertyUpdatedOperationShape from \HubSpotSDK\Crm\Lists\PublicRollingPropertyUpdatedOperation
+ * @phpstan-import-type PublicEnumerationPropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicEnumerationPropertyOperation
+ * @phpstan-import-type PublicAllPropertyTypesOperationShape from \HubSpotSDK\Crm\Lists\PublicAllPropertyTypesOperation
+ * @phpstan-import-type PublicRangedNumberPropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicRangedNumberPropertyOperation
+ * @phpstan-import-type PublicMultiStringPropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicMultiStringPropertyOperation
+ * @phpstan-import-type PublicDatePropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicDatePropertyOperation
+ * @phpstan-import-type PublicCalendarDatePropertyOperationShape from \HubSpotSDK\Crm\Lists\PublicCalendarDatePropertyOperation
+ * @phpstan-import-type PublicTimePointOperationShape from \HubSpotSDK\Crm\Lists\PublicTimePointOperation
+ * @phpstan-import-type PublicRangedTimeOperationShape from \HubSpotSDK\Crm\Lists\PublicRangedTimeOperation
  *
  * @phpstan-type ValueComparisonVariants = PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation
  * @phpstan-type ValueComparisonShape = ValueComparisonVariants|PublicBoolPropertyOperationShape|PublicNumberPropertyOperationShape|PublicStringPropertyOperationShape|PublicDateTimePropertyOperationShape|PublicRangedDatePropertyOperationShape|PublicComparativePropertyUpdatedOperationShape|PublicComparativeDatePropertyOperationShape|PublicRollingDateRangePropertyOperationShape|PublicRollingPropertyUpdatedOperationShape|PublicEnumerationPropertyOperationShape|PublicAllPropertyTypesOperationShape|PublicRangedNumberPropertyOperationShape|PublicMultiStringPropertyOperationShape|PublicDatePropertyOperationShape|PublicCalendarDatePropertyOperationShape|PublicTimePointOperationShape|PublicRangedTimeOperationShape

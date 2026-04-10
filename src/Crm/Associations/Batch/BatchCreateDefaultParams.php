@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations\Batch;
+namespace HubSpotSDK\Crm\Associations\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
 
 /**
  * Create the default (most generic) association type between two object types.
  *
- * @see HubspotSDK\Services\Crm\Associations\BatchService::createDefault()
+ * @see HubSpotSDK\Services\Crm\Associations\BatchService::createDefault()
  *
- * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubspotSDK\Crm\Associations\PublicDefaultAssociationMultiPost
+ * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost
  *
  * @phpstan-type BatchCreateDefaultParamsShape = array{
  *   fromObjectType: string,

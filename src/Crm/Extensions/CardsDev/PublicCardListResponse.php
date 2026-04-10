@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev;
+namespace HubSpotSDK\Crm\Extensions\CardsDev;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicCardResponseShape from \HubspotSDK\Crm\Extensions\CardsDev\PublicCardResponse
+ * @phpstan-import-type PublicCardResponseShape from \HubSpotSDK\Crm\Extensions\CardsDev\PublicCardResponse
  *
  * @phpstan-type PublicCardListResponseShape = array{
  *   results: list<PublicCardResponse|PublicCardResponseShape>

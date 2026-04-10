@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicCampaignInfluencedFilter;
+namespace HubSpotSDK\Crm\Lists\PublicCampaignInfluencedFilter;
 
 /**
  * Indicates the type of filter (CAMPAIGN_INFLUENCED).

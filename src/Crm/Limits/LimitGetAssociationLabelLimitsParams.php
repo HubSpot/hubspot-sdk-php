@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Limits;
+namespace HubSpotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Returns limits and usage for custom association labels.
  *
- * @see HubspotSDK\Services\Crm\LimitsService::getAssociationLabelLimits()
+ * @see HubSpotSDK\Services\Crm\LimitsService::getAssociationLabelLimits()
  *
  * @phpstan-type LimitGetAssociationLabelLimitsParamsShape = array{
  *   fromObjectTypeID?: string|null, toObjectTypeID?: string|null

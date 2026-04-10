@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Automation\Actions;
+namespace HubSpotSDK\Services\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
-use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams\FunctionType;
-use HubspotSDK\Automation\Actions\PublicActionFunction;
-use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Automation\Actions\FunctionsContract;
+use HubSpotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
+use HubSpotSDK\Automation\Actions\Functions\FunctionDeleteParams\FunctionType;
+use HubSpotSDK\Automation\Actions\PublicActionFunction;
+use HubSpotSDK\Automation\Actions\PublicActionFunctionIdentifier;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Automation\Actions\FunctionsContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class FunctionsService implements FunctionsContract
 {
@@ -93,7 +93,7 @@ final class FunctionsService implements FunctionsContract
      * @param string $functionID Path param
      * @param int $appID Path param
      * @param string $definitionID Path param
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType> $functionType Path param
+     * @param \HubSpotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType|value-of<\HubSpotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType> $functionType Path param
      * @param string $body Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -103,7 +103,7 @@ final class FunctionsService implements FunctionsContract
         string $functionID,
         int $appID,
         string $definitionID,
-        \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType|string $functionType,
+        \HubSpotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams\FunctionType|string $functionType,
         string $body,
         RequestOptions|array|null $requestOptions = null,
     ): PublicActionFunctionIdentifier {
@@ -127,7 +127,7 @@ final class FunctionsService implements FunctionsContract
      *
      * Add a function for a given definition.
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType Path param
+     * @param \HubSpotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|value-of<\HubSpotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType> $functionType Path param
      * @param int $appID Path param
      * @param string $definitionID Path param
      * @param string $body Body param
@@ -136,7 +136,7 @@ final class FunctionsService implements FunctionsContract
      * @throws APIException
      */
     public function createOrReplaceByFunctionType(
-        \HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
+        \HubSpotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType|string $functionType,
         int $appID,
         string $definitionID,
         string $body,
@@ -157,13 +157,13 @@ final class FunctionsService implements FunctionsContract
      *
      * Delete a function within a given definition.
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
+     * @param \HubSpotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|value-of<\HubSpotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType> $functionType
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function deleteByFunctionType(
-        \HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
+        \HubSpotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams\FunctionType|string $functionType,
         int $appID,
         string $definitionID,
         RequestOptions|array|null $requestOptions = null,
@@ -183,7 +183,7 @@ final class FunctionsService implements FunctionsContract
      *
      * Retrieve a specific function from a given definition.
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType> $functionType
+     * @param \HubSpotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType|value-of<\HubSpotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType> $functionType
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -192,7 +192,7 @@ final class FunctionsService implements FunctionsContract
         string $functionID,
         int $appID,
         string $definitionID,
-        \HubspotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType|string $functionType,
+        \HubSpotSDK\Automation\Actions\Functions\FunctionGetParams\FunctionType|string $functionType,
         RequestOptions|array|null $requestOptions = null,
     ): PublicActionFunction {
         $params = Util::removeNulls(
@@ -214,13 +214,13 @@ final class FunctionsService implements FunctionsContract
      *
      * Retrieve functions of a specific type for a given definition.
      *
-     * @param \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|value-of<\HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType> $functionType
+     * @param \HubSpotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|value-of<\HubSpotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType> $functionType
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function getByFunctionType(
-        \HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
+        \HubSpotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams\FunctionType|string $functionType,
         int $appID,
         string $definitionID,
         RequestOptions|array|null $requestOptions = null,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicClient;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicClient;
 
 enum ClientType: string
 {

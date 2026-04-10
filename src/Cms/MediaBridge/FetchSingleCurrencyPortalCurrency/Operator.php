@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\FetchSingleCurrencyPortalCurrency;
+namespace HubSpotSDK\Cms\MediaBridge\FetchSingleCurrencyPortalCurrency;
 
 enum Operator: string
 {

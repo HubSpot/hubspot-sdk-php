@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Paging;
 
 /**
- * @phpstan-import-type PublicChannelAccountShape from \HubspotSDK\Conversations\CustomChannels\PublicChannelAccount
- * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ * @phpstan-import-type PublicChannelAccountShape from \HubSpotSDK\Conversations\CustomChannels\PublicChannelAccount
+ * @phpstan-import-type PagingShape from \HubSpotSDK\Paging
  *
  * @phpstan-type CollectionResponseWithTotalPublicChannelAccountShape = array{
  *   results: list<PublicChannelAccount|PublicChannelAccountShape>,

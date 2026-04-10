@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Meta\Origins;
+namespace HubSpotSDK\Services\Meta\Origins;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams\Direction;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams\Service;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Meta\Origins\IPRangesContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams\Direction;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams\Service;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Meta\Origins\IPRangesContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class IPRangesService implements IPRangesContract
 {
@@ -62,8 +62,8 @@ final class IPRangesService implements IPRangesContract
      *
      * Retrieve a simplified list of IP ranges for specified services and directions in plain text format. This endpoint provides a straightforward representation of IP ranges without additional metadata.
      *
-     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction>> $direction
-     * @param list<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service|value-of<\HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service>> $service
+     * @param list<\HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction|value-of<\HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction>> $direction
+     * @param list<\HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service|value-of<\HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service>> $service
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

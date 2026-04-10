@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Meta\Origins\IPRanges;
+namespace HubSpotSDK\Meta\Origins\IPRanges;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams\Direction;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams\Service;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams\Direction;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams\Service;
 
 /**
  * Retrieve a collection of IP ranges associated with specific services and directions, such as `EMAIL`, `API`, `DNS`, or `WEB_SCRAPING`. The response includes details like CIDR notation, description, and the direction of IP traffic.
  *
- * @see HubspotSDK\Services\Meta\Origins\IPRangesService::list()
+ * @see HubSpotSDK\Services\Meta\Origins\IPRangesService::list()
  *
  * @phpstan-type IPRangeListParamsShape = array{
  *   direction?: list<Direction|value-of<Direction>>|null,

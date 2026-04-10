@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\BatchResponsePublicBulkOptOutFromAllResponse;
+namespace HubSpotSDK\CommunicationPreferences\BatchResponsePublicBulkOptOutFromAllResponse;
 
 /**
  * The current status of the bulk opt-out operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.

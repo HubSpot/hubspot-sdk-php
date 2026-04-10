@@ -2,10 +2,10 @@
 
 namespace Tests\Services;
 
-use HubspotSDK\Account\CollectionResponseAPIUsageNoPaging;
-use HubspotSDK\Account\PortalInformationResponse;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Account\CollectionResponseAPIUsageNoPaging;
+use HubSpotSDK\Account\PortalInformationResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Subscriptions;
+namespace HubSpotSDK\Crm\Objects\Subscriptions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update a specific subscription by its ID with new property values.
  *
- * @see HubspotSDK\Services\Crm\Objects\SubscriptionsService::update()
+ * @see HubSpotSDK\Services\Crm\Objects\SubscriptionsService::update()
  *
  * @phpstan-type SubscriptionUpdateParamsShape = array{
  *   properties: array<string,string>, idProperty?: string|null

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicRollingPropertyUpdatedOperation;
+namespace HubSpotSDK\Crm\Lists\PublicRollingPropertyUpdatedOperation;
 
 /**
  * Specifies the type of operation (ROLLING_PROPERTY_UPDATED).

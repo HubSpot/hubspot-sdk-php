@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Blogs;
+namespace HubSpotSDK\ServiceContracts\Cms\Blogs;
 
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
-use HubspotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\AbStatus;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\CurrentState;
+use HubSpotSDK\Cms\Blogs\Posts\PostCreateParams\Language;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface PostsContract
 {
@@ -158,7 +158,7 @@ interface PostsContract
      *
      * @param string $objectID Path param
      * @param string $id body param: The unique ID of the Blog Post
-     * @param \HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\AbStatus|value-of<\HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\AbStatus> $abStatus Body param: The status of the AB test associated with this blog post, if applicable
+     * @param \HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\AbStatus|value-of<\HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\AbStatus> $abStatus Body param: The status of the AB test associated with this blog post, if applicable
      *
      * Available options: automated_loser_variant, automated_master, automated_variant, loser_variant, mab_master, mab_variant, master, variant
      * @param string $abTestID Body param: The ID of the AB test associated with this page, if applicable
@@ -170,11 +170,11 @@ interface PostsContract
      * @param string $campaign body param: The GUID of the marketing campaign this Blog Post is a part of
      * @param int $categoryID Body param: ID of the type of object this is. Should always .
      * @param string $contentGroupID body param: The ID of the parent Blog this Blog Post is associated with
-     * @param \HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\ContentTypeCategory|value-of<\HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\ContentTypeCategory> $contentTypeCategory Body param: An ENUM descibing the type of this object. Should always be BLOG_POST.
+     * @param \HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\ContentTypeCategory|value-of<\HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\ContentTypeCategory> $contentTypeCategory Body param: An ENUM descibing the type of this object. Should always be BLOG_POST.
      * @param \DateTimeInterface $created body param: The timestamp (ISO8601 format) when this Blog Post was created
      * @param string $createdByID body param: The ID of the user that created this Blog Post
      * @param bool $currentlyPublished Body param: Whether the post is published (true or false)
-     * @param \HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\CurrentState|value-of<\HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\CurrentState> $currentState Body param: A generated ENUM descibing the current state of this Blog Post. Should always match state.
+     * @param \HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\CurrentState|value-of<\HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\CurrentState> $currentState Body param: A generated ENUM descibing the current state of this Blog Post. Should always match state.
      * @param string $domain Body param: The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.
      * @param string $dynamicPageDataSourceID body param: The identifier for the data source used by the dynamic page
      * @param int $dynamicPageDataSourceType body param: The type of data source used by the dynamic page
@@ -189,7 +189,7 @@ interface PostsContract
      * @param string $headHTML Body param: Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
      * @param string $htmlTitle body param: The html title of this Blog Post
      * @param bool $includeDefaultCustomCss body param: Boolean to determine whether or not the Primary CSS Files should be applied
-     * @param \HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\Language|value-of<\HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\Language> $language Body param: The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.
+     * @param \HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\Language> $language Body param: The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.
      * @param array<string,mixed> $layoutSections body param: A structure detailing the layout sections of the blog post
      * @param string $linkRelCanonicalURL body param: Optional override to set the URL to be used in the rel=canonical link tag on the page
      * @param string $mabExperimentID Body param: Unique identifier of the MAB Experiment
@@ -228,7 +228,7 @@ interface PostsContract
     public function update(
         string $objectID,
         string $id,
-        \HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\AbStatus|string $abStatus,
+        \HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\AbStatus|string $abStatus,
         string $abTestID,
         int $archivedAt,
         bool $archivedInDashboard,
@@ -238,11 +238,11 @@ interface PostsContract
         string $campaign,
         int $categoryID,
         string $contentGroupID,
-        \HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\ContentTypeCategory|string $contentTypeCategory,
+        \HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\ContentTypeCategory|string $contentTypeCategory,
         \DateTimeInterface $created,
         string $createdByID,
         bool $currentlyPublished,
-        \HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\CurrentState|string $currentState,
+        \HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\CurrentState|string $currentState,
         string $domain,
         string $dynamicPageDataSourceID,
         int $dynamicPageDataSourceType,
@@ -257,7 +257,7 @@ interface PostsContract
         string $headHTML,
         string $htmlTitle,
         bool $includeDefaultCustomCss,
-        \HubspotSDK\Cms\Blogs\Posts\PostUpdateParams\Language|string $language,
+        \HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams\Language|string $language,
         array $layoutSections,
         string $linkRelCanonicalURL,
         string $mabExperimentID,
@@ -547,7 +547,7 @@ interface PostsContract
      * @api
      *
      * @param string $id the unique ID of the Blog Post
-     * @param \HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\AbStatus|value-of<\HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\AbStatus> $abStatus The status of the AB test associated with this blog post, if applicable
+     * @param \HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\AbStatus|value-of<\HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\AbStatus> $abStatus The status of the AB test associated with this blog post, if applicable
      *
      * Available options: automated_loser_variant, automated_master, automated_variant, loser_variant, mab_master, mab_variant, master, variant
      * @param string $abTestID The ID of the AB test associated with this page, if applicable
@@ -559,11 +559,11 @@ interface PostsContract
      * @param string $campaign the GUID of the marketing campaign this Blog Post is a part of
      * @param int $categoryID ID of the type of object this is. Should always .
      * @param string $contentGroupID the ID of the parent Blog this Blog Post is associated with
-     * @param \HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\ContentTypeCategory|value-of<\HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should always be BLOG_POST.
+     * @param \HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\ContentTypeCategory|value-of<\HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\ContentTypeCategory> $contentTypeCategory An ENUM descibing the type of this object. Should always be BLOG_POST.
      * @param \DateTimeInterface $created the timestamp (ISO8601 format) when this Blog Post was created
      * @param string $createdByID the ID of the user that created this Blog Post
      * @param bool $currentlyPublished Whether the post is published (true or false)
-     * @param \HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\CurrentState|value-of<\HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\CurrentState> $currentState A generated ENUM descibing the current state of this Blog Post. Should always match state.
+     * @param \HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\CurrentState|value-of<\HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\CurrentState> $currentState A generated ENUM descibing the current state of this Blog Post. Should always match state.
      * @param string $domain The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.
      * @param string $dynamicPageDataSourceID the identifier for the data source used by the dynamic page
      * @param int $dynamicPageDataSourceType the type of data source used by the dynamic page
@@ -578,7 +578,7 @@ interface PostsContract
      * @param string $headHTML Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
      * @param string $htmlTitle the html title of this Blog Post
      * @param bool $includeDefaultCustomCss boolean to determine whether or not the Primary CSS Files should be applied
-     * @param \HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\Language|value-of<\HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\Language> $language The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.
+     * @param \HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\Language> $language The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.
      * @param array<string,mixed> $layoutSections a structure detailing the layout sections of the blog post
      * @param string $linkRelCanonicalURL optional override to set the URL to be used in the rel=canonical link tag on the page
      * @param string $mabExperimentID Unique identifier of the MAB Experiment
@@ -616,7 +616,7 @@ interface PostsContract
     public function updateDraft(
         string $objectID,
         string $id,
-        \HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\AbStatus|string $abStatus,
+        \HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\AbStatus|string $abStatus,
         string $abTestID,
         int $archivedAt,
         bool $archivedInDashboard,
@@ -626,11 +626,11 @@ interface PostsContract
         string $campaign,
         int $categoryID,
         string $contentGroupID,
-        \HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\ContentTypeCategory|string $contentTypeCategory,
+        \HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\ContentTypeCategory|string $contentTypeCategory,
         \DateTimeInterface $created,
         string $createdByID,
         bool $currentlyPublished,
-        \HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\CurrentState|string $currentState,
+        \HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\CurrentState|string $currentState,
         string $domain,
         string $dynamicPageDataSourceID,
         int $dynamicPageDataSourceType,
@@ -645,7 +645,7 @@ interface PostsContract
         string $headHTML,
         string $htmlTitle,
         bool $includeDefaultCustomCss,
-        \HubspotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\Language|string $language,
+        \HubSpotSDK\Cms\Blogs\Posts\PostUpdateDraftParams\Language|string $language,
         array $layoutSections,
         string $linkRelCanonicalURL,
         string $mabExperimentID,

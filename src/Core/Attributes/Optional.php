@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Attributes;
+namespace HubSpotSDK\Core\Attributes;
 
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
  * @internal

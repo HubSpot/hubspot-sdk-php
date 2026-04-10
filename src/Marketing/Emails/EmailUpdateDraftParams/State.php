@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\EmailUpdateDraftParams;
+namespace HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams;
 
 /**
  * The email state.

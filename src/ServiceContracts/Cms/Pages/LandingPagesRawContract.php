@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Pages;
+namespace HubSpotSDK\ServiceContracts\Cms\Pages;
 
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCloneParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageDeleteParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageGetParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageListParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
-use HubspotSDK\Cms\Pages\PageData;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCloneParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageDeleteParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageGetParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageListParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
+use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface LandingPagesRawContract
 {

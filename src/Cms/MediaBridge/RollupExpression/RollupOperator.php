@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\RollupExpression;
+namespace HubSpotSDK\Cms\MediaBridge\RollupExpression;
 
 enum RollupOperator: string
 {

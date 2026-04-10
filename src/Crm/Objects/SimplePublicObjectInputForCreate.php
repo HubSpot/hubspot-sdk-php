@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects;
+namespace HubSpotSDK\Crm\Objects;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Is the input object used to create a new CRM object, containing the properties to be set and optional associations to link the new record with other CRM objects.
  *
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
  *
  * @phpstan-type SimplePublicObjectInputForCreateShape = array{
  *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,

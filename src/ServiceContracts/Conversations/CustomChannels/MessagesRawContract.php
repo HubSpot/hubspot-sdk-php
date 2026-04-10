@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Conversations\CustomChannels;
+namespace HubSpotSDK\ServiceContracts\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
-use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
+use HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface MessagesRawContract
 {

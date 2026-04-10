@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicAdsTimeFilter;
+namespace HubSpotSDK\Crm\Lists\PublicAdsTimeFilter;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Crm\Lists\PublicAbsoluteComparativeTimestampRefineBy;
-use HubspotSDK\Crm\Lists\PublicAbsoluteRangedTimestampRefineBy;
-use HubspotSDK\Crm\Lists\PublicAllHistoryRefineBy;
-use HubspotSDK\Crm\Lists\PublicNumOccurrencesRefineBy;
-use HubspotSDK\Crm\Lists\PublicRangedTimeOperation;
-use HubspotSDK\Crm\Lists\PublicRelativeComparativeTimestampRefineBy;
-use HubspotSDK\Crm\Lists\PublicRelativeRangedTimestampRefineBy;
-use HubspotSDK\Crm\Lists\PublicSetOccurrencesRefineBy;
-use HubspotSDK\Crm\Lists\PublicTimePointOperation;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Crm\Lists\PublicAbsoluteComparativeTimestampRefineBy;
+use HubSpotSDK\Crm\Lists\PublicAbsoluteRangedTimestampRefineBy;
+use HubSpotSDK\Crm\Lists\PublicAllHistoryRefineBy;
+use HubSpotSDK\Crm\Lists\PublicNumOccurrencesRefineBy;
+use HubSpotSDK\Crm\Lists\PublicRangedTimeOperation;
+use HubSpotSDK\Crm\Lists\PublicRelativeComparativeTimestampRefineBy;
+use HubSpotSDK\Crm\Lists\PublicRelativeRangedTimestampRefineBy;
+use HubSpotSDK\Crm\Lists\PublicSetOccurrencesRefineBy;
+use HubSpotSDK\Crm\Lists\PublicTimePointOperation;
 
 /**
  * Refinement criteria.
  *
- * @phpstan-import-type PublicNumOccurrencesRefineByShape from \HubspotSDK\Crm\Lists\PublicNumOccurrencesRefineBy
- * @phpstan-import-type PublicSetOccurrencesRefineByShape from \HubspotSDK\Crm\Lists\PublicSetOccurrencesRefineBy
- * @phpstan-import-type PublicRelativeComparativeTimestampRefineByShape from \HubspotSDK\Crm\Lists\PublicRelativeComparativeTimestampRefineBy
- * @phpstan-import-type PublicRelativeRangedTimestampRefineByShape from \HubspotSDK\Crm\Lists\PublicRelativeRangedTimestampRefineBy
- * @phpstan-import-type PublicAbsoluteComparativeTimestampRefineByShape from \HubspotSDK\Crm\Lists\PublicAbsoluteComparativeTimestampRefineBy
- * @phpstan-import-type PublicAbsoluteRangedTimestampRefineByShape from \HubspotSDK\Crm\Lists\PublicAbsoluteRangedTimestampRefineBy
- * @phpstan-import-type PublicAllHistoryRefineByShape from \HubspotSDK\Crm\Lists\PublicAllHistoryRefineBy
- * @phpstan-import-type PublicTimePointOperationShape from \HubspotSDK\Crm\Lists\PublicTimePointOperation
- * @phpstan-import-type PublicRangedTimeOperationShape from \HubspotSDK\Crm\Lists\PublicRangedTimeOperation
+ * @phpstan-import-type PublicNumOccurrencesRefineByShape from \HubSpotSDK\Crm\Lists\PublicNumOccurrencesRefineBy
+ * @phpstan-import-type PublicSetOccurrencesRefineByShape from \HubSpotSDK\Crm\Lists\PublicSetOccurrencesRefineBy
+ * @phpstan-import-type PublicRelativeComparativeTimestampRefineByShape from \HubSpotSDK\Crm\Lists\PublicRelativeComparativeTimestampRefineBy
+ * @phpstan-import-type PublicRelativeRangedTimestampRefineByShape from \HubSpotSDK\Crm\Lists\PublicRelativeRangedTimestampRefineBy
+ * @phpstan-import-type PublicAbsoluteComparativeTimestampRefineByShape from \HubSpotSDK\Crm\Lists\PublicAbsoluteComparativeTimestampRefineBy
+ * @phpstan-import-type PublicAbsoluteRangedTimestampRefineByShape from \HubSpotSDK\Crm\Lists\PublicAbsoluteRangedTimestampRefineBy
+ * @phpstan-import-type PublicAllHistoryRefineByShape from \HubSpotSDK\Crm\Lists\PublicAllHistoryRefineBy
+ * @phpstan-import-type PublicTimePointOperationShape from \HubSpotSDK\Crm\Lists\PublicTimePointOperation
+ * @phpstan-import-type PublicRangedTimeOperationShape from \HubSpotSDK\Crm\Lists\PublicRangedTimeOperation
  *
  * @phpstan-type PruningRefineByVariants = PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation
  * @phpstan-type PruningRefineByShape = PruningRefineByVariants|PublicNumOccurrencesRefineByShape|PublicSetOccurrencesRefineByShape|PublicRelativeComparativeTimestampRefineByShape|PublicRelativeRangedTimestampRefineByShape|PublicAbsoluteComparativeTimestampRefineByShape|PublicAbsoluteRangedTimestampRefineByShape|PublicAllHistoryRefineByShape|PublicTimePointOperationShape|PublicRangedTimeOperationShape

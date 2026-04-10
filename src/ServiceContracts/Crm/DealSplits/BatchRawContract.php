@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\DealSplits;
+namespace HubSpotSDK\ServiceContracts\Crm\DealSplits;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\DealSplits\Batch\BatchReadParams;
-use HubspotSDK\Crm\DealSplits\Batch\BatchUpsertParams;
-use HubspotSDK\Crm\DealSplits\BatchResponseDealToDealSplits;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\DealSplits\Batch\BatchReadParams;
+use HubSpotSDK\Crm\DealSplits\Batch\BatchUpsertParams;
+use HubSpotSDK\Crm\DealSplits\BatchResponseDealToDealSplits;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

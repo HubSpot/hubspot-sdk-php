@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\DealSplits;
+namespace HubSpotSDK\Crm\DealSplits;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicDealSplitInputShape from \HubspotSDK\Crm\DealSplits\PublicDealSplitInput
+ * @phpstan-import-type PublicDealSplitInputShape from \HubSpotSDK\Crm\DealSplits\PublicDealSplitInput
  *
  * @phpstan-type PublicDealSplitsCreateRequestShape = array{
  *   id: int, splits: list<PublicDealSplitInput|PublicDealSplitInputShape>

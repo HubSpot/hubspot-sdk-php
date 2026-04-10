@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Automation\Actions;
+namespace HubSpotSDK\ServiceContracts\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\Definitions\DefinitionCreateParams;
-use HubspotSDK\Automation\Actions\Definitions\DefinitionCreateRequiresObjectParams;
-use HubspotSDK\Automation\Actions\Definitions\DefinitionDeleteParams;
-use HubspotSDK\Automation\Actions\Definitions\DefinitionGetParams;
-use HubspotSDK\Automation\Actions\Definitions\DefinitionGetRequiresObjectParams;
-use HubspotSDK\Automation\Actions\Definitions\DefinitionListParams;
-use HubspotSDK\Automation\Actions\Definitions\DefinitionUpdateParams;
-use HubspotSDK\Automation\Actions\PublicActionDefinition;
-use HubspotSDK\Automation\Actions\PublicActionDefinitionRequiresObjectResponse;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Automation\Actions\Definitions\DefinitionCreateParams;
+use HubSpotSDK\Automation\Actions\Definitions\DefinitionCreateRequiresObjectParams;
+use HubSpotSDK\Automation\Actions\Definitions\DefinitionDeleteParams;
+use HubSpotSDK\Automation\Actions\Definitions\DefinitionGetParams;
+use HubSpotSDK\Automation\Actions\Definitions\DefinitionGetRequiresObjectParams;
+use HubSpotSDK\Automation\Actions\Definitions\DefinitionListParams;
+use HubSpotSDK\Automation\Actions\Definitions\DefinitionUpdateParams;
+use HubSpotSDK\Automation\Actions\PublicActionDefinition;
+use HubSpotSDK\Automation\Actions\PublicActionDefinitionRequiresObjectResponse;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface DefinitionsRawContract
 {

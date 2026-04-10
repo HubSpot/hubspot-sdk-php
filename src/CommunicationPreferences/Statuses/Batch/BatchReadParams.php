@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\Statuses\Batch;
+namespace HubSpotSDK\CommunicationPreferences\Statuses\Batch;
 
-use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Batch retrieve subscription statuses for a set of contacts.
  *
- * @see HubspotSDK\Services\CommunicationPreferences\Statuses\BatchService::read()
+ * @see HubSpotSDK\Services\CommunicationPreferences\Statuses\BatchService::read()
  *
  * @phpstan-type BatchReadParamsShape = array{
  *   channel: Channel|value-of<Channel>,

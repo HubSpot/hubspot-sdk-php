@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MaxNumbers;
+namespace HubSpotSDK\Cms\MediaBridge\MaxNumbers;
 
 enum Operator: string
 {

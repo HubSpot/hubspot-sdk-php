@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Meta\Origins\IPRanges;
+namespace HubSpotSDK\Meta\Origins\IPRanges;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Direction;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams\Service;
 
 /**
  * Retrieve a simplified list of IP ranges for specified services and directions in plain text format. This endpoint provides a straightforward representation of IP ranges without additional metadata.
  *
- * @see HubspotSDK\Services\Meta\Origins\IPRangesService::listSimple()
+ * @see HubSpotSDK\Services\Meta\Origins\IPRangesService::listSimple()
  *
  * @phpstan-type IPRangeListSimpleParamsShape = array{
  *   direction?: list<Direction|value-of<Direction>>|null,

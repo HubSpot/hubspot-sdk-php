@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\IfBoolean;
+namespace HubSpotSDK\Cms\MediaBridge\IfBoolean;
 
 enum Operator: string
 {

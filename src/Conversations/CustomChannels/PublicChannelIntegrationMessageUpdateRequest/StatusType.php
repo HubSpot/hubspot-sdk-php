@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationMessageUpdateRequest;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicChannelIntegrationMessageUpdateRequest;
 
 /**
  * Valid status are SENT, FAILED, and READ.

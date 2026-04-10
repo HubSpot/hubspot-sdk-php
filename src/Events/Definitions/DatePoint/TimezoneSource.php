@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\DatePoint;
+namespace HubSpotSDK\Events\Definitions\DatePoint;
 
 enum TimezoneSource: string
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Crm\AssociationsSchemaRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Crm\AssociationsSchemaRawContract;
 
 final class AssociationsSchemaRawService implements AssociationsSchemaRawContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\AssociationDefinition;
+namespace HubSpotSDK\Events\Definitions\AssociationDefinition;
 
 /**
  * The name of the source object type (e.g,. "DEAL" or "QUOTE").

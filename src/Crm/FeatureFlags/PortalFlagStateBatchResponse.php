@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags;
+namespace HubSpotSDK\Crm\FeatureFlags;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PortalFlagStateResponseShape from \HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse
+ * @phpstan-import-type PortalFlagStateResponseShape from \HubSpotSDK\Crm\FeatureFlags\PortalFlagStateResponse
  *
  * @phpstan-type PortalFlagStateBatchResponseShape = array{
  *   portalFlagStates: list<PortalFlagStateResponse|PortalFlagStateResponseShape>

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicListConversionResponse;
+namespace HubSpotSDK\Crm\Lists\PublicListConversionResponse;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Crm\Lists\PublicListConversionDate;
-use HubspotSDK\Crm\Lists\PublicListConversionInactivity;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Crm\Lists\PublicListConversionDate;
+use HubSpotSDK\Crm\Lists\PublicListConversionInactivity;
 
 /**
  * The scheduled time for the list conversion, which can be based on a specific date or inactivity period.
  *
- * @phpstan-import-type PublicListConversionDateShape from \HubspotSDK\Crm\Lists\PublicListConversionDate
- * @phpstan-import-type PublicListConversionInactivityShape from \HubspotSDK\Crm\Lists\PublicListConversionInactivity
+ * @phpstan-import-type PublicListConversionDateShape from \HubSpotSDK\Crm\Lists\PublicListConversionDate
+ * @phpstan-import-type PublicListConversionInactivityShape from \HubSpotSDK\Crm\Lists\PublicListConversionInactivity
  *
  * @phpstan-type RequestedConversionTimeVariants = PublicListConversionDate|PublicListConversionInactivity
  * @phpstan-type RequestedConversionTimeShape = RequestedConversionTimeVariants|PublicListConversionDateShape|PublicListConversionInactivityShape

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\CalendarDatePropertyOperation\FiscalYearStart;
-use HubspotSDK\Events\Definitions\CalendarDatePropertyOperation\Operator;
-use HubspotSDK\Events\Definitions\CalendarDatePropertyOperation\PropertyType;
-use HubspotSDK\Events\Definitions\CalendarDatePropertyOperation\TimeUnit;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\CalendarDatePropertyOperation\FiscalYearStart;
+use HubSpotSDK\Events\Definitions\CalendarDatePropertyOperation\Operator;
+use HubSpotSDK\Events\Definitions\CalendarDatePropertyOperation\PropertyType;
+use HubSpotSDK\Events\Definitions\CalendarDatePropertyOperation\TimeUnit;
 
 /**
  * @phpstan-type CalendarDatePropertyOperationShape = array{

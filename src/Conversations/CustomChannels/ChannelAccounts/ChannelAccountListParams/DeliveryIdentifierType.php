@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams;
+namespace HubSpotSDK\Conversations\CustomChannels\ChannelAccounts\ChannelAccountListParams;
 
 enum DeliveryIdentifierType: string
 {

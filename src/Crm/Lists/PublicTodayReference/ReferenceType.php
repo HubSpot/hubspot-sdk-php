@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicTodayReference;
+namespace HubSpotSDK\Crm\Lists\PublicTodayReference;
 
 /**
  * Indicates the type of reference (TODAY).

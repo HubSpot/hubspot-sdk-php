@@ -4,7 +4,7 @@ namespace Tests;
 
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Mock\Client;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -26,7 +26,7 @@ class ClientTest extends TestCase
 
         $transporter->setDefaultResponse($mockRsp);
 
-        $client = new \HubspotSDK\Client(
+        $client = new \HubSpotSDK\Client(
             baseUrl: 'http://localhost',
             accessToken: 'My Access Token',
             requestOptions: ['transporter' => $transporter],

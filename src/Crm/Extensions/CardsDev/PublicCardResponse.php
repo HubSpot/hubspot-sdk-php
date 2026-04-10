@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev;
+namespace HubSpotSDK\Crm\Extensions\CardsDev;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type CardActionsShape from \HubspotSDK\Crm\Extensions\CardsDev\CardActions
- * @phpstan-import-type CardAuditResponseShape from \HubspotSDK\Crm\Extensions\CardsDev\CardAuditResponse
- * @phpstan-import-type CardDisplayBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\CardDisplayBody
- * @phpstan-import-type PublicCardFetchBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\PublicCardFetchBody
+ * @phpstan-import-type CardActionsShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardActions
+ * @phpstan-import-type CardAuditResponseShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardAuditResponse
+ * @phpstan-import-type CardDisplayBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardDisplayBody
+ * @phpstan-import-type PublicCardFetchBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\PublicCardFetchBody
  *
  * @phpstan-type PublicCardResponseShape = array{
  *   id: string,

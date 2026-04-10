@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Tables;
+namespace HubSpotSDK\Cms\Hubdb\Tables;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Exports the published version of a table in a specified format.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\TablesService::export()
+ * @see HubSpotSDK\Services\Cms\Hubdb\TablesService::export()
  *
  * @phpstan-type TableExportParamsShape = array{format?: string|null}
  */

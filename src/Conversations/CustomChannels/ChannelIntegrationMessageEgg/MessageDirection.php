@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg;
+namespace HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg;
 
 enum MessageDirection: string
 {

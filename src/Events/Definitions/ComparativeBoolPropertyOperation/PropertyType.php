@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\ComparativeBoolPropertyOperation;
+namespace HubSpotSDK\Events\Definitions\ComparativeBoolPropertyOperation;
 
 enum PropertyType: string
 {

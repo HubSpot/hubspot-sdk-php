@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\Messages;
+namespace HubSpotSDK\Conversations\CustomChannels\Messages;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Get the details for a specific message sent over a custom channel.
  *
- * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::get()
+ * @see HubSpotSDK\Services\Conversations\CustomChannels\MessagesService::get()
  *
  * @phpstan-type MessageGetParamsShape = array{channelID: int}
  */

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Owners\OwnerGetParams\IDProperty;
-use HubspotSDK\Crm\Owners\PublicOwner;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Owners\OwnerGetParams\IDProperty;
+use HubSpotSDK\Crm\Owners\PublicOwner;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface OwnersContract
 {

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\PartnerClients;
+namespace HubSpotSDK\Crm\Objects\PartnerClients;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve detailed information about a specific partner client, including selected properties and associations. This endpoint is useful for accessing comprehensive client data for analysis or integration purposes.
  *
- * @see HubspotSDK\Services\Crm\Objects\PartnerClientsService::get()
+ * @see HubSpotSDK\Services\Crm\Objects\PartnerClientsService::get()
  *
  * @phpstan-type PartnerClientGetParamsShape = array{
  *   archived?: bool|null,

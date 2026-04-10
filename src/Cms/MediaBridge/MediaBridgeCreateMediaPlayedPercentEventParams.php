@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\ExternalPlayContext;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\MediaType;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\ExternalPlayContext;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams\MediaType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create an event representing a user reaching quarterly milestones in a piece of media they're viewing.
  *
- * @see HubspotSDK\Services\Cms\MediaBridgeService::createMediaPlayedPercentEvent()
+ * @see HubSpotSDK\Services\Cms\MediaBridgeService::createMediaPlayedPercentEvent()
  *
  * @phpstan-type MediaBridgeCreateMediaPlayedPercentEventParamsShape = array{
  *   mediaType: MediaType|value-of<MediaType>,

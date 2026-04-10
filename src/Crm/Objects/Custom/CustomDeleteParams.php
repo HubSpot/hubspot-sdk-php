@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Custom;
+namespace HubSpotSDK\Crm\Objects\Custom;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Move an Object identified by `{objectId}` to the recycling bin.
  *
- * @see HubspotSDK\Services\Crm\Objects\CustomService::delete()
+ * @see HubSpotSDK\Services\Crm\Objects\CustomService::delete()
  *
  * @phpstan-type CustomDeleteParamsShape = array{objectType: string}
  */

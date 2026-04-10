@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\AssociationsSchema;
+namespace HubSpotSDK\Services\Crm\AssociationsSchema;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionUserConfiguration;
-use HubspotSDK\Crm\AssociationsSchema\CollectionResponseAssociationSpecWithLabelNoPaging;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelBatchCreateParams;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelCreateLabelParams;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelDeleteLabelParams;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelListLabelsParams;
-use HubspotSDK\Crm\AssociationsSchema\Labels\LabelUpdateLabelParams;
-use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationCreateRequest;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\AssociationsSchema\LabelsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionUserConfiguration;
+use HubSpotSDK\Crm\AssociationsSchema\CollectionResponseAssociationSpecWithLabelNoPaging;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelBatchCreateParams;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelCreateLabelParams;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelDeleteLabelParams;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelListLabelsParams;
+use HubSpotSDK\Crm\AssociationsSchema\Labels\LabelUpdateLabelParams;
+use HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationCreateRequest;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\AssociationsSchema\LabelsRawContract;
 
 /**
- * @phpstan-import-type PublicAssociationDefinitionConfigurationCreateRequestShape from \HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationCreateRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationCreateRequestShape from \HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationCreateRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class LabelsRawService implements LabelsRawContract
 {

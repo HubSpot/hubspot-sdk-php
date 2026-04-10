@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Get a list of all versions of a marketing email, with each entry including the full state of that particular version. To view the most recent version, sort by the updatedAt parameter.
  *
- * @see HubspotSDK\Services\Marketing\EmailsService::listRevisions()
+ * @see HubSpotSDK\Services\Marketing\EmailsService::listRevisions()
  *
  * @phpstan-type EmailListRevisionsParamsShape = array{
  *   after?: string|null, before?: string|null, limit?: int|null

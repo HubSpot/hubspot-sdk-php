@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicEmailStyleSettingsShape from \HubspotSDK\Marketing\Emails\PublicEmailStyleSettings
+ * @phpstan-import-type PublicEmailStyleSettingsShape from \HubSpotSDK\Marketing\Emails\PublicEmailStyleSettings
  *
  * @phpstan-type PublicEmailContentShape = array{
  *   flexAreas?: array<string,mixed>|null,

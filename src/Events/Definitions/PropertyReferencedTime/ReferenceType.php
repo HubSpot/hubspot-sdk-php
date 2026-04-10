@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\PropertyReferencedTime;
+namespace HubSpotSDK\Events\Definitions\PropertyReferencedTime;
 
 enum ReferenceType: string
 {

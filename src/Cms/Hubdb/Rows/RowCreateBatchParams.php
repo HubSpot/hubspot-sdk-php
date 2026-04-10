@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Rows;
+namespace HubSpotSDK\Cms\Hubdb\Rows;
 
-use HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Hubdb\HubDBTableRowV3Request;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Creates rows in the draft version of the specified table, given an array of row objects. Maximum of 100 row object per call. See the overview section for more details with an example.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\RowsService::createBatch()
+ * @see HubSpotSDK\Services\Cms\Hubdb\RowsService::createBatch()
  *
- * @phpstan-import-type HubDBTableRowV3RequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowV3Request
+ * @phpstan-import-type HubDBTableRowV3RequestShape from \HubSpotSDK\Cms\Hubdb\HubDBTableRowV3Request
  *
  * @phpstan-type RowCreateBatchParamsShape = array{
  *   inputs: list<HubDBTableRowV3Request|HubDBTableRowV3RequestShape>

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\ComparativeDatePropertyOperation;
+namespace HubSpotSDK\Events\Definitions\ComparativeDatePropertyOperation;
 
 enum Operator: string
 {

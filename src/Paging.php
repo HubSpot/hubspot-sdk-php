@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK;
+namespace HubSpotSDK;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type NextPageShape from \HubspotSDK\NextPage
- * @phpstan-import-type PreviousPageShape from \HubspotSDK\PreviousPage
+ * @phpstan-import-type NextPageShape from \HubSpotSDK\NextPage
+ * @phpstan-import-type PreviousPageShape from \HubSpotSDK\PreviousPage
  *
  * @phpstan-type PagingShape = array{
  *   next?: null|NextPage|NextPageShape, prev?: null|PreviousPage|PreviousPageShape

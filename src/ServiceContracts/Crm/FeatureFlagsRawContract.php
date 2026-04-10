@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagDeleteParams;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagDeletePortalStateParams;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagGetParams;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagGetPortalStateParams;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagListPortalsParams;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdatePortalStateParams;
-use HubspotSDK\Crm\FeatureFlags\FlagResponse;
-use HubspotSDK\Crm\FeatureFlags\FlagsForAppResponse;
-use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
-use HubspotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagDeleteParams;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagDeletePortalStateParams;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagGetParams;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagGetPortalStateParams;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagListPortalsParams;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagUpdatePortalStateParams;
+use HubSpotSDK\Crm\FeatureFlags\FlagResponse;
+use HubSpotSDK\Crm\FeatureFlags\FlagsForAppResponse;
+use HubSpotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
+use HubSpotSDK\Crm\FeatureFlags\PortalFlagStateResponse;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface FeatureFlagsRawContract
 {

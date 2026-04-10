@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\BooleanTargetPropertyVariable;
+namespace HubSpotSDK\Cms\MediaBridge\BooleanTargetPropertyVariable;
 
 enum Operator: string
 {

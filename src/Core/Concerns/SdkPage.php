@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Concerns;
+namespace HubSpotSDK\Core\Concerns;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Core\Exceptions\APIStatusException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Exceptions\APIStatusException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type NormalizedRequest from \HubspotSDK\Core\BaseClient
+ * @phpstan-import-type NormalizedRequest from \HubSpotSDK\Core\BaseClient
  *
  * @internal
  *

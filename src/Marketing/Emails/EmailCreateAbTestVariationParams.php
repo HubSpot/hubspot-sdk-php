@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a variation of a marketing email for an A/B test. The new variation will be created as a draft. If an active variation already exists, a new one won't be created.
  *
- * @see HubspotSDK\Services\Marketing\EmailsService::createAbTestVariation()
+ * @see HubSpotSDK\Services\Marketing\EmailsService::createAbTestVariation()
  *
  * @phpstan-type EmailCreateAbTestVariationParamsShape = array{
  *   contentID: string, variationName: string

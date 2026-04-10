@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
-use HubspotSDK\Crm\Properties\PropertyCreateParams;
-use HubspotSDK\Crm\Properties\PropertyDeleteParams;
-use HubspotSDK\Crm\Properties\PropertyGetParams;
-use HubspotSDK\Crm\Properties\PropertyListParams;
-use HubspotSDK\Crm\Properties\PropertyUpdateParams;
-use HubspotSDK\Crm\Property;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams;
+use HubSpotSDK\Crm\Properties\PropertyDeleteParams;
+use HubSpotSDK\Crm\Properties\PropertyGetParams;
+use HubSpotSDK\Crm\Properties\PropertyListParams;
+use HubSpotSDK\Crm\Properties\PropertyUpdateParams;
+use HubSpotSDK\Crm\Property;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface PropertiesRawContract
 {

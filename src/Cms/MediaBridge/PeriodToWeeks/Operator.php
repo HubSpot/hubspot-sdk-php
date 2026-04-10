@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\PeriodToWeeks;
+namespace HubSpotSDK\Cms\MediaBridge\PeriodToWeeks;
 
 enum Operator: string
 {

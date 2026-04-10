@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\CommunicationPreferences;
+namespace HubSpotSDK\ServiceContracts\CommunicationPreferences;
 
-use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsSubscriptionDefinition;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsSubscriptionDefinition;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface DefinitionsContract
 {

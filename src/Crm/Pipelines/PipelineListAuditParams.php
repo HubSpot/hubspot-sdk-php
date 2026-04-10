@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Pipelines;
+namespace HubSpotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Return a reverse chronological list of all mutations that have occurred on the pipeline identified by `{pipelineId}`.
  *
- * @see HubspotSDK\Services\Crm\PipelinesService::listAudit()
+ * @see HubSpotSDK\Services\Crm\PipelinesService::listAudit()
  *
  * @phpstan-type PipelineListAuditParamsShape = array{objectType: string}
  */

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicStringPropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicStringPropertyOperation;
 
 /**
  * Specifies the type of operation (STRING).

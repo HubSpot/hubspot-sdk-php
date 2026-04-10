@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Styles;
+namespace HubSpotSDK\Cms\Styles;
 
 /**
  * Indicates whether flexbox positioning is enabled for the section.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicIndexedTimePoint;
+namespace HubSpotSDK\Crm\Lists\PublicIndexedTimePoint;
 
 /**
  * Defines the type of time (INDEXED).

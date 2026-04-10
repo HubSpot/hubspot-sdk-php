@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Settings\Currencies;
+namespace HubSpotSDK\Services\Settings\Currencies;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Settings\Currencies\CentralFxRatesRawContract;
-use HubspotSDK\Settings\Currencies\CentralExchangeRatesInformation;
-use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams;
-use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams\CurrencyCode;
-use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
-use HubspotSDK\Settings\Currencies\ExchangeRate;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Settings\Currencies\CentralFxRatesRawContract;
+use HubSpotSDK\Settings\Currencies\CentralExchangeRatesInformation;
+use HubSpotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams;
+use HubSpotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams\CurrencyCode;
+use HubSpotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
+use HubSpotSDK\Settings\Currencies\ExchangeRate;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CentralFxRatesRawService implements CentralFxRatesRawContract
 {

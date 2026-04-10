@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicFormSubmissionFilter;
+namespace HubSpotSDK\Crm\Lists\PublicFormSubmissionFilter;
 
 /**
  * Indicates the type of filter (FORM_SUBMISSION).

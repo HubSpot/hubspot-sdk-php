@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\ActionResponseWithResultsPublicWideStatus;
+namespace HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsPublicWideStatus;
 
 /**
  * The current status of the operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.

@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags\Batch;
+namespace HubSpotSDK\Crm\FeatureFlags\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\FeatureFlags\BatchPortalEntry;
 
 /**
  * Set the portal flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
  *
- * @see HubspotSDK\Services\Crm\FeatureFlags\BatchService::upsert()
+ * @see HubSpotSDK\Services\Crm\FeatureFlags\BatchService::upsert()
  *
- * @phpstan-import-type BatchPortalEntryShape from \HubspotSDK\Crm\FeatureFlags\BatchPortalEntry
+ * @phpstan-import-type BatchPortalEntryShape from \HubSpotSDK\Crm\FeatureFlags\BatchPortalEntry
  *
  * @phpstan-type BatchUpsertParamsShape = array{
  *   appID: int, portalStates: list<BatchPortalEntry|BatchPortalEntryShape>

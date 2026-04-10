@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations;
+namespace HubSpotSDK\Crm\Associations;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Crm\AssociationsService::delete()
+ * @see HubSpotSDK\Services\Crm\AssociationsService::delete()
  *
  * @phpstan-type AssociationDeleteParamsShape = array{
  *   objectType: string, objectID: string, toObjectType: string

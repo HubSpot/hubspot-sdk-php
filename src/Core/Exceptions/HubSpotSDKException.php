@@ -1,11 +1,11 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
-class HubspotSDKException extends \Exception
+class HubSpotSDKException extends \Exception
 {
     /** @var string */
-    protected const DESC = 'HubspotSDK Error';
+    protected const DESC = 'HubSpotSDK Error';
 
     public function __construct(string $message, int $code = 0, ?\Throwable $previous = null)
     {

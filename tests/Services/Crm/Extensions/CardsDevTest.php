@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Crm\Extensions;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Extensions\CardsDev\CardMigrateViewsResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\PublicCardListResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\PublicCardResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardMigrateViewsResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\PublicCardListResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\PublicCardResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

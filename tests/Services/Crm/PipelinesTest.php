@@ -2,13 +2,13 @@
 
 namespace Tests\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
-use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
-use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
-use HubspotSDK\Crm\Pipelines\Pipeline;
-use HubspotSDK\Crm\Pipelines\PipelineStage;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
+use HubSpotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
+use HubSpotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
+use HubSpotSDK\Crm\Pipelines\Pipeline;
+use HubSpotSDK\Crm\Pipelines\PipelineStage;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

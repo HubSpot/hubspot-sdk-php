@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\AuditLogs\PublicAuditLog;
+namespace HubSpotSDK\Cms\AuditLogs\PublicAuditLog;
 
 /**
  * The type of the object (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.).

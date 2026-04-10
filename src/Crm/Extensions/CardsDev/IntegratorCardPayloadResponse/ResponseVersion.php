@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
 
 /**
  * The number version of the response.

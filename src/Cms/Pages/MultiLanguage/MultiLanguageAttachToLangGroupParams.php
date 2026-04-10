@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\MultiLanguage;
+namespace HubSpotSDK\Cms\Pages\MultiLanguage;
 
-use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
-use HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
+use HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Attach a site page to a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Pages\MultiLanguageService::attachToLangGroup()
+ * @see HubSpotSDK\Services\Cms\Pages\MultiLanguageService::attachToLangGroup()
  *
  * @phpstan-type MultiLanguageAttachToLangGroupParamsShape = array{
  *   id: string,

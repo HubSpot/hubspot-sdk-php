@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties;
+namespace HubSpotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Properties\PropertyCreate\DataSensitivity;
-use HubspotSDK\Crm\Properties\PropertyCreate\FieldType;
-use HubspotSDK\Crm\Properties\PropertyCreate\Type;
-use HubspotSDK\OptionInput;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Properties\PropertyCreate\DataSensitivity;
+use HubSpotSDK\Crm\Properties\PropertyCreate\FieldType;
+use HubSpotSDK\Crm\Properties\PropertyCreate\Type;
+use HubSpotSDK\OptionInput;
 
 /**
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  *
  * @phpstan-type PropertyCreateShape = array{
  *   fieldType: FieldType|value-of<FieldType>,

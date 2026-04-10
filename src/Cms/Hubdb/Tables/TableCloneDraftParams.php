@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Tables;
+namespace HubSpotSDK\Cms\Hubdb\Tables;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Clone an existing HubDB table. The `newName` and `newLabel` of the new table can be sent as JSON in the request body. This will create the cloned table as a draft.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\TablesService::cloneDraft()
+ * @see HubSpotSDK\Services\Cms\Hubdb\TablesService::cloneDraft()
  *
  * @phpstan-type TableCloneDraftParamsShape = array{
  *   copyRows: bool,
- *   isHubspotDefined: bool,
+ *   isHubSpotDefined: bool,
  *   newLabel?: string|null,
  *   newName?: string|null,
  * }
@@ -37,8 +37,8 @@ final class TableCloneDraftParams implements BaseModel
     /**
      * Indicates whether the table is defined by HubSpot.
      */
-    #[Required]
-    public bool $isHubspotDefined;
+    #[Required('isHubspotDefined')]
+    public bool $isHubSpotDefined;
 
     /**
      * The new label for the cloned table.
@@ -57,13 +57,13 @@ final class TableCloneDraftParams implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * TableCloneDraftParams::with(copyRows: ..., isHubspotDefined: ...)
+     * TableCloneDraftParams::with(copyRows: ..., isHubSpotDefined: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new TableCloneDraftParams)->withCopyRows(...)->withIsHubspotDefined(...)
+     * (new TableCloneDraftParams)->withCopyRows(...)->withIsHubSpotDefined(...)
      * ```
      */
     public function __construct()
@@ -78,14 +78,14 @@ final class TableCloneDraftParams implements BaseModel
      */
     public static function with(
         bool $copyRows,
-        bool $isHubspotDefined,
+        bool $isHubSpotDefined,
         ?string $newLabel = null,
         ?string $newName = null,
     ): self {
         $self = new self;
 
         $self['copyRows'] = $copyRows;
-        $self['isHubspotDefined'] = $isHubspotDefined;
+        $self['isHubSpotDefined'] = $isHubSpotDefined;
 
         null !== $newLabel && $self['newLabel'] = $newLabel;
         null !== $newName && $self['newName'] = $newName;
@@ -107,10 +107,10 @@ final class TableCloneDraftParams implements BaseModel
     /**
      * Indicates whether the table is defined by HubSpot.
      */
-    public function withIsHubspotDefined(bool $isHubspotDefined): self
+    public function withIsHubSpotDefined(bool $isHubSpotDefined): self
     {
         $self = clone $this;
-        $self['isHubspotDefined'] = $isHubspotDefined;
+        $self['isHubSpotDefined'] = $isHubSpotDefined;
 
         return $self;
     }

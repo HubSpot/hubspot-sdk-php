@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\RoundUpNumbers;
+namespace HubSpotSDK\Cms\MediaBridge\RoundUpNumbers;
 
 enum Operator: string
 {

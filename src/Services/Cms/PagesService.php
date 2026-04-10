@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Pages\PageData;
-use HubspotSDK\Cms\Pages\PageVersion;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\PagesContract;
-use HubspotSDK\Services\Cms\Pages\ABTestsService;
-use HubspotSDK\Services\Cms\Pages\BatchService;
-use HubspotSDK\Services\Cms\Pages\FoldersService;
-use HubspotSDK\Services\Cms\Pages\LandingPagesService;
-use HubspotSDK\Services\Cms\Pages\MultiLanguageService;
-use HubspotSDK\Services\Cms\Pages\WebsitePagesService;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\PageVersion;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\PagesContract;
+use HubSpotSDK\Services\Cms\Pages\ABTestsService;
+use HubSpotSDK\Services\Cms\Pages\BatchService;
+use HubSpotSDK\Services\Cms\Pages\FoldersService;
+use HubSpotSDK\Services\Cms\Pages\LandingPagesService;
+use HubSpotSDK\Services\Cms\Pages\MultiLanguageService;
+use HubSpotSDK\Services\Cms\Pages\WebsitePagesService;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class PagesService implements PagesContract
 {

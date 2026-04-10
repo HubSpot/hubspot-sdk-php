@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Settings;
+namespace HubSpotSDK\Cms\Blogs\Settings;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Get the list of blog revisions. Results can be limited and filtered by creation or updated date.
  *
- * @see HubspotSDK\Services\Cms\Blogs\SettingsService::listRevisions()
+ * @see HubSpotSDK\Services\Cms\Blogs\SettingsService::listRevisions()
  *
  * @phpstan-type SettingListRevisionsParamsShape = array{
  *   after?: string|null, before?: string|null, limit?: int|null

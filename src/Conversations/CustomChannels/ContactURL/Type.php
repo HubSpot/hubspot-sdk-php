@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\ContactURL;
+namespace HubSpotSDK\Conversations\CustomChannels\ContactURL;
 
 enum Type: string
 {

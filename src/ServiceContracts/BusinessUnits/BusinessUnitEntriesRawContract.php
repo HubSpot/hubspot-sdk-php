@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\BusinessUnits;
+namespace HubSpotSDK\ServiceContracts\BusinessUnits;
 
-use HubspotSDK\BusinessUnits\BusinessUnitEntries\BusinessUnitEntryGetByUserIDParams;
-use HubspotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\BusinessUnits\BusinessUnitEntries\BusinessUnitEntryGetByUserIDParams;
+use HubSpotSDK\BusinessUnits\CollectionResponsePublicBusinessUnitNoPaging;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BusinessUnitEntriesRawContract
 {

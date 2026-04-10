@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Fees;
+namespace HubSpotSDK\Crm\Objects\Fees;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
 
 /**
  * Create a fee with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard fees is provided.
  *
- * @see HubspotSDK\Services\Crm\Objects\FeesService::create()
+ * @see HubSpotSDK\Services\Crm\Objects\FeesService::create()
  *
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
  *
  * @phpstan-type FeeCreateParamsShape = array{
  *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,

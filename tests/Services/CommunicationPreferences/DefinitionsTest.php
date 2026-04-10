@@ -2,9 +2,9 @@
 
 namespace Tests\Services\CommunicationPreferences;
 
-use HubspotSDK\Client;
-use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsSubscriptionDefinition;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Client;
+use HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsSubscriptionDefinition;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

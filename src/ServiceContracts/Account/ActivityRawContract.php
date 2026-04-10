@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Account;
+namespace HubSpotSDK\ServiceContracts\Account;
 
-use HubspotSDK\Account\Activity\ActivityListAuditLogsParams;
-use HubspotSDK\Account\Activity\ActivityListLoginActivitiesParams;
-use HubspotSDK\Account\Activity\ActivityListSecurityActivitiesParams;
-use HubspotSDK\Account\Activity\HydratedCriticalAction;
-use HubspotSDK\Account\Activity\PublicAPIUserActionEvent;
-use HubspotSDK\Account\Activity\PublicLoginAudit;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Account\Activity\ActivityListAuditLogsParams;
+use HubSpotSDK\Account\Activity\ActivityListLoginActivitiesParams;
+use HubSpotSDK\Account\Activity\ActivityListSecurityActivitiesParams;
+use HubSpotSDK\Account\Activity\HydratedCriticalAction;
+use HubSpotSDK\Account\Activity\PublicAPIUserActionEvent;
+use HubSpotSDK\Account\Activity\PublicLoginAudit;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ActivityRawContract
 {

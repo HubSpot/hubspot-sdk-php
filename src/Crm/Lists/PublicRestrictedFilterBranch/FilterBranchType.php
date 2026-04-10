@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicRestrictedFilterBranch;
+namespace HubSpotSDK\Crm\Lists\PublicRestrictedFilterBranch;
 
 /**
  * Specifies the type of the filter branch (RESTRICTED).

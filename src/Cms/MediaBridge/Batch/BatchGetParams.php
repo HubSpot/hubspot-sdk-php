@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Batch;
+namespace HubSpotSDK\Cms\MediaBridge\Batch;
 
-use HubspotSDK\Cms\MediaBridge\Batch\BatchGetParams\DataSensitivity;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyName;
+use HubSpotSDK\Cms\MediaBridge\Batch\BatchGetParams\DataSensitivity;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\PropertyName;
 
 /**
  * Get the details for a batch of properties for a specified object type.
  *
- * @see HubspotSDK\Services\Cms\MediaBridge\BatchService::get()
+ * @see HubSpotSDK\Services\Cms\MediaBridge\BatchService::get()
  *
- * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ * @phpstan-import-type PropertyNameShape from \HubSpotSDK\PropertyName
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   appID: int,

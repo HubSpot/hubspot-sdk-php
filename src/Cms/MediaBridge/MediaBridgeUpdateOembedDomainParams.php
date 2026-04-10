@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update an existing oEmbed domain.
  *
- * @see HubspotSDK\Services\Cms\MediaBridgeService::updateOembedDomain()
+ * @see HubSpotSDK\Services\Cms\MediaBridgeService::updateOembedDomain()
  *
- * @phpstan-import-type EndpointsShape from \HubspotSDK\Cms\MediaBridge\Endpoints
+ * @phpstan-import-type EndpointsShape from \HubSpotSDK\Cms\MediaBridge\Endpoints
  *
  * @phpstan-type MediaBridgeUpdateOembedDomainParamsShape = array{
  *   appID: int, endpoints: Endpoints|EndpointsShape, portalID?: int|null

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\PropertyFilter\FilterType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\PropertyFilter\FilterType;
 
 /**
- * @phpstan-import-type OperationVariants from \HubspotSDK\Events\Definitions\PropertyFilter\Operation
- * @phpstan-import-type OperationShape from \HubspotSDK\Events\Definitions\PropertyFilter\Operation
- * @phpstan-import-type PropertyFilterContextShape from \HubspotSDK\Events\Definitions\PropertyFilterContext
+ * @phpstan-import-type OperationVariants from \HubSpotSDK\Events\Definitions\PropertyFilter\Operation
+ * @phpstan-import-type OperationShape from \HubSpotSDK\Events\Definitions\PropertyFilter\Operation
+ * @phpstan-import-type PropertyFilterContextShape from \HubSpotSDK\Events\Definitions\PropertyFilterContext
  *
  * @phpstan-type PropertyFilterShape = array{
  *   filterType: FilterType|value-of<FilterType>,

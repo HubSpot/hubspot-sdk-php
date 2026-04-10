@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicRangedTimeOperation;
+namespace HubSpotSDK\Crm\Lists\PublicRangedTimeOperation;
 
 /**
  * Specifies the type of operation (TIME_RANGED).

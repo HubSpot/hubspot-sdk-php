@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\ColumnRequest;
+namespace HubSpotSDK\Cms\Hubdb\ColumnRequest;
 
 /**
  * Type of the column.

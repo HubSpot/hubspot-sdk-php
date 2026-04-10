@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch;
 
 /**
- * @see HubspotSDK\Services\Crm\ListsService::updateListFilters()
+ * @see HubSpotSDK\Services\Crm\ListsService::updateListFilters()
  *
- * @phpstan-import-type FilterBranchVariants from \HubspotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch
- * @phpstan-import-type FilterBranchShape from \HubspotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch
+ * @phpstan-import-type FilterBranchVariants from \HubSpotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch
+ * @phpstan-import-type FilterBranchShape from \HubSpotSDK\Crm\Lists\ListUpdateListFiltersParams\FilterBranch
  *
  * @phpstan-type ListUpdateListFiltersParamsShape = array{
  *   filterBranch: FilterBranchShape, enrollObjectsInWorkflows?: bool|null

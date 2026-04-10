@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb;
+namespace HubSpotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Paging;
 
 /**
- * @phpstan-import-type HubDBTableV3Shape from \HubspotSDK\Cms\Hubdb\HubDBTableV3
- * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ * @phpstan-import-type HubDBTableV3Shape from \HubSpotSDK\Cms\Hubdb\HubDBTableV3
+ * @phpstan-import-type PagingShape from \HubSpotSDK\Paging
  *
  * @phpstan-type CollectionResponseWithTotalHubDBTableV3Shape = array{
  *   results: list<HubDBTableV3|HubDBTableV3Shape>,

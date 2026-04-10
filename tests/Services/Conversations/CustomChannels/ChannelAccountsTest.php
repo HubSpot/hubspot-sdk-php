@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Conversations\CustomChannels;
 
-use HubspotSDK\Client;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccount;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccount;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccountStagingToken;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

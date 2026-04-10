@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Marketing;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\Campaigns\PublicCampaign;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaign;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

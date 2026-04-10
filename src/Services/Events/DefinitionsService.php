@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Events;
+namespace HubSpotSDK\Services\Events;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
-use HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate;
-use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
-use HubspotSDK\Events\Definitions\Property;
-use HubspotSDK\OptionInput;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Events\DefinitionsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest;
+use HubSpotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate;
+use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
+use HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
+use HubSpotSDK\Events\Definitions\Property;
+use HubSpotSDK\OptionInput;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Events\DefinitionsContract;
 
 /**
- * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubspotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate
- * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubspotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest
- * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type ExternalBehavioralEventPropertyCreateShape from \HubSpotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate
+ * @phpstan-import-type ExternalObjectResolutionMappingRequestShape from \HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest
+ * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  */
 final class DefinitionsService implements DefinitionsContract
 {

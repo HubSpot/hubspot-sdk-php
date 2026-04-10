@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Fees;
+namespace HubSpotSDK\Crm\Objects\Fees;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Read an Object identified by `{feeId}`. `{feeId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Services\Crm\Objects\FeesService::get()
+ * @see HubSpotSDK\Services\Crm\Objects\FeesService::get()
  *
  * @phpstan-type FeeGetParamsShape = array{
  *   archived?: bool|null,

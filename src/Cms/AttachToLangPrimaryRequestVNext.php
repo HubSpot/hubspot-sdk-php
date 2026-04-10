@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms;
+namespace HubSpotSDK\Cms;
 
-use HubspotSDK\Cms\AttachToLangPrimaryRequestVNext\Language;
-use HubspotSDK\Cms\AttachToLangPrimaryRequestVNext\PrimaryLanguage;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\AttachToLangPrimaryRequestVNext\Language;
+use HubSpotSDK\Cms\AttachToLangPrimaryRequestVNext\PrimaryLanguage;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type AttachToLangPrimaryRequestVNextShape = array{

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\PublicWideStatus;
+namespace HubSpotSDK\CommunicationPreferences\PublicWideStatus;
 
 /**
  * The subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'.

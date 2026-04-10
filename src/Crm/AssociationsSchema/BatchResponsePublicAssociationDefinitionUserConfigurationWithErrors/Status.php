@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionUserConfigurationWithErrors;
+namespace HubSpotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionUserConfigurationWithErrors;
 
 enum Status: string
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Property;
+namespace HubSpotSDK\Cms\MediaBridge\Property;
 
 /**
  * The mode in which the property is displayed. Can be: "current_value" or "all_unique_versions".

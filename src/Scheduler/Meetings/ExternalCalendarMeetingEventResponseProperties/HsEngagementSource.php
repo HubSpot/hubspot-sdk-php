@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties;
+namespace HubSpotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties;
 
 /**
  * The source of the engagement, will always be `MEETINGS`.

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Crm\ExtensionsContract;
-use HubspotSDK\Services\Crm\Extensions\CallingService;
-use HubspotSDK\Services\Crm\Extensions\CardsDevService;
-use HubspotSDK\Services\Crm\Extensions\VideoConferencingService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Crm\ExtensionsContract;
+use HubSpotSDK\Services\Crm\Extensions\CallingService;
+use HubSpotSDK\Services\Crm\Extensions\CardsDevService;
+use HubSpotSDK\Services\Crm\Extensions\VideoConferencingService;
 
 final class ExtensionsService implements ExtensionsContract
 {

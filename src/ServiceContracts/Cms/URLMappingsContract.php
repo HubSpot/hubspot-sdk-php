@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms;
+namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\URLMappings\URLMappingCreateParams\CosObjectType;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\URLMappings\URLMappingCreateParams\CosObjectType;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface URLMappingsContract
 {

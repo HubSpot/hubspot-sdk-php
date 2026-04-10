@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\BatchResponseRecordIDWithMembershipsWithErrors;
+namespace HubSpotSDK\Crm\Lists\BatchResponseRecordIDWithMembershipsWithErrors;
 
 enum Status: string
 {

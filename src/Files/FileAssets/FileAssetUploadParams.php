@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\FileAssets;
+namespace HubSpotSDK\Files\FileAssets;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Upload a single file with content specified in request body.
  *
- * @see HubspotSDK\Services\Files\FileAssetsService::upload()
+ * @see HubSpotSDK\Services\Files\FileAssetsService::upload()
  *
  * @phpstan-type FileAssetUploadParamsShape = array{
  *   charsetHunch?: string|null,

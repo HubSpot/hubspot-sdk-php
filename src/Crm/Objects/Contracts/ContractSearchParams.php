@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Contracts;
+namespace HubSpotSDK\Crm\Objects\Contracts;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\FilterGroup;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\FilterGroup;
 
 /**
  * Execute a search query to find contracts based on defined filters, properties, and sorting options. This allows for retrieving specific contract records that match the search criteria.
  *
- * @see HubspotSDK\Services\Crm\Objects\ContractsService::search()
+ * @see HubSpotSDK\Services\Crm\Objects\ContractsService::search()
  *
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
  *
  * @phpstan-type ContractSearchParamsShape = array{
  *   after: string,

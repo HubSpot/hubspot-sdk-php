@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\AssociationsSchema;
+namespace HubSpotSDK\Services\Crm\AssociationsSchema;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
-use HubspotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
-use HubspotSDK\Crm\AssociationsSchema\Limits\LimitBatchDeleteParams;
-use HubspotSDK\Crm\AssociationsSchema\Limits\LimitBatchUpdateParams;
-use HubspotSDK\Crm\AssociationsSchema\Limits\LimitGetByObjectTypesParams;
-use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
-use HubspotSDK\Crm\AssociationsSchema\PublicAssociationSpec;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\AssociationsSchema\LimitsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
+use HubSpotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
+use HubSpotSDK\Crm\AssociationsSchema\Limits\LimitBatchDeleteParams;
+use HubSpotSDK\Crm\AssociationsSchema\Limits\LimitBatchUpdateParams;
+use HubSpotSDK\Crm\AssociationsSchema\Limits\LimitGetByObjectTypesParams;
+use HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
+use HubSpotSDK\Crm\AssociationsSchema\PublicAssociationSpec;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\AssociationsSchema\LimitsRawContract;
 
 /**
- * @phpstan-import-type PublicAssociationSpecShape from \HubspotSDK\Crm\AssociationsSchema\PublicAssociationSpec
- * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateRequestShape from \HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicAssociationSpecShape from \HubSpotSDK\Crm\AssociationsSchema\PublicAssociationSpec
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateRequestShape from \HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class LimitsRawService implements LimitsRawContract
 {

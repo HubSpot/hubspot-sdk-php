@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\PropertyCreate;
+namespace HubSpotSDK\Crm\Properties\PropertyCreate;
 
 /**
  * Indicates the sensitivity level of the property, with options: highly_sensitive, non_sensitive, or sensitive.

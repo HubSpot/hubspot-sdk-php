@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Tables;
+namespace HubSpotSDK\Cms\Hubdb\Tables;
 
-use HubspotSDK\Cms\Hubdb\ColumnRequest;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Hubdb\ColumnRequest;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update an existing HubDB table. You can use this endpoint to add or remove columns to the table as well as restore an archived table. Tables updated using the endpoint will only modify the draft verion of the table. Use the `/publish` endpoint to push all the changes to the published version. To restore a table, include the query parameter `archived=true` and `"archived": false` in the json body.
  * **Note:** You need to include all the columns in the input when you are adding/removing/updating a column. If you do not include an already existing column in the request, it will be deleted.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\TablesService::updateDraft()
+ * @see HubSpotSDK\Services\Cms\Hubdb\TablesService::updateDraft()
  *
- * @phpstan-import-type ColumnRequestShape from \HubspotSDK\Cms\Hubdb\ColumnRequest
+ * @phpstan-import-type ColumnRequestShape from \HubSpotSDK\Cms\Hubdb\ColumnRequest
  *
  * @phpstan-type TableUpdateDraftParamsShape = array{
  *   allowChildTables: bool,

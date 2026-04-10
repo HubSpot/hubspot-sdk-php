@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\AssociationsSchema;
+namespace HubSpotSDK\Services\Crm\AssociationsSchema;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
-use HubspotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
-use HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
-use HubspotSDK\Crm\AssociationsSchema\PublicAssociationSpec;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\AssociationsSchema\LimitsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\AssociationsSchema\BatchResponsePublicAssociationDefinitionConfigurationUpdateResult;
+use HubSpotSDK\Crm\AssociationsSchema\CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging;
+use HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest;
+use HubSpotSDK\Crm\AssociationsSchema\PublicAssociationSpec;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\AssociationsSchema\LimitsContract;
 
 /**
- * @phpstan-import-type PublicAssociationSpecShape from \HubspotSDK\Crm\AssociationsSchema\PublicAssociationSpec
- * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateRequestShape from \HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicAssociationSpecShape from \HubSpotSDK\Crm\AssociationsSchema\PublicAssociationSpec
+ * @phpstan-import-type PublicAssociationDefinitionConfigurationUpdateRequestShape from \HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionConfigurationUpdateRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class LimitsService implements LimitsContract
 {

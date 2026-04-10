@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Callbacks;
+namespace HubSpotSDK\Automation\Actions\Callbacks;
 
-use HubspotSDK\Automation\Actions\AgentRequestContext;
-use HubspotSDK\Automation\Actions\CopilotRequestContext;
-use HubspotSDK\Automation\Actions\StandaloneRequestContext;
-use HubspotSDK\Automation\Actions\TestRequestContext;
-use HubspotSDK\Automation\Actions\WorkflowsRequestContext;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Actions\AgentRequestContext;
+use HubSpotSDK\Automation\Actions\CopilotRequestContext;
+use HubSpotSDK\Automation\Actions\StandaloneRequestContext;
+use HubSpotSDK\Automation\Actions\TestRequestContext;
+use HubSpotSDK\Automation\Actions\WorkflowsRequestContext;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Complete a specific blocked action execution by ID.
  *
- * @see HubspotSDK\Services\Automation\Actions\CallbacksService::complete()
+ * @see HubSpotSDK\Services\Automation\Actions\CallbacksService::complete()
  *
- * @phpstan-import-type RequestContextVariants from \HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams\RequestContext
- * @phpstan-import-type RequestContextShape from \HubspotSDK\Automation\Actions\Callbacks\CallbackCompleteParams\RequestContext
+ * @phpstan-import-type RequestContextVariants from \HubSpotSDK\Automation\Actions\Callbacks\CallbackCompleteParams\RequestContext
+ * @phpstan-import-type RequestContextShape from \HubSpotSDK\Automation\Actions\Callbacks\CallbackCompleteParams\RequestContext
  *
  * @phpstan-type CallbackCompleteParamsShape = array{
  *   outputFields: array<string,string>,

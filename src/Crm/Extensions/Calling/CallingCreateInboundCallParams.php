@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling;
+namespace HubSpotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams\FinalCallStatus;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams\FinalCallStatus;
 
 /**
- * @see HubspotSDK\Services\Crm\Extensions\CallingService::createInboundCall()
+ * @see HubSpotSDK\Services\Crm\Extensions\CallingService::createInboundCall()
  *
- * @phpstan-import-type FormattedPhoneNumberShape from \HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber
+ * @phpstan-import-type FormattedPhoneNumberShape from \HubSpotSDK\Crm\Extensions\Calling\FormattedPhoneNumber
  *
  * @phpstan-type CallingCreateInboundCallParamsShape = array{
  *   createEngagement: bool,

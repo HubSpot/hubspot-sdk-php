@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Crm\AssociationsSchemaContract;
-use HubspotSDK\Services\Crm\AssociationsSchema\LabelsService;
-use HubspotSDK\Services\Crm\AssociationsSchema\LimitsService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Crm\AssociationsSchemaContract;
+use HubSpotSDK\Services\Crm\AssociationsSchema\LabelsService;
+use HubSpotSDK\Services\Crm\AssociationsSchema\LimitsService;
 
 final class AssociationsSchemaService implements AssociationsSchemaContract
 {

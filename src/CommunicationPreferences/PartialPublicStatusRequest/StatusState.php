@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\PartialPublicStatusRequest;
+namespace HubSpotSDK\CommunicationPreferences\PartialPublicStatusRequest;
 
 /**
  * The current subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'.

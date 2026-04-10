@@ -1,9 +1,9 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
 class ConflictException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'HubspotSDK Conflict Exception';
+    protected const DESC = 'HubSpotSDK Conflict Exception';
 }

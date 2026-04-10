@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
-use HubspotSDK\Crm\Property;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
+use HubSpotSDK\Crm\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

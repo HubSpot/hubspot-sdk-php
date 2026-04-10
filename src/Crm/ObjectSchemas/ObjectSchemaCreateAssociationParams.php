@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas;
+namespace HubSpotSDK\Crm\ObjectSchemas;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a new association between the specified object type and another object type. This operation requires the definition of the association attributes, such as the primary and target object type IDs.
  *
- * @see HubspotSDK\Services\Crm\ObjectSchemasService::createAssociation()
+ * @see HubSpotSDK\Services\Crm\ObjectSchemasService::createAssociation()
  *
  * @phpstan-type ObjectSchemaCreateAssociationParamsShape = array{
  *   fromObjectTypeID: string, toObjectTypeID: string, name?: string|null

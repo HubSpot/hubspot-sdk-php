@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Exports;
+namespace HubSpotSDK\Crm\Exports;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Exports\PublicExportListRequest\ExportInternalValuesOption;
-use HubspotSDK\Crm\Exports\PublicExportListRequest\ExportType;
-use HubspotSDK\Crm\Exports\PublicExportListRequest\Format;
-use HubspotSDK\Crm\Exports\PublicExportListRequest\Language;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Exports\PublicExportListRequest\ExportInternalValuesOption;
+use HubSpotSDK\Crm\Exports\PublicExportListRequest\ExportType;
+use HubSpotSDK\Crm\Exports\PublicExportListRequest\Format;
+use HubSpotSDK\Crm\Exports\PublicExportListRequest\Language;
 
 /**
  * @phpstan-type PublicExportListRequestShape = array{

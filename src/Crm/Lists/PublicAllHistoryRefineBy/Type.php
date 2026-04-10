@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicAllHistoryRefineBy;
+namespace HubSpotSDK\Crm\Lists\PublicAllHistoryRefineBy;
 
 /**
  * Type of refine by (ALL_HISTORY).

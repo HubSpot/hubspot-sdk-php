@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\URLRedirects;
+namespace HubSpotSDK\Cms\URLRedirects;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Updates the settings for an existing URL redirect.
  *
- * @see HubspotSDK\Services\Cms\URLRedirectsService::update()
+ * @see HubSpotSDK\Services\Cms\URLRedirectsService::update()
  *
  * @phpstan-type URLRedirectUpdateParamsShape = array{
  *   id: string,

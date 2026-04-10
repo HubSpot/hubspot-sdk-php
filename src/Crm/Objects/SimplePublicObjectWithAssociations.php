@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects;
+namespace HubSpotSDK\Crm\Objects;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\ListOf;
-use HubspotSDK\Core\Conversion\MapOf;
-use HubspotSDK\Crm\ValueWithTimestamp;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\ListOf;
+use HubSpotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Crm\ValueWithTimestamp;
 
 /**
  * Represents a CRM object along with its properties, timestamps, and a set of associated object IDs grouped by association type.
  *
- * @phpstan-import-type CollectionResponseAssociatedIDShape from \HubspotSDK\Crm\Objects\CollectionResponseAssociatedID
- * @phpstan-import-type ValueWithTimestampShape from \HubspotSDK\Crm\ValueWithTimestamp
+ * @phpstan-import-type CollectionResponseAssociatedIDShape from \HubSpotSDK\Crm\Objects\CollectionResponseAssociatedID
+ * @phpstan-import-type ValueWithTimestampShape from \HubSpotSDK\Crm\ValueWithTimestamp
  *
  * @phpstan-type SimplePublicObjectWithAssociationsShape = array{
  *   id: string,

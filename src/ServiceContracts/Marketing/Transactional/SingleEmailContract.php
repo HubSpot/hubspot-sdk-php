@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\Transactional;
+namespace HubSpotSDK\ServiceContracts\Marketing\Transactional;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\EmailSendStatusView;
-use HubspotSDK\Marketing\PublicSingleSendEmail;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\EmailSendStatusView;
+use HubSpotSDK\Marketing\PublicSingleSendEmail;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PublicSingleSendEmailShape from \HubspotSDK\Marketing\PublicSingleSendEmail
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicSingleSendEmailShape from \HubSpotSDK\Marketing\PublicSingleSendEmail
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface SingleEmailContract
 {

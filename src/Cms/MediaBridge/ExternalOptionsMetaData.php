@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type FilteringMetaDataShape from \HubspotSDK\Cms\MediaBridge\FilteringMetaData
+ * @phpstan-import-type FilteringMetaDataShape from \HubSpotSDK\Cms\MediaBridge\FilteringMetaData
  *
  * @phpstan-type ExternalOptionsMetaDataShape = array{
  *   filter?: null|FilteringMetaData|FilteringMetaDataShape,

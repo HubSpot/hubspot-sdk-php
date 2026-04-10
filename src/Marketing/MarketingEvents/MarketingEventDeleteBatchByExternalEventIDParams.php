@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Deletes multiple Marketing Events based on externalAccountId, externalEventId, and appId.
  *
  * Only Marketing Events created by the same apps will be deleted; events from other apps cannot be removed by this endpoint.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEventsService::deleteBatchByExternalEventID()
+ * @see HubSpotSDK\Services\Marketing\MarketingEventsService::deleteBatchByExternalEventID()
  *
- * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier
+ * @phpstan-import-type MarketingEventExternalUniqueIdentifierShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventExternalUniqueIdentifier
  *
  * @phpstan-type MarketingEventDeleteBatchByExternalEventIDParamsShape = array{
  *   inputs: list<MarketingEventExternalUniqueIdentifier|MarketingEventExternalUniqueIdentifierShape>,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\PostCreateParams;
+namespace HubSpotSDK\Cms\Blogs\Posts\PostCreateParams;
 
 /**
  * A generated ENUM descibing the current state of this Blog Post. Should always match state.

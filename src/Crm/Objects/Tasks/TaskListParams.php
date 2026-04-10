@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Tasks;
+namespace HubSpotSDK\Crm\Objects\Tasks;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Read a page of tasks. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Services\Crm\Objects\TasksService::list()
+ * @see HubSpotSDK\Services\Crm\Objects\TasksService::list()
  *
  * @phpstan-type TaskListParamsShape = array{
  *   after?: string|null,

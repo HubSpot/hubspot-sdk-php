@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\SubscriberState;
+namespace HubSpotSDK\Marketing\MarketingEvents\SubscriberState;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber;
 
 /**
  * Record a subscriber state between multiple HubSpot contacts and a marketing event, using contact email addresses. Note that the contact must already exist in HubSpot; a contact will not be created. The contactProperties field is used only when creating a new contact. These properties will not update existing contacts.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEvents\SubscriberStateService::recordByEmail()
+ * @see HubSpotSDK\Services\Marketing\MarketingEvents\SubscriberStateService::recordByEmail()
  *
- * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber
+ * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber
  *
  * @phpstan-type SubscriberStateRecordByEmailParamsShape = array{
  *   externalEventID: string,

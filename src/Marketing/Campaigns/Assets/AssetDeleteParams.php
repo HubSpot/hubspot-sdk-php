@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Assets;
+namespace HubSpotSDK\Marketing\Campaigns\Assets;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Disassociate a specified asset from a campaign. Using the API, you can remove associations for the following asset types: ads, blog posts, calls, case studies, CTAs, CTAs (legacy), external website pages, feedback surveys, forms, files, knowledge base articles, landing pages, marketing email, marketing events, meetings, playbooks, podcast episodes, sales documents, sales emails, sequences, SMS, social posts, static lists, videos, website pages, and workflows.
  *
  * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\AssetsService::delete()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\AssetsService::delete()
  *
  * @phpstan-type AssetDeleteParamsShape = array{
  *   campaignGuid: string, assetType: string

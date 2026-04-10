@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\WorkflowsRequestContext;
+namespace HubSpotSDK\Automation\Actions\WorkflowsRequestContext;
 
 /**
  * Indicates the source of the request, with the default value being WORKFLOWS.

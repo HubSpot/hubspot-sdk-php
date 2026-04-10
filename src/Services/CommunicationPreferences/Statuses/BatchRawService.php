@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\CommunicationPreferences\Statuses;
+namespace HubSpotSDK\Services\CommunicationPreferences\Statuses;
 
-use HubspotSDK\Client;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicBulkOptOutFromAllResponse;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicStatus;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicStatusBulkResponse;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicWideStatusBulkResponse;
-use HubspotSDK\CommunicationPreferences\PublicStatusRequest;
-use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams;
-use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams\Channel;
-use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams;
-use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams;
-use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUpdateStatusesParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\CommunicationPreferences\Statuses\BatchRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicBulkOptOutFromAllResponse;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicStatus;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicStatusBulkResponse;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicWideStatusBulkResponse;
+use HubSpotSDK\CommunicationPreferences\PublicStatusRequest;
+use HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams;
+use HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams\Channel;
+use HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams;
+use HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams;
+use HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUpdateStatusesParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\CommunicationPreferences\Statuses\BatchRawContract;
 
 /**
- * @phpstan-import-type PublicStatusRequestShape from \HubspotSDK\CommunicationPreferences\PublicStatusRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicStatusRequestShape from \HubSpotSDK\CommunicationPreferences\PublicStatusRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
 {

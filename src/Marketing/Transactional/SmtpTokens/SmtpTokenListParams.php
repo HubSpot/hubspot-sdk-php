@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Transactional\SmtpTokens;
+namespace HubSpotSDK\Marketing\Transactional\SmtpTokens;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Query multiple SMTP API tokens by campaign name or a single token by emailCampaignId.
  *
- * @see HubspotSDK\Services\Marketing\Transactional\SmtpTokensService::list()
+ * @see HubSpotSDK\Services\Marketing\Transactional\SmtpTokensService::list()
  *
  * @phpstan-type SmtpTokenListParamsShape = array{
  *   after?: string|null,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\EmailGetHistogramParams;
+namespace HubSpotSDK\Marketing\Emails\EmailGetHistogramParams;
 
 enum Interval: string
 {

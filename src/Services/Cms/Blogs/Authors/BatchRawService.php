@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs\Authors;
+namespace HubSpotSDK\Services\Cms\Blogs\Authors;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Authors\Batch\BatchCreateParams;
-use HubspotSDK\Cms\Blogs\Authors\Batch\BatchDeleteParams;
-use HubspotSDK\Cms\Blogs\Authors\Batch\BatchGetParams;
-use HubspotSDK\Cms\Blogs\Authors\Batch\BatchUpdateParams;
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\Authors\BatchRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Authors\Batch\BatchCreateParams;
+use HubSpotSDK\Cms\Blogs\Authors\Batch\BatchDeleteParams;
+use HubSpotSDK\Cms\Blogs\Authors\Batch\BatchGetParams;
+use HubSpotSDK\Cms\Blogs\Authors\Batch\BatchUpdateParams;
+use HubSpotSDK\Cms\Blogs\Authors\BlogAuthor;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\Authors\BatchRawContract;
 
 /**
- * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type BlogAuthorShape from \HubSpotSDK\Cms\Blogs\Authors\BlogAuthor
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
 {

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\ObjectSchemas;
+namespace HubSpotSDK\ServiceContracts\Crm\ObjectSchemas;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\ObjectSchemas\Batch\BatchGetParams;
-use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\ObjectSchemas\Batch\BatchGetParams;
+use HubSpotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences;
+namespace HubSpotSDK\CommunicationPreferences;
 
-use HubspotSDK\CommunicationPreferences\PartialPublicStatusRequest\Channel;
-use HubspotSDK\CommunicationPreferences\PartialPublicStatusRequest\LegalBasis;
-use HubspotSDK\CommunicationPreferences\PartialPublicStatusRequest\StatusState;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\CommunicationPreferences\PartialPublicStatusRequest\Channel;
+use HubSpotSDK\CommunicationPreferences\PartialPublicStatusRequest\LegalBasis;
+use HubSpotSDK\CommunicationPreferences\PartialPublicStatusRequest\StatusState;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PartialPublicStatusRequestShape = array{

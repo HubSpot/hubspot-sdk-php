@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings;
+namespace HubSpotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties\HsEngagementSource;
-use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties\HsMeetingLocationType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties\HsEngagementSource;
+use HubSpotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties\HsMeetingLocationType;
 
 /**
  * @phpstan-type ExternalCalendarMeetingEventResponsePropertiesShape = array{
@@ -30,7 +30,7 @@ use HubspotSDK\Scheduler\Meetings\ExternalCalendarMeetingEventResponseProperties
  *   hsMeetingLocation?: string|null,
  *   hsMeetingLocationType?: null|HsMeetingLocationType|value-of<HsMeetingLocationType>,
  *   hsUniqueID?: string|null,
- *   hubspotOwnerID?: string|null,
+ *   hubSpotOwnerID?: string|null,
  * }
  */
 final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
@@ -144,7 +144,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
      * The owner ID of the HubSpot user hosting the meeting.
      */
     #[Optional('hubspot_owner_id')]
-    public ?string $hubspotOwnerID;
+    public ?string $hubSpotOwnerID;
 
     /**
      * `new ExternalCalendarMeetingEventResponseProperties()` is missing required properties by the API.
@@ -208,7 +208,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
         ?string $hsMeetingLocation = null,
         HsMeetingLocationType|string|null $hsMeetingLocationType = null,
         ?string $hsUniqueID = null,
-        ?string $hubspotOwnerID = null,
+        ?string $hubSpotOwnerID = null,
     ): self {
         $self = new self;
 
@@ -230,7 +230,7 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
         null !== $hsMeetingLocation && $self['hsMeetingLocation'] = $hsMeetingLocation;
         null !== $hsMeetingLocationType && $self['hsMeetingLocationType'] = $hsMeetingLocationType;
         null !== $hsUniqueID && $self['hsUniqueID'] = $hsUniqueID;
-        null !== $hubspotOwnerID && $self['hubspotOwnerID'] = $hubspotOwnerID;
+        null !== $hubSpotOwnerID && $self['hubSpotOwnerID'] = $hubSpotOwnerID;
 
         return $self;
     }
@@ -435,10 +435,10 @@ final class ExternalCalendarMeetingEventResponseProperties implements BaseModel
     /**
      * The owner ID of the HubSpot user hosting the meeting.
      */
-    public function withHubspotOwnerID(string $hubspotOwnerID): self
+    public function withHubSpotOwnerID(string $hubSpotOwnerID): self
     {
         $self = clone $this;
-        $self['hubspotOwnerID'] = $hubspotOwnerID;
+        $self['hubSpotOwnerID'] = $hubSpotOwnerID;
 
         return $self;
     }

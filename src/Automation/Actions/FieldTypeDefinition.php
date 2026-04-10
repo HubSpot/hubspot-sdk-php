@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions;
+namespace HubSpotSDK\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
-use HubspotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
-use HubspotSDK\Automation\Actions\FieldTypeDefinition\Type;
-use HubspotSDK\AutomationActionsOption;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
+use HubSpotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
+use HubSpotSDK\Automation\Actions\FieldTypeDefinition\Type;
+use HubSpotSDK\AutomationActionsOption;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type SchemaVariants from \HubspotSDK\Automation\Actions\FieldTypeDefinition\Schema
- * @phpstan-import-type AutomationActionsOptionShape from \HubspotSDK\AutomationActionsOption
- * @phpstan-import-type SchemaShape from \HubspotSDK\Automation\Actions\FieldTypeDefinition\Schema
+ * @phpstan-import-type SchemaVariants from \HubSpotSDK\Automation\Actions\FieldTypeDefinition\Schema
+ * @phpstan-import-type AutomationActionsOptionShape from \HubSpotSDK\AutomationActionsOption
+ * @phpstan-import-type SchemaShape from \HubSpotSDK\Automation\Actions\FieldTypeDefinition\Schema
  *
  * @phpstan-type FieldTypeDefinitionShape = array{
  *   externalOptions: bool,

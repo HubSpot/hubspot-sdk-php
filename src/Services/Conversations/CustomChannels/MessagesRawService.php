@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Conversations\CustomChannels;
+namespace HubSpotSDK\Services\Conversations\CustomChannels;
 
-use HubspotSDK\Client;
-use HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
-use HubspotSDK\Conversations\CustomChannels\PreResolvedContacts;
-use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Conversations\CustomChannels\MessagesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
+use HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts;
+use HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Conversations\CustomChannels\MessagesRawContract;
 
 /**
- * @phpstan-import-type AttachmentShape from \HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
- * @phpstan-import-type PreResolvedContactsShape from \HubspotSDK\Conversations\CustomChannels\PreResolvedContacts
- * @phpstan-import-type ChannelIntegrationParticipantShape from \HubspotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type AttachmentShape from \HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
+ * @phpstan-import-type PreResolvedContactsShape from \HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts
+ * @phpstan-import-type ChannelIntegrationParticipantShape from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class MessagesRawService implements MessagesRawContract
 {

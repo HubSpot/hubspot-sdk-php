@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\GoalTargets;
+namespace HubSpotSDK\Crm\Objects\GoalTargets;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\FilterGroup;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\FilterGroup;
 
 /**
  * Search for goal targets using specified criteria.
  *
- * @see HubspotSDK\Services\Crm\Objects\GoalTargetsService::search()
+ * @see HubSpotSDK\Services\Crm\Objects\GoalTargetsService::search()
  *
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
  *
  * @phpstan-type GoalTargetSearchParamsShape = array{
  *   after: string,

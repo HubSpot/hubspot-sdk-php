@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Extensions;
+namespace HubSpotSDK\ServiceContracts\Crm\Extensions;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateChannelConnectionSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateRecordingReadyParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateRecordingSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingUpdateChannelConnectionSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingUpdateRecordingSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingUpdateSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
-use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
-use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
-use HubspotSDK\Crm\Extensions\Calling\SettingsResponse;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateChannelConnectionSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateRecordingReadyParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateRecordingSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingUpdateChannelConnectionSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingUpdateRecordingSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingUpdateSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
+use HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
+use HubSpotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
+use HubSpotSDK\Crm\Extensions\Calling\SettingsResponse;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CallingRawContract
 {

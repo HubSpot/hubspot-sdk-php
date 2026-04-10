@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Timeline;
+namespace HubSpotSDK\Crm\Timeline;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Timeline\BatchResponseAppEventOccurrence\Status;
-use HubspotSDK\StandardError;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Timeline\BatchResponseAppEventOccurrence\Status;
+use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type AppEventOccurrenceShape from \HubspotSDK\Crm\Timeline\AppEventOccurrence
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type AppEventOccurrenceShape from \HubSpotSDK\Crm\Timeline\AppEventOccurrence
+ * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponseAppEventOccurrenceShape = array{
  *   completedAt: \DateTimeInterface,

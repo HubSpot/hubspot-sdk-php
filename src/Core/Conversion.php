@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core;
+namespace HubSpotSDK\Core;
 
-use HubspotSDK\Core\Conversion\CoerceState;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Core\Conversion\DumpState;
+use HubSpotSDK\Core\Conversion\CoerceState;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Conversion\DumpState;
 
 /**
  * @internal

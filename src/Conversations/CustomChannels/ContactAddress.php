@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CustomChannels\ContactAddress\Type;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\ContactAddress\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ContactAddressShape = array{

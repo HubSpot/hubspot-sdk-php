@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
-use HubspotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
-use HubspotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
-use HubspotSDK\Crm\Pipelines\Pipeline;
-use HubspotSDK\Crm\Pipelines\PipelineStage;
-use HubspotSDK\Crm\Pipelines\PipelineStageInput;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Pipelines\CollectionResponsePipelineNoPaging;
+use HubSpotSDK\Crm\Pipelines\CollectionResponsePipelineStageNoPaging;
+use HubSpotSDK\Crm\Pipelines\CollectionResponsePublicAuditInfoNoPaging;
+use HubSpotSDK\Crm\Pipelines\Pipeline;
+use HubSpotSDK\Crm\Pipelines\PipelineStage;
+use HubSpotSDK\Crm\Pipelines\PipelineStageInput;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PipelineStageInputShape from \HubspotSDK\Crm\Pipelines\PipelineStageInput
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PipelineStageInputShape from \HubSpotSDK\Crm\Pipelines\PipelineStageInput
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface PipelinesContract
 {

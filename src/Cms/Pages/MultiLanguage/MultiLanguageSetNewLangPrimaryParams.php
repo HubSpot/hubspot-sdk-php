@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\MultiLanguage;
+namespace HubSpotSDK\Cms\Pages\MultiLanguage;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Set a site page as the primary language of a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Pages\MultiLanguageService::setNewLangPrimary()
+ * @see HubSpotSDK\Services\Cms\Pages\MultiLanguageService::setNewLangPrimary()
  *
  * @phpstan-type MultiLanguageSetNewLangPrimaryParamsShape = array{id: string}
  */

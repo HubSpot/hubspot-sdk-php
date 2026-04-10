@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\IntegratorObjectCreationRequest;
+namespace HubSpotSDK\Cms\MediaBridge\IntegratorObjectCreationRequest;
 
 enum MediaType: string
 {

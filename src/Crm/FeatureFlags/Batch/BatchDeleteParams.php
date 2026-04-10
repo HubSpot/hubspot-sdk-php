@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags\Batch;
+namespace HubSpotSDK\Crm\FeatureFlags\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Delete an account-level flag state for multiple HubSpot accounts at once. Use this endpoint to manage flag exposure for groups of HubSpot accounts.
  *
- * @see HubspotSDK\Services\Crm\FeatureFlags\BatchService::delete()
+ * @see HubSpotSDK\Services\Crm\FeatureFlags\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{appID: int, portalIDs: list<int>}
  */

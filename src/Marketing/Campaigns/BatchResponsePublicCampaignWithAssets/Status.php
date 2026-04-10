@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
+namespace HubSpotSDK\Marketing\Campaigns\BatchResponsePublicCampaignWithAssets;
 
 /**
  * The current processing status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.

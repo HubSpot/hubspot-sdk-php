@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
+namespace HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams;
 
 /**
  * A generated ENUM descibing the current state of this page.

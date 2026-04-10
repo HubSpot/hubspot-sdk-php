@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Objects;
+namespace HubSpotSDK\Services\Crm\Objects;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\Carts\CartCreateParams;
-use HubspotSDK\Crm\Objects\Carts\CartGetParams;
-use HubspotSDK\Crm\Objects\Carts\CartListParams;
-use HubspotSDK\Crm\Objects\Carts\CartSearchParams;
-use HubspotSDK\Crm\Objects\Carts\CartUpdateParams;
-use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Objects\CartsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\FilterGroup;
+use HubSpotSDK\Crm\Objects\Carts\CartCreateParams;
+use HubSpotSDK\Crm\Objects\Carts\CartGetParams;
+use HubSpotSDK\Crm\Objects\Carts\CartListParams;
+use HubSpotSDK\Crm\Objects\Carts\CartSearchParams;
+use HubSpotSDK\Crm\Objects\Carts\CartUpdateParams;
+use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Objects\CartsRawContract;
 
 /**
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CartsRawService implements CartsRawContract
 {

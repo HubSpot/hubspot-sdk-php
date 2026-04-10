@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\ABTests;
+namespace HubSpotSDK\Cms\Pages\ABTests;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a new A/B test variation based on the information provided in the request body.
  *
- * @see HubspotSDK\Services\Cms\Pages\ABTestsService::createLandingPageVariation()
+ * @see HubSpotSDK\Services\Cms\Pages\ABTestsService::createLandingPageVariation()
  *
  * @phpstan-type AbTestCreateLandingPageVariationParamsShape = array{
  *   contentID: string, variationName: string

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling\CompanyCallerID;
+namespace HubSpotSDK\Crm\Extensions\Calling\CompanyCallerID;
 
 /**
  * Specifies the type of caller ID, which is set to 'COMPANY' by default.

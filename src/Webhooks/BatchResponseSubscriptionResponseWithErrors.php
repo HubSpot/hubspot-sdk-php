@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks;
+namespace HubSpotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\StandardError;
-use HubspotSDK\Webhooks\BatchResponseSubscriptionResponseWithErrors\Status;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\StandardError;
+use HubSpotSDK\Webhooks\BatchResponseSubscriptionResponseWithErrors\Status;
 
 /**
- * @phpstan-import-type SubscriptionResponseShape from \HubspotSDK\Webhooks\SubscriptionResponse
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type SubscriptionResponseShape from \HubSpotSDK\Webhooks\SubscriptionResponse
+ * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponseSubscriptionResponseWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,

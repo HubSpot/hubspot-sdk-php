@@ -2,47 +2,47 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts;
+namespace HubSpotSDK\ServiceContracts;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Webhooks\BatchResponseJournalFetchResponse;
-use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubspotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
-use HubspotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
-use HubspotSDK\Webhooks\FilterCreateResponse;
-use HubspotSDK\Webhooks\FilterResponse;
-use HubspotSDK\Webhooks\SettingsResponse;
-use HubspotSDK\Webhooks\SnapshotStatusResponse;
-use HubspotSDK\Webhooks\SubscriptionListResponse;
-use HubspotSDK\Webhooks\SubscriptionResponse;
-use HubspotSDK\Webhooks\SubscriptionResponse1;
-use HubspotSDK\Webhooks\WebhookCreateCrmSnapshotParams;
-use HubspotSDK\Webhooks\WebhookCreateSubscriptionFilterParams;
-use HubspotSDK\Webhooks\WebhookCreateSubscriptionParams;
-use HubspotSDK\Webhooks\WebhookCreateSubscriptionsBatchParams;
-use HubspotSDK\Webhooks\WebhookDeleteSubscriptionParams;
-use HubspotSDK\Webhooks\WebhookGetEarliestJournalBatchParams;
-use HubspotSDK\Webhooks\WebhookGetEarliestJournalParams;
-use HubspotSDK\Webhooks\WebhookGetEarliestLocalJournalBatchParams;
-use HubspotSDK\Webhooks\WebhookGetEarliestLocalJournalParams;
-use HubspotSDK\Webhooks\WebhookGetJournalBatchAfterOffsetParams;
-use HubspotSDK\Webhooks\WebhookGetJournalBatchParams;
-use HubspotSDK\Webhooks\WebhookGetLatestJournalBatchParams;
-use HubspotSDK\Webhooks\WebhookGetLatestJournalParams;
-use HubspotSDK\Webhooks\WebhookGetLatestLocalJournalBatchParams;
-use HubspotSDK\Webhooks\WebhookGetLatestLocalJournalParams;
-use HubspotSDK\Webhooks\WebhookGetLocalJournalBatchAfterOffsetParams;
-use HubspotSDK\Webhooks\WebhookGetLocalJournalBatchParams;
-use HubspotSDK\Webhooks\WebhookGetNextJournalAfterOffsetParams;
-use HubspotSDK\Webhooks\WebhookGetNextLocalJournalAfterOffsetParams;
-use HubspotSDK\Webhooks\WebhookGetSubscriptionParams;
-use HubspotSDK\Webhooks\WebhookUpdateSettingsParams;
-use HubspotSDK\Webhooks\WebhookUpdateSubscriptionParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Webhooks\BatchResponseJournalFetchResponse;
+use HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
+use HubSpotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
+use HubSpotSDK\Webhooks\FilterCreateResponse;
+use HubSpotSDK\Webhooks\FilterResponse;
+use HubSpotSDK\Webhooks\SettingsResponse;
+use HubSpotSDK\Webhooks\SnapshotStatusResponse;
+use HubSpotSDK\Webhooks\SubscriptionListResponse;
+use HubSpotSDK\Webhooks\SubscriptionResponse;
+use HubSpotSDK\Webhooks\SubscriptionResponse1;
+use HubSpotSDK\Webhooks\WebhookCreateCrmSnapshotParams;
+use HubSpotSDK\Webhooks\WebhookCreateSubscriptionFilterParams;
+use HubSpotSDK\Webhooks\WebhookCreateSubscriptionParams;
+use HubSpotSDK\Webhooks\WebhookCreateSubscriptionsBatchParams;
+use HubSpotSDK\Webhooks\WebhookDeleteSubscriptionParams;
+use HubSpotSDK\Webhooks\WebhookGetEarliestJournalBatchParams;
+use HubSpotSDK\Webhooks\WebhookGetEarliestJournalParams;
+use HubSpotSDK\Webhooks\WebhookGetEarliestLocalJournalBatchParams;
+use HubSpotSDK\Webhooks\WebhookGetEarliestLocalJournalParams;
+use HubSpotSDK\Webhooks\WebhookGetJournalBatchAfterOffsetParams;
+use HubSpotSDK\Webhooks\WebhookGetJournalBatchParams;
+use HubSpotSDK\Webhooks\WebhookGetLatestJournalBatchParams;
+use HubSpotSDK\Webhooks\WebhookGetLatestJournalParams;
+use HubSpotSDK\Webhooks\WebhookGetLatestLocalJournalBatchParams;
+use HubSpotSDK\Webhooks\WebhookGetLatestLocalJournalParams;
+use HubSpotSDK\Webhooks\WebhookGetLocalJournalBatchAfterOffsetParams;
+use HubSpotSDK\Webhooks\WebhookGetLocalJournalBatchParams;
+use HubSpotSDK\Webhooks\WebhookGetNextJournalAfterOffsetParams;
+use HubSpotSDK\Webhooks\WebhookGetNextLocalJournalAfterOffsetParams;
+use HubSpotSDK\Webhooks\WebhookGetSubscriptionParams;
+use HubSpotSDK\Webhooks\WebhookUpdateSettingsParams;
+use HubSpotSDK\Webhooks\WebhookUpdateSubscriptionParams;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface WebhooksRawContract
 {

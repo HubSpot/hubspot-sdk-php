@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\ExtensionData;
+namespace HubSpotSDK\Cms\MediaBridge\ExtensionData;
 
 enum ExtensionStatusMap: string
 {

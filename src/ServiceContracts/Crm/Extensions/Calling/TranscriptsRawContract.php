@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Extensions\Calling;
+namespace HubSpotSDK\ServiceContracts\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateInboundCallParams;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateParams;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateInboundCallParams;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateParams;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface TranscriptsRawContract
 {

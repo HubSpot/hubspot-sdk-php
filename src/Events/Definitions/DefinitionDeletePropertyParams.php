@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Delete an existing property from a custom event definition.
  *
- * @see HubspotSDK\Services\Events\DefinitionsService::deleteProperty()
+ * @see HubSpotSDK\Services\Events\DefinitionsService::deleteProperty()
  *
  * @phpstan-type DefinitionDeletePropertyParamsShape = array{eventName: string}
  */

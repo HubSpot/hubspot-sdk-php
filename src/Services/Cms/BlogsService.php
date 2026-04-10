@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Cms\BlogsContract;
-use HubspotSDK\Services\Cms\Blogs\AuthorsService;
-use HubspotSDK\Services\Cms\Blogs\PostsService;
-use HubspotSDK\Services\Cms\Blogs\SettingsService;
-use HubspotSDK\Services\Cms\Blogs\TagsService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Cms\BlogsContract;
+use HubSpotSDK\Services\Cms\Blogs\AuthorsService;
+use HubSpotSDK\Services\Cms\Blogs\PostsService;
+use HubSpotSDK\Services\Cms\Blogs\SettingsService;
+use HubSpotSDK\Services\Cms\Blogs\TagsService;
 
 final class BlogsService implements BlogsContract
 {

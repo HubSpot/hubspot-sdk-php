@@ -1,15 +1,15 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Core\Util;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 class APIStatusException extends APIException
 {
     /** @var string */
-    protected const DESC = 'HubspotSDK API Status Error';
+    protected const DESC = 'HubSpotSDK API Status Error';
 
     public ?int $status;
 

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb;
+namespace HubSpotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-import-type RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape from \HubspotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3
- * @phpstan-import-type StreamingCollectionResponseWithTotalHubDBTableRowV3Shape from \HubspotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3
+ * @phpstan-import-type RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape from \HubSpotSDK\Cms\Hubdb\RandomAccessCollectionResponseWithTotalHubDBTableRowV3
+ * @phpstan-import-type StreamingCollectionResponseWithTotalHubDBTableRowV3Shape from \HubSpotSDK\Cms\Hubdb\StreamingCollectionResponseWithTotalHubDBTableRowV3
  *
  * @phpstan-type UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3Variants = RandomAccessCollectionResponseWithTotalHubDBTableRowV3|StreamingCollectionResponseWithTotalHubDBTableRowV3
  * @phpstan-type UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3Shape = UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3Variants|RandomAccessCollectionResponseWithTotalHubDBTableRowV3Shape|StreamingCollectionResponseWithTotalHubDBTableRowV3Shape

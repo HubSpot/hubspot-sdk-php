@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks\WebhookCreateSubscriptionParams;
+namespace HubSpotSDK\Webhooks\WebhookCreateSubscriptionParams;
 
 /**
  * Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.

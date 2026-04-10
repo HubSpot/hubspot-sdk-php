@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs;
+namespace HubSpotSDK\Services\Cms\Blogs;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Cms\Blogs\Tags\TagCreateParams\Language;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\TagsContract;
-use HubspotSDK\Services\Cms\Blogs\Tags\BatchService;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\PrimaryLanguage;
+use HubSpotSDK\Cms\Blogs\Tags\TagCreateParams\Language;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\TagsContract;
+use HubSpotSDK\Services\Cms\Blogs\Tags\BatchService;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class TagsService implements TagsContract
 {
@@ -93,7 +93,7 @@ final class TagsService implements TagsContract
      * @param string $id body param: The unique ID of the Blog Tag
      * @param \DateTimeInterface $created body param: The timestamp (ISO8601 format) when this Blog Tag was created
      * @param \DateTimeInterface $deletedAt body param: The timestamp (ISO8601 format) when this Blog Tag was deleted
-     * @param \HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language> $language body param: The explicitly defined ISO 639 language code of the tag
+     * @param \HubSpotSDK\Cms\Blogs\Tags\TagUpdateParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Tags\TagUpdateParams\Language> $language body param: The explicitly defined ISO 639 language code of the tag
      * @param string $name body param: The name of the tag
      * @param string $slug Body param
      * @param int $translatedFromID body param: ID of the primary tag this object was translated from
@@ -108,7 +108,7 @@ final class TagsService implements TagsContract
         string $id,
         \DateTimeInterface $created,
         \DateTimeInterface $deletedAt,
-        \HubspotSDK\Cms\Blogs\Tags\TagUpdateParams\Language|string $language,
+        \HubSpotSDK\Cms\Blogs\Tags\TagUpdateParams\Language|string $language,
         string $name,
         string $slug,
         int $translatedFromID,
@@ -214,7 +214,7 @@ final class TagsService implements TagsContract
      * Attach a Blog Tag to a multi-language group.
      *
      * @param string $id ID of the object to add to a multi-language group
-     * @param \HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
+     * @param \HubSpotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language> $language designated language of the object to add to a multi-language group
      * @param string $primaryID ID of primary language object in multi-language group
      * @param PrimaryLanguage|value-of<PrimaryLanguage> $primaryLanguage primary language of the multi-language group
      * @param RequestOpts|null $requestOptions
@@ -223,7 +223,7 @@ final class TagsService implements TagsContract
      */
     public function attachToLangGroup(
         string $id,
-        \HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language|string $language,
+        \HubSpotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams\Language|string $language,
         string $primaryID,
         PrimaryLanguage|string|null $primaryLanguage = null,
         RequestOptions|array|null $requestOptions = null,
@@ -635,7 +635,7 @@ final class TagsService implements TagsContract
      *
      * Explicitly set new languages for each Blog Tag in a multi-language group.
      *
-     * @param array<string,\HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams\Language|value-of<\HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
+     * @param array<string,\HubSpotSDK\Cms\Blogs\Tags\TagUpdateLangsParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Tags\TagUpdateLangsParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
      * @param string $primaryID ID of the primary object in the multi-language group
      * @param RequestOpts|null $requestOptions
      *

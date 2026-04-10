@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing;
+namespace HubSpotSDK\ServiceContracts\Marketing;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\PublicCampaign;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaign;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CampaignsContract
 {

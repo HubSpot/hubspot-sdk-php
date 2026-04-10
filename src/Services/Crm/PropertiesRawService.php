@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
-use HubspotSDK\Crm\Properties\PropertyCreateParams;
-use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
-use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
-use HubspotSDK\Crm\Properties\PropertyCreateParams\Type;
-use HubspotSDK\Crm\Properties\PropertyDeleteParams;
-use HubspotSDK\Crm\Properties\PropertyGetParams;
-use HubspotSDK\Crm\Properties\PropertyListParams;
-use HubspotSDK\Crm\Properties\PropertyUpdateParams;
-use HubspotSDK\Crm\Property;
-use HubspotSDK\OptionInput;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\PropertiesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams\FieldType;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams\Type;
+use HubSpotSDK\Crm\Properties\PropertyDeleteParams;
+use HubSpotSDK\Crm\Properties\PropertyGetParams;
+use HubSpotSDK\Crm\Properties\PropertyListParams;
+use HubSpotSDK\Crm\Properties\PropertyUpdateParams;
+use HubSpotSDK\Crm\Property;
+use HubSpotSDK\OptionInput;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\PropertiesRawContract;
 
 /**
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class PropertiesRawService implements PropertiesRawContract
 {

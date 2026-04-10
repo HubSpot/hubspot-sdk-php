@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\SubtractTime;
+namespace HubSpotSDK\Cms\MediaBridge\SubtractTime;
 
 enum Operator: string
 {

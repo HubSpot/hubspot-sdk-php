@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\CommunicationPreferences;
+namespace HubSpotSDK\Services\CommunicationPreferences;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\CommunicationPreferences\StatusesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\CommunicationPreferences\StatusesRawContract;
 
 final class StatusesRawService implements StatusesRawContract
 {

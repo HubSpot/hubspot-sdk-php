@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb;
+namespace HubSpotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type HubDBTableRowV3Shape = array{

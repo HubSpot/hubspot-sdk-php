@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams;
+namespace HubSpotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams;
 
 enum Language: string
 {

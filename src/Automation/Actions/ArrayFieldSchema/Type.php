@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\ArrayFieldSchema;
+namespace HubSpotSDK\Automation\Actions\ArrayFieldSchema;
 
 /**
  * Specifies that the field is of type 'ARRAY'.

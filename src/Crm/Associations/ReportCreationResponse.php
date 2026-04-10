@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations;
+namespace HubSpotSDK\Crm\Associations;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type DateTimeShape from \HubspotSDK\Crm\Associations\DateTime
+ * @phpstan-import-type DateTimeShape from \HubSpotSDK\Crm\Associations\DateTime
  *
  * @phpstan-type ReportCreationResponseShape = array{
  *   enqueueTime: DateTime|DateTimeShape, userEmail: string, userID: int

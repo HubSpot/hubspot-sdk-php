@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing\MarketingEvents;
+namespace HubSpotSDK\Services\Marketing\MarketingEvents;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\EventDetailSettings;
-use HubspotSDK\Marketing\MarketingEvents\Settings\SettingCreateOrUpdateParams;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\MarketingEvents\SettingsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\MarketingEvents\EventDetailSettings;
+use HubSpotSDK\Marketing\MarketingEvents\Settings\SettingCreateOrUpdateParams;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\MarketingEvents\SettingsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class SettingsRawService implements SettingsRawContract
 {

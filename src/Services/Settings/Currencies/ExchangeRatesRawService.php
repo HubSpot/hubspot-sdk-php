@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Settings\Currencies;
+namespace HubSpotSDK\Services\Settings\Currencies;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Settings\Currencies\ExchangeRatesRawContract;
-use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
-use HubspotSDK\Settings\Currencies\ExchangeRate;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams\FromCurrencyCode;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\ToCurrencyCode;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateExchangeRateParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Settings\Currencies\ExchangeRatesRawContract;
+use HubSpotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
+use HubSpotSDK\Settings\Currencies\ExchangeRate;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams\FromCurrencyCode;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\ToCurrencyCode;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateExchangeRateParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class ExchangeRatesRawService implements ExchangeRatesRawContract
 {

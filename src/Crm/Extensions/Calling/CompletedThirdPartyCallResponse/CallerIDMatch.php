@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
+namespace HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Crm\Extensions\Calling\CompanyCallerID;
-use HubspotSDK\Crm\Extensions\Calling\ContactCallerID;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Crm\Extensions\Calling\CompanyCallerID;
+use HubSpotSDK\Crm\Extensions\Calling\ContactCallerID;
 
 /**
- * @phpstan-import-type ContactCallerIDShape from \HubspotSDK\Crm\Extensions\Calling\ContactCallerID
- * @phpstan-import-type CompanyCallerIDShape from \HubspotSDK\Crm\Extensions\Calling\CompanyCallerID
+ * @phpstan-import-type ContactCallerIDShape from \HubSpotSDK\Crm\Extensions\Calling\ContactCallerID
+ * @phpstan-import-type CompanyCallerIDShape from \HubSpotSDK\Crm\Extensions\Calling\CompanyCallerID
  *
  * @phpstan-type CallerIDMatchVariants = ContactCallerID|CompanyCallerID
  * @phpstan-type CallerIDMatchShape = CallerIDMatchVariants|ContactCallerIDShape|CompanyCallerIDShape

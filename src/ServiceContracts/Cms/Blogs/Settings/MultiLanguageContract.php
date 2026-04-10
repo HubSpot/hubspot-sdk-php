@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Blogs\Settings;
+namespace HubSpotSDK\ServiceContracts\Cms\Blogs\Settings;
 
-use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Blogs\Settings\Blog;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface MultiLanguageContract
 {
@@ -82,7 +82,7 @@ interface MultiLanguageContract
     /**
      * @api
      *
-     * @param array<string,\HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language|value-of<\HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
+     * @param array<string,\HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
      * @param string $primaryID ID of the primary object in the multi-language group
      * @param RequestOpts|null $requestOptions
      *

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\FileAssets;
+namespace HubSpotSDK\Files\FileAssets;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
 
 /**
  * Generates signed URL that allows temporary access to a private file.
  *
- * @see HubspotSDK\Services\Files\FileAssetsService::getSignedURL()
+ * @see HubSpotSDK\Services\Files\FileAssetsService::getSignedURL()
  *
  * @phpstan-type FileAssetGetSignedURLParamsShape = array{
  *   expirationSeconds?: int|null,

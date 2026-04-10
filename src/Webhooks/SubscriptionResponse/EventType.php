@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks\SubscriptionResponse;
+namespace HubSpotSDK\Webhooks\SubscriptionResponse;
 
 /**
  * The type of event to listen for. Accepted values include contact.creation, contact.deletion, contact.propertyChange, and similar event types for other CRM objects and custom objects.

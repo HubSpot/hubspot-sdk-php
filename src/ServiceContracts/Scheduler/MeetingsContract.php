@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Scheduler;
+namespace HubSpotSDK\ServiceContracts\Scheduler;
 
 interface MeetingsContract {}

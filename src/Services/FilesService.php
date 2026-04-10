@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\FilesContract;
-use HubspotSDK\Services\Files\FileAssetsService;
-use HubspotSDK\Services\Files\FoldersService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\FilesContract;
+use HubSpotSDK\Services\Files\FileAssetsService;
+use HubSpotSDK\Services\Files\FoldersService;
 
 final class FilesService implements FilesContract
 {

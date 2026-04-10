@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\ExternalMeetingsLinkSettings;
+namespace HubSpotSDK\Scheduler\Meetings\ExternalMeetingsLinkSettings;
 
 /**
  * The increment for available start times of meetings, spelt out as a word (e.g. 15 minute increment corresponds to `FIFTEEN`). `MEETING_DURATION` is also a valid value.

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Metrics;
+namespace HubSpotSDK\Marketing\Campaigns\Metrics;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Fetch revenue attribution report data for a specified campaign.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\MetricsService::getRevenueAttribution()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\MetricsService::getRevenueAttribution()
  *
  * @phpstan-type MetricGetRevenueAttributionParamsShape = array{
  *   attributionModel?: string|null, endDate?: string|null, startDate?: string|null

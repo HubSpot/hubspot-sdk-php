@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\Carts\CartCreateParams;
-use HubspotSDK\Crm\Objects\Carts\CartGetParams;
-use HubspotSDK\Crm\Objects\Carts\CartListParams;
-use HubspotSDK\Crm\Objects\Carts\CartSearchParams;
-use HubspotSDK\Crm\Objects\Carts\CartUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\Carts\CartCreateParams;
+use HubSpotSDK\Crm\Objects\Carts\CartGetParams;
+use HubSpotSDK\Crm\Objects\Carts\CartListParams;
+use HubSpotSDK\Crm\Objects\Carts\CartSearchParams;
+use HubSpotSDK\Crm\Objects\Carts\CartUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CartsRawContract
 {

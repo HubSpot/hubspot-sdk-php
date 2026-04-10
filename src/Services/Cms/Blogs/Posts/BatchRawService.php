@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs\Posts;
+namespace HubSpotSDK\Services\Cms\Blogs\Posts;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Posts\Batch\BatchCreateParams;
-use HubspotSDK\Cms\Blogs\Posts\Batch\BatchDeleteParams;
-use HubspotSDK\Cms\Blogs\Posts\Batch\BatchGetParams;
-use HubspotSDK\Cms\Blogs\Posts\Batch\BatchUpdateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\Posts\BatchRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Posts\Batch\BatchCreateParams;
+use HubSpotSDK\Cms\Blogs\Posts\Batch\BatchDeleteParams;
+use HubSpotSDK\Cms\Blogs\Posts\Batch\BatchGetParams;
+use HubSpotSDK\Cms\Blogs\Posts\Batch\BatchUpdateParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\Posts\BatchRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
 {

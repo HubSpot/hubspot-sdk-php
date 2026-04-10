@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\NumberPropertyVariable;
+namespace HubSpotSDK\Cms\MediaBridge\NumberPropertyVariable;
 
 enum Operator: string
 {

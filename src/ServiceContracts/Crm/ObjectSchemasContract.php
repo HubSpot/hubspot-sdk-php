@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\AssociationDefinition;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchema;
-use HubspotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
-use HubspotSDK\ObjectTypeDefinition;
-use HubspotSDK\ObjectTypeDefinitionLabels;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchema;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
+use HubSpotSDK\ObjectTypeDefinition;
+use HubSpotSDK\ObjectTypeDefinitionLabels;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type ObjectTypePropertyCreateShape from \HubspotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate
- * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ObjectTypePropertyCreateShape from \HubSpotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubSpotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ObjectSchemasContract
 {

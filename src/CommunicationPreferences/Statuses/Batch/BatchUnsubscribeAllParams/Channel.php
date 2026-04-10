@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams;
+namespace HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams;
 
 enum Channel: string
 {

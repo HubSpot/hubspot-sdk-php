@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns;
+namespace HubSpotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals\CurrencyCode;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Campaigns\PublicBudgetTotals\CurrencyCode;
 
 /**
- * @phpstan-import-type PublicBudgetItemShape from \HubspotSDK\Marketing\Campaigns\PublicBudgetItem
- * @phpstan-import-type PublicSpendItemShape from \HubspotSDK\Marketing\Campaigns\PublicSpendItem
+ * @phpstan-import-type PublicBudgetItemShape from \HubSpotSDK\Marketing\Campaigns\PublicBudgetItem
+ * @phpstan-import-type PublicSpendItemShape from \HubSpotSDK\Marketing\Campaigns\PublicSpendItem
  *
  * @phpstan-type PublicBudgetTotalsShape = array{
  *   budgetItems: list<PublicBudgetItem|PublicBudgetItemShape>,

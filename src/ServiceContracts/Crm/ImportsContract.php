@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\ActionResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Imports\PublicImportError;
-use HubspotSDK\Crm\Imports\PublicImportResponse;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\ActionResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Imports\PublicImportError;
+use HubSpotSDK\Crm\Imports\PublicImportResponse;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ImportsContract
 {

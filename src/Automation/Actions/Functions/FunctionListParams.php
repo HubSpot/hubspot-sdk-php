@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Functions;
+namespace HubSpotSDK\Automation\Actions\Functions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve all functions included in a definition.
  *
- * @see HubspotSDK\Services\Automation\Actions\FunctionsService::list()
+ * @see HubSpotSDK\Services\Automation\Actions\FunctionsService::list()
  *
  * @phpstan-type FunctionListParamsShape = array{appID: int}
  */

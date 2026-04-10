@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Imports;
+namespace HubSpotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Imports\PublicImportError\ErrorType;
-use HubspotSDK\Crm\Imports\PublicImportError\ObjectType;
-use HubspotSDK\PropertyValue;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Imports\PublicImportError\ErrorType;
+use HubSpotSDK\Crm\Imports\PublicImportError\ObjectType;
+use HubSpotSDK\PropertyValue;
 
 /**
- * @phpstan-import-type ImportRowCoreShape from \HubspotSDK\Crm\Imports\ImportRowCore
- * @phpstan-import-type PropertyValueShape from \HubspotSDK\PropertyValue
+ * @phpstan-import-type ImportRowCoreShape from \HubSpotSDK\Crm\Imports\ImportRowCore
+ * @phpstan-import-type PropertyValueShape from \HubSpotSDK\PropertyValue
  *
  * @phpstan-type PublicImportErrorShape = array{
  *   id: string,

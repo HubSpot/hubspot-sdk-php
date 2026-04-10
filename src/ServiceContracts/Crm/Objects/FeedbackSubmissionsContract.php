@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\FilterGroup;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface FeedbackSubmissionsContract
 {

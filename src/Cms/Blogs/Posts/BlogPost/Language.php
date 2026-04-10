@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\BlogPost;
+namespace HubSpotSDK\Cms\Blogs\Posts\BlogPost;
 
 /**
  * The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.

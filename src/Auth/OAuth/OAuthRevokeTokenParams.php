@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Auth\OAuth;
+namespace HubSpotSDK\Auth\OAuth;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Deletes/Revokes provided Refresh Token.
  *
- * @see HubspotSDK\Services\Auth\OAuthService::revokeToken()
+ * @see HubSpotSDK\Services\Auth\OAuthService::revokeToken()
  *
  * @phpstan-type OAuthRevokeTokenParamsShape = array{
  *   token?: string|null,

@@ -2,14 +2,14 @@
 
 namespace Tests\Services\Marketing;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
-use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticInterval;
-use HubspotSDK\Marketing\Emails\PublicEmail;
-use HubspotSDK\Marketing\Emails\PublicEmailVersion;
-use HubspotSDK\Marketing\Emails\VersionPublicEmail;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\Emails\AggregateEmailStatistics;
+use HubSpotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticInterval;
+use HubSpotSDK\Marketing\Emails\PublicEmail;
+use HubSpotSDK\Marketing\Emails\PublicEmailVersion;
+use HubSpotSDK\Marketing\Emails\VersionPublicEmail;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

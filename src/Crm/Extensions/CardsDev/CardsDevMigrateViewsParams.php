@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev;
+namespace HubSpotSDK\Crm\Extensions\CardsDev;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Crm\Extensions\CardsDevService::migrateViews()
+ * @see HubSpotSDK\Services\Crm\Extensions\CardsDevService::migrateViews()
  *
  * @phpstan-type CardsDevMigrateViewsParamsShape = array{
  *   appCardID: int, legacyCrmCardID: int, helpdeskAppCardID?: int|null

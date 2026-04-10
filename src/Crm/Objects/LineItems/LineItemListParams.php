@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\LineItems;
+namespace HubSpotSDK\Crm\Objects\LineItems;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Read a page of line items. Control what is returned via the `properties` query param.
  *
- * @see HubspotSDK\Services\Crm\Objects\LineItemsService::list()
+ * @see HubSpotSDK\Services\Crm\Objects\LineItemsService::list()
  *
  * @phpstan-type LineItemListParamsShape = array{
  *   after?: string|null,

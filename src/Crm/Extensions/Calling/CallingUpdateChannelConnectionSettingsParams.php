@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling;
+namespace HubSpotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Modify the existing channel connection settings for the specified app.
  *
- * @see HubspotSDK\Services\Crm\Extensions\CallingService::updateChannelConnectionSettings()
+ * @see HubSpotSDK\Services\Crm\Extensions\CallingService::updateChannelConnectionSettings()
  *
  * @phpstan-type CallingUpdateChannelConnectionSettingsParamsShape = array{
  *   isReady?: bool|null, url?: string|null

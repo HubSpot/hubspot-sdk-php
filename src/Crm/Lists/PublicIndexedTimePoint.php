@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicIndexedTimePoint\TimeType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicIndexedTimePoint\TimeType;
 
 /**
- * @phpstan-import-type IndexReferenceVariants from \HubspotSDK\Crm\Lists\PublicIndexedTimePoint\IndexReference
- * @phpstan-import-type IndexReferenceShape from \HubspotSDK\Crm\Lists\PublicIndexedTimePoint\IndexReference
- * @phpstan-import-type PublicIndexOffsetShape from \HubspotSDK\Crm\Lists\PublicIndexOffset
+ * @phpstan-import-type IndexReferenceVariants from \HubSpotSDK\Crm\Lists\PublicIndexedTimePoint\IndexReference
+ * @phpstan-import-type IndexReferenceShape from \HubSpotSDK\Crm\Lists\PublicIndexedTimePoint\IndexReference
+ * @phpstan-import-type PublicIndexOffsetShape from \HubSpotSDK\Crm\Lists\PublicIndexOffset
  *
  * @phpstan-type PublicIndexedTimePointShape = array{
  *   indexReference: IndexReferenceShape,

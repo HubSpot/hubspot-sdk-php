@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ObjectTypeDefinitionLabels;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\ObjectTypeDefinitionLabels;
 
 /**
  * Update the schema for an existing object type.
  *
- * @see HubspotSDK\Services\Cms\MediaBridgeService::updateSchema()
+ * @see HubSpotSDK\Services\Cms\MediaBridgeService::updateSchema()
  *
- * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubSpotSDK\ObjectTypeDefinitionLabels
  *
  * @phpstan-type MediaBridgeUpdateSchemaParamsShape = array{
  *   appID: int,

@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\SingleSend;
+namespace HubSpotSDK\Marketing\SingleSend;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\PublicSingleSendEmail;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\PublicSingleSendEmail;
 
 /**
  * Send a template email to a specific recipient.
  *
- * @see HubspotSDK\Services\Marketing\SingleSendService::create()
+ * @see HubSpotSDK\Services\Marketing\SingleSendService::create()
  *
- * @phpstan-import-type PublicSingleSendEmailShape from \HubspotSDK\Marketing\PublicSingleSendEmail
+ * @phpstan-import-type PublicSingleSendEmailShape from \HubSpotSDK\Marketing\PublicSingleSendEmail
  *
  * @phpstan-type SingleSendCreateParamsShape = array{
  *   contactProperties: array<string,string>,

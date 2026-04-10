@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling;
+namespace HubSpotSDK\Crm\Extensions\Calling;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update the recording settings for a specific app using the provided app ID.
  *
- * @see HubspotSDK\Services\Crm\Extensions\CallingService::updateRecordingSettings()
+ * @see HubSpotSDK\Services\Crm\Extensions\CallingService::updateRecordingSettings()
  *
  * @phpstan-type CallingUpdateRecordingSettingsParamsShape = array{
  *   urlToRetrieveAuthedRecording?: string|null

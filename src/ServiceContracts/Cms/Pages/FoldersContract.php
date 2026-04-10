@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Pages;
+namespace HubSpotSDK\ServiceContracts\Cms\Pages;
 
-use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
-use HubspotSDK\Cms\Pages\ContentFolder;
-use HubspotSDK\Cms\Pages\ContentFolderVersion;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Pages\BatchResponseContentFolder;
+use HubSpotSDK\Cms\Pages\ContentFolder;
+use HubSpotSDK\Cms\Pages\ContentFolderVersion;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface FoldersContract
 {

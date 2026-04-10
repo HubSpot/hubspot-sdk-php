@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Associations\ReportCreationResponse;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\LabelsBetweenObjectPair;
-use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\AssociationsContract;
-use HubspotSDK\Services\Crm\Associations\BatchService;
+use HubSpotSDK\AssociationSpec;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Associations\ReportCreationResponse;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\FilterGroup;
+use HubSpotSDK\Crm\LabelsBetweenObjectPair;
+use HubSpotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\AssociationsContract;
+use HubSpotSDK\Services\Crm\Associations\BatchService;
 
 /**
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
+ * @phpstan-import-type AssociationSpecShape from \HubSpotSDK\AssociationSpec
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class AssociationsService implements AssociationsContract
 {

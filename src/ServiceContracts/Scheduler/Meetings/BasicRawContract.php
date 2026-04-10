@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Scheduler\Meetings;
+namespace HubSpotSDK\ServiceContracts\Scheduler\Meetings;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Scheduler\Meetings\Basic\BasicGetAvailabilityBySlugParams;
-use HubspotSDK\Scheduler\Meetings\Basic\BasicGetBookingInfoBySlugParams;
-use HubspotSDK\Scheduler\Meetings\Basic\BasicListParams;
-use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
-use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
-use HubspotSDK\Scheduler\Meetings\ExternalLinkMetadata;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Scheduler\Meetings\Basic\BasicGetAvailabilityBySlugParams;
+use HubSpotSDK\Scheduler\Meetings\Basic\BasicGetBookingInfoBySlugParams;
+use HubSpotSDK\Scheduler\Meetings\Basic\BasicListParams;
+use HubSpotSDK\Scheduler\Meetings\ExternalBookingInfo;
+use HubSpotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
+use HubSpotSDK\Scheduler\Meetings\ExternalLinkMetadata;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BasicRawContract
 {

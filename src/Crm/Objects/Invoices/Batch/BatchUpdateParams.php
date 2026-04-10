@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Invoices\Batch;
+namespace HubSpotSDK\Crm\Objects\Invoices\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput;
 
 /**
  * Update multiple invoices in a single request using either their internal IDs or unique property values. This endpoint allows for efficient batch processing of invoice updates, ensuring that changes are applied consistently across multiple records.
  *
- * @see HubspotSDK\Services\Crm\Objects\Invoices\BatchService::update()
+ * @see HubSpotSDK\Services\Crm\Objects\Invoices\BatchService::update()
  *
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInput
+ * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape>

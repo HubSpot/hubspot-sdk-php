@@ -2,78 +2,78 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\AssociationDefinition;
-use HubspotSDK\Client;
-use HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
-use HubspotSDK\Cms\MediaBridge\AttentionSpanEvent;
-use HubspotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
-use HubspotSDK\Cms\MediaBridge\CollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
-use HubspotSDK\Cms\MediaBridge\Endpoints;
-use HubspotSDK\Cms\MediaBridge\EventVisibilityChange;
-use HubspotSDK\Cms\MediaBridge\EventVisibilityResponse;
-use HubspotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAssociationParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\ExternalPlayContext;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\MediaType;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateObjectTypeParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreateOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyGroupParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeDeleteAssociationParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeDeleteOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeDeletePropertyGroupParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeDeletePropertyParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeGetOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeGetPropertyGroupParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeGetPropertyParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeGetSchemaParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeListOembedDomainsParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeListPropertiesParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeListPropertyGroupsParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeListSchemasParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeRegisterAppNameParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams\EventType;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateOembedDomainParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyGroupParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateSchemaParams;
-use HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateSettingsParams;
-use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent;
-use HubspotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
-use HubspotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
-use HubspotSDK\Cms\MediaBridge\ObjectSchema;
-use HubspotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubspotSDK\Cms\MediaBridge\Property;
-use HubspotSDK\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\ObjectTypeDefinition;
-use HubspotSDK\ObjectTypeDefinitionLabels;
-use HubspotSDK\OptionInput;
-use HubspotSDK\PropertyGroup;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\MediaBridgeRawContract;
+use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
+use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
+use HubSpotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
+use HubSpotSDK\Cms\MediaBridge\CollectionResponseObjectSchemaNoPaging;
+use HubSpotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
+use HubSpotSDK\Cms\MediaBridge\Endpoints;
+use HubSpotSDK\Cms\MediaBridge\EventVisibilityChange;
+use HubSpotSDK\Cms\MediaBridge\EventVisibilityResponse;
+use HubSpotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateAssociationParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\ExternalPlayContext;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\MediaType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedPercentEventParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateObjectTypeParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateOembedDomainParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyGroupParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeDeleteAssociationParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeDeleteOembedDomainParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeDeletePropertyGroupParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeDeletePropertyParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeGetOembedDomainParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeGetPropertyGroupParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeGetPropertyParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeGetSchemaParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeListOembedDomainsParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeListPropertiesParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeListPropertyGroupsParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeListSchemasParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeRegisterAppNameParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams\EventType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateOembedDomainParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyGroupParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateSchemaParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateSettingsParams;
+use HubSpotSDK\Cms\MediaBridge\MediaPlayedEvent;
+use HubSpotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
+use HubSpotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
+use HubSpotSDK\Cms\MediaBridge\ObjectSchema;
+use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
+use HubSpotSDK\Cms\MediaBridge\Property;
+use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\ObjectTypeDefinition;
+use HubSpotSDK\ObjectTypeDefinitionLabels;
+use HubSpotSDK\OptionInput;
+use HubSpotSDK\PropertyGroup;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\MediaBridgeRawContract;
 
 /**
- * @phpstan-import-type AttentionSpanCalculatedValuesShape from \HubspotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues
- * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type EndpointsShape from \HubspotSDK\Cms\MediaBridge\Endpoints
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type AttentionSpanCalculatedValuesShape from \HubSpotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubSpotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type EndpointsShape from \HubSpotSDK\Cms\MediaBridge\Endpoints
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  */
 final class MediaBridgeRawService implements MediaBridgeRawContract
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\PropertyUpdate;
+namespace HubSpotSDK\Crm\Properties\PropertyUpdate;
 
 /**
  * Controls how the property appears in HubSpot.

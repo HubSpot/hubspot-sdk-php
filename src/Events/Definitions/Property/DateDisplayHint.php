@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\Property;
+namespace HubSpotSDK\Events\Definitions\Property;
 
 enum DateDisplayHint: string
 {

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SourceCode;
+namespace HubSpotSDK\Cms\SourceCode;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Extract a zip file in the developer file system. Extraction status can be checked with the `/extract/async/tasks/taskId/status` endpoint below.
  *
- * @see HubspotSDK\Services\Cms\SourceCodeService::extractAsync()
+ * @see HubSpotSDK\Services\Cms\SourceCodeService::extractAsync()
  *
  * @phpstan-type SourceCodeExtractAsyncParamsShape = array{path: string}
  */

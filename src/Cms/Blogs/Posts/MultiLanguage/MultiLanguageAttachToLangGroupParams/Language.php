@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageAttachToLangGroupParams;
+namespace HubSpotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageAttachToLangGroupParams;
 
 /**
  * Designated language of the object to add to a multi-language group.

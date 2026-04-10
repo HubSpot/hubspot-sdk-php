@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs;
+namespace HubSpotSDK\Services\Cms\Blogs;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\BlogVersion;
-use HubspotSDK\Cms\Blogs\Settings\VersionBlog;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\SettingsContract;
-use HubspotSDK\Services\Cms\Blogs\Settings\MultiLanguageService;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Settings\Blog;
+use HubSpotSDK\Cms\Blogs\Settings\BlogVersion;
+use HubSpotSDK\Cms\Blogs\Settings\VersionBlog;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\SettingsContract;
+use HubSpotSDK\Services\Cms\Blogs\Settings\MultiLanguageService;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class SettingsService implements SettingsContract
 {

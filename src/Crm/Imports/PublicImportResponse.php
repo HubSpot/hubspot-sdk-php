@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Imports;
+namespace HubSpotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Imports\PublicImportResponse\ImportSource;
-use HubspotSDK\Crm\Imports\PublicImportResponse\State;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Imports\PublicImportResponse\ImportSource;
+use HubSpotSDK\Crm\Imports\PublicImportResponse\State;
 
 /**
- * @phpstan-import-type PublicImportMetadataShape from \HubspotSDK\Crm\Imports\PublicImportMetadata
- * @phpstan-import-type ImportTemplateShape from \HubspotSDK\Crm\Imports\ImportTemplate
+ * @phpstan-import-type PublicImportMetadataShape from \HubSpotSDK\Crm\Imports\PublicImportMetadata
+ * @phpstan-import-type ImportTemplateShape from \HubSpotSDK\Crm\Imports\ImportTemplate
  *
  * @phpstan-type PublicImportResponseShape = array{
  *   id: string,

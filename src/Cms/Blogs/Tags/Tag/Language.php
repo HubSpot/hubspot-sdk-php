@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Tags\Tag;
+namespace HubSpotSDK\Cms\Blogs\Tags\Tag;
 
 /**
  * The explicitly defined ISO 639 language code of the tag.

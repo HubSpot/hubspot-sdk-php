@@ -1,9 +1,9 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
 class RateLimitException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'HubspotSDK Rate Limit Exception';
+    protected const DESC = 'HubSpotSDK Rate Limit Exception';
 }

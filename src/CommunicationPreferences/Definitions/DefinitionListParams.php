@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\Definitions;
+namespace HubSpotSDK\CommunicationPreferences\Definitions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Get a list of subscription status definitions from the account.
  *
- * @see HubspotSDK\Services\CommunicationPreferences\DefinitionsService::list()
+ * @see HubSpotSDK\Services\CommunicationPreferences\DefinitionsService::list()
  *
  * @phpstan-type DefinitionListParamsShape = array{
  *   businessUnitID?: int|null, includeTranslations?: bool|null

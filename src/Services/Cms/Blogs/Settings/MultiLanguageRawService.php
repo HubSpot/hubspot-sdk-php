@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs\Settings;
+namespace HubSpotSDK\Services\Cms\Blogs\Settings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageCreateLanguageVariationParams;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageDetachFromLangGroupParams;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageSetNewLangPrimaryParams;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\Settings\MultiLanguageRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Settings\Blog;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageCreateLanguageVariationParams;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageDetachFromLangGroupParams;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageSetNewLangPrimaryParams;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\Settings\MultiLanguageRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class MultiLanguageRawService implements MultiLanguageRawContract
 {

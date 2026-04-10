@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\BatchResponseSimplePublicObjectWithErrors;
+namespace HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObjectWithErrors;
 
 /**
  * The status of the batch processing request - "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".

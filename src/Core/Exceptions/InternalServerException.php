@@ -1,9 +1,9 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
 class InternalServerException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'HubspotSDK Internal Server Exception';
+    protected const DESC = 'HubSpotSDK Internal Server Exception';
 }

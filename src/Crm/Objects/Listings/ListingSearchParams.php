@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Listings;
+namespace HubSpotSDK\Crm\Objects\Listings;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\FilterGroup;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\FilterGroup;
 
 /**
  * Execute a search query to find listings based on specified filters and properties.
  *
- * @see HubspotSDK\Services\Crm\Objects\ListingsService::search()
+ * @see HubSpotSDK\Services\Crm\Objects\ListingsService::search()
  *
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
  *
  * @phpstan-type ListingSearchParamsShape = array{
  *   after: string,

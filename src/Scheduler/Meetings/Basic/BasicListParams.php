@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\Basic;
+namespace HubSpotSDK\Scheduler\Meetings\Basic;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Scheduler\Meetings\Basic\BasicListParams\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Scheduler\Meetings\Basic\BasicListParams\Type;
 
 /**
  * Get a paged list meeting scheduling pages.
  *
- * @see HubspotSDK\Services\Scheduler\Meetings\BasicService::list()
+ * @see HubSpotSDK\Services\Scheduler\Meetings\BasicService::list()
  *
  * @phpstan-type BasicListParamsShape = array{
  *   after?: string|null,

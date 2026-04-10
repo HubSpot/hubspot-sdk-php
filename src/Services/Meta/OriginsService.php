@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Meta;
+namespace HubSpotSDK\Services\Meta;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Meta\OriginsContract;
-use HubspotSDK\Services\Meta\Origins\IPRangesService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Meta\OriginsContract;
+use HubSpotSDK\Services\Meta\Origins\IPRangesService;
 
 final class OriginsService implements OriginsContract
 {

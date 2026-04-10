@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve the details for a specific channel account. This contains all the metadata about your channel account, including its channel, associated inbox id, and delivery identifier information.
  *
- * @see HubspotSDK\Services\Conversations\CustomChannelsService::get()
+ * @see HubSpotSDK\Services\Conversations\CustomChannelsService::get()
  *
  * @phpstan-type CustomChannelGetParamsShape = array{
  *   channelID: int, archived?: bool|null

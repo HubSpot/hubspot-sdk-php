@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\CommercePayments;
+namespace HubSpotSDK\Crm\Objects\CommercePayments;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\FilterGroup;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\FilterGroup;
 
 /**
  * Execute a search for commerce payments based on the provided filter groups, properties, and sorting options. This endpoint allows for complex queries to retrieve specific payment records from the CRM.
  *
- * @see HubspotSDK\Services\Crm\Objects\CommercePaymentsService::search()
+ * @see HubSpotSDK\Services\Crm\Objects\CommercePaymentsService::search()
  *
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
  *
  * @phpstan-type CommercePaymentSearchParamsShape = array{
  *   after: string,

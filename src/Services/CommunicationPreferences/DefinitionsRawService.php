@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\CommunicationPreferences;
+namespace HubSpotSDK\Services\CommunicationPreferences;
 
-use HubspotSDK\Client;
-use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsSubscriptionDefinition;
-use HubspotSDK\CommunicationPreferences\Definitions\DefinitionListParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\CommunicationPreferences\DefinitionsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsSubscriptionDefinition;
+use HubSpotSDK\CommunicationPreferences\Definitions\DefinitionListParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\CommunicationPreferences\DefinitionsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class DefinitionsRawService implements DefinitionsRawContract
 {

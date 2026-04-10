@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Spend;
+namespace HubSpotSDK\Marketing\Campaigns\Spend;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a new campaign spend item.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::create()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\SpendService::create()
  *
  * @phpstan-type SpendCreateParamsShape = array{
  *   amount: float, name: string, order: int, description?: string|null

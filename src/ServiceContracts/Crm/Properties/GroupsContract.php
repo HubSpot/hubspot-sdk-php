@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Properties;
+namespace HubSpotSDK\ServiceContracts\Crm\Properties;
 
-use HubspotSDK\CollectionResponsePropertyGroupNoPaging;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\PropertyGroup;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\PropertyGroup;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface GroupsContract
 {

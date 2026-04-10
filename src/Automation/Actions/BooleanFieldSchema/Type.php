@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\BooleanFieldSchema;
+namespace HubSpotSDK\Automation\Actions\BooleanFieldSchema;
 
 /**
  * Specifies the field type as BOOLEAN, indicating that the field can hold a true or false value.

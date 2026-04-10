@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Companies;
+namespace HubSpotSDK\Crm\Objects\Companies;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Merge two company records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
  *
- * @see HubspotSDK\Services\Crm\Objects\CompaniesService::merge()
+ * @see HubSpotSDK\Services\Crm\Objects\CompaniesService::merge()
  *
  * @phpstan-type CompanyMergeParamsShape = array{
  *   objectIDToMerge: string, primaryObjectID: string

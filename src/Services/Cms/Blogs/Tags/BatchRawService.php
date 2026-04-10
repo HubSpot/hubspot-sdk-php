@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs\Tags;
+namespace HubSpotSDK\Services\Cms\Blogs\Tags;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Tags\Batch\BatchCreateBatchParams;
-use HubspotSDK\Cms\Blogs\Tags\Batch\BatchDeleteParams;
-use HubspotSDK\Cms\Blogs\Tags\Batch\BatchGetBatchParams;
-use HubspotSDK\Cms\Blogs\Tags\Batch\BatchUpdateBatchParams;
-use HubspotSDK\Cms\Blogs\Tags\Tag;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\Tags\BatchRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Tags\Batch\BatchCreateBatchParams;
+use HubSpotSDK\Cms\Blogs\Tags\Batch\BatchDeleteParams;
+use HubSpotSDK\Cms\Blogs\Tags\Batch\BatchGetBatchParams;
+use HubSpotSDK\Cms\Blogs\Tags\Batch\BatchUpdateBatchParams;
+use HubSpotSDK\Cms\Blogs\Tags\Tag;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\Tags\BatchRawContract;
 
 /**
- * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type TagShape from \HubSpotSDK\Cms\Blogs\Tags\Tag
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
 {

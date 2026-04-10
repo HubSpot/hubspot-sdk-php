@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\EmailCreateParams;
+namespace HubSpotSDK\Marketing\Emails\EmailCreateParams;
 
 /**
  * The email subcategory.

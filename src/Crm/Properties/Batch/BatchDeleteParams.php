@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\Batch;
+namespace HubSpotSDK\Crm\Properties\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PropertyName;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\PropertyName;
 
 /**
  * Archive a provided list of properties. This method will return a 204 No Content response on success regardless of the initial state of the property (e.g. active, already archived, non-existent).
  *
- * @see HubspotSDK\Services\Crm\Properties\BatchService::delete()
+ * @see HubSpotSDK\Services\Crm\Properties\BatchService::delete()
  *
- * @phpstan-import-type PropertyNameShape from \HubspotSDK\PropertyName
+ * @phpstan-import-type PropertyNameShape from \HubSpotSDK\PropertyName
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   inputs: list<PropertyName|PropertyNameShape>

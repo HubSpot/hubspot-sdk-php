@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas;
+namespace HubSpotSDK\Crm\ObjectSchemas;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ObjectTypeDefinitionLabels;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\ObjectTypeDefinitionLabels;
 
 /**
  * Create a new custom object schema by defining its properties and associations.
  *
- * @see HubspotSDK\Services\Crm\ObjectSchemasService::create()
+ * @see HubSpotSDK\Services\Crm\ObjectSchemasService::create()
  *
- * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubspotSDK\ObjectTypeDefinitionLabels
- * @phpstan-import-type ObjectTypePropertyCreateShape from \HubspotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate
+ * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubSpotSDK\ObjectTypeDefinitionLabels
+ * @phpstan-import-type ObjectTypePropertyCreateShape from \HubSpotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate
  *
  * @phpstan-type ObjectSchemaCreateParamsShape = array{
  *   allowsSensitiveProperties: bool,

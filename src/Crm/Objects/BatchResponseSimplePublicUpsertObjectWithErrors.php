@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects;
+namespace HubSpotSDK\Crm\Objects;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObjectWithErrors\Status;
-use HubspotSDK\StandardError;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObjectWithErrors\Status;
+use HubSpotSDK\StandardError;
 
 /**
  * Represents the response from a batch upsert operation, including the status, timestamps, successfully processed objects, and any errors that occurred during processing.
  *
- * @phpstan-import-type SimplePublicUpsertObjectShape from \HubspotSDK\Crm\Objects\SimplePublicUpsertObject
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type SimplePublicUpsertObjectShape from \HubSpotSDK\Crm\Objects\SimplePublicUpsertObject
+ * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponseSimplePublicUpsertObjectWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,

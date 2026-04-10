@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing;
+namespace HubSpotSDK\Services\Marketing;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\CampaignCreateParams;
-use HubspotSDK\Marketing\Campaigns\CampaignGetParams;
-use HubspotSDK\Marketing\Campaigns\CampaignListParams;
-use HubspotSDK\Marketing\Campaigns\CampaignUpdateParams;
-use HubspotSDK\Marketing\Campaigns\PublicCampaign;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\CampaignsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Campaigns\CampaignCreateParams;
+use HubSpotSDK\Marketing\Campaigns\CampaignGetParams;
+use HubSpotSDK\Marketing\Campaigns\CampaignListParams;
+use HubSpotSDK\Marketing\Campaigns\CampaignUpdateParams;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaign;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignWithAssets;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\CampaignsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CampaignsRawService implements CampaignsRawContract
 {

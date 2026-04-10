@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationsSchema;
+namespace HubSpotSDK\Crm\AssociationsSchema;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicAssociationDefinitionUserConfigurationShape from \HubspotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionUserConfiguration
+ * @phpstan-import-type PublicAssociationDefinitionUserConfigurationShape from \HubSpotSDK\Crm\AssociationsSchema\PublicAssociationDefinitionUserConfiguration
  *
  * @phpstan-type CollectionResponsePublicAssociationDefinitionUserConfigurationNoPagingShape = array{
  *   results: list<PublicAssociationDefinitionUserConfiguration|PublicAssociationDefinitionUserConfigurationShape>,

@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type GroupViewShape from \HubspotSDK\Cms\MediaBridge\GroupView
- * @phpstan-import-type InboundDBObjectTypeShape from \HubspotSDK\Cms\MediaBridge\InboundDBObjectType
+ * @phpstan-import-type GroupViewShape from \HubSpotSDK\Cms\MediaBridge\GroupView
+ * @phpstan-import-type InboundDBObjectTypeShape from \HubSpotSDK\Cms\MediaBridge\InboundDBObjectType
  *
  * @phpstan-type ObjectDefinitionResponseShape = array{
  *   objectTypeID: string,

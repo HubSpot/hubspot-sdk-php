@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Extensions;
+namespace HubSpotSDK\ServiceContracts\Crm\Extensions;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\CardsDev\CardMigrateViewsResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevCreateParams;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevDeleteParams;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevGetByIDParams;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevMigrateViewsParams;
-use HubspotSDK\Crm\Extensions\CardsDev\CardsDevUpdateParams;
-use HubspotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\PublicCardListResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\PublicCardResponse;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardMigrateViewsResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevCreateParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevDeleteParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevGetByIDParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevMigrateViewsParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardsDevUpdateParams;
+use HubSpotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\PublicCardListResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\PublicCardResponse;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CardsDevRawContract
 {

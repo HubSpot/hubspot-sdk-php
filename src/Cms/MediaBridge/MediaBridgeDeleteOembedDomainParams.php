@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Delete an existing oEmbed domain.
  *
- * @see HubspotSDK\Services\Cms\MediaBridgeService::deleteOembedDomain()
+ * @see HubSpotSDK\Services\Cms\MediaBridgeService::deleteOembedDomain()
  *
  * @phpstan-type MediaBridgeDeleteOembedDomainParamsShape = array{
  *   id?: int|null, domainPortalID?: int|null

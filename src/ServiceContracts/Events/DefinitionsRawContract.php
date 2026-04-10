@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Events;
+namespace HubSpotSDK\ServiceContracts\Events;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Events\Definitions\DefinitionCreateParams;
-use HubspotSDK\Events\Definitions\DefinitionCreatePropertyParams;
-use HubspotSDK\Events\Definitions\DefinitionDeletePropertyParams;
-use HubspotSDK\Events\Definitions\DefinitionListParams;
-use HubspotSDK\Events\Definitions\DefinitionSendBatchParams;
-use HubspotSDK\Events\Definitions\DefinitionUpdateParams;
-use HubspotSDK\Events\Definitions\DefinitionUpdatePropertyParams;
-use HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
-use HubspotSDK\Events\Definitions\Property;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Events\Definitions\DefinitionCreateParams;
+use HubSpotSDK\Events\Definitions\DefinitionCreatePropertyParams;
+use HubSpotSDK\Events\Definitions\DefinitionDeletePropertyParams;
+use HubSpotSDK\Events\Definitions\DefinitionListParams;
+use HubSpotSDK\Events\Definitions\DefinitionSendBatchParams;
+use HubSpotSDK\Events\Definitions\DefinitionUpdateParams;
+use HubSpotSDK\Events\Definitions\DefinitionUpdatePropertyParams;
+use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
+use HubSpotSDK\Events\Definitions\Property;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface DefinitionsRawContract
 {

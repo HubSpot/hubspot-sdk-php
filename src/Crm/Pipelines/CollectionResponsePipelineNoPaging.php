@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Pipelines;
+namespace HubSpotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PipelineShape from \HubspotSDK\Crm\Pipelines\Pipeline
+ * @phpstan-import-type PipelineShape from \HubSpotSDK\Crm\Pipelines\Pipeline
  *
  * @phpstan-type CollectionResponsePipelineNoPagingShape = array{
  *   results: list<Pipeline|PipelineShape>

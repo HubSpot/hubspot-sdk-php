@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Settings\Currencies;
+namespace HubSpotSDK\ServiceContracts\Settings\Currencies;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
-use HubspotSDK\Settings\Currencies\ExchangeRate;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateExchangeRateParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
+use HubSpotSDK\Settings\Currencies\ExchangeRate;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateCreateExchangeRateParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateExchangeRateParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ExchangeRatesRawContract
 {

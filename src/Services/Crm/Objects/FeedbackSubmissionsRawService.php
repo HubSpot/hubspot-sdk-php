@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Objects;
+namespace HubSpotSDK\Services\Crm\Objects;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\FeedbackSubmissions\FeedbackSubmissionGetParams;
-use HubspotSDK\Crm\Objects\FeedbackSubmissions\FeedbackSubmissionListParams;
-use HubspotSDK\Crm\Objects\FeedbackSubmissions\FeedbackSubmissionSearchParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Objects\FeedbackSubmissionsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\FilterGroup;
+use HubSpotSDK\Crm\Objects\FeedbackSubmissions\FeedbackSubmissionGetParams;
+use HubSpotSDK\Crm\Objects\FeedbackSubmissions\FeedbackSubmissionListParams;
+use HubSpotSDK\Crm\Objects\FeedbackSubmissions\FeedbackSubmissionSearchParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Objects\FeedbackSubmissionsRawContract;
 
 /**
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class FeedbackSubmissionsRawService implements FeedbackSubmissionsRawContract
 {

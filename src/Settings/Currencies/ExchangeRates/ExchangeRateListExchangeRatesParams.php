@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\ExchangeRates;
+namespace HubSpotSDK\Settings\Currencies\ExchangeRates;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\FromCurrencyCode;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\ToCurrencyCode;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\FromCurrencyCode;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams\ToCurrencyCode;
 
 /**
  * Get a list of exchange rates.
  *
- * @see HubspotSDK\Services\Settings\Currencies\ExchangeRatesService::listExchangeRates()
+ * @see HubSpotSDK\Services\Settings\Currencies\ExchangeRatesService::listExchangeRates()
  *
  * @phpstan-type ExchangeRateListExchangeRatesParamsShape = array{
  *   after?: string|null,

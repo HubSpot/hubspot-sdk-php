@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicFiscalQuarterReference;
+namespace HubSpotSDK\Crm\Lists\PublicFiscalQuarterReference;
 
 /**
  * Indicates the type of reference (FISCAL_QUARTER).

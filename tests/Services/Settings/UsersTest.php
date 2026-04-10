@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Settings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
-use HubspotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
-use HubspotSDK\Settings\Users\PublicUser;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
+use HubSpotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
+use HubSpotSDK\Settings\Users\PublicUser;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

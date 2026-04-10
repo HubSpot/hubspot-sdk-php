@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicInListFilter;
+namespace HubSpotSDK\Crm\Lists\PublicInListFilter;
 
 /**
  * Indicates the type of filter being applied (IN_LIST).

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Limits;
+namespace HubSpotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type LimitAndUsageForObjectTypeShape from \HubspotSDK\Crm\Limits\LimitAndUsageForObjectType
+ * @phpstan-import-type LimitAndUsageForObjectTypeShape from \HubSpotSDK\Crm\Limits\LimitAndUsageForObjectType
  *
  * @phpstan-type CustomPropertyLimitResponseShape = array{
  *   byObjectType: list<LimitAndUsageForObjectType|LimitAndUsageForObjectTypeShape>,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\BatchReadInputPropertyName;
+namespace HubSpotSDK\BatchReadInputPropertyName;
 
 enum DataSensitivity: string
 {

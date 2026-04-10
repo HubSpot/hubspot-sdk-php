@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties;
+namespace HubSpotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Properties\PropertyUpdate\FieldType;
-use HubspotSDK\Crm\Properties\PropertyUpdate\Type;
-use HubspotSDK\OptionInput;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Properties\PropertyUpdate\FieldType;
+use HubSpotSDK\Crm\Properties\PropertyUpdate\Type;
+use HubSpotSDK\OptionInput;
 
 /**
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  *
  * @phpstan-type PropertyUpdateShape = array{
  *   calculationFormula?: string|null,

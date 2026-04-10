@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\EmailUpdateRequest;
+namespace HubSpotSDK\Marketing\Emails\EmailUpdateRequest;
 
 /**
  * The email subcategory.

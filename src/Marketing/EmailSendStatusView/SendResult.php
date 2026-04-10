@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\EmailSendStatusView;
+namespace HubSpotSDK\Marketing\EmailSendStatusView;
 
 /**
  * Result of the send.

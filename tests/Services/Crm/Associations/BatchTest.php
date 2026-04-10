@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Crm\Associations;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
-use HubspotSDK\Crm\BatchResponsePublicDefaultAssociation;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
+use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

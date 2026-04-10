@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\FilterType;
-use HubspotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\Operator;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\FilterType;
+use HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\Operator;
 
 /**
- * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\CoalescingRefineBy
- * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\PruningRefineBy
- * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\CoalescingRefineBy
- * @phpstan-import-type PruningRefineByShape from \HubspotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\PruningRefineBy
+ * @phpstan-import-type CoalescingRefineByVariants from \HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByVariants from \HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\PruningRefineBy
+ * @phpstan-import-type CoalescingRefineByShape from \HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByShape from \HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\PruningRefineBy
  *
  * @phpstan-type PublicFormSubmissionOnPageFilterShape = array{
  *   filterType: FilterType|value-of<FilterType>,

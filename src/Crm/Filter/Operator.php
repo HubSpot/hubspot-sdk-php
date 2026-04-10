@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Filter;
+namespace HubSpotSDK\Crm\Filter;
 
 /**
  * The comparison operator used in the filter, such as "EQ" or "GT".

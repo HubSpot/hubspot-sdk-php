@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling\ContactCallerID;
+namespace HubSpotSDK\Crm\Extensions\Calling\ContactCallerID;
 
 /**
  * Specifies the type of caller ID, with the default value being CONTACT.

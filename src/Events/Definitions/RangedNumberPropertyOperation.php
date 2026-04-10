@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\RangedNumberPropertyOperation\Operator;
-use HubspotSDK\Events\Definitions\RangedNumberPropertyOperation\PropertyType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\RangedNumberPropertyOperation\Operator;
+use HubSpotSDK\Events\Definitions\RangedNumberPropertyOperation\PropertyType;
 
 /**
  * @phpstan-type RangedNumberPropertyOperationShape = array{

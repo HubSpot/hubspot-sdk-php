@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams;
+namespace HubSpotSDK\Cms\MediaBridge\MediaBridgeListObjectTypesByMediaTypeParams;
 
 enum MediaType: string
 {

@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
-use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
-use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams\Language;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams\State;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
 
 /**
- * @see HubspotSDK\Services\Marketing\EmailsService::create()
+ * @see HubSpotSDK\Services\Marketing\EmailsService::create()
  *
- * @phpstan-import-type PublicEmailContentShape from \HubspotSDK\Marketing\Emails\PublicEmailContent
- * @phpstan-import-type PublicEmailFromDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailFromDetails
- * @phpstan-import-type PublicRssEmailDetailsShape from \HubspotSDK\Marketing\Emails\PublicRssEmailDetails
- * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
- * @phpstan-import-type PublicEmailTestingDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailTestingDetails
- * @phpstan-import-type PublicEmailToDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailToDetails
- * @phpstan-import-type PublicWebversionDetailsShape from \HubspotSDK\Marketing\Emails\PublicWebversionDetails
+ * @phpstan-import-type PublicEmailContentShape from \HubSpotSDK\Marketing\Emails\PublicEmailContent
+ * @phpstan-import-type PublicEmailFromDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailFromDetails
+ * @phpstan-import-type PublicRssEmailDetailsShape from \HubSpotSDK\Marketing\Emails\PublicRssEmailDetails
+ * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
+ * @phpstan-import-type PublicEmailTestingDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails
+ * @phpstan-import-type PublicEmailToDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailToDetails
+ * @phpstan-import-type PublicWebversionDetailsShape from \HubSpotSDK\Marketing\Emails\PublicWebversionDetails
  *
  * @phpstan-type EmailCreateParamsShape = array{
  *   activeDomain?: string|null,

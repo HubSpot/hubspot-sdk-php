@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Auth;
+namespace HubSpotSDK\ServiceContracts\Auth;
 
-use HubspotSDK\Auth\OAuth\OAuthCreateTokenParams;
-use HubspotSDK\Auth\OAuth\OAuthIntrospectTokenParams;
-use HubspotSDK\Auth\OAuth\OAuthRevokeTokenParams;
-use HubspotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
-use HubspotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Auth\OAuth\OAuthCreateTokenParams;
+use HubSpotSDK\Auth\OAuth\OAuthIntrospectTokenParams;
+use HubSpotSDK\Auth\OAuth\OAuthRevokeTokenParams;
+use HubSpotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
+use HubSpotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface OAuthRawContract
 {

@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\LandingPages;
+namespace HubSpotSDK\Cms\Pages\LandingPages;
 
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\LayoutSection;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * Create a new landing page.
  *
- * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::create()
+ * @see HubSpotSDK\Services\Cms\Pages\LandingPagesService::create()
  *
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
  *
  * @phpstan-type LandingPageCreateParamsShape = array{
  *   id: string,

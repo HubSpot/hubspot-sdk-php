@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags\FlagResponse;
+namespace HubSpotSDK\Crm\FeatureFlags\FlagResponse;
 
 /**
  * The flag state for any portal that doesn't have an override value.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings\ExternalLinkMetadata;
+namespace HubSpotSDK\Scheduler\Meetings\ExternalLinkMetadata;
 
 /**
  * The type of the external meeting link. Accepted values are: PERSONAL_LINK, GROUP_CALENDAR, ROUND_ROBIN_CALENDAR.

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Discounts;
+namespace HubSpotSDK\Crm\Objects\Discounts;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * List.
  *
- * @see HubspotSDK\Services\Crm\Objects\DiscountsService::list()
+ * @see HubSpotSDK\Services\Crm\Objects\DiscountsService::list()
  *
  * @phpstan-type DiscountListParamsShape = array{
  *   after?: string|null,

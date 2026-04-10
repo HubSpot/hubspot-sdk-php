@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicAdsSearchFilter;
+namespace HubSpotSDK\Crm\Lists\PublicAdsSearchFilter;
 
 /**
  * Type of the filter (ADS_SEARCH).

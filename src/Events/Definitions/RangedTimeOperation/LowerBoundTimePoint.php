@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\RangedTimeOperation;
+namespace HubSpotSDK\Events\Definitions\RangedTimeOperation;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Events\Definitions\DatePoint;
-use HubspotSDK\Events\Definitions\IndexedTimePoint;
-use HubspotSDK\Events\Definitions\PropertyReferencedTime;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Events\Definitions\DatePoint;
+use HubSpotSDK\Events\Definitions\IndexedTimePoint;
+use HubSpotSDK\Events\Definitions\PropertyReferencedTime;
 
 /**
- * @phpstan-import-type DatePointShape from \HubspotSDK\Events\Definitions\DatePoint
- * @phpstan-import-type IndexedTimePointShape from \HubspotSDK\Events\Definitions\IndexedTimePoint
- * @phpstan-import-type PropertyReferencedTimeShape from \HubspotSDK\Events\Definitions\PropertyReferencedTime
+ * @phpstan-import-type DatePointShape from \HubSpotSDK\Events\Definitions\DatePoint
+ * @phpstan-import-type IndexedTimePointShape from \HubSpotSDK\Events\Definitions\IndexedTimePoint
+ * @phpstan-import-type PropertyReferencedTimeShape from \HubSpotSDK\Events\Definitions\PropertyReferencedTime
  *
  * @phpstan-type LowerBoundTimePointVariants = DatePoint|IndexedTimePoint|PropertyReferencedTime
  * @phpstan-type LowerBoundTimePointShape = LowerBoundTimePointVariants|DatePointShape|IndexedTimePointShape|PropertyReferencedTimeShape

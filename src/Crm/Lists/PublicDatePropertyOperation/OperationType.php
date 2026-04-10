@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicDatePropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicDatePropertyOperation;
 
 /**
  * Specifies the type of operation (DATE).

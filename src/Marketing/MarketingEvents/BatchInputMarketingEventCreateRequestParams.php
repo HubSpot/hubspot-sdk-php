@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams
+ * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams
  *
  * @phpstan-type BatchInputMarketingEventCreateRequestParamsShape = array{
  *   inputs: list<MarketingEventCreateRequestParams|MarketingEventCreateRequestParamsShape>,

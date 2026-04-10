@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Automation\Actions;
+namespace HubSpotSDK\ServiceContracts\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
-use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams;
-use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType;
-use HubspotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams;
-use HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams;
-use HubspotSDK\Automation\Actions\Functions\FunctionDeleteParams;
-use HubspotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams;
-use HubspotSDK\Automation\Actions\Functions\FunctionGetParams;
-use HubspotSDK\Automation\Actions\Functions\FunctionListParams;
-use HubspotSDK\Automation\Actions\PublicActionFunction;
-use HubspotSDK\Automation\Actions\PublicActionFunctionIdentifier;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Automation\Actions\CollectionResponsePublicActionFunctionIdentifierNoPaging;
+use HubSpotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams;
+use HubSpotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceByFunctionTypeParams\FunctionType;
+use HubSpotSDK\Automation\Actions\Functions\FunctionCreateOrReplaceParams;
+use HubSpotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams;
+use HubSpotSDK\Automation\Actions\Functions\FunctionDeleteParams;
+use HubSpotSDK\Automation\Actions\Functions\FunctionGetByFunctionTypeParams;
+use HubSpotSDK\Automation\Actions\Functions\FunctionGetParams;
+use HubSpotSDK\Automation\Actions\Functions\FunctionListParams;
+use HubSpotSDK\Automation\Actions\PublicActionFunction;
+use HubSpotSDK\Automation\Actions\PublicActionFunctionIdentifier;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface FunctionsRawContract
 {

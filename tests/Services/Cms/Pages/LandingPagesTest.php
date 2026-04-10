@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Cms\Pages;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Pages\PageData;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieves Marketing Events where the externalEventId matches the value provided in the request, limited to events created by the app making the request.
  *
  * Marketing Events created by other apps will not be included in the results.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEventsService::searchByExternalEventID()
+ * @see HubSpotSDK\Services\Marketing\MarketingEventsService::searchByExternalEventID()
  *
  * @phpstan-type MarketingEventSearchByExternalEventIDParamsShape = array{
  *   q: string

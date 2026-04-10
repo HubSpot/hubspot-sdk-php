@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\Batch;
+namespace HubSpotSDK\Cms\Pages\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Delete a batch of website pages as specified in the request body. Note: this is not the same as the dashboard `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to `true`.
  *
- * @see HubspotSDK\Services\Cms\Pages\BatchService::deleteSitePages()
+ * @see HubSpotSDK\Services\Cms\Pages\BatchService::deleteSitePages()
  *
  * @phpstan-type BatchDeleteSitePagesParamsShape = array{inputs: list<string>}
  */

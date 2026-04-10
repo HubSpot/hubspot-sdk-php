@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Upserts multiple Marketing Events. If a Marketing Event with the specified ID already exists, it will be updated; otherwise, a new event will be created.
  *
  * Only Marketing Events originally created by the same app can be updated.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEventsService::upsertBatch()
+ * @see HubSpotSDK\Services\Marketing\MarketingEventsService::upsertBatch()
  *
- * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams
+ * @phpstan-import-type MarketingEventCreateRequestParamsShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventCreateRequestParams
  *
  * @phpstan-type MarketingEventUpsertBatchParamsShape = array{
  *   inputs: list<MarketingEventCreateRequestParams|MarketingEventCreateRequestParamsShape>,

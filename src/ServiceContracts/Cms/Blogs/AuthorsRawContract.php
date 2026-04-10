@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Blogs;
+namespace HubSpotSDK\ServiceContracts\Cms\Blogs;
 
-use HubspotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorCreateLanguageVariationParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorCreateParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorDeleteParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorDetachFromLangGroupParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorGetCursorByQueryParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorGetCursorParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorGetParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorGetPostsCursorByQueryParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorGetPostsCursorParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorGetTagsCursorByQueryParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorGetTagsCursorParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorListParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorSetNewLangPrimaryParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams;
-use HubspotSDK\Cms\Blogs\Authors\AuthorUpdateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorAttachToLangGroupParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorCreateLanguageVariationParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorCreateParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorDeleteParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorDetachFromLangGroupParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorGetCursorByQueryParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorGetCursorParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorGetParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorGetPostsCursorByQueryParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorGetPostsCursorParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorGetTagsCursorByQueryParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorGetTagsCursorParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorListParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorSetNewLangPrimaryParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorUpdateLanguagesParams;
+use HubSpotSDK\Cms\Blogs\Authors\AuthorUpdateParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface AuthorsRawContract
 {

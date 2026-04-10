@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Extensions;
+namespace HubSpotSDK\Services\Crm\Extensions;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateChannelConnectionSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams\FinalCallStatus;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateRecordingReadyParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateRecordingSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingCreateSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingUpdateChannelConnectionSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingUpdateRecordingSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\CallingUpdateSettingsParams;
-use HubspotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
-use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
-use HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
-use HubspotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
-use HubspotSDK\Crm\Extensions\Calling\SettingsResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Extensions\CallingRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateChannelConnectionSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateInboundCallParams\FinalCallStatus;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateRecordingReadyParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateRecordingSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingCreateSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingUpdateChannelConnectionSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingUpdateRecordingSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\CallingUpdateSettingsParams;
+use HubSpotSDK\Crm\Extensions\Calling\ChannelConnectionSettingsResponse;
+use HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
+use HubSpotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
+use HubSpotSDK\Crm\Extensions\Calling\RecordingSettingsResponse;
+use HubSpotSDK\Crm\Extensions\Calling\SettingsResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Extensions\CallingRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type FormattedPhoneNumberShape from \HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type FormattedPhoneNumberShape from \HubSpotSDK\Crm\Extensions\Calling\FormattedPhoneNumber
  */
 final class CallingRawService implements CallingRawContract
 {

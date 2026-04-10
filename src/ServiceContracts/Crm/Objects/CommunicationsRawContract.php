@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\Communications\CommunicationCreateParams;
-use HubspotSDK\Crm\Objects\Communications\CommunicationGetParams;
-use HubspotSDK\Crm\Objects\Communications\CommunicationListParams;
-use HubspotSDK\Crm\Objects\Communications\CommunicationSearchParams;
-use HubspotSDK\Crm\Objects\Communications\CommunicationUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\Communications\CommunicationCreateParams;
+use HubSpotSDK\Crm\Objects\Communications\CommunicationGetParams;
+use HubSpotSDK\Crm\Objects\Communications\CommunicationListParams;
+use HubSpotSDK\Crm\Objects\Communications\CommunicationSearchParams;
+use HubSpotSDK\Crm\Objects\Communications\CommunicationUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CommunicationsRawContract
 {

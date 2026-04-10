@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams;
+namespace HubSpotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams;
 
 /**
  * The currency code being added to the HubSpot portal for use with central exchange rates.

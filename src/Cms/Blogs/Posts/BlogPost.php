@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts;
+namespace HubSpotSDK\Cms\Blogs\Posts;
 
-use HubspotSDK\Cms\Blogs\Posts\BlogPost\AbStatus;
-use HubspotSDK\Cms\Blogs\Posts\BlogPost\ContentTypeCategory;
-use HubspotSDK\Cms\Blogs\Posts\BlogPost\CurrentState;
-use HubspotSDK\Cms\Blogs\Posts\BlogPost\Language;
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Cms\Blogs\Posts\BlogPost\AbStatus;
+use HubSpotSDK\Cms\Blogs\Posts\BlogPost\ContentTypeCategory;
+use HubSpotSDK\Cms\Blogs\Posts\BlogPost\CurrentState;
+use HubSpotSDK\Cms\Blogs\Posts\BlogPost\Language;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\LayoutSection;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
  *
  * @phpstan-type BlogPostShape = array{
  *   id: string,

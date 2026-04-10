@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Batch;
+namespace HubSpotSDK\Marketing\Campaigns\Batch;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignReadInput;
 
 /**
  * This endpoint reads a batch of campaigns based on the provided input data and returns the campaigns along with their associated assets.
@@ -17,9 +17,9 @@ use HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput;
  * The campaigns in the response are not guaranteed to be in the same order as they were provided in the request.
  * If duplicate campaign IDs are provided in the request, duplicates will be ignored. The response will include only unique IDs and will be returned without duplicates.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::get()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\BatchService::get()
  *
- * @phpstan-import-type PublicCampaignReadInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignReadInput
+ * @phpstan-import-type PublicCampaignReadInputShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignReadInput
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<PublicCampaignReadInput|PublicCampaignReadInputShape>,

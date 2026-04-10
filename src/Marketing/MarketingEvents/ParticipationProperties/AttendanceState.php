@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\ParticipationProperties;
+namespace HubSpotSDK\Marketing\MarketingEvents\ParticipationProperties;
 
 /**
  * The state of the participation.

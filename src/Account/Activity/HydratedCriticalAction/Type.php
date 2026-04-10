@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Account\Activity\HydratedCriticalAction;
+namespace HubSpotSDK\Account\Activity\HydratedCriticalAction;
 
 /**
  * The type of activity.

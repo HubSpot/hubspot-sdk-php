@@ -1,9 +1,9 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
 class NotFoundException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'HubspotSDK Not Found Exception';
+    protected const DESC = 'HubSpotSDK Not Found Exception';
 }

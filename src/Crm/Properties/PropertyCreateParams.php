@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties;
+namespace HubSpotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
-use HubspotSDK\Crm\Properties\PropertyCreateParams\FieldType;
-use HubspotSDK\Crm\Properties\PropertyCreateParams\Type;
-use HubspotSDK\OptionInput;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams\FieldType;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams\Type;
+use HubSpotSDK\OptionInput;
 
 /**
  * Create and return a copy of a new property for the specified object type.
  *
- * @see HubspotSDK\Services\Crm\PropertiesService::create()
+ * @see HubSpotSDK\Services\Crm\PropertiesService::create()
  *
- * @phpstan-import-type OptionInputShape from \HubspotSDK\OptionInput
+ * @phpstan-import-type OptionInputShape from \HubSpotSDK\OptionInput
  *
  * @phpstan-type PropertyCreateParamsShape = array{
  *   fieldType: FieldType|value-of<FieldType>,

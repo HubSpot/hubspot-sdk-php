@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationSpecWithLabel;
+namespace HubSpotSDK\Crm\AssociationSpecWithLabel;
 
 /**
  * The category of the association, such as HUBSPOT_DEFINED, USER_DEFINED, or INTEGRATOR_DEFINED.

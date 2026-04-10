@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\AllHistoryRefineBy;
+namespace HubSpotSDK\Events\Definitions\AllHistoryRefineBy;
 
 enum Type: string
 {

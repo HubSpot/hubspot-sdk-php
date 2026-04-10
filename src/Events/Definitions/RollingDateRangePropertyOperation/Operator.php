@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\RollingDateRangePropertyOperation;
+namespace HubSpotSDK\Events\Definitions\RollingDateRangePropertyOperation;
 
 enum Operator: string
 {

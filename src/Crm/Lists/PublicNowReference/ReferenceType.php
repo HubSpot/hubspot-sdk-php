@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicNowReference;
+namespace HubSpotSDK\Crm\Lists\PublicNowReference;
 
 /**
  * Indicates the type of reference (NOW).

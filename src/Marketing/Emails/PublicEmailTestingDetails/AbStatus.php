@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
+namespace HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails;
 
 /**
  * Status of the AB test.

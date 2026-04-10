@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences\BatchResponsePublicStatusBulkResponse;
+namespace HubSpotSDK\CommunicationPreferences\BatchResponsePublicStatusBulkResponse;
 
 /**
  * The current status of the batch process, with possible values: PENDING, PROCESSING, CANCELED, COMPLETE.

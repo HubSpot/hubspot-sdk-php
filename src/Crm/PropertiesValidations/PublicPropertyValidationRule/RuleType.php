@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\PropertiesValidations\PublicPropertyValidationRule;
+namespace HubSpotSDK\Crm\PropertiesValidations\PublicPropertyValidationRule;
 
 /**
  * The category of validation applied to the property, such as FORMAT, ALPHANUMERIC, or MAX_LENGTH.

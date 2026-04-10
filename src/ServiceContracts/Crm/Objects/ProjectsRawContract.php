@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\Projects\ProjectCreateParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectGetParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectListParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectMergeParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectSearchParams;
-use HubspotSDK\Crm\Objects\Projects\ProjectUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\Projects\ProjectCreateParams;
+use HubSpotSDK\Crm\Objects\Projects\ProjectGetParams;
+use HubSpotSDK\Crm\Objects\Projects\ProjectListParams;
+use HubSpotSDK\Crm\Objects\Projects\ProjectMergeParams;
+use HubSpotSDK\Crm\Objects\Projects\ProjectSearchParams;
+use HubSpotSDK\Crm\Objects\Projects\ProjectUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ProjectsRawContract
 {

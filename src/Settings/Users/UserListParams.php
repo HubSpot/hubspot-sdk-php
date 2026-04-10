@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Users;
+namespace HubSpotSDK\Settings\Users;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Settings\UsersService::list()
+ * @see HubSpotSDK\Services\Settings\UsersService::list()
  *
  * @phpstan-type UserListParamsShape = array{after?: string|null, limit?: int|null}
  */

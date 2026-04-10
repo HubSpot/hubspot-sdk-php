@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\BoolPropertyOperation;
+namespace HubSpotSDK\Events\Definitions\BoolPropertyOperation;
 
 enum PropertyType: string
 {

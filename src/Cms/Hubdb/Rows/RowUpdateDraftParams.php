@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Rows;
+namespace HubSpotSDK\Cms\Hubdb\Rows;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Partially update a single row in the table's draft version.
  * All the column values need not be specified. Only the columns or fields that needs to be modified can be specified.
  * See the "Create a row" endpoint for instructions on how to format the JSON row definitions.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\RowsService::updateDraft()
+ * @see HubSpotSDK\Services\Cms\Hubdb\RowsService::updateDraft()
  *
  * @phpstan-type RowUpdateDraftParamsShape = array{
  *   tableIDOrName: string,

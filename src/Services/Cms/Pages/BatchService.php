@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Pages;
+namespace HubSpotSDK\Services\Cms\Pages;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
-use HubspotSDK\Cms\Pages\BatchResponsePage;
-use HubspotSDK\Cms\Pages\ContentFolder;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Pages\BatchContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Pages\BatchResponseContentFolder;
+use HubSpotSDK\Cms\Pages\BatchResponsePage;
+use HubSpotSDK\Cms\Pages\ContentFolder;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Pages\BatchContract;
 
 /**
- * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ContentFolderShape from \HubSpotSDK\Cms\Pages\ContentFolder
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchService implements BatchContract
 {

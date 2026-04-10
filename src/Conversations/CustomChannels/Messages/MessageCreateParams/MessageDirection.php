@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
+namespace HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams;
 
 enum MessageDirection: string
 {

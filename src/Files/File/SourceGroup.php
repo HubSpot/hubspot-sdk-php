@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\File;
+namespace HubSpotSDK\Files\File;
 
 enum SourceGroup: string
 {

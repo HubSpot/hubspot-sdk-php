@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicNumAssociationsFilter;
+namespace HubSpotSDK\Crm\Lists\PublicNumAssociationsFilter;
 
 /**
  * Indicates the type of filter being applied (NUM_ASSOCIATIONS).

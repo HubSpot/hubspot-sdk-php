@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams;
+namespace HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageUpdateDraftParams;
 
 /**
  * An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.

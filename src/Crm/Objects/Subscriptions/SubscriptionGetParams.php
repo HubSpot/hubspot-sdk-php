@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Subscriptions;
+namespace HubSpotSDK\Crm\Objects\Subscriptions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a specific subscription by its ID, including its properties and associations.
  *
- * @see HubspotSDK\Services\Crm\Objects\SubscriptionsService::get()
+ * @see HubSpotSDK\Services\Crm\Objects\SubscriptionsService::get()
  *
  * @phpstan-type SubscriptionGetParamsShape = array{
  *   archived?: bool|null,

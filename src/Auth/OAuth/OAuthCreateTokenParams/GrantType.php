@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Auth\OAuth\OAuthCreateTokenParams;
+namespace HubSpotSDK\Auth\OAuth\OAuthCreateTokenParams;
 
 enum GrantType: string
 {

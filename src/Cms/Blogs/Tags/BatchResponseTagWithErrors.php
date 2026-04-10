@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Tags;
+namespace HubSpotSDK\Cms\Blogs\Tags;
 
-use HubspotSDK\Cms\Blogs\Tags\BatchResponseTagWithErrors\Status;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\StandardError;
+use HubSpotSDK\Cms\Blogs\Tags\BatchResponseTagWithErrors\Status;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type TagShape from \HubSpotSDK\Cms\Blogs\Tags\Tag
+ * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponseTagWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,

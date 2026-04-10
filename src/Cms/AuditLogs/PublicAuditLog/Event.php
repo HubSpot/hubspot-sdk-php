@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\AuditLogs\PublicAuditLog;
+namespace HubSpotSDK\Cms\AuditLogs\PublicAuditLog;
 
 /**
  * The type of event that took place (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED).

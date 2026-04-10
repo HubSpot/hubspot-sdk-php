@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Blogs;
+namespace HubSpotSDK\ServiceContracts\Cms\Blogs;
 
-use HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams;
-use HubspotSDK\Cms\Blogs\Tags\TagCreateLangVariationParams;
-use HubspotSDK\Cms\Blogs\Tags\TagCreateParams;
-use HubspotSDK\Cms\Blogs\Tags\TagDeleteParams;
-use HubspotSDK\Cms\Blogs\Tags\TagDetachFromLangGroupParams;
-use HubspotSDK\Cms\Blogs\Tags\TagGetParams;
-use HubspotSDK\Cms\Blogs\Tags\TagListAuthorsCursorByQueryParams;
-use HubspotSDK\Cms\Blogs\Tags\TagListAuthorsCursorParams;
-use HubspotSDK\Cms\Blogs\Tags\TagListCursorByQueryParams;
-use HubspotSDK\Cms\Blogs\Tags\TagListCursorParams;
-use HubspotSDK\Cms\Blogs\Tags\TagListParams;
-use HubspotSDK\Cms\Blogs\Tags\TagListPostsCursorByQueryParams;
-use HubspotSDK\Cms\Blogs\Tags\TagListPostsCursorParams;
-use HubspotSDK\Cms\Blogs\Tags\TagSetLangPrimaryParams;
-use HubspotSDK\Cms\Blogs\Tags\TagUpdateLangsParams;
-use HubspotSDK\Cms\Blogs\Tags\TagUpdateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagCreateLangVariationParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagCreateParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagDeleteParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagDetachFromLangGroupParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagGetParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagListAuthorsCursorByQueryParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagListAuthorsCursorParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagListCursorByQueryParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagListCursorParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagListParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagListPostsCursorByQueryParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagListPostsCursorParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagSetLangPrimaryParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagUpdateLangsParams;
+use HubSpotSDK\Cms\Blogs\Tags\TagUpdateParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface TagsRawContract
 {

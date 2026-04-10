@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicListConversionInactivity;
+namespace HubSpotSDK\Crm\Lists\PublicListConversionInactivity;
 
 /**
  * The unit of time for the inactivity period, such as (DAY, MONTH, WEEK).

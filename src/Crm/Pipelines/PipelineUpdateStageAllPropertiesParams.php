@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Pipelines;
+namespace HubSpotSDK\Crm\Pipelines;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Replace all the properties of an existing pipeline stage with the values provided. The updated stage will be returned in the response.
  *
- * @see HubspotSDK\Services\Crm\PipelinesService::updateStageAllProperties()
+ * @see HubSpotSDK\Services\Crm\PipelinesService::updateStageAllProperties()
  *
  * @phpstan-type PipelineUpdateStageAllPropertiesParamsShape = array{
  *   objectType: string,

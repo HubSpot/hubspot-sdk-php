@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Automation;
+namespace HubSpotSDK\Services\Automation;
 
-use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
-use HubspotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
-use HubspotSDK\Automation\Sequences\PublicSequenceLiteResponse;
-use HubspotSDK\Automation\Sequences\PublicSequenceResponse;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Automation\SequencesContract;
+use HubSpotSDK\Automation\Sequences\PublicSequenceEnrollmentLiteResponse;
+use HubSpotSDK\Automation\Sequences\PublicSequenceEnrollmentResponse;
+use HubSpotSDK\Automation\Sequences\PublicSequenceLiteResponse;
+use HubSpotSDK\Automation\Sequences\PublicSequenceResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Automation\SequencesContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class SequencesService implements SequencesContract
 {

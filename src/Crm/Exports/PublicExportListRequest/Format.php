@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Exports\PublicExportListRequest;
+namespace HubSpotSDK\Crm\Exports\PublicExportListRequest;
 
 enum Format: string
 {

@@ -1,20 +1,20 @@
 <?php
 
-namespace HubspotSDK\Core\Implementation;
+namespace HubSpotSDK\Core\Implementation;
 
-use HubspotSDK\Core\BaseClient;
-use HubspotSDK\Core\Concerns\ResponseProxy;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Conversion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\BaseClient;
+use HubSpotSDK\Core\Concerns\ResponseProxy;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Conversion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * @phpstan-import-type NormalizedRequest from \HubspotSDK\Core\BaseClient
+ * @phpstan-import-type NormalizedRequest from \HubSpotSDK\Core\BaseClient
  *
  * @internal
  *

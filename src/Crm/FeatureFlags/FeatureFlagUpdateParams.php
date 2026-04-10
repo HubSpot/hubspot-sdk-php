@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags;
+namespace HubSpotSDK\Crm\FeatureFlags;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\DefaultState;
-use HubspotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\OverrideState;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\DefaultState;
+use HubSpotSDK\Crm\FeatureFlags\FeatureFlagUpdateParams\OverrideState;
 
 /**
  * Set a feature flag for an app. For example, update the `hs-hide-crm-cards` flag's `defaultState` to `ON` to hide classic CRM cards from new installs.
  *
- * @see HubspotSDK\Services\Crm\FeatureFlagsService::update()
+ * @see HubSpotSDK\Services\Crm\FeatureFlagsService::update()
  *
  * @phpstan-type FeatureFlagUpdateParamsShape = array{
  *   appID: int,

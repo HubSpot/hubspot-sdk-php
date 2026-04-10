@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SiteSearch;
+namespace HubSpotSDK\Cms\SiteSearch;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ContentSearchResultShape from \HubspotSDK\Cms\SiteSearch\ContentSearchResult
+ * @phpstan-import-type ContentSearchResultShape from \HubSpotSDK\Cms\SiteSearch\ContentSearchResult
  *
  * @phpstan-type PublicSearchResultsShape = array{
  *   limit: int,

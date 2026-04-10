@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Imports\PublicImportResponse;
+namespace HubSpotSDK\Crm\Imports\PublicImportResponse;
 
 /**
  * The status of the import.

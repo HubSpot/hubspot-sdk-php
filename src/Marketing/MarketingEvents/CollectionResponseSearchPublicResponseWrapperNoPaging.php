@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type SearchPublicResponseWrapperShape from \HubspotSDK\Marketing\MarketingEvents\SearchPublicResponseWrapper
+ * @phpstan-import-type SearchPublicResponseWrapperShape from \HubSpotSDK\Marketing\MarketingEvents\SearchPublicResponseWrapper
  *
  * @phpstan-type CollectionResponseSearchPublicResponseWrapperNoPagingShape = array{
  *   results: list<SearchPublicResponseWrapper|SearchPublicResponseWrapperShape>

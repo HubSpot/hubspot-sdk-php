@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Settings\Currencies;
+namespace HubSpotSDK\ServiceContracts\Settings\Currencies;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Settings\Currencies\CentralExchangeRatesInformation;
-use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams;
-use HubspotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
-use HubspotSDK\Settings\Currencies\ExchangeRate;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Settings\Currencies\CentralExchangeRatesInformation;
+use HubSpotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams;
+use HubSpotSDK\Settings\Currencies\CollectionResponseCurrencyCodeInfoNoPaging;
+use HubSpotSDK\Settings\Currencies\ExchangeRate;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CentralFxRatesRawContract
 {

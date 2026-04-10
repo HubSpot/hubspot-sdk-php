@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicMessageStatus;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicMessageStatus;
 
 enum StatusType: string
 {

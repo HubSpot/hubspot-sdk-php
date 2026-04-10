@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects\Tickets;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects\Tickets;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubspotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubspotSDK\Crm\Objects\Tickets\Batch\BatchCreateParams;
-use HubspotSDK\Crm\Objects\Tickets\Batch\BatchDeleteParams;
-use HubspotSDK\Crm\Objects\Tickets\Batch\BatchGetParams;
-use HubspotSDK\Crm\Objects\Tickets\Batch\BatchUpdateParams;
-use HubspotSDK\Crm\Objects\Tickets\Batch\BatchUpsertParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObject;
+use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
+use HubSpotSDK\Crm\Objects\Tickets\Batch\BatchCreateParams;
+use HubSpotSDK\Crm\Objects\Tickets\Batch\BatchDeleteParams;
+use HubSpotSDK\Crm\Objects\Tickets\Batch\BatchGetParams;
+use HubSpotSDK\Crm\Objects\Tickets\Batch\BatchUpdateParams;
+use HubSpotSDK\Crm\Objects\Tickets\Batch\BatchUpsertParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

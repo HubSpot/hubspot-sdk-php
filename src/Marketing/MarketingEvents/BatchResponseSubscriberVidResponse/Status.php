@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\BatchResponseSubscriberVidResponse;
+namespace HubSpotSDK\Marketing\MarketingEvents\BatchResponseSubscriberVidResponse;
 
 /**
  * The status of the request processing.

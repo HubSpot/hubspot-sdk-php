@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb;
+namespace HubSpotSDK\Cms\Hubdb;
 
-use HubspotSDK\Cms\Hubdb\Column\Type;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Hubdb\Column\Type;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type SimpleUserShape from \HubspotSDK\Cms\Hubdb\SimpleUser
- * @phpstan-import-type ForeignIDShape from \HubspotSDK\Cms\Hubdb\ForeignID
- * @phpstan-import-type OptionShape from \HubspotSDK\Cms\Hubdb\Option
+ * @phpstan-import-type SimpleUserShape from \HubSpotSDK\Cms\Hubdb\SimpleUser
+ * @phpstan-import-type ForeignIDShape from \HubSpotSDK\Cms\Hubdb\ForeignID
+ * @phpstan-import-type OptionShape from \HubSpotSDK\Cms\Hubdb\Option
  *
  * @phpstan-type ColumnShape = array{
  *   id: string,

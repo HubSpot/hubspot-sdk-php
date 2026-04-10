@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Users;
+namespace HubSpotSDK\Settings\Users;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Users\UserDeleteParams\IDProperty;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Users\UserDeleteParams\IDProperty;
 
 /**
  * Removes a user identified by `userId`. `userId` refers to the user's ID by default, or optionally email as specified by the `IdProperty` query param.
  *
- * @see HubspotSDK\Services\Settings\UsersService::delete()
+ * @see HubSpotSDK\Services\Settings\UsersService::delete()
  *
  * @phpstan-type UserDeleteParamsShape = array{
  *   idProperty?: null|IDProperty|value-of<IDProperty>

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\OptionDecoratorsExtensionData;
+namespace HubSpotSDK\Cms\MediaBridge\OptionDecoratorsExtensionData;
 
 enum OptionDecoratorStyle: string
 {

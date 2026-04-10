@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Pages;
+namespace HubSpotSDK\ServiceContracts\Cms\Pages;
 
-use HubspotSDK\Cms\Pages\ABTests\AbTestCreateLandingPageVariationParams;
-use HubspotSDK\Cms\Pages\ABTests\AbTestCreateSitePageVariationParams;
-use HubspotSDK\Cms\Pages\ABTests\AbTestEndLandingPageTestParams;
-use HubspotSDK\Cms\Pages\ABTests\AbTestEndSitePageTestParams;
-use HubspotSDK\Cms\Pages\ABTests\AbTestRerunLandingPageTestParams;
-use HubspotSDK\Cms\Pages\ABTests\AbTestRerunSitePageTestParams;
-use HubspotSDK\Cms\Pages\PageData;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Pages\ABTests\AbTestCreateLandingPageVariationParams;
+use HubSpotSDK\Cms\Pages\ABTests\AbTestCreateSitePageVariationParams;
+use HubSpotSDK\Cms\Pages\ABTests\AbTestEndLandingPageTestParams;
+use HubSpotSDK\Cms\Pages\ABTests\AbTestEndSitePageTestParams;
+use HubSpotSDK\Cms\Pages\ABTests\AbTestRerunLandingPageTestParams;
+use HubSpotSDK\Cms\Pages\ABTests\AbTestRerunSitePageTestParams;
+use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ABTestsRawContract
 {

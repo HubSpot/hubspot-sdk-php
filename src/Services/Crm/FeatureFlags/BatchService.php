@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\FeatureFlags;
+namespace HubSpotSDK\Services\Crm\FeatureFlags;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\FeatureFlags\BatchPortalEntry;
-use HubspotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\FeatureFlags\BatchContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\FeatureFlags\BatchPortalEntry;
+use HubSpotSDK\Crm\FeatureFlags\PortalFlagStateBatchResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\FeatureFlags\BatchContract;
 
 /**
- * @phpstan-import-type BatchPortalEntryShape from \HubspotSDK\Crm\FeatureFlags\BatchPortalEntry
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type BatchPortalEntryShape from \HubSpotSDK\Crm\FeatureFlags\BatchPortalEntry
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchService implements BatchContract
 {

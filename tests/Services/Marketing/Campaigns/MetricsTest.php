@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Marketing\Campaigns;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\Campaigns\ContactReference;
-use HubspotSDK\Marketing\Campaigns\MetricsCounters;
-use HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\Campaigns\ContactReference;
+use HubSpotSDK\Marketing\Campaigns\MetricsCounters;
+use HubSpotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

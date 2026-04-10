@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Marketing\MarketingEvents;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventDefaultResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

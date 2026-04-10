@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\LandingPages;
+namespace HubSpotSDK\Cms\Pages\LandingPages;
 
-use HubspotSDK\Cms\ContentLanguageVariation;
-use HubspotSDK\Cms\LayoutSection;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\ContentTypeCategory;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\CurrentState;
-use HubspotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\Language;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Core\Conversion\MapOf;
+use HubSpotSDK\Cms\ContentLanguageVariation;
+use HubSpotSDK\Cms\LayoutSection;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\ContentTypeCategory;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\CurrentState;
+use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\Language;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * Sparse updates a single Landing Page object identified by the id in the path.
  * You only need to specify the column values that you are modifying.
  *
- * @see HubspotSDK\Services\Cms\Pages\LandingPagesService::update()
+ * @see HubSpotSDK\Services\Cms\Pages\LandingPagesService::update()
  *
- * @phpstan-import-type ContentLanguageVariationShape from \HubspotSDK\Cms\ContentLanguageVariation
+ * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
  *
  * @phpstan-type LandingPageUpdateParamsShape = array{
  *   id: string,

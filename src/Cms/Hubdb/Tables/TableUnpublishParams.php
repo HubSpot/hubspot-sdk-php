@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Tables;
+namespace HubSpotSDK\Cms\Hubdb\Tables;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Unpublishes the table, meaning any website pages using data from the table will not render any data.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\TablesService::unpublish()
+ * @see HubSpotSDK\Services\Cms\Hubdb\TablesService::unpublish()
  *
  * @phpstan-type TableUnpublishParamsShape = array{includeForeignIDs?: bool|null}
  */

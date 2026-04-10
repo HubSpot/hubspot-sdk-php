@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Sequences\PublicSequenceSettingsResponse;
+namespace HubSpotSDK\Automation\Sequences\PublicSequenceSettingsResponse;
 
 /**
  * Specifies the days on which follow-up actions are allowed.

@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core;
+namespace HubSpotSDK\Core;
 
-use HubspotSDK\Core\Contracts\BasePage;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Contracts\BaseStream;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Core\Exceptions\APIConnectionException;
-use HubspotSDK\Core\Exceptions\APIStatusException;
-use HubspotSDK\Core\Implementation\RawResponse;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BasePage;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Contracts\BaseStream;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Exceptions\APIConnectionException;
+use HubSpotSDK\Core\Exceptions\APIStatusException;
+use HubSpotSDK\Core\Implementation\RawResponse;
+use HubSpotSDK\RequestOptions;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  *
  * @phpstan-type NormalizedRequest = array{
  *   method: string,

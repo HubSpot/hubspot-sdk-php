@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\PostUpdateParams;
+namespace HubSpotSDK\Cms\Blogs\Posts\PostUpdateParams;
 
 /**
  * The status of the AB test associated with this blog post, if applicable.

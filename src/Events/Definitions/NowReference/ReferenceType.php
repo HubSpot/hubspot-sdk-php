@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\NowReference;
+namespace HubSpotSDK\Events\Definitions\NowReference;
 
 enum ReferenceType: string
 {

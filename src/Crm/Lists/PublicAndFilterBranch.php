@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Lists\PublicAndFilterBranch\Filter;
-use HubspotSDK\Crm\Lists\PublicAndFilterBranch\FilterBranch;
-use HubspotSDK\Crm\Lists\PublicAndFilterBranch\FilterBranchType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicAndFilterBranch\Filter;
+use HubSpotSDK\Crm\Lists\PublicAndFilterBranch\FilterBranch;
+use HubSpotSDK\Crm\Lists\PublicAndFilterBranch\FilterBranchType;
 
 /**
- * @phpstan-import-type FilterVariants from \HubspotSDK\Crm\Lists\PublicAndFilterBranch\Filter
- * @phpstan-import-type FilterShape from \HubspotSDK\Crm\Lists\PublicAndFilterBranch\Filter
+ * @phpstan-import-type FilterVariants from \HubSpotSDK\Crm\Lists\PublicAndFilterBranch\Filter
+ * @phpstan-import-type FilterShape from \HubSpotSDK\Crm\Lists\PublicAndFilterBranch\Filter
  *
  * @phpstan-type PublicAndFilterBranchShape = array{
  *   filterBranches: list<mixed>,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\AssociationDefinition;
+namespace HubSpotSDK\Events\Definitions\AssociationDefinition;
 
 /**
  * The error category.

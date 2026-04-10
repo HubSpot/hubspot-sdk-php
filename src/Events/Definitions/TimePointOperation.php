@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\TimePointOperation\EndpointBehavior;
-use HubspotSDK\Events\Definitions\TimePointOperation\Operator;
-use HubspotSDK\Events\Definitions\TimePointOperation\PropertyParser;
-use HubspotSDK\Events\Definitions\TimePointOperation\PropertyType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\TimePointOperation\EndpointBehavior;
+use HubSpotSDK\Events\Definitions\TimePointOperation\Operator;
+use HubSpotSDK\Events\Definitions\TimePointOperation\PropertyParser;
+use HubSpotSDK\Events\Definitions\TimePointOperation\PropertyType;
 
 /**
- * @phpstan-import-type TimePointVariants from \HubspotSDK\Events\Definitions\TimePointOperation\TimePoint
- * @phpstan-import-type TimePointShape from \HubspotSDK\Events\Definitions\TimePointOperation\TimePoint
+ * @phpstan-import-type TimePointVariants from \HubSpotSDK\Events\Definitions\TimePointOperation\TimePoint
+ * @phpstan-import-type TimePointShape from \HubSpotSDK\Events\Definitions\TimePointOperation\TimePoint
  *
  * @phpstan-type TimePointOperationShape = array{
  *   endpointBehavior: EndpointBehavior|value-of<EndpointBehavior>,

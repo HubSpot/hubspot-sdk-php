@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\MediaBridge;
+namespace HubSpotSDK\ServiceContracts\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\Batch\BatchCreateParams;
-use HubspotSDK\Cms\MediaBridge\Batch\BatchDeleteParams;
-use HubspotSDK\Cms\MediaBridge\Batch\BatchGetParams;
-use HubspotSDK\Cms\MediaBridge\BatchResponseProperty;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\MediaBridge\Batch\BatchCreateParams;
+use HubSpotSDK\Cms\MediaBridge\Batch\BatchDeleteParams;
+use HubSpotSDK\Cms\MediaBridge\Batch\BatchGetParams;
+use HubSpotSDK\Cms\MediaBridge\BatchResponseProperty;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\ExchangeRates;
+namespace HubSpotSDK\Settings\Currencies\ExchangeRates;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\FromCurrencyCode;
-use HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\ToCurrencyCode;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\FromCurrencyCode;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateUpdateVisibilityParams\ToCurrencyCode;
 
 /**
  * Change the visibility setting for a currency pair. This will hide or display a currency pair for users in the HubSpot app.
  *
- * @see HubspotSDK\Services\Settings\Currencies\ExchangeRatesService::updateVisibility()
+ * @see HubSpotSDK\Services\Settings\Currencies\ExchangeRatesService::updateVisibility()
  *
  * @phpstan-type ExchangeRateUpdateVisibilityParamsShape = array{
  *   fromCurrencyCode: FromCurrencyCode|value-of<FromCurrencyCode>,

@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Settings\Currencies;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
-use HubspotSDK\Settings\Currencies\ExchangeRate;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\Settings\Currencies\CollectionResponseExchangeRateNoPaging;
+use HubSpotSDK\Settings\Currencies\ExchangeRate;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

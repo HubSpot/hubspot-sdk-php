@@ -2,28 +2,28 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Language;
-use HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\State;
-use HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\Language;
+use HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\State;
+use HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory;
 
 /**
  * Create or update the draft version of a marketing email. If no draft exists, the system creates a draft from the current “live” email then applies the request body to that draft. The draft version only lives on the buffer—the email is not cloned.
  *
- * @see HubspotSDK\Services\Marketing\EmailsService::updateDraft()
+ * @see HubSpotSDK\Services\Marketing\EmailsService::updateDraft()
  *
- * @phpstan-import-type PublicEmailContentShape from \HubspotSDK\Marketing\Emails\PublicEmailContent
- * @phpstan-import-type PublicEmailFromDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailFromDetails
- * @phpstan-import-type PublicRssEmailDetailsShape from \HubspotSDK\Marketing\Emails\PublicRssEmailDetails
- * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
- * @phpstan-import-type PublicEmailTestingDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailTestingDetails
- * @phpstan-import-type PublicEmailToDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailToDetails
- * @phpstan-import-type PublicWebversionDetailsShape from \HubspotSDK\Marketing\Emails\PublicWebversionDetails
+ * @phpstan-import-type PublicEmailContentShape from \HubSpotSDK\Marketing\Emails\PublicEmailContent
+ * @phpstan-import-type PublicEmailFromDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailFromDetails
+ * @phpstan-import-type PublicRssEmailDetailsShape from \HubSpotSDK\Marketing\Emails\PublicRssEmailDetails
+ * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
+ * @phpstan-import-type PublicEmailTestingDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails
+ * @phpstan-import-type PublicEmailToDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailToDetails
+ * @phpstan-import-type PublicWebversionDetailsShape from \HubSpotSDK\Marketing\Emails\PublicWebversionDetails
  *
  * @phpstan-type EmailUpdateDraftParamsShape = array{
  *   activeDomain?: string|null,

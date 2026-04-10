@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms;
+namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\SiteSearch\IndexedData;
-use HubspotSDK\Cms\SiteSearch\PublicSearchResults;
-use HubspotSDK\Cms\SiteSearch\SiteSearchGetIndexedDataParams;
-use HubspotSDK\Cms\SiteSearch\SiteSearchSearchParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\SiteSearch\IndexedData;
+use HubSpotSDK\Cms\SiteSearch\PublicSearchResults;
+use HubSpotSDK\Cms\SiteSearch\SiteSearchGetIndexedDataParams;
+use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface SiteSearchRawContract
 {

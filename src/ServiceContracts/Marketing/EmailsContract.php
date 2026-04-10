@@ -2,38 +2,38 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing;
+namespace HubSpotSDK\ServiceContracts\Marketing;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Emails\AggregateEmailStatistics;
-use HubspotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticInterval;
-use HubspotSDK\Marketing\Emails\EmailCreateParams\Language;
-use HubspotSDK\Marketing\Emails\EmailCreateParams\State;
-use HubspotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
-use HubspotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
-use HubspotSDK\Marketing\Emails\EmailListParams\Type;
-use HubspotSDK\Marketing\Emails\PublicEmail;
-use HubspotSDK\Marketing\Emails\PublicEmailContent;
-use HubspotSDK\Marketing\Emails\PublicEmailFromDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailTestingDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailToDetails;
-use HubspotSDK\Marketing\Emails\PublicEmailVersion;
-use HubspotSDK\Marketing\Emails\PublicRssEmailDetails;
-use HubspotSDK\Marketing\Emails\PublicWebversionDetails;
-use HubspotSDK\Marketing\Emails\VersionPublicEmail;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Emails\AggregateEmailStatistics;
+use HubSpotSDK\Marketing\Emails\CollectionResponseWithTotalEmailStatisticInterval;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams\Language;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams\State;
+use HubSpotSDK\Marketing\Emails\EmailCreateParams\Subcategory;
+use HubSpotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
+use HubSpotSDK\Marketing\Emails\EmailListParams\Type;
+use HubSpotSDK\Marketing\Emails\PublicEmail;
+use HubSpotSDK\Marketing\Emails\PublicEmailContent;
+use HubSpotSDK\Marketing\Emails\PublicEmailFromDetails;
+use HubSpotSDK\Marketing\Emails\PublicEmailSubscriptionDetails;
+use HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails;
+use HubSpotSDK\Marketing\Emails\PublicEmailToDetails;
+use HubSpotSDK\Marketing\Emails\PublicEmailVersion;
+use HubSpotSDK\Marketing\Emails\PublicRssEmailDetails;
+use HubSpotSDK\Marketing\Emails\PublicWebversionDetails;
+use HubSpotSDK\Marketing\Emails\VersionPublicEmail;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PublicEmailContentShape from \HubspotSDK\Marketing\Emails\PublicEmailContent
- * @phpstan-import-type PublicEmailFromDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailFromDetails
- * @phpstan-import-type PublicRssEmailDetailsShape from \HubspotSDK\Marketing\Emails\PublicRssEmailDetails
- * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
- * @phpstan-import-type PublicEmailTestingDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailTestingDetails
- * @phpstan-import-type PublicEmailToDetailsShape from \HubspotSDK\Marketing\Emails\PublicEmailToDetails
- * @phpstan-import-type PublicWebversionDetailsShape from \HubspotSDK\Marketing\Emails\PublicWebversionDetails
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicEmailContentShape from \HubSpotSDK\Marketing\Emails\PublicEmailContent
+ * @phpstan-import-type PublicEmailFromDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailFromDetails
+ * @phpstan-import-type PublicRssEmailDetailsShape from \HubSpotSDK\Marketing\Emails\PublicRssEmailDetails
+ * @phpstan-import-type PublicEmailSubscriptionDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailSubscriptionDetails
+ * @phpstan-import-type PublicEmailTestingDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailTestingDetails
+ * @phpstan-import-type PublicEmailToDetailsShape from \HubSpotSDK\Marketing\Emails\PublicEmailToDetails
+ * @phpstan-import-type PublicWebversionDetailsShape from \HubSpotSDK\Marketing\Emails\PublicWebversionDetails
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface EmailsContract
 {
@@ -102,13 +102,13 @@ interface EmailsContract
      * @param int $folderIDV2 body param: The ID of the folder where the email will be stored
      * @param PublicEmailFromDetails|PublicEmailFromDetailsShape $from Body param
      * @param bool $jitterSendTime body param: Determines whether the email send time should be randomized to avoid sending all emails at the exact same time
-     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\Language> $language body param: The language code for the email, such as 'en' for English
+     * @param \HubSpotSDK\Marketing\Emails\EmailUpdateParams\Language|value-of<\HubSpotSDK\Marketing\Emails\EmailUpdateParams\Language> $language body param: The language code for the email, such as 'en' for English
      * @param string $name body param: The name of the email, as displayed on the email dashboard
      * @param \DateTimeInterface $publishDate Body param: The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
      * @param PublicRssEmailDetails|PublicRssEmailDetailsShape $rssData Body param
      * @param bool $sendOnPublish body param: Determines whether the email will be sent immediately on publish
-     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\State> $state body param: The email state
-     * @param \HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory> $subcategory body param: The email subcategory
+     * @param \HubSpotSDK\Marketing\Emails\EmailUpdateParams\State|value-of<\HubSpotSDK\Marketing\Emails\EmailUpdateParams\State> $state body param: The email state
+     * @param \HubSpotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|value-of<\HubSpotSDK\Marketing\Emails\EmailUpdateParams\Subcategory> $subcategory body param: The email subcategory
      * @param string $subject body param: The subject of the email
      * @param PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape $subscriptionDetails Body param
      * @param PublicEmailTestingDetails|PublicEmailTestingDetailsShape $testing Body param
@@ -128,13 +128,13 @@ interface EmailsContract
         ?int $folderIDV2 = null,
         PublicEmailFromDetails|array|null $from = null,
         ?bool $jitterSendTime = null,
-        \HubspotSDK\Marketing\Emails\EmailUpdateParams\Language|string|null $language = null,
+        \HubSpotSDK\Marketing\Emails\EmailUpdateParams\Language|string|null $language = null,
         ?string $name = null,
         ?\DateTimeInterface $publishDate = null,
         PublicRssEmailDetails|array|null $rssData = null,
         ?bool $sendOnPublish = null,
-        \HubspotSDK\Marketing\Emails\EmailUpdateParams\State|string|null $state = null,
-        \HubspotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|string|null $subcategory = null,
+        \HubSpotSDK\Marketing\Emails\EmailUpdateParams\State|string|null $state = null,
+        \HubSpotSDK\Marketing\Emails\EmailUpdateParams\Subcategory|string|null $subcategory = null,
         ?string $subject = null,
         PublicEmailSubscriptionDetails|array|null $subscriptionDetails = null,
         PublicEmailTestingDetails|array|null $testing = null,
@@ -399,13 +399,13 @@ interface EmailsContract
      * @param int $folderIDV2 the ID of the folder where the email will be stored
      * @param PublicEmailFromDetails|PublicEmailFromDetailsShape $from
      * @param bool $jitterSendTime determines whether the email send time should be randomized to avoid sending all emails at the exact same time
-     * @param \HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Language|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Language> $language the language code for the email, such as 'en' for English
+     * @param \HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\Language|value-of<\HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\Language> $language the language code for the email, such as 'en' for English
      * @param string $name the name of the email, as displayed on the email dashboard
      * @param \DateTimeInterface $publishDate The date and time the email is scheduled for, in ISO8601 representation. This is only used in local time or scheduled emails.
      * @param PublicRssEmailDetails|PublicRssEmailDetailsShape $rssData
      * @param bool $sendOnPublish determines whether the email will be sent immediately on publish
-     * @param \HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\State|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\State> $state the email state
-     * @param \HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory|value-of<\HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory> $subcategory the email subcategory
+     * @param \HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\State|value-of<\HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\State> $state the email state
+     * @param \HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory|value-of<\HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory> $subcategory the email subcategory
      * @param string $subject the subject of the email
      * @param PublicEmailSubscriptionDetails|PublicEmailSubscriptionDetailsShape $subscriptionDetails
      * @param PublicEmailTestingDetails|PublicEmailTestingDetailsShape $testing
@@ -425,13 +425,13 @@ interface EmailsContract
         ?int $folderIDV2 = null,
         PublicEmailFromDetails|array|null $from = null,
         ?bool $jitterSendTime = null,
-        \HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Language|string|null $language = null,
+        \HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\Language|string|null $language = null,
         ?string $name = null,
         ?\DateTimeInterface $publishDate = null,
         PublicRssEmailDetails|array|null $rssData = null,
         ?bool $sendOnPublish = null,
-        \HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\State|string|null $state = null,
-        \HubspotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory|string|null $subcategory = null,
+        \HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\State|string|null $state = null,
+        \HubSpotSDK\Marketing\Emails\EmailUpdateDraftParams\Subcategory|string|null $subcategory = null,
         ?string $subject = null,
         PublicEmailSubscriptionDetails|array|null $subscriptionDetails = null,
         PublicEmailTestingDetails|array|null $testing = null,

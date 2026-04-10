@@ -2,19 +2,19 @@
 
 namespace Tests\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Webhooks\BatchResponseJournalFetchResponse;
-use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubspotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
-use HubspotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
-use HubspotSDK\Webhooks\FilterCreateResponse;
-use HubspotSDK\Webhooks\FilterResponse;
-use HubspotSDK\Webhooks\SettingsResponse;
-use HubspotSDK\Webhooks\SnapshotStatusResponse;
-use HubspotSDK\Webhooks\SubscriptionListResponse;
-use HubspotSDK\Webhooks\SubscriptionResponse;
-use HubspotSDK\Webhooks\SubscriptionResponse1;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Webhooks\BatchResponseJournalFetchResponse;
+use HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
+use HubSpotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
+use HubSpotSDK\Webhooks\FilterCreateResponse;
+use HubSpotSDK\Webhooks\FilterResponse;
+use HubSpotSDK\Webhooks\SettingsResponse;
+use HubSpotSDK\Webhooks\SnapshotStatusResponse;
+use HubSpotSDK\Webhooks\SubscriptionListResponse;
+use HubSpotSDK\Webhooks\SubscriptionResponse;
+use HubSpotSDK\Webhooks\SubscriptionResponse1;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

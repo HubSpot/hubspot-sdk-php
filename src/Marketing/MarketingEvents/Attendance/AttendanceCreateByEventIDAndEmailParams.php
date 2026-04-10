@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\Attendance;
+namespace HubSpotSDK\Marketing\MarketingEvents\Attendance;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber;
 
 /**
  * Records the participation of multiple HubSpot contacts in a Marketing Event using their email addresses.
@@ -23,9 +23,9 @@ use HubspotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber;
  * - joinedAt
  * - leftAt
  *
- * @see HubspotSDK\Services\Marketing\MarketingEvents\AttendanceService::createByEventIDAndEmail()
+ * @see HubSpotSDK\Services\Marketing\MarketingEvents\AttendanceService::createByEventIDAndEmail()
  *
- * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber
+ * @phpstan-import-type MarketingEventEmailSubscriberShape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventEmailSubscriber
  *
  * @phpstan-type AttendanceCreateByEventIDAndEmailParamsShape = array{
  *   objectID: string,

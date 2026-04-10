@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Concerns;
+namespace HubSpotSDK\Core\Concerns;
 
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Core\Conversion\UnionOf;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Core\Conversion\UnionOf;
 
 /**
  * @internal

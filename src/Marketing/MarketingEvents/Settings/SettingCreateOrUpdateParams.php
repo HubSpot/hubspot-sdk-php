@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\Settings;
+namespace HubSpotSDK\Marketing\MarketingEvents\Settings;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create or update the current settings for the application.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEvents\SettingsService::createOrUpdate()
+ * @see HubSpotSDK\Services\Marketing\MarketingEvents\SettingsService::createOrUpdate()
  *
  * @phpstan-type SettingCreateOrUpdateParamsShape = array{eventDetailsURL: string}
  */

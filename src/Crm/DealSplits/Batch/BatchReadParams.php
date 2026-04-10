@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\DealSplits\Batch;
+namespace HubSpotSDK\Crm\DealSplits\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\PublicObjectID;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\PublicObjectID;
 
 /**
  * Read a batch of deal split objects by their associated deal object internal ID.
  *
- * @see HubspotSDK\Services\Crm\DealSplits\BatchService::read()
+ * @see HubSpotSDK\Services\Crm\DealSplits\BatchService::read()
  *
- * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
+ * @phpstan-import-type PublicObjectIDShape from \HubSpotSDK\PublicObjectID
  *
  * @phpstan-type BatchReadParamsShape = array{
  *   inputs: list<PublicObjectID|PublicObjectIDShape>

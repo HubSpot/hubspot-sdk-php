@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\URLRedirects\URLMapping;
-use HubspotSDK\Cms\URLRedirects\URLRedirectCreateParams;
-use HubspotSDK\Cms\URLRedirects\URLRedirectListParams;
-use HubspotSDK\Cms\URLRedirects\URLRedirectUpdateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\URLRedirectsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\URLRedirects\URLMapping;
+use HubSpotSDK\Cms\URLRedirects\URLRedirectCreateParams;
+use HubSpotSDK\Cms\URLRedirects\URLRedirectListParams;
+use HubSpotSDK\Cms\URLRedirects\URLRedirectUpdateParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\URLRedirectsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class URLRedirectsRawService implements URLRedirectsRawContract
 {

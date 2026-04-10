@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
+namespace HubSpotSDK\Marketing\Campaigns\RevenueAttributionAggregate;
 
 /**
  * The currency code used for the revenue attribution, with accepted values including AED, AFN, ALL, and others.

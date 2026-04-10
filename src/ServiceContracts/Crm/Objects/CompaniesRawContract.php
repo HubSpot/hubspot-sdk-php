@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\Companies\CompanyCreateParams;
-use HubspotSDK\Crm\Objects\Companies\CompanyGetParams;
-use HubspotSDK\Crm\Objects\Companies\CompanyListParams;
-use HubspotSDK\Crm\Objects\Companies\CompanyMergeParams;
-use HubspotSDK\Crm\Objects\Companies\CompanySearchParams;
-use HubspotSDK\Crm\Objects\Companies\CompanyUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\Companies\CompanyCreateParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanyGetParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanyListParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanyMergeParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanySearchParams;
+use HubSpotSDK\Crm\Objects\Companies\CompanyUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CompaniesRawContract
 {

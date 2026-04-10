@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment\Type;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\SocialMetadataIntegrationAttachment\Type;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type SocialMetadataShape from \HubspotSDK\Conversations\CustomChannels\SocialMetadata
+ * @phpstan-import-type SocialMetadataShape from \HubSpotSDK\Conversations\CustomChannels\SocialMetadata
  *
  * @phpstan-type SocialMetadataIntegrationAttachmentShape = array{
  *   socialMetadata: SocialMetadata|SocialMetadataShape, type: Type|value-of<Type>

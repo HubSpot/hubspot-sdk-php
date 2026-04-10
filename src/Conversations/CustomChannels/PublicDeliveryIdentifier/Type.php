@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicDeliveryIdentifier;
 
 enum Type: string
 {

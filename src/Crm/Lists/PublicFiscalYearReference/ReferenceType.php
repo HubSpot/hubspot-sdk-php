@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicFiscalYearReference;
+namespace HubSpotSDK\Crm\Lists\PublicFiscalYearReference;
 
 /**
  * Indicates the type of reference (FISCAL_YEAR).

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Imports;
+namespace HubSpotSDK\Crm\Imports;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ForwardPaging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\ForwardPaging;
 
 /**
- * @phpstan-import-type PublicImportErrorShape from \HubspotSDK\Crm\Imports\PublicImportError
- * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ * @phpstan-import-type PublicImportErrorShape from \HubSpotSDK\Crm\Imports\PublicImportError
+ * @phpstan-import-type ForwardPagingShape from \HubSpotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicImportErrorForwardPagingShape = array{
  *   results: list<PublicImportError|PublicImportErrorShape>,

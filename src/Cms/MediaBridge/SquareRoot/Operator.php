@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\SquareRoot;
+namespace HubSpotSDK\Cms\MediaBridge\SquareRoot;
 
 enum Operator: string
 {

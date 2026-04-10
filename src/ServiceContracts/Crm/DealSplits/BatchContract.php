@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\DealSplits;
+namespace HubSpotSDK\ServiceContracts\Crm\DealSplits;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\DealSplits\BatchResponseDealToDealSplits;
-use HubspotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest;
-use HubspotSDK\PublicObjectID;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\DealSplits\BatchResponseDealToDealSplits;
+use HubSpotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest;
+use HubSpotSDK\PublicObjectID;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
- * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubspotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicObjectIDShape from \HubSpotSDK\PublicObjectID
+ * @phpstan-import-type PublicDealSplitsCreateRequestShape from \HubSpotSDK\Crm\DealSplits\PublicDealSplitsCreateRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchContract
 {

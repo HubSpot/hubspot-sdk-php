@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Functions\FunctionGetParams;
+namespace HubSpotSDK\Automation\Actions\Functions\FunctionGetParams;
 
 enum FunctionType: string
 {

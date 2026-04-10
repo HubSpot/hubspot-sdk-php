@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Meta;
+namespace HubSpotSDK\Services\Meta;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Meta\OriginsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Meta\OriginsRawContract;
 
 final class OriginsRawService implements OriginsRawContract
 {

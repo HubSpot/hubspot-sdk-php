@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch;
 
 /**
  * A deprecated field to determine the type of card returned.

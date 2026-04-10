@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\CalendarDatePropertyOperation;
+namespace HubSpotSDK\Events\Definitions\CalendarDatePropertyOperation;
 
 enum PropertyType: string
 {

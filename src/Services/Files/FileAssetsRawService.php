@@ -2,37 +2,37 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Files;
+namespace HubSpotSDK\Services\Files;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Files\File;
-use HubspotSDK\Files\FileActionResponse;
-use HubspotSDK\Files\FileAssets\FileAssetCreateParams;
-use HubspotSDK\Files\FileAssets\FileAssetGetByPathParams;
-use HubspotSDK\Files\FileAssets\FileAssetGetParams;
-use HubspotSDK\Files\FileAssets\FileAssetGetSignedURLParams;
-use HubspotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
-use HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams;
-use HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationScope;
-use HubspotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationStrategy;
-use HubspotSDK\Files\FileAssets\FileAssetReplaceParams;
-use HubspotSDK\Files\FileAssets\FileAssetSearchParams;
-use HubspotSDK\Files\FileAssets\FileAssetUpdateParams;
-use HubspotSDK\Files\FileAssets\FileAssetUpdateParams\Access;
-use HubspotSDK\Files\FileAssets\FileAssetUploadParams;
-use HubspotSDK\Files\FileStat;
-use HubspotSDK\Files\Folder;
-use HubspotSDK\Files\ImportFromURLTaskLocator;
-use HubspotSDK\Files\SignedURL;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Files\FileAssetsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Files\File;
+use HubSpotSDK\Files\FileActionResponse;
+use HubSpotSDK\Files\FileAssets\FileAssetCreateParams;
+use HubSpotSDK\Files\FileAssets\FileAssetGetByPathParams;
+use HubSpotSDK\Files\FileAssets\FileAssetGetParams;
+use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams;
+use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
+use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams;
+use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationScope;
+use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationStrategy;
+use HubSpotSDK\Files\FileAssets\FileAssetReplaceParams;
+use HubSpotSDK\Files\FileAssets\FileAssetSearchParams;
+use HubSpotSDK\Files\FileAssets\FileAssetUpdateParams;
+use HubSpotSDK\Files\FileAssets\FileAssetUpdateParams\Access;
+use HubSpotSDK\Files\FileAssets\FileAssetUploadParams;
+use HubSpotSDK\Files\FileStat;
+use HubSpotSDK\Files\Folder;
+use HubSpotSDK\Files\ImportFromURLTaskLocator;
+use HubSpotSDK\Files\SignedURL;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Files\FileAssetsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class FileAssetsRawService implements FileAssetsRawContract
 {

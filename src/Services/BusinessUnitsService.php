@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\BusinessUnitsContract;
-use HubspotSDK\Services\BusinessUnits\BusinessUnitEntriesService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\BusinessUnitsContract;
+use HubSpotSDK\Services\BusinessUnits\BusinessUnitEntriesService;
 
 final class BusinessUnitsService implements BusinessUnitsContract
 {

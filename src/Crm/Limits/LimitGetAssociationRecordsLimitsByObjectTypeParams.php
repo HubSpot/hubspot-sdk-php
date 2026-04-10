@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Limits;
+namespace HubSpotSDK\Crm\Limits;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Returns records approaching or at association limits between two objects.
  *
- * @see HubspotSDK\Services\Crm\LimitsService::getAssociationRecordsLimitsByObjectType()
+ * @see HubSpotSDK\Services\Crm\LimitsService::getAssociationRecordsLimitsByObjectType()
  *
  * @phpstan-type LimitGetAssociationRecordsLimitsByObjectTypeParamsShape = array{
  *   fromObjectTypeID: string

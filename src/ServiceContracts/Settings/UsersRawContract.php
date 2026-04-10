@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Settings;
+namespace HubSpotSDK\ServiceContracts\Settings;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
-use HubspotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
-use HubspotSDK\Settings\Users\PublicUser;
-use HubspotSDK\Settings\Users\UserCreateParams;
-use HubspotSDK\Settings\Users\UserDeleteParams;
-use HubspotSDK\Settings\Users\UserGetParams;
-use HubspotSDK\Settings\Users\UserListParams;
-use HubspotSDK\Settings\Users\UserUpdateParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Settings\Users\CollectionResponsePublicPermissionSetNoPaging;
+use HubSpotSDK\Settings\Users\CollectionResponsePublicTeamNoPaging;
+use HubSpotSDK\Settings\Users\PublicUser;
+use HubSpotSDK\Settings\Users\UserCreateParams;
+use HubSpotSDK\Settings\Users\UserDeleteParams;
+use HubSpotSDK\Settings\Users\UserGetParams;
+use HubSpotSDK\Settings\Users\UserListParams;
+use HubSpotSDK\Settings\Users\UserUpdateParams;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface UsersRawContract
 {

@@ -2,11 +2,11 @@
 
 namespace Tests\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsPublicStatus;
-use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsPublicWideStatus;
-use HubspotSDK\CommunicationPreferences\LinkGenerationResponse;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Client;
+use HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsPublicStatus;
+use HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsPublicWideStatus;
+use HubSpotSDK\CommunicationPreferences\LinkGenerationResponse;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\PropertyValue;
+namespace HubSpotSDK\PropertyValue;
 
 /**
  * The origin of the property value, such as "IMPORT" or "API".

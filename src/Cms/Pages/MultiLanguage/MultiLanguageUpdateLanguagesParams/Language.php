@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageUpdateLanguagesParams;
+namespace HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageUpdateLanguagesParams;
 
 enum Language: string
 {

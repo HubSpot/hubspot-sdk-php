@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\PublicEmailStyleSettings;
+namespace HubSpotSDK\Marketing\Emails\PublicEmailStyleSettings;
 
 enum BackgroundImageType: string
 {

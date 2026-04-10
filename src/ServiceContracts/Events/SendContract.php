@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Events;
+namespace HubSpotSDK\ServiceContracts\Events;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface SendContract
 {

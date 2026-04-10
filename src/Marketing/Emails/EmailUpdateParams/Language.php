@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\EmailUpdateParams;
+namespace HubSpotSDK\Marketing\Emails\EmailUpdateParams;
 
 /**
  * The language code for the email, such as 'en' for English.

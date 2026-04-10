@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent\ExternalPlayContext;
-use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent\MediaType;
-use HubspotSDK\Cms\MediaBridge\MediaPlayedEvent\State;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\MediaPlayedEvent\ExternalPlayContext;
+use HubSpotSDK\Cms\MediaBridge\MediaPlayedEvent\MediaType;
+use HubSpotSDK\Cms\MediaBridge\MediaPlayedEvent\State;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type MediaPlayedEventShape = array{

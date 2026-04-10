@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicAdsTimeFilter;
+namespace HubSpotSDK\Crm\Lists\PublicAdsTimeFilter;
 
 /**
  * Filter type (ADS_TIME).

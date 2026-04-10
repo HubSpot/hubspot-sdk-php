@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\FiscalQuarter;
+namespace HubSpotSDK\Events\Definitions\FiscalQuarter;
 
 enum ReferenceType: string
 {

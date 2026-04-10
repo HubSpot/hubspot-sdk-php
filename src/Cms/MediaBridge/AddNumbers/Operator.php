@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\AddNumbers;
+namespace HubSpotSDK\Cms\MediaBridge\AddNumbers;
 
 enum Operator: string
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations\BatchResponseLabelsBetweenObjectPairWithErrors;
+namespace HubSpotSDK\Crm\Associations\BatchResponseLabelsBetweenObjectPairWithErrors;
 
 enum Status: string
 {

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\Campaigns;
+namespace HubSpotSDK\ServiceContracts\Marketing\Campaigns;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\Assets\AssetDeleteParams;
-use HubspotSDK\Marketing\Campaigns\Assets\AssetListParams;
-use HubspotSDK\Marketing\Campaigns\Assets\AssetUpdateParams;
-use HubspotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAssetForwardPaging;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Campaigns\Assets\AssetDeleteParams;
+use HubSpotSDK\Marketing\Campaigns\Assets\AssetListParams;
+use HubSpotSDK\Marketing\Campaigns\Assets\AssetUpdateParams;
+use HubSpotSDK\Marketing\Campaigns\CollectionResponsePublicCampaignAssetForwardPaging;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface AssetsRawContract
 {

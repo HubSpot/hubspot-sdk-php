@@ -1,9 +1,9 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
 class PermissionDeniedException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'HubspotSDK Permission Denied Exception';
+    protected const DESC = 'HubSpotSDK Permission Denied Exception';
 }

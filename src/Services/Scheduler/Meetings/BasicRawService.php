@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Scheduler\Meetings;
+namespace HubSpotSDK\Services\Scheduler\Meetings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Scheduler\Meetings\Basic\BasicGetAvailabilityBySlugParams;
-use HubspotSDK\Scheduler\Meetings\Basic\BasicGetBookingInfoBySlugParams;
-use HubspotSDK\Scheduler\Meetings\Basic\BasicListParams;
-use HubspotSDK\Scheduler\Meetings\Basic\BasicListParams\Type;
-use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
-use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
-use HubspotSDK\Scheduler\Meetings\ExternalLinkMetadata;
-use HubspotSDK\ServiceContracts\Scheduler\Meetings\BasicRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Scheduler\Meetings\Basic\BasicGetAvailabilityBySlugParams;
+use HubSpotSDK\Scheduler\Meetings\Basic\BasicGetBookingInfoBySlugParams;
+use HubSpotSDK\Scheduler\Meetings\Basic\BasicListParams;
+use HubSpotSDK\Scheduler\Meetings\Basic\BasicListParams\Type;
+use HubSpotSDK\Scheduler\Meetings\ExternalBookingInfo;
+use HubSpotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
+use HubSpotSDK\Scheduler\Meetings\ExternalLinkMetadata;
+use HubSpotSDK\ServiceContracts\Scheduler\Meetings\BasicRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BasicRawService implements BasicRawContract
 {

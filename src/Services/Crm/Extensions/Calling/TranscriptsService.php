@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Extensions\Calling;
+namespace HubSpotSDK\Services\Crm\Extensions\Calling;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
-use HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateInboundCallParams\FinalCallStatus;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateUtterance;
-use HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Extensions\Calling\TranscriptsContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Extensions\Calling\CompletedThirdPartyCallResponse;
+use HubSpotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateInboundCallParams\FinalCallStatus;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateResponse;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateUtterance;
+use HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptResponse;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Extensions\Calling\TranscriptsContract;
 
 /**
- * @phpstan-import-type TranscriptCreateUtteranceShape from \HubspotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateUtterance
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
- * @phpstan-import-type FormattedPhoneNumberShape from \HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber
+ * @phpstan-import-type TranscriptCreateUtteranceShape from \HubSpotSDK\Crm\Extensions\Calling\Transcripts\TranscriptCreateUtterance
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
+ * @phpstan-import-type FormattedPhoneNumberShape from \HubSpotSDK\Crm\Extensions\Calling\FormattedPhoneNumber
  */
 final class TranscriptsService implements TranscriptsContract
 {

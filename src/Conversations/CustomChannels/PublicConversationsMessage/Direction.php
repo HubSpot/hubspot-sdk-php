@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage;
 
 enum Direction: string
 {

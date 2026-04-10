@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Marketing\Campaigns;
+namespace HubSpotSDK\Services\Marketing\Campaigns;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\Campaigns\Budget\BudgetCreateParams;
-use HubspotSDK\Marketing\Campaigns\Budget\BudgetDeleteParams;
-use HubspotSDK\Marketing\Campaigns\Budget\BudgetGetParams;
-use HubspotSDK\Marketing\Campaigns\Budget\BudgetUpdateParams;
-use HubspotSDK\Marketing\Campaigns\PublicBudgetItem;
-use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Marketing\Campaigns\BudgetRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\Campaigns\Budget\BudgetCreateParams;
+use HubSpotSDK\Marketing\Campaigns\Budget\BudgetDeleteParams;
+use HubSpotSDK\Marketing\Campaigns\Budget\BudgetGetParams;
+use HubSpotSDK\Marketing\Campaigns\Budget\BudgetUpdateParams;
+use HubSpotSDK\Marketing\Campaigns\PublicBudgetItem;
+use HubSpotSDK\Marketing\Campaigns\PublicBudgetTotals;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Marketing\Campaigns\BudgetRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BudgetRawService implements BudgetRawContract
 {

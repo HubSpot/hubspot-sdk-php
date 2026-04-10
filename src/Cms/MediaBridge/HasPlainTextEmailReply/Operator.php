@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\HasPlainTextEmailReply;
+namespace HubSpotSDK\Cms\MediaBridge\HasPlainTextEmailReply;
 
 enum Operator: string
 {

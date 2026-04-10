@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Conversations;
+namespace HubSpotSDK\ServiceContracts\Conversations;
 
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccount;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccount;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CustomChannelsContract
 {

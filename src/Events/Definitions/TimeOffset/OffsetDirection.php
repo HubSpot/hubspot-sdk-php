@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\TimeOffset;
+namespace HubSpotSDK\Events\Definitions\TimeOffset;
 
 enum OffsetDirection: string
 {

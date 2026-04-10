@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\ComparativeNumberPropertyOperation;
+namespace HubSpotSDK\Events\Definitions\ComparativeNumberPropertyOperation;
 
 enum PropertyType: string
 {

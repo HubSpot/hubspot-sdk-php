@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Conversations;
+namespace HubSpotSDK\Services\Conversations;
 
-use HubspotSDK\Client;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelAccount;
-use HubspotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Conversations\CustomChannelsContract;
-use HubspotSDK\Services\Conversations\CustomChannels\ChannelAccountsService;
-use HubspotSDK\Services\Conversations\CustomChannels\MessagesService;
+use HubSpotSDK\Client;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelAccount;
+use HubSpotSDK\Conversations\CustomChannels\PublicChannelIntegrationChannel;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Conversations\CustomChannelsContract;
+use HubSpotSDK\Services\Conversations\CustomChannels\ChannelAccountsService;
+use HubSpotSDK\Services\Conversations\CustomChannels\MessagesService;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class CustomChannelsService implements CustomChannelsContract
 {

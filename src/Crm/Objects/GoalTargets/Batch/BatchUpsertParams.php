@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\GoalTargets\Batch;
+namespace HubSpotSDK\Crm\Objects\GoalTargets\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
 
 /**
  * Create and update a batch of goal targets by a unique property. Goal targets that don't exist will be created, while existing goal targets will be updated.
  *
- * @see HubspotSDK\Services\Crm\Objects\GoalTargets\BatchService::upsert()
+ * @see HubSpotSDK\Services\Crm\Objects\GoalTargets\BatchService::upsert()
  *
- * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubspotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
+ * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
  *
  * @phpstan-type BatchUpsertParamsShape = array{
  *   inputs: list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape>,

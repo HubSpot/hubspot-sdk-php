@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Settings\MultiLanguage;
+namespace HubSpotSDK\Cms\Blogs\Settings\MultiLanguage;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Set a blog as the primary language of a multi-language group.
  *
- * @see HubspotSDK\Services\Cms\Blogs\Settings\MultiLanguageService::setNewLangPrimary()
+ * @see HubSpotSDK\Services\Cms\Blogs\Settings\MultiLanguageService::setNewLangPrimary()
  *
  * @phpstan-type MultiLanguageSetNewLangPrimaryParamsShape = array{id: string}
  */

@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts;
+namespace HubSpotSDK\ServiceContracts;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\Webhooks\BatchResponseJournalFetchResponse;
-use HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubspotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
-use HubspotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
-use HubspotSDK\Webhooks\CrmObjectSnapshotRequest;
-use HubspotSDK\Webhooks\Filter;
-use HubspotSDK\Webhooks\FilterCreateResponse;
-use HubspotSDK\Webhooks\FilterResponse;
-use HubspotSDK\Webhooks\SettingsResponse;
-use HubspotSDK\Webhooks\SnapshotStatusResponse;
-use HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest;
-use HubspotSDK\Webhooks\SubscriptionListResponse;
-use HubspotSDK\Webhooks\SubscriptionResponse;
-use HubspotSDK\Webhooks\SubscriptionResponse1;
-use HubspotSDK\Webhooks\ThrottlingSettings;
-use HubspotSDK\Webhooks\WebhookCreateSubscriptionParams\EventType;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\Webhooks\BatchResponseJournalFetchResponse;
+use HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
+use HubSpotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
+use HubSpotSDK\Webhooks\CrmObjectSnapshotRequest;
+use HubSpotSDK\Webhooks\Filter;
+use HubSpotSDK\Webhooks\FilterCreateResponse;
+use HubSpotSDK\Webhooks\FilterResponse;
+use HubSpotSDK\Webhooks\SettingsResponse;
+use HubSpotSDK\Webhooks\SnapshotStatusResponse;
+use HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest;
+use HubSpotSDK\Webhooks\SubscriptionListResponse;
+use HubSpotSDK\Webhooks\SubscriptionResponse;
+use HubSpotSDK\Webhooks\SubscriptionResponse1;
+use HubSpotSDK\Webhooks\ThrottlingSettings;
+use HubSpotSDK\Webhooks\WebhookCreateSubscriptionParams\EventType;
 
 /**
- * @phpstan-import-type CrmObjectSnapshotRequestShape from \HubspotSDK\Webhooks\CrmObjectSnapshotRequest
- * @phpstan-import-type FilterShape from \HubspotSDK\Webhooks\Filter
- * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubspotSDK\Webhooks\SubscriptionBatchUpdateRequest
- * @phpstan-import-type ThrottlingSettingsShape from \HubspotSDK\Webhooks\ThrottlingSettings
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type CrmObjectSnapshotRequestShape from \HubSpotSDK\Webhooks\CrmObjectSnapshotRequest
+ * @phpstan-import-type FilterShape from \HubSpotSDK\Webhooks\Filter
+ * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest
+ * @phpstan-import-type ThrottlingSettingsShape from \HubSpotSDK\Webhooks\ThrottlingSettings
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface WebhooksContract
 {

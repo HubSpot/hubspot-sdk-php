@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Budget;
+namespace HubSpotSDK\Marketing\Campaigns\Budget;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update a specific budget item by ID.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\BudgetService::update()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\BudgetService::update()
  *
  * @phpstan-type BudgetUpdateParamsShape = array{
  *   campaignGuid: string,

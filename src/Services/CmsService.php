@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\CmsContract;
-use HubspotSDK\Services\Cms\AuditLogsService;
-use HubspotSDK\Services\Cms\BlogsService;
-use HubspotSDK\Services\Cms\DomainsService;
-use HubspotSDK\Services\Cms\HubdbService;
-use HubspotSDK\Services\Cms\MediaBridgeService;
-use HubspotSDK\Services\Cms\PagesService;
-use HubspotSDK\Services\Cms\SiteSearchService;
-use HubspotSDK\Services\Cms\SourceCodeService;
-use HubspotSDK\Services\Cms\URLMappingsService;
-use HubspotSDK\Services\Cms\URLRedirectsService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\CmsContract;
+use HubSpotSDK\Services\Cms\AuditLogsService;
+use HubSpotSDK\Services\Cms\BlogsService;
+use HubSpotSDK\Services\Cms\DomainsService;
+use HubSpotSDK\Services\Cms\HubdbService;
+use HubSpotSDK\Services\Cms\MediaBridgeService;
+use HubSpotSDK\Services\Cms\PagesService;
+use HubSpotSDK\Services\Cms\SiteSearchService;
+use HubSpotSDK\Services\Cms\SourceCodeService;
+use HubSpotSDK\Services\Cms\URLMappingsService;
+use HubSpotSDK\Services\Cms\URLRedirectsService;
 
 final class CmsService implements CmsContract
 {

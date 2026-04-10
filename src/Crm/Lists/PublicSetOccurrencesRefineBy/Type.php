@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicSetOccurrencesRefineBy;
+namespace HubSpotSDK\Crm\Lists\PublicSetOccurrencesRefineBy;
 
 /**
  * Specifies the type of refinement (SET_OCCURRENCES).

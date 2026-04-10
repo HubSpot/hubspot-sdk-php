@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Meta\Origins;
+namespace HubSpotSDK\Meta\Origins;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type IPRangeShape from \HubspotSDK\Meta\Origins\IPRange
+ * @phpstan-import-type IPRangeShape from \HubSpotSDK\Meta\Origins\IPRange
  *
  * @phpstan-type CollectionResponseIPRangeNoPagingShape = array{
  *   results: list<IPRange|IPRangeShape>

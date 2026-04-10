@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\PartnerClients\Batch;
+namespace HubSpotSDK\Crm\Objects\PartnerClients\Batch;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
  * Retrieve multiple partner client objects in a single request by specifying their IDs. This endpoint is useful for efficiently accessing data for multiple clients at once, particularly when integrating with third-party systems.
  *
- * @see HubspotSDK\Services\Crm\Objects\PartnerClients\BatchService::get()
+ * @see HubSpotSDK\Services\Crm\Objects\PartnerClients\BatchService::get()
  *
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectID
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>,

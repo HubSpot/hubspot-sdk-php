@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Rows;
+namespace HubSpotSDK\Cms\Hubdb\Rows;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Returns rows in the draft version of the specified table, given a set of row IDs.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\RowsService::getDraftBatch()
+ * @see HubSpotSDK\Services\Cms\Hubdb\RowsService::getDraftBatch()
  *
  * @phpstan-type RowGetDraftBatchParamsShape = array{inputs: list<string>}
  */

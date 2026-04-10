@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors\Batch;
+namespace HubSpotSDK\Cms\Blogs\Authors\Batch;
 
-use HubspotSDK\Cms\Blogs\Authors\BlogAuthor;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Authors\BlogAuthor;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create the Blog Author objects detailed in the request body.
  *
- * @see HubspotSDK\Services\Cms\Blogs\Authors\BatchService::create()
+ * @see HubSpotSDK\Services\Cms\Blogs\Authors\BatchService::create()
  *
- * @phpstan-import-type BlogAuthorShape from \HubspotSDK\Cms\Blogs\Authors\BlogAuthor
+ * @phpstan-import-type BlogAuthorShape from \HubSpotSDK\Cms\Blogs\Authors\BlogAuthor
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<BlogAuthor|BlogAuthorShape>

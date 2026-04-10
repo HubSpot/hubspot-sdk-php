@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Blogs\Tags;
+namespace HubSpotSDK\ServiceContracts\Cms\Blogs\Tags;
 
-use HubspotSDK\Cms\Blogs\Tags\Tag;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Blogs\Tags\Tag;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type TagShape from \HubspotSDK\Cms\Blogs\Tags\Tag
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type TagShape from \HubSpotSDK\Cms\Blogs\Tags\Tag
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchContract
 {

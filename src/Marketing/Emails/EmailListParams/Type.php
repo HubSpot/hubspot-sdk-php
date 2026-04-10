@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails\EmailListParams;
+namespace HubSpotSDK\Marketing\Emails\EmailListParams;
 
 enum Type: string
 {

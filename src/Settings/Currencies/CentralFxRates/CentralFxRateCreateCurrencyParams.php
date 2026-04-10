@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\CentralFxRates;
+namespace HubSpotSDK\Settings\Currencies\CentralFxRates;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams\CurrencyCode;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\CentralFxRates\CentralFxRateCreateCurrencyParams\CurrencyCode;
 
 /**
  * Create a new currency with central exchange rates in the portal. Unsupported currencies cannot be added here.
  *
- * @see HubspotSDK\Services\Settings\Currencies\CentralFxRatesService::createCurrency()
+ * @see HubSpotSDK\Services\Settings\Currencies\CentralFxRatesService::createCurrency()
  *
  * @phpstan-type CentralFxRateCreateCurrencyParamsShape = array{
  *   currencyCode: CurrencyCode|value-of<CurrencyCode>

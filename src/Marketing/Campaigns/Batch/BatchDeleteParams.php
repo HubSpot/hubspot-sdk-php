@@ -2,22 +2,22 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Batch;
+namespace HubSpotSDK\Marketing\Campaigns\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Campaigns\PublicCampaignDeleteInput;
 
 /**
  * This endpoint deletes a batch of campaigns.
  * The maximum number of items in a batch request is 50.
  * The response will always be 204 No Content, regardless of whether the campaigns exist or not, whether they were successfully deleted or not, or if only some of the campaigns in the batch were deleted.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\BatchService::delete()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\BatchService::delete()
  *
- * @phpstan-import-type PublicCampaignDeleteInputShape from \HubspotSDK\Marketing\Campaigns\PublicCampaignDeleteInput
+ * @phpstan-import-type PublicCampaignDeleteInputShape from \HubSpotSDK\Marketing\Campaigns\PublicCampaignDeleteInput
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   inputs: list<PublicCampaignDeleteInput|PublicCampaignDeleteInputShape>

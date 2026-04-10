@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\AssociationDefinition;
+namespace HubSpotSDK\Events\Definitions\AssociationDefinition;
 
 /**
  * The cardinality from the destination object's perspective, either "ONE_TO_ONE" or "ONE_TO_MANY".

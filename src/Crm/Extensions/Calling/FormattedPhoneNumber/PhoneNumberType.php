@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
+namespace HubSpotSDK\Crm\Extensions\Calling\FormattedPhoneNumber;
 
 /**
  * The type of phone number, with accepted values including FIXED_LINE, MOBILE, VOIP, and others.

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\Batch;
+namespace HubSpotSDK\Cms\Blogs\Posts\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Delete a blog post by ID.
  * Note: This is not the same as the in-app `archive` function. To perform a dashboard `archive` send an normal update with the `archivedInDashboard` field set to `true`.
  *
- * @see HubspotSDK\Services\Cms\Blogs\Posts\BatchService::delete()
+ * @see HubSpotSDK\Services\Cms\Blogs\Posts\BatchService::delete()
  *
  * @phpstan-type BatchDeleteParamsShape = array{inputs: list<string>}
  */

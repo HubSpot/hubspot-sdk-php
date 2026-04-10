@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\TimePointOperation;
+namespace HubSpotSDK\Events\Definitions\TimePointOperation;
 
 enum EndpointBehavior: string
 {

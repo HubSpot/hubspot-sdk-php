@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Leads\Batch;
+namespace HubSpotSDK\Crm\Objects\Leads\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\SimplePublicObjectID;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectID;
 
 /**
  * Archive multiple leads by their IDs in a single request, moving them to the recycling bin.
  *
- * @see HubspotSDK\Services\Crm\Objects\Leads\BatchService::delete()
+ * @see HubSpotSDK\Services\Crm\Objects\Leads\BatchService::delete()
  *
- * @phpstan-import-type SimplePublicObjectIDShape from \HubspotSDK\Crm\Objects\SimplePublicObjectID
+ * @phpstan-import-type SimplePublicObjectIDShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectID
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   inputs: list<SimplePublicObjectID|SimplePublicObjectIDShape>

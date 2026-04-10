@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Timeline\AppEventResolutionResponse;
-use HubspotSDK\Crm\Timeline\TimelineCreateEventParams;
-use HubspotSDK\Crm\Timeline\TimelineCreateProjectTypeParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Timeline\AppEventResolutionResponse;
+use HubSpotSDK\Crm\Timeline\TimelineCreateEventParams;
+use HubSpotSDK\Crm\Timeline\TimelineCreateProjectTypeParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface TimelineRawContract
 {

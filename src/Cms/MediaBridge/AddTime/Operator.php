@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\AddTime;
+namespace HubSpotSDK\Cms\MediaBridge\AddTime;
 
 enum Operator: string
 {

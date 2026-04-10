@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\ObjectSchemas;
+namespace HubSpotSDK\Services\Crm\ObjectSchemas;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\ObjectSchemas\Batch\BatchGetParams;
-use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\ObjectSchemas\BatchRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\ObjectSchemas\Batch\BatchGetParams;
+use HubSpotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\ObjectSchemas\BatchRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
 {

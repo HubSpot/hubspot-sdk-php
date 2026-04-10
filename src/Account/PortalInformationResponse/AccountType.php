@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Account\PortalInformationResponse;
+namespace HubSpotSDK\Account\PortalInformationResponse;
 
 /**
  * The type of account, such as APP_DEVELOPER, DEVELOPER_TEST, SANDBOX, or STANDARD.

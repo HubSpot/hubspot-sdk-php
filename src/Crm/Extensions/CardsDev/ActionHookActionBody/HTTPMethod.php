@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\ActionHookActionBody;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\ActionHookActionBody;
 
 /**
  * The HTTP method to be used when making the call, which can be set to GET, POST, PUT, DELETE, or PATCH. If using GET or DELETE.

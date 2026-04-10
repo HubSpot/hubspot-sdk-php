@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing;
+namespace HubSpotSDK\Marketing;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\EmailSendStatusView\SendResult;
-use HubspotSDK\Marketing\EmailSendStatusView\Status;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\EmailSendStatusView\SendResult;
+use HubSpotSDK\Marketing\EmailSendStatusView\Status;
 
 /**
- * @phpstan-import-type EventIDViewShape from \HubspotSDK\Marketing\EventIDView
+ * @phpstan-import-type EventIDViewShape from \HubSpotSDK\Marketing\EventIDView
  *
  * @phpstan-type EmailSendStatusViewShape = array{
  *   status: Status|value-of<Status>,

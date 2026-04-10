@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SourceCode;
+namespace HubSpotSDK\Cms\SourceCode;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Validates the file contents passed to the endpoint given a specified path and environment. Accepts multipart/form-data content type.
  *
- * @see HubspotSDK\Services\Cms\SourceCodeService::validate()
+ * @see HubSpotSDK\Services\Cms\SourceCodeService::validate()
  *
  * @phpstan-type SourceCodeValidateParamsShape = array{
  *   environment: string, file?: string|null

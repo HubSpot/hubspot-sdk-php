@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\IsEngagementType;
+namespace HubSpotSDK\Cms\MediaBridge\IsEngagementType;
 
 enum Operator: string
 {

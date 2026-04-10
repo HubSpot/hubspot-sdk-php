@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Pages;
+namespace HubSpotSDK\Services\Cms\Pages;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Pages\Batch\BatchCreateFoldersParams;
-use HubspotSDK\Cms\Pages\Batch\BatchCreateLandingPagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchCreateSitePagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchDeleteFoldersParams;
-use HubspotSDK\Cms\Pages\Batch\BatchDeleteLandingPagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchDeleteSitePagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchGetLandingPagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchGetSitePagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchUpdateFoldersParams;
-use HubspotSDK\Cms\Pages\Batch\BatchUpdateLandingPagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchUpdateSitePagesParams;
-use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
-use HubspotSDK\Cms\Pages\BatchResponsePage;
-use HubspotSDK\Cms\Pages\ContentFolder;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Pages\BatchRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Pages\Batch\BatchCreateFoldersParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchCreateLandingPagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchCreateSitePagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchDeleteFoldersParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchDeleteLandingPagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchDeleteSitePagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchGetLandingPagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchGetSitePagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchUpdateFoldersParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchUpdateLandingPagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchUpdateSitePagesParams;
+use HubSpotSDK\Cms\Pages\BatchResponseContentFolder;
+use HubSpotSDK\Cms\Pages\BatchResponsePage;
+use HubSpotSDK\Cms\Pages\ContentFolder;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Pages\BatchRawContract;
 
 /**
- * @phpstan-import-type ContentFolderShape from \HubspotSDK\Cms\Pages\ContentFolder
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ContentFolderShape from \HubSpotSDK\Cms\Pages\ContentFolder
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
 {

@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\LineItems;
+namespace HubSpotSDK\Crm\Objects\LineItems;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
 
 /**
  * Create a line item with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard line items is provided.
  *
- * @see HubspotSDK\Services\Crm\Objects\LineItemsService::create()
+ * @see HubSpotSDK\Services\Crm\Objects\LineItemsService::create()
  *
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
  *
  * @phpstan-type LineItemCreateParamsShape = array{
  *   associations: list<PublicAssociationsForObject|PublicAssociationsForObjectShape>,

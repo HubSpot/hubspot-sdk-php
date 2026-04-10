@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\FetchCurrencyDecimalPlaces;
+namespace HubSpotSDK\Cms\MediaBridge\FetchCurrencyDecimalPlaces;
 
 enum Operator: string
 {

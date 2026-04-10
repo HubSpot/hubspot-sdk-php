@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects;
+namespace HubSpotSDK\Crm\Objects;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\ForwardPaging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\ForwardPaging;
 
 /**
- * @phpstan-import-type SimplePublicObjectWithAssociationsShape from \HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations
- * @phpstan-import-type ForwardPagingShape from \HubspotSDK\ForwardPaging
+ * @phpstan-import-type SimplePublicObjectWithAssociationsShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations
+ * @phpstan-import-type ForwardPagingShape from \HubSpotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponseSimplePublicObjectWithAssociationsForwardPagingShape = array{
  *   results: list<SimplePublicObjectWithAssociations|SimplePublicObjectWithAssociationsShape>,

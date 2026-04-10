@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\AssociationsSchema\Limits;
+namespace HubSpotSDK\Crm\AssociationsSchema\Limits;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve the configuration details for associations between two specified CRM object types. Use this endpoint to understand limits that have been set for specific association types.
  *
- * @see HubspotSDK\Services\Crm\AssociationsSchema\LimitsService::getByObjectTypes()
+ * @see HubSpotSDK\Services\Crm\AssociationsSchema\LimitsService::getByObjectTypes()
  *
  * @phpstan-type LimitGetByObjectTypesParamsShape = array{fromObjectType: string}
  */

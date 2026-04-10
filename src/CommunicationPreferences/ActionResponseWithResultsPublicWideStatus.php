@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences;
+namespace HubSpotSDK\CommunicationPreferences;
 
-use HubspotSDK\CommunicationPreferences\ActionResponseWithResultsPublicWideStatus\Status;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\StandardError;
+use HubSpotSDK\CommunicationPreferences\ActionResponseWithResultsPublicWideStatus\Status;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type PublicWideStatusShape from \HubspotSDK\CommunicationPreferences\PublicWideStatus
- * @phpstan-import-type StandardErrorShape from \HubspotSDK\StandardError
+ * @phpstan-import-type PublicWideStatusShape from \HubSpotSDK\CommunicationPreferences\PublicWideStatus
+ * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type ActionResponseWithResultsPublicWideStatusShape = array{
  *   completedAt: \DateTimeInterface,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Contains;
+namespace HubSpotSDK\Cms\MediaBridge\Contains;
 
 enum Operator: string
 {

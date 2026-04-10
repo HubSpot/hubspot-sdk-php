@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\Cms\MediaBridge\RollupExpression\RollupOperator;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\AssociationSpec;
+use HubSpotSDK\Cms\MediaBridge\RollupExpression\RollupOperator;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ConditionalExpressionVariants from \HubspotSDK\Cms\MediaBridge\RollupExpression\ConditionalExpression
- * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
- * @phpstan-import-type ConditionalExpressionShape from \HubspotSDK\Cms\MediaBridge\RollupExpression\ConditionalExpression
+ * @phpstan-import-type ConditionalExpressionVariants from \HubSpotSDK\Cms\MediaBridge\RollupExpression\ConditionalExpression
+ * @phpstan-import-type AssociationSpecShape from \HubSpotSDK\AssociationSpec
+ * @phpstan-import-type ConditionalExpressionShape from \HubSpotSDK\Cms\MediaBridge\RollupExpression\ConditionalExpression
  *
  * @phpstan-type RollupExpressionShape = array{
  *   associationTypes: list<AssociationSpec|AssociationSpecShape>,

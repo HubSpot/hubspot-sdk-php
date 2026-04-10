@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\BatchResponseRecordIDWithMemberships;
+namespace HubSpotSDK\Crm\Lists\BatchResponseRecordIDWithMemberships;
 
 enum Status: string
 {

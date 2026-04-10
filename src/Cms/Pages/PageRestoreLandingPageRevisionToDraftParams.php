@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages;
+namespace HubSpotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Specify a previous version of a landing page to set as the page draft.
  *
- * @see HubspotSDK\Services\Cms\PagesService::restoreLandingPageRevisionToDraft()
+ * @see HubSpotSDK\Services\Cms\PagesService::restoreLandingPageRevisionToDraft()
  *
  * @phpstan-type PageRestoreLandingPageRevisionToDraftParamsShape = array{
  *   objectID: string

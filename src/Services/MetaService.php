@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\MetaContract;
-use HubspotSDK\Services\Meta\OriginsService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\MetaContract;
+use HubSpotSDK\Services\Meta\OriginsService;
 
 final class MetaService implements MetaContract
 {

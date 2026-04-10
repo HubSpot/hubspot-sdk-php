@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\RangedTimeOperation\LowerBoundEndpointBehavior;
-use HubspotSDK\Events\Definitions\RangedTimeOperation\Operator;
-use HubspotSDK\Events\Definitions\RangedTimeOperation\PropertyParser;
-use HubspotSDK\Events\Definitions\RangedTimeOperation\PropertyType;
-use HubspotSDK\Events\Definitions\RangedTimeOperation\UpperBoundEndpointBehavior;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\RangedTimeOperation\LowerBoundEndpointBehavior;
+use HubSpotSDK\Events\Definitions\RangedTimeOperation\Operator;
+use HubSpotSDK\Events\Definitions\RangedTimeOperation\PropertyParser;
+use HubSpotSDK\Events\Definitions\RangedTimeOperation\PropertyType;
+use HubSpotSDK\Events\Definitions\RangedTimeOperation\UpperBoundEndpointBehavior;
 
 /**
- * @phpstan-import-type LowerBoundTimePointVariants from \HubspotSDK\Events\Definitions\RangedTimeOperation\LowerBoundTimePoint
- * @phpstan-import-type UpperBoundTimePointVariants from \HubspotSDK\Events\Definitions\RangedTimeOperation\UpperBoundTimePoint
- * @phpstan-import-type LowerBoundTimePointShape from \HubspotSDK\Events\Definitions\RangedTimeOperation\LowerBoundTimePoint
- * @phpstan-import-type UpperBoundTimePointShape from \HubspotSDK\Events\Definitions\RangedTimeOperation\UpperBoundTimePoint
+ * @phpstan-import-type LowerBoundTimePointVariants from \HubSpotSDK\Events\Definitions\RangedTimeOperation\LowerBoundTimePoint
+ * @phpstan-import-type UpperBoundTimePointVariants from \HubSpotSDK\Events\Definitions\RangedTimeOperation\UpperBoundTimePoint
+ * @phpstan-import-type LowerBoundTimePointShape from \HubSpotSDK\Events\Definitions\RangedTimeOperation\LowerBoundTimePoint
+ * @phpstan-import-type UpperBoundTimePointShape from \HubSpotSDK\Events\Definitions\RangedTimeOperation\UpperBoundTimePoint
  *
  * @phpstan-type RangedTimeOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,

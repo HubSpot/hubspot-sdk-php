@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\ListAssociations;
+namespace HubSpotSDK\Marketing\MarketingEvents\ListAssociations;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Disassociates a list from a marketing event by external account id, external event id, and ILS list id.
  *
- * @see HubspotSDK\Services\Marketing\MarketingEvents\ListAssociationsService::deleteByExternalAccount()
+ * @see HubSpotSDK\Services\Marketing\MarketingEvents\ListAssociationsService::deleteByExternalAccount()
  *
  * @phpstan-type ListAssociationDeleteByExternalAccountParamsShape = array{
  *   externalAccountID: string, externalEventID: string

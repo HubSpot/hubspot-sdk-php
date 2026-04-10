@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\Objects\Contacts\ContactCreateParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactGdprDeleteParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactGetParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactListParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactMergeParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactSearchParams;
-use HubspotSDK\Crm\Objects\Contacts\ContactUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\Objects\Contacts\ContactCreateParams;
+use HubSpotSDK\Crm\Objects\Contacts\ContactGdprDeleteParams;
+use HubSpotSDK\Crm\Objects\Contacts\ContactGetParams;
+use HubSpotSDK\Crm\Objects\Contacts\ContactListParams;
+use HubSpotSDK\Crm\Objects\Contacts\ContactMergeParams;
+use HubSpotSDK\Crm\Objects\Contacts\ContactSearchParams;
+use HubSpotSDK\Crm\Objects\Contacts\ContactUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ContactsRawContract
 {

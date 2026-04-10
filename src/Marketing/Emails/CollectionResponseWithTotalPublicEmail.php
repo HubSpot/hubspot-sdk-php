@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Paging;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Paging;
 
 /**
- * @phpstan-import-type PublicEmailShape from \HubspotSDK\Marketing\Emails\PublicEmail
- * @phpstan-import-type PagingShape from \HubspotSDK\Paging
+ * @phpstan-import-type PublicEmailShape from \HubSpotSDK\Marketing\Emails\PublicEmail
+ * @phpstan-import-type PagingShape from \HubSpotSDK\Paging
  *
  * @phpstan-type CollectionResponseWithTotalPublicEmailShape = array{
  *   results: list<PublicEmail|PublicEmailShape>,

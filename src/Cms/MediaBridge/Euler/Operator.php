@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Euler;
+namespace HubSpotSDK\Cms\MediaBridge\Euler;
 
 enum Operator: string
 {

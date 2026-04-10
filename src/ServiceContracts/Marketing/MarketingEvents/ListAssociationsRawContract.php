@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\MarketingEvents;
+namespace HubSpotSDK\ServiceContracts\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalPublicList;
-use HubspotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationAssociateByExternalAccountParams;
-use HubspotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationAssociateParams;
-use HubspotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationDeleteByExternalAccountParams;
-use HubspotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationDeleteParams;
-use HubspotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationListByExternalAccountParams;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\MarketingEvents\CollectionResponseWithTotalPublicList;
+use HubSpotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationAssociateByExternalAccountParams;
+use HubSpotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationAssociateParams;
+use HubSpotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationDeleteByExternalAccountParams;
+use HubSpotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationDeleteParams;
+use HubSpotSDK\Marketing\MarketingEvents\ListAssociations\ListAssociationListByExternalAccountParams;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ListAssociationsRawContract
 {

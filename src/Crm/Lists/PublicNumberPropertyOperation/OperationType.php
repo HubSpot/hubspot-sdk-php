@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicNumberPropertyOperation;
+namespace HubSpotSDK\Crm\Lists\PublicNumberPropertyOperation;
 
 /**
  * Specifies the type of operation (NUMBER).

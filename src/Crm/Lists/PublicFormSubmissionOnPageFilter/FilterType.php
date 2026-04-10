@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter;
+namespace HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter;
 
 /**
  * Indicates the type of filter (FORM_SUBMISSION_ON_PAGE).

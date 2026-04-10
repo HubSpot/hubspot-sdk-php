@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\CaseChangeTestExtensionData;
+namespace HubSpotSDK\Cms\MediaBridge\CaseChangeTestExtensionData;
 
 enum Mood: string
 {

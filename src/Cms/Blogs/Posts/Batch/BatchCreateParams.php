@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\Batch;
+namespace HubSpotSDK\Cms\Blogs\Posts\Batch;
 
-use HubspotSDK\Cms\Blogs\Posts\BlogPost;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\Blogs\Posts\BlogPost;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a batch of blog posts, specifying their content in the request body.
  *
- * @see HubspotSDK\Services\Cms\Blogs\Posts\BatchService::create()
+ * @see HubSpotSDK\Services\Cms\Blogs\Posts\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{inputs: list<mixed>}
  */

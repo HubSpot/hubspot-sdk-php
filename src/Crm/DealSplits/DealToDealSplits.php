@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\DealSplits;
+namespace HubSpotSDK\Crm\DealSplits;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\SimplePublicObject;
 
 /**
- * @phpstan-import-type SimplePublicObjectShape from \HubspotSDK\Crm\SimplePublicObject
+ * @phpstan-import-type SimplePublicObjectShape from \HubSpotSDK\Crm\SimplePublicObject
  *
  * @phpstan-type DealToDealSplitsShape = array{
  *   id: string, splits: list<SimplePublicObject|SimplePublicObjectShape>

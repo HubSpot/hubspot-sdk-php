@@ -34,7 +34,7 @@ Parameters with a default value must be set by name.
 ```php
 <?php
 
-use HubspotSDK\Client;
+use HubSpotSDK\Client;
 
 $client = new Client(accessToken: 'My Access Token');
 
@@ -61,7 +61,7 @@ This library provides auto-paginating iterators with each list response, so you 
 ```php
 <?php
 
-use HubspotSDK\Client;
+use HubSpotSDK\Client;
 
 $client = new Client(accessToken: 'My Access Token');
 
@@ -81,14 +81,14 @@ foreach ($page->pagingEachItem() as $item) {
 
 ### Handling errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `HubspotSDK\Core\Exceptions\APIException` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `HubSpotSDK\Core\Exceptions\APIException` will be thrown:
 
 ```php
 <?php
 
-use HubspotSDK\Core\Exceptions\APIConnectionException;
-use HubspotSDK\Core\Exceptions\RateLimitException;
-use HubspotSDK\Core\Exceptions\APIStatusException;
+use HubSpotSDK\Core\Exceptions\APIConnectionException;
+use HubSpotSDK\Core\Exceptions\RateLimitException;
+use HubSpotSDK\Core\Exceptions\APIStatusException;
 
 try {
   $simplePublicObject = $client->crm->objects->contacts->create(
@@ -140,7 +140,7 @@ You can use the `maxRetries` option to configure or disable this:
 ```php
 <?php
 
-use HubspotSDK\Client;
+use HubSpotSDK\Client;
 
 // Configure the default for all requests:
 $client = new Client(requestOptions: ['maxRetries' => 0]);

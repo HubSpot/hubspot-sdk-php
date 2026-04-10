@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Settings\Currencies\ExchangeRates;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Settings\Currencies\BatchResponseExchangeRate;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

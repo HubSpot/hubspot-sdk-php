@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\FeatureFlags;
+namespace HubSpotSDK\Crm\FeatureFlags;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Delete a feature flag in an app.  For example, delete the `hs-release-app-cards` flag after all accounts have been migrated.
  *
- * @see HubspotSDK\Services\Crm\FeatureFlagsService::delete()
+ * @see HubSpotSDK\Services\Crm\FeatureFlagsService::delete()
  *
  * @phpstan-type FeatureFlagDeleteParamsShape = array{appID: int}
  */

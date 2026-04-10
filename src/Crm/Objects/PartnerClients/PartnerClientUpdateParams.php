@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\PartnerClients;
+namespace HubSpotSDK\Crm\Objects\PartnerClients;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update the specified properties of an existing partner client.
  *
- * @see HubspotSDK\Services\Crm\Objects\PartnerClientsService::update()
+ * @see HubSpotSDK\Services\Crm\Objects\PartnerClientsService::update()
  *
  * @phpstan-type PartnerClientUpdateParamsShape = array{
  *   properties: array<string,string>, idProperty?: string|null

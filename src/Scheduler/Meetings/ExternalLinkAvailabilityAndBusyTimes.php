@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Scheduler\Meetings;
+namespace HubSpotSDK\Scheduler\Meetings;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ExternalUserBusyTimesShape from \HubspotSDK\Scheduler\Meetings\ExternalUserBusyTimes
- * @phpstan-import-type ExternalLinkAvailabilityShape from \HubspotSDK\Scheduler\Meetings\ExternalLinkAvailability
+ * @phpstan-import-type ExternalUserBusyTimesShape from \HubSpotSDK\Scheduler\Meetings\ExternalUserBusyTimes
+ * @phpstan-import-type ExternalLinkAvailabilityShape from \HubSpotSDK\Scheduler\Meetings\ExternalLinkAvailability
  *
  * @phpstan-type ExternalLinkAvailabilityAndBusyTimesShape = array{
  *   allUsersBusyTimes: list<ExternalUserBusyTimes|ExternalUserBusyTimesShape>,

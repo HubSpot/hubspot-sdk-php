@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\CommunicationPreferences\Statuses;
+namespace HubSpotSDK\Services\CommunicationPreferences\Statuses;
 
-use HubspotSDK\Client;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicBulkOptOutFromAllResponse;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicStatus;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicStatusBulkResponse;
-use HubspotSDK\CommunicationPreferences\BatchResponsePublicWideStatusBulkResponse;
-use HubspotSDK\CommunicationPreferences\PublicStatusRequest;
-use HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams\Channel;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\CommunicationPreferences\Statuses\BatchContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicBulkOptOutFromAllResponse;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicStatus;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicStatusBulkResponse;
+use HubSpotSDK\CommunicationPreferences\BatchResponsePublicWideStatusBulkResponse;
+use HubSpotSDK\CommunicationPreferences\PublicStatusRequest;
+use HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchGetUnsubscribeAllStatusesParams\Channel;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\CommunicationPreferences\Statuses\BatchContract;
 
 /**
- * @phpstan-import-type PublicStatusRequestShape from \HubspotSDK\CommunicationPreferences\PublicStatusRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicStatusRequestShape from \HubSpotSDK\CommunicationPreferences\PublicStatusRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchService implements BatchContract
 {
@@ -72,7 +72,7 @@ final class BatchService implements BatchContract
      *
      * Batch retrieve subscription statuses for a set of contacts.
      *
-     * @param \HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel|value-of<\HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel> $channel Query param
+     * @param \HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel> $channel Query param
      * @param list<string> $inputs body param: Strings to input
      * @param int $businessUnitID Query param
      * @param RequestOpts|null $requestOptions
@@ -80,7 +80,7 @@ final class BatchService implements BatchContract
      * @throws APIException
      */
     public function read(
-        \HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel|string $channel,
+        \HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel|string $channel,
         array $inputs,
         ?int $businessUnitID = null,
         RequestOptions|array|null $requestOptions = null,
@@ -104,7 +104,7 @@ final class BatchService implements BatchContract
      *
      * Unsubscribe a set of contacts from all email subscriptions.
      *
-     * @param \HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel|value-of<\HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel> $channel Query param
+     * @param \HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel> $channel Query param
      * @param list<string> $inputs body param: Strings to input
      * @param int $businessUnitID Query param
      * @param bool $verbose Query param
@@ -113,7 +113,7 @@ final class BatchService implements BatchContract
      * @throws APIException
      */
     public function unsubscribeAll(
-        \HubspotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel|string $channel,
+        \HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel|string $channel,
         array $inputs,
         ?int $businessUnitID = null,
         bool $verbose = false,

@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Settings\Currencies\ExchangeRates;
+namespace HubSpotSDK\Services\Settings\Currencies\ExchangeRates;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\PublicObjectID;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Settings\Currencies\ExchangeRates\BatchRawContract;
-use HubspotSDK\Settings\Currencies\BatchResponseExchangeRate;
-use HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest;
-use HubspotSDK\Settings\Currencies\ExchangeRates\Batch\BatchCreateParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\Batch\BatchGetParams;
-use HubspotSDK\Settings\Currencies\ExchangeRates\Batch\BatchUpdateParams;
-use HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\PublicObjectID;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Settings\Currencies\ExchangeRates\BatchRawContract;
+use HubSpotSDK\Settings\Currencies\BatchResponseExchangeRate;
+use HubSpotSDK\Settings\Currencies\ExchangeRateCreateRequest;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\Batch\BatchCreateParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\Batch\BatchGetParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRates\Batch\BatchUpdateParams;
+use HubSpotSDK\Settings\Currencies\ExchangeRateUpdateRequest;
 
 /**
- * @phpstan-import-type ExchangeRateCreateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateCreateRequest
- * @phpstan-import-type ExchangeRateUpdateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest
- * @phpstan-import-type PublicObjectIDShape from \HubspotSDK\PublicObjectID
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type ExchangeRateCreateRequestShape from \HubSpotSDK\Settings\Currencies\ExchangeRateCreateRequest
+ * @phpstan-import-type ExchangeRateUpdateRequestShape from \HubSpotSDK\Settings\Currencies\ExchangeRateUpdateRequest
+ * @phpstan-import-type PublicObjectIDShape from \HubSpotSDK\PublicObjectID
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
 {

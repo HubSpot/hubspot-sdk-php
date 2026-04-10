@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns\Spend;
+namespace HubSpotSDK\Marketing\Campaigns\Spend;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Read a campaign spend item by its spendId.
  *
- * @see HubspotSDK\Services\Marketing\Campaigns\SpendService::get()
+ * @see HubSpotSDK\Services\Marketing\Campaigns\SpendService::get()
  *
  * @phpstan-type SpendGetParamsShape = array{campaignGuid: string}
  */

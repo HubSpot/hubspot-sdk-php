@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Functions;
+namespace HubSpotSDK\Automation\Actions\Functions;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve functions of a specific type for a given definition.
  *
- * @see HubspotSDK\Services\Automation\Actions\FunctionsService::getByFunctionType()
+ * @see HubSpotSDK\Services\Automation\Actions\FunctionsService::getByFunctionType()
  *
  * @phpstan-type FunctionGetByFunctionTypeParamsShape = array{
  *   appID: int, definitionID: string

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels;
+namespace HubSpotSDK\Conversations\CustomChannels;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PreResolvedContactShape from \HubspotSDK\Conversations\CustomChannels\PreResolvedContact
+ * @phpstan-import-type PreResolvedContactShape from \HubSpotSDK\Conversations\CustomChannels\PreResolvedContact
  *
  * @phpstan-type PreResolvedContactsShape = array{
  *   contacts: list<PreResolvedContact|PreResolvedContactShape>

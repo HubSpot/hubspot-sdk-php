@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations;
+namespace HubSpotSDK\Crm\Associations;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve all associations between a specific record and an object type. Limit 500 per call.
  *
- * @see HubspotSDK\Services\Crm\AssociationsService::list()
+ * @see HubSpotSDK\Services\Crm\AssociationsService::list()
  *
  * @phpstan-type AssociationListParamsShape = array{
  *   objectType: string, objectID: string, after?: string|null, limit?: int|null

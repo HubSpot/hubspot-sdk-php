@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Pipelines\PipelineStage;
+namespace HubSpotSDK\Crm\Pipelines\PipelineStage;
 
 /**
  * Defines the level of write access for the pipeline stage, with possible values being CRM_PERMISSIONS_ENFORCEMENT, READ_ONLY, or INTERNAL_ONLY.

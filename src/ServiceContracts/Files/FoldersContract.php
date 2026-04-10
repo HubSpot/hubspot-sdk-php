@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Files;
+namespace HubSpotSDK\ServiceContracts\Files;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Files\Folder;
-use HubspotSDK\Files\FolderActionResponse;
-use HubspotSDK\Files\FolderUpdateTaskLocator;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Files\Folder;
+use HubSpotSDK\Files\FolderActionResponse;
+use HubSpotSDK\Files\FolderUpdateTaskLocator;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface FoldersContract
 {

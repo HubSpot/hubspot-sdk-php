@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs\Settings;
+namespace HubSpotSDK\Services\Cms\Blogs\Settings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Settings\Blog;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
-use HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\Settings\MultiLanguageContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Settings\Blog;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
+use HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\Settings\MultiLanguageContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class MultiLanguageService implements MultiLanguageContract
 {
@@ -150,7 +150,7 @@ final class MultiLanguageService implements MultiLanguageContract
      *
      * Explicitly set new languages for each blog in a multi-language group.
      *
-     * @param array<string,\HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language|value-of<\HubspotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
+     * @param array<string,\HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Settings\MultiLanguage\MultiLanguageUpdateLanguagesParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
      * @param string $primaryID ID of the primary object in the multi-language group
      * @param RequestOpts|null $requestOptions
      *

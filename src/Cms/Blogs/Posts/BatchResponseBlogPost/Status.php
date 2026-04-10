@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Posts\BatchResponseBlogPost;
+namespace HubSpotSDK\Cms\Blogs\Posts\BatchResponseBlogPost;
 
 /**
  * Status of batch operation.

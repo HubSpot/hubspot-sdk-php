@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Core\Contracts;
+namespace HubSpotSDK\Core\Contracts;
 
 /**
- * @phpstan-import-type NormalizedRequest from \HubspotSDK\Core\BaseClient
+ * @phpstan-import-type NormalizedRequest from \HubSpotSDK\Core\BaseClient
  *
  * @internal
  *

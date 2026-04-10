@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages;
+namespace HubSpotSDK\Cms\Pages;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Takes a specified version of a website page and sets it as the new draft version of the page.
  *
- * @see HubspotSDK\Services\Cms\PagesService::restoreSitePageRevisionToDraft()
+ * @see HubSpotSDK\Services\Cms\PagesService::restoreSitePageRevisionToDraft()
  *
  * @phpstan-type PageRestoreSitePageRevisionToDraftParamsShape = array{
  *   objectID: string

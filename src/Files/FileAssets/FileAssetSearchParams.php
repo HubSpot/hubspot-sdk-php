@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\FileAssets;
+namespace HubSpotSDK\Files\FileAssets;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Search through files in the file manager. Does not display hidden or archived files.
  *
- * @see HubspotSDK\Services\Files\FileAssetsService::search()
+ * @see HubSpotSDK\Services\Files\FileAssetsService::search()
  *
  * @phpstan-type FileAssetSearchParamsShape = array{
  *   after?: string|null,

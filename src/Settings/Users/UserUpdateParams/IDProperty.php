@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Users\UserUpdateParams;
+namespace HubSpotSDK\Settings\Users\UserUpdateParams;
 
 enum IDProperty: string
 {

@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\ActionResponse;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Imports\ImportCreateParams;
-use HubspotSDK\Crm\Imports\ImportListErrorsParams;
-use HubspotSDK\Crm\Imports\ImportListParams;
-use HubspotSDK\Crm\Imports\PublicImportError;
-use HubspotSDK\Crm\Imports\PublicImportResponse;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\ImportsRawContract;
+use HubSpotSDK\ActionResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Imports\ImportCreateParams;
+use HubSpotSDK\Crm\Imports\ImportListErrorsParams;
+use HubSpotSDK\Crm\Imports\ImportListParams;
+use HubSpotSDK\Crm\Imports\PublicImportError;
+use HubSpotSDK\Crm\Imports\PublicImportResponse;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\ImportsRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class ImportsRawService implements ImportsRawContract
 {

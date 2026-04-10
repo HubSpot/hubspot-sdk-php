@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams;
+namespace HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams;
 
 enum EventType: string
 {

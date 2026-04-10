@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\DealSplits\BatchResponseDealToDealSplitsWithErrors;
+namespace HubSpotSDK\Crm\DealSplits\BatchResponseDealToDealSplitsWithErrors;
 
 /**
  * The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.

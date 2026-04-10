@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms;
+namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\Cms\Pages\PageData;
-use HubspotSDK\Cms\Pages\PageGetLandingPageFoldersByQueryParams;
-use HubspotSDK\Cms\Pages\PageGetLandingPageFoldersParams;
-use HubspotSDK\Cms\Pages\PageGetLandingPageRevisionParams;
-use HubspotSDK\Cms\Pages\PageGetLandingPagesByQueryParams;
-use HubspotSDK\Cms\Pages\PageGetLandingPagesParams;
-use HubspotSDK\Cms\Pages\PageGetSitePageRevisionParams;
-use HubspotSDK\Cms\Pages\PageGetSitePagesByQueryParams;
-use HubspotSDK\Cms\Pages\PageGetSitePagesParams;
-use HubspotSDK\Cms\Pages\PageListLandingPageRevisionsParams;
-use HubspotSDK\Cms\Pages\PageListSitePageRevisionsParams;
-use HubspotSDK\Cms\Pages\PageRestoreLandingPageRevisionParams;
-use HubspotSDK\Cms\Pages\PageRestoreLandingPageRevisionToDraftParams;
-use HubspotSDK\Cms\Pages\PageRestoreSitePageRevisionParams;
-use HubspotSDK\Cms\Pages\PageRestoreSitePageRevisionToDraftParams;
-use HubspotSDK\Cms\Pages\PageVersion;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\PageGetLandingPageFoldersByQueryParams;
+use HubSpotSDK\Cms\Pages\PageGetLandingPageFoldersParams;
+use HubSpotSDK\Cms\Pages\PageGetLandingPageRevisionParams;
+use HubSpotSDK\Cms\Pages\PageGetLandingPagesByQueryParams;
+use HubSpotSDK\Cms\Pages\PageGetLandingPagesParams;
+use HubSpotSDK\Cms\Pages\PageGetSitePageRevisionParams;
+use HubSpotSDK\Cms\Pages\PageGetSitePagesByQueryParams;
+use HubSpotSDK\Cms\Pages\PageGetSitePagesParams;
+use HubSpotSDK\Cms\Pages\PageListLandingPageRevisionsParams;
+use HubSpotSDK\Cms\Pages\PageListSitePageRevisionsParams;
+use HubSpotSDK\Cms\Pages\PageRestoreLandingPageRevisionParams;
+use HubSpotSDK\Cms\Pages\PageRestoreLandingPageRevisionToDraftParams;
+use HubSpotSDK\Cms\Pages\PageRestoreSitePageRevisionParams;
+use HubSpotSDK\Cms\Pages\PageRestoreSitePageRevisionToDraftParams;
+use HubSpotSDK\Cms\Pages\PageVersion;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface PagesRawContract
 {

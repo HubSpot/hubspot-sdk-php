@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms;
+namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubspotSDK\ActionResponse;
-use HubspotSDK\Cms\SourceCode\AssetFileMetadata;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\TaskLocator;
+use HubSpotSDK\ActionResponse;
+use HubSpotSDK\Cms\SourceCode\AssetFileMetadata;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\TaskLocator;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface SourceCodeContract
 {

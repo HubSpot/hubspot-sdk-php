@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\AssociationSpec;
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Associations\AssociationDeleteParams;
-use HubspotSDK\Crm\Associations\AssociationListParams;
-use HubspotSDK\Crm\Associations\AssociationSearchParams;
-use HubspotSDK\Crm\Associations\AssociationUpdateAssociationLabelsParams;
-use HubspotSDK\Crm\Associations\ReportCreationResponse;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\LabelsBetweenObjectPair;
-use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\AssociationsRawContract;
+use HubSpotSDK\AssociationSpec;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Associations\AssociationDeleteParams;
+use HubSpotSDK\Crm\Associations\AssociationListParams;
+use HubSpotSDK\Crm\Associations\AssociationSearchParams;
+use HubSpotSDK\Crm\Associations\AssociationUpdateAssociationLabelsParams;
+use HubSpotSDK\Crm\Associations\ReportCreationResponse;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\FilterGroup;
+use HubSpotSDK\Crm\LabelsBetweenObjectPair;
+use HubSpotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\AssociationsRawContract;
 
 /**
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type AssociationSpecShape from \HubspotSDK\AssociationSpec
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
+ * @phpstan-import-type AssociationSpecShape from \HubSpotSDK\AssociationSpec
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class AssociationsRawService implements AssociationsRawContract
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\PropertiesValidations;
+namespace HubSpotSDK\Crm\PropertiesValidations;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicPropertyValidationRuleMapShape from \HubspotSDK\Crm\PropertiesValidations\PublicPropertyValidationRuleMap
+ * @phpstan-import-type PublicPropertyValidationRuleMapShape from \HubSpotSDK\Crm\PropertiesValidations\PublicPropertyValidationRuleMap
  *
  * @phpstan-type CollectionResponsePublicPropertyValidationRuleMapNoPagingShape = array{
  *   results: list<PublicPropertyValidationRuleMap|PublicPropertyValidationRuleMapShape>,

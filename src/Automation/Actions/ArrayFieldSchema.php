@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions;
+namespace HubSpotSDK\Automation\Actions;
 
-use HubspotSDK\Automation\Actions\ArrayFieldSchema\Type;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Actions\ArrayFieldSchema\Type;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ItemsVariants from \HubspotSDK\Automation\Actions\ArrayFieldSchema\Items
- * @phpstan-import-type ItemsShape from \HubspotSDK\Automation\Actions\ArrayFieldSchema\Items
+ * @phpstan-import-type ItemsVariants from \HubSpotSDK\Automation\Actions\ArrayFieldSchema\Items
+ * @phpstan-import-type ItemsShape from \HubSpotSDK\Automation\Actions\ArrayFieldSchema\Items
  *
  * @phpstan-type ArrayFieldSchemaShape = array{
  *   items: ItemsShape, type: Type|value-of<Type>

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks;
+namespace HubSpotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Webhooks\ObjectSubscriptionUpsertRequest\Action;
-use HubspotSDK\Webhooks\ObjectSubscriptionUpsertRequest\SubscriptionType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Webhooks\ObjectSubscriptionUpsertRequest\Action;
+use HubSpotSDK\Webhooks\ObjectSubscriptionUpsertRequest\SubscriptionType;
 
 /**
  * @phpstan-type ObjectSubscriptionUpsertRequestShape = array{

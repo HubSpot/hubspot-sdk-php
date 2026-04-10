@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicEmailEventFilter;
+namespace HubSpotSDK\Crm\Lists\PublicEmailEventFilter;
 
 /**
  * Indicates the type of filter (EMAIL_EVENT).

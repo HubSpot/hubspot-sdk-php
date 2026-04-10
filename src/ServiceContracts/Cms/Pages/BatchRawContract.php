@@ -2,27 +2,27 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Cms\Pages;
+namespace HubSpotSDK\ServiceContracts\Cms\Pages;
 
-use HubspotSDK\Cms\Pages\Batch\BatchCreateFoldersParams;
-use HubspotSDK\Cms\Pages\Batch\BatchCreateLandingPagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchCreateSitePagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchDeleteFoldersParams;
-use HubspotSDK\Cms\Pages\Batch\BatchDeleteLandingPagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchDeleteSitePagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchGetLandingPagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchGetSitePagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchUpdateFoldersParams;
-use HubspotSDK\Cms\Pages\Batch\BatchUpdateLandingPagesParams;
-use HubspotSDK\Cms\Pages\Batch\BatchUpdateSitePagesParams;
-use HubspotSDK\Cms\Pages\BatchResponseContentFolder;
-use HubspotSDK\Cms\Pages\BatchResponsePage;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Cms\Pages\Batch\BatchCreateFoldersParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchCreateLandingPagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchCreateSitePagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchDeleteFoldersParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchDeleteLandingPagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchDeleteSitePagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchGetLandingPagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchGetSitePagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchUpdateFoldersParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchUpdateLandingPagesParams;
+use HubSpotSDK\Cms\Pages\Batch\BatchUpdateSitePagesParams;
+use HubSpotSDK\Cms\Pages\BatchResponseContentFolder;
+use HubSpotSDK\Cms\Pages\BatchResponsePage;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchRawContract
 {

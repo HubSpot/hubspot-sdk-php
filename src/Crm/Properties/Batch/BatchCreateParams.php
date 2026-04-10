@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\Batch;
+namespace HubSpotSDK\Crm\Properties\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Properties\PropertyCreate;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Properties\PropertyCreate;
 
 /**
  * Create a batch of properties using the same rules as when creating an individual property.
  *
- * @see HubspotSDK\Services\Crm\Properties\BatchService::create()
+ * @see HubSpotSDK\Services\Crm\Properties\BatchService::create()
  *
- * @phpstan-import-type PropertyCreateShape from \HubspotSDK\Crm\Properties\PropertyCreate
+ * @phpstan-import-type PropertyCreateShape from \HubSpotSDK\Crm\Properties\PropertyCreate
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<PropertyCreate|PropertyCreateShape>

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Associations\Batch;
+namespace HubSpotSDK\Crm\Associations\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Crm\Associations\BatchService::create()
+ * @see HubSpotSDK\Services\Crm\Associations\BatchService::create()
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   fromObjectType: string, fromObjectID: string, toObjectType: string

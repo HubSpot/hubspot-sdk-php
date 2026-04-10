@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Objects;
+namespace HubSpotSDK\Services\Crm\Objects;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\FilterGroup;
-use HubspotSDK\Crm\Objects\PublicAssociationsForObject;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\Objects\Users\UserCreateParams;
-use HubspotSDK\Crm\Objects\Users\UserGetParams;
-use HubspotSDK\Crm\Objects\Users\UserListParams;
-use HubspotSDK\Crm\Objects\Users\UserSearchParams;
-use HubspotSDK\Crm\Objects\Users\UserUpdateParams;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Objects\UsersRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\FilterGroup;
+use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\Objects\Users\UserCreateParams;
+use HubSpotSDK\Crm\Objects\Users\UserGetParams;
+use HubSpotSDK\Crm\Objects\Users\UserListParams;
+use HubSpotSDK\Crm\Objects\Users\UserSearchParams;
+use HubSpotSDK\Crm\Objects\Users\UserUpdateParams;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Objects\UsersRawContract;
 
 /**
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubspotSDK\Crm\Objects\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubspotSDK\Crm\FilterGroup
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
+ * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class UsersRawService implements UsersRawContract
 {

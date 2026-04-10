@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\PublicActionDefinitionPatch;
+namespace HubSpotSDK\Automation\Actions\PublicActionDefinitionPatch;
 
-use HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
-use HubspotSDK\Automation\Actions\PublicSingleFieldDependency;
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Automation\Actions\PublicConditionalSingleFieldDependency;
+use HubSpotSDK\Automation\Actions\PublicSingleFieldDependency;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-import-type PublicSingleFieldDependencyShape from \HubspotSDK\Automation\Actions\PublicSingleFieldDependency
- * @phpstan-import-type PublicConditionalSingleFieldDependencyShape from \HubspotSDK\Automation\Actions\PublicConditionalSingleFieldDependency
+ * @phpstan-import-type PublicSingleFieldDependencyShape from \HubSpotSDK\Automation\Actions\PublicSingleFieldDependency
+ * @phpstan-import-type PublicConditionalSingleFieldDependencyShape from \HubSpotSDK\Automation\Actions\PublicConditionalSingleFieldDependency
  *
  * @phpstan-type InputFieldDependencyVariants = PublicSingleFieldDependency|PublicConditionalSingleFieldDependency
  * @phpstan-type InputFieldDependencyShape = InputFieldDependencyVariants|PublicSingleFieldDependencyShape|PublicConditionalSingleFieldDependencyShape

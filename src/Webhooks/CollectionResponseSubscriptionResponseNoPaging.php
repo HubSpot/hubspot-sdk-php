@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks;
+namespace HubSpotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type SubscriptionResponse1Shape from \HubspotSDK\Webhooks\SubscriptionResponse1
+ * @phpstan-import-type SubscriptionResponse1Shape from \HubSpotSDK\Webhooks\SubscriptionResponse1
  *
  * @phpstan-type CollectionResponseSubscriptionResponseNoPagingShape = array{
  *   results: list<SubscriptionResponse1|SubscriptionResponse1Shape>

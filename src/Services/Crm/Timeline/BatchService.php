@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm\Timeline;
+namespace HubSpotSDK\Services\Crm\Timeline;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Timeline\AppEventOccurrence;
-use HubspotSDK\Crm\Timeline\BatchResponseAppEventOccurrence;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Crm\Timeline\BatchContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Timeline\AppEventOccurrence;
+use HubSpotSDK\Crm\Timeline\BatchResponseAppEventOccurrence;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Crm\Timeline\BatchContract;
 
 /**
- * @phpstan-import-type AppEventOccurrenceShape from \HubspotSDK\Crm\Timeline\AppEventOccurrence
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type AppEventOccurrenceShape from \HubSpotSDK\Crm\Timeline\AppEventOccurrence
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchService implements BatchContract
 {

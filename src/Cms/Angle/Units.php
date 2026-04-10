@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Angle;
+namespace HubSpotSDK\Cms\Angle;
 
 /**
  * The unit of measurement for the angle.

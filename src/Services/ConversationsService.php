@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services;
+namespace HubSpotSDK\Services;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\ConversationsContract;
-use HubspotSDK\Services\Conversations\CustomChannelsService;
-use HubspotSDK\Services\Conversations\VisitorIdentificationService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\ConversationsContract;
+use HubSpotSDK\Services\Conversations\CustomChannelsService;
+use HubSpotSDK\Services\Conversations\VisitorIdentificationService;
 
 final class ConversationsService implements ConversationsContract
 {

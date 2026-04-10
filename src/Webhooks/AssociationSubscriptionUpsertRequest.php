@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks;
+namespace HubSpotSDK\Webhooks;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Webhooks\AssociationSubscriptionUpsertRequest\Action;
-use HubspotSDK\Webhooks\AssociationSubscriptionUpsertRequest\SubscriptionType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Webhooks\AssociationSubscriptionUpsertRequest\Action;
+use HubSpotSDK\Webhooks\AssociationSubscriptionUpsertRequest\SubscriptionType;
 
 /**
  * @phpstan-type AssociationSubscriptionUpsertRequestShape = array{

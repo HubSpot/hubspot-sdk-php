@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
+namespace HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage;
 
-use HubspotSDK\Conversations\CustomChannels\PublicContact;
-use HubspotSDK\Conversations\CustomChannels\PublicFile;
-use HubspotSDK\Conversations\CustomChannels\PublicLocation;
-use HubspotSDK\Conversations\CustomChannels\PublicMessageHeader;
-use HubspotSDK\Conversations\CustomChannels\PublicQuickReplies;
-use HubspotSDK\Conversations\CustomChannels\PublicSocialMetadataAttachment;
-use HubspotSDK\Conversations\CustomChannels\PublicUnsupportedContent;
-use HubspotSDK\Conversations\CustomChannels\PublicWhatsAppTemplateMetadata;
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Conversations\CustomChannels\PublicContact;
+use HubSpotSDK\Conversations\CustomChannels\PublicFile;
+use HubSpotSDK\Conversations\CustomChannels\PublicLocation;
+use HubSpotSDK\Conversations\CustomChannels\PublicMessageHeader;
+use HubSpotSDK\Conversations\CustomChannels\PublicQuickReplies;
+use HubSpotSDK\Conversations\CustomChannels\PublicSocialMetadataAttachment;
+use HubSpotSDK\Conversations\CustomChannels\PublicUnsupportedContent;
+use HubSpotSDK\Conversations\CustomChannels\PublicWhatsAppTemplateMetadata;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 
 /**
- * @phpstan-import-type PublicFileShape from \HubspotSDK\Conversations\CustomChannels\PublicFile
- * @phpstan-import-type PublicLocationShape from \HubspotSDK\Conversations\CustomChannels\PublicLocation
- * @phpstan-import-type PublicContactShape from \HubspotSDK\Conversations\CustomChannels\PublicContact
- * @phpstan-import-type PublicUnsupportedContentShape from \HubspotSDK\Conversations\CustomChannels\PublicUnsupportedContent
- * @phpstan-import-type PublicMessageHeaderShape from \HubspotSDK\Conversations\CustomChannels\PublicMessageHeader
- * @phpstan-import-type PublicQuickRepliesShape from \HubspotSDK\Conversations\CustomChannels\PublicQuickReplies
- * @phpstan-import-type PublicWhatsAppTemplateMetadataShape from \HubspotSDK\Conversations\CustomChannels\PublicWhatsAppTemplateMetadata
- * @phpstan-import-type PublicSocialMetadataAttachmentShape from \HubspotSDK\Conversations\CustomChannels\PublicSocialMetadataAttachment
+ * @phpstan-import-type PublicFileShape from \HubSpotSDK\Conversations\CustomChannels\PublicFile
+ * @phpstan-import-type PublicLocationShape from \HubSpotSDK\Conversations\CustomChannels\PublicLocation
+ * @phpstan-import-type PublicContactShape from \HubSpotSDK\Conversations\CustomChannels\PublicContact
+ * @phpstan-import-type PublicUnsupportedContentShape from \HubSpotSDK\Conversations\CustomChannels\PublicUnsupportedContent
+ * @phpstan-import-type PublicMessageHeaderShape from \HubSpotSDK\Conversations\CustomChannels\PublicMessageHeader
+ * @phpstan-import-type PublicQuickRepliesShape from \HubSpotSDK\Conversations\CustomChannels\PublicQuickReplies
+ * @phpstan-import-type PublicWhatsAppTemplateMetadataShape from \HubSpotSDK\Conversations\CustomChannels\PublicWhatsAppTemplateMetadata
+ * @phpstan-import-type PublicSocialMetadataAttachmentShape from \HubSpotSDK\Conversations\CustomChannels\PublicSocialMetadataAttachment
  *
  * @phpstan-type AttachmentVariants = PublicFile|PublicLocation|PublicContact|PublicUnsupportedContent|PublicMessageHeader|PublicQuickReplies|PublicWhatsAppTemplateMetadata|PublicSocialMetadataAttachment
  * @phpstan-type AttachmentShape = AttachmentVariants|PublicFileShape|PublicLocationShape|PublicContactShape|PublicUnsupportedContentShape|PublicMessageHeaderShape|PublicQuickRepliesShape|PublicWhatsAppTemplateMetadataShape|PublicSocialMetadataAttachmentShape

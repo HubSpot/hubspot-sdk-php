@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type Property1Shape from \HubspotSDK\Cms\MediaBridge\Property1
+ * @phpstan-import-type Property1Shape from \HubSpotSDK\Cms\MediaBridge\Property1
  *
  * @phpstan-type CollectionResponsePropertyNoPagingShape = array{
  *   results: list<Property1|Property1Shape>

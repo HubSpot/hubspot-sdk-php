@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\DisplayOption;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\DisplayOption;
 
 /**
  * The type of status.

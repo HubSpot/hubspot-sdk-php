@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\Contains\Input;
-use HubspotSDK\Cms\MediaBridge\Contains\Operator;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\Contains\Input;
+use HubSpotSDK\Cms\MediaBridge\Contains\Operator;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type StringToCheckVariants from \HubspotSDK\Cms\MediaBridge\Contains\StringToCheck
- * @phpstan-import-type StringToCheckShape from \HubspotSDK\Cms\MediaBridge\Contains\StringToCheck
+ * @phpstan-import-type StringToCheckVariants from \HubSpotSDK\Cms\MediaBridge\Contains\StringToCheck
+ * @phpstan-import-type StringToCheckShape from \HubSpotSDK\Cms\MediaBridge\Contains\StringToCheck
  *
  * @phpstan-type ContainsShape = array{
  *   operator: Operator|value-of<Operator>,

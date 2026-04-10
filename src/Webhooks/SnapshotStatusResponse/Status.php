@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks\SnapshotStatusResponse;
+namespace HubSpotSDK\Webhooks\SnapshotStatusResponse;
 
 enum Status: string
 {

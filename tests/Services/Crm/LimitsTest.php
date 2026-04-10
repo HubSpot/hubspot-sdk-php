@@ -2,16 +2,16 @@
 
 namespace Tests\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Limits\AssociationRecordLimitResponse;
-use HubspotSDK\Crm\Limits\CalculatedPropertyLimitResponse;
-use HubspotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPaging;
-use HubspotSDK\Crm\Limits\CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
-use HubspotSDK\Crm\Limits\CustomObjectLimitResponse;
-use HubspotSDK\Crm\Limits\CustomPropertyLimitResponse;
-use HubspotSDK\Crm\Limits\PipelineLimitResponse;
-use HubspotSDK\Crm\Limits\RecordLimitResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Limits\AssociationRecordLimitResponse;
+use HubSpotSDK\Crm\Limits\CalculatedPropertyLimitResponse;
+use HubSpotSDK\Crm\Limits\CollectionResponseAssociationLabelLimitResponseNoPaging;
+use HubSpotSDK\Crm\Limits\CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging;
+use HubSpotSDK\Crm\Limits\CustomObjectLimitResponse;
+use HubSpotSDK\Crm\Limits\CustomPropertyLimitResponse;
+use HubSpotSDK\Crm\Limits\PipelineLimitResponse;
+use HubSpotSDK\Crm\Limits\RecordLimitResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

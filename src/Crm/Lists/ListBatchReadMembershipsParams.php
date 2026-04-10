@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists;
+namespace HubSpotSDK\Crm\Lists;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @see HubspotSDK\Services\Crm\ListsService::batchReadMemberships()
+ * @see HubSpotSDK\Services\Crm\ListsService::batchReadMemberships()
  *
- * @phpstan-import-type RecordIDInputShape from \HubspotSDK\Crm\Lists\RecordIDInput
+ * @phpstan-import-type RecordIDInputShape from \HubSpotSDK\Crm\Lists\RecordIDInput
  *
  * @phpstan-type ListBatchReadMembershipsParamsShape = array{
  *   inputs: list<RecordIDInput|RecordIDInputShape>

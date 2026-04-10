@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Marketing\Campaigns;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\Campaigns\PublicBudgetItem;
-use HubspotSDK\Marketing\Campaigns\PublicBudgetTotals;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\Campaigns\PublicBudgetItem;
+use HubSpotSDK\Marketing\Campaigns\PublicBudgetTotals;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\PublicRssEmailDetails\BlogLayout;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Emails\PublicRssEmailDetails\BlogLayout;
 
 /**
  * @phpstan-type PublicRssEmailDetailsShape = array{
  *   blogEmailType?: string|null,
  *   blogImageMaxWidth?: int|null,
  *   blogLayout?: null|BlogLayout|value-of<BlogLayout>,
- *   hubspotBlogID?: string|null,
+ *   hubSpotBlogID?: string|null,
  *   maxEntries?: int|null,
  *   rssEntryTemplate?: string|null,
  *   timing?: array<string,mixed>|null,
@@ -38,7 +38,7 @@ final class PublicRssEmailDetails implements BaseModel
     public ?string $blogLayout;
 
     #[Optional('hubspotBlogId')]
-    public ?string $hubspotBlogID;
+    public ?string $hubSpotBlogID;
 
     #[Optional]
     public ?int $maxEntries;
@@ -73,7 +73,7 @@ final class PublicRssEmailDetails implements BaseModel
         ?string $blogEmailType = null,
         ?int $blogImageMaxWidth = null,
         BlogLayout|string|null $blogLayout = null,
-        ?string $hubspotBlogID = null,
+        ?string $hubSpotBlogID = null,
         ?int $maxEntries = null,
         ?string $rssEntryTemplate = null,
         ?array $timing = null,
@@ -85,7 +85,7 @@ final class PublicRssEmailDetails implements BaseModel
         null !== $blogEmailType && $self['blogEmailType'] = $blogEmailType;
         null !== $blogImageMaxWidth && $self['blogImageMaxWidth'] = $blogImageMaxWidth;
         null !== $blogLayout && $self['blogLayout'] = $blogLayout;
-        null !== $hubspotBlogID && $self['hubspotBlogID'] = $hubspotBlogID;
+        null !== $hubSpotBlogID && $self['hubSpotBlogID'] = $hubSpotBlogID;
         null !== $maxEntries && $self['maxEntries'] = $maxEntries;
         null !== $rssEntryTemplate && $self['rssEntryTemplate'] = $rssEntryTemplate;
         null !== $timing && $self['timing'] = $timing;
@@ -122,10 +122,10 @@ final class PublicRssEmailDetails implements BaseModel
         return $self;
     }
 
-    public function withHubspotBlogID(string $hubspotBlogID): self
+    public function withHubSpotBlogID(string $hubSpotBlogID): self
     {
         $self = clone $this;
-        $self['hubspotBlogID'] = $hubspotBlogID;
+        $self['hubSpotBlogID'] = $hubSpotBlogID;
 
         return $self;
     }

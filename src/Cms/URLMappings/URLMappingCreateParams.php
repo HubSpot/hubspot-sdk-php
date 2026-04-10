@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\URLMappings;
+namespace HubSpotSDK\Cms\URLMappings;
 
-use HubspotSDK\Cms\URLMappings\URLMappingCreateParams\CosObjectType;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\URLMappings\URLMappingCreateParams\CosObjectType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Create a new URL mapping in your HubSpot account. This endpoint allows you to define URL redirections and mappings, which can be useful for managing site navigation and SEO. The request body must include all required properties of the UrlMapping schema.
  *
- * @see HubspotSDK\Services\Cms\URLMappingsService::create()
+ * @see HubSpotSDK\Services\Cms\URLMappingsService::create()
  *
  * @phpstan-type URLMappingCreateParamsShape = array{
  *   id: int,

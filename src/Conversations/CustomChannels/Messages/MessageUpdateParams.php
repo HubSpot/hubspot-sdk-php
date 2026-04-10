@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\Messages;
+namespace HubSpotSDK\Conversations\CustomChannels\Messages;
 
-use HubspotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Update a message's status to indicate if it was successfully sent, failed to send, or was read. For failed messages, this can also include the error message for the failure.
  *
- * @see HubspotSDK\Services\Conversations\CustomChannels\MessagesService::update()
+ * @see HubSpotSDK\Services\Conversations\CustomChannels\MessagesService::update()
  *
  * @phpstan-type MessageUpdateParamsShape = array{
  *   channelID: int,

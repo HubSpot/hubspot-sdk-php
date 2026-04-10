@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Timeline\AppEventResolutionResponse;
-use HubspotSDK\Crm\Timeline\TimelineEventIFrame;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Timeline\AppEventResolutionResponse;
+use HubSpotSDK\Crm\Timeline\TimelineEventIFrame;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type TimelineEventIFrameShape from \HubspotSDK\Crm\Timeline\TimelineEventIFrame
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type TimelineEventIFrameShape from \HubSpotSDK\Crm\Timeline\TimelineEventIFrame
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface TimelineContract
 {

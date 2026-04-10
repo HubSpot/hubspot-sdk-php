@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams;
+namespace HubSpotSDK\Settings\Currencies\ExchangeRates\ExchangeRateListExchangeRatesParams;
 
 enum ToCurrencyCode: string
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb;
+namespace HubSpotSDK\Cms\Hubdb;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type HubDBTableRowBatchCloneRequestShape from \HubspotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest
+ * @phpstan-import-type HubDBTableRowBatchCloneRequestShape from \HubSpotSDK\Cms\Hubdb\HubDBTableRowBatchCloneRequest
  *
  * @phpstan-type BatchInputHubDBTableRowBatchCloneRequestShape = array{
  *   inputs: list<HubDBTableRowBatchCloneRequest|HubDBTableRowBatchCloneRequestShape>,

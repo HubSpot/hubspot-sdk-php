@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicEventAnalyticsFilter;
+namespace HubSpotSDK\Crm\Lists\PublicEventAnalyticsFilter;
 
 /**
  * Indicates the type of filter being applied (EVENT).

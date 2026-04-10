@@ -2,9 +2,9 @@
 
 namespace Tests\Services\Conversations\CustomChannels;
 
-use HubspotSDK\Client;
-use HubspotSDK\Conversations\CustomChannels\PublicConversationsMessage;
-use HubspotSDK\Core\Util;
+use HubSpotSDK\Client;
+use HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage;
+use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

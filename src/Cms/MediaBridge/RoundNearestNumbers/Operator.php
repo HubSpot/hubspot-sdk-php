@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\RoundNearestNumbers;
+namespace HubSpotSDK\Cms\MediaBridge\RoundNearestNumbers;
 
 enum Operator: string
 {

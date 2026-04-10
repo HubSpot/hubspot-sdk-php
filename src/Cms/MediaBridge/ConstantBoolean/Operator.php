@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\ConstantBoolean;
+namespace HubSpotSDK\Cms\MediaBridge\ConstantBoolean;
 
 enum Operator: string
 {

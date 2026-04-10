@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Hubdb\Tables;
+namespace HubSpotSDK\Cms\Hubdb\Tables;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Returns the details for each draft table defined in the specified account, including column definitions.
  *
- * @see HubspotSDK\Services\Cms\Hubdb\TablesService::listDraft()
+ * @see HubSpotSDK\Services\Cms\Hubdb\TablesService::listDraft()
  *
  * @phpstan-type TableListDraftParamsShape = array{
  *   after?: string|null,

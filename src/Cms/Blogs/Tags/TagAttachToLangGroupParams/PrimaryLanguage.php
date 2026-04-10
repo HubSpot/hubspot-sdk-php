@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams;
+namespace HubSpotSDK\Cms\Blogs\Tags\TagAttachToLangGroupParams;
 
 /**
  * Primary language of the multi-language group.

@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Objects;
+namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubspotSDK\Crm\MultiAssociatedObjectWithLabel;
-use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceGetParams;
-use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceListParams;
-use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceSearchParams;
-use HubspotSDK\Crm\Objects\PartnerServices\PartnerServiceUpdateParams;
-use HubspotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubspotSDK\Crm\SimplePublicObject;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
+use HubSpotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubSpotSDK\Crm\Objects\PartnerServices\PartnerServiceGetParams;
+use HubSpotSDK\Crm\Objects\PartnerServices\PartnerServiceListParams;
+use HubSpotSDK\Crm\Objects\PartnerServices\PartnerServiceSearchParams;
+use HubSpotSDK\Crm\Objects\PartnerServices\PartnerServiceUpdateParams;
+use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
+use HubSpotSDK\Crm\SimplePublicObject;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface PartnerServicesRawContract
 {

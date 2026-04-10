@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions;
+namespace HubSpotSDK\Events\Definitions;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Events\Definitions\MultiStringPropertyOperation\Operator;
-use HubspotSDK\Events\Definitions\MultiStringPropertyOperation\PropertyType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\Operator;
+use HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\PropertyType;
 
 /**
- * @phpstan-import-type CoalescingRefineByVariants from \HubspotSDK\Events\Definitions\MultiStringPropertyOperation\CoalescingRefineBy
- * @phpstan-import-type PruningRefineByVariants from \HubspotSDK\Events\Definitions\MultiStringPropertyOperation\PruningRefineBy
- * @phpstan-import-type CoalescingRefineByShape from \HubspotSDK\Events\Definitions\MultiStringPropertyOperation\CoalescingRefineBy
- * @phpstan-import-type PruningRefineByShape from \HubspotSDK\Events\Definitions\MultiStringPropertyOperation\PruningRefineBy
+ * @phpstan-import-type CoalescingRefineByVariants from \HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByVariants from \HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\PruningRefineBy
+ * @phpstan-import-type CoalescingRefineByShape from \HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\CoalescingRefineBy
+ * @phpstan-import-type PruningRefineByShape from \HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\PruningRefineBy
  *
  * @phpstan-type MultiStringPropertyOperationShape = array{
  *   coalescingRefineBy: CoalescingRefineByShape,

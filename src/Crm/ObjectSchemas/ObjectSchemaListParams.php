@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas;
+namespace HubSpotSDK\Crm\ObjectSchemas;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve all custom object schemas, with options to include property definitions, association definitions, and audit metadata.
  *
- * @see HubspotSDK\Services\Crm\ObjectSchemasService::list()
+ * @see HubSpotSDK\Services\Crm\ObjectSchemasService::list()
  *
  * @phpstan-type ObjectSchemaListParamsShape = array{
  *   archived?: bool|null,

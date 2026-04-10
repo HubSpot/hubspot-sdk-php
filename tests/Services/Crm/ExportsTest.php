@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
-use HubspotSDK\Crm\Exports\PublicExportResponse;
-use HubspotSDK\TaskLocator;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
+use HubSpotSDK\Crm\Exports\PublicExportResponse;
+use HubSpotSDK\TaskLocator;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

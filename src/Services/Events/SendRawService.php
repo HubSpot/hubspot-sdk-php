@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Events;
+namespace HubSpotSDK\Services\Events;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Events\BehavioralEventHTTPCompletionRequest;
-use HubspotSDK\Events\Send\SendBatchSendParams;
-use HubspotSDK\Events\Send\SendSendParams;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Events\SendRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest;
+use HubSpotSDK\Events\Send\SendBatchSendParams;
+use HubSpotSDK\Events\Send\SendSendParams;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Events\SendRawContract;
 
 /**
- * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubspotSDK\Events\BehavioralEventHTTPCompletionRequest
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type BehavioralEventHTTPCompletionRequestShape from \HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class SendRawService implements SendRawContract
 {

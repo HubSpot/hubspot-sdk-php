@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge;
+namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubspotSDK\Cms\MediaBridge\InboundDBObjectType\MetaType;
-use HubspotSDK\Cms\MediaBridge\InboundDBObjectType\PermissioningType;
-use HubspotSDK\Cms\MediaBridge\InboundDBObjectType\Status;
-use HubspotSDK\Cms\MediaBridge\InboundDBObjectType\Visibility;
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\MetaType;
+use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\PermissioningType;
+use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\Status;
+use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\Visibility;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ScopeMappingShape from \HubspotSDK\Cms\MediaBridge\ScopeMapping
+ * @phpstan-import-type ScopeMappingShape from \HubSpotSDK\Cms\MediaBridge\ScopeMapping
  *
  * @phpstan-type InboundDBObjectTypeShape = array{
  *   id: int,

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Scheduler;
+namespace HubSpotSDK\Services\Scheduler;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Scheduler\MeetingsContract;
-use HubspotSDK\Services\Scheduler\Meetings\AdvancedService;
-use HubspotSDK\Services\Scheduler\Meetings\BasicService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Scheduler\MeetingsContract;
+use HubSpotSDK\Services\Scheduler\Meetings\AdvancedService;
+use HubSpotSDK\Services\Scheduler\Meetings\BasicService;
 
 final class MeetingsService implements MeetingsContract
 {

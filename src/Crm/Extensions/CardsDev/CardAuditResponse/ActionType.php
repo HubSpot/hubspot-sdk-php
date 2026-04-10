@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\CardAuditResponse;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\CardAuditResponse;
 
 /**
  * The type of action performed, with possible values: CREATE, DELETE, UPDATE.

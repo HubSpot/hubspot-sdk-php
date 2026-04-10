@@ -1,9 +1,9 @@
 <?php
 
-namespace HubspotSDK\Core\Exceptions;
+namespace HubSpotSDK\Core\Exceptions;
 
 class BadRequestException extends APIStatusException
 {
     /** @var string */
-    protected const DESC = 'HubspotSDK Bad Request Exception';
+    protected const DESC = 'HubSpotSDK Bad Request Exception';
 }

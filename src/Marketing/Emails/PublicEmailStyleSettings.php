@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Emails;
+namespace HubSpotSDK\Marketing\Emails;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\Emails\PublicEmailStyleSettings\BackgroundImageType;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\Emails\PublicEmailStyleSettings\BackgroundImageType;
 
 /**
- * @phpstan-import-type PublicButtonStyleSettingsShape from \HubspotSDK\Marketing\Emails\PublicButtonStyleSettings
- * @phpstan-import-type PublicDividerStyleSettingsShape from \HubspotSDK\Marketing\Emails\PublicDividerStyleSettings
- * @phpstan-import-type PublicFontStyleShape from \HubspotSDK\Marketing\Emails\PublicFontStyle
+ * @phpstan-import-type PublicButtonStyleSettingsShape from \HubSpotSDK\Marketing\Emails\PublicButtonStyleSettings
+ * @phpstan-import-type PublicDividerStyleSettingsShape from \HubSpotSDK\Marketing\Emails\PublicDividerStyleSettings
+ * @phpstan-import-type PublicFontStyleShape from \HubSpotSDK\Marketing\Emails\PublicFontStyle
  *
  * @phpstan-type PublicEmailStyleSettingsShape = array{
  *   backgroundColor?: string|null,

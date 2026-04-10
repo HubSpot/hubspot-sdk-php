@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicPropertyFilter;
+namespace HubSpotSDK\Crm\Lists\PublicPropertyFilter;
 
 /**
  * Indicates that the filter (PROPERTY).

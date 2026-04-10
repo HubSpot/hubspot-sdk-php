@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\MediaBridge\Property;
+namespace HubSpotSDK\Cms\MediaBridge\Property;
 
 /**
  * The data type of the property, such as string or number.

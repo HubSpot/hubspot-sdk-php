@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\Folders;
+namespace HubSpotSDK\Cms\Pages\Folders;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a landing page folder, specified by its ID.
  *
- * @see HubspotSDK\Services\Cms\Pages\FoldersService::get()
+ * @see HubSpotSDK\Services\Cms\Pages\FoldersService::get()
  *
  * @phpstan-type FolderGetParamsShape = array{
  *   archived?: bool|null, property?: string|null

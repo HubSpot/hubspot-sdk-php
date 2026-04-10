@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Meta\Origins;
+namespace HubSpotSDK\Services\Meta\Origins;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams\Direction;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListParams\Service;
-use HubspotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Meta\Origins\IPRangesRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Meta\Origins\CollectionResponseIPRangeNoPaging;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams\Direction;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListParams\Service;
+use HubSpotSDK\Meta\Origins\IPRanges\IPRangeListSimpleParams;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Meta\Origins\IPRangesRawContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class IPRangesRawService implements IPRangesRawContract
 {

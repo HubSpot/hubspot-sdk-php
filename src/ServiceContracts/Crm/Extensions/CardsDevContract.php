@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm\Extensions;
+namespace HubSpotSDK\ServiceContracts\Crm\Extensions;
 
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\Extensions\CardsDev\CardActions;
-use HubspotSDK\Crm\Extensions\CardsDev\CardDisplayBody;
-use HubspotSDK\Crm\Extensions\CardsDev\CardFetchBody;
-use HubspotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch;
-use HubspotSDK\Crm\Extensions\CardsDev\CardMigrateViewsResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\PublicCardListResponse;
-use HubspotSDK\Crm\Extensions\CardsDev\PublicCardResponse;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardActions;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardDisplayBody;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBody;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch;
+use HubSpotSDK\Crm\Extensions\CardsDev\CardMigrateViewsResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\IntegratorCardPayloadResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\PublicCardListResponse;
+use HubSpotSDK\Crm\Extensions\CardsDev\PublicCardResponse;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type CardFetchBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\CardFetchBody
- * @phpstan-import-type CardFetchBodyPatchShape from \HubspotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch
- * @phpstan-import-type CardActionsShape from \HubspotSDK\Crm\Extensions\CardsDev\CardActions
- * @phpstan-import-type CardDisplayBodyShape from \HubspotSDK\Crm\Extensions\CardsDev\CardDisplayBody
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type CardFetchBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBody
+ * @phpstan-import-type CardFetchBodyPatchShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardFetchBodyPatch
+ * @phpstan-import-type CardActionsShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardActions
+ * @phpstan-import-type CardDisplayBodyShape from \HubSpotSDK\Crm\Extensions\CardsDev\CardDisplayBody
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface CardsDevContract
 {

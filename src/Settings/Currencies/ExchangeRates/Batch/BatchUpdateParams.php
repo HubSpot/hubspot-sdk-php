@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Settings\Currencies\ExchangeRates\Batch;
+namespace HubSpotSDK\Settings\Currencies\ExchangeRates\Batch;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Settings\Currencies\ExchangeRateUpdateRequest;
 
 /**
  * Update the conversion rates for multiple exchange rates in a batch operation.
  *
- * @see HubspotSDK\Services\Settings\Currencies\ExchangeRates\BatchService::update()
+ * @see HubSpotSDK\Services\Settings\Currencies\ExchangeRates\BatchService::update()
  *
- * @phpstan-import-type ExchangeRateUpdateRequestShape from \HubspotSDK\Settings\Currencies\ExchangeRateUpdateRequest
+ * @phpstan-import-type ExchangeRateUpdateRequestShape from \HubSpotSDK\Settings\Currencies\ExchangeRateUpdateRequest
  *
  * @phpstan-type BatchUpdateParamsShape = array{
  *   inputs: list<ExchangeRateUpdateRequest|ExchangeRateUpdateRequestShape>

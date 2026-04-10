@@ -2,26 +2,26 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\ActionResponse;
-use HubspotSDK\Client;
-use HubspotSDK\Cms\SourceCode\AssetFileMetadata;
-use HubspotSDK\Cms\SourceCode\SourceCodeCreateParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeDeleteParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeExtractAsyncParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeGetMetadataParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeGetParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeUpsertParams;
-use HubspotSDK\Cms\SourceCode\SourceCodeValidateParams;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\SourceCodeRawContract;
-use HubspotSDK\TaskLocator;
+use HubSpotSDK\ActionResponse;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\SourceCode\AssetFileMetadata;
+use HubSpotSDK\Cms\SourceCode\SourceCodeCreateParams;
+use HubSpotSDK\Cms\SourceCode\SourceCodeDeleteParams;
+use HubSpotSDK\Cms\SourceCode\SourceCodeExtractAsyncParams;
+use HubSpotSDK\Cms\SourceCode\SourceCodeGetMetadataParams;
+use HubSpotSDK\Cms\SourceCode\SourceCodeGetParams;
+use HubSpotSDK\Cms\SourceCode\SourceCodeUpsertParams;
+use HubSpotSDK\Cms\SourceCode\SourceCodeValidateParams;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\SourceCodeRawContract;
+use HubSpotSDK\TaskLocator;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class SourceCodeRawService implements SourceCodeRawContract
 {

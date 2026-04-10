@@ -2,15 +2,15 @@
 
 namespace Tests\Services\Files;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Files\File;
-use HubspotSDK\Files\FileActionResponse;
-use HubspotSDK\Files\FileStat;
-use HubspotSDK\Files\Folder;
-use HubspotSDK\Files\ImportFromURLTaskLocator;
-use HubspotSDK\Files\SignedURL;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Files\File;
+use HubSpotSDK\Files\FileActionResponse;
+use HubSpotSDK\Files\FileStat;
+use HubSpotSDK\Files\Folder;
+use HubSpotSDK\Files\ImportFromURLTaskLocator;
+use HubSpotSDK\Files\SignedURL;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

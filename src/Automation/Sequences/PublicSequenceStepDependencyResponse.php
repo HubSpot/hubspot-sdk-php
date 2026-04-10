@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Sequences;
+namespace HubSpotSDK\Automation\Sequences;
 
-use HubspotSDK\Automation\Sequences\PublicSequenceStepDependencyResponse\DependencyType;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Sequences\PublicSequenceStepDependencyResponse\DependencyType;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type PublicSequenceStepDependencyResponseShape = array{

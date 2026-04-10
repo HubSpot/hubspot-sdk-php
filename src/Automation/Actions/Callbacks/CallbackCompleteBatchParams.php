@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Callbacks;
+namespace HubSpotSDK\Automation\Actions\Callbacks;
 
-use HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Automation\Actions\CallbackCompletionBatchRequest;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Complete a batch of blocked action executions.
  *
- * @see HubspotSDK\Services\Automation\Actions\CallbacksService::completeBatch()
+ * @see HubSpotSDK\Services\Automation\Actions\CallbacksService::completeBatch()
  *
- * @phpstan-import-type CallbackCompletionBatchRequestShape from \HubspotSDK\Automation\Actions\CallbackCompletionBatchRequest
+ * @phpstan-import-type CallbackCompletionBatchRequestShape from \HubSpotSDK\Automation\Actions\CallbackCompletionBatchRequest
  *
  * @phpstan-type CallbackCompleteBatchParamsShape = array{
  *   inputs: list<CallbackCompletionBatchRequest|CallbackCompletionBatchRequestShape>,

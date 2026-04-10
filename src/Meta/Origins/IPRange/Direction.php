@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Meta\Origins\IPRange;
+namespace HubSpotSDK\Meta\Origins\IPRange;
 
 /**
  * The direction of the IP traffic, which can be INGRESS or EGRESS.

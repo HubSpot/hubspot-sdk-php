@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing;
+namespace HubSpotSDK\ServiceContracts\Marketing;
 
 interface TransactionalRawContract {}

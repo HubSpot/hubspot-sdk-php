@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams;
+namespace HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams;
 
 /**
  * Primary language of the multi-language group.

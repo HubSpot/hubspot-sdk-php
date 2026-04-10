@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\FileAssets;
+namespace HubSpotSDK\Files\FileAssets;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Creates a folder.
  *
- * @see HubspotSDK\Services\Files\FileAssetsService::create()
+ * @see HubSpotSDK\Services\Files\FileAssetsService::create()
  *
  * @phpstan-type FileAssetCreateParamsShape = array{
  *   name: string, parentFolderID?: string|null, parentPath?: string|null

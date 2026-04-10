@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams;
+namespace HubSpotSDK\Automation\Actions\Functions\FunctionDeleteByFunctionTypeParams;
 
 enum FunctionType: string
 {

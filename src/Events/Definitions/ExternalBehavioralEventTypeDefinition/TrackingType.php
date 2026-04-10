@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
+namespace HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
 
 enum TrackingType: string
 {

@@ -2,21 +2,21 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Marketing\MarketingEvents;
+namespace HubSpotSDK\ServiceContracts\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Marketing\MarketingEvents\AttendanceCounters;
-use HubspotSDK\Marketing\MarketingEvents\ParticipationBreakdown;
-use HubspotSDK\Marketing\MarketingEvents\Participations\ParticipationGetByExternalAccountAndEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\Participations\ParticipationListBreakdownByContactParams;
-use HubspotSDK\Marketing\MarketingEvents\Participations\ParticipationListBreakdownByExternalAccountAndEventIDParams;
-use HubspotSDK\Marketing\MarketingEvents\Participations\ParticipationListBreakdownByIDParams;
-use HubspotSDK\Page;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Marketing\MarketingEvents\AttendanceCounters;
+use HubSpotSDK\Marketing\MarketingEvents\ParticipationBreakdown;
+use HubSpotSDK\Marketing\MarketingEvents\Participations\ParticipationGetByExternalAccountAndEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\Participations\ParticipationListBreakdownByContactParams;
+use HubSpotSDK\Marketing\MarketingEvents\Participations\ParticipationListBreakdownByExternalAccountAndEventIDParams;
+use HubSpotSDK\Marketing\MarketingEvents\Participations\ParticipationListBreakdownByIDParams;
+use HubSpotSDK\Page;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ParticipationsRawContract
 {

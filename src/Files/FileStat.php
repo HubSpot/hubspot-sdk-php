@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files;
+namespace HubSpotSDK\Files;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type FileShape from \HubspotSDK\Files\File
- * @phpstan-import-type FolderShape from \HubspotSDK\Files\Folder
+ * @phpstan-import-type FileShape from \HubSpotSDK\Files\File
+ * @phpstan-import-type FolderShape from \HubSpotSDK\Files\Folder
  *
  * @phpstan-type FileStatShape = array{
  *   file?: null|File|FileShape, folder?: null|Folder|FolderShape

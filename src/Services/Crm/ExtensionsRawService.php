@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Crm;
+namespace HubSpotSDK\Services\Crm;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Crm\ExtensionsRawContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Crm\ExtensionsRawContract;
 
 final class ExtensionsRawService implements ExtensionsRawContract
 {

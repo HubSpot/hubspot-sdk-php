@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Automation\Actions\IntegerFieldSchema;
+namespace HubSpotSDK\Automation\Actions\IntegerFieldSchema;
 
 /**
  * The type of the field, which is set to INTEGER.

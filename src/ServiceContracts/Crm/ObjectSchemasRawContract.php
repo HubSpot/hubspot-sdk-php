@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\ServiceContracts\Crm;
+namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubspotSDK\AssociationDefinition;
-use HubspotSDK\Core\Contracts\BaseResponse;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchema;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaCreateAssociationParams;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaCreateParams;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaDeleteAssociationParams;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaDeleteParams;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaGetParams;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaListParams;
-use HubspotSDK\Crm\ObjectSchemas\ObjectSchemaUpdateParams;
-use HubspotSDK\ObjectTypeDefinition;
-use HubspotSDK\RequestOptions;
+use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\Core\Contracts\BaseResponse;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchema;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaCreateAssociationParams;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaCreateParams;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaDeleteAssociationParams;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaDeleteParams;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaGetParams;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaListParams;
+use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaUpdateParams;
+use HubSpotSDK\ObjectTypeDefinition;
+use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ObjectSchemasRawContract
 {

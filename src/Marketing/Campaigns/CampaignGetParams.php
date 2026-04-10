@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\Campaigns;
+namespace HubSpotSDK\Marketing\Campaigns;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Get a campaign identified by a specific campaignGuid with the given properties. Along with the campaign information, it also returns information about assets. Depending on the query parameters used, this can also be used to return information about the corresponding assets' metrics. Metrics are available only if startDate and endDate are provided.
  *
- * @see HubspotSDK\Services\Marketing\CampaignsService::get()
+ * @see HubSpotSDK\Services\Marketing\CampaignsService::get()
  *
  * @phpstan-type CampaignGetParamsShape = array{
  *   endDate?: string|null, properties?: list<string>|null, startDate?: string|null

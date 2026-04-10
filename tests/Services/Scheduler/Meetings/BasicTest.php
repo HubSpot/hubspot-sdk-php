@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Scheduler\Meetings;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Page;
-use HubspotSDK\Scheduler\Meetings\ExternalBookingInfo;
-use HubspotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
-use HubspotSDK\Scheduler\Meetings\ExternalLinkMetadata;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Page;
+use HubSpotSDK\Scheduler\Meetings\ExternalBookingInfo;
+use HubSpotSDK\Scheduler\Meetings\ExternalLinkAvailabilityAndBusyTimes;
+use HubSpotSDK\Scheduler\Meetings\ExternalLinkMetadata;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

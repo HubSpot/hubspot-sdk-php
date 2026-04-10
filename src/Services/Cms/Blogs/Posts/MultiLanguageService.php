@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms\Blogs\Posts;
+namespace HubSpotSDK\Services\Cms\Blogs\Posts;
 
-use HubspotSDK\Client;
-use HubspotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
-use HubspotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
-use HubspotSDK\Core\Exceptions\APIException;
-use HubspotSDK\Core\Util;
-use HubspotSDK\RequestOptions;
-use HubspotSDK\ServiceContracts\Cms\Blogs\Posts\MultiLanguageContract;
+use HubSpotSDK\Client;
+use HubSpotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
+use HubSpotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
+use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\RequestOptions;
+use HubSpotSDK\ServiceContracts\Cms\Blogs\Posts\MultiLanguageContract;
 
 /**
- * @phpstan-import-type RequestOpts from \HubspotSDK\RequestOptions
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class MultiLanguageService implements MultiLanguageContract
 {
@@ -138,7 +138,7 @@ final class MultiLanguageService implements MultiLanguageContract
      *
      * Explicitly set new languages for each post in a [multi-language group](https://developers.hubspot.com/docs/guides/cms/content/multi-language-content).
      *
-     * @param array<string,\HubspotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageUpdateLangsParams\Language|value-of<\HubspotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageUpdateLangsParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
+     * @param array<string,\HubSpotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageUpdateLangsParams\Language|value-of<\HubSpotSDK\Cms\Blogs\Posts\MultiLanguage\MultiLanguageUpdateLangsParams\Language>> $languages map of object IDs to associated languages of object in the multi-language group
      * @param string $primaryID ID of the primary object in the multi-language group
      * @param RequestOpts|null $requestOptions
      *

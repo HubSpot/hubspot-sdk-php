@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\Blogs\Authors\BlogAuthor;
+namespace HubSpotSDK\Cms\Blogs\Authors\BlogAuthor;
 
 /**
  * The explicitly defined ISO 639 language code of the blog author.

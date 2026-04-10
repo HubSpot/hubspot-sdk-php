@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties;
+namespace HubSpotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PropertyCreateShape from \HubspotSDK\Crm\Properties\PropertyCreate
+ * @phpstan-import-type PropertyCreateShape from \HubSpotSDK\Crm\Properties\PropertyCreate
  *
  * @phpstan-type BatchInputPropertyCreateShape = array{
  *   inputs: list<PropertyCreate|PropertyCreateShape>

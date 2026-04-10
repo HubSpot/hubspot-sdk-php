@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\URLMappings\URLMappingCreateParams;
+namespace HubSpotSDK\Cms\URLMappings\URLMappingCreateParams;
 
 /**
  * A string representing the type of content object associated with the URL mapping. Valid values include various content types such as 'CONTENT', 'LAYOUT', 'FILE', etc.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks\BatchResponseSubscriptionResponse;
+namespace HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
 
 /**
  * The current status of the batch operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.

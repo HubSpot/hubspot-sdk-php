@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\CommunicationPreferences;
+namespace HubSpotSDK\CommunicationPreferences;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PublicStatusShape from \HubspotSDK\CommunicationPreferences\PublicStatus
+ * @phpstan-import-type PublicStatusShape from \HubSpotSDK\CommunicationPreferences\PublicStatus
  *
  * @phpstan-type PublicStatusBulkResponseShape = array{
  *   statuses: list<PublicStatus|PublicStatusShape>, subscriberIDString: string

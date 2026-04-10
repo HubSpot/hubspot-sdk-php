@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\IndexedTimePoint;
+namespace HubSpotSDK\Events\Definitions\IndexedTimePoint;
 
-use HubspotSDK\Core\Concerns\SdkUnion;
-use HubspotSDK\Core\Conversion\Contracts\Converter;
-use HubspotSDK\Core\Conversion\Contracts\ConverterSource;
-use HubspotSDK\Events\Definitions\FiscalQuarter;
-use HubspotSDK\Events\Definitions\FiscalYear;
-use HubspotSDK\Events\Definitions\MonthReference;
-use HubspotSDK\Events\Definitions\NowReference;
-use HubspotSDK\Events\Definitions\QuarterReference;
-use HubspotSDK\Events\Definitions\TodayReference;
-use HubspotSDK\Events\Definitions\WeekReference;
-use HubspotSDK\Events\Definitions\YearReference;
+use HubSpotSDK\Core\Concerns\SdkUnion;
+use HubSpotSDK\Core\Conversion\Contracts\Converter;
+use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
+use HubSpotSDK\Events\Definitions\FiscalQuarter;
+use HubSpotSDK\Events\Definitions\FiscalYear;
+use HubSpotSDK\Events\Definitions\MonthReference;
+use HubSpotSDK\Events\Definitions\NowReference;
+use HubSpotSDK\Events\Definitions\QuarterReference;
+use HubSpotSDK\Events\Definitions\TodayReference;
+use HubSpotSDK\Events\Definitions\WeekReference;
+use HubSpotSDK\Events\Definitions\YearReference;
 
 /**
- * @phpstan-import-type NowReferenceShape from \HubspotSDK\Events\Definitions\NowReference
- * @phpstan-import-type TodayReferenceShape from \HubspotSDK\Events\Definitions\TodayReference
- * @phpstan-import-type WeekReferenceShape from \HubspotSDK\Events\Definitions\WeekReference
- * @phpstan-import-type MonthReferenceShape from \HubspotSDK\Events\Definitions\MonthReference
- * @phpstan-import-type QuarterReferenceShape from \HubspotSDK\Events\Definitions\QuarterReference
- * @phpstan-import-type FiscalQuarterShape from \HubspotSDK\Events\Definitions\FiscalQuarter
- * @phpstan-import-type YearReferenceShape from \HubspotSDK\Events\Definitions\YearReference
- * @phpstan-import-type FiscalYearShape from \HubspotSDK\Events\Definitions\FiscalYear
+ * @phpstan-import-type NowReferenceShape from \HubSpotSDK\Events\Definitions\NowReference
+ * @phpstan-import-type TodayReferenceShape from \HubSpotSDK\Events\Definitions\TodayReference
+ * @phpstan-import-type WeekReferenceShape from \HubSpotSDK\Events\Definitions\WeekReference
+ * @phpstan-import-type MonthReferenceShape from \HubSpotSDK\Events\Definitions\MonthReference
+ * @phpstan-import-type QuarterReferenceShape from \HubSpotSDK\Events\Definitions\QuarterReference
+ * @phpstan-import-type FiscalQuarterShape from \HubSpotSDK\Events\Definitions\FiscalQuarter
+ * @phpstan-import-type YearReferenceShape from \HubSpotSDK\Events\Definitions\YearReference
+ * @phpstan-import-type FiscalYearShape from \HubSpotSDK\Events\Definitions\FiscalYear
  *
  * @phpstan-type IndexReferenceVariants = NowReference|TodayReference|WeekReference|MonthReference|QuarterReference|FiscalQuarter|YearReference|FiscalYear
  * @phpstan-type IndexReferenceShape = IndexReferenceVariants|NowReferenceShape|TodayReferenceShape|WeekReferenceShape|MonthReferenceShape|QuarterReferenceShape|FiscalQuarterShape|YearReferenceShape|FiscalYearShape

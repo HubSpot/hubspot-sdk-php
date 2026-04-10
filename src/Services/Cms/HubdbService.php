@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Services\Cms;
+namespace HubSpotSDK\Services\Cms;
 
-use HubspotSDK\Client;
-use HubspotSDK\ServiceContracts\Cms\HubdbContract;
-use HubspotSDK\Services\Cms\Hubdb\RowsService;
-use HubspotSDK\Services\Cms\Hubdb\TablesService;
+use HubSpotSDK\Client;
+use HubSpotSDK\ServiceContracts\Cms\HubdbContract;
+use HubSpotSDK\Services\Cms\Hubdb\RowsService;
+use HubSpotSDK\Services\Cms\Hubdb\TablesService;
 
 final class HubdbService implements HubdbContract
 {

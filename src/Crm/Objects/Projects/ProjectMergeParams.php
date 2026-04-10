@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Objects\Projects;
+namespace HubSpotSDK\Crm\Objects\Projects;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Merge two project records. Learn more about [merging records](https://knowledge.hubspot.com/records/merge-records).
  *
- * @see HubspotSDK\Services\Crm\Objects\ProjectsService::merge()
+ * @see HubSpotSDK\Services\Crm\Objects\ProjectsService::merge()
  *
  * @phpstan-type ProjectMergeParamsShape = array{
  *   objectIDToMerge: string, primaryObjectID: string

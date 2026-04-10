@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Files\Folders;
+namespace HubSpotSDK\Files\Folders;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Retrieve a folder by its ID.
  *
- * @see HubspotSDK\Services\Files\FoldersService::getByID()
+ * @see HubSpotSDK\Services\Files\FoldersService::getByID()
  *
  * @phpstan-type FolderGetByIDParamsShape = array{properties?: list<string>|null}
  */

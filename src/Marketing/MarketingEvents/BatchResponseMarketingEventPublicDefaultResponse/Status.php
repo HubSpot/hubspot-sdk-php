@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
+namespace HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponse;
 
 /**
  * Status of the response.

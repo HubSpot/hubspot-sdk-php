@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Marketing\MarketingEvents;
+namespace HubSpotSDK\Marketing\MarketingEvents;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2\Status;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Marketing\MarketingEvents\BatchResponseMarketingEventPublicDefaultResponseV2\Status;
 
 /**
- * @phpstan-import-type MarketingEventPublicDefaultResponseV2Shape from \HubspotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2
+ * @phpstan-import-type MarketingEventPublicDefaultResponseV2Shape from \HubSpotSDK\Marketing\MarketingEvents\MarketingEventPublicDefaultResponseV2
  *
  * @phpstan-type BatchResponseMarketingEventPublicDefaultResponseV2Shape = array{
  *   completedAt: \DateTimeInterface,

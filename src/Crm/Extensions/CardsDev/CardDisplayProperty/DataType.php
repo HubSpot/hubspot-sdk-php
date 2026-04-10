@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Extensions\CardsDev\CardDisplayProperty;
+namespace HubSpotSDK\Crm\Extensions\CardsDev\CardDisplayProperty;
 
 /**
  * Type of data represented by this property.

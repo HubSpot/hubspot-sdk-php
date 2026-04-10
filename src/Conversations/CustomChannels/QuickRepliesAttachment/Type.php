@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
+namespace HubSpotSDK\Conversations\CustomChannels\QuickRepliesAttachment;
 
 enum Type: string
 {

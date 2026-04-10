@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Cms\SiteSearch;
+namespace HubSpotSDK\Cms\SiteSearch;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Return all indexed data for an asset (e.g., page, blog post, HubDB table), specified by ID. This is useful when debugging why a particular asset is not returned from a custom search.
  *
- * @see HubspotSDK\Services\Cms\SiteSearchService::getIndexedData()
+ * @see HubSpotSDK\Services\Cms\SiteSearchService::getIndexedData()
  *
  * @phpstan-type SiteSearchGetIndexedDataParamsShape = array{type?: string|null}
  */

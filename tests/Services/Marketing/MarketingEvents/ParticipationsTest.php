@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Marketing\MarketingEvents;
 
-use HubspotSDK\Client;
-use HubspotSDK\Core\Util;
-use HubspotSDK\Marketing\MarketingEvents\AttendanceCounters;
-use HubspotSDK\Marketing\MarketingEvents\ParticipationBreakdown;
-use HubspotSDK\Page;
+use HubSpotSDK\Client;
+use HubSpotSDK\Core\Util;
+use HubSpotSDK\Marketing\MarketingEvents\AttendanceCounters;
+use HubSpotSDK\Marketing\MarketingEvents\ParticipationBreakdown;
+use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\ObjectSchemas;
+namespace HubSpotSDK\Crm\ObjectSchemas;
 
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Remove an association between two object types identified by the association identifier and object type. This operation is irreversible and will permanently delete the specified association.
  *
- * @see HubspotSDK\Services\Crm\ObjectSchemasService::deleteAssociation()
+ * @see HubSpotSDK\Services\Crm\ObjectSchemasService::deleteAssociation()
  *
  * @phpstan-type ObjectSchemaDeleteAssociationParamsShape = array{
  *   objectType: string

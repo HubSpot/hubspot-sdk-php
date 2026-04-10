@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Webhooks\AssociationSubscriptionUpsertRequest;
+namespace HubSpotSDK\Webhooks\AssociationSubscriptionUpsertRequest;
 
 enum Action: string
 {

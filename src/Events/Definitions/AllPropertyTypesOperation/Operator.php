@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Events\Definitions\AllPropertyTypesOperation;
+namespace HubSpotSDK\Events\Definitions\AllPropertyTypesOperation;
 
 enum Operator: string
 {

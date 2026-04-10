@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties;
+namespace HubSpotSDK\Crm\Properties;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
-use HubspotSDK\Crm\Properties\PropertyGetParams\DataSensitivity;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Properties\PropertyGetParams\DataSensitivity;
 
 /**
  * Read a property identified by {propertyName}.
  *
- * @see HubspotSDK\Services\Crm\PropertiesService::get()
+ * @see HubSpotSDK\Services\Crm\PropertiesService::get()
  *
  * @phpstan-type PropertyGetParamsShape = array{
  *   objectType: string,

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Properties\Groups;
+namespace HubSpotSDK\Crm\Properties\Groups;
 
-use HubspotSDK\Core\Attributes\Optional;
-use HubspotSDK\Core\Attributes\Required;
-use HubspotSDK\Core\Concerns\SdkModel;
-use HubspotSDK\Core\Concerns\SdkParams;
-use HubspotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Attributes\Optional;
+use HubSpotSDK\Core\Attributes\Required;
+use HubSpotSDK\Core\Concerns\SdkModel;
+use HubSpotSDK\Core\Concerns\SdkParams;
+use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * Perform a partial update of a property group identified by {groupName}. Provided fields will be overwritten.
  *
- * @see HubspotSDK\Services\Crm\Properties\GroupsService::update()
+ * @see HubSpotSDK\Services\Crm\Properties\GroupsService::update()
  *
  * @phpstan-type GroupUpdateParamsShape = array{
  *   objectType: string, displayOrder?: int|null, label?: string|null

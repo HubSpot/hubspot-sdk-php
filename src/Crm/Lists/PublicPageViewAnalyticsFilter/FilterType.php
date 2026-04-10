@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubspotSDK\Crm\Lists\PublicPageViewAnalyticsFilter;
+namespace HubSpotSDK\Crm\Lists\PublicPageViewAnalyticsFilter;
 
 /**
  * Indicates the type of filter being applied (PAGE_VIEW).
