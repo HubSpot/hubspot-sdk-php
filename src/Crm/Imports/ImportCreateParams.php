@@ -8,12 +8,13 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\FileParam;
 
 /**
  * @see HubSpotSDK\Services\Crm\ImportsService::create()
  *
  * @phpstan-type ImportCreateParamsShape = array{
- *   files?: string|null, importRequest?: string|null
+ *   files?: string|null|FileParam, importRequest?: string|null
  * }
  */
 final class ImportCreateParams implements BaseModel
@@ -39,7 +40,7 @@ final class ImportCreateParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?string $files = null,
+        string|FileParam|null $files = null,
         ?string $importRequest = null
     ): self {
         $self = new self;
@@ -50,7 +51,7 @@ final class ImportCreateParams implements BaseModel
         return $self;
     }
 
-    public function withFiles(string $files): self
+    public function withFiles(string|FileParam $files): self
     {
         $self = clone $this;
         $self['files'] = $files;

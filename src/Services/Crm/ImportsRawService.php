@@ -8,6 +8,7 @@ use HubSpotSDK\ActionResponse;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Crm\Imports\ImportCreateParams;
 use HubSpotSDK\Crm\Imports\ImportListErrorsParams;
 use HubSpotSDK\Crm\Imports\ImportListParams;
@@ -31,7 +32,9 @@ final class ImportsRawService implements ImportsRawContract
     /**
      * @api
      *
-     * @param array{files?: string, importRequest?: string}|ImportCreateParams $params
+     * @param array{
+     *   files?: string|FileParam, importRequest?: string
+     * }|ImportCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicImportResponse>

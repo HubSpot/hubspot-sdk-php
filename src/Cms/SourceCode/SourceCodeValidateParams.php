@@ -9,6 +9,7 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\FileParam;
 
 /**
  * Validates the file contents passed to the endpoint given a specified path and environment. Accepts multipart/form-data content type.
@@ -16,7 +17,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @see HubSpotSDK\Services\Cms\SourceCodeService::validate()
  *
  * @phpstan-type SourceCodeValidateParamsShape = array{
- *   environment: string, file?: string|null
+ *   environment: string, file?: string|null|FileParam
  * }
  */
 final class SourceCodeValidateParams implements BaseModel
@@ -55,8 +56,10 @@ final class SourceCodeValidateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $environment, ?string $file = null): self
-    {
+    public static function with(
+        string $environment,
+        string|FileParam|null $file = null
+    ): self {
         $self = new self;
 
         $self['environment'] = $environment;
@@ -74,7 +77,7 @@ final class SourceCodeValidateParams implements BaseModel
         return $self;
     }
 
-    public function withFile(string $file): self
+    public function withFile(string|FileParam $file): self
     {
         $self = clone $this;
         $self['file'] = $file;

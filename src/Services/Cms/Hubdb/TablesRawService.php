@@ -24,6 +24,7 @@ use HubSpotSDK\Cms\Hubdb\Tables\TableUnpublishParams;
 use HubSpotSDK\Cms\Hubdb\Tables\TableUpdateDraftParams;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Page;
 use HubSpotSDK\RequestOptions;
@@ -369,7 +370,9 @@ final class TablesRawService implements TablesRawContract
      * Import the contents of a CSV file into an existing HubDB table. The data will always be imported into the draft version of the table. Use the `/publish` endpoint to push these changes to the published version.
      * This endpoint takes a multi-part POST request. The first part will be a set of JSON-formatted options for the import and you can specify this with the name as `config`.  The second part will be the CSV file you want to import and you can specify this with the name as `file`. Refer the [overview section](https://developers.hubspot.com/docs/api/cms/hubdb#importing-tables) to check the details and format of the JSON-formatted options for the import.
      *
-     * @param array{config?: string, file?: string}|TableImportDraftParams $params
+     * @param array{
+     *   config?: string, file?: string|FileParam
+     * }|TableImportDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ImportResult>

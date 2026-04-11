@@ -7,6 +7,7 @@ namespace HubSpotSDK\ServiceContracts\Cms;
 use HubSpotSDK\ActionResponse;
 use HubSpotSDK\Cms\SourceCode\AssetFileMetadata;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\TaskLocator;
 
@@ -22,7 +23,7 @@ interface SourceCodeContract
      *
      * @param string $path Path param
      * @param string $environment Path param
-     * @param string $file Body param
+     * @param string|FileParam $file Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -30,7 +31,7 @@ interface SourceCodeContract
     public function create(
         string $path,
         string $environment,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata;
 
@@ -107,7 +108,7 @@ interface SourceCodeContract
      *
      * @param string $path Path param
      * @param string $environment Path param
-     * @param string $file Body param
+     * @param string|FileParam $file Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -115,7 +116,7 @@ interface SourceCodeContract
     public function upsert(
         string $path,
         string $environment,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata;
 
@@ -124,7 +125,7 @@ interface SourceCodeContract
      *
      * @param string $path Path param
      * @param string $environment Path param
-     * @param string $file Body param
+     * @param string|FileParam $file Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -132,7 +133,7 @@ interface SourceCodeContract
     public function validate(
         string $path,
         string $environment,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
 }

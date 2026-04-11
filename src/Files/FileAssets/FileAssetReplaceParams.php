@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\FileParam;
 
 /**
  * Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.
@@ -15,7 +16,9 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @see HubSpotSDK\Services\Files\FileAssetsService::replace()
  *
  * @phpstan-type FileAssetReplaceParamsShape = array{
- *   charsetHunch?: string|null, file?: string|null, options?: string|null
+ *   charsetHunch?: string|null,
+ *   file?: string|null|FileParam,
+ *   options?: string|null,
  * }
  */
 final class FileAssetReplaceParams implements BaseModel
@@ -45,8 +48,8 @@ final class FileAssetReplaceParams implements BaseModel
      */
     public static function with(
         ?string $charsetHunch = null,
-        ?string $file = null,
-        ?string $options = null
+        string|FileParam|null $file = null,
+        ?string $options = null,
     ): self {
         $self = new self;
 
@@ -65,7 +68,7 @@ final class FileAssetReplaceParams implements BaseModel
         return $self;
     }
 
-    public function withFile(string $file): self
+    public function withFile(string|FileParam $file): self
     {
         $self = clone $this;
         $self['file'] = $file;

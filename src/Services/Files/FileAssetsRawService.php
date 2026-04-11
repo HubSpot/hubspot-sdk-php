@@ -7,6 +7,7 @@ namespace HubSpotSDK\Services\Files;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Files\File;
 use HubSpotSDK\Files\FileActionResponse;
@@ -335,7 +336,7 @@ final class FileAssetsRawService implements FileAssetsRawContract
      * Replace existing file data with new file data. Can be used to change image content without having to upload a new file and update all references.
      *
      * @param array{
-     *   charsetHunch?: string, file?: string, options?: string
+     *   charsetHunch?: string, file?: string|FileParam, options?: string
      * }|FileAssetReplaceParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -443,7 +444,7 @@ final class FileAssetsRawService implements FileAssetsRawContract
      *
      * @param array{
      *   charsetHunch?: string,
-     *   file?: string,
+     *   file?: string|FileParam,
      *   fileName?: string,
      *   folderID?: string,
      *   folderPath?: string,

@@ -9,6 +9,7 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\FileParam;
 
 /**
  * Upserts a file at the specified path in the specified environment. Accepts multipart/form-data content type.
@@ -16,7 +17,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @see HubSpotSDK\Services\Cms\SourceCodeService::upsert()
  *
  * @phpstan-type SourceCodeUpsertParamsShape = array{
- *   environment: string, file?: string|null
+ *   environment: string, file?: string|null|FileParam
  * }
  */
 final class SourceCodeUpsertParams implements BaseModel
@@ -55,8 +56,10 @@ final class SourceCodeUpsertParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $environment, ?string $file = null): self
-    {
+    public static function with(
+        string $environment,
+        string|FileParam|null $file = null
+    ): self {
         $self = new self;
 
         $self['environment'] = $environment;
@@ -74,7 +77,7 @@ final class SourceCodeUpsertParams implements BaseModel
         return $self;
     }
 
-    public function withFile(string $file): self
+    public function withFile(string|FileParam $file): self
     {
         $self = clone $this;
         $self['file'] = $file;
