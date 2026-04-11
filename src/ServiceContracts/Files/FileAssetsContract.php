@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\ServiceContracts\Files;
 
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Files\File;
 use HubSpotSDK\Files\FileActionResponse;
 use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
@@ -185,7 +186,7 @@ interface FileAssetsContract
     public function replace(
         string $fileID,
         ?string $charsetHunch = null,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         ?string $options = null,
         RequestOptions|array|null $requestOptions = null,
     ): File;
@@ -254,7 +255,7 @@ interface FileAssetsContract
      */
     public function upload(
         ?string $charsetHunch = null,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         ?string $fileName = null,
         ?string $folderID = null,
         ?string $folderPath = null,

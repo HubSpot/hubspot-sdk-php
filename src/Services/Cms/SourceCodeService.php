@@ -8,6 +8,7 @@ use HubSpotSDK\ActionResponse;
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\SourceCode\AssetFileMetadata;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Cms\SourceCodeContract;
@@ -40,7 +41,7 @@ final class SourceCodeService implements SourceCodeContract
      *
      * @param string $path Path param
      * @param string $environment Path param
-     * @param string $file Body param
+     * @param string|FileParam $file Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -48,7 +49,7 @@ final class SourceCodeService implements SourceCodeContract
     public function create(
         string $path,
         string $environment,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata {
         $params = Util::removeNulls(
@@ -181,7 +182,7 @@ final class SourceCodeService implements SourceCodeContract
      *
      * @param string $path Path param
      * @param string $environment Path param
-     * @param string $file Body param
+     * @param string|FileParam $file Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -189,7 +190,7 @@ final class SourceCodeService implements SourceCodeContract
     public function upsert(
         string $path,
         string $environment,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         RequestOptions|array|null $requestOptions = null,
     ): AssetFileMetadata {
         $params = Util::removeNulls(
@@ -209,7 +210,7 @@ final class SourceCodeService implements SourceCodeContract
      *
      * @param string $path Path param
      * @param string $environment Path param
-     * @param string $file Body param
+     * @param string|FileParam $file Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -217,7 +218,7 @@ final class SourceCodeService implements SourceCodeContract
     public function validate(
         string $path,
         string $environment,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(
