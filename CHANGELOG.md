@@ -2,6 +2,14 @@
 
 ## 0.1.0-alpha.1 (2026-04-13)
 
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.1](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.1.0-alpha.1...v0.1.0-alpha.1)
+
+### Features
+
+* **api:** manual updates ([b7cbf5e](https://github.com/HubSpot/hubspot-sdk-php/commit/b7cbf5ec84bfc659ccb17e145d304e072d26fe35))
+
+## 0.1.0-alpha.1 (2026-04-13)
+
 Full Changelog: [v0.0.1...v0.1.0-alpha.1](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.0.1...v0.1.0-alpha.1)
 
 ### ⚠ BREAKING CHANGES
