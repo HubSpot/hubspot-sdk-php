@@ -10,22 +10,10 @@ The REST API documentation can be found on [developers.hubspot.com](https://deve
 
 ## Installation
 
-To use this package, install via Composer by adding the following to your application's `composer.json`:
-
 <!-- x-release-please-start-version -->
 
-```json
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:HubSpot/hubspot-sdk-php.git"
-    }
-  ],
-  "require": {
-    "hubspot/sdk": "dev-main"
-  }
-}
+```
+composer require "hubspot/sdk 0.1.0-alpha.2"
 ```
 
 <!-- x-release-please-end -->
