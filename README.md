@@ -23,7 +23,7 @@ To use this package, install via Composer by adding the following to your applic
     }
   ],
   "require": {
-    "hubspot/hubspot-sdk": "dev-main"
+    "hubspot/sdk": "dev-main"
   }
 }
 ```
