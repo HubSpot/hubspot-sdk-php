@@ -16,6 +16,7 @@ use HubSpotSDK\Cms\SourceCode\SourceCodeUpsertParams;
 use HubSpotSDK\Cms\SourceCode\SourceCodeValidateParams;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Cms\SourceCodeRawContract;
 use HubSpotSDK\TaskLocator;
@@ -39,7 +40,9 @@ final class SourceCodeRawService implements SourceCodeRawContract
      * Creates a file at the specified path in the specified environment. Accepts multipart/form-data content type. Throws an error if a file already exists at the specified path.
      *
      * @param string $path Path param
-     * @param array{environment: string, file?: string}|SourceCodeCreateParams $params
+     * @param array{
+     *   environment: string, file?: string|FileParam
+     * }|SourceCodeCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssetFileMetadata>
@@ -236,7 +239,9 @@ final class SourceCodeRawService implements SourceCodeRawContract
      * Upserts a file at the specified path in the specified environment. Accepts multipart/form-data content type.
      *
      * @param string $path Path param
-     * @param array{environment: string, file?: string}|SourceCodeUpsertParams $params
+     * @param array{
+     *   environment: string, file?: string|FileParam
+     * }|SourceCodeUpsertParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<AssetFileMetadata>
@@ -273,7 +278,7 @@ final class SourceCodeRawService implements SourceCodeRawContract
      *
      * @param string $path Path param
      * @param array{
-     *   environment: string, file?: string
+     *   environment: string, file?: string|FileParam
      * }|SourceCodeValidateParams $params
      * @param RequestOpts|null $requestOptions
      *

@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\FileParam;
 
 /**
  * Import the contents of a CSV file into an existing HubDB table. The data will always be imported into the draft version of the table. Use the `/publish` endpoint to push these changes to the published version.
@@ -16,7 +17,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @see HubSpotSDK\Services\Cms\Hubdb\TablesService::importDraft()
  *
  * @phpstan-type TableImportDraftParamsShape = array{
- *   config?: string|null, file?: string|null
+ *   config?: string|null, file?: string|null|FileParam
  * }
  */
 final class TableImportDraftParams implements BaseModel
@@ -43,7 +44,7 @@ final class TableImportDraftParams implements BaseModel
      */
     public static function with(
         ?string $config = null,
-        ?string $file = null
+        string|FileParam|null $file = null
     ): self {
         $self = new self;
 
@@ -61,7 +62,7 @@ final class TableImportDraftParams implements BaseModel
         return $self;
     }
 
-    public function withFile(string $file): self
+    public function withFile(string|FileParam $file): self
     {
         $self = clone $this;
         $self['file'] = $file;

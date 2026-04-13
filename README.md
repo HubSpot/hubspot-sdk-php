@@ -12,12 +12,14 @@ The REST API documentation can be found on [developers.hubspot.com](https://deve
 
 To use this package, install via Composer by adding the following to your application's `composer.json`:
 
+<!-- x-release-please-start-version -->
+
 ```json
 {
   "repositories": [
     {
       "type": "vcs",
-      "url": "git@github.com:stainless-sdks/hubspot-sdk-php.git"
+      "url": "git@github.com:HubSpot/hubspot-sdk-php.git"
     }
   ],
   "require": {
@@ -25,6 +27,8 @@ To use this package, install via Composer by adding the following to your applic
   }
 }
 ```
+
+<!-- x-release-please-end -->
 
 ## Usage
 
@@ -160,6 +164,40 @@ $result = $client->crm->objects->contacts->create(
 );
 ```
 
+### File uploads
+
+Request parameters that correspond to file uploads can be passed as a resource returned by `fopen()`, a string of file contents, or a `FileParam` instance.
+
+```php
+<?php
+
+use HubSpotSDK\Core\FileParam;
+
+// Pass a string with filename and content type:
+$contents = file_get_contents('/path/to/file');
+// Pass a string with filename and content type:
+$importResult = $client->cms->hubdb->tables->importDraft(
+  'tableIdOrName',
+  file: FileParam::fromString($contents, filename: '/path/to/file', contentType: '…'),
+);
+
+// Pass in only a string (where applicable)
+$importResult = $client->cms->hubdb->tables->importDraft(
+  'tableIdOrName', file: '…'
+);
+
+// Pass an open resource:
+$fd = fopen('/path/to/file', 'r');
+try {
+  $importResult = $client->cms->hubdb->tables->importDraft(
+    'tableIdOrName',
+    file: FileParam::fromResource($fd, filename: '/path/to/file', contentType: '…'),
+  );
+} finally {
+  fclose($fd);
+}
+```
+
 ## Advanced concepts
 
 ### Making custom or undocumented requests
@@ -223,4 +261,4 @@ PHP 8.1.0 or higher.
 
 ## Contributing
 
-See [the contributing documentation](https://github.com/stainless-sdks/hubspot-sdk-php/tree/main/CONTRIBUTING.md).
+See [the contributing documentation](https://github.com/HubSpot/hubspot-sdk-php/tree/main/CONTRIBUTING.md).

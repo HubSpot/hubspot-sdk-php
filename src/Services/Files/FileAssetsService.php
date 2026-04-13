@@ -6,6 +6,7 @@ namespace HubSpotSDK\Services\Files;
 
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Files\File;
 use HubSpotSDK\Files\FileActionResponse;
@@ -313,7 +314,7 @@ final class FileAssetsService implements FileAssetsContract
     public function replace(
         string $fileID,
         ?string $charsetHunch = null,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         ?string $options = null,
         RequestOptions|array|null $requestOptions = null,
     ): File {
@@ -441,7 +442,7 @@ final class FileAssetsService implements FileAssetsContract
      */
     public function upload(
         ?string $charsetHunch = null,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         ?string $fileName = null,
         ?string $folderID = null,
         ?string $folderPath = null,

@@ -5,6 +5,7 @@ namespace Tests\Services\Cms;
 use HubSpotSDK\ActionResponse;
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\SourceCode\AssetFileMetadata;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\TaskLocator;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -56,7 +57,7 @@ final class SourceCodeTest extends TestCase
         $result = $this->client->cms->sourceCode->create(
             'path',
             environment: 'environment',
-            file: 'file'
+            file: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -225,7 +226,7 @@ final class SourceCodeTest extends TestCase
         $result = $this->client->cms->sourceCode->upsert(
             'path',
             environment: 'environment',
-            file: 'file'
+            file: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -258,7 +259,7 @@ final class SourceCodeTest extends TestCase
         $result = $this->client->cms->sourceCode->validate(
             'path',
             environment: 'environment',
-            file: 'file'
+            file: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

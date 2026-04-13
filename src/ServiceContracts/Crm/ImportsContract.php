@@ -6,6 +6,7 @@ namespace HubSpotSDK\ServiceContracts\Crm;
 
 use HubSpotSDK\ActionResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Crm\Imports\PublicImportError;
 use HubSpotSDK\Crm\Imports\PublicImportResponse;
 use HubSpotSDK\Page;
@@ -24,7 +25,7 @@ interface ImportsContract
      * @throws APIException
      */
     public function create(
-        ?string $files = null,
+        string|FileParam|null $files = null,
         ?string $importRequest = null,
         RequestOptions|array|null $requestOptions = null,
     ): PublicImportResponse;

@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\FileParam;
 
 /**
  * Upload a single file with content specified in request body.
@@ -16,7 +17,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type FileAssetUploadParamsShape = array{
  *   charsetHunch?: string|null,
- *   file?: string|null,
+ *   file?: string|null|FileParam,
  *   fileName?: string|null,
  *   folderID?: string|null,
  *   folderPath?: string|null,
@@ -59,7 +60,7 @@ final class FileAssetUploadParams implements BaseModel
      */
     public static function with(
         ?string $charsetHunch = null,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         ?string $fileName = null,
         ?string $folderID = null,
         ?string $folderPath = null,
@@ -85,7 +86,7 @@ final class FileAssetUploadParams implements BaseModel
         return $self;
     }
 
-    public function withFile(string $file): self
+    public function withFile(string|FileParam $file): self
     {
         $self = clone $this;
         $self['file'] = $file;

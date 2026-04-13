@@ -8,6 +8,7 @@ use HubSpotSDK\Cms\Hubdb\ColumnRequest;
 use HubSpotSDK\Cms\Hubdb\HubDBTableV3;
 use HubSpotSDK\Cms\Hubdb\ImportResult;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Page;
 use HubSpotSDK\RequestOptions;
 
@@ -186,7 +187,7 @@ interface TablesContract
     public function importDraft(
         string $tableIDOrName,
         ?string $config = null,
-        ?string $file = null,
+        string|FileParam|null $file = null,
         RequestOptions|array|null $requestOptions = null,
     ): ImportResult;
 
