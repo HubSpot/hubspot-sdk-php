@@ -27,7 +27,7 @@
     "sort-packages": true
   },
   "description": "HubSpot PHP SDK",
-  "name": "hubspot/hubspot-sdk",
+  "name": "hubspot/sdk",
   "require": {
     "php": "^8.1",
     "php-http/discovery": "^1",
