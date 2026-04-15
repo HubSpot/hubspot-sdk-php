@@ -11,9 +11,9 @@ use HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest;
 use HubSpotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate;
 use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
 use HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
-use HubSpotSDK\Events\Definitions\Property;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\Page;
+use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Events\DefinitionsContract;
 

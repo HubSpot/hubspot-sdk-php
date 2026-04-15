@@ -151,6 +151,8 @@ enum HsEngagementSource: string
 
     case MARKETPLACE = 'MARKETPLACE';
 
+    case MARKETS = 'MARKETS';
+
     case MEETINGS = 'MEETINGS';
 
     case MERGE_COMPANIES = 'MERGE_COMPANIES';
@@ -198,6 +200,8 @@ enum HsEngagementSource: string
     case RECYCLING_BIN = 'RECYCLING_BIN';
 
     case RESTORE_OBJECTS = 'RESTORE_OBJECTS';
+
+    case REVENUE_PLATFORM = 'REVENUE_PLATFORM';
 
     case SALES = 'SALES';
 

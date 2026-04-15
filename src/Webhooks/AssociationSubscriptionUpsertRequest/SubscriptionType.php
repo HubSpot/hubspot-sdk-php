@@ -15,4 +15,6 @@ enum SubscriptionType: string
     case APP_LIFECYCLE_EVENT = 'APP_LIFECYCLE_EVENT';
 
     case LIST_MEMBERSHIP = 'LIST_MEMBERSHIP';
+
+    case GDPR_PRIVACY_DELETION = 'GDPR_PRIVACY_DELETION';
 }

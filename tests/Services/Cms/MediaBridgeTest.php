@@ -334,6 +334,7 @@ final class MediaBridgeTest extends TestCase
             name: 'name',
             type: 'bool',
             calculationFormula: 'calculationFormula',
+            currencyPropertyName: 'currencyPropertyName',
             dataSensitivity: 'highly_sensitive',
             description: 'description',
             displayOrder: 0,
@@ -341,6 +342,7 @@ final class MediaBridgeTest extends TestCase
             formField: true,
             hasUniqueValue: true,
             hidden: true,
+            numberDisplayHint: 'currency',
             options: [
                 [
                     'displayOrder' => 0,
@@ -351,6 +353,7 @@ final class MediaBridgeTest extends TestCase
                 ],
             ],
             referencedObjectType: 'referencedObjectType',
+            showCurrencySymbol: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -944,6 +947,7 @@ final class MediaBridgeTest extends TestCase
             appID: 0,
             objectType: 'objectType',
             calculationFormula: 'calculationFormula',
+            currencyPropertyName: 'currencyPropertyName',
             description: 'description',
             displayOrder: 0,
             fieldType: 'booleancheckbox',
@@ -952,6 +956,7 @@ final class MediaBridgeTest extends TestCase
             hasUniqueValue: true,
             hidden: true,
             label: 'label',
+            numberDisplayHint: 'currency',
             options: [
                 [
                     'displayOrder' => 0,
@@ -961,6 +966,7 @@ final class MediaBridgeTest extends TestCase
                     'description' => 'description',
                 ],
             ],
+            showCurrencySymbol: true,
             type: 'bool',
         );
 

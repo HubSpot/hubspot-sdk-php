@@ -11,13 +11,14 @@ use HubSpotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\FieldType;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams\NumberDisplayHint;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\Type;
 use HubSpotSDK\Crm\Properties\PropertyDeleteParams;
 use HubSpotSDK\Crm\Properties\PropertyGetParams;
 use HubSpotSDK\Crm\Properties\PropertyListParams;
 use HubSpotSDK\Crm\Properties\PropertyUpdateParams;
-use HubSpotSDK\Crm\Property;
 use HubSpotSDK\OptionInput;
+use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\PropertiesRawContract;
 
@@ -53,6 +54,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *   formField?: bool,
      *   hasUniqueValue?: bool,
      *   hidden?: bool,
+     *   numberDisplayHint?: NumberDisplayHint|value-of<NumberDisplayHint>,
      *   options?: list<OptionInput|OptionInputShape>,
      *   referencedObjectType?: string,
      *   showCurrencySymbol?: bool,
@@ -100,6 +102,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *   groupName?: string,
      *   hidden?: bool,
      *   label?: string,
+     *   numberDisplayHint?: PropertyUpdateParams\NumberDisplayHint|value-of<PropertyUpdateParams\NumberDisplayHint>,
      *   options?: list<OptionInput|OptionInputShape>,
      *   showCurrencySymbol?: bool,
      *   type?: PropertyUpdateParams\Type|value-of<PropertyUpdateParams\Type>,

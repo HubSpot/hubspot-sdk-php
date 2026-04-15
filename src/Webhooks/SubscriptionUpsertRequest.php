@@ -13,9 +13,10 @@ use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type AssociationSubscriptionUpsertRequestShape from \HubSpotSDK\Webhooks\AssociationSubscriptionUpsertRequest
  * @phpstan-import-type AppLifecycleEventSubscriptionUpsertRequestShape from \HubSpotSDK\Webhooks\AppLifecycleEventSubscriptionUpsertRequest
  * @phpstan-import-type ListMembershipSubscriptionUpsertRequestShape from \HubSpotSDK\Webhooks\ListMembershipSubscriptionUpsertRequest
+ * @phpstan-import-type GdprPrivacyDeletionSubscriptionUpsertRequestShape from \HubSpotSDK\Webhooks\GdprPrivacyDeletionSubscriptionUpsertRequest
  *
- * @phpstan-type SubscriptionUpsertRequestVariants = ObjectSubscriptionUpsertRequest|AssociationSubscriptionUpsertRequest|AppLifecycleEventSubscriptionUpsertRequest|ListMembershipSubscriptionUpsertRequest
- * @phpstan-type SubscriptionUpsertRequestShape = SubscriptionUpsertRequestVariants|ObjectSubscriptionUpsertRequestShape|AssociationSubscriptionUpsertRequestShape|AppLifecycleEventSubscriptionUpsertRequestShape|ListMembershipSubscriptionUpsertRequestShape
+ * @phpstan-type SubscriptionUpsertRequestVariants = ObjectSubscriptionUpsertRequest|AssociationSubscriptionUpsertRequest|AppLifecycleEventSubscriptionUpsertRequest|ListMembershipSubscriptionUpsertRequest|GdprPrivacyDeletionSubscriptionUpsertRequest
+ * @phpstan-type SubscriptionUpsertRequestShape = SubscriptionUpsertRequestVariants|ObjectSubscriptionUpsertRequestShape|AssociationSubscriptionUpsertRequestShape|AppLifecycleEventSubscriptionUpsertRequestShape|ListMembershipSubscriptionUpsertRequestShape|GdprPrivacyDeletionSubscriptionUpsertRequestShape
  */
 final class SubscriptionUpsertRequest implements ConverterSource
 {
@@ -31,6 +32,7 @@ final class SubscriptionUpsertRequest implements ConverterSource
             AssociationSubscriptionUpsertRequest::class,
             AppLifecycleEventSubscriptionUpsertRequest::class,
             ListMembershipSubscriptionUpsertRequest::class,
+            GdprPrivacyDeletionSubscriptionUpsertRequest::class,
         ];
     }
 }

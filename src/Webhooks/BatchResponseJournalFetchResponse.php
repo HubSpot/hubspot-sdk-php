@@ -27,24 +27,45 @@ final class BatchResponseJournalFetchResponse implements BaseModel
     /** @use SdkModel<BatchResponseJournalFetchResponseShape> */
     use SdkModel;
 
+    /**
+     * The date and time when the batch operation was completed, in ISO 8601 format.
+     */
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<JournalFetchResponse> $results */
+    /**
+     * An array of journal fetch responses, each containing details about individual journal entries.
+     *
+     * @var list<JournalFetchResponse> $results
+     */
     #[Required(list: JournalFetchResponse::class)]
     public array $results;
 
+    /**
+     * The date and time when the batch operation started, in ISO 8601 format.
+     */
     #[Required]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
+     *
+     * @var value-of<Status> $status
+     */
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var array<string,string>|null $links */
+    /**
+     * A map of link names to associated URIs, providing additional resources or documentation related to the batch operation.
+     *
+     * @var array<string,string>|null $links
+     */
     #[Optional(map: 'string')]
     public ?array $links;
 
+    /**
+     * The date and time when the batch operation was requested, in ISO 8601 format.
+     */
     #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
@@ -103,6 +124,9 @@ final class BatchResponseJournalFetchResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time when the batch operation was completed, in ISO 8601 format.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $self = clone $this;
@@ -112,6 +136,8 @@ final class BatchResponseJournalFetchResponse implements BaseModel
     }
 
     /**
+     * An array of journal fetch responses, each containing details about individual journal entries.
+     *
      * @param list<JournalFetchResponse|JournalFetchResponseShape> $results
      */
     public function withResults(array $results): self
@@ -122,6 +148,9 @@ final class BatchResponseJournalFetchResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time when the batch operation started, in ISO 8601 format.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $self = clone $this;
@@ -131,6 +160,8 @@ final class BatchResponseJournalFetchResponse implements BaseModel
     }
 
     /**
+     * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -142,6 +173,8 @@ final class BatchResponseJournalFetchResponse implements BaseModel
     }
 
     /**
+     * A map of link names to associated URIs, providing additional resources or documentation related to the batch operation.
+     *
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
@@ -152,6 +185,9 @@ final class BatchResponseJournalFetchResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time when the batch operation was requested, in ISO 8601 format.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $self = clone $this;

@@ -28,6 +28,7 @@ use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyGroupParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\NumberDisplayHint;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeDeleteAssociationParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeDeleteOembedDomainParams;
@@ -350,6 +351,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *   name: string,
      *   type: Type|value-of<Type>,
      *   calculationFormula?: string,
+     *   currencyPropertyName?: string,
      *   dataSensitivity?: DataSensitivity|value-of<DataSensitivity>,
      *   description?: string,
      *   displayOrder?: int,
@@ -357,8 +359,10 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *   formField?: bool,
      *   hasUniqueValue?: bool,
      *   hidden?: bool,
+     *   numberDisplayHint?: NumberDisplayHint|value-of<NumberDisplayHint>,
      *   options?: list<OptionInput|OptionInputShape>,
      *   referencedObjectType?: string,
+     *   showCurrencySymbol?: bool,
      * }|MediaBridgeCreatePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -1103,6 +1107,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *   appID: int,
      *   objectType: string,
      *   calculationFormula?: string,
+     *   currencyPropertyName?: string,
      *   description?: string,
      *   displayOrder?: int,
      *   fieldType?: value-of<MediaBridgeUpdatePropertyParams\FieldType>,
@@ -1111,7 +1116,9 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *   hasUniqueValue?: bool,
      *   hidden?: bool,
      *   label?: string,
+     *   numberDisplayHint?: MediaBridgeUpdatePropertyParams\NumberDisplayHint|value-of<MediaBridgeUpdatePropertyParams\NumberDisplayHint>,
      *   options?: list<OptionInput|OptionInputShape>,
+     *   showCurrencySymbol?: bool,
      *   type?: MediaBridgeUpdatePropertyParams\Type|value-of<MediaBridgeUpdatePropertyParams\Type>,
      * }|MediaBridgeUpdatePropertyParams $params
      * @param RequestOpts|null $requestOptions

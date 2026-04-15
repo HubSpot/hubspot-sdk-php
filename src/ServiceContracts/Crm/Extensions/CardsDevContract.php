@@ -27,6 +27,7 @@ interface CardsDevContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param CardActions|CardActionsShape $actions
      * @param CardDisplayBody|CardDisplayBodyShape $display
      * @param CardFetchBody|CardFetchBodyShape $fetch
@@ -48,7 +49,7 @@ interface CardsDevContract
      * @api
      *
      * @param string $cardID Path param
-     * @param int $appID Path param
+     * @param int $appID Path param: The appId of the app containing the Legacy CRM Card(s)
      * @param CardActions|CardActionsShape $actions Body param
      * @param CardDisplayBody|CardDisplayBodyShape $display Body param
      * @param CardFetchBodyPatch|CardFetchBodyPatchShape $fetch Body param
@@ -70,6 +71,7 @@ interface CardsDevContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -83,6 +85,7 @@ interface CardsDevContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -95,6 +98,7 @@ interface CardsDevContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -119,12 +123,14 @@ interface CardsDevContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function migrateViews(
         int $appID,
+        bool $allowDuplicateAppCardIDs,
         int $appCardID,
         int $legacyCrmCardID,
         ?int $helpdeskAppCardID = null,

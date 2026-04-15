@@ -28,13 +28,13 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     use SdkModel;
 
     /**
-     * The date and time when the batch operation was completed.
+     * The date and time when the batch operation was completed, in ISO 8601 format.
      */
     #[Required]
     public \DateTimeInterface $completedAt;
 
     /**
-     * The list of results from the batch operation.
+     * An array of SubscriptionResponse objects, each representing the result of an individual subscription update within the batch operation.
      *
      * @var list<SubscriptionResponse> $results
      */
@@ -42,13 +42,13 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     public array $results;
 
     /**
-     * The date and time when the batch operation started.
+     * The date and time when the batch operation started, in ISO 8601 format.
      */
     #[Required]
     public \DateTimeInterface $startedAt;
 
     /**
-     * The current status of the batch operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
      *
      * @var value-of<Status> $status
      */
@@ -56,7 +56,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     public string $status;
 
     /**
-     * A collection of related links associated with the batch operation.
+     * A map of link names to associated URIs, providing additional information or resources related to the batch operation.
      *
      * @var array<string,string>|null $links
      */
@@ -64,7 +64,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     public ?array $links;
 
     /**
-     * The date and time when the batch operation was requested.
+     * The date and time when the batch operation was requested, in ISO 8601 format.
      */
     #[Optional]
     public ?\DateTimeInterface $requestedAt;
@@ -125,7 +125,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     }
 
     /**
-     * The date and time when the batch operation was completed.
+     * The date and time when the batch operation was completed, in ISO 8601 format.
      */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
@@ -136,7 +136,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     }
 
     /**
-     * The list of results from the batch operation.
+     * An array of SubscriptionResponse objects, each representing the result of an individual subscription update within the batch operation.
      *
      * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      */
@@ -149,7 +149,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     }
 
     /**
-     * The date and time when the batch operation started.
+     * The date and time when the batch operation started, in ISO 8601 format.
      */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
@@ -160,7 +160,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     }
 
     /**
-     * The current status of the batch operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+     * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
      *
      * @param Status|value-of<Status> $status
      */
@@ -173,7 +173,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     }
 
     /**
-     * A collection of related links associated with the batch operation.
+     * A map of link names to associated URIs, providing additional information or resources related to the batch operation.
      *
      * @param array<string,string> $links
      */
@@ -186,7 +186,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     }
 
     /**
-     * The date and time when the batch operation was requested.
+     * The date and time when the batch operation was requested, in ISO 8601 format.
      */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {

@@ -28,7 +28,11 @@ final class BatchReadParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<Channel> $channel */
+    /**
+     * The communication channel to filter the subscription statuses. Must be 'EMAIL'.
+     *
+     * @var value-of<Channel> $channel
+     */
     #[Required(enum: Channel::class)]
     public string $channel;
 
@@ -40,6 +44,9 @@ final class BatchReadParams implements BaseModel
     #[Required(list: 'string')]
     public array $inputs;
 
+    /**
+     * An optional integer representing the business unit ID. This parameter helps to filter the results based on the specific business unit.
+     */
     #[Optional]
     public ?int $businessUnitID;
 
@@ -86,6 +93,8 @@ final class BatchReadParams implements BaseModel
     }
 
     /**
+     * The communication channel to filter the subscription statuses. Must be 'EMAIL'.
+     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -109,6 +118,9 @@ final class BatchReadParams implements BaseModel
         return $self;
     }
 
+    /**
+     * An optional integer representing the business unit ID. This parameter helps to filter the results based on the specific business unit.
+     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;

@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Properties\PropertyUpdate\FieldType;
+use HubSpotSDK\Crm\Properties\PropertyUpdate\NumberDisplayHint;
 use HubSpotSDK\Crm\Properties\PropertyUpdate\Type;
 use HubSpotSDK\OptionInput;
 
@@ -24,6 +25,7 @@ use HubSpotSDK\OptionInput;
  *   groupName?: string|null,
  *   hidden?: bool|null,
  *   label?: string|null,
+ *   numberDisplayHint?: null|NumberDisplayHint|value-of<NumberDisplayHint>,
  *   options?: list<OptionInput|OptionInputShape>|null,
  *   showCurrencySymbol?: bool|null,
  *   type?: null|Type|value-of<Type>,
@@ -87,6 +89,10 @@ final class PropertyUpdate implements BaseModel
     #[Optional]
     public ?string $label;
 
+    /** @var value-of<NumberDisplayHint>|null $numberDisplayHint */
+    #[Optional(enum: NumberDisplayHint::class)]
+    public ?string $numberDisplayHint;
+
     /**
      * A list of valid options for the property.
      *
@@ -117,6 +123,7 @@ final class PropertyUpdate implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FieldType|value-of<FieldType>|null $fieldType
+     * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
      * @param list<OptionInput|OptionInputShape>|null $options
      * @param Type|value-of<Type>|null $type
      */
@@ -130,6 +137,7 @@ final class PropertyUpdate implements BaseModel
         ?string $groupName = null,
         ?bool $hidden = null,
         ?string $label = null,
+        NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
         ?bool $showCurrencySymbol = null,
         Type|string|null $type = null,
@@ -145,6 +153,7 @@ final class PropertyUpdate implements BaseModel
         null !== $groupName && $self['groupName'] = $groupName;
         null !== $hidden && $self['hidden'] = $hidden;
         null !== $label && $self['label'] = $label;
+        null !== $numberDisplayHint && $self['numberDisplayHint'] = $numberDisplayHint;
         null !== $options && $self['options'] = $options;
         null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
         null !== $type && $self['type'] = $type;
@@ -246,6 +255,18 @@ final class PropertyUpdate implements BaseModel
     {
         $self = clone $this;
         $self['label'] = $label;
+
+        return $self;
+    }
+
+    /**
+     * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
+     */
+    public function withNumberDisplayHint(
+        NumberDisplayHint|string $numberDisplayHint
+    ): self {
+        $self = clone $this;
+        $self['numberDisplayHint'] = $numberDisplayHint;
 
         return $self;
     }

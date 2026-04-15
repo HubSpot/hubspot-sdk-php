@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
 
 /**
- * The current status of the batch operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+ * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
  */
 enum Status: string
 {

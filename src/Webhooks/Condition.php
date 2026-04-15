@@ -25,21 +25,39 @@ final class Condition implements BaseModel
     /** @use SdkModel<ConditionShape> */
     use SdkModel;
 
-    /** @var value-of<FilterType> $filterType */
+    /**
+     * A string representing the type of filter. Valid value is 'CRM_OBJECT_PROPERTY'.
+     *
+     * @var value-of<FilterType> $filterType
+     */
     #[Required(enum: FilterType::class)]
     public string $filterType;
 
-    /** @var value-of<Operator> $operator */
+    /**
+     * A string indicating the operation to apply for filtering. Valid values include 'EQ', 'N_EQ', 'LT', 'GT', 'LTE', 'GTE', 'CONTAINS', 'STARTS_WITH', 'ENDS_WITH', 'IN', 'NOT_IN', 'IS_EMPTY', and 'IS_NOT_EMPTY'.
+     *
+     * @var value-of<Operator> $operator
+     */
     #[Required(enum: Operator::class)]
     public string $operator;
 
+    /**
+     * A string specifying the property of the CRM object to be filtered.
+     */
     #[Required]
     public string $property;
 
+    /**
+     * A string representing the value to compare against the specified property when filtering.
+     */
     #[Optional]
     public ?string $value;
 
-    /** @var list<string>|null $values */
+    /**
+     * An array of strings, each representing a value to be used in the filtering operation.
+     *
+     * @var list<string>|null $values
+     */
     #[Optional(list: 'string')]
     public ?array $values;
 
@@ -91,6 +109,8 @@ final class Condition implements BaseModel
     }
 
     /**
+     * A string representing the type of filter. Valid value is 'CRM_OBJECT_PROPERTY'.
+     *
      * @param FilterType|value-of<FilterType> $filterType
      */
     public function withFilterType(FilterType|string $filterType): self
@@ -102,6 +122,8 @@ final class Condition implements BaseModel
     }
 
     /**
+     * A string indicating the operation to apply for filtering. Valid values include 'EQ', 'N_EQ', 'LT', 'GT', 'LTE', 'GTE', 'CONTAINS', 'STARTS_WITH', 'ENDS_WITH', 'IN', 'NOT_IN', 'IS_EMPTY', and 'IS_NOT_EMPTY'.
+     *
      * @param Operator|value-of<Operator> $operator
      */
     public function withOperator(Operator|string $operator): self
@@ -112,6 +134,9 @@ final class Condition implements BaseModel
         return $self;
     }
 
+    /**
+     * A string specifying the property of the CRM object to be filtered.
+     */
     public function withProperty(string $property): self
     {
         $self = clone $this;
@@ -120,6 +145,9 @@ final class Condition implements BaseModel
         return $self;
     }
 
+    /**
+     * A string representing the value to compare against the specified property when filtering.
+     */
     public function withValue(string $value): self
     {
         $self = clone $this;
@@ -129,6 +157,8 @@ final class Condition implements BaseModel
     }
 
     /**
+     * An array of strings, each representing a value to be used in the filtering operation.
+     *
      * @param list<string> $values
      */
     public function withValues(array $values): self

@@ -39,6 +39,7 @@ interface CommunicationPreferencesRawContract
     /**
      * @api
      *
+     * @param string $subscriberIDString the unique identifier of the subscriber whose communication preferences status is being retrieved
      * @param array<string,mixed>|CommunicationPreferenceGetStatusesParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -55,6 +56,7 @@ interface CommunicationPreferencesRawContract
     /**
      * @api
      *
+     * @param string $subscriberIDString the unique identifier of the subscriber to unsubscribe from all communication preferences
      * @param array<string,mixed>|CommunicationPreferenceGetUnsubscribeAllStatusParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -71,6 +73,7 @@ interface CommunicationPreferencesRawContract
     /**
      * @api
      *
+     * @param string $subscriberIDString the unique identifier of the subscriber to unsubscribe from all communication preferences
      * @param array<string,mixed>|CommunicationPreferenceUnsubscribeAllParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -87,6 +90,7 @@ interface CommunicationPreferencesRawContract
     /**
      * @api
      *
+     * @param string $subscriberIDString the unique identifier of the subscriber whose communication preferences status is being updated
      * @param array<string,mixed>|CommunicationPreferenceUpdateStatusParams $params
      * @param RequestOpts|null $requestOptions
      *

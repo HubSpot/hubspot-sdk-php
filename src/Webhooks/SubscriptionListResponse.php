@@ -21,7 +21,7 @@ final class SubscriptionListResponse implements BaseModel
     use SdkModel;
 
     /**
-     * An array containing all active and paused event subscriptions configured for the app.
+     * An array of SubscriptionResponse objects, each representing a subscription associated with the app. This property is required.
      *
      * @var list<SubscriptionResponse> $results
      */
@@ -64,7 +64,7 @@ final class SubscriptionListResponse implements BaseModel
     }
 
     /**
-     * An array containing all active and paused event subscriptions configured for the app.
+     * An array of SubscriptionResponse objects, each representing a subscription associated with the app. This property is required.
      *
      * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      */

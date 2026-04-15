@@ -28,25 +28,25 @@ final class SubscriptionResponse implements BaseModel
     use SdkModel;
 
     /**
-     * The unique ID of the webhook subscription.
+     * The unique identifier for the subscription, represented as an integer.
      */
     #[Required]
     public string $id;
 
     /**
-     * Whether the subscription is active or paused. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * A boolean indicating whether the subscription is currently active.
      */
     #[Required]
     public bool $active;
 
     /**
-     * The timestamp when the webhook subscription was created, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+     * The date and time when the subscription was created, in ISO 8601 format.
      */
     #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
-     * The type of event to listen for. Accepted values include contact.creation, contact.deletion, contact.propertyChange, and similar event types for other CRM objects and custom objects.
+     * The type of event that triggers the subscription. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'ticket.deletion'.
      *
      * @var value-of<EventType> $eventType
      */
@@ -54,25 +54,25 @@ final class SubscriptionResponse implements BaseModel
     public string $eventType;
 
     /**
-     * The name of the event to listen for. This is used with custom objects to specify custom event types beyond the standard eventType enum values.
+     * A descriptive name for the event type.
      */
     #[Optional]
     public ?string $eventTypeName;
 
     /**
-     * The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
+     * The identifier for the object type associated with the subscription, represented as a string.
      */
     #[Optional('objectTypeId')]
     public ?string $objectTypeID;
 
     /**
-     * The internal name of the property to monitor for changes. Only applies when eventType is propertyChange.
+     * The name of the property associated with the event, if applicable.
      */
     #[Optional]
     public ?string $propertyName;
 
     /**
-     * The timestamp when the webhook subscription was last updated, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+     * The date and time when the subscription was last updated, in ISO 8601 format.
      */
     #[Optional]
     public ?\DateTimeInterface $updatedAt;
@@ -133,7 +133,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The unique ID of the webhook subscription.
+     * The unique identifier for the subscription, represented as an integer.
      */
     public function withID(string $id): self
     {
@@ -144,7 +144,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * Whether the subscription is active or paused. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * A boolean indicating whether the subscription is currently active.
      */
     public function withActive(bool $active): self
     {
@@ -155,7 +155,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The timestamp when the webhook subscription was created, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+     * The date and time when the subscription was created, in ISO 8601 format.
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
@@ -166,7 +166,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The type of event to listen for. Accepted values include contact.creation, contact.deletion, contact.propertyChange, and similar event types for other CRM objects and custom objects.
+     * The type of event that triggers the subscription. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'ticket.deletion'.
      *
      * @param EventType|value-of<EventType> $eventType
      */
@@ -179,7 +179,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The name of the event to listen for. This is used with custom objects to specify custom event types beyond the standard eventType enum values.
+     * A descriptive name for the event type.
      */
     public function withEventTypeName(string $eventTypeName): self
     {
@@ -190,7 +190,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
+     * The identifier for the object type associated with the subscription, represented as a string.
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
@@ -201,7 +201,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The internal name of the property to monitor for changes. Only applies when eventType is propertyChange.
+     * The name of the property associated with the event, if applicable.
      */
     public function withPropertyName(string $propertyName): self
     {
@@ -212,7 +212,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The timestamp when the webhook subscription was last updated, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+     * The date and time when the subscription was last updated, in ISO 8601 format.
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {

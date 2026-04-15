@@ -10,6 +10,8 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve the earliest batch of webhook journal entries up to a specified count. This endpoint is useful for accessing the oldest records available in the webhook journal, allowing you to process or analyze historical webhook data.
+ *
  * @see HubSpotSDK\Services\WebhooksService::getEarliestLocalJournalBatch()
  *
  * @phpstan-type WebhookGetEarliestLocalJournalBatchParamsShape = array{
@@ -22,6 +24,9 @@ final class WebhookGetEarliestLocalJournalBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The ID of the portal installation to filter the webhook journal entries. It is an integer value.
+     */
     #[Optional]
     public ?int $installPortalID;
 
@@ -44,6 +49,9 @@ final class WebhookGetEarliestLocalJournalBatchParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The ID of the portal installation to filter the webhook journal entries. It is an integer value.
+     */
     public function withInstallPortalID(int $installPortalID): self
     {
         $self = clone $this;

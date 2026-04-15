@@ -18,16 +18,29 @@ final class CrmObjectSnapshotRequest implements BaseModel
     /** @use SdkModel<CrmObjectSnapshotRequestShape> */
     use SdkModel;
 
+    /**
+     * An integer representing the unique identifier of the CRM object for which the snapshot is being requested.
+     */
     #[Required('objectId')]
     public int $objectID;
 
+    /**
+     * A string representing the type identifier of the CRM object.
+     */
     #[Required('objectTypeId')]
     public string $objectTypeID;
 
+    /**
+     * An integer representing the unique identifier of the HubSpot portal.
+     */
     #[Required('portalId')]
     public int $portalID;
 
-    /** @var list<string> $properties */
+    /**
+     * An array of strings, each representing a property of the CRM object to be included in the snapshot.
+     *
+     * @var list<string> $properties
+     */
     #[Required(list: 'string')]
     public array $properties;
 
@@ -79,6 +92,9 @@ final class CrmObjectSnapshotRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * An integer representing the unique identifier of the CRM object for which the snapshot is being requested.
+     */
     public function withObjectID(int $objectID): self
     {
         $self = clone $this;
@@ -87,6 +103,9 @@ final class CrmObjectSnapshotRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * A string representing the type identifier of the CRM object.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $self = clone $this;
@@ -95,6 +114,9 @@ final class CrmObjectSnapshotRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * An integer representing the unique identifier of the HubSpot portal.
+     */
     public function withPortalID(int $portalID): self
     {
         $self = clone $this;
@@ -104,6 +126,8 @@ final class CrmObjectSnapshotRequest implements BaseModel
     }
 
     /**
+     * An array of strings, each representing a property of the CRM object to be included in the snapshot.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self

@@ -12,7 +12,7 @@ use HubSpotSDK\Crm\Properties\PropertyDeleteParams;
 use HubSpotSDK\Crm\Properties\PropertyGetParams;
 use HubSpotSDK\Crm\Properties\PropertyListParams;
 use HubSpotSDK\Crm\Properties\PropertyUpdateParams;
-use HubSpotSDK\Crm\Property;
+use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 
 /**

@@ -21,12 +21,12 @@ use HubSpotSDK\Webhooks\SubscriptionListResponse;
 use HubSpotSDK\Webhooks\SubscriptionResponse;
 use HubSpotSDK\Webhooks\SubscriptionResponse1;
 use HubSpotSDK\Webhooks\ThrottlingSettings;
-use HubSpotSDK\Webhooks\WebhookCreateSubscriptionParams\EventType;
+use HubSpotSDK\Webhooks\WebhookCreateEventSubscriptionParams\EventType;
 
 /**
+ * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest
  * @phpstan-import-type CrmObjectSnapshotRequestShape from \HubSpotSDK\Webhooks\CrmObjectSnapshotRequest
  * @phpstan-import-type FilterShape from \HubSpotSDK\Webhooks\Filter
- * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest
  * @phpstan-import-type ThrottlingSettingsShape from \HubSpotSDK\Webhooks\ThrottlingSettings
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
@@ -35,15 +35,53 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param list<CrmObjectSnapshotRequest|CrmObjectSnapshotRequestShape> $snapshotRequests
+     * @param int $appID the identifier for the app
+     * @param list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape> $inputs An array of SubscriptionBatchUpdateRequest objects, each representing a subscription to be updated. This property is required.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function createCrmSnapshot(
+    public function createBatchEventSubscriptions(
+        int $appID,
+        array $inputs,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponseSubscriptionResponse;
+
+    /**
+     * @api
+     *
+     * @param list<CrmObjectSnapshotRequest|CrmObjectSnapshotRequestShape> $snapshotRequests An array of CrmObjectSnapshotRequest objects, each representing a request to capture a snapshot of a specific CRM object. This property is required.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createCrmSnapshots(
         array $snapshotRequests,
         RequestOptions|array|null $requestOptions = null
     ): CrmObjectSnapshotBatchResponse;
+
+    /**
+     * @api
+     *
+     * @param int $appID the identifier for the app
+     * @param bool $active A boolean indicating whether the subscription is active. This field is required.
+     * @param EventType|value-of<EventType> $eventType A string representing the type of event to subscribe to. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'conversation.newMessage'.
+     * @param string $eventTypeName A string that provides a human-readable name for the event type. This is optional.
+     * @param string $objectTypeID A string representing the identifier of the object type for which the subscription is being created. This is optional.
+     * @param string $propertyName A string indicating the name of the property that triggers the event. This is optional and used when subscribing to property change events.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createEventSubscription(
+        int $appID,
+        bool $active,
+        EventType|string $eventType,
+        ?string $eventTypeName = null,
+        ?string $objectTypeID = null,
+        ?string $propertyName = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): SubscriptionResponse;
 
     /**
      * @api
@@ -59,29 +97,8 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param bool $active Determines if the subscription is active or paused. Defaults to false.
-     * @param EventType|value-of<EventType> $eventType Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
-     * @param string $eventTypeName The name of the event to listen for. This is used with custom objects to specify custom event types beyond the standard eventType enum values.
-     * @param string $objectTypeID The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
-     * @param string $propertyName The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function createSubscription(
-        int $appID,
-        bool $active,
-        EventType|string $eventType,
-        ?string $eventTypeName = null,
-        ?string $objectTypeID = null,
-        ?string $propertyName = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): SubscriptionResponse;
-
-    /**
-     * @api
-     *
      * @param Filter|FilterShape $filter defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against
+     * @param int $subscriptionID The unique identifier of the subscription to which the filter will be applied. It is an integer in int64 format.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -95,20 +112,22 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape> $inputs
+     * @param int $subscriptionID the identifier for the subscription
+     * @param int $appID the identifier for the app
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function createSubscriptionsBatch(
+    public function deleteEventSubscription(
+        int $subscriptionID,
         int $appID,
-        array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponseSubscriptionResponse;
+    ): mixed;
 
     /**
      * @api
      *
+     * @param int $subscriptionID the unique identifier of the subscription to delete
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -121,11 +140,12 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $portalID the unique identifier of the portal for which the webhook journal subscription is to be deleted
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function deletePortalSubscriptions(
+    public function deleteJournalSubscriptionForPortal(
         int $portalID,
         RequestOptions|array|null $requestOptions = null
     ): mixed;
@@ -133,6 +153,7 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $appID the identifier for the app
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -145,19 +166,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function deleteSubscription(
-        int $subscriptionID,
-        int $appID,
-        RequestOptions|array|null $requestOptions = null,
-    ): mixed;
-
-    /**
-     * @api
-     *
+     * @param int $filterID the unique identifier of the filter to delete
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -170,18 +179,8 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getEarliestJournal(
-        ?int $installPortalID = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string;
-
-    /**
-     * @api
-     *
+     * @param int $count The number of journal entries to retrieve. This must be an integer with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation for which to fetch the journal entries. This is an optional parameter.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -195,11 +194,12 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $installPortalID The ID of the portal installation to filter the journal entries. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getEarliestLocalJournal(
+    public function getEarliestJournalEntry(
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
@@ -207,6 +207,8 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $count The number of webhook journal entries to retrieve. It must be an integer with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries. It is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -220,13 +222,41 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param list<string> $inputs body param: Strings to input
-     * @param int $installPortalID Query param
+     * @param int $installPortalID The ID of the portal for which to retrieve the earliest journal entry. This parameter is optional and should be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getJournalBatch(
+    public function getEarliestLocalJournalEntry(
+        ?int $installPortalID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param int $subscriptionID the identifier for the subscription
+     * @param int $appID the identifier for the app
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getEventSubscription(
+        int $subscriptionID,
+        int $appID,
+        RequestOptions|array|null $requestOptions = null,
+    ): SubscriptionResponse;
+
+    /**
+     * @api
+     *
+     * @param list<string> $inputs body param: Strings to input
+     * @param int $installPortalID Query param: The ID of the portal from which to retrieve webhook journal entries. This is an integer value.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getJournalBatchByRequest(
         array $inputs,
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
@@ -235,14 +265,14 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $count Path param
-     * @param string $offset Path param
-     * @param int $installPortalID Query param
+     * @param int $count Path param: The number of webhook journal entries to retrieve in the batch. This parameter is required and must be an integer greater than or equal to 1.
+     * @param string $offset Path param: The starting point for retrieving the batch of webhook journal entries. This parameter is required and determines where the batch retrieval begins.
+     * @param int $installPortalID Query param: The ID of the portal installation to filter the webhook journal entries. This parameter is optional and is used to specify which portal's data to retrieve.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getJournalBatchAfterOffset(
+    public function getJournalBatchFromOffset(
         int $count,
         string $offset,
         ?int $installPortalID = null,
@@ -252,6 +282,7 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param string $statusID the unique identifier (UUID) of the webhook journal entry whose status is to be retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -264,18 +295,21 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $subscriptionID The unique identifier of the subscription to retrieve. It is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getLatestJournal(
-        ?int $installPortalID = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): string;
+    public function getJournalSubscription(
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null
+    ): SubscriptionResponse1;
 
     /**
      * @api
      *
+     * @param int $count The number of journal entries to retrieve. Must be an integer with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation. This parameter is optional and can be used to filter results by a specific portal.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -289,11 +323,12 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $installPortalID The ID of the portal for which to retrieve the latest journal entry. It is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getLatestLocalJournal(
+    public function getLatestJournalEntry(
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
@@ -301,6 +336,8 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $count The number of webhook journal entries to retrieve. It must be an integer with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries. It is an optional integer parameter.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -314,13 +351,26 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param list<string> $inputs body param: Strings to input
-     * @param int $installPortalID Query param
+     * @param int $installPortalID an integer representing the ID of the portal to filter the webhook journal entries
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getLocalJournalBatch(
+    public function getLatestLocalJournalEntry(
+        ?int $installPortalID = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): string;
+
+    /**
+     * @api
+     *
+     * @param list<string> $inputs body param: Strings to input
+     * @param int $installPortalID Query param: The ID of the portal where the webhook is installed. This parameter is optional and is used to specify the portal context for the operation.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getLocalJournalBatchByRequest(
         array $inputs,
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
@@ -329,14 +379,14 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $count Path param
-     * @param string $offset Path param
-     * @param int $installPortalID Query param
+     * @param int $count Path param: The number of entries to retrieve in the batch. This must be an integer with a minimum value of 1.
+     * @param string $offset Path param: The starting point for the batch retrieval. This is a string value representing the offset in the journal.
+     * @param int $installPortalID Query param: The ID of the portal where the webhooks are installed. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getLocalJournalBatchAfterOffset(
+    public function getLocalJournalBatchFromOffset(
         int $count,
         string $offset,
         ?int $installPortalID = null,
@@ -346,6 +396,7 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param string $statusID the unique identifier (UUID) of the webhook journal entry whose status is to be retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -358,11 +409,13 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param string $offset The offset from which to start retrieving the next set of journal entries. This is a string value.
+     * @param int $installPortalID The ID of the portal where the webhooks are installed. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getNextJournalAfterOffset(
+    public function getNextJournalEntries(
         string $offset,
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
@@ -371,11 +424,13 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param string $offset The offset from which the next set of journal entries should be retrieved. This parameter is required to specify the starting point for the retrieval.
+     * @param int $installPortalID The ID of the portal installation to filter the journal entries by. This is an optional parameter.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
-    public function getNextLocalJournalAfterOffset(
+    public function getNextLocalJournalEntries(
         string $offset,
         ?int $installPortalID = null,
         RequestOptions|array|null $requestOptions = null,
@@ -384,6 +439,7 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $appID the identifier for the app
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -396,19 +452,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getSubscription(
-        int $subscriptionID,
-        int $appID,
-        RequestOptions|array|null $requestOptions = null,
-    ): SubscriptionResponse;
-
-    /**
-     * @api
-     *
+     * @param int $filterID the unique identifier of the filter to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -421,16 +465,15 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $appID the identifier for the app
      * @param RequestOpts|null $requestOptions
-     *
-     * @return list<FilterResponse>
      *
      * @throws APIException
      */
-    public function getSubscriptionFilters(
-        int $subscriptionID,
+    public function listEventSubscriptions(
+        int $appID,
         RequestOptions|array|null $requestOptions = null
-    ): array;
+    ): SubscriptionListResponse;
 
     /**
      * @api
@@ -446,18 +489,39 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param int $subscriptionID the unique identifier of the subscription for which filters are being retrieved
      * @param RequestOpts|null $requestOptions
+     *
+     * @return list<FilterResponse>
      *
      * @throws APIException
      */
-    public function listSubscriptions(
-        int $appID,
+    public function listSubscriptionFilters(
+        int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
-    ): SubscriptionListResponse;
+    ): array;
 
     /**
      * @api
      *
+     * @param int $subscriptionID path param: The identifier for the subscription
+     * @param int $appID path param: The identifier for the app
+     * @param bool $active Body param: Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function updateEventSubscription(
+        int $subscriptionID,
+        int $appID,
+        ?bool $active = null,
+        RequestOptions|array|null $requestOptions = null,
+    ): SubscriptionResponse;
+
+    /**
+     * @api
+     *
+     * @param int $appID the identifier for the app
      * @param string $targetURL A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
      * @param ThrottlingSettings|ThrottlingSettingsShape $throttling
      * @param RequestOpts|null $requestOptions
@@ -470,21 +534,4 @@ interface WebhooksContract
         ThrottlingSettings|array $throttling,
         RequestOptions|array|null $requestOptions = null,
     ): SettingsResponse;
-
-    /**
-     * @api
-     *
-     * @param int $subscriptionID Path param
-     * @param int $appID Path param
-     * @param bool $active Body param: Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function updateSubscription(
-        int $subscriptionID,
-        int $appID,
-        ?bool $active = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): SubscriptionResponse;
 }

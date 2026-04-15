@@ -17,13 +17,13 @@ final class SubscriptionBatchUpdateRequest implements BaseModel
     use SdkModel;
 
     /**
-     * The ID of the webhook subscription to update.
+     * The unique identifier for the subscription to be updated. It is an integer.
      */
     #[Required]
     public int $id;
 
     /**
-     * Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * A boolean indicating whether the subscription is active.
      */
     #[Required]
     public bool $active;
@@ -63,7 +63,7 @@ final class SubscriptionBatchUpdateRequest implements BaseModel
     }
 
     /**
-     * The ID of the webhook subscription to update.
+     * The unique identifier for the subscription to be updated. It is an integer.
      */
     public function withID(int $id): self
     {
@@ -74,7 +74,7 @@ final class SubscriptionBatchUpdateRequest implements BaseModel
     }
 
     /**
-     * Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * A boolean indicating whether the subscription is active.
      */
     public function withActive(bool $active): self
     {

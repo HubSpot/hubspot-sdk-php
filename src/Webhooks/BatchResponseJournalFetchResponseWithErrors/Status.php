@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Webhooks\BatchResponseJournalFetchResponseWithErrors;
 
+/**
+ * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
+ */
 enum Status: string
 {
     case CANCELED = 'CANCELED';

@@ -71,6 +71,7 @@ final class BatchTest extends TestCase
                     'name' => 'name',
                     'type' => 'bool',
                     'calculationFormula' => 'calculationFormula',
+                    'currencyPropertyName' => 'currencyPropertyName',
                     'dataSensitivity' => 'highly_sensitive',
                     'description' => 'description',
                     'displayOrder' => 0,
@@ -78,6 +79,7 @@ final class BatchTest extends TestCase
                     'formField' => true,
                     'hasUniqueValue' => true,
                     'hidden' => true,
+                    'numberDisplayHint' => 'currency',
                     'options' => [
                         [
                             'displayOrder' => 0,
@@ -88,6 +90,7 @@ final class BatchTest extends TestCase
                         ],
                     ],
                     'referencedObjectType' => 'referencedObjectType',
+                    'showCurrencySymbol' => true,
                 ],
             ],
         );

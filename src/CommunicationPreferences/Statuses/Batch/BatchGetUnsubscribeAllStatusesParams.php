@@ -28,7 +28,11 @@ final class BatchGetUnsubscribeAllStatusesParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<Channel> $channel */
+    /**
+     * The communication channel to filter the unsubscribe statuses. This parameter is required and currently supports 'EMAIL' as a valid value.
+     *
+     * @var value-of<Channel> $channel
+     */
     #[Required(enum: Channel::class)]
     public string $channel;
 
@@ -40,6 +44,9 @@ final class BatchGetUnsubscribeAllStatusesParams implements BaseModel
     #[Required(list: 'string')]
     public array $inputs;
 
+    /**
+     * The ID of the business unit to filter the results. This is an optional parameter.
+     */
     #[Optional]
     public ?int $businessUnitID;
 
@@ -86,6 +93,8 @@ final class BatchGetUnsubscribeAllStatusesParams implements BaseModel
     }
 
     /**
+     * The communication channel to filter the unsubscribe statuses. This parameter is required and currently supports 'EMAIL' as a valid value.
+     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -109,6 +118,9 @@ final class BatchGetUnsubscribeAllStatusesParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The ID of the business unit to filter the results. This is an optional parameter.
+     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;

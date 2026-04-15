@@ -25,13 +25,13 @@ final class SubscriptionCreateRequest implements BaseModel
     use SdkModel;
 
     /**
-     * Determines if the subscription is active or paused. Defaults to false.
+     * A boolean indicating whether the subscription is active. This field is required.
      */
     #[Required]
     public bool $active;
 
     /**
-     * Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     * A string representing the type of event to subscribe to. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'conversation.newMessage'.
      *
      * @var value-of<EventType> $eventType
      */
@@ -39,19 +39,19 @@ final class SubscriptionCreateRequest implements BaseModel
     public string $eventType;
 
     /**
-     * The name of the event to listen for. This is used with custom objects to specify custom event types beyond the standard eventType enum values.
+     * A string that provides a human-readable name for the event type. This is optional.
      */
     #[Optional]
     public ?string $eventTypeName;
 
     /**
-     * The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
+     * A string representing the identifier of the object type for which the subscription is being created. This is optional.
      */
     #[Optional('objectTypeId')]
     public ?string $objectTypeID;
 
     /**
-     * The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
+     * A string indicating the name of the property that triggers the event. This is optional and used when subscribing to property change events.
      */
     #[Optional]
     public ?string $propertyName;
@@ -102,7 +102,7 @@ final class SubscriptionCreateRequest implements BaseModel
     }
 
     /**
-     * Determines if the subscription is active or paused. Defaults to false.
+     * A boolean indicating whether the subscription is active. This field is required.
      */
     public function withActive(bool $active): self
     {
@@ -113,7 +113,7 @@ final class SubscriptionCreateRequest implements BaseModel
     }
 
     /**
-     * Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+     * A string representing the type of event to subscribe to. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'conversation.newMessage'.
      *
      * @param EventType|value-of<EventType> $eventType
      */
@@ -126,7 +126,7 @@ final class SubscriptionCreateRequest implements BaseModel
     }
 
     /**
-     * The name of the event to listen for. This is used with custom objects to specify custom event types beyond the standard eventType enum values.
+     * A string that provides a human-readable name for the event type. This is optional.
      */
     public function withEventTypeName(string $eventTypeName): self
     {
@@ -137,7 +137,7 @@ final class SubscriptionCreateRequest implements BaseModel
     }
 
     /**
-     * The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
+     * A string representing the identifier of the object type for which the subscription is being created. This is optional.
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
@@ -148,7 +148,7 @@ final class SubscriptionCreateRequest implements BaseModel
     }
 
     /**
-     * The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
+     * A string indicating the name of the property that triggers the event. This is optional and used when subscribing to property change events.
      */
     public function withPropertyName(string $propertyName): self
     {

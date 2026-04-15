@@ -9,10 +9,10 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Properties\BatchResponseProperty\Status;
-use HubSpotSDK\Crm\Property;
+use HubSpotSDK\Property;
 
 /**
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Crm\Property
+ * @phpstan-import-type PropertyShape from \HubSpotSDK\Property
  *
  * @phpstan-type BatchResponsePropertyShape = array{
  *   completedAt: \DateTimeInterface,

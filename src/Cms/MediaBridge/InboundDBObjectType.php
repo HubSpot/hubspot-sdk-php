@@ -34,6 +34,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   metaTypeID: int,
  *   name: string,
  *   objectTypeID: string,
+ *   objectTypeIDString: string,
  *   permissioningType: PermissioningType|value-of<PermissioningType>,
  *   pipelinePropertyName: string,
  *   pipelineStagePropertyName: string,
@@ -115,6 +116,9 @@ final class InboundDBObjectType implements BaseModel
 
     #[Required('objectTypeId')]
     public string $objectTypeID;
+
+    #[Required('objectTypeIdString')]
+    public string $objectTypeIDString;
 
     /** @var value-of<PermissioningType> $permissioningType */
     #[Required(enum: PermissioningType::class)]
@@ -211,6 +215,7 @@ final class InboundDBObjectType implements BaseModel
      *   metaTypeID: ...,
      *   name: ...,
      *   objectTypeID: ...,
+     *   objectTypeIDString: ...,
      *   permissioningType: ...,
      *   pipelinePropertyName: ...,
      *   pipelineStagePropertyName: ...,
@@ -242,6 +247,7 @@ final class InboundDBObjectType implements BaseModel
      *   ->withMetaTypeID(...)
      *   ->withName(...)
      *   ->withObjectTypeID(...)
+     *   ->withObjectTypeIDString(...)
      *   ->withPermissioningType(...)
      *   ->withPipelinePropertyName(...)
      *   ->withPipelineStagePropertyName(...)
@@ -288,6 +294,7 @@ final class InboundDBObjectType implements BaseModel
         int $metaTypeID,
         string $name,
         string $objectTypeID,
+        string $objectTypeIDString,
         PermissioningType|string $permissioningType,
         string $pipelinePropertyName,
         string $pipelineStagePropertyName,
@@ -330,6 +337,7 @@ final class InboundDBObjectType implements BaseModel
         $self['metaTypeID'] = $metaTypeID;
         $self['name'] = $name;
         $self['objectTypeID'] = $objectTypeID;
+        $self['objectTypeIDString'] = $objectTypeIDString;
         $self['permissioningType'] = $permissioningType;
         $self['pipelinePropertyName'] = $pipelinePropertyName;
         $self['pipelineStagePropertyName'] = $pipelineStagePropertyName;
@@ -500,6 +508,14 @@ final class InboundDBObjectType implements BaseModel
     {
         $self = clone $this;
         $self['objectTypeID'] = $objectTypeID;
+
+        return $self;
+    }
+
+    public function withObjectTypeIDString(string $objectTypeIDString): self
+    {
+        $self = clone $this;
+        $self['objectTypeIDString'] = $objectTypeIDString;
 
         return $self;
     }

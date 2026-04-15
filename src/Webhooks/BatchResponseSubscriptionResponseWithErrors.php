@@ -31,34 +31,59 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     /** @use SdkModel<BatchResponseSubscriptionResponseWithErrorsShape> */
     use SdkModel;
 
+    /**
+     * The date and time when the batch operation was completed, in ISO 8601 format.
+     */
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<SubscriptionResponse> $results */
+    /**
+     * An array of SubscriptionResponse objects, representing the results of the batch operation.
+     *
+     * @var list<SubscriptionResponse> $results
+     */
     #[Required(list: SubscriptionResponse::class)]
     public array $results;
 
+    /**
+     * The date and time when the batch operation started, in ISO 8601 format.
+     */
     #[Required]
     public \DateTimeInterface $startedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
+     *
+     * @var value-of<Status> $status
+     */
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
+    /**
+     * An array of StandardError objects, detailing any errors that occurred during the batch operation.
+     *
+     * @var list<StandardError>|null $errors
+     */
     #[Optional(list: StandardError::class)]
     public ?array $errors;
 
-    /** @var array<string,string>|null $links */
+    /**
+     * A map of link names to associated URIs, providing additional resources or documentation related to the batch operation.
+     *
+     * @var array<string,string>|null $links
+     */
     #[Optional(map: 'string')]
     public ?array $links;
 
     /**
-     * The number of errors that occurred during the batch operation.
+     * The number of errors encountered during the batch operation.
      */
     #[Optional]
     public ?int $numErrors;
 
+    /**
+     * The date and time when the batch operation was requested, in ISO 8601 format.
+     */
     #[Optional]
     public ?\DateTimeInterface $requestedAt;
 
@@ -122,6 +147,9 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time when the batch operation was completed, in ISO 8601 format.
+     */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
         $self = clone $this;
@@ -131,6 +159,8 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
+     * An array of SubscriptionResponse objects, representing the results of the batch operation.
+     *
      * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      */
     public function withResults(array $results): self
@@ -141,6 +171,9 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time when the batch operation started, in ISO 8601 format.
+     */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
         $self = clone $this;
@@ -150,6 +183,8 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
+     * The current status of the batch operation. Valid values include 'PENDING', 'PROCESSING', 'CANCELED', and 'COMPLETE'.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -161,6 +196,8 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
+     * An array of StandardError objects, detailing any errors that occurred during the batch operation.
+     *
      * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self
@@ -172,6 +209,8 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
+     * A map of link names to associated URIs, providing additional resources or documentation related to the batch operation.
+     *
      * @param array<string,string> $links
      */
     public function withLinks(array $links): self
@@ -183,7 +222,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
-     * The number of errors that occurred during the batch operation.
+     * The number of errors encountered during the batch operation.
      */
     public function withNumErrors(int $numErrors): self
     {
@@ -193,6 +232,9 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time when the batch operation was requested, in ISO 8601 format.
+     */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {
         $self = clone $this;

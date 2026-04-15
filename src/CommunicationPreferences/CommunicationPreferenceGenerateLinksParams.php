@@ -30,7 +30,11 @@ final class CommunicationPreferenceGenerateLinksParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<Channel> $channel */
+    /**
+     * The communication channel for which the links are generated. Must be 'EMAIL'.
+     *
+     * @var value-of<Channel> $channel
+     */
     #[Required(enum: Channel::class)]
     public string $channel;
 
@@ -40,6 +44,9 @@ final class CommunicationPreferenceGenerateLinksParams implements BaseModel
     #[Required('subscriberIdString')]
     public string $subscriberIDString;
 
+    /**
+     * The identifier of the business unit. Defaults to 0 if not specified.
+     */
     #[Optional]
     public ?int $businessUnitID;
 
@@ -105,6 +112,8 @@ final class CommunicationPreferenceGenerateLinksParams implements BaseModel
     }
 
     /**
+     * The communication channel for which the links are generated. Must be 'EMAIL'.
+     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -126,6 +135,9 @@ final class CommunicationPreferenceGenerateLinksParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The identifier of the business unit. Defaults to 0 if not specified.
+     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;

@@ -26,23 +26,43 @@ final class SnapshotStatusResponse implements BaseModel
     /** @use SdkModel<SnapshotStatusResponseShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the snapshot operation, formatted as a UUID.
+     */
     #[Required]
     public string $id;
 
+    /**
+     * A Unix timestamp in milliseconds indicating when the snapshot operation was initiated.
+     */
     #[Required]
     public int $initiatedAt;
 
-    /** @var value-of<Status> $status */
+    /**
+     * The current status of the snapshot operation. Valid values include 'PENDING', 'IN_PROGRESS', 'COMPLETED', 'FAILED', and 'EXPIRED'.
+     *
+     * @var value-of<Status> $status
+     */
     #[Required(enum: Status::class)]
     public string $status;
 
+    /**
+     * A Unix timestamp in milliseconds indicating when the snapshot operation was completed.
+     */
     #[Optional]
     public ?int $completedAt;
 
-    /** @var value-of<ErrorCode>|null $errorCode */
+    /**
+     * The code representing any error that occurred during the snapshot operation. Possible values are 'TIMEOUT', 'VALIDATION_ERROR', 'INTERNAL_ERROR', and 'PERMISSION_DENIED'.
+     *
+     * @var value-of<ErrorCode>|null $errorCode
+     */
     #[Optional(enum: ErrorCode::class)]
     public ?string $errorCode;
 
+    /**
+     * A descriptive message providing additional information about the snapshot operation or any errors encountered.
+     */
     #[Optional]
     public ?string $message;
 
@@ -94,6 +114,9 @@ final class SnapshotStatusResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the snapshot operation, formatted as a UUID.
+     */
     public function withID(string $id): self
     {
         $self = clone $this;
@@ -102,6 +125,9 @@ final class SnapshotStatusResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * A Unix timestamp in milliseconds indicating when the snapshot operation was initiated.
+     */
     public function withInitiatedAt(int $initiatedAt): self
     {
         $self = clone $this;
@@ -111,6 +137,8 @@ final class SnapshotStatusResponse implements BaseModel
     }
 
     /**
+     * The current status of the snapshot operation. Valid values include 'PENDING', 'IN_PROGRESS', 'COMPLETED', 'FAILED', and 'EXPIRED'.
+     *
      * @param Status|value-of<Status> $status
      */
     public function withStatus(Status|string $status): self
@@ -121,6 +149,9 @@ final class SnapshotStatusResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * A Unix timestamp in milliseconds indicating when the snapshot operation was completed.
+     */
     public function withCompletedAt(int $completedAt): self
     {
         $self = clone $this;
@@ -130,6 +161,8 @@ final class SnapshotStatusResponse implements BaseModel
     }
 
     /**
+     * The code representing any error that occurred during the snapshot operation. Possible values are 'TIMEOUT', 'VALIDATION_ERROR', 'INTERNAL_ERROR', and 'PERMISSION_DENIED'.
+     *
      * @param ErrorCode|value-of<ErrorCode> $errorCode
      */
     public function withErrorCode(ErrorCode|string $errorCode): self
@@ -140,6 +173,9 @@ final class SnapshotStatusResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * A descriptive message providing additional information about the snapshot operation or any errors encountered.
+     */
     public function withMessage(string $message): self
     {
         $self = clone $this;
