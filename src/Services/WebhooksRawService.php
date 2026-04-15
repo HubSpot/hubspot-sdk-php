@@ -26,34 +26,34 @@ use HubSpotSDK\Webhooks\SubscriptionListResponse;
 use HubSpotSDK\Webhooks\SubscriptionResponse;
 use HubSpotSDK\Webhooks\SubscriptionResponse1;
 use HubSpotSDK\Webhooks\ThrottlingSettings;
-use HubSpotSDK\Webhooks\WebhookCreateCrmSnapshotParams;
+use HubSpotSDK\Webhooks\WebhookCreateBatchEventSubscriptionsParams;
+use HubSpotSDK\Webhooks\WebhookCreateCrmSnapshotsParams;
+use HubSpotSDK\Webhooks\WebhookCreateEventSubscriptionParams;
+use HubSpotSDK\Webhooks\WebhookCreateEventSubscriptionParams\EventType;
 use HubSpotSDK\Webhooks\WebhookCreateSubscriptionFilterParams;
-use HubSpotSDK\Webhooks\WebhookCreateSubscriptionParams;
-use HubSpotSDK\Webhooks\WebhookCreateSubscriptionParams\EventType;
-use HubSpotSDK\Webhooks\WebhookCreateSubscriptionsBatchParams;
-use HubSpotSDK\Webhooks\WebhookDeleteSubscriptionParams;
+use HubSpotSDK\Webhooks\WebhookDeleteEventSubscriptionParams;
 use HubSpotSDK\Webhooks\WebhookGetEarliestJournalBatchParams;
-use HubSpotSDK\Webhooks\WebhookGetEarliestJournalParams;
+use HubSpotSDK\Webhooks\WebhookGetEarliestJournalEntryParams;
 use HubSpotSDK\Webhooks\WebhookGetEarliestLocalJournalBatchParams;
-use HubSpotSDK\Webhooks\WebhookGetEarliestLocalJournalParams;
-use HubSpotSDK\Webhooks\WebhookGetJournalBatchAfterOffsetParams;
-use HubSpotSDK\Webhooks\WebhookGetJournalBatchParams;
+use HubSpotSDK\Webhooks\WebhookGetEarliestLocalJournalEntryParams;
+use HubSpotSDK\Webhooks\WebhookGetEventSubscriptionParams;
+use HubSpotSDK\Webhooks\WebhookGetJournalBatchByRequestParams;
+use HubSpotSDK\Webhooks\WebhookGetJournalBatchFromOffsetParams;
 use HubSpotSDK\Webhooks\WebhookGetLatestJournalBatchParams;
-use HubSpotSDK\Webhooks\WebhookGetLatestJournalParams;
+use HubSpotSDK\Webhooks\WebhookGetLatestJournalEntryParams;
 use HubSpotSDK\Webhooks\WebhookGetLatestLocalJournalBatchParams;
-use HubSpotSDK\Webhooks\WebhookGetLatestLocalJournalParams;
-use HubSpotSDK\Webhooks\WebhookGetLocalJournalBatchAfterOffsetParams;
-use HubSpotSDK\Webhooks\WebhookGetLocalJournalBatchParams;
-use HubSpotSDK\Webhooks\WebhookGetNextJournalAfterOffsetParams;
-use HubSpotSDK\Webhooks\WebhookGetNextLocalJournalAfterOffsetParams;
-use HubSpotSDK\Webhooks\WebhookGetSubscriptionParams;
+use HubSpotSDK\Webhooks\WebhookGetLatestLocalJournalEntryParams;
+use HubSpotSDK\Webhooks\WebhookGetLocalJournalBatchByRequestParams;
+use HubSpotSDK\Webhooks\WebhookGetLocalJournalBatchFromOffsetParams;
+use HubSpotSDK\Webhooks\WebhookGetNextJournalEntriesParams;
+use HubSpotSDK\Webhooks\WebhookGetNextLocalJournalEntriesParams;
+use HubSpotSDK\Webhooks\WebhookUpdateEventSubscriptionParams;
 use HubSpotSDK\Webhooks\WebhookUpdateSettingsParams;
-use HubSpotSDK\Webhooks\WebhookUpdateSubscriptionParams;
 
 /**
+ * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest
  * @phpstan-import-type CrmObjectSnapshotRequestShape from \HubSpotSDK\Webhooks\CrmObjectSnapshotRequest
  * @phpstan-import-type FilterShape from \HubSpotSDK\Webhooks\Filter
- * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest
  * @phpstan-import-type ThrottlingSettingsShape from \HubSpotSDK\Webhooks\ThrottlingSettings
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
@@ -68,20 +68,57 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Batch create event subscriptions for the specified app.
+     *
+     * @param int $appID the identifier for the app
+     * @param array{
+     *   inputs: list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape>,
+     * }|WebhookCreateBatchEventSubscriptionsParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponseSubscriptionResponse>
+     *
+     * @throws APIException
+     */
+    public function createBatchEventSubscriptions(
+        int $appID,
+        array|WebhookCreateBatchEventSubscriptionsParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = WebhookCreateBatchEventSubscriptionsParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['webhooks/2026-03/%1$s/subscriptions/batch/update', $appID],
+            body: (object) $parsed,
+            options: $options,
+            convert: BatchResponseSubscriptionResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Create a batch of CRM object snapshots for a specified portal. This endpoint allows you to capture the current state of CRM objects by submitting a batch request with the necessary object details. It is useful for tracking changes or maintaining historical records of CRM data.
+     *
      * @param array{
      *   snapshotRequests: list<CrmObjectSnapshotRequest|CrmObjectSnapshotRequestShape>
-     * }|WebhookCreateCrmSnapshotParams $params
+     * }|WebhookCreateCrmSnapshotsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<CrmObjectSnapshotBatchResponse>
      *
      * @throws APIException
      */
-    public function createCrmSnapshot(
-        array|WebhookCreateCrmSnapshotParams $params,
+    public function createCrmSnapshots(
+        array|WebhookCreateCrmSnapshotsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookCreateCrmSnapshotParams::parseRequest(
+        [$parsed, $options] = WebhookCreateCrmSnapshotsParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -98,6 +135,47 @@ final class WebhooksRawService implements WebhooksRawContract
 
     /**
      * @api
+     *
+     * Create new event subscription for the specified app.
+     *
+     * @param int $appID the identifier for the app
+     * @param array{
+     *   active: bool,
+     *   eventType: value-of<EventType>,
+     *   eventTypeName?: string,
+     *   objectTypeID?: string,
+     *   propertyName?: string,
+     * }|WebhookCreateEventSubscriptionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<SubscriptionResponse>
+     *
+     * @throws APIException
+     */
+    public function createEventSubscription(
+        int $appID,
+        array|WebhookCreateEventSubscriptionParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = WebhookCreateEventSubscriptionParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: ['webhooks/2026-03/%1$s/subscriptions', $appID],
+            body: (object) $parsed,
+            options: $options,
+            convert: SubscriptionResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Create a new subscription in the webhooks journal for the specified version. This endpoint allows you to define the subscription details, including actions and object types, to manage webhook events effectively. It requires a valid request body with the subscription details.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -120,43 +198,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Create new event subscription for the specified app.
-     *
-     * @param array{
-     *   active: bool,
-     *   eventType: value-of<EventType>,
-     *   eventTypeName?: string,
-     *   objectTypeID?: string,
-     *   propertyName?: string,
-     * }|WebhookCreateSubscriptionParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<SubscriptionResponse>
-     *
-     * @throws APIException
-     */
-    public function createSubscription(
-        int $appID,
-        array|WebhookCreateSubscriptionParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = WebhookCreateSubscriptionParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: ['webhooks/2026-03/%1$s/subscriptions', $appID],
-            body: (object) $parsed,
-            options: $options,
-            convert: SubscriptionResponse::class,
-        );
-    }
-
-    /**
-     * @api
+     * Create a new filter for a webhook subscription in the HubSpot account. This endpoint allows you to define conditions that determine when a webhook event should be triggered for a specific subscription. The request body must include the subscription ID and the filter details.
      *
      * @param array{
      *   filter: Filter|FilterShape, subscriptionID: int
@@ -189,40 +231,45 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Batch create event subscriptions for the specified app.
+     * Delete an existing event subscription by ID.
      *
-     * @param array{
-     *   inputs: list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape>,
-     * }|WebhookCreateSubscriptionsBatchParams $params
+     * @param int $subscriptionID the identifier for the subscription
+     * @param array{appID: int}|WebhookDeleteEventSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponseSubscriptionResponse>
+     * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function createSubscriptionsBatch(
-        int $appID,
-        array|WebhookCreateSubscriptionsBatchParams $params,
+    public function deleteEventSubscription(
+        int $subscriptionID,
+        array|WebhookDeleteEventSubscriptionParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookCreateSubscriptionsBatchParams::parseRequest(
+        [$parsed, $options] = WebhookDeleteEventSubscriptionParams::parseRequest(
             $params,
             $requestOptions,
         );
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'post',
-            path: ['webhooks/2026-03/%1$s/subscriptions/batch/update', $appID],
-            body: (object) $parsed,
+            method: 'delete',
+            path: [
+                'webhooks/2026-03/%1$s/subscriptions/%2$s', $appID, $subscriptionID,
+            ],
             options: $options,
-            convert: BatchResponseSubscriptionResponse::class,
+            convert: null,
         );
     }
 
     /**
      * @api
      *
+     * Delete a specific webhook journal subscription using its unique identifier. This operation is useful for managing and cleaning up subscriptions that are no longer needed.
+     *
+     * @param int $subscriptionID the unique identifier of the subscription to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -245,13 +292,16 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Delete a webhook journal subscription for a specific portal. This operation removes the subscription associated with the given portalId, effectively stopping any webhook events from being sent to the portal.
+     *
+     * @param int $portalID the unique identifier of the portal for which the webhook journal subscription is to be deleted
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
      *
      * @throws APIException
      */
-    public function deletePortalSubscriptions(
+    public function deleteJournalSubscriptionForPortal(
         int $portalID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
@@ -269,6 +319,7 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * Delete the webhook settings for the specified app. Event subscriptions will not be deleted, but will be paused until another webhook is created.
      *
+     * @param int $appID the identifier for the app
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -291,41 +342,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Delete an existing event subscription by ID.
+     * Remove a specific filter from your webhook journal subscriptions. This operation is useful when you need to clean up or modify the filters applied to your webhook subscriptions. The filter identified by the filterId will be permanently deleted.
      *
-     * @param array{appID: int}|WebhookDeleteSubscriptionParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function deleteSubscription(
-        int $subscriptionID,
-        array|WebhookDeleteSubscriptionParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = WebhookDeleteSubscriptionParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'delete',
-            path: [
-                'webhooks/2026-03/%1$s/subscriptions/%2$s', $appID, $subscriptionID,
-            ],
-            options: $options,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
+     * @param int $filterID the unique identifier of the filter to delete
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -348,39 +367,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetEarliestJournalParams $params
-     * @param RequestOpts|null $requestOptions
+     * Retrieve the earliest batch of webhook journal entries up to the specified count. This endpoint is useful for fetching historical webhook data in batches, allowing you to process or analyze them as needed.
      *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function getEarliestJournal(
-        array|WebhookGetEarliestJournalParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = WebhookGetEarliestJournalParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: 'webhooks-journal/journal/2026-03/earliest',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['installPortalID' => 'installPortalId']
-            ),
-            headers: ['Accept' => '*/*'],
-            options: $options,
-            convert: 'string',
-        );
-    }
-
-    /**
-     * @api
-     *
+     * @param int $count The number of journal entries to retrieve. This must be an integer with a minimum value of 1.
      * @param array{installPortalID?: int}|WebhookGetEarliestJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -414,18 +403,20 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetEarliestLocalJournalParams $params
+     * Retrieve the earliest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the initial entries in the journal, which can be helpful for debugging or auditing purposes.
+     *
+     * @param array{installPortalID?: int}|WebhookGetEarliestJournalEntryParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getEarliestLocalJournal(
-        array|WebhookGetEarliestLocalJournalParams $params,
+    public function getEarliestJournalEntry(
+        array|WebhookGetEarliestJournalEntryParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetEarliestLocalJournalParams::parseRequest(
+        [$parsed, $options] = WebhookGetEarliestJournalEntryParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -433,7 +424,7 @@ final class WebhooksRawService implements WebhooksRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'webhooks-journal/journal-local/2026-03/earliest',
+            path: 'webhooks-journal/journal/2026-03/earliest',
             query: Util::array_transform_keys(
                 $parsed,
                 ['installPortalID' => 'installPortalId']
@@ -447,6 +438,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Retrieve the earliest batch of webhook journal entries up to a specified count. This endpoint is useful for accessing the oldest records available in the webhook journal, allowing you to process or analyze historical webhook data.
+     *
+     * @param int $count The number of webhook journal entries to retrieve. It must be an integer with a minimum value of 1.
      * @param array{
      *   installPortalID?: int
      * }|WebhookGetEarliestLocalJournalBatchParams $params
@@ -484,20 +478,95 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Retrieve the earliest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the oldest available data in the journal, which can be used for historical analysis or troubleshooting.
+     *
+     * @param array{
+     *   installPortalID?: int
+     * }|WebhookGetEarliestLocalJournalEntryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getEarliestLocalJournalEntry(
+        array|WebhookGetEarliestLocalJournalEntryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = WebhookGetEarliestLocalJournalEntryParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'webhooks-journal/journal-local/2026-03/earliest',
+            query: Util::array_transform_keys(
+                $parsed,
+                ['installPortalID' => 'installPortalId']
+            ),
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Retrieve a specific event subscription by ID.
+     *
+     * @param int $subscriptionID the identifier for the subscription
+     * @param array{appID: int}|WebhookGetEventSubscriptionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<SubscriptionResponse>
+     *
+     * @throws APIException
+     */
+    public function getEventSubscription(
+        int $subscriptionID,
+        array|WebhookGetEventSubscriptionParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = WebhookGetEventSubscriptionParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: [
+                'webhooks/2026-03/%1$s/subscriptions/%2$s', $appID, $subscriptionID,
+            ],
+            options: $options,
+            convert: SubscriptionResponse::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Read a batch of webhook journal entries for the specified portal. This endpoint allows you to retrieve detailed information about webhook events processed by your HubSpot account. It is useful for auditing and tracking webhook activity.
+     *
      * @param array{
      *   inputs: list<string>, installPortalID?: int
-     * }|WebhookGetJournalBatchParams $params
+     * }|WebhookGetJournalBatchByRequestParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseJournalFetchResponse>
      *
      * @throws APIException
      */
-    public function getJournalBatch(
-        array|WebhookGetJournalBatchParams $params,
+    public function getJournalBatchByRequest(
+        array|WebhookGetJournalBatchByRequestParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetJournalBatchParams::parseRequest(
+        [$parsed, $options] = WebhookGetJournalBatchByRequestParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -520,22 +589,24 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count Path param
+     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint allows you to specify the number of entries to retrieve, helping you manage and paginate through large sets of webhook data efficiently.
+     *
+     * @param int $count Path param: The number of webhook journal entries to retrieve in the batch. This parameter is required and must be an integer greater than or equal to 1.
      * @param array{
      *   offset: string, installPortalID?: int
-     * }|WebhookGetJournalBatchAfterOffsetParams $params
+     * }|WebhookGetJournalBatchFromOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseJournalFetchResponse>
      *
      * @throws APIException
      */
-    public function getJournalBatchAfterOffset(
+    public function getJournalBatchFromOffset(
         int $count,
-        array|WebhookGetJournalBatchAfterOffsetParams $params,
+        array|WebhookGetJournalBatchFromOffsetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetJournalBatchAfterOffsetParams::parseRequest(
+        [$parsed, $options] = WebhookGetJournalBatchFromOffsetParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -560,6 +631,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Retrieve the status of a specific webhook journal entry using its unique status ID. This endpoint is useful for monitoring the progress or outcome of a webhook operation, providing insights into whether it is pending, in progress, completed, failed, or expired.
+     *
+     * @param string $statusID the unique identifier (UUID) of the webhook journal entry whose status is to be retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SnapshotStatusResponse>
@@ -582,39 +656,34 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetLatestJournalParams $params
+     * Retrieve details of a specific webhook journal subscription using its unique identifier. This endpoint is useful for obtaining information about a particular subscription, such as its actions, object types, and associated properties.
+     *
+     * @param int $subscriptionID The unique identifier of the subscription to retrieve. It is an integer value.
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<SubscriptionResponse1>
      *
      * @throws APIException
      */
-    public function getLatestJournal(
-        array|WebhookGetLatestJournalParams $params,
-        RequestOptions|array|null $requestOptions = null,
+    public function getJournalSubscription(
+        int $subscriptionID,
+        RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetLatestJournalParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'webhooks-journal/journal/2026-03/latest',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['installPortalID' => 'installPortalId']
-            ),
-            headers: ['Accept' => '*/*'],
-            options: $options,
-            convert: 'string',
+            path: ['webhooks-journal/subscriptions/2026-03/%1$s', $subscriptionID],
+            options: $requestOptions,
+            convert: SubscriptionResponse1::class,
         );
     }
 
     /**
      * @api
      *
+     * Retrieve the latest batch of webhook journal entries up to a specified count. This endpoint is useful for fetching the most recent webhook events processed by your HubSpot account. The response includes details about each event, and you can specify the number of entries to retrieve.
+     *
+     * @param int $count The number of journal entries to retrieve. Must be an integer with a minimum value of 1.
      * @param array{installPortalID?: int}|WebhookGetLatestJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -648,18 +717,20 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{installPortalID?: int}|WebhookGetLatestLocalJournalParams $params
+     * Retrieve the latest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook data available in the journal.
+     *
+     * @param array{installPortalID?: int}|WebhookGetLatestJournalEntryParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getLatestLocalJournal(
-        array|WebhookGetLatestLocalJournalParams $params,
+    public function getLatestJournalEntry(
+        array|WebhookGetLatestJournalEntryParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetLatestLocalJournalParams::parseRequest(
+        [$parsed, $options] = WebhookGetLatestJournalEntryParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -667,7 +738,7 @@ final class WebhooksRawService implements WebhooksRawContract
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: 'webhooks-journal/journal-local/2026-03/latest',
+            path: 'webhooks-journal/journal/2026-03/latest',
             query: Util::array_transform_keys(
                 $parsed,
                 ['installPortalID' => 'installPortalId']
@@ -681,6 +752,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Retrieve the latest batch of webhook journal entries up to a specified count. This endpoint is useful for fetching the most recent webhook events processed by the system. It requires authentication and supports various security schemes.
+     *
+     * @param int $count The number of webhook journal entries to retrieve. It must be an integer with a minimum value of 1.
      * @param array{
      *   installPortalID?: int
      * }|WebhookGetLatestLocalJournalBatchParams $params
@@ -718,20 +792,59 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Retrieve the latest entries from the webhooks journal. This endpoint is useful for accessing the most recent webhook data for analysis or troubleshooting. It supports filtering by the installPortalId to narrow down results to a specific portal.
+     *
+     * @param array{
+     *   installPortalID?: int
+     * }|WebhookGetLatestLocalJournalEntryParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getLatestLocalJournalEntry(
+        array|WebhookGetLatestLocalJournalEntryParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = WebhookGetLatestLocalJournalEntryParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'webhooks-journal/journal-local/2026-03/latest',
+            query: Util::array_transform_keys(
+                $parsed,
+                ['installPortalID' => 'installPortalId']
+            ),
+            headers: ['Accept' => '*/*'],
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Perform a batch read operation on the webhooks journal. This endpoint allows you to retrieve a batch of journal entries by providing the necessary input data. It is useful for processing large volumes of webhook data efficiently.
+     *
      * @param array{
      *   inputs: list<string>, installPortalID?: int
-     * }|WebhookGetLocalJournalBatchParams $params
+     * }|WebhookGetLocalJournalBatchByRequestParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseJournalFetchResponse>
      *
      * @throws APIException
      */
-    public function getLocalJournalBatch(
-        array|WebhookGetLocalJournalBatchParams $params,
+    public function getLocalJournalBatchByRequest(
+        array|WebhookGetLocalJournalBatchByRequestParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetLocalJournalBatchParams::parseRequest(
+        [$parsed, $options] = WebhookGetLocalJournalBatchByRequestParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -754,22 +867,24 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count Path param
+     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint is useful for fetching sequential batches of data, allowing you to paginate through large sets of webhook journal entries efficiently.
+     *
+     * @param int $count Path param: The number of entries to retrieve in the batch. This must be an integer with a minimum value of 1.
      * @param array{
      *   offset: string, installPortalID?: int
-     * }|WebhookGetLocalJournalBatchAfterOffsetParams $params
+     * }|WebhookGetLocalJournalBatchFromOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<BatchResponseJournalFetchResponse>
      *
      * @throws APIException
      */
-    public function getLocalJournalBatchAfterOffset(
+    public function getLocalJournalBatchFromOffset(
         int $count,
-        array|WebhookGetLocalJournalBatchAfterOffsetParams $params,
+        array|WebhookGetLocalJournalBatchFromOffsetParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetLocalJournalBatchAfterOffsetParams::parseRequest(
+        [$parsed, $options] = WebhookGetLocalJournalBatchFromOffsetParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -796,6 +911,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Retrieve the status of a specific webhook journal entry using its unique status ID. This endpoint is useful for checking the progress or result of a webhook operation, such as whether it is pending, in progress, completed, failed, or expired.
+     *
+     * @param string $statusID the unique identifier (UUID) of the webhook journal entry whose status is to be retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SnapshotStatusResponse>
@@ -818,21 +936,22 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * @param array{
-     *   installPortalID?: int
-     * }|WebhookGetNextJournalAfterOffsetParams $params
+     * Retrieve the next set of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through webhook journal entries in a HubSpot account. It allows you to continue fetching entries from where the last request left off, using the offset parameter.
+     *
+     * @param string $offset The offset from which to start retrieving the next set of journal entries. This is a string value.
+     * @param array{installPortalID?: int}|WebhookGetNextJournalEntriesParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getNextJournalAfterOffset(
+    public function getNextJournalEntries(
         string $offset,
-        array|WebhookGetNextJournalAfterOffsetParams $params,
+        array|WebhookGetNextJournalEntriesParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetNextJournalAfterOffsetParams::parseRequest(
+        [$parsed, $options] = WebhookGetNextJournalEntriesParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -854,21 +973,24 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Retrieve the next set of journal entries starting from a specified offset. This endpoint is useful for paginating through webhook journal entries in a sequential manner. It requires specifying the offset from which the next entries should be fetched.
+     *
+     * @param string $offset The offset from which the next set of journal entries should be retrieved. This parameter is required to specify the starting point for the retrieval.
      * @param array{
      *   installPortalID?: int
-     * }|WebhookGetNextLocalJournalAfterOffsetParams $params
+     * }|WebhookGetNextLocalJournalEntriesParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<string>
      *
      * @throws APIException
      */
-    public function getNextLocalJournalAfterOffset(
+    public function getNextLocalJournalEntries(
         string $offset,
-        array|WebhookGetNextLocalJournalAfterOffsetParams $params,
+        array|WebhookGetNextLocalJournalEntriesParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = WebhookGetNextLocalJournalAfterOffsetParams::parseRequest(
+        [$parsed, $options] = WebhookGetNextLocalJournalEntriesParams::parseRequest(
             $params,
             $requestOptions,
         );
@@ -894,6 +1016,7 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * Retrieve the webhook settings for the specified app, including the webhook’s target URL, throttle configuration, and create/update date.
      *
+     * @param int $appID the identifier for the app
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SettingsResponse>
@@ -916,41 +1039,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve a specific event subscription by ID.
+     * Retrieve a specific filter associated with a webhook journal subscription. This endpoint allows you to access detailed information about the filter identified by the filterId path parameter. It is useful for managing and reviewing filter configurations within your webhook subscriptions.
      *
-     * @param array{appID: int}|WebhookGetSubscriptionParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<SubscriptionResponse>
-     *
-     * @throws APIException
-     */
-    public function getSubscription(
-        int $subscriptionID,
-        array|WebhookGetSubscriptionParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = WebhookGetSubscriptionParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: [
-                'webhooks/2026-03/%1$s/subscriptions/%2$s', $appID, $subscriptionID,
-            ],
-            options: $options,
-            convert: SubscriptionResponse::class,
-        );
-    }
-
-    /**
-     * @api
-     *
+     * @param int $filterID the unique identifier of the filter to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FilterResponse>
@@ -973,30 +1064,32 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
+     * Retrieve event subscriptions for the specified app.
+     *
+     * @param int $appID the identifier for the app
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<list<FilterResponse>>
+     * @return BaseResponse<SubscriptionListResponse>
      *
      * @throws APIException
      */
-    public function getSubscriptionFilters(
-        int $subscriptionID,
+    public function listEventSubscriptions(
+        int $appID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: [
-                'webhooks-journal/subscriptions/2026-03/filters/subscription/%1$s',
-                $subscriptionID,
-            ],
+            path: ['webhooks/2026-03/%1$s/subscriptions', $appID],
             options: $requestOptions,
-            convert: new ListOf(FilterResponse::class),
+            convert: SubscriptionListResponse::class,
         );
     }
 
     /**
      * @api
+     *
+     * Retrieve a list of webhook journal subscriptions for the specified version. This endpoint allows you to view all active subscriptions without pagination. It is useful for managing and auditing webhook subscriptions in your HubSpot account.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -1019,24 +1112,67 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve event subscriptions for the specified app.
+     * Retrieve the filters associated with a specific webhook subscription. This endpoint is useful for obtaining detailed information about the filters applied to a subscription, which can help in managing and understanding the data flow through your webhook integrations.
      *
+     * @param int $subscriptionID the unique identifier of the subscription for which filters are being retrieved
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SubscriptionListResponse>
+     * @return BaseResponse<list<FilterResponse>>
      *
      * @throws APIException
      */
-    public function listSubscriptions(
-        int $appID,
+    public function listSubscriptionFilters(
+        int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse {
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'get',
-            path: ['webhooks/2026-03/%1$s/subscriptions', $appID],
+            path: [
+                'webhooks-journal/subscriptions/2026-03/filters/subscription/%1$s',
+                $subscriptionID,
+            ],
             options: $requestOptions,
-            convert: SubscriptionListResponse::class,
+            convert: new ListOf(FilterResponse::class),
+        );
+    }
+
+    /**
+     * @api
+     *
+     * Update an existing event subscription by ID.
+     *
+     * @param int $subscriptionID path param: The identifier for the subscription
+     * @param array{
+     *   appID: int, active?: bool
+     * }|WebhookUpdateEventSubscriptionParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<SubscriptionResponse>
+     *
+     * @throws APIException
+     */
+    public function updateEventSubscription(
+        int $subscriptionID,
+        array|WebhookUpdateEventSubscriptionParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = WebhookUpdateEventSubscriptionParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $appID = $parsed['appID'];
+        unset($parsed['appID']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'patch',
+            path: [
+                'webhooks/2026-03/%1$s/subscriptions/%2$s', $appID, $subscriptionID,
+            ],
+            body: (object) array_diff_key($parsed, array_flip(['appID'])),
+            options: $options,
+            convert: SubscriptionResponse::class,
         );
     }
 
@@ -1045,6 +1181,7 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * Update webhook settings for the specified app.
      *
+     * @param int $appID the identifier for the app
      * @param array{
      *   targetURL: string, throttling: ThrottlingSettings|ThrottlingSettingsShape
      * }|WebhookUpdateSettingsParams $params
@@ -1071,43 +1208,6 @@ final class WebhooksRawService implements WebhooksRawContract
             body: (object) $parsed,
             options: $options,
             convert: SettingsResponse::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Update an existing event subscription by ID.
-     *
-     * @param int $subscriptionID Path param
-     * @param array{appID: int, active?: bool}|WebhookUpdateSubscriptionParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<SubscriptionResponse>
-     *
-     * @throws APIException
-     */
-    public function updateSubscription(
-        int $subscriptionID,
-        array|WebhookUpdateSubscriptionParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = WebhookUpdateSubscriptionParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-        $appID = $parsed['appID'];
-        unset($parsed['appID']);
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'patch',
-            path: [
-                'webhooks/2026-03/%1$s/subscriptions/%2$s', $appID, $subscriptionID,
-            ],
-            body: (object) array_diff_key($parsed, array_flip(['appID'])),
-            options: $options,
-            convert: SubscriptionResponse::class,
         );
     }
 }

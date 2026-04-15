@@ -6,6 +6,7 @@ namespace HubSpotSDK\Cms\MediaBridge;
 
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\NumberDisplayHint;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
@@ -29,6 +30,7 @@ use HubSpotSDK\OptionInput;
  *   name: string,
  *   type: Type|value-of<Type>,
  *   calculationFormula?: string|null,
+ *   currencyPropertyName?: string|null,
  *   dataSensitivity?: null|DataSensitivity|value-of<DataSensitivity>,
  *   description?: string|null,
  *   displayOrder?: int|null,
@@ -36,8 +38,10 @@ use HubSpotSDK\OptionInput;
  *   formField?: bool|null,
  *   hasUniqueValue?: bool|null,
  *   hidden?: bool|null,
+ *   numberDisplayHint?: null|NumberDisplayHint|value-of<NumberDisplayHint>,
  *   options?: list<OptionInput|OptionInputShape>|null,
  *   referencedObjectType?: string|null,
+ *   showCurrencySymbol?: bool|null,
  * }
  */
 final class MediaBridgeCreatePropertyParams implements BaseModel
@@ -69,6 +73,9 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
     #[Optional]
     public ?string $calculationFormula;
 
+    #[Optional]
+    public ?string $currencyPropertyName;
+
     /** @var value-of<DataSensitivity>|null $dataSensitivity */
     #[Optional(enum: DataSensitivity::class)]
     public ?string $dataSensitivity;
@@ -91,12 +98,19 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
     #[Optional]
     public ?bool $hidden;
 
+    /** @var value-of<NumberDisplayHint>|null $numberDisplayHint */
+    #[Optional(enum: NumberDisplayHint::class)]
+    public ?string $numberDisplayHint;
+
     /** @var list<OptionInput>|null $options */
     #[Optional(list: OptionInput::class)]
     public ?array $options;
 
     #[Optional]
     public ?string $referencedObjectType;
+
+    #[Optional]
+    public ?bool $showCurrencySymbol;
 
     /**
      * `new MediaBridgeCreatePropertyParams()` is missing required properties by the API.
@@ -133,6 +147,7 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
      * @param FieldType|value-of<FieldType> $fieldType
      * @param Type|value-of<Type> $type
      * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
+     * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
      * @param list<OptionInput|OptionInputShape>|null $options
      */
     public static function with(
@@ -143,6 +158,7 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
         string $name,
         Type|string $type,
         ?string $calculationFormula = null,
+        ?string $currencyPropertyName = null,
         DataSensitivity|string|null $dataSensitivity = null,
         ?string $description = null,
         ?int $displayOrder = null,
@@ -150,8 +166,10 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
         ?bool $formField = null,
         ?bool $hasUniqueValue = null,
         ?bool $hidden = null,
+        NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
         ?string $referencedObjectType = null,
+        ?bool $showCurrencySymbol = null,
     ): self {
         $self = new self;
 
@@ -163,6 +181,7 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
         $self['type'] = $type;
 
         null !== $calculationFormula && $self['calculationFormula'] = $calculationFormula;
+        null !== $currencyPropertyName && $self['currencyPropertyName'] = $currencyPropertyName;
         null !== $dataSensitivity && $self['dataSensitivity'] = $dataSensitivity;
         null !== $description && $self['description'] = $description;
         null !== $displayOrder && $self['displayOrder'] = $displayOrder;
@@ -170,8 +189,10 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
         null !== $formField && $self['formField'] = $formField;
         null !== $hasUniqueValue && $self['hasUniqueValue'] = $hasUniqueValue;
         null !== $hidden && $self['hidden'] = $hidden;
+        null !== $numberDisplayHint && $self['numberDisplayHint'] = $numberDisplayHint;
         null !== $options && $self['options'] = $options;
         null !== $referencedObjectType && $self['referencedObjectType'] = $referencedObjectType;
+        null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
 
         return $self;
     }
@@ -238,6 +259,14 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
         return $self;
     }
 
+    public function withCurrencyPropertyName(string $currencyPropertyName): self
+    {
+        $self = clone $this;
+        $self['currencyPropertyName'] = $currencyPropertyName;
+
+        return $self;
+    }
+
     /**
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      */
@@ -299,6 +328,18 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
     }
 
     /**
+     * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
+     */
+    public function withNumberDisplayHint(
+        NumberDisplayHint|string $numberDisplayHint
+    ): self {
+        $self = clone $this;
+        $self['numberDisplayHint'] = $numberDisplayHint;
+
+        return $self;
+    }
+
+    /**
      * @param list<OptionInput|OptionInputShape> $options
      */
     public function withOptions(array $options): self
@@ -313,6 +354,14 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
     {
         $self = clone $this;
         $self['referencedObjectType'] = $referencedObjectType;
+
+        return $self;
+    }
+
+    public function withShowCurrencySymbol(bool $showCurrencySymbol): self
+    {
+        $self = clone $this;
+        $self['showCurrencySymbol'] = $showCurrencySymbol;
 
         return $self;
     }

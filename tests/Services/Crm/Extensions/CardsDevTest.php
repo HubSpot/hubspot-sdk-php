@@ -257,6 +257,7 @@ final class CardsDevTest extends TestCase
 
         $result = $this->client->crm->extensions->cardsDev->migrateViews(
             0,
+            allowDuplicateAppCardIDs: true,
             appCardID: 0,
             legacyCrmCardID: 0
         );
@@ -274,9 +275,10 @@ final class CardsDevTest extends TestCase
 
         $result = $this->client->crm->extensions->cardsDev->migrateViews(
             0,
+            allowDuplicateAppCardIDs: true,
             appCardID: 0,
             legacyCrmCardID: 0,
-            helpdeskAppCardID: 0
+            helpdeskAppCardID: 0,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

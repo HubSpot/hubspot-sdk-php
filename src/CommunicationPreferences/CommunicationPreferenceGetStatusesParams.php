@@ -26,10 +26,17 @@ final class CommunicationPreferenceGetStatusesParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<Channel> $channel */
+    /**
+     * The communication channel for which the subscription status is being retrieved. This parameter is required and currently supports only 'EMAIL'.
+     *
+     * @var value-of<Channel> $channel
+     */
     #[Required(enum: Channel::class)]
     public string $channel;
 
+    /**
+     * The ID of the business unit to filter the subscription status by. This is an optional parameter.
+     */
     #[Optional]
     public ?int $businessUnitID;
 
@@ -73,6 +80,8 @@ final class CommunicationPreferenceGetStatusesParams implements BaseModel
     }
 
     /**
+     * The communication channel for which the subscription status is being retrieved. This parameter is required and currently supports only 'EMAIL'.
+     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -83,6 +92,9 @@ final class CommunicationPreferenceGetStatusesParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The ID of the business unit to filter the subscription status by. This is an optional parameter.
+     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;

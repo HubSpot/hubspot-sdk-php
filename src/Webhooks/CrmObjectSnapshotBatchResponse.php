@@ -20,7 +20,11 @@ final class CrmObjectSnapshotBatchResponse implements BaseModel
     /** @use SdkModel<CrmObjectSnapshotBatchResponseShape> */
     use SdkModel;
 
-    /** @var list<CrmObjectSnapshotResponse> $snapshotResponses */
+    /**
+     * An array of CrmObjectSnapshotResponse objects, each containing the details of a single CRM object snapshot request. This property is required.
+     *
+     * @var list<CrmObjectSnapshotResponse> $snapshotResponses
+     */
     #[Required(list: CrmObjectSnapshotResponse::class)]
     public array $snapshotResponses;
 
@@ -60,6 +64,8 @@ final class CrmObjectSnapshotBatchResponse implements BaseModel
     }
 
     /**
+     * An array of CrmObjectSnapshotResponse objects, each containing the details of a single CRM object snapshot request. This property is required.
+     *
      * @param list<CrmObjectSnapshotResponse|CrmObjectSnapshotResponseShape> $snapshotResponses
      */
     public function withSnapshotResponses(array $snapshotResponses): self

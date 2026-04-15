@@ -10,6 +10,8 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Create a new filter for a webhook subscription in the HubSpot account. This endpoint allows you to define conditions that determine when a webhook event should be triggered for a specific subscription. The request body must include the subscription ID and the filter details.
+ *
  * @see HubSpotSDK\Services\WebhooksService::createSubscriptionFilter()
  *
  * @phpstan-import-type FilterShape from \HubSpotSDK\Webhooks\Filter
@@ -30,6 +32,9 @@ final class WebhookCreateSubscriptionFilterParams implements BaseModel
     #[Required]
     public Filter $filter;
 
+    /**
+     * The unique identifier of the subscription to which the filter will be applied. It is an integer in int64 format.
+     */
     #[Required('subscriptionId')]
     public int $subscriptionID;
 
@@ -84,6 +89,9 @@ final class WebhookCreateSubscriptionFilterParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier of the subscription to which the filter will be applied. It is an integer in int64 format.
+     */
     public function withSubscriptionID(int $subscriptionID): self
     {
         $self = clone $this;

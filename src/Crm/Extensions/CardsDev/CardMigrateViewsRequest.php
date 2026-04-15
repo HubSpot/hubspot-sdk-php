@@ -11,13 +11,19 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type CardMigrateViewsRequestShape = array{
- *   appCardID: int, legacyCrmCardID: int, helpdeskAppCardID?: int|null
+ *   allowDuplicateAppCardIDs: bool,
+ *   appCardID: int,
+ *   legacyCrmCardID: int,
+ *   helpdeskAppCardID?: int|null,
  * }
  */
 final class CardMigrateViewsRequest implements BaseModel
 {
     /** @use SdkModel<CardMigrateViewsRequestShape> */
     use SdkModel;
+
+    #[Required('allowDuplicateAppCardIds')]
+    public bool $allowDuplicateAppCardIDs;
 
     #[Required('appCardId')]
     public int $appCardID;
@@ -33,13 +39,18 @@ final class CardMigrateViewsRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * CardMigrateViewsRequest::with(appCardID: ..., legacyCrmCardID: ...)
+     * CardMigrateViewsRequest::with(
+     *   allowDuplicateAppCardIDs: ..., appCardID: ..., legacyCrmCardID: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new CardMigrateViewsRequest)->withAppCardID(...)->withLegacyCrmCardID(...)
+     * (new CardMigrateViewsRequest)
+     *   ->withAllowDuplicateAppCardIDs(...)
+     *   ->withAppCardID(...)
+     *   ->withLegacyCrmCardID(...)
      * ```
      */
     public function __construct()
@@ -53,16 +64,27 @@ final class CardMigrateViewsRequest implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
+        bool $allowDuplicateAppCardIDs,
         int $appCardID,
         int $legacyCrmCardID,
-        ?int $helpdeskAppCardID = null
+        ?int $helpdeskAppCardID = null,
     ): self {
         $self = new self;
 
+        $self['allowDuplicateAppCardIDs'] = $allowDuplicateAppCardIDs;
         $self['appCardID'] = $appCardID;
         $self['legacyCrmCardID'] = $legacyCrmCardID;
 
         null !== $helpdeskAppCardID && $self['helpdeskAppCardID'] = $helpdeskAppCardID;
+
+        return $self;
+    }
+
+    public function withAllowDuplicateAppCardIDs(
+        bool $allowDuplicateAppCardIDs
+    ): self {
+        $self = clone $this;
+        $self['allowDuplicateAppCardIDs'] = $allowDuplicateAppCardIDs;
 
         return $self;
     }

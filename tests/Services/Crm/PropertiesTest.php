@@ -5,7 +5,7 @@ namespace Tests\Services\Crm;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
-use HubSpotSDK\Crm\Property;
+use HubSpotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -72,6 +72,7 @@ final class PropertiesTest extends TestCase
             formField: true,
             hasUniqueValue: true,
             hidden: true,
+            numberDisplayHint: 'currency',
             options: [
                 [
                     'displayOrder' => 0,
@@ -124,6 +125,7 @@ final class PropertiesTest extends TestCase
             groupName: 'groupName',
             hidden: true,
             label: 'label',
+            numberDisplayHint: 'currency',
             options: [
                 [
                     'displayOrder' => 0,

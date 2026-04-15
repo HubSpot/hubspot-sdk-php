@@ -77,6 +77,7 @@ final class BatchTest extends TestCase
                     'formField' => true,
                     'hasUniqueValue' => true,
                     'hidden' => true,
+                    'numberDisplayHint' => 'currency',
                     'options' => [
                         [
                             'displayOrder' => 0,

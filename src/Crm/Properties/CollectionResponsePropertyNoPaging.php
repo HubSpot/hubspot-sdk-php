@@ -7,10 +7,10 @@ namespace HubSpotSDK\Crm\Properties;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\Crm\Property;
+use HubSpotSDK\Property;
 
 /**
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Crm\Property
+ * @phpstan-import-type PropertyShape from \HubSpotSDK\Property
  *
  * @phpstan-type CollectionResponsePropertyNoPagingShape = array{
  *   results: list<Property|PropertyShape>

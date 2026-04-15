@@ -22,9 +22,9 @@ interface BatchContract
     /**
      * @api
      *
-     * @param Channel|value-of<Channel> $channel Query param
+     * @param Channel|value-of<Channel> $channel Query param: The communication channel to filter the unsubscribe statuses. This parameter is required and currently supports 'EMAIL' as a valid value.
      * @param list<string> $inputs body param: Strings to input
-     * @param int $businessUnitID Query param
+     * @param int $businessUnitID Query param: The ID of the business unit to filter the results. This is an optional parameter.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -39,9 +39,9 @@ interface BatchContract
     /**
      * @api
      *
-     * @param \HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel> $channel Query param
+     * @param \HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchReadParams\Channel> $channel Query param: The communication channel to filter the subscription statuses. Must be 'EMAIL'.
      * @param list<string> $inputs body param: Strings to input
-     * @param int $businessUnitID Query param
+     * @param int $businessUnitID Query param: An optional integer representing the business unit ID. This parameter helps to filter the results based on the specific business unit.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -56,10 +56,10 @@ interface BatchContract
     /**
      * @api
      *
-     * @param \HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel> $channel Query param
+     * @param \HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\Statuses\Batch\BatchUnsubscribeAllParams\Channel> $channel Query param: The communication channel from which subscribers will be unsubscribed. This parameter is required and currently supports only 'EMAIL'.
      * @param list<string> $inputs body param: Strings to input
-     * @param int $businessUnitID Query param
-     * @param bool $verbose Query param
+     * @param int $businessUnitID query param: An optional integer representing the business unit ID for which the operation is being performed
+     * @param bool $verbose Query param: A boolean indicating whether to include detailed information in the response. Defaults to false.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

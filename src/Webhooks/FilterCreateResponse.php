@@ -16,6 +16,9 @@ final class FilterCreateResponse implements BaseModel
     /** @use SdkModel<FilterCreateResponseShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the created filter. It is an integer formatted as int64.
+     */
     #[Required('filterId')]
     public int $filterID;
 
@@ -52,6 +55,9 @@ final class FilterCreateResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the created filter. It is an integer formatted as int64.
+     */
     public function withFilterID(int $filterID): self
     {
         $self = clone $this;

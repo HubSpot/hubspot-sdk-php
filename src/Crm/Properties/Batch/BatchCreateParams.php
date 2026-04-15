@@ -8,14 +8,14 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\Crm\Properties\PropertyCreate;
+use HubSpotSDK\PropertyCreate;
 
 /**
  * Create a batch of properties using the same rules as when creating an individual property.
  *
  * @see HubSpotSDK\Services\Crm\Properties\BatchService::create()
  *
- * @phpstan-import-type PropertyCreateShape from \HubSpotSDK\Crm\Properties\PropertyCreate
+ * @phpstan-import-type PropertyCreateShape from \HubSpotSDK\PropertyCreate
  *
  * @phpstan-type BatchCreateParamsShape = array{
  *   inputs: list<PropertyCreate|PropertyCreateShape>
