@@ -43,6 +43,7 @@ final class CardsDevRawService implements CardsDevRawContract
      *
      * Defines a new card that will become active on an account when this app is installed.
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param array{
      *   actions: CardActions|CardActionsShape,
      *   display: CardDisplayBody|CardDisplayBodyShape,
@@ -154,6 +155,7 @@ final class CardsDevRawService implements CardsDevRawContract
      *
      * Returns a list of cards for a given app.
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardListResponse>
@@ -232,8 +234,12 @@ final class CardsDevRawService implements CardsDevRawContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param array{
-     *   appCardID: int, legacyCrmCardID: int, helpdeskAppCardID?: int
+     *   allowDuplicateAppCardIDs: bool,
+     *   appCardID: int,
+     *   legacyCrmCardID: int,
+     *   helpdeskAppCardID?: int,
      * }|CardsDevMigrateViewsParams $params
      * @param RequestOpts|null $requestOptions
      *

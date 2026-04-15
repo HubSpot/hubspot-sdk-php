@@ -53,9 +53,9 @@ final class CommunicationPreferencesService implements CommunicationPreferencesC
      *
      * Generate communication preference links for a subscriber. This endpoint allows you to create URLs for managing preferences and unsubscribing, tailored to a specific subscriber. It is useful for integrating communication preference management into your applications.
      *
-     * @param Channel|value-of<Channel> $channel Query param
+     * @param Channel|value-of<Channel> $channel Query param: The communication channel for which the links are generated. Must be 'EMAIL'.
      * @param string $subscriberIDString Body param: A string representing the unique identifier of the subscriber. This property is required.
-     * @param int $businessUnitID Query param
+     * @param int $businessUnitID Query param: The identifier of the business unit. Defaults to 0 if not specified.
      * @param string $language body param: The language in which the generated link should be presented, represented as a string
      * @param int $subscriptionID body param: The unique identifier for the subscription, represented as an integer in int64 format
      * @param RequestOpts|null $requestOptions
@@ -91,7 +91,9 @@ final class CommunicationPreferencesService implements CommunicationPreferencesC
      *
      * Retrieve a contact's current email subscription preferences.
      *
-     * @param \HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetStatusesParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetStatusesParams\Channel> $channel
+     * @param string $subscriberIDString the unique identifier of the subscriber whose communication preferences status is being retrieved
+     * @param \HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetStatusesParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetStatusesParams\Channel> $channel The communication channel for which the subscription status is being retrieved. This parameter is required and currently supports only 'EMAIL'.
+     * @param int $businessUnitID The ID of the business unit to filter the subscription status by. This is an optional parameter.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -117,7 +119,10 @@ final class CommunicationPreferencesService implements CommunicationPreferencesC
      *
      * Check whether a contact has unsubscribed from all email subscriptions. If a contact has not opted out of all communications, the response `results` array will be empty.
      *
-     * @param \HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetUnsubscribeAllStatusParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetUnsubscribeAllStatusParams\Channel> $channel
+     * @param string $subscriberIDString the unique identifier of the subscriber to unsubscribe from all communication preferences
+     * @param \HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetUnsubscribeAllStatusParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\CommunicationPreferenceGetUnsubscribeAllStatusParams\Channel> $channel The communication channel from which to unsubscribe the subscriber. This is a required parameter and must be 'EMAIL'.
+     * @param int $businessUnitID The ID of the business unit to which the subscriber belongs. This is an optional parameter.
+     * @param bool $verbose A boolean indicating whether to include detailed information in the response. Defaults to false.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -148,7 +153,10 @@ final class CommunicationPreferencesService implements CommunicationPreferencesC
      *
      * Unsubscribe a contact from all email subscriptions.
      *
-     * @param \HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams\Channel> $channel
+     * @param string $subscriberIDString the unique identifier of the subscriber to unsubscribe from all communication preferences
+     * @param \HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUnsubscribeAllParams\Channel> $channel The communication channel to unsubscribe from. Must be 'EMAIL'.
+     * @param int $businessUnitID The ID of the business unit associated with the request. This is an optional integer parameter.
+     * @param bool $verbose A boolean indicating whether to include detailed information in the response. Defaults to false.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -179,6 +187,7 @@ final class CommunicationPreferencesService implements CommunicationPreferencesC
      *
      * Set the subscription status of a specific contact.
      *
+     * @param string $subscriberIDString the unique identifier of the subscriber whose communication preferences status is being updated
      * @param \HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\Channel|value-of<\HubSpotSDK\CommunicationPreferences\CommunicationPreferenceUpdateStatusParams\Channel> $channel the type of communication channel, with 'EMAIL' as the only supported option
      * @param StatusState|value-of<StatusState> $statusState the current subscription status of the contact, which can be 'SUBSCRIBED', 'UNSUBSCRIBED', or 'NOT_SPECIFIED'
      * @param int $subscriptionID the unique identifier of the subscription to be updated

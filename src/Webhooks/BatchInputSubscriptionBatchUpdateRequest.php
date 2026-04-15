@@ -20,7 +20,11 @@ final class BatchInputSubscriptionBatchUpdateRequest implements BaseModel
     /** @use SdkModel<BatchInputSubscriptionBatchUpdateRequestShape> */
     use SdkModel;
 
-    /** @var list<SubscriptionBatchUpdateRequest> $inputs */
+    /**
+     * An array of SubscriptionBatchUpdateRequest objects, each representing a subscription to be updated. This property is required.
+     *
+     * @var list<SubscriptionBatchUpdateRequest> $inputs
+     */
     #[Required(list: SubscriptionBatchUpdateRequest::class)]
     public array $inputs;
 
@@ -60,6 +64,8 @@ final class BatchInputSubscriptionBatchUpdateRequest implements BaseModel
     }
 
     /**
+     * An array of SubscriptionBatchUpdateRequest objects, each representing a subscription to be updated. This property is required.
+     *
      * @param list<SubscriptionBatchUpdateRequest|SubscriptionBatchUpdateRequestShape> $inputs
      */
     public function withInputs(array $inputs): self

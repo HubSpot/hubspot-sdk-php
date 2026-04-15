@@ -25,6 +25,7 @@ interface CardsDevRawContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param array<string,mixed>|CardsDevCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -74,6 +75,7 @@ interface CardsDevRawContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicCardListResponse>
@@ -117,6 +119,7 @@ interface CardsDevRawContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param array<string,mixed>|CardsDevMigrateViewsParams $params
      * @param RequestOpts|null $requestOptions
      *

@@ -34,6 +34,7 @@ use HubSpotSDK\Cms\MediaBridge\HasPlainTextEmailReply;
 use HubSpotSDK\Cms\MediaBridge\IfBoolean;
 use HubSpotSDK\Cms\MediaBridge\IfNumber;
 use HubSpotSDK\Cms\MediaBridge\IfString;
+use HubSpotSDK\Cms\MediaBridge\IsBlank;
 use HubSpotSDK\Cms\MediaBridge\IsEngagementType;
 use HubSpotSDK\Cms\MediaBridge\IsPipelineStageClosed;
 use HubSpotSDK\Cms\MediaBridge\IsPresent;
@@ -153,11 +154,12 @@ use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
  * @phpstan-import-type SubstringShape from \HubSpotSDK\Cms\MediaBridge\Substring
  * @phpstan-import-type EulerShape from \HubSpotSDK\Cms\MediaBridge\Euler
  * @phpstan-import-type StringLengthShape from \HubSpotSDK\Cms\MediaBridge\StringLength
+ * @phpstan-import-type IsBlankShape from \HubSpotSDK\Cms\MediaBridge\IsBlank
  * @phpstan-import-type AddTimeShape from \HubSpotSDK\Cms\MediaBridge\AddTime
  * @phpstan-import-type SubtractTimeShape from \HubSpotSDK\Cms\MediaBridge\SubtractTime
  *
  * @phpstan-type ExpressionToEvaluateVariants = mixed|ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|FetchSingleCurrencyPortalCurrency|Now|IsEngagementType|Euler
- * @phpstan-type ExpressionToEvaluateShape = ExpressionToEvaluateVariants|ConstantBooleanShape|ConstantNumberShape|ConstantStringShape|BooleanPropertyVariableShape|StringPropertyVariableShape|NumberPropertyVariableShape|TimestampOfPropertyVariableShape|BooleanTargetPropertyVariableShape|StringTargetPropertyVariableShape|NumberTargetPropertyVariableShape|TimestampOfTargetPropertyVariableShape|AddNumbersShape|SubtractNumbersShape|MultiplyNumbersShape|DivideNumbersShape|RoundDownNumbersShape|RoundUpNumbersShape|RoundNearestNumbersShape|UpperCaseShape|LowerCaseShape|ConcatStringsShape|ContainsShape|BeginsWithShape|NumberToStringShape|ParseNumberShape|FetchExchangeRateShape|FetchCurrencyDecimalPlacesShape|FetchSingleCurrencyPortalCurrencyShape|DatedExchangeRateShape|PipelineProbabilityShape|MaxNumbersShape|MinNumbersShape|LessThanShape|LessThanOrEqualShape|MoreThanShape|MoreThanOrEqualShape|NumberEqualsShape|StringEqualsShape|IsPipelineStageClosedShape|NotShape|DateShape|MonthShape|YearShape|NowShape|TimeBetweenShape|TimeBetweenSkipWeekendsShape|PeriodToMonthsShape|PeriodToWeeksShape|AndShape|OrShape|XorShape|IfStringShape|IfNumberShape|IfBooleanShape|IsPresentShape|HasEmailReplyShape|HasPlainTextEmailReplyShape|ExtractMostRecentEmailReplyHTMLShape|ExtractMostRecentEmailReplyTextShape|ExtractMostRecentPlainTextEmailReplyShape|SetContainsStringShape|IsEngagementTypeShape|FormatFullNameShape|FormatPhoneNumberShape|FormatSearchablePhoneNumberShape|AbsoluteValueShape|SquareRootShape|PowerShape|SubstringShape|EulerShape|StringLengthShape|AddTimeShape|SubtractTimeShape
+ * @phpstan-type ExpressionToEvaluateShape = ExpressionToEvaluateVariants|ConstantBooleanShape|ConstantNumberShape|ConstantStringShape|BooleanPropertyVariableShape|StringPropertyVariableShape|NumberPropertyVariableShape|TimestampOfPropertyVariableShape|BooleanTargetPropertyVariableShape|StringTargetPropertyVariableShape|NumberTargetPropertyVariableShape|TimestampOfTargetPropertyVariableShape|AddNumbersShape|SubtractNumbersShape|MultiplyNumbersShape|DivideNumbersShape|RoundDownNumbersShape|RoundUpNumbersShape|RoundNearestNumbersShape|UpperCaseShape|LowerCaseShape|ConcatStringsShape|ContainsShape|BeginsWithShape|NumberToStringShape|ParseNumberShape|FetchExchangeRateShape|FetchCurrencyDecimalPlacesShape|FetchSingleCurrencyPortalCurrencyShape|DatedExchangeRateShape|PipelineProbabilityShape|MaxNumbersShape|MinNumbersShape|LessThanShape|LessThanOrEqualShape|MoreThanShape|MoreThanOrEqualShape|NumberEqualsShape|StringEqualsShape|IsPipelineStageClosedShape|NotShape|DateShape|MonthShape|YearShape|NowShape|TimeBetweenShape|TimeBetweenSkipWeekendsShape|PeriodToMonthsShape|PeriodToWeeksShape|AndShape|OrShape|XorShape|IfStringShape|IfNumberShape|IfBooleanShape|IsPresentShape|HasEmailReplyShape|HasPlainTextEmailReplyShape|ExtractMostRecentEmailReplyHTMLShape|ExtractMostRecentEmailReplyTextShape|ExtractMostRecentPlainTextEmailReplyShape|SetContainsStringShape|IsEngagementTypeShape|FormatFullNameShape|FormatPhoneNumberShape|FormatSearchablePhoneNumberShape|AbsoluteValueShape|SquareRootShape|PowerShape|SubstringShape|EulerShape|StringLengthShape|IsBlankShape|AddTimeShape|SubtractTimeShape
  */
 final class ExpressionToEvaluate implements ConverterSource
 {
@@ -240,6 +242,7 @@ final class ExpressionToEvaluate implements ConverterSource
             Substring::class,
             Euler::class,
             StringLength::class,
+            IsBlank::class,
             AddTime::class,
             SubtractTime::class,
         ];

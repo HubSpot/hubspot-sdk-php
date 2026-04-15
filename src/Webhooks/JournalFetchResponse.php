@@ -18,12 +18,21 @@ final class JournalFetchResponse implements BaseModel
     /** @use SdkModel<JournalFetchResponseShape> */
     use SdkModel;
 
+    /**
+     * A UUID string indicating the current offset in the journal data, used for pagination.
+     */
     #[Required]
     public string $currentOffset;
 
+    /**
+     * The date and time when the URL will expire, in ISO 8601 format.
+     */
     #[Required]
     public \DateTimeInterface $expiresAt;
 
+    /**
+     * A string representing the URL where the fetched journal data can be accessed.
+     */
     #[Required]
     public string $url;
 
@@ -68,6 +77,9 @@ final class JournalFetchResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * A UUID string indicating the current offset in the journal data, used for pagination.
+     */
     public function withCurrentOffset(string $currentOffset): self
     {
         $self = clone $this;
@@ -76,6 +88,9 @@ final class JournalFetchResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time when the URL will expire, in ISO 8601 format.
+     */
     public function withExpiresAt(\DateTimeInterface $expiresAt): self
     {
         $self = clone $this;
@@ -84,6 +99,9 @@ final class JournalFetchResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * A string representing the URL where the fetched journal data can be accessed.
+     */
     public function withURL(string $url): self
     {
         $self = clone $this;

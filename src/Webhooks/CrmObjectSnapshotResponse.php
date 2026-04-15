@@ -18,15 +18,27 @@ final class CrmObjectSnapshotResponse implements BaseModel
     /** @use SdkModel<CrmObjectSnapshotResponseShape> */
     use SdkModel;
 
+    /**
+     * An integer representing the unique identifier for the CRM object.
+     */
     #[Required('objectId')]
     public int $objectID;
 
+    /**
+     * A string representing the type identifier of the CRM object.
+     */
     #[Required('objectTypeId')]
     public string $objectTypeID;
 
+    /**
+     * An integer representing the unique identifier for the HubSpot portal.
+     */
     #[Required('portalId')]
     public int $portalID;
 
+    /**
+     * A UUID string representing the status identifier of the snapshot.
+     */
     #[Required('snapshotStatusId')]
     public string $snapshotStatusID;
 
@@ -76,6 +88,9 @@ final class CrmObjectSnapshotResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * An integer representing the unique identifier for the CRM object.
+     */
     public function withObjectID(int $objectID): self
     {
         $self = clone $this;
@@ -84,6 +99,9 @@ final class CrmObjectSnapshotResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * A string representing the type identifier of the CRM object.
+     */
     public function withObjectTypeID(string $objectTypeID): self
     {
         $self = clone $this;
@@ -92,6 +110,9 @@ final class CrmObjectSnapshotResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * An integer representing the unique identifier for the HubSpot portal.
+     */
     public function withPortalID(int $portalID): self
     {
         $self = clone $this;
@@ -100,6 +121,9 @@ final class CrmObjectSnapshotResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * A UUID string representing the status identifier of the snapshot.
+     */
     public function withSnapshotStatusID(string $snapshotStatusID): self
     {
         $self = clone $this;

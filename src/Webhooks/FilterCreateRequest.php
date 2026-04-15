@@ -26,6 +26,9 @@ final class FilterCreateRequest implements BaseModel
     #[Required]
     public Filter $filter;
 
+    /**
+     * The unique identifier of the subscription to which the filter will be applied. It is an integer in int64 format.
+     */
     #[Required('subscriptionId')]
     public int $subscriptionID;
 
@@ -78,6 +81,9 @@ final class FilterCreateRequest implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier of the subscription to which the filter will be applied. It is an integer in int64 format.
+     */
     public function withSubscriptionID(int $subscriptionID): self
     {
         $self = clone $this;

@@ -47,6 +47,7 @@ final class URLMappingsRawService implements URLMappingsRawContract
      *   isRegex: bool,
      *   isTrailingSlashOptional: bool,
      *   label: string,
+     *   lastUsedAt: int,
      *   name: string,
      *   note: string,
      *   portalID: int,

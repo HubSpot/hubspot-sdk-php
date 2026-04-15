@@ -38,66 +38,106 @@ final class SubscriptionResponse1 implements BaseModel
     use SdkModel;
 
     /**
-     * The unique ID of the webhook subscription.
+     * The unique identifier for the subscription, represented as an integer.
      */
     #[Required]
     public int $id;
 
-    /** @var list<value-of<Action>> $actions */
+    /**
+     * An array of actions that trigger the subscription, such as 'CREATE', 'UPDATE', 'DELETE', 'MERGE', 'RESTORE', 'ASSOCIATION_ADDED', 'ASSOCIATION_REMOVED', 'SNAPSHOT', 'APP_INSTALL', 'APP_UNINSTALL', 'ADDED_TO_LIST', 'REMOVED_FROM_LIST', and 'GDPR_DELETE'.
+     *
+     * @var list<value-of<Action>> $actions
+     */
     #[Required(list: Action::class)]
     public array $actions;
 
+    /**
+     * The unique identifier for the app associated with the subscription, represented as an integer.
+     */
     #[Required('appId')]
     public int $appID;
 
     /**
-     * The timestamp when the webhook subscription was created, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+     * The date and time when the subscription was created, in ISO 8601 format.
      */
     #[Required]
     public \DateTimeInterface $createdAt;
 
     /**
-     * The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
+     * The identifier for the object type associated with the subscription, represented as a string.
      */
     #[Required('objectTypeId')]
     public string $objectTypeID;
 
-    /** @var value-of<SubscriptionType> $subscriptionType */
+    /**
+     * The type of subscription, which can be one of 'OBJECT', 'ASSOCIATION', 'EVENT', 'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', or 'GDPR_PRIVACY_DELETION'.
+     *
+     * @var value-of<SubscriptionType> $subscriptionType
+     */
     #[Required(enum: SubscriptionType::class)]
     public string $subscriptionType;
 
     /**
-     * The timestamp when the webhook subscription was last updated, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+     * The date and time when the subscription was last updated, in ISO 8601 format.
      */
     #[Required]
     public \DateTimeInterface $updatedAt;
 
-    /** @var array<string,ActionOverrideRequest>|null $actionOverrides */
+    /**
+     * An object containing action overrides, where each key is an action and the value is an ActionOverrideRequest object.
+     *
+     * @var array<string,ActionOverrideRequest>|null $actionOverrides
+     */
     #[Optional(map: ActionOverrideRequest::class)]
     public ?array $actionOverrides;
 
-    /** @var list<string>|null $associatedObjectTypeIDs */
+    /**
+     * An array of strings representing the associated object type IDs for the subscription.
+     *
+     * @var list<string>|null $associatedObjectTypeIDs
+     */
     #[Optional('associatedObjectTypeIds', list: 'string')]
     public ?array $associatedObjectTypeIDs;
 
+    /**
+     * The unique identifier for the user who created the subscription, represented as an integer.
+     */
     #[Optional]
     public ?int $createdBy;
 
+    /**
+     * The date and time when the subscription was deleted, in ISO 8601 format.
+     */
     #[Optional]
     public ?\DateTimeInterface $deletedAt;
 
-    /** @var list<int>|null $listIDs */
+    /**
+     * An array of integers representing the list IDs associated with the subscription.
+     *
+     * @var list<int>|null $listIDs
+     */
     #[Optional('listIds', list: 'int')]
     public ?array $listIDs;
 
-    /** @var list<int>|null $objectIDs */
+    /**
+     * An array of integers representing the object IDs associated with the subscription.
+     *
+     * @var list<int>|null $objectIDs
+     */
     #[Optional('objectIds', list: 'int')]
     public ?array $objectIDs;
 
+    /**
+     * The unique identifier for the portal associated with the subscription, represented as an integer.
+     */
     #[Optional('portalId')]
     public ?int $portalID;
 
-    /** @var list<string>|null $properties */
+    /**
+     * An array of strings representing the properties associated with the subscription.
+     *
+     * @var list<string>|null $properties
+     */
     #[Optional(list: 'string')]
     public ?array $properties;
 
@@ -188,7 +228,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The unique ID of the webhook subscription.
+     * The unique identifier for the subscription, represented as an integer.
      */
     public function withID(int $id): self
     {
@@ -199,6 +239,8 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
+     * An array of actions that trigger the subscription, such as 'CREATE', 'UPDATE', 'DELETE', 'MERGE', 'RESTORE', 'ASSOCIATION_ADDED', 'ASSOCIATION_REMOVED', 'SNAPSHOT', 'APP_INSTALL', 'APP_UNINSTALL', 'ADDED_TO_LIST', 'REMOVED_FROM_LIST', and 'GDPR_DELETE'.
+     *
      * @param list<Action|value-of<Action>> $actions
      */
     public function withActions(array $actions): self
@@ -209,6 +251,9 @@ final class SubscriptionResponse1 implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the app associated with the subscription, represented as an integer.
+     */
     public function withAppID(int $appID): self
     {
         $self = clone $this;
@@ -218,7 +263,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The timestamp when the webhook subscription was created, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+     * The date and time when the subscription was created, in ISO 8601 format.
      */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
@@ -229,7 +274,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
+     * The identifier for the object type associated with the subscription, represented as a string.
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
@@ -240,6 +285,8 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
+     * The type of subscription, which can be one of 'OBJECT', 'ASSOCIATION', 'EVENT', 'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', or 'GDPR_PRIVACY_DELETION'.
+     *
      * @param SubscriptionType|value-of<SubscriptionType> $subscriptionType
      */
     public function withSubscriptionType(
@@ -252,7 +299,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The timestamp when the webhook subscription was last updated, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+     * The date and time when the subscription was last updated, in ISO 8601 format.
      */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
@@ -263,6 +310,8 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
+     * An object containing action overrides, where each key is an action and the value is an ActionOverrideRequest object.
+     *
      * @param array<string,ActionOverrideRequest|ActionOverrideRequestShape> $actionOverrides
      */
     public function withActionOverrides(array $actionOverrides): self
@@ -274,6 +323,8 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
+     * An array of strings representing the associated object type IDs for the subscription.
+     *
      * @param list<string> $associatedObjectTypeIDs
      */
     public function withAssociatedObjectTypeIDs(
@@ -285,6 +336,9 @@ final class SubscriptionResponse1 implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the user who created the subscription, represented as an integer.
+     */
     public function withCreatedBy(int $createdBy): self
     {
         $self = clone $this;
@@ -293,6 +347,9 @@ final class SubscriptionResponse1 implements BaseModel
         return $self;
     }
 
+    /**
+     * The date and time when the subscription was deleted, in ISO 8601 format.
+     */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
         $self = clone $this;
@@ -302,6 +359,8 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
+     * An array of integers representing the list IDs associated with the subscription.
+     *
      * @param list<int> $listIDs
      */
     public function withListIDs(array $listIDs): self
@@ -313,6 +372,8 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
+     * An array of integers representing the object IDs associated with the subscription.
+     *
      * @param list<int> $objectIDs
      */
     public function withObjectIDs(array $objectIDs): self
@@ -323,6 +384,9 @@ final class SubscriptionResponse1 implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the portal associated with the subscription, represented as an integer.
+     */
     public function withPortalID(int $portalID): self
     {
         $self = clone $this;
@@ -332,6 +396,8 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
+     * An array of strings representing the properties associated with the subscription.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self

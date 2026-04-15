@@ -9,11 +9,11 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Properties\BatchResponsePropertyWithErrors\Status;
-use HubSpotSDK\Crm\Property;
+use HubSpotSDK\Property;
 use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Crm\Property
+ * @phpstan-import-type PropertyShape from \HubSpotSDK\Property
  * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponsePropertyWithErrorsShape = array{

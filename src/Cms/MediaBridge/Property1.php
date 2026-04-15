@@ -6,6 +6,7 @@ namespace HubSpotSDK\Cms\MediaBridge;
 
 use HubSpotSDK\Cms\MediaBridge\Property1\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\Property1\DateDisplayHint;
+use HubSpotSDK\Cms\MediaBridge\Property1\NumberDisplayHint;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
@@ -30,6 +31,7 @@ use HubSpotSDK\PropertyModificationMetadata;
  *   calculationFormula?: string|null,
  *   createdAt?: \DateTimeInterface|null,
  *   createdUserID?: string|null,
+ *   currencyPropertyName?: string|null,
  *   dataSensitivity?: null|DataSensitivity|value-of<DataSensitivity>,
  *   dateDisplayHint?: null|DateDisplayHint|value-of<DateDisplayHint>,
  *   displayOrder?: int|null,
@@ -39,6 +41,7 @@ use HubSpotSDK\PropertyModificationMetadata;
  *   hidden?: bool|null,
  *   hubSpotDefined?: bool|null,
  *   modificationMetadata?: null|PropertyModificationMetadata|PropertyModificationMetadataShape,
+ *   numberDisplayHint?: null|NumberDisplayHint|value-of<NumberDisplayHint>,
  *   referencedObjectType?: string|null,
  *   sensitiveDataCategories?: list<string>|null,
  *   showCurrencySymbol?: bool|null,
@@ -91,6 +94,9 @@ final class Property1 implements BaseModel
     #[Optional('createdUserId')]
     public ?string $createdUserID;
 
+    #[Optional]
+    public ?string $currencyPropertyName;
+
     /** @var value-of<DataSensitivity>|null $dataSensitivity */
     #[Optional(enum: DataSensitivity::class)]
     public ?string $dataSensitivity;
@@ -119,6 +125,10 @@ final class Property1 implements BaseModel
 
     #[Optional]
     public ?PropertyModificationMetadata $modificationMetadata;
+
+    /** @var value-of<NumberDisplayHint>|null $numberDisplayHint */
+    #[Optional(enum: NumberDisplayHint::class)]
+    public ?string $numberDisplayHint;
 
     #[Optional]
     public ?string $referencedObjectType;
@@ -179,6 +189,7 @@ final class Property1 implements BaseModel
      * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
      * @param DateDisplayHint|value-of<DateDisplayHint>|null $dateDisplayHint
      * @param PropertyModificationMetadata|PropertyModificationMetadataShape|null $modificationMetadata
+     * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
      * @param list<string>|null $sensitiveDataCategories
      */
     public static function with(
@@ -195,6 +206,7 @@ final class Property1 implements BaseModel
         ?string $calculationFormula = null,
         ?\DateTimeInterface $createdAt = null,
         ?string $createdUserID = null,
+        ?string $currencyPropertyName = null,
         DataSensitivity|string|null $dataSensitivity = null,
         DateDisplayHint|string|null $dateDisplayHint = null,
         ?int $displayOrder = null,
@@ -204,6 +216,7 @@ final class Property1 implements BaseModel
         ?bool $hidden = null,
         ?bool $hubSpotDefined = null,
         PropertyModificationMetadata|array|null $modificationMetadata = null,
+        NumberDisplayHint|string|null $numberDisplayHint = null,
         ?string $referencedObjectType = null,
         ?array $sensitiveDataCategories = null,
         ?bool $showCurrencySymbol = null,
@@ -226,6 +239,7 @@ final class Property1 implements BaseModel
         null !== $calculationFormula && $self['calculationFormula'] = $calculationFormula;
         null !== $createdAt && $self['createdAt'] = $createdAt;
         null !== $createdUserID && $self['createdUserID'] = $createdUserID;
+        null !== $currencyPropertyName && $self['currencyPropertyName'] = $currencyPropertyName;
         null !== $dataSensitivity && $self['dataSensitivity'] = $dataSensitivity;
         null !== $dateDisplayHint && $self['dateDisplayHint'] = $dateDisplayHint;
         null !== $displayOrder && $self['displayOrder'] = $displayOrder;
@@ -235,6 +249,7 @@ final class Property1 implements BaseModel
         null !== $hidden && $self['hidden'] = $hidden;
         null !== $hubSpotDefined && $self['hubSpotDefined'] = $hubSpotDefined;
         null !== $modificationMetadata && $self['modificationMetadata'] = $modificationMetadata;
+        null !== $numberDisplayHint && $self['numberDisplayHint'] = $numberDisplayHint;
         null !== $referencedObjectType && $self['referencedObjectType'] = $referencedObjectType;
         null !== $sensitiveDataCategories && $self['sensitiveDataCategories'] = $sensitiveDataCategories;
         null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
@@ -351,6 +366,14 @@ final class Property1 implements BaseModel
         return $self;
     }
 
+    public function withCurrencyPropertyName(string $currencyPropertyName): self
+    {
+        $self = clone $this;
+        $self['currencyPropertyName'] = $currencyPropertyName;
+
+        return $self;
+    }
+
     /**
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      */
@@ -431,6 +454,18 @@ final class Property1 implements BaseModel
     ): self {
         $self = clone $this;
         $self['modificationMetadata'] = $modificationMetadata;
+
+        return $self;
+    }
+
+    /**
+     * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
+     */
+    public function withNumberDisplayHint(
+        NumberDisplayHint|string $numberDisplayHint
+    ): self {
+        $self = clone $this;
+        $self['numberDisplayHint'] = $numberDisplayHint;
 
         return $self;
     }

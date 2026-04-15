@@ -10,6 +10,8 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Retrieve the latest batch of webhook journal entries up to a specified count. This endpoint is useful for fetching the most recent webhook events processed by the system. It requires authentication and supports various security schemes.
+ *
  * @see HubSpotSDK\Services\WebhooksService::getLatestLocalJournalBatch()
  *
  * @phpstan-type WebhookGetLatestLocalJournalBatchParamsShape = array{
@@ -22,6 +24,9 @@ final class WebhookGetLatestLocalJournalBatchParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The ID of the portal installation to filter the webhook journal entries. It is an optional integer parameter.
+     */
     #[Optional]
     public ?int $installPortalID;
 
@@ -44,6 +49,9 @@ final class WebhookGetLatestLocalJournalBatchParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The ID of the portal installation to filter the webhook journal entries. It is an optional integer parameter.
+     */
     public function withInstallPortalID(int $installPortalID): self
     {
         $self = clone $this;

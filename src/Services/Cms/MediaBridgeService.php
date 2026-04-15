@@ -20,6 +20,7 @@ use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\MediaTy
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\NumberDisplayHint;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams\EventType;
@@ -341,6 +342,7 @@ final class MediaBridgeService implements MediaBridgeContract
      * @param string $name Body param
      * @param Type|value-of<Type> $type Body param
      * @param string $calculationFormula Body param
+     * @param string $currencyPropertyName Body param
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity Body param
      * @param string $description Body param
      * @param int $displayOrder Body param
@@ -348,8 +350,10 @@ final class MediaBridgeService implements MediaBridgeContract
      * @param bool $formField Body param
      * @param bool $hasUniqueValue Body param
      * @param bool $hidden Body param
+     * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint Body param
      * @param list<OptionInput|OptionInputShape> $options Body param
      * @param string $referencedObjectType Body param
+     * @param bool $showCurrencySymbol Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -363,6 +367,7 @@ final class MediaBridgeService implements MediaBridgeContract
         string $name,
         Type|string $type,
         ?string $calculationFormula = null,
+        ?string $currencyPropertyName = null,
         DataSensitivity|string|null $dataSensitivity = null,
         ?string $description = null,
         ?int $displayOrder = null,
@@ -370,8 +375,10 @@ final class MediaBridgeService implements MediaBridgeContract
         ?bool $formField = null,
         ?bool $hasUniqueValue = null,
         ?bool $hidden = null,
+        NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
         ?string $referencedObjectType = null,
+        ?bool $showCurrencySymbol = null,
         RequestOptions|array|null $requestOptions = null,
     ): Property {
         $params = Util::removeNulls(
@@ -383,6 +390,7 @@ final class MediaBridgeService implements MediaBridgeContract
                 'name' => $name,
                 'type' => $type,
                 'calculationFormula' => $calculationFormula,
+                'currencyPropertyName' => $currencyPropertyName,
                 'dataSensitivity' => $dataSensitivity,
                 'description' => $description,
                 'displayOrder' => $displayOrder,
@@ -390,8 +398,10 @@ final class MediaBridgeService implements MediaBridgeContract
                 'formField' => $formField,
                 'hasUniqueValue' => $hasUniqueValue,
                 'hidden' => $hidden,
+                'numberDisplayHint' => $numberDisplayHint,
                 'options' => $options,
                 'referencedObjectType' => $referencedObjectType,
+                'showCurrencySymbol' => $showCurrencySymbol,
             ],
         );
 
@@ -913,6 +923,7 @@ final class MediaBridgeService implements MediaBridgeContract
      * @param int $appID Path param
      * @param string $objectType Path param
      * @param string $calculationFormula Body param
+     * @param string $currencyPropertyName Body param
      * @param string $description Body param
      * @param int $displayOrder Body param
      * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType> $fieldType Body param
@@ -921,7 +932,9 @@ final class MediaBridgeService implements MediaBridgeContract
      * @param bool $hasUniqueValue Body param
      * @param bool $hidden Body param
      * @param string $label Body param
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\NumberDisplayHint|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\NumberDisplayHint> $numberDisplayHint Body param
      * @param list<OptionInput|OptionInputShape> $options Body param
+     * @param bool $showCurrencySymbol Body param
      * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type> $type Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -932,6 +945,7 @@ final class MediaBridgeService implements MediaBridgeContract
         int $appID,
         string $objectType,
         ?string $calculationFormula = null,
+        ?string $currencyPropertyName = null,
         ?string $description = null,
         ?int $displayOrder = null,
         \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType|string|null $fieldType = null,
@@ -940,7 +954,9 @@ final class MediaBridgeService implements MediaBridgeContract
         ?bool $hasUniqueValue = null,
         ?bool $hidden = null,
         ?string $label = null,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
+        ?bool $showCurrencySymbol = null,
         \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|string|null $type = null,
         RequestOptions|array|null $requestOptions = null,
     ): Property {
@@ -949,6 +965,7 @@ final class MediaBridgeService implements MediaBridgeContract
                 'appID' => $appID,
                 'objectType' => $objectType,
                 'calculationFormula' => $calculationFormula,
+                'currencyPropertyName' => $currencyPropertyName,
                 'description' => $description,
                 'displayOrder' => $displayOrder,
                 'fieldType' => $fieldType,
@@ -957,7 +974,9 @@ final class MediaBridgeService implements MediaBridgeContract
                 'hasUniqueValue' => $hasUniqueValue,
                 'hidden' => $hidden,
                 'label' => $label,
+                'numberDisplayHint' => $numberDisplayHint,
                 'options' => $options,
+                'showCurrencySymbol' => $showCurrencySymbol,
                 'type' => $type,
             ],
         );

@@ -29,6 +29,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   isRegex: bool,
  *   isTrailingSlashOptional: bool,
  *   label: string,
+ *   lastUsedAt: int,
  *   name: string,
  *   note: string,
  *   portalID: int,
@@ -154,6 +155,9 @@ final class URLMappingsURLMapping implements BaseModel
     #[Required]
     public string $label;
 
+    #[Required]
+    public int $lastUsedAt;
+
     /**
      * The name of the URL mapping.
      */
@@ -226,6 +230,7 @@ final class URLMappingsURLMapping implements BaseModel
      *   isRegex: ...,
      *   isTrailingSlashOptional: ...,
      *   label: ...,
+     *   lastUsedAt: ...,
      *   name: ...,
      *   note: ...,
      *   portalID: ...,
@@ -259,6 +264,7 @@ final class URLMappingsURLMapping implements BaseModel
      *   ->withIsRegex(...)
      *   ->withIsTrailingSlashOptional(...)
      *   ->withLabel(...)
+     *   ->withLastUsedAt(...)
      *   ->withName(...)
      *   ->withNote(...)
      *   ->withPortalID(...)
@@ -300,6 +306,7 @@ final class URLMappingsURLMapping implements BaseModel
         bool $isRegex,
         bool $isTrailingSlashOptional,
         string $label,
+        int $lastUsedAt,
         string $name,
         string $note,
         int $portalID,
@@ -329,6 +336,7 @@ final class URLMappingsURLMapping implements BaseModel
         $self['isRegex'] = $isRegex;
         $self['isTrailingSlashOptional'] = $isTrailingSlashOptional;
         $self['label'] = $label;
+        $self['lastUsedAt'] = $lastUsedAt;
         $self['name'] = $name;
         $self['note'] = $note;
         $self['portalID'] = $portalID;
@@ -538,6 +546,14 @@ final class URLMappingsURLMapping implements BaseModel
     {
         $self = clone $this;
         $self['label'] = $label;
+
+        return $self;
+    }
+
+    public function withLastUsedAt(int $lastUsedAt): self
+    {
+        $self = clone $this;
+        $self['lastUsedAt'] = $lastUsedAt;
 
         return $self;
     }

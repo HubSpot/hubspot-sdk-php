@@ -80,6 +80,7 @@ final class CommunicationPreferencesRawService implements CommunicationPreferenc
      *
      * Retrieve a contact's current email subscription preferences.
      *
+     * @param string $subscriberIDString the unique identifier of the subscriber whose communication preferences status is being retrieved
      * @param array{
      *   channel: CommunicationPreferenceGetStatusesParams\Channel|value-of<CommunicationPreferenceGetStatusesParams\Channel>,
      *   businessUnitID?: int,
@@ -120,6 +121,7 @@ final class CommunicationPreferencesRawService implements CommunicationPreferenc
      *
      * Check whether a contact has unsubscribed from all email subscriptions. If a contact has not opted out of all communications, the response `results` array will be empty.
      *
+     * @param string $subscriberIDString the unique identifier of the subscriber to unsubscribe from all communication preferences
      * @param array{
      *   channel: CommunicationPreferenceGetUnsubscribeAllStatusParams\Channel|value-of<CommunicationPreferenceGetUnsubscribeAllStatusParams\Channel>,
      *   businessUnitID?: int,
@@ -162,6 +164,7 @@ final class CommunicationPreferencesRawService implements CommunicationPreferenc
      *
      * Unsubscribe a contact from all email subscriptions.
      *
+     * @param string $subscriberIDString the unique identifier of the subscriber to unsubscribe from all communication preferences
      * @param array{
      *   channel: CommunicationPreferenceUnsubscribeAllParams\Channel|value-of<CommunicationPreferenceUnsubscribeAllParams\Channel>,
      *   businessUnitID?: int,
@@ -204,6 +207,7 @@ final class CommunicationPreferencesRawService implements CommunicationPreferenc
      *
      * Set the subscription status of a specific contact.
      *
+     * @param string $subscriberIDString the unique identifier of the subscriber whose communication preferences status is being updated
      * @param array{
      *   channel: CommunicationPreferenceUpdateStatusParams\Channel|value-of<CommunicationPreferenceUpdateStatusParams\Channel>,
      *   statusState: StatusState|value-of<StatusState>,

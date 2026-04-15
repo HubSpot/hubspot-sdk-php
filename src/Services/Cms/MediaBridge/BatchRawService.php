@@ -10,15 +10,15 @@ use HubSpotSDK\Cms\MediaBridge\Batch\BatchDeleteParams;
 use HubSpotSDK\Cms\MediaBridge\Batch\BatchGetParams;
 use HubSpotSDK\Cms\MediaBridge\Batch\BatchGetParams\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\BatchResponseProperty;
-use HubSpotSDK\Cms\MediaBridge\PropertyCreate;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\PropertyCreate;
 use HubSpotSDK\PropertyName;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Cms\MediaBridge\BatchRawContract;
 
 /**
- * @phpstan-import-type PropertyCreateShape from \HubSpotSDK\Cms\MediaBridge\PropertyCreate
+ * @phpstan-import-type PropertyCreateShape from \HubSpotSDK\PropertyCreate
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  * @phpstan-import-type PropertyNameShape from \HubSpotSDK\PropertyName
  */

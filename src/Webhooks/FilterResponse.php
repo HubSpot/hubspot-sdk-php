@@ -20,9 +20,15 @@ final class FilterResponse implements BaseModel
     /** @use SdkModel<FilterResponseShape> */
     use SdkModel;
 
+    /**
+     * The unique identifier for the filter. It is an integer in int64 format.
+     */
     #[Required]
     public int $id;
 
+    /**
+     * A timestamp indicating when the filter was created, represented as an integer in int64 format.
+     */
     #[Required]
     public int $createdAt;
 
@@ -72,6 +78,9 @@ final class FilterResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * The unique identifier for the filter. It is an integer in int64 format.
+     */
     public function withID(int $id): self
     {
         $self = clone $this;
@@ -80,6 +89,9 @@ final class FilterResponse implements BaseModel
         return $self;
     }
 
+    /**
+     * A timestamp indicating when the filter was created, represented as an integer in int64 format.
+     */
     public function withCreatedAt(int $createdAt): self
     {
         $self = clone $this;

@@ -28,13 +28,23 @@ final class CommunicationPreferenceGetUnsubscribeAllStatusParams implements Base
     use SdkModel;
     use SdkParams;
 
-    /** @var value-of<Channel> $channel */
+    /**
+     * The communication channel from which to unsubscribe the subscriber. This is a required parameter and must be 'EMAIL'.
+     *
+     * @var value-of<Channel> $channel
+     */
     #[Required(enum: Channel::class)]
     public string $channel;
 
+    /**
+     * The ID of the business unit to which the subscriber belongs. This is an optional parameter.
+     */
     #[Optional]
     public ?int $businessUnitID;
 
+    /**
+     * A boolean indicating whether to include detailed information in the response. Defaults to false.
+     */
     #[Optional]
     public ?bool $verbose;
 
@@ -80,6 +90,8 @@ final class CommunicationPreferenceGetUnsubscribeAllStatusParams implements Base
     }
 
     /**
+     * The communication channel from which to unsubscribe the subscriber. This is a required parameter and must be 'EMAIL'.
+     *
      * @param Channel|value-of<Channel> $channel
      */
     public function withChannel(Channel|string $channel): self
@@ -90,6 +102,9 @@ final class CommunicationPreferenceGetUnsubscribeAllStatusParams implements Base
         return $self;
     }
 
+    /**
+     * The ID of the business unit to which the subscriber belongs. This is an optional parameter.
+     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;
@@ -98,6 +113,9 @@ final class CommunicationPreferenceGetUnsubscribeAllStatusParams implements Base
         return $self;
     }
 
+    /**
+     * A boolean indicating whether to include detailed information in the response. Defaults to false.
+     */
     public function withVerbose(bool $verbose): self
     {
         $self = clone $this;

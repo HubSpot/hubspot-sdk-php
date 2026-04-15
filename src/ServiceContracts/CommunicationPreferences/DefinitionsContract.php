@@ -16,6 +16,8 @@ interface DefinitionsContract
     /**
      * @api
      *
+     * @param int $businessUnitID an integer representing the ID of the business unit for which to retrieve subscription definitions
+     * @param bool $includeTranslations a boolean indicating whether to include translations of the communication preferences definitions in the response
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

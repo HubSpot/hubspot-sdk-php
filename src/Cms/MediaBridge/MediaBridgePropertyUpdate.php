@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Cms\MediaBridge;
 
 use HubSpotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate\FieldType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate\NumberDisplayHint;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgePropertyUpdate\Type;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Concerns\SdkModel;
@@ -16,6 +17,7 @@ use HubSpotSDK\OptionInput;
  *
  * @phpstan-type MediaBridgePropertyUpdateShape = array{
  *   calculationFormula?: string|null,
+ *   currencyPropertyName?: string|null,
  *   description?: string|null,
  *   displayOrder?: int|null,
  *   fieldType?: null|FieldType|value-of<FieldType>,
@@ -24,7 +26,9 @@ use HubSpotSDK\OptionInput;
  *   hasUniqueValue?: bool|null,
  *   hidden?: bool|null,
  *   label?: string|null,
+ *   numberDisplayHint?: null|NumberDisplayHint|value-of<NumberDisplayHint>,
  *   options?: list<OptionInput|OptionInputShape>|null,
+ *   showCurrencySymbol?: bool|null,
  *   type?: null|Type|value-of<Type>,
  * }
  */
@@ -35,6 +39,9 @@ final class MediaBridgePropertyUpdate implements BaseModel
 
     #[Optional]
     public ?string $calculationFormula;
+
+    #[Optional]
+    public ?string $currencyPropertyName;
 
     #[Optional]
     public ?string $description;
@@ -61,9 +68,16 @@ final class MediaBridgePropertyUpdate implements BaseModel
     #[Optional]
     public ?string $label;
 
+    /** @var value-of<NumberDisplayHint>|null $numberDisplayHint */
+    #[Optional(enum: NumberDisplayHint::class)]
+    public ?string $numberDisplayHint;
+
     /** @var list<OptionInput>|null $options */
     #[Optional(list: OptionInput::class)]
     public ?array $options;
+
+    #[Optional]
+    public ?bool $showCurrencySymbol;
 
     /** @var value-of<Type>|null $type */
     #[Optional(enum: Type::class)]
@@ -80,11 +94,13 @@ final class MediaBridgePropertyUpdate implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param FieldType|value-of<FieldType>|null $fieldType
+     * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
      * @param list<OptionInput|OptionInputShape>|null $options
      * @param Type|value-of<Type>|null $type
      */
     public static function with(
         ?string $calculationFormula = null,
+        ?string $currencyPropertyName = null,
         ?string $description = null,
         ?int $displayOrder = null,
         FieldType|string|null $fieldType = null,
@@ -93,12 +109,15 @@ final class MediaBridgePropertyUpdate implements BaseModel
         ?bool $hasUniqueValue = null,
         ?bool $hidden = null,
         ?string $label = null,
+        NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
+        ?bool $showCurrencySymbol = null,
         Type|string|null $type = null,
     ): self {
         $self = new self;
 
         null !== $calculationFormula && $self['calculationFormula'] = $calculationFormula;
+        null !== $currencyPropertyName && $self['currencyPropertyName'] = $currencyPropertyName;
         null !== $description && $self['description'] = $description;
         null !== $displayOrder && $self['displayOrder'] = $displayOrder;
         null !== $fieldType && $self['fieldType'] = $fieldType;
@@ -107,7 +126,9 @@ final class MediaBridgePropertyUpdate implements BaseModel
         null !== $hasUniqueValue && $self['hasUniqueValue'] = $hasUniqueValue;
         null !== $hidden && $self['hidden'] = $hidden;
         null !== $label && $self['label'] = $label;
+        null !== $numberDisplayHint && $self['numberDisplayHint'] = $numberDisplayHint;
         null !== $options && $self['options'] = $options;
+        null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
         null !== $type && $self['type'] = $type;
 
         return $self;
@@ -117,6 +138,14 @@ final class MediaBridgePropertyUpdate implements BaseModel
     {
         $self = clone $this;
         $self['calculationFormula'] = $calculationFormula;
+
+        return $self;
+    }
+
+    public function withCurrencyPropertyName(string $currencyPropertyName): self
+    {
+        $self = clone $this;
+        $self['currencyPropertyName'] = $currencyPropertyName;
 
         return $self;
     }
@@ -189,12 +218,32 @@ final class MediaBridgePropertyUpdate implements BaseModel
     }
 
     /**
+     * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
+     */
+    public function withNumberDisplayHint(
+        NumberDisplayHint|string $numberDisplayHint
+    ): self {
+        $self = clone $this;
+        $self['numberDisplayHint'] = $numberDisplayHint;
+
+        return $self;
+    }
+
+    /**
      * @param list<OptionInput|OptionInputShape> $options
      */
     public function withOptions(array $options): self
     {
         $self = clone $this;
         $self['options'] = $options;
+
+        return $self;
+    }
+
+    public function withShowCurrencySymbol(bool $showCurrencySymbol): self
+    {
+        $self = clone $this;
+        $self['showCurrencySymbol'] = $showCurrencySymbol;
 
         return $self;
     }

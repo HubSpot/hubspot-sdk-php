@@ -65,6 +65,7 @@ interface URLMappingsContract
         bool $isRegex,
         bool $isTrailingSlashOptional,
         string $label,
+        int $lastUsedAt,
         string $name,
         string $note,
         int $portalID,

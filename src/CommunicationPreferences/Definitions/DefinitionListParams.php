@@ -24,9 +24,15 @@ final class DefinitionListParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * An integer representing the ID of the business unit for which to retrieve subscription definitions.
+     */
     #[Optional]
     public ?int $businessUnitID;
 
+    /**
+     * A boolean indicating whether to include translations of the communication preferences definitions in the response.
+     */
     #[Optional]
     public ?bool $includeTranslations;
 
@@ -52,6 +58,9 @@ final class DefinitionListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * An integer representing the ID of the business unit for which to retrieve subscription definitions.
+     */
     public function withBusinessUnitID(int $businessUnitID): self
     {
         $self = clone $this;
@@ -60,6 +69,9 @@ final class DefinitionListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * A boolean indicating whether to include translations of the communication preferences definitions in the response.
+     */
     public function withIncludeTranslations(bool $includeTranslations): self
     {
         $self = clone $this;

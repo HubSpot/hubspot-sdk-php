@@ -21,19 +21,35 @@ final class ActionOverrideRequest implements BaseModel
     /** @use SdkModel<ActionOverrideRequestShape> */
     use SdkModel;
 
-    /** @var list<string>|null $associatedObjectTypeIDs */
+    /**
+     * An array of strings, each representing an associated object type ID relevant to the action override.
+     *
+     * @var list<string>|null $associatedObjectTypeIDs
+     */
     #[Optional('associatedObjectTypeIds', list: 'string')]
     public ?array $associatedObjectTypeIDs;
 
-    /** @var list<int>|null $listIDs */
+    /**
+     * An array of integers representing list IDs that are affected by the action override. These IDs are in int64 format.
+     *
+     * @var list<int>|null $listIDs
+     */
     #[Optional('listIds', list: 'int')]
     public ?array $listIDs;
 
-    /** @var list<int>|null $objectIDs */
+    /**
+     * An array of integers, each representing an object ID for which the action override is applicable. These IDs are in int64 format.
+     *
+     * @var list<int>|null $objectIDs
+     */
     #[Optional('objectIds', list: 'int')]
     public ?array $objectIDs;
 
-    /** @var list<string>|null $properties */
+    /**
+     * An array of strings representing specific properties to be overridden in the action. Each entry in the array corresponds to a property name.
+     *
+     * @var list<string>|null $properties
+     */
     #[Optional(list: 'string')]
     public ?array $properties;
 
@@ -69,6 +85,8 @@ final class ActionOverrideRequest implements BaseModel
     }
 
     /**
+     * An array of strings, each representing an associated object type ID relevant to the action override.
+     *
      * @param list<string> $associatedObjectTypeIDs
      */
     public function withAssociatedObjectTypeIDs(
@@ -81,6 +99,8 @@ final class ActionOverrideRequest implements BaseModel
     }
 
     /**
+     * An array of integers representing list IDs that are affected by the action override. These IDs are in int64 format.
+     *
      * @param list<int> $listIDs
      */
     public function withListIDs(array $listIDs): self
@@ -92,6 +112,8 @@ final class ActionOverrideRequest implements BaseModel
     }
 
     /**
+     * An array of integers, each representing an object ID for which the action override is applicable. These IDs are in int64 format.
+     *
      * @param list<int> $objectIDs
      */
     public function withObjectIDs(array $objectIDs): self
@@ -103,6 +125,8 @@ final class ActionOverrideRequest implements BaseModel
     }
 
     /**
+     * An array of strings representing specific properties to be overridden in the action. Each entry in the array corresponds to a property name.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self

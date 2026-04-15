@@ -19,6 +19,7 @@ use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateAttentionSpanEventParams\MediaTy
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\NumberDisplayHint;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams\EventType;
@@ -196,6 +197,7 @@ interface MediaBridgeContract
      * @param string $name Body param
      * @param Type|value-of<Type> $type Body param
      * @param string $calculationFormula Body param
+     * @param string $currencyPropertyName Body param
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity Body param
      * @param string $description Body param
      * @param int $displayOrder Body param
@@ -203,8 +205,10 @@ interface MediaBridgeContract
      * @param bool $formField Body param
      * @param bool $hasUniqueValue Body param
      * @param bool $hidden Body param
+     * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint Body param
      * @param list<OptionInput|OptionInputShape> $options Body param
      * @param string $referencedObjectType Body param
+     * @param bool $showCurrencySymbol Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -218,6 +222,7 @@ interface MediaBridgeContract
         string $name,
         Type|string $type,
         ?string $calculationFormula = null,
+        ?string $currencyPropertyName = null,
         DataSensitivity|string|null $dataSensitivity = null,
         ?string $description = null,
         ?int $displayOrder = null,
@@ -225,8 +230,10 @@ interface MediaBridgeContract
         ?bool $formField = null,
         ?bool $hasUniqueValue = null,
         ?bool $hidden = null,
+        NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
         ?string $referencedObjectType = null,
+        ?bool $showCurrencySymbol = null,
         RequestOptions|array|null $requestOptions = null,
     ): Property;
 
@@ -530,6 +537,7 @@ interface MediaBridgeContract
      * @param int $appID Path param
      * @param string $objectType Path param
      * @param string $calculationFormula Body param
+     * @param string $currencyPropertyName Body param
      * @param string $description Body param
      * @param int $displayOrder Body param
      * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType> $fieldType Body param
@@ -538,7 +546,9 @@ interface MediaBridgeContract
      * @param bool $hasUniqueValue Body param
      * @param bool $hidden Body param
      * @param string $label Body param
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\NumberDisplayHint|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\NumberDisplayHint> $numberDisplayHint Body param
      * @param list<OptionInput|OptionInputShape> $options Body param
+     * @param bool $showCurrencySymbol Body param
      * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type> $type Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -549,6 +559,7 @@ interface MediaBridgeContract
         int $appID,
         string $objectType,
         ?string $calculationFormula = null,
+        ?string $currencyPropertyName = null,
         ?string $description = null,
         ?int $displayOrder = null,
         \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\FieldType|string|null $fieldType = null,
@@ -557,7 +568,9 @@ interface MediaBridgeContract
         ?bool $hasUniqueValue = null,
         ?bool $hidden = null,
         ?string $label = null,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
+        ?bool $showCurrencySymbol = null,
         \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|string|null $type = null,
         RequestOptions|array|null $requestOptions = null,
     ): Property;

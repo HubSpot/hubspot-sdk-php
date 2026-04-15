@@ -39,13 +39,45 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testCreateCrmSnapshot(): void
+    public function testCreateBatchEventSubscriptions(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->createCrmSnapshot(
+        $result = $this->client->webhooks->createBatchEventSubscriptions(
+            0,
+            inputs: [['id' => 0, 'active' => true]]
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSubscriptionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateBatchEventSubscriptionsWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->createBatchEventSubscriptions(
+            0,
+            inputs: [['id' => 0, 'active' => true]]
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(BatchResponseSubscriptionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateCrmSnapshots(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->createCrmSnapshots(
             snapshotRequests: [
                 [
                     'objectID' => 0,
@@ -61,13 +93,13 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testCreateCrmSnapshotWithOptionalParams(): void
+    public function testCreateCrmSnapshotsWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->createCrmSnapshot(
+        $result = $this->client->webhooks->createCrmSnapshots(
             snapshotRequests: [
                 [
                     'objectID' => 0,
@@ -80,6 +112,43 @@ final class WebhooksTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(CrmObjectSnapshotBatchResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateEventSubscription(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->createEventSubscription(
+            0,
+            active: true,
+            eventType: 'company.associationChange'
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateEventSubscriptionWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->createEventSubscription(
+            0,
+            active: true,
+            eventType: 'company.associationChange',
+            eventTypeName: 'eventTypeName',
+            objectTypeID: 'objectTypeId',
+            propertyName: 'propertyName',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -93,43 +162,6 @@ final class WebhooksTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SubscriptionResponse1::class, $result);
-    }
-
-    #[Test]
-    public function testCreateSubscription(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->createSubscription(
-            0,
-            active: true,
-            eventType: 'company.associationChange'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse::class, $result);
-    }
-
-    #[Test]
-    public function testCreateSubscriptionWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->createSubscription(
-            0,
-            active: true,
-            eventType: 'company.associationChange',
-            eventTypeName: 'eventTypeName',
-            objectTypeID: 'objectTypeId',
-            propertyName: 'propertyName',
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -183,35 +215,29 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testCreateSubscriptionsBatch(): void
+    public function testDeleteEventSubscription(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->createSubscriptionsBatch(
-            0,
-            inputs: [['id' => 0, 'active' => true]]
-        );
+        $result = $this->client->webhooks->deleteEventSubscription(0, appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSubscriptionResponse::class, $result);
+        $this->assertNull($result);
     }
 
     #[Test]
-    public function testCreateSubscriptionsBatchWithOptionalParams(): void
+    public function testDeleteEventSubscriptionWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->createSubscriptionsBatch(
-            0,
-            inputs: [['id' => 0, 'active' => true]]
-        );
+        $result = $this->client->webhooks->deleteEventSubscription(0, appID: 0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSubscriptionResponse::class, $result);
+        $this->assertNull($result);
     }
 
     #[Test]
@@ -228,13 +254,13 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testDeletePortalSubscriptions(): void
+    public function testDeleteJournalSubscriptionForPortal(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->deletePortalSubscriptions(0);
+        $result = $this->client->webhooks->deleteJournalSubscriptionForPortal(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
@@ -254,32 +280,6 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testDeleteSubscription(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->deleteSubscription(0, appID: 0);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testDeleteSubscriptionWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->deleteSubscription(0, appID: 0);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
     public function testDeleteSubscriptionFilter(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -290,19 +290,6 @@ final class WebhooksTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testGetEarliestJournal(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->getEarliestJournal();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
     }
 
     #[Test]
@@ -319,13 +306,13 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetEarliestLocalJournal(): void
+    public function testGetEarliestJournalEntry(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getEarliestLocalJournal();
+        $result = $this->client->webhooks->getEarliestJournalEntry();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -345,26 +332,67 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetJournalBatch(): void
+    public function testGetEarliestLocalJournalEntry(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getJournalBatch(inputs: ['string']);
+        $result = $this->client->webhooks->getEarliestLocalJournalEntry();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testGetEventSubscription(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->getEventSubscription(0, appID: 0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetEventSubscriptionWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->getEventSubscription(0, appID: 0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testGetJournalBatchByRequest(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->getJournalBatchByRequest(
+            inputs: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseJournalFetchResponse::class, $result);
     }
 
     #[Test]
-    public function testGetJournalBatchWithOptionalParams(): void
+    public function testGetJournalBatchByRequestWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getJournalBatch(
+        $result = $this->client->webhooks->getJournalBatchByRequest(
             inputs: ['string'],
             installPortalID: 0
         );
@@ -374,13 +402,13 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetJournalBatchAfterOffset(): void
+    public function testGetJournalBatchFromOffset(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getJournalBatchAfterOffset(
+        $result = $this->client->webhooks->getJournalBatchFromOffset(
             1,
             offset: 'offset'
         );
@@ -390,13 +418,13 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetJournalBatchAfterOffsetWithOptionalParams(): void
+    public function testGetJournalBatchFromOffsetWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getJournalBatchAfterOffset(
+        $result = $this->client->webhooks->getJournalBatchFromOffset(
             1,
             offset: 'offset',
             installPortalID: 0
@@ -422,16 +450,16 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetLatestJournal(): void
+    public function testGetJournalSubscription(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getLatestJournal();
+        $result = $this->client->webhooks->getJournalSubscription(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->assertInstanceOf(SubscriptionResponse1::class, $result);
     }
 
     #[Test]
@@ -448,13 +476,13 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetLatestLocalJournal(): void
+    public function testGetLatestJournalEntry(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getLatestLocalJournal();
+        $result = $this->client->webhooks->getLatestJournalEntry();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -474,26 +502,41 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetLocalJournalBatch(): void
+    public function testGetLatestLocalJournalEntry(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getLocalJournalBatch(inputs: ['string']);
+        $result = $this->client->webhooks->getLatestLocalJournalEntry();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testGetLocalJournalBatchByRequest(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->getLocalJournalBatchByRequest(
+            inputs: ['string']
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseJournalFetchResponse::class, $result);
     }
 
     #[Test]
-    public function testGetLocalJournalBatchWithOptionalParams(): void
+    public function testGetLocalJournalBatchByRequestWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getLocalJournalBatch(
+        $result = $this->client->webhooks->getLocalJournalBatchByRequest(
             inputs: ['string'],
             installPortalID: 0
         );
@@ -503,13 +546,13 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetLocalJournalBatchAfterOffset(): void
+    public function testGetLocalJournalBatchFromOffset(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getLocalJournalBatchAfterOffset(
+        $result = $this->client->webhooks->getLocalJournalBatchFromOffset(
             1,
             offset: 'offset'
         );
@@ -519,13 +562,13 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetLocalJournalBatchAfterOffsetWithOptionalParams(): void
+    public function testGetLocalJournalBatchFromOffsetWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getLocalJournalBatchAfterOffset(
+        $result = $this->client->webhooks->getLocalJournalBatchFromOffset(
             1,
             offset: 'offset',
             installPortalID: 0
@@ -551,26 +594,26 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetNextJournalAfterOffset(): void
+    public function testGetNextJournalEntries(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getNextJournalAfterOffset('offset');
+        $result = $this->client->webhooks->getNextJournalEntries('offset');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
     }
 
     #[Test]
-    public function testGetNextLocalJournalAfterOffset(): void
+    public function testGetNextLocalJournalEntries(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getNextLocalJournalAfterOffset('offset');
+        $result = $this->client->webhooks->getNextLocalJournalEntries('offset');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertIsString($result);
@@ -590,32 +633,6 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetSubscription(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->getSubscription(0, appID: 0);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse::class, $result);
-    }
-
-    #[Test]
-    public function testGetSubscriptionWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->getSubscription(0, appID: 0);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse::class, $result);
-    }
-
-    #[Test]
     public function testGetSubscriptionFilter(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -629,16 +646,16 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testGetSubscriptionFilters(): void
+    public function testListEventSubscriptions(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->getSubscriptionFilters(0);
+        $result = $this->client->webhooks->listEventSubscriptions(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsList($result);
+        $this->assertInstanceOf(SubscriptionListResponse::class, $result);
     }
 
     #[Test]
@@ -658,16 +675,46 @@ final class WebhooksTest extends TestCase
     }
 
     #[Test]
-    public function testListSubscriptions(): void
+    public function testListSubscriptionFilters(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->listSubscriptions(0);
+        $result = $this->client->webhooks->listSubscriptionFilters(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionListResponse::class, $result);
+        $this->assertIsList($result);
+    }
+
+    #[Test]
+    public function testUpdateEventSubscription(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->updateEventSubscription(0, appID: 0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testUpdateEventSubscriptionWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->updateEventSubscription(
+            0,
+            appID: 0,
+            active: true
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -702,35 +749,5 @@ final class WebhooksTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(SettingsResponse::class, $result);
-    }
-
-    #[Test]
-    public function testUpdateSubscription(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->updateSubscription(0, appID: 0);
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse::class, $result);
-    }
-
-    #[Test]
-    public function testUpdateSubscriptionWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->webhooks->updateSubscription(
-            0,
-            appID: 0,
-            active: true
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse::class, $result);
     }
 }

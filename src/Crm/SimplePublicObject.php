@@ -9,7 +9,6 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Core\Conversion\ListOf;
-use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * A simple public object.
@@ -20,7 +19,7 @@ use HubSpotSDK\Core\Conversion\MapOf;
  *   id: string,
  *   archived: bool,
  *   createdAt: \DateTimeInterface,
- *   properties: array<string,string|null>,
+ *   properties: array<string,string>,
  *   updatedAt: \DateTimeInterface,
  *   archivedAt?: \DateTimeInterface|null,
  *   objectWriteTraceID?: string|null,
@@ -54,9 +53,9 @@ final class SimplePublicObject implements BaseModel
     /**
      * Key-value pairs representing the properties of the object.
      *
-     * @var array<string,string|null> $properties
+     * @var array<string,string> $properties
      */
-    #[Required(type: new MapOf('string', nullable: true))]
+    #[Required(map: 'string')]
     public array $properties;
 
     /**
@@ -122,7 +121,7 @@ final class SimplePublicObject implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,string|null> $properties
+     * @param array<string,string> $properties
      * @param array<string,list<ValueWithTimestamp|ValueWithTimestampShape>>|null $propertiesWithHistory
      */
     public static function with(
@@ -188,7 +187,7 @@ final class SimplePublicObject implements BaseModel
     /**
      * Key-value pairs representing the properties of the object.
      *
-     * @param array<string,string|null> $properties
+     * @param array<string,string> $properties
      */
     public function withProperties(array $properties): self
     {

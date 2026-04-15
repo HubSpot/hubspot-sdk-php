@@ -45,6 +45,7 @@ final class CardsDevService implements CardsDevContract
      *
      * Defines a new card that will become active on an account when this app is installed.
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param CardActions|CardActionsShape $actions
      * @param CardDisplayBody|CardDisplayBodyShape $display
      * @param CardFetchBody|CardFetchBodyShape $fetch
@@ -82,7 +83,7 @@ final class CardsDevService implements CardsDevContract
      * Update a card definition with new details.
      *
      * @param string $cardID Path param
-     * @param int $appID Path param
+     * @param int $appID Path param: The appId of the app containing the Legacy CRM Card(s)
      * @param CardActions|CardActionsShape $actions Body param
      * @param CardDisplayBody|CardDisplayBodyShape $display Body param
      * @param CardFetchBodyPatch|CardFetchBodyPatchShape $fetch Body param
@@ -121,6 +122,7 @@ final class CardsDevService implements CardsDevContract
      *
      * Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -143,6 +145,7 @@ final class CardsDevService implements CardsDevContract
      *
      * Returns a list of cards for a given app.
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -162,6 +165,7 @@ final class CardsDevService implements CardsDevContract
      *
      * Returns the definition for a card with the given ID.
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -200,12 +204,14 @@ final class CardsDevService implements CardsDevContract
     /**
      * @api
      *
+     * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function migrateViews(
         int $appID,
+        bool $allowDuplicateAppCardIDs,
         int $appCardID,
         int $legacyCrmCardID,
         ?int $helpdeskAppCardID = null,
@@ -213,6 +219,7 @@ final class CardsDevService implements CardsDevContract
     ): CardMigrateViewsResponse {
         $params = Util::removeNulls(
             [
+                'allowDuplicateAppCardIDs' => $allowDuplicateAppCardIDs,
                 'appCardID' => $appCardID,
                 'legacyCrmCardID' => $legacyCrmCardID,
                 'helpdeskAppCardID' => $helpdeskAppCardID,

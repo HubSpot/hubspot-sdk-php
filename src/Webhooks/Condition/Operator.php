@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Webhooks\Condition;
 
+/**
+ * A string indicating the operation to apply for filtering. Valid values include 'EQ', 'N_EQ', 'LT', 'GT', 'LTE', 'GTE', 'CONTAINS', 'STARTS_WITH', 'ENDS_WITH', 'IN', 'NOT_IN', 'IS_EMPTY', and 'IS_NOT_EMPTY'.
+ */
 enum Operator: string
 {
     case CONTAINS = 'CONTAINS';

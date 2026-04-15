@@ -29,4 +29,6 @@ enum Action: string
     case ADDED_TO_LIST = 'ADDED_TO_LIST';
 
     case REMOVED_FROM_LIST = 'REMOVED_FROM_LIST';
+
+    case GDPR_DELETE = 'GDPR_DELETE';
 }
