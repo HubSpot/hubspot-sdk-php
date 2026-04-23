@@ -21,7 +21,7 @@ final class Filter implements BaseModel
     use SdkModel;
 
     /**
-     * An array of conditions that define the filter criteria. Each condition specifies a property, operator, and value to determine if a data item meets the filter requirements.
+     * An array of conditions that define the criteria for the filter. Each condition specifies a property, an operator, and optionally a value or values.
      *
      * @var list<Condition> $conditions
      */
@@ -64,7 +64,7 @@ final class Filter implements BaseModel
     }
 
     /**
-     * An array of conditions that define the filter criteria. Each condition specifies a property, operator, and value to determine if a data item meets the filter requirements.
+     * An array of conditions that define the criteria for the filter. Each condition specifies a property, an operator, and optionally a value or values.
      *
      * @param list<Condition|ConditionShape> $conditions
      */

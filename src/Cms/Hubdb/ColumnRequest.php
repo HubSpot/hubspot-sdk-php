@@ -11,13 +11,13 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type OptionShape from \HubSpotSDK\Cms\Hubdb\Option
+ * @phpstan-import-type HubdbOptionShape from \HubSpotSDK\Cms\Hubdb\HubdbOption
  *
  * @phpstan-type ColumnRequestShape = array{
  *   id: int,
  *   label: string,
  *   name: string,
- *   options: list<Option|OptionShape>,
+ *   options: list<HubdbOption|HubdbOptionShape>,
  *   type: Type|value-of<Type>,
  *   foreignColumnID?: int|null,
  *   foreignTableID?: int|null,
@@ -51,9 +51,9 @@ final class ColumnRequest implements BaseModel
     /**
      * Options to choose for select and multi-select columns.
      *
-     * @var list<Option> $options
+     * @var list<HubdbOption> $options
      */
-    #[Required(list: Option::class)]
+    #[Required(list: HubdbOption::class)]
     public array $options;
 
     /**
@@ -117,7 +117,7 @@ final class ColumnRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option|OptionShape> $options
+     * @param list<HubdbOption|HubdbOptionShape> $options
      * @param Type|value-of<Type> $type
      */
     public static function with(
@@ -183,7 +183,7 @@ final class ColumnRequest implements BaseModel
     /**
      * Options to choose for select and multi-select columns.
      *
-     * @param list<Option|OptionShape> $options
+     * @param list<HubdbOption|HubdbOptionShape> $options
      */
     public function withOptions(array $options): self
     {

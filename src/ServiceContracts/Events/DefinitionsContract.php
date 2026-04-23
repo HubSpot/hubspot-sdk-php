@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Events;
 
+use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Events\BehavioralEventHTTPCompletionRequest;
 use HubSpotSDK\Events\Definitions\ExternalBehavioralEventPropertyCreate;
@@ -11,7 +12,6 @@ use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
 use HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\Page;
-use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 
 /**
@@ -115,7 +115,7 @@ interface DefinitionsContract
         ?string $name = null,
         ?array $options = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Property;
+    ): BaseProperty;
 
     /**
      * @api
@@ -174,5 +174,5 @@ interface DefinitionsContract
         ?string $label = null,
         ?array $options = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Property;
+    ): BaseProperty;
 }

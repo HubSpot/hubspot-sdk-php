@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Cms\Hubdb;
 
+use HubSpotSDK\BaseError;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\Error;
 
 /**
- * @phpstan-import-type ErrorShape from \HubSpotSDK\Error
+ * @phpstan-import-type BaseErrorShape from \HubSpotSDK\BaseError
  *
  * @phpstan-type ImportResultShape = array{
  *   duplicateRows: int,
- *   errors: list<Error|ErrorShape>,
+ *   errors: list<BaseError|BaseErrorShape>,
  *   rowLimitExceeded: bool,
  *   rowsImported: int,
  * }
@@ -33,9 +33,9 @@ final class ImportResult implements BaseModel
     /**
      * List of errors during import.
      *
-     * @var list<Error> $errors
+     * @var list<BaseError> $errors
      */
-    #[Required(list: Error::class)]
+    #[Required(list: BaseError::class)]
     public array $errors;
 
     /**
@@ -80,7 +80,7 @@ final class ImportResult implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Error|ErrorShape> $errors
+     * @param list<BaseError|BaseErrorShape> $errors
      */
     public static function with(
         int $duplicateRows,
@@ -112,7 +112,7 @@ final class ImportResult implements BaseModel
     /**
      * List of errors during import.
      *
-     * @param list<Error|ErrorShape> $errors
+     * @param list<BaseError|BaseErrorShape> $errors
      */
     public function withErrors(array $errors): self
     {

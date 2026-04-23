@@ -11,10 +11,12 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\ForwardPaging;
 
 /**
+ * @phpstan-import-type PublicActionDefinitionShape from \HubSpotSDK\Automation\Actions\PublicActionDefinition
  * @phpstan-import-type ForwardPagingShape from \HubSpotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicActionDefinitionForwardPagingShape = array{
- *   results: list<mixed>, paging?: null|ForwardPaging|ForwardPagingShape
+ *   results: list<PublicActionDefinition|PublicActionDefinitionShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicActionDefinitionForwardPaging implements BaseModel
@@ -22,7 +24,7 @@ final class CollectionResponsePublicActionDefinitionForwardPaging implements Bas
     /** @use SdkModel<CollectionResponsePublicActionDefinitionForwardPagingShape> */
     use SdkModel;
 
-    /** @var list<mixed> $results */
+    /** @var list<PublicActionDefinition> $results */
     #[Required(list: PublicActionDefinition::class)]
     public array $results;
 
@@ -53,7 +55,7 @@ final class CollectionResponsePublicActionDefinitionForwardPaging implements Bas
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $results
+     * @param list<PublicActionDefinition|PublicActionDefinitionShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -70,7 +72,7 @@ final class CollectionResponsePublicActionDefinitionForwardPaging implements Bas
     }
 
     /**
-     * @param list<mixed> $results
+     * @param list<PublicActionDefinition|PublicActionDefinitionShape> $results
      */
     public function withResults(array $results): self
     {

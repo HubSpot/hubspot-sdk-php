@@ -103,7 +103,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Create a batch of CRM object snapshots for a specified portal. This endpoint allows you to capture the current state of CRM objects by submitting a batch request with the necessary object details. It is useful for tracking changes or maintaining historical records of CRM data.
+     * Create a batch of CRM object snapshots for the specified portal. This endpoint allows you to capture the state of CRM objects at a specific point in time, which can be useful for auditing or historical analysis. The request requires a list of CRM object snapshot requests, each specifying the portal ID, object ID, object type ID, and properties to include in the snapshot.
      *
      * @param array{
      *   snapshotRequests: list<CrmObjectSnapshotRequest|CrmObjectSnapshotRequestShape>
@@ -175,7 +175,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Create a new subscription in the webhooks journal for the specified version. This endpoint allows you to define the subscription details, including actions and object types, to manage webhook events effectively. It requires a valid request body with the subscription details.
+     * Create a new webhook subscription for the specified portal in the HubSpot account. This endpoint allows you to define the subscription details, including the types of events you want to subscribe to. The request body must include the necessary subscription information as defined by the SubscriptionUpsertRequest schema.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -198,7 +198,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Create a new filter for a webhook subscription in the HubSpot account. This endpoint allows you to define conditions that determine when a webhook event should be triggered for a specific subscription. The request body must include the subscription ID and the filter details.
+     * Create a new filter for a webhook subscription in your HubSpot account. This endpoint allows you to define specific conditions that a webhook event must meet to trigger the subscription. It is useful for managing and customizing the behavior of webhook subscriptions based on specific criteria.
      *
      * @param array{
      *   filter: Filter|FilterShape, subscriptionID: int
@@ -267,7 +267,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Delete a specific webhook journal subscription using its unique identifier. This operation is useful for managing and cleaning up subscriptions that are no longer needed.
+     * Delete a specific webhook journal subscription using its unique identifier. This operation is useful for managing and cleaning up subscriptions that are no longer needed or relevant.
      *
      * @param int $subscriptionID the unique identifier of the subscription to delete
      * @param RequestOpts|null $requestOptions
@@ -292,9 +292,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Delete a webhook journal subscription for a specific portal. This operation removes the subscription associated with the given portalId, effectively stopping any webhook events from being sent to the portal.
+     * Delete a webhook journal subscription for a specific portal. This operation removes the subscription associated with the given portalId, and no content is returned upon successful deletion.
      *
-     * @param int $portalID the unique identifier of the portal for which the webhook journal subscription is to be deleted
+     * @param int $portalID the unique identifier of the portal whose webhook journal subscription is to be deleted
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -342,7 +342,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Remove a specific filter from your webhook journal subscriptions. This operation is useful when you need to clean up or modify the filters applied to your webhook subscriptions. The filter identified by the filterId will be permanently deleted.
+     * Delete a specific filter associated with a webhook journal subscription. This operation is useful for managing and cleaning up filters that are no longer needed in your subscription setup. The endpoint requires the unique identifier of the filter to be deleted.
      *
      * @param int $filterID the unique identifier of the filter to delete
      * @param RequestOpts|null $requestOptions
@@ -367,9 +367,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the earliest batch of webhook journal entries up to the specified count. This endpoint is useful for fetching historical webhook data in batches, allowing you to process or analyze them as needed.
+     * Retrieve the earliest batch of webhook journal entries up to the specified count. This endpoint is useful for fetching historical webhook data in batches, allowing you to process or analyze the earliest entries first.
      *
-     * @param int $count The number of journal entries to retrieve. This must be an integer with a minimum value of 1.
+     * @param int $count The maximum number of journal entries to retrieve in the batch. This must be an integer with a minimum value of 1.
      * @param array{installPortalID?: int}|WebhookGetEarliestJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -403,7 +403,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the earliest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the initial entries in the journal, which can be helpful for debugging or auditing purposes.
+     * Retrieve the earliest entry from the webhooks journal for the specified version. This endpoint is useful for accessing the oldest records available in the journal, which can be helpful for auditing or historical data analysis.
      *
      * @param array{installPortalID?: int}|WebhookGetEarliestJournalEntryParams $params
      * @param RequestOpts|null $requestOptions
@@ -438,9 +438,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the earliest batch of webhook journal entries up to a specified count. This endpoint is useful for accessing the oldest records available in the webhook journal, allowing you to process or analyze historical webhook data.
+     * Retrieve the earliest batch of webhook journal entries based on the specified count. This endpoint is useful for fetching a specific number of the earliest entries in the webhook journal for analysis or processing.
      *
-     * @param int $count The number of webhook journal entries to retrieve. It must be an integer with a minimum value of 1.
+     * @param int $count The number of earliest entries to retrieve from the webhook journal. Must be an integer with a minimum value of 1.
      * @param array{
      *   installPortalID?: int
      * }|WebhookGetEarliestLocalJournalBatchParams $params
@@ -478,7 +478,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the earliest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the oldest available data in the journal, which can be used for historical analysis or troubleshooting.
+     * Retrieve the earliest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the oldest records in the journal, which can be helpful for auditing or tracking purposes.
      *
      * @param array{
      *   installPortalID?: int
@@ -551,7 +551,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Read a batch of webhook journal entries for the specified portal. This endpoint allows you to retrieve detailed information about webhook events processed by your HubSpot account. It is useful for auditing and tracking webhook activity.
+     * Perform a batch read operation on the webhooks journal for the specified date. This endpoint allows you to retrieve multiple entries from the webhooks journal in a single request, which can be useful for processing large amounts of data efficiently.
      *
      * @param array{
      *   inputs: list<string>, installPortalID?: int
@@ -589,9 +589,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint allows you to specify the number of entries to retrieve, helping you manage and paginate through large sets of webhook data efficiently.
+     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint allows you to fetch a specified number of entries, making it useful for paginating through large sets of webhook journal data.
      *
-     * @param int $count Path param: The number of webhook journal entries to retrieve in the batch. This parameter is required and must be an integer greater than or equal to 1.
+     * @param int $count Path param: The number of journal entries to fetch in the batch. This is an integer value with a minimum of 1.
      * @param array{
      *   offset: string, installPortalID?: int
      * }|WebhookGetJournalBatchFromOffsetParams $params
@@ -631,9 +631,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the status of a specific webhook journal entry using its unique status ID. This endpoint is useful for monitoring the progress or outcome of a webhook operation, providing insights into whether it is pending, in progress, completed, failed, or expired.
+     * Retrieve the status of a specific webhook journal entry using its status ID. This endpoint is useful for checking the current state of a webhook process, such as whether it is pending, in progress, completed, failed, or expired.
      *
-     * @param string $statusID the unique identifier (UUID) of the webhook journal entry whose status is to be retrieved
+     * @param string $statusID the unique identifier (UUID) of the status to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SnapshotStatusResponse>
@@ -656,9 +656,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve details of a specific webhook journal subscription using its unique identifier. This endpoint is useful for obtaining information about a particular subscription, such as its actions, object types, and associated properties.
+     * Retrieve details of a specific webhook subscription using its unique identifier. This endpoint is useful for obtaining information about a particular subscription's configuration and status within the HubSpot account.
      *
-     * @param int $subscriptionID The unique identifier of the subscription to retrieve. It is an integer value.
+     * @param int $subscriptionID The unique identifier of the subscription to retrieve. It must be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionResponse1>
@@ -681,9 +681,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the latest batch of webhook journal entries up to a specified count. This endpoint is useful for fetching the most recent webhook events processed by your HubSpot account. The response includes details about each event, and you can specify the number of entries to retrieve.
+     * Retrieve the latest batch of webhook journal entries. This endpoint allows you to specify the number of entries to fetch, providing a way to access recent webhook activity within your HubSpot account.
      *
-     * @param int $count The number of journal entries to retrieve. Must be an integer with a minimum value of 1.
+     * @param int $count The number of journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
      * @param array{installPortalID?: int}|WebhookGetLatestJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -717,7 +717,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the latest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook data available in the journal.
+     * Retrieve the latest entries from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook events processed by your HubSpot account. It allows you to filter the results by the portal ID to ensure you are retrieving data relevant to a specific installation.
      *
      * @param array{installPortalID?: int}|WebhookGetLatestJournalEntryParams $params
      * @param RequestOpts|null $requestOptions
@@ -752,9 +752,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the latest batch of webhook journal entries up to a specified count. This endpoint is useful for fetching the most recent webhook events processed by the system. It requires authentication and supports various security schemes.
+     * Retrieve the latest batch of webhook journal entries. This endpoint is useful for accessing the most recent data entries processed by the webhook journal. It requires specifying the number of entries to retrieve.
      *
-     * @param int $count The number of webhook journal entries to retrieve. It must be an integer with a minimum value of 1.
+     * @param int $count The number of journal entries to retrieve. Must be an integer with a minimum value of 1.
      * @param array{
      *   installPortalID?: int
      * }|WebhookGetLatestLocalJournalBatchParams $params
@@ -792,7 +792,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the latest entries from the webhooks journal. This endpoint is useful for accessing the most recent webhook data for analysis or troubleshooting. It supports filtering by the installPortalId to narrow down results to a specific portal.
+     * Retrieve the latest entries from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook events that have been logged, allowing you to process or analyze them as needed.
      *
      * @param array{
      *   installPortalID?: int
@@ -829,7 +829,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Perform a batch read operation on the webhooks journal. This endpoint allows you to retrieve a batch of journal entries by providing the necessary input data. It is useful for processing large volumes of webhook data efficiently.
+     * Perform a batch read operation on the webhooks journal. This endpoint allows you to read multiple entries from the journal in a single request. It requires a JSON request body specifying the inputs to be read. The response includes the results of the batch read operation, and may return multiple statuses if there are errors.
      *
      * @param array{
      *   inputs: list<string>, installPortalID?: int
@@ -867,9 +867,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint is useful for fetching sequential batches of data, allowing you to paginate through large sets of webhook journal entries efficiently.
+     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint allows you to fetch a defined number of entries, facilitating the processing of webhook data in manageable chunks.
      *
-     * @param int $count Path param: The number of entries to retrieve in the batch. This must be an integer with a minimum value of 1.
+     * @param int $count Path param: The number of journal entries to retrieve. This is an integer value with a minimum of 1.
      * @param array{
      *   offset: string, installPortalID?: int
      * }|WebhookGetLocalJournalBatchFromOffsetParams $params
@@ -911,9 +911,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the status of a specific webhook journal entry using its unique status ID. This endpoint is useful for checking the progress or result of a webhook operation, such as whether it is pending, in progress, completed, failed, or expired.
+     * Retrieve the status of a specific webhook journal entry using its unique status ID. This endpoint is useful for monitoring the progress or completion of webhook processing tasks.
      *
-     * @param string $statusID the unique identifier (UUID) of the webhook journal entry whose status is to be retrieved
+     * @param string $statusID the unique identifier (UUID) of the status to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SnapshotStatusResponse>
@@ -936,9 +936,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the next set of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through webhook journal entries in a HubSpot account. It allows you to continue fetching entries from where the last request left off, using the offset parameter.
+     * Retrieve the next batch of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through large sets of webhook data, allowing you to continue fetching entries from where you last left off.
      *
-     * @param string $offset The offset from which to start retrieving the next set of journal entries. This is a string value.
+     * @param string $offset The offset from which to start retrieving the next batch of webhook journal entries. This parameter is required and identifies the starting point for the batch retrieval.
      * @param array{installPortalID?: int}|WebhookGetNextJournalEntriesParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -973,9 +973,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the next set of journal entries starting from a specified offset. This endpoint is useful for paginating through webhook journal entries in a sequential manner. It requires specifying the offset from which the next entries should be fetched.
+     * Retrieve the next set of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through webhook journal data in a sequential manner, allowing you to fetch entries beyond a given point.
      *
-     * @param string $offset The offset from which the next set of journal entries should be retrieved. This parameter is required to specify the starting point for the retrieval.
+     * @param string $offset The starting point for retrieving the next set of journal entries. This is a string value.
      * @param array{
      *   installPortalID?: int
      * }|WebhookGetNextLocalJournalEntriesParams $params
@@ -1039,7 +1039,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve a specific filter associated with a webhook journal subscription. This endpoint allows you to access detailed information about the filter identified by the filterId path parameter. It is useful for managing and reviewing filter configurations within your webhook subscriptions.
+     * Retrieve details of a specific filter associated with a webhook subscription in the HubSpot account. This endpoint is useful for accessing the configuration and conditions of a filter by its unique identifier.
      *
      * @param int $filterID the unique identifier of the filter to retrieve
      * @param RequestOpts|null $requestOptions
@@ -1089,7 +1089,7 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve a list of webhook journal subscriptions for the specified version. This endpoint allows you to view all active subscriptions without pagination. It is useful for managing and auditing webhook subscriptions in your HubSpot account.
+     * Retrieve a list of webhook journal subscriptions for the specified API version. This endpoint provides details about each subscription, including actions, object types, and associated properties. It is useful for managing and reviewing current webhook subscriptions.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -1112,9 +1112,9 @@ final class WebhooksRawService implements WebhooksRawContract
     /**
      * @api
      *
-     * Retrieve the filters associated with a specific webhook subscription. This endpoint is useful for obtaining detailed information about the filters applied to a subscription, which can help in managing and understanding the data flow through your webhook integrations.
+     * Retrieve the filters associated with a specific webhook subscription in the HubSpot account. This endpoint is useful for obtaining detailed information about the filters applied to a given subscription, identified by its subscription ID.
      *
-     * @param int $subscriptionID the unique identifier of the subscription for which filters are being retrieved
+     * @param int $subscriptionID the unique identifier of the subscription for which to retrieve filters
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<list<FilterResponse>>

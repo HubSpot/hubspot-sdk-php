@@ -10,7 +10,7 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve the earliest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the initial entries in the journal, which can be helpful for debugging or auditing purposes.
+ * Retrieve the earliest entry from the webhooks journal for the specified version. This endpoint is useful for accessing the oldest records available in the journal, which can be helpful for auditing or historical data analysis.
  *
  * @see HubSpotSDK\Services\WebhooksService::getEarliestJournalEntry()
  *
@@ -25,7 +25,7 @@ final class WebhookGetEarliestJournalEntryParams implements BaseModel
     use SdkParams;
 
     /**
-     * The ID of the portal installation to filter the journal entries. This is an integer value.
+     * The ID of the portal installation to filter the journal entries. It is an integer.
      */
     #[Optional]
     public ?int $installPortalID;
@@ -50,7 +50,7 @@ final class WebhookGetEarliestJournalEntryParams implements BaseModel
     }
 
     /**
-     * The ID of the portal installation to filter the journal entries. This is an integer value.
+     * The ID of the portal installation to filter the journal entries. It is an integer.
      */
     public function withInstallPortalID(int $installPortalID): self
     {

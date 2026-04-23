@@ -46,12 +46,21 @@ final class WebsitePageListParams implements BaseModel
     #[Optional]
     public ?bool $archived;
 
+    /**
+     * Filter pages created after a specific date and time.
+     */
     #[Optional]
     public ?\DateTimeInterface $createdAfter;
 
+    /**
+     * Filter pages by the exact creation timestamp. Format is date-time.
+     */
     #[Optional]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * Filter pages created before a specific date-time.
+     */
     #[Optional]
     public ?\DateTimeInterface $createdBefore;
 
@@ -61,19 +70,35 @@ final class WebsitePageListParams implements BaseModel
     #[Optional]
     public ?int $limit;
 
+    /**
+     * Specify properties to include in the response.
+     */
     #[Optional]
     public ?string $property;
 
-    /** @var list<string>|null $sort */
+    /**
+     * Specify the order of results. Accepts an array of field names to sort by.
+     *
+     * @var list<string>|null $sort
+     */
     #[Optional(list: 'string')]
     public ?array $sort;
 
+    /**
+     * Filter pages updated after the specified date-time.
+     */
     #[Optional]
     public ?\DateTimeInterface $updatedAfter;
 
+    /**
+     * Filter pages by their exact update timestamp in ISO 8601 format.
+     */
     #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
+    /**
+     * Filter pages updated before a specific date and time. Format should be date-time.
+     */
     #[Optional]
     public ?\DateTimeInterface $updatedBefore;
 
@@ -141,6 +166,9 @@ final class WebsitePageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter pages created after a specific date and time.
+     */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $self = clone $this;
@@ -149,6 +177,9 @@ final class WebsitePageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter pages by the exact creation timestamp. Format is date-time.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $self = clone $this;
@@ -157,6 +188,9 @@ final class WebsitePageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter pages created before a specific date-time.
+     */
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $self = clone $this;
@@ -176,6 +210,9 @@ final class WebsitePageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Specify properties to include in the response.
+     */
     public function withProperty(string $property): self
     {
         $self = clone $this;
@@ -185,6 +222,8 @@ final class WebsitePageListParams implements BaseModel
     }
 
     /**
+     * Specify the order of results. Accepts an array of field names to sort by.
+     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
@@ -195,6 +234,9 @@ final class WebsitePageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter pages updated after the specified date-time.
+     */
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $self = clone $this;
@@ -203,6 +245,9 @@ final class WebsitePageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter pages by their exact update timestamp in ISO 8601 format.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $self = clone $this;
@@ -211,6 +256,9 @@ final class WebsitePageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter pages updated before a specific date and time. Format should be date-time.
+     */
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $self = clone $this;

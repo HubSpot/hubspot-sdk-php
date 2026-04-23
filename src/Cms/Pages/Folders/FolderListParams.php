@@ -46,9 +46,15 @@ final class FolderListParams implements BaseModel
     #[Optional]
     public ?bool $archived;
 
+    /**
+     * Filter folders created after the specified date and time.
+     */
     #[Optional]
     public ?\DateTimeInterface $createdAfter;
 
+    /**
+     * Filter folders by their exact creation date and time.
+     */
     #[Optional]
     public ?\DateTimeInterface $createdAt;
 
@@ -61,6 +67,9 @@ final class FolderListParams implements BaseModel
     #[Optional]
     public ?int $limit;
 
+    /**
+     * Specify a property to include in the response.
+     */
     #[Optional]
     public ?string $property;
 
@@ -141,6 +150,9 @@ final class FolderListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter folders created after the specified date and time.
+     */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $self = clone $this;
@@ -149,6 +161,9 @@ final class FolderListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter folders by their exact creation date and time.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $self = clone $this;
@@ -176,6 +191,9 @@ final class FolderListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Specify a property to include in the response.
+     */
     public function withProperty(string $property): self
     {
         $self = clone $this;

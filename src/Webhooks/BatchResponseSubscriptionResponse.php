@@ -34,7 +34,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     public \DateTimeInterface $completedAt;
 
     /**
-     * An array of SubscriptionResponse objects, each representing the result of an individual subscription update within the batch operation.
+     * An array containing the results of the batch operation, with each item representing an individual subscription response.
      *
      * @var list<SubscriptionResponse> $results
      */
@@ -56,7 +56,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     public string $status;
 
     /**
-     * A map of link names to associated URIs, providing additional information or resources related to the batch operation.
+     * A map of link names to associated URIs providing additional information about the batch operation.
      *
      * @var array<string,string>|null $links
      */
@@ -136,7 +136,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     }
 
     /**
-     * An array of SubscriptionResponse objects, each representing the result of an individual subscription update within the batch operation.
+     * An array containing the results of the batch operation, with each item representing an individual subscription response.
      *
      * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      */
@@ -173,7 +173,7 @@ final class BatchResponseSubscriptionResponse implements BaseModel
     }
 
     /**
-     * A map of link names to associated URIs, providing additional information or resources related to the batch operation.
+     * A map of link names to associated URIs providing additional information about the batch operation.
      *
      * @param array<string,string> $links
      */

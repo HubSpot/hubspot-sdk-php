@@ -9,7 +9,6 @@ use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Files\File;
 use HubSpotSDK\Files\FileActionResponse;
 use HubSpotSDK\Files\FileAssets\FileAssetCreateParams;
-use HubSpotSDK\Files\FileAssets\FileAssetGetByPathParams;
 use HubSpotSDK\Files\FileAssets\FileAssetGetParams;
 use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams;
 use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams;
@@ -17,7 +16,6 @@ use HubSpotSDK\Files\FileAssets\FileAssetReplaceParams;
 use HubSpotSDK\Files\FileAssets\FileAssetSearchParams;
 use HubSpotSDK\Files\FileAssets\FileAssetUpdateParams;
 use HubSpotSDK\Files\FileAssets\FileAssetUploadParams;
-use HubSpotSDK\Files\FileStat;
 use HubSpotSDK\Files\Folder;
 use HubSpotSDK\Files\ImportFromURLTaskLocator;
 use HubSpotSDK\Files\SignedURL;
@@ -101,22 +99,6 @@ interface FileAssetsRawContract
     public function get(
         string $fileID,
         array|FileAssetGetParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|FileAssetGetByPathParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<FileStat>
-     *
-     * @throws APIException
-     */
-    public function getByPath(
-        string $path,
-        array|FileAssetGetByPathParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 

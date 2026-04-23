@@ -17,7 +17,7 @@ final class SubscriptionPatchRequest implements BaseModel
     use SdkModel;
 
     /**
-     * Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * A boolean indicating whether the subscription is active. If true, the subscription is active; if false, it is inactive.
      */
     #[Optional]
     public ?bool $active;
@@ -42,7 +42,7 @@ final class SubscriptionPatchRequest implements BaseModel
     }
 
     /**
-     * Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+     * A boolean indicating whether the subscription is active. If true, the subscription is active; if false, it is inactive.
      */
     public function withActive(bool $active): self
     {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Webhooks\SubscriptionResponse;
 
 /**
- * The type of event that triggers the subscription. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'ticket.deletion'.
+ * The type of event that triggers the subscription. Valid values include various property changes, creations, deletions, merges, restores, and association changes for different HubSpot objects.
  */
 enum EventType: string
 {

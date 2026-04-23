@@ -158,7 +158,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $portalID the unique identifier of the portal for which the webhook journal subscription is to be deleted
+     * @param int $portalID the unique identifier of the portal whose webhook journal subscription is to be deleted
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -203,7 +203,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count The number of journal entries to retrieve. This must be an integer with a minimum value of 1.
+     * @param int $count The maximum number of journal entries to retrieve in the batch. This must be an integer with a minimum value of 1.
      * @param array<string,mixed>|WebhookGetEarliestJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -235,7 +235,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count The number of webhook journal entries to retrieve. It must be an integer with a minimum value of 1.
+     * @param int $count The number of earliest entries to retrieve from the webhook journal. Must be an integer with a minimum value of 1.
      * @param array<string,mixed>|WebhookGetEarliestLocalJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -299,7 +299,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count Path param: The number of webhook journal entries to retrieve in the batch. This parameter is required and must be an integer greater than or equal to 1.
+     * @param int $count Path param: The number of journal entries to fetch in the batch. This is an integer value with a minimum of 1.
      * @param array<string,mixed>|WebhookGetJournalBatchFromOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -316,7 +316,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param string $statusID the unique identifier (UUID) of the webhook journal entry whose status is to be retrieved
+     * @param string $statusID the unique identifier (UUID) of the status to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SnapshotStatusResponse>
@@ -331,7 +331,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $subscriptionID The unique identifier of the subscription to retrieve. It is an integer value.
+     * @param int $subscriptionID The unique identifier of the subscription to retrieve. It must be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SubscriptionResponse1>
@@ -346,7 +346,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count The number of journal entries to retrieve. Must be an integer with a minimum value of 1.
+     * @param int $count The number of journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
      * @param array<string,mixed>|WebhookGetLatestJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -378,7 +378,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count The number of webhook journal entries to retrieve. It must be an integer with a minimum value of 1.
+     * @param int $count The number of journal entries to retrieve. Must be an integer with a minimum value of 1.
      * @param array<string,mixed>|WebhookGetLatestLocalJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -425,7 +425,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count Path param: The number of entries to retrieve in the batch. This must be an integer with a minimum value of 1.
+     * @param int $count Path param: The number of journal entries to retrieve. This is an integer value with a minimum of 1.
      * @param array<string,mixed>|WebhookGetLocalJournalBatchFromOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -442,7 +442,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param string $statusID the unique identifier (UUID) of the webhook journal entry whose status is to be retrieved
+     * @param string $statusID the unique identifier (UUID) of the status to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SnapshotStatusResponse>
@@ -457,7 +457,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param string $offset The offset from which to start retrieving the next set of journal entries. This is a string value.
+     * @param string $offset The offset from which to start retrieving the next batch of webhook journal entries. This parameter is required and identifies the starting point for the batch retrieval.
      * @param array<string,mixed>|WebhookGetNextJournalEntriesParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -474,7 +474,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param string $offset The offset from which the next set of journal entries should be retrieved. This parameter is required to specify the starting point for the retrieval.
+     * @param string $offset The starting point for retrieving the next set of journal entries. This is a string value.
      * @param array<string,mixed>|WebhookGetNextLocalJournalEntriesParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -549,7 +549,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $subscriptionID the unique identifier of the subscription for which filters are being retrieved
+     * @param int $subscriptionID the unique identifier of the subscription for which to retrieve filters
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<list<FilterResponse>>

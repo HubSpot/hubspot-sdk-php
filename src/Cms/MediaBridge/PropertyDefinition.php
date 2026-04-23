@@ -10,12 +10,11 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type CalculationExpressionVariants from \HubSpotSDK\Cms\MediaBridge\PropertyDefinition\CalculationExpression
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Cms\MediaBridge\Property
- * @phpstan-import-type CalculationExpressionShape from \HubSpotSDK\Cms\MediaBridge\PropertyDefinition\CalculationExpression
+ * @phpstan-import-type MediaBridgePropertyShape from \HubSpotSDK\Cms\MediaBridge\MediaBridgeProperty
  * @phpstan-import-type PropertyDefinitionSourceShape from \HubSpotSDK\Cms\MediaBridge\PropertyDefinitionSource
  * @phpstan-import-type ExtensionDataShape from \HubSpotSDK\Cms\MediaBridge\ExtensionData
  * @phpstan-import-type ExternalOptionsMetaDataShape from \HubSpotSDK\Cms\MediaBridge\ExternalOptionsMetaData
+ * @phpstan-import-type LookupAssociationSpecShape from \HubSpotSDK\Cms\MediaBridge\LookupAssociationSpec
  * @phpstan-import-type FieldLevelPermissionShape from \HubSpotSDK\Cms\MediaBridge\FieldLevelPermission
  * @phpstan-import-type DefinitionSourceShape from \HubSpotSDK\Cms\MediaBridge\DefinitionSource
  * @phpstan-import-type DefaultRequirementsShape from \HubSpotSDK\Cms\MediaBridge\DefaultRequirements
@@ -23,8 +22,8 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type PropertyDefinitionShape = array{
  *   objectTypeID: string,
- *   property: Property|PropertyShape,
- *   calculationExpression?: CalculationExpressionShape|null,
+ *   property: MediaBridgeProperty|MediaBridgePropertyShape,
+ *   calculationExpression?: mixed,
  *   calculationFormula?: string|null,
  *   definitionSource?: null|PropertyDefinitionSource|PropertyDefinitionSourceShape,
  *   extensionData?: null|ExtensionData|ExtensionDataShape,
@@ -32,6 +31,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   fulcrumPortalID?: int|null,
  *   fulcrumTimestamp?: int|null,
  *   janusGroup?: string|null,
+ *   lookupAssociationSpec?: null|LookupAssociationSpec|LookupAssociationSpecShape,
  *   permission?: null|FieldLevelPermission|FieldLevelPermissionShape,
  *   propertyDefinitionSource?: null|DefinitionSource|DefinitionSourceShape,
  *   propertyRequirements?: null|DefaultRequirements|DefaultRequirementsShape,
@@ -50,11 +50,10 @@ final class PropertyDefinition implements BaseModel
      * A HubSpot property.
      */
     #[Required]
-    public Property $property;
+    public MediaBridgeProperty $property;
 
-    /** @var CalculationExpressionVariants|null $calculationExpression */
     #[Optional]
-    public ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|TimeBetweenSkipWeekends|PeriodToMonths|PeriodToWeeks|And_|Or_|Xor_|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|FormatPhoneNumber|FormatSearchablePhoneNumber|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|IsBlank|AddTime|SubtractTime|null $calculationExpression;
+    public mixed $calculationExpression;
 
     #[Optional]
     public ?string $calculationFormula;
@@ -76,6 +75,9 @@ final class PropertyDefinition implements BaseModel
 
     #[Optional]
     public ?string $janusGroup;
+
+    #[Optional]
+    public ?LookupAssociationSpec $lookupAssociationSpec;
 
     #[Optional]
     public ?FieldLevelPermission $permission;
@@ -113,11 +115,11 @@ final class PropertyDefinition implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param Property|PropertyShape $property
-     * @param CalculationExpressionShape|null $calculationExpression
+     * @param MediaBridgeProperty|MediaBridgePropertyShape $property
      * @param PropertyDefinitionSource|PropertyDefinitionSourceShape|null $definitionSource
      * @param ExtensionData|ExtensionDataShape|null $extensionData
      * @param ExternalOptionsMetaData|ExternalOptionsMetaDataShape|null $externalOptionsMetaData
+     * @param LookupAssociationSpec|LookupAssociationSpecShape|null $lookupAssociationSpec
      * @param FieldLevelPermission|FieldLevelPermissionShape|null $permission
      * @param DefinitionSource|DefinitionSourceShape|null $propertyDefinitionSource
      * @param DefaultRequirements|DefaultRequirementsShape|null $propertyRequirements
@@ -125,8 +127,8 @@ final class PropertyDefinition implements BaseModel
      */
     public static function with(
         string $objectTypeID,
-        Property|array $property,
-        ConstantBoolean|array|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|TimeBetweenSkipWeekends|PeriodToMonths|PeriodToWeeks|And_|Or_|Xor_|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|FormatPhoneNumber|FormatSearchablePhoneNumber|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|IsBlank|AddTime|SubtractTime|null $calculationExpression = null,
+        MediaBridgeProperty|array $property,
+        mixed $calculationExpression = null,
         ?string $calculationFormula = null,
         PropertyDefinitionSource|array|null $definitionSource = null,
         ExtensionData|array|null $extensionData = null,
@@ -134,6 +136,7 @@ final class PropertyDefinition implements BaseModel
         ?int $fulcrumPortalID = null,
         ?int $fulcrumTimestamp = null,
         ?string $janusGroup = null,
+        LookupAssociationSpec|array|null $lookupAssociationSpec = null,
         FieldLevelPermission|array|null $permission = null,
         DefinitionSource|array|null $propertyDefinitionSource = null,
         DefaultRequirements|array|null $propertyRequirements = null,
@@ -152,6 +155,7 @@ final class PropertyDefinition implements BaseModel
         null !== $fulcrumPortalID && $self['fulcrumPortalID'] = $fulcrumPortalID;
         null !== $fulcrumTimestamp && $self['fulcrumTimestamp'] = $fulcrumTimestamp;
         null !== $janusGroup && $self['janusGroup'] = $janusGroup;
+        null !== $lookupAssociationSpec && $self['lookupAssociationSpec'] = $lookupAssociationSpec;
         null !== $permission && $self['permission'] = $permission;
         null !== $propertyDefinitionSource && $self['propertyDefinitionSource'] = $propertyDefinitionSource;
         null !== $propertyRequirements && $self['propertyRequirements'] = $propertyRequirements;
@@ -171,9 +175,9 @@ final class PropertyDefinition implements BaseModel
     /**
      * A HubSpot property.
      *
-     * @param Property|PropertyShape $property
+     * @param MediaBridgeProperty|MediaBridgePropertyShape $property
      */
-    public function withProperty(Property|array $property): self
+    public function withProperty(MediaBridgeProperty|array $property): self
     {
         $self = clone $this;
         $self['property'] = $property;
@@ -181,11 +185,8 @@ final class PropertyDefinition implements BaseModel
         return $self;
     }
 
-    /**
-     * @param CalculationExpressionShape $calculationExpression
-     */
     public function withCalculationExpression(
-        ConstantBoolean|array|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|TimeBetweenSkipWeekends|PeriodToMonths|PeriodToWeeks|And_|Or_|Xor_|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|FormatPhoneNumber|FormatSearchablePhoneNumber|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|IsBlank|AddTime|SubtractTime $calculationExpression,
+        mixed $calculationExpression
     ): self {
         $self = clone $this;
         $self['calculationExpression'] = $calculationExpression;
@@ -256,6 +257,18 @@ final class PropertyDefinition implements BaseModel
     {
         $self = clone $this;
         $self['janusGroup'] = $janusGroup;
+
+        return $self;
+    }
+
+    /**
+     * @param LookupAssociationSpec|LookupAssociationSpecShape $lookupAssociationSpec
+     */
+    public function withLookupAssociationSpec(
+        LookupAssociationSpec|array $lookupAssociationSpec
+    ): self {
+        $self = clone $this;
+        $self['lookupAssociationSpec'] = $lookupAssociationSpec;
 
         return $self;
     }

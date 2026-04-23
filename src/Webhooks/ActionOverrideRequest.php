@@ -30,7 +30,7 @@ final class ActionOverrideRequest implements BaseModel
     public ?array $associatedObjectTypeIDs;
 
     /**
-     * An array of integers representing list IDs that are affected by the action override. These IDs are in int64 format.
+     * An array of integers representing list IDs that are associated with the action override. The integers are in int64 format.
      *
      * @var list<int>|null $listIDs
      */
@@ -38,7 +38,7 @@ final class ActionOverrideRequest implements BaseModel
     public ?array $listIDs;
 
     /**
-     * An array of integers, each representing an object ID for which the action override is applicable. These IDs are in int64 format.
+     * An array of integers, each representing an object ID for which the action override is applicable. The integers are in int64 format.
      *
      * @var list<int>|null $objectIDs
      */
@@ -46,7 +46,7 @@ final class ActionOverrideRequest implements BaseModel
     public ?array $objectIDs;
 
     /**
-     * An array of strings representing specific properties to be overridden in the action. Each entry in the array corresponds to a property name.
+     * An array of strings representing the properties to be overridden in the action. Each string corresponds to a property name.
      *
      * @var list<string>|null $properties
      */
@@ -99,7 +99,7 @@ final class ActionOverrideRequest implements BaseModel
     }
 
     /**
-     * An array of integers representing list IDs that are affected by the action override. These IDs are in int64 format.
+     * An array of integers representing list IDs that are associated with the action override. The integers are in int64 format.
      *
      * @param list<int> $listIDs
      */
@@ -112,7 +112,7 @@ final class ActionOverrideRequest implements BaseModel
     }
 
     /**
-     * An array of integers, each representing an object ID for which the action override is applicable. These IDs are in int64 format.
+     * An array of integers, each representing an object ID for which the action override is applicable. The integers are in int64 format.
      *
      * @param list<int> $objectIDs
      */
@@ -125,7 +125,7 @@ final class ActionOverrideRequest implements BaseModel
     }
 
     /**
-     * An array of strings representing specific properties to be overridden in the action. Each entry in the array corresponds to a property name.
+     * An array of strings representing the properties to be overridden in the action. Each string corresponds to a property name.
      *
      * @param list<string> $properties
      */

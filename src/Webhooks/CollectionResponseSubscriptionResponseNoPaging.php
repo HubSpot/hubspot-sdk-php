@@ -21,7 +21,7 @@ final class CollectionResponseSubscriptionResponseNoPaging implements BaseModel
     use SdkModel;
 
     /**
-     * An array of SubscriptionResponse objects, each representing a subscription's details such as actions, app ID, and timestamps.
+     * An array of SubscriptionResponse objects, each representing a subscription's details such as actions, appId, createdAt, and other relevant properties.
      *
      * @var list<SubscriptionResponse1> $results
      */
@@ -64,7 +64,7 @@ final class CollectionResponseSubscriptionResponseNoPaging implements BaseModel
     }
 
     /**
-     * An array of SubscriptionResponse objects, each representing a subscription's details such as actions, app ID, and timestamps.
+     * An array of SubscriptionResponse objects, each representing a subscription's details such as actions, appId, createdAt, and other relevant properties.
      *
      * @param list<SubscriptionResponse1|SubscriptionResponse1Shape> $results
      */

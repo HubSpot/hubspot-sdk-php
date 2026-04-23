@@ -2,7 +2,8 @@
 
 namespace Tests\Services\Cms;
 
-use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\BaseAssociationDefinition;
+use HubSpotSDK\BaseObjectTypeDefinition;
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubSpotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
@@ -11,16 +12,15 @@ use HubSpotSDK\Cms\MediaBridge\CollectionResponsePropertyNoPaging;
 use HubSpotSDK\Cms\MediaBridge\EventVisibilityChange;
 use HubSpotSDK\Cms\MediaBridge\EventVisibilityResponse;
 use HubSpotSDK\Cms\MediaBridge\IntegratorOEmbedDomainModel;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeProperty;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubSpotSDK\Cms\MediaBridge\MediaPlayedEvent;
 use HubSpotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use HubSpotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubSpotSDK\Cms\MediaBridge\ObjectSchema;
 use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubSpotSDK\Cms\MediaBridge\Property;
 use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\PropertyGroup;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -60,7 +60,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(AssociationDefinition::class, $result);
+        $this->assertInstanceOf(BaseAssociationDefinition::class, $result);
     }
 
     #[Test]
@@ -79,7 +79,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(AssociationDefinition::class, $result);
+        $this->assertInstanceOf(BaseAssociationDefinition::class, $result);
     }
 
     #[Test]
@@ -315,7 +315,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(MediaBridgeProperty::class, $result);
     }
 
     #[Test]
@@ -357,7 +357,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(MediaBridgeProperty::class, $result);
     }
 
     #[Test]
@@ -409,7 +409,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(AssociationDefinition::class, $result);
+        $this->assertInstanceOf(BaseAssociationDefinition::class, $result);
     }
 
     #[Test]
@@ -586,7 +586,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(MediaBridgeProperty::class, $result);
     }
 
     #[Test]
@@ -605,7 +605,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(MediaBridgeProperty::class, $result);
     }
 
     #[Test]
@@ -932,7 +932,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(MediaBridgeProperty::class, $result);
     }
 
     #[Test]
@@ -971,7 +971,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(MediaBridgeProperty::class, $result);
     }
 
     #[Test]
@@ -1024,7 +1024,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(ObjectTypeDefinition::class, $result);
+        $this->assertInstanceOf(BaseObjectTypeDefinition::class, $result);
     }
 
     #[Test]
@@ -1049,7 +1049,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(ObjectTypeDefinition::class, $result);
+        $this->assertInstanceOf(BaseObjectTypeDefinition::class, $result);
     }
 
     #[Test]

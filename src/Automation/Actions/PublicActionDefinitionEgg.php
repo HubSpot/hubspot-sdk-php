@@ -18,6 +18,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubSpotSDK\Automation\Actions\PublicExecutionTranslationRule
  * @phpstan-import-type InputFieldDependencyShape from \HubSpotSDK\Automation\Actions\PublicActionDefinitionEgg\InputFieldDependency
  * @phpstan-import-type PublicObjectRequestOptionsShape from \HubSpotSDK\Automation\Actions\PublicObjectRequestOptions
+ * @phpstan-import-type OutputFieldDefinitionShape from \HubSpotSDK\Automation\Actions\OutputFieldDefinition
  *
  * @phpstan-type PublicActionDefinitionEggShape = array{
  *   actionURL: string,
@@ -30,7 +31,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   executionRules?: list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape>|null,
  *   inputFieldDependencies?: list<InputFieldDependencyShape>|null,
  *   objectRequestOptions?: null|PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
- *   outputFields?: list<mixed>|null,
+ *   outputFields?: list<OutputFieldDefinition|OutputFieldDefinitionShape>|null,
  * }
  */
 final class PublicActionDefinitionEgg implements BaseModel
@@ -87,7 +88,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     #[Optional]
     public ?PublicObjectRequestOptions $objectRequestOptions;
 
-    /** @var list<mixed>|null $outputFields */
+    /** @var list<OutputFieldDefinition>|null $outputFields */
     #[Optional(list: OutputFieldDefinition::class)]
     public ?array $outputFields;
 
@@ -135,7 +136,7 @@ final class PublicActionDefinitionEgg implements BaseModel
      * @param list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape>|null $executionRules
      * @param list<InputFieldDependencyShape>|null $inputFieldDependencies
      * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape|null $objectRequestOptions
-     * @param list<mixed>|null $outputFields
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape>|null $outputFields
      */
     public static function with(
         string $actionURL,
@@ -283,7 +284,7 @@ final class PublicActionDefinitionEgg implements BaseModel
     }
 
     /**
-     * @param list<mixed> $outputFields
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

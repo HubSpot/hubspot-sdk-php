@@ -133,7 +133,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * Sparse updates a single Landing Page object identified by the id in the path.
      * You only need to specify the column values that you are modifying.
      *
-     * @param string $objectID Path param
+     * @param string $objectID path param: The unique identifier of the landing page to update
      * @param array{
      *   id: string,
      *   abStatus: value-of<LandingPageUpdateParams\AbStatus>,
@@ -226,7 +226,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
     /**
      * @api
      *
-     * Get the list of landing pages. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
+     * Retrieve a list of landing pages in your HubSpot account. This endpoint allows you to filter landing pages based on creation and update timestamps, sort them, and paginate through results. You can also choose to include archived pages or specify certain properties to be included in the response.
      *
      * @param array{
      *   after?: string,
@@ -272,6 +272,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * Delete a landing page, specified by its ID.
      *
+     * @param string $objectID the unique identifier of the landing page to delete
      * @param array{archived?: bool}|LandingPageDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -336,6 +337,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * Retrieve a landing page, specified by its ID.
      *
+     * @param string $objectID the unique identifier of the landing page to retrieve
      * @param array{archived?: bool, property?: string}|LandingPageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -368,6 +370,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * Retrieve the full draft version of a landing page, specified by page ID.
      *
+     * @param string $objectID the unique identifier of the landing page whose draft version is to be retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PageData>
@@ -392,6 +395,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * Take any changes from the draft version of the Landing Page and apply them to the live version.
      *
+     * @param string $objectID the unique identifier of the landing page draft to be published
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -416,6 +420,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * Discards any edits and resets the draft to match the live version.
      *
+     * @param string $objectID the unique identifier of the landing page whose draft is to be reset
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -474,6 +479,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      *
      * Partially updates the draft version of a single landing page, specified by its ID. You only need to specify the column values that you are modifying.
      *
+     * @param string $objectID the unique identifier of the landing page draft to update
      * @param array{
      *   id: string,
      *   abStatus: value-of<LandingPageUpdateDraftParams\AbStatus>,

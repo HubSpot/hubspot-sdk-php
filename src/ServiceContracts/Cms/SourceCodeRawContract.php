@@ -5,14 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\ServiceContracts\Cms;
 
 use HubSpotSDK\ActionResponse;
-use HubSpotSDK\Cms\SourceCode\AssetFileMetadata;
-use HubSpotSDK\Cms\SourceCode\SourceCodeCreateParams;
-use HubSpotSDK\Cms\SourceCode\SourceCodeDeleteParams;
 use HubSpotSDK\Cms\SourceCode\SourceCodeExtractAsyncParams;
-use HubSpotSDK\Cms\SourceCode\SourceCodeGetMetadataParams;
-use HubSpotSDK\Cms\SourceCode\SourceCodeGetParams;
-use HubSpotSDK\Cms\SourceCode\SourceCodeUpsertParams;
-use HubSpotSDK\Cms\SourceCode\SourceCodeValidateParams;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\RequestOptions;
@@ -23,41 +16,6 @@ use HubSpotSDK\TaskLocator;
  */
 interface SourceCodeRawContract
 {
-    /**
-     * @deprecated
-     *
-     * @api
-     *
-     * @param string $path Path param
-     * @param array<string,mixed>|SourceCodeCreateParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<AssetFileMetadata>
-     *
-     * @throws APIException
-     */
-    public function create(
-        string $path,
-        array|SourceCodeCreateParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param array<string,mixed>|SourceCodeDeleteParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function delete(
-        string $path,
-        array|SourceCodeDeleteParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
     /**
      * @api
      *
@@ -76,22 +34,6 @@ interface SourceCodeRawContract
     /**
      * @api
      *
-     * @param array<string,mixed>|SourceCodeGetParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function get(
-        string $path,
-        array|SourceCodeGetParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<ActionResponse>
@@ -101,56 +43,5 @@ interface SourceCodeRawContract
     public function getExtractionStatus(
         int $taskID,
         RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $path Path param
-     * @param array<string,mixed>|SourceCodeGetMetadataParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<AssetFileMetadata>
-     *
-     * @throws APIException
-     */
-    public function getMetadata(
-        string $path,
-        array|SourceCodeGetMetadataParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $path Path param
-     * @param array<string,mixed>|SourceCodeUpsertParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<AssetFileMetadata>
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        string $path,
-        array|SourceCodeUpsertParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $path Path param
-     * @param array<string,mixed>|SourceCodeValidateParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<string>
-     *
-     * @throws APIException
-     */
-    public function validate(
-        string $path,
-        array|SourceCodeValidateParams $params,
-        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

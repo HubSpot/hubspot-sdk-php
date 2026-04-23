@@ -20,6 +20,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   otelContextHolder: array<string,string>,
  *   unstructuredSources: list<UnstructuredSource|value-of<UnstructuredSource>>,
  *   complianceIDs?: null|ComplianceIDs|ComplianceIDsShape,
+ *   conversationID?: string|null,
  *   featureID?: string|null,
  *   inferenceID?: string|null,
  *   trajectoryID?: string|null,
@@ -64,6 +65,9 @@ final class ChirpAIContextObject implements BaseModel
 
     #[Optional('complianceIds')]
     public ?ComplianceIDs $complianceIDs;
+
+    #[Optional('conversationId')]
+    public ?string $conversationID;
 
     /**
      * The identifier for the feature associated with the context.
@@ -130,6 +134,7 @@ final class ChirpAIContextObject implements BaseModel
         array $otelContextHolder,
         array $unstructuredSources,
         ComplianceIDs|array|null $complianceIDs = null,
+        ?string $conversationID = null,
         ?string $featureID = null,
         ?string $inferenceID = null,
         ?string $trajectoryID = null,
@@ -143,6 +148,7 @@ final class ChirpAIContextObject implements BaseModel
         $self['unstructuredSources'] = $unstructuredSources;
 
         null !== $complianceIDs && $self['complianceIDs'] = $complianceIDs;
+        null !== $conversationID && $self['conversationID'] = $conversationID;
         null !== $featureID && $self['featureID'] = $featureID;
         null !== $inferenceID && $self['inferenceID'] = $inferenceID;
         null !== $trajectoryID && $self['trajectoryID'] = $trajectoryID;
@@ -216,6 +222,14 @@ final class ChirpAIContextObject implements BaseModel
     {
         $self = clone $this;
         $self['complianceIDs'] = $complianceIDs;
+
+        return $self;
+    }
+
+    public function withConversationID(string $conversationID): self
+    {
+        $self = clone $this;
+        $self['conversationID'] = $conversationID;
 
         return $self;
     }

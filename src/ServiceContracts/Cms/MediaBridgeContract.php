@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\BaseAssociationDefinition;
+use HubSpotSDK\BaseObjectTypeDefinition;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubSpotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
@@ -21,6 +22,7 @@ use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\NumberDisplayHint;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeProperty;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams\EventType;
 use HubSpotSDK\Cms\MediaBridge\MediaPlayedEvent;
@@ -28,10 +30,8 @@ use HubSpotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use HubSpotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubSpotSDK\Cms\MediaBridge\ObjectSchema;
 use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubSpotSDK\Cms\MediaBridge\Property;
 use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
 use HubSpotSDK\Core\Exceptions\APIException;
-use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\PropertyGroup;
@@ -65,7 +65,7 @@ interface MediaBridgeContract
         string $toObjectTypeID,
         ?string $name = null,
         RequestOptions|array|null $requestOptions = null,
-    ): AssociationDefinition;
+    ): BaseAssociationDefinition;
 
     /**
      * @api
@@ -235,7 +235,7 @@ interface MediaBridgeContract
         ?string $referencedObjectType = null,
         ?bool $showCurrencySymbol = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Property;
+    ): MediaBridgeProperty;
 
     /**
      * @api
@@ -268,7 +268,7 @@ interface MediaBridgeContract
     public function createVideoAssociationDefinition(
         int $appID,
         RequestOptions|array|null $requestOptions = null
-    ): AssociationDefinition;
+    ): BaseAssociationDefinition;
 
     /**
      * @api
@@ -370,7 +370,7 @@ interface MediaBridgeContract
         bool $archived = false,
         ?string $properties = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Property;
+    ): MediaBridgeProperty;
 
     /**
      * @api
@@ -573,7 +573,7 @@ interface MediaBridgeContract
         ?bool $showCurrencySymbol = null,
         \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|string|null $type = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Property;
+    ): MediaBridgeProperty;
 
     /**
      * @api
@@ -627,7 +627,7 @@ interface MediaBridgeContract
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
         RequestOptions|array|null $requestOptions = null,
-    ): ObjectTypeDefinition;
+    ): BaseObjectTypeDefinition;
 
     /**
      * @api

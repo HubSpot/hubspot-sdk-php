@@ -105,6 +105,7 @@ interface WebsitePagesRawContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the site page to retrieve
      * @param array<string,mixed>|WebsitePageGetParams $params
      * @param RequestOpts|null $requestOptions
      *

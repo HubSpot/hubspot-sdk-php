@@ -19,25 +19,25 @@ final class CrmObjectSnapshotRequest implements BaseModel
     use SdkModel;
 
     /**
-     * An integer representing the unique identifier of the CRM object for which the snapshot is being requested.
+     * An integer representing the unique identifier of the CRM object for which the snapshot is requested.
      */
     #[Required('objectId')]
     public int $objectID;
 
     /**
-     * A string representing the type identifier of the CRM object.
+     * A string representing the type identifier of the CRM object, specifying what kind of object it is within HubSpot.
      */
     #[Required('objectTypeId')]
     public string $objectTypeID;
 
     /**
-     * An integer representing the unique identifier of the HubSpot portal.
+     * An integer representing the unique identifier of the HubSpot account (portal) where the CRM object resides.
      */
     #[Required('portalId')]
     public int $portalID;
 
     /**
-     * An array of strings, each representing a property of the CRM object to be included in the snapshot.
+     * An array of strings, each representing a property of the CRM object that should be included in the snapshot.
      *
      * @var list<string> $properties
      */
@@ -93,7 +93,7 @@ final class CrmObjectSnapshotRequest implements BaseModel
     }
 
     /**
-     * An integer representing the unique identifier of the CRM object for which the snapshot is being requested.
+     * An integer representing the unique identifier of the CRM object for which the snapshot is requested.
      */
     public function withObjectID(int $objectID): self
     {
@@ -104,7 +104,7 @@ final class CrmObjectSnapshotRequest implements BaseModel
     }
 
     /**
-     * A string representing the type identifier of the CRM object.
+     * A string representing the type identifier of the CRM object, specifying what kind of object it is within HubSpot.
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
@@ -115,7 +115,7 @@ final class CrmObjectSnapshotRequest implements BaseModel
     }
 
     /**
-     * An integer representing the unique identifier of the HubSpot portal.
+     * An integer representing the unique identifier of the HubSpot account (portal) where the CRM object resides.
      */
     public function withPortalID(int $portalID): self
     {
@@ -126,7 +126,7 @@ final class CrmObjectSnapshotRequest implements BaseModel
     }
 
     /**
-     * An array of strings, each representing a property of the CRM object to be included in the snapshot.
+     * An array of strings, each representing a property of the CRM object that should be included in the snapshot.
      *
      * @param list<string> $properties
      */

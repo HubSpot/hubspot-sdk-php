@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicRangedTimeOperation\OperationType;
 use HubSpotSDK\Crm\Lists\PublicRangedTimeOperation\Type;
 
 /**
@@ -19,7 +20,7 @@ use HubSpotSDK\Crm\Lists\PublicRangedTimeOperation\Type;
  * @phpstan-type PublicRangedTimeOperationShape = array{
  *   includeObjectsWithNoValueSet: bool,
  *   lowerBoundTimePoint: LowerBoundTimePointShape,
- *   operationType: string,
+ *   operationType: OperationType|value-of<OperationType>,
  *   operator: string,
  *   type: Type|value-of<Type>,
  *   upperBoundTimePoint: UpperBoundTimePointShape,
@@ -49,8 +50,10 @@ final class PublicRangedTimeOperation implements BaseModel
 
     /**
      * Specifies the type of operation (TIME_RANGED).
+     *
+     * @var value-of<OperationType> $operationType
      */
-    #[Required]
+    #[Required(enum: OperationType::class)]
     public string $operationType;
 
     /**
@@ -131,13 +134,14 @@ final class PublicRangedTimeOperation implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param LowerBoundTimePointShape $lowerBoundTimePoint
+     * @param OperationType|value-of<OperationType> $operationType
      * @param UpperBoundTimePointShape $upperBoundTimePoint
      * @param Type|value-of<Type> $type
      */
     public static function with(
         bool $includeObjectsWithNoValueSet,
         PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint,
-        string $operationType,
+        OperationType|string $operationType,
         string $operator,
         PublicDatePoint|array|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint,
         Type|string $type = 'TIME_RANGED',
@@ -189,8 +193,10 @@ final class PublicRangedTimeOperation implements BaseModel
 
     /**
      * Specifies the type of operation (TIME_RANGED).
+     *
+     * @param OperationType|value-of<OperationType> $operationType
      */
-    public function withOperationType(string $operationType): self
+    public function withOperationType(OperationType|string $operationType): self
     {
         $self = clone $this;
         $self['operationType'] = $operationType;

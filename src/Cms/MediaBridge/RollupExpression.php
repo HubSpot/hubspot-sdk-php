@@ -12,16 +12,14 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ConditionalExpressionVariants from \HubSpotSDK\Cms\MediaBridge\RollupExpression\ConditionalExpression
  * @phpstan-import-type AssociationSpecShape from \HubSpotSDK\AssociationSpec
- * @phpstan-import-type ConditionalExpressionShape from \HubSpotSDK\Cms\MediaBridge\RollupExpression\ConditionalExpression
  *
  * @phpstan-type RollupExpressionShape = array{
  *   associationTypes: list<AssociationSpec|AssociationSpecShape>,
  *   rollupOperator: RollupOperator|value-of<RollupOperator>,
  *   sourceObjectTypeID: string,
  *   sourcePropertyName: string,
- *   conditionalExpression?: ConditionalExpressionShape|null,
+ *   conditionalExpression?: mixed,
  *   conditionalFormula?: string|null,
  *   emptyRollupValue?: string|null,
  *   sourceCompareByPropertyName?: string|null,
@@ -46,9 +44,8 @@ final class RollupExpression implements BaseModel
     #[Required]
     public string $sourcePropertyName;
 
-    /** @var ConditionalExpressionVariants|null $conditionalExpression */
     #[Optional]
-    public ConstantBoolean|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|TimeBetweenSkipWeekends|PeriodToMonths|PeriodToWeeks|And_|Or_|Xor_|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|FormatPhoneNumber|FormatSearchablePhoneNumber|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|IsBlank|AddTime|SubtractTime|null $conditionalExpression;
+    public mixed $conditionalExpression;
 
     #[Optional]
     public ?string $conditionalFormula;
@@ -94,14 +91,13 @@ final class RollupExpression implements BaseModel
      *
      * @param list<AssociationSpec|AssociationSpecShape> $associationTypes
      * @param RollupOperator|value-of<RollupOperator> $rollupOperator
-     * @param ConditionalExpressionShape|null $conditionalExpression
      */
     public static function with(
         array $associationTypes,
         RollupOperator|string $rollupOperator,
         string $sourceObjectTypeID,
         string $sourcePropertyName,
-        ConstantBoolean|array|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|TimeBetweenSkipWeekends|PeriodToMonths|PeriodToWeeks|And_|Or_|Xor_|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|FormatPhoneNumber|FormatSearchablePhoneNumber|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|IsBlank|AddTime|SubtractTime|null $conditionalExpression = null,
+        mixed $conditionalExpression = null,
         ?string $conditionalFormula = null,
         ?string $emptyRollupValue = null,
         ?string $sourceCompareByPropertyName = null,
@@ -160,11 +156,8 @@ final class RollupExpression implements BaseModel
         return $self;
     }
 
-    /**
-     * @param ConditionalExpressionShape $conditionalExpression
-     */
     public function withConditionalExpression(
-        ConstantBoolean|array|ConstantNumber|ConstantString|BooleanPropertyVariable|StringPropertyVariable|NumberPropertyVariable|TimestampOfPropertyVariable|BooleanTargetPropertyVariable|StringTargetPropertyVariable|NumberTargetPropertyVariable|TimestampOfTargetPropertyVariable|AddNumbers|SubtractNumbers|MultiplyNumbers|DivideNumbers|RoundDownNumbers|RoundUpNumbers|RoundNearestNumbers|UpperCase|LowerCase|ConcatStrings|Contains|BeginsWith|NumberToString|ParseNumber|FetchExchangeRate|FetchCurrencyDecimalPlaces|FetchSingleCurrencyPortalCurrency|DatedExchangeRate|PipelineProbability|MaxNumbers|MinNumbers|LessThan|LessThanOrEqual|MoreThan|MoreThanOrEqual|NumberEquals|StringEquals|IsPipelineStageClosed|Not|Date|Month|Year|Now|TimeBetween|TimeBetweenSkipWeekends|PeriodToMonths|PeriodToWeeks|And_|Or_|Xor_|IfString|IfNumber|IfBoolean|IsPresent|HasEmailReply|HasPlainTextEmailReply|ExtractMostRecentEmailReplyHTML|ExtractMostRecentEmailReplyText|ExtractMostRecentPlainTextEmailReply|SetContainsString|IsEngagementType|FormatFullName|FormatPhoneNumber|FormatSearchablePhoneNumber|AbsoluteValue|SquareRoot|Power|Substring|Euler|StringLength|IsBlank|AddTime|SubtractTime $conditionalExpression,
+        mixed $conditionalExpression
     ): self {
         $self = clone $this;
         $self['conditionalExpression'] = $conditionalExpression;

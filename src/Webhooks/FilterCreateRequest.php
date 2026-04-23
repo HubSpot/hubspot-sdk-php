@@ -27,7 +27,7 @@ final class FilterCreateRequest implements BaseModel
     public Filter $filter;
 
     /**
-     * The unique identifier of the subscription to which the filter will be applied. It is an integer in int64 format.
+     * The unique identifier of the subscription to which the filter will be applied. It is an integer formatted as int64.
      */
     #[Required('subscriptionId')]
     public int $subscriptionID;
@@ -82,7 +82,7 @@ final class FilterCreateRequest implements BaseModel
     }
 
     /**
-     * The unique identifier of the subscription to which the filter will be applied. It is an integer in int64 format.
+     * The unique identifier of the subscription to which the filter will be applied. It is an integer formatted as int64.
      */
     public function withSubscriptionID(int $subscriptionID): self
     {

@@ -9,14 +9,14 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ObjectTypeDefinitionShape from \HubSpotSDK\Crm\Limits\ObjectTypeDefinition
+ * @phpstan-import-type LimitsObjectTypeDefinitionShape from \HubSpotSDK\Crm\Limits\LimitsObjectTypeDefinition
  *
  * @phpstan-type AssociationLabelLimitResponseShape = array{
  *   allLabels: list<string>,
- *   fromObjectType: ObjectTypeDefinition|ObjectTypeDefinitionShape,
+ *   fromObjectType: LimitsObjectTypeDefinition|LimitsObjectTypeDefinitionShape,
  *   limit: int,
  *   percentage: float,
- *   toObjectType: ObjectTypeDefinition|ObjectTypeDefinitionShape,
+ *   toObjectType: LimitsObjectTypeDefinition|LimitsObjectTypeDefinitionShape,
  *   usage: int,
  * }
  */
@@ -34,7 +34,7 @@ final class AssociationLabelLimitResponse implements BaseModel
     public array $allLabels;
 
     #[Required]
-    public ObjectTypeDefinition $fromObjectType;
+    public LimitsObjectTypeDefinition $fromObjectType;
 
     /**
      * The maximum number of association labels allowed.
@@ -49,7 +49,7 @@ final class AssociationLabelLimitResponse implements BaseModel
     public float $percentage;
 
     #[Required]
-    public ObjectTypeDefinition $toObjectType;
+    public LimitsObjectTypeDefinition $toObjectType;
 
     /**
      * The current number of association labels used.
@@ -95,15 +95,15 @@ final class AssociationLabelLimitResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param list<string> $allLabels
-     * @param ObjectTypeDefinition|ObjectTypeDefinitionShape $fromObjectType
-     * @param ObjectTypeDefinition|ObjectTypeDefinitionShape $toObjectType
+     * @param LimitsObjectTypeDefinition|LimitsObjectTypeDefinitionShape $fromObjectType
+     * @param LimitsObjectTypeDefinition|LimitsObjectTypeDefinitionShape $toObjectType
      */
     public static function with(
         array $allLabels,
-        ObjectTypeDefinition|array $fromObjectType,
+        LimitsObjectTypeDefinition|array $fromObjectType,
         int $limit,
         float $percentage,
-        ObjectTypeDefinition|array $toObjectType,
+        LimitsObjectTypeDefinition|array $toObjectType,
         int $usage,
     ): self {
         $self = new self;
@@ -132,10 +132,10 @@ final class AssociationLabelLimitResponse implements BaseModel
     }
 
     /**
-     * @param ObjectTypeDefinition|ObjectTypeDefinitionShape $fromObjectType
+     * @param LimitsObjectTypeDefinition|LimitsObjectTypeDefinitionShape $fromObjectType
      */
     public function withFromObjectType(
-        ObjectTypeDefinition|array $fromObjectType
+        LimitsObjectTypeDefinition|array $fromObjectType
     ): self {
         $self = clone $this;
         $self['fromObjectType'] = $fromObjectType;
@@ -166,10 +166,10 @@ final class AssociationLabelLimitResponse implements BaseModel
     }
 
     /**
-     * @param ObjectTypeDefinition|ObjectTypeDefinitionShape $toObjectType
+     * @param LimitsObjectTypeDefinition|LimitsObjectTypeDefinitionShape $toObjectType
      */
     public function withToObjectType(
-        ObjectTypeDefinition|array $toObjectType
+        LimitsObjectTypeDefinition|array $toObjectType
     ): self {
         $self = clone $this;
         $self['toObjectType'] = $toObjectType;

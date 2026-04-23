@@ -41,7 +41,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param string $objectID Path param
+     * @param string $objectID path param: The unique identifier of the landing page to update
      * @param array<string,mixed>|LandingPageUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -73,6 +73,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page to delete
      * @param array<string,mixed>|LandingPageDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -104,6 +105,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page to retrieve
      * @param array<string,mixed>|LandingPageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -120,6 +122,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page whose draft version is to be retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PageData>
@@ -134,6 +137,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page draft to be published
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -148,6 +152,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page whose draft is to be reset
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -177,6 +182,7 @@ interface LandingPagesRawContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page draft to update
      * @param array<string,mixed>|LandingPageUpdateDraftParams $params
      * @param RequestOpts|null $requestOptions
      *

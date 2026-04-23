@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Webhooks\SubscriptionResponse1;
 
 /**
- * The type of subscription, which can be one of 'OBJECT', 'ASSOCIATION', 'EVENT', 'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', or 'GDPR_PRIVACY_DELETION'.
+ * The type of subscription, which can be one of the following: 'OBJECT', 'ASSOCIATION', 'EVENT', 'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', or 'GDPR_PRIVACY_DELETION'.
  */
 enum SubscriptionType: string
 {
