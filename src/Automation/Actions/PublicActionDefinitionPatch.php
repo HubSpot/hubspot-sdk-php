@@ -16,6 +16,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type PublicInputFieldDefinitionShape from \HubSpotSDK\Automation\Actions\PublicInputFieldDefinition
  * @phpstan-import-type PublicActionLabelsShape from \HubSpotSDK\Automation\Actions\PublicActionLabels
  * @phpstan-import-type PublicObjectRequestOptionsShape from \HubSpotSDK\Automation\Actions\PublicObjectRequestOptions
+ * @phpstan-import-type OutputFieldDefinitionShape from \HubSpotSDK\Automation\Actions\OutputFieldDefinition
  *
  * @phpstan-type PublicActionDefinitionPatchShape = array{
  *   actionURL?: string|null,
@@ -25,7 +26,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   labels?: array<string,PublicActionLabels|PublicActionLabelsShape>|null,
  *   objectRequestOptions?: null|PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
  *   objectTypes?: list<string>|null,
- *   outputFields?: list<mixed>|null,
+ *   outputFields?: list<OutputFieldDefinition|OutputFieldDefinitionShape>|null,
  *   published?: bool|null,
  * }
  */
@@ -67,7 +68,7 @@ final class PublicActionDefinitionPatch implements BaseModel
     #[Optional(list: 'string')]
     public ?array $objectTypes;
 
-    /** @var list<mixed>|null $outputFields */
+    /** @var list<OutputFieldDefinition>|null $outputFields */
     #[Optional(list: OutputFieldDefinition::class)]
     public ?array $outputFields;
 
@@ -93,7 +94,7 @@ final class PublicActionDefinitionPatch implements BaseModel
      * @param array<string,PublicActionLabels|PublicActionLabelsShape>|null $labels
      * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape|null $objectRequestOptions
      * @param list<string>|null $objectTypes
-     * @param list<mixed>|null $outputFields
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape>|null $outputFields
      */
     public static function with(
         ?string $actionURL = null,
@@ -203,7 +204,7 @@ final class PublicActionDefinitionPatch implements BaseModel
     }
 
     /**
-     * @param list<mixed> $outputFields
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape> $outputFields
      */
     public function withOutputFields(array $outputFields): self
     {

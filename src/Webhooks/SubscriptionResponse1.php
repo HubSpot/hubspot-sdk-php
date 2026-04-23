@@ -38,13 +38,13 @@ final class SubscriptionResponse1 implements BaseModel
     use SdkModel;
 
     /**
-     * The unique identifier for the subscription, represented as an integer.
+     * The unique identifier for the subscription. It is an integer formatted as int64.
      */
     #[Required]
     public int $id;
 
     /**
-     * An array of actions that trigger the subscription, such as 'CREATE', 'UPDATE', 'DELETE', 'MERGE', 'RESTORE', 'ASSOCIATION_ADDED', 'ASSOCIATION_REMOVED', 'SNAPSHOT', 'APP_INSTALL', 'APP_UNINSTALL', 'ADDED_TO_LIST', 'REMOVED_FROM_LIST', and 'GDPR_DELETE'.
+     * A list of actions that trigger the subscription. Possible values include 'CREATE', 'UPDATE', 'DELETE', 'MERGE', 'RESTORE', 'ASSOCIATION_ADDED', 'ASSOCIATION_REMOVED', 'SNAPSHOT', 'APP_INSTALL', 'APP_UNINSTALL', 'ADDED_TO_LIST', 'REMOVED_FROM_LIST', and 'GDPR_DELETE'.
      *
      * @var list<value-of<Action>> $actions
      */
@@ -52,7 +52,7 @@ final class SubscriptionResponse1 implements BaseModel
     public array $actions;
 
     /**
-     * The unique identifier for the app associated with the subscription, represented as an integer.
+     * The unique identifier for the app associated with the subscription. It is an integer formatted as int64.
      */
     #[Required('appId')]
     public int $appID;
@@ -64,13 +64,13 @@ final class SubscriptionResponse1 implements BaseModel
     public \DateTimeInterface $createdAt;
 
     /**
-     * The identifier for the object type associated with the subscription, represented as a string.
+     * The identifier for the object type associated with the subscription. It is a string.
      */
     #[Required('objectTypeId')]
     public string $objectTypeID;
 
     /**
-     * The type of subscription, which can be one of 'OBJECT', 'ASSOCIATION', 'EVENT', 'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', or 'GDPR_PRIVACY_DELETION'.
+     * The type of subscription, which can be one of the following: 'OBJECT', 'ASSOCIATION', 'EVENT', 'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', or 'GDPR_PRIVACY_DELETION'.
      *
      * @var value-of<SubscriptionType> $subscriptionType
      */
@@ -92,7 +92,7 @@ final class SubscriptionResponse1 implements BaseModel
     public ?array $actionOverrides;
 
     /**
-     * An array of strings representing the associated object type IDs for the subscription.
+     * A list of associated object type IDs. Each ID is a string.
      *
      * @var list<string>|null $associatedObjectTypeIDs
      */
@@ -100,19 +100,19 @@ final class SubscriptionResponse1 implements BaseModel
     public ?array $associatedObjectTypeIDs;
 
     /**
-     * The unique identifier for the user who created the subscription, represented as an integer.
+     * The ID of the user who created the subscription. It is an integer formatted as int64.
      */
     #[Optional]
     public ?int $createdBy;
 
     /**
-     * The date and time when the subscription was deleted, in ISO 8601 format.
+     * The date and time when the subscription was deleted, in ISO 8601 format, if applicable.
      */
     #[Optional]
     public ?\DateTimeInterface $deletedAt;
 
     /**
-     * An array of integers representing the list IDs associated with the subscription.
+     * A list of list IDs associated with the subscription. Each ID is an integer formatted as int64.
      *
      * @var list<int>|null $listIDs
      */
@@ -120,7 +120,7 @@ final class SubscriptionResponse1 implements BaseModel
     public ?array $listIDs;
 
     /**
-     * An array of integers representing the object IDs associated with the subscription.
+     * A list of object IDs associated with the subscription. Each ID is an integer formatted as int64.
      *
      * @var list<int>|null $objectIDs
      */
@@ -128,13 +128,13 @@ final class SubscriptionResponse1 implements BaseModel
     public ?array $objectIDs;
 
     /**
-     * The unique identifier for the portal associated with the subscription, represented as an integer.
+     * The unique identifier for the portal associated with the subscription. It is an integer formatted as int64.
      */
     #[Optional('portalId')]
     public ?int $portalID;
 
     /**
-     * An array of strings representing the properties associated with the subscription.
+     * A list of property names associated with the subscription. Each property is a string.
      *
      * @var list<string>|null $properties
      */
@@ -228,7 +228,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The unique identifier for the subscription, represented as an integer.
+     * The unique identifier for the subscription. It is an integer formatted as int64.
      */
     public function withID(int $id): self
     {
@@ -239,7 +239,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * An array of actions that trigger the subscription, such as 'CREATE', 'UPDATE', 'DELETE', 'MERGE', 'RESTORE', 'ASSOCIATION_ADDED', 'ASSOCIATION_REMOVED', 'SNAPSHOT', 'APP_INSTALL', 'APP_UNINSTALL', 'ADDED_TO_LIST', 'REMOVED_FROM_LIST', and 'GDPR_DELETE'.
+     * A list of actions that trigger the subscription. Possible values include 'CREATE', 'UPDATE', 'DELETE', 'MERGE', 'RESTORE', 'ASSOCIATION_ADDED', 'ASSOCIATION_REMOVED', 'SNAPSHOT', 'APP_INSTALL', 'APP_UNINSTALL', 'ADDED_TO_LIST', 'REMOVED_FROM_LIST', and 'GDPR_DELETE'.
      *
      * @param list<Action|value-of<Action>> $actions
      */
@@ -252,7 +252,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The unique identifier for the app associated with the subscription, represented as an integer.
+     * The unique identifier for the app associated with the subscription. It is an integer formatted as int64.
      */
     public function withAppID(int $appID): self
     {
@@ -274,7 +274,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The identifier for the object type associated with the subscription, represented as a string.
+     * The identifier for the object type associated with the subscription. It is a string.
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
@@ -285,7 +285,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The type of subscription, which can be one of 'OBJECT', 'ASSOCIATION', 'EVENT', 'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', or 'GDPR_PRIVACY_DELETION'.
+     * The type of subscription, which can be one of the following: 'OBJECT', 'ASSOCIATION', 'EVENT', 'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', or 'GDPR_PRIVACY_DELETION'.
      *
      * @param SubscriptionType|value-of<SubscriptionType> $subscriptionType
      */
@@ -323,7 +323,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * An array of strings representing the associated object type IDs for the subscription.
+     * A list of associated object type IDs. Each ID is a string.
      *
      * @param list<string> $associatedObjectTypeIDs
      */
@@ -337,7 +337,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The unique identifier for the user who created the subscription, represented as an integer.
+     * The ID of the user who created the subscription. It is an integer formatted as int64.
      */
     public function withCreatedBy(int $createdBy): self
     {
@@ -348,7 +348,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The date and time when the subscription was deleted, in ISO 8601 format.
+     * The date and time when the subscription was deleted, in ISO 8601 format, if applicable.
      */
     public function withDeletedAt(\DateTimeInterface $deletedAt): self
     {
@@ -359,7 +359,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * An array of integers representing the list IDs associated with the subscription.
+     * A list of list IDs associated with the subscription. Each ID is an integer formatted as int64.
      *
      * @param list<int> $listIDs
      */
@@ -372,7 +372,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * An array of integers representing the object IDs associated with the subscription.
+     * A list of object IDs associated with the subscription. Each ID is an integer formatted as int64.
      *
      * @param list<int> $objectIDs
      */
@@ -385,7 +385,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * The unique identifier for the portal associated with the subscription, represented as an integer.
+     * The unique identifier for the portal associated with the subscription. It is an integer formatted as int64.
      */
     public function withPortalID(int $portalID): self
     {
@@ -396,7 +396,7 @@ final class SubscriptionResponse1 implements BaseModel
     }
 
     /**
-     * An array of strings representing the properties associated with the subscription.
+     * A list of property names associated with the subscription. Each property is a string.
      *
      * @param list<string> $properties
      */

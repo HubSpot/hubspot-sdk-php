@@ -64,7 +64,6 @@ final class Operation implements ConverterSource
     public static function variants(): array
     {
         return [
-            PublicRangedTimeOperation::class,
             'BOOL' => PublicBoolPropertyOperation::class,
             'NUMBER' => PublicNumberPropertyOperation::class,
             'STRING' => PublicStringPropertyOperation::class,
@@ -81,6 +80,7 @@ final class Operation implements ConverterSource
             'DATE' => PublicDatePropertyOperation::class,
             'CALENDAR_DATE' => PublicCalendarDatePropertyOperation::class,
             'TIME_POINT' => PublicTimePointOperation::class,
+            'TIME_RANGED' => PublicRangedTimeOperation::class,
         ];
     }
 }

@@ -17,7 +17,7 @@ final class SubscriptionBatchUpdateRequest implements BaseModel
     use SdkModel;
 
     /**
-     * The unique identifier for the subscription to be updated. It is an integer.
+     * The unique identifier for the subscription. It is an integer.
      */
     #[Required]
     public int $id;
@@ -63,7 +63,7 @@ final class SubscriptionBatchUpdateRequest implements BaseModel
     }
 
     /**
-     * The unique identifier for the subscription to be updated. It is an integer.
+     * The unique identifier for the subscription. It is an integer.
      */
     public function withID(int $id): self
     {

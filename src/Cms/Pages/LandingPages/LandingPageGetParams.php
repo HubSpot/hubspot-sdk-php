@@ -30,6 +30,9 @@ final class LandingPageGetParams implements BaseModel
     #[Optional]
     public ?bool $archived;
 
+    /**
+     * A specific property of the landing page to include in the response.
+     */
     #[Optional]
     public ?string $property;
 
@@ -66,6 +69,9 @@ final class LandingPageGetParams implements BaseModel
         return $self;
     }
 
+    /**
+     * A specific property of the landing page to include in the response.
+     */
     public function withProperty(string $property): self
     {
         $self = clone $this;

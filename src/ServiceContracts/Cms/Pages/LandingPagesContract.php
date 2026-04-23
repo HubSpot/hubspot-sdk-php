@@ -148,7 +148,7 @@ interface LandingPagesContract
     /**
      * @api
      *
-     * @param string $objectID Path param
+     * @param string $objectID path param: The unique identifier of the landing page to update
      * @param string $id body param: The unique ID of the page
      * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams\AbStatus> $abStatus Body param: The status of the AB test associated with this page, if applicable
      * @param string $abTestID Body param: The ID of the AB test associated with this page, if applicable
@@ -277,10 +277,17 @@ interface LandingPagesContract
     /**
      * @api
      *
-     * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * @param string $after A cursor token for pagination. Use the value from the previous response's paging.next.after field.
      * @param bool $archived whether to return only results that have been archived
+     * @param \DateTimeInterface $createdAfter filter landing pages created after a specific date and time
+     * @param \DateTimeInterface $createdAt filter landing pages by their creation timestamp
+     * @param \DateTimeInterface $createdBefore filter landing pages created before a specific date and time
      * @param int $limit the maximum number of results to display per page
-     * @param list<string> $sort
+     * @param string $property specify which properties of the landing pages to include in the response
+     * @param list<string> $sort Specify the order in which results are returned. Accepts an array of strings.
+     * @param \DateTimeInterface $updatedAfter filter landing pages updated after a specific date and time
+     * @param \DateTimeInterface $updatedAt filter landing pages by their last updated timestamp
+     * @param \DateTimeInterface $updatedBefore filter landing pages updated before a specific date and time
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<PageData>
@@ -305,6 +312,7 @@ interface LandingPagesContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page to delete
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *
@@ -334,7 +342,9 @@ interface LandingPagesContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page to retrieve
      * @param bool $archived whether to return only results that have been archived
+     * @param string $property a specific property of the landing page to include in the response
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -349,6 +359,7 @@ interface LandingPagesContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page whose draft version is to be retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -361,6 +372,7 @@ interface LandingPagesContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page draft to be published
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -373,6 +385,7 @@ interface LandingPagesContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page whose draft is to be reset
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -400,6 +413,7 @@ interface LandingPagesContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the landing page draft to update
      * @param string $id the unique ID of the page
      * @param \HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus|value-of<\HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams\AbStatus> $abStatus The status of the AB test associated with this page, if applicable
      * @param string $abTestID The ID of the AB test associated with this page, if applicable

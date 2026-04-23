@@ -21,7 +21,7 @@ final class CrmObjectSnapshotBatchRequest implements BaseModel
     use SdkModel;
 
     /**
-     * An array of CrmObjectSnapshotRequest objects, each representing a request to capture a snapshot of a specific CRM object. This property is required.
+     * An array of CrmObjectSnapshotRequest objects, each representing a request to create a snapshot for a specific CRM object. This property is required.
      *
      * @var list<CrmObjectSnapshotRequest> $snapshotRequests
      */
@@ -64,7 +64,7 @@ final class CrmObjectSnapshotBatchRequest implements BaseModel
     }
 
     /**
-     * An array of CrmObjectSnapshotRequest objects, each representing a request to capture a snapshot of a specific CRM object. This property is required.
+     * An array of CrmObjectSnapshotRequest objects, each representing a request to create a snapshot for a specific CRM object. This property is required.
      *
      * @param list<CrmObjectSnapshotRequest|CrmObjectSnapshotRequestShape> $snapshotRequests
      */

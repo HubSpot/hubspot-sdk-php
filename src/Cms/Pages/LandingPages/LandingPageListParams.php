@@ -10,7 +10,7 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * Get the list of landing pages. Supports paging and filtering. This method would be useful for an integration that examined these models and used an external service to suggest edits.
+ * Retrieve a list of landing pages in your HubSpot account. This endpoint allows you to filter landing pages based on creation and update timestamps, sort them, and paginate through results. You can also choose to include archived pages or specify certain properties to be included in the response.
  *
  * @see HubSpotSDK\Services\Cms\Pages\LandingPagesService::list()
  *
@@ -35,7 +35,7 @@ final class LandingPageListParams implements BaseModel
     use SdkParams;
 
     /**
-     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * A cursor token for pagination. Use the value from the previous response's paging.next.after field.
      */
     #[Optional]
     public ?string $after;
@@ -46,12 +46,21 @@ final class LandingPageListParams implements BaseModel
     #[Optional]
     public ?bool $archived;
 
+    /**
+     * Filter landing pages created after a specific date and time.
+     */
     #[Optional]
     public ?\DateTimeInterface $createdAfter;
 
+    /**
+     * Filter landing pages by their creation timestamp.
+     */
     #[Optional]
     public ?\DateTimeInterface $createdAt;
 
+    /**
+     * Filter landing pages created before a specific date and time.
+     */
     #[Optional]
     public ?\DateTimeInterface $createdBefore;
 
@@ -61,19 +70,35 @@ final class LandingPageListParams implements BaseModel
     #[Optional]
     public ?int $limit;
 
+    /**
+     * Specify which properties of the landing pages to include in the response.
+     */
     #[Optional]
     public ?string $property;
 
-    /** @var list<string>|null $sort */
+    /**
+     * Specify the order in which results are returned. Accepts an array of strings.
+     *
+     * @var list<string>|null $sort
+     */
     #[Optional(list: 'string')]
     public ?array $sort;
 
+    /**
+     * Filter landing pages updated after a specific date and time.
+     */
     #[Optional]
     public ?\DateTimeInterface $updatedAfter;
 
+    /**
+     * Filter landing pages by their last updated timestamp.
+     */
     #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
+    /**
+     * Filter landing pages updated before a specific date and time.
+     */
     #[Optional]
     public ?\DateTimeInterface $updatedBefore;
 
@@ -120,7 +145,7 @@ final class LandingPageListParams implements BaseModel
     }
 
     /**
-     * The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+     * A cursor token for pagination. Use the value from the previous response's paging.next.after field.
      */
     public function withAfter(string $after): self
     {
@@ -141,6 +166,9 @@ final class LandingPageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter landing pages created after a specific date and time.
+     */
     public function withCreatedAfter(\DateTimeInterface $createdAfter): self
     {
         $self = clone $this;
@@ -149,6 +177,9 @@ final class LandingPageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter landing pages by their creation timestamp.
+     */
     public function withCreatedAt(\DateTimeInterface $createdAt): self
     {
         $self = clone $this;
@@ -157,6 +188,9 @@ final class LandingPageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter landing pages created before a specific date and time.
+     */
     public function withCreatedBefore(\DateTimeInterface $createdBefore): self
     {
         $self = clone $this;
@@ -176,6 +210,9 @@ final class LandingPageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Specify which properties of the landing pages to include in the response.
+     */
     public function withProperty(string $property): self
     {
         $self = clone $this;
@@ -185,6 +222,8 @@ final class LandingPageListParams implements BaseModel
     }
 
     /**
+     * Specify the order in which results are returned. Accepts an array of strings.
+     *
      * @param list<string> $sort
      */
     public function withSort(array $sort): self
@@ -195,6 +234,9 @@ final class LandingPageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter landing pages updated after a specific date and time.
+     */
     public function withUpdatedAfter(\DateTimeInterface $updatedAfter): self
     {
         $self = clone $this;
@@ -203,6 +245,9 @@ final class LandingPageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter landing pages by their last updated timestamp.
+     */
     public function withUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $self = clone $this;
@@ -211,6 +256,9 @@ final class LandingPageListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter landing pages updated before a specific date and time.
+     */
     public function withUpdatedBefore(\DateTimeInterface $updatedBefore): self
     {
         $self = clone $this;

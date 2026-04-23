@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Webhooks\SubscriptionCreateRequest;
 
 /**
- * A string representing the type of event to subscribe to. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'conversation.newMessage'.
+ * A string representing the type of event to subscribe to. Valid values include various property changes, creations, deletions, merges, restorations, association changes, and event completions.
  */
 enum EventType: string
 {

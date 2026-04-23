@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Crm\Properties;
 
+use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Properties\BatchResponseProperty\Status;
-use HubSpotSDK\Property;
 
 /**
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Property
+ * @phpstan-import-type BasePropertyShape from \HubSpotSDK\BaseProperty
  *
  * @phpstan-type BatchResponsePropertyShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<Property|PropertyShape>,
+ *   results: list<BaseProperty|BasePropertyShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -34,8 +34,8 @@ final class BatchResponseProperty implements BaseModel
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<Property> $results */
-    #[Required(list: Property::class)]
+    /** @var list<BaseProperty> $results */
+    #[Required(list: BaseProperty::class)]
     public array $results;
 
     /**
@@ -96,7 +96,7 @@ final class BatchResponseProperty implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property|PropertyShape> $results
+     * @param list<BaseProperty|BasePropertyShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -133,7 +133,7 @@ final class BatchResponseProperty implements BaseModel
     }
 
     /**
-     * @param list<Property|PropertyShape> $results
+     * @param list<BaseProperty|BasePropertyShape> $results
      */
     public function withResults(array $results): self
     {

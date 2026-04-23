@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\BaseAssociationDefinition;
+use HubSpotSDK\BaseObjectTypeDefinition;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubSpotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
 use HubSpotSDK\Cms\MediaBridge\CollectionResponseObjectSchemaNoPaging;
@@ -34,6 +35,7 @@ use HubSpotSDK\Cms\MediaBridge\MediaBridgeListOembedDomainsParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeListPropertiesParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeListPropertyGroupsParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeListSchemasParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeProperty;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeRegisterAppNameParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams;
@@ -47,11 +49,9 @@ use HubSpotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use HubSpotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubSpotSDK\Cms\MediaBridge\ObjectSchema;
 use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubSpotSDK\Cms\MediaBridge\Property;
 use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
-use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\PropertyGroup;
 use HubSpotSDK\RequestOptions;
 
@@ -67,7 +67,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeCreateAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<AssociationDefinition>
+     * @return BaseResponse<BaseAssociationDefinition>
      *
      * @throws APIException
      */
@@ -161,7 +161,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeCreatePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Property>
+     * @return BaseResponse<MediaBridgeProperty>
      *
      * @throws APIException
      */
@@ -193,7 +193,7 @@ interface MediaBridgeRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<AssociationDefinition>
+     * @return BaseResponse<BaseAssociationDefinition>
      *
      * @throws APIException
      */
@@ -303,7 +303,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeGetPropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Property>
+     * @return BaseResponse<MediaBridgeProperty>
      *
      * @throws APIException
      */
@@ -485,7 +485,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeUpdatePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Property>
+     * @return BaseResponse<MediaBridgeProperty>
      *
      * @throws APIException
      */
@@ -519,7 +519,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeUpdateSchemaParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<ObjectTypeDefinition>
+     * @return BaseResponse<BaseObjectTypeDefinition>
      *
      * @throws APIException
      */

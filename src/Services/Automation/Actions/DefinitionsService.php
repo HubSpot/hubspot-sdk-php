@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Automation\Actions;
 
+use HubSpotSDK\Automation\Actions\OutputFieldDefinition;
 use HubSpotSDK\Automation\Actions\PublicActionDefinition;
 use HubSpotSDK\Automation\Actions\PublicActionDefinitionRequiresObjectResponse;
 use HubSpotSDK\Automation\Actions\PublicActionFunction;
@@ -26,6 +27,7 @@ use HubSpotSDK\ServiceContracts\Automation\Actions\DefinitionsContract;
  * @phpstan-import-type PublicActionLabelsShape from \HubSpotSDK\Automation\Actions\PublicActionLabels
  * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubSpotSDK\Automation\Actions\PublicExecutionTranslationRule
  * @phpstan-import-type PublicObjectRequestOptionsShape from \HubSpotSDK\Automation\Actions\PublicObjectRequestOptions
+ * @phpstan-import-type OutputFieldDefinitionShape from \HubSpotSDK\Automation\Actions\OutputFieldDefinition
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class DefinitionsService implements DefinitionsContract
@@ -58,7 +60,7 @@ final class DefinitionsService implements DefinitionsContract
      * @param list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape> $executionRules
      * @param list<InputFieldDependencyShape> $inputFieldDependencies
      * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape $objectRequestOptions
-     * @param list<mixed> $outputFields
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape> $outputFields
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -114,7 +116,7 @@ final class DefinitionsService implements DefinitionsContract
      * @param array<string,PublicActionLabels|PublicActionLabelsShape> $labels body param: Contains labels for the action, including names and descriptions
      * @param PublicObjectRequestOptions|PublicObjectRequestOptionsShape $objectRequestOptions Body param
      * @param list<string> $objectTypes Body param
-     * @param list<mixed> $outputFields Body param
+     * @param list<OutputFieldDefinition|OutputFieldDefinitionShape> $outputFields Body param
      * @param bool $published body param: Indicates whether the action is published and available for use
      * @param RequestOpts|null $requestOptions
      *

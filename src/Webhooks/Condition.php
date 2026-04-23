@@ -26,7 +26,7 @@ final class Condition implements BaseModel
     use SdkModel;
 
     /**
-     * A string representing the type of filter. Valid value is 'CRM_OBJECT_PROPERTY'.
+     * A string indicating the type of filter being applied. Valid value is 'CRM_OBJECT_PROPERTY'.
      *
      * @var value-of<FilterType> $filterType
      */
@@ -34,7 +34,7 @@ final class Condition implements BaseModel
     public string $filterType;
 
     /**
-     * A string indicating the operation to apply for filtering. Valid values include 'EQ', 'N_EQ', 'LT', 'GT', 'LTE', 'GTE', 'CONTAINS', 'STARTS_WITH', 'ENDS_WITH', 'IN', 'NOT_IN', 'IS_EMPTY', and 'IS_NOT_EMPTY'.
+     * A string specifying the operation to be performed in the condition. Valid values include 'EQ', 'N_EQ', 'LT', 'GT', 'LTE', 'GTE', 'CONTAINS', 'STARTS_WITH', 'ENDS_WITH', 'IN', 'NOT_IN', 'IS_EMPTY', and 'IS_NOT_EMPTY'.
      *
      * @var value-of<Operator> $operator
      */
@@ -42,19 +42,19 @@ final class Condition implements BaseModel
     public string $operator;
 
     /**
-     * A string specifying the property of the CRM object to be filtered.
+     * A string representing the specific property of the CRM object that the condition applies to.
      */
     #[Required]
     public string $property;
 
     /**
-     * A string representing the value to compare against the specified property when filtering.
+     * A string representing the value to be compared against the specified property when using single-value operators.
      */
     #[Optional]
     public ?string $value;
 
     /**
-     * An array of strings, each representing a value to be used in the filtering operation.
+     * An array of strings used to specify multiple values for comparison when using operators that support multiple values, such as 'IN' or 'NOT_IN'.
      *
      * @var list<string>|null $values
      */
@@ -109,7 +109,7 @@ final class Condition implements BaseModel
     }
 
     /**
-     * A string representing the type of filter. Valid value is 'CRM_OBJECT_PROPERTY'.
+     * A string indicating the type of filter being applied. Valid value is 'CRM_OBJECT_PROPERTY'.
      *
      * @param FilterType|value-of<FilterType> $filterType
      */
@@ -122,7 +122,7 @@ final class Condition implements BaseModel
     }
 
     /**
-     * A string indicating the operation to apply for filtering. Valid values include 'EQ', 'N_EQ', 'LT', 'GT', 'LTE', 'GTE', 'CONTAINS', 'STARTS_WITH', 'ENDS_WITH', 'IN', 'NOT_IN', 'IS_EMPTY', and 'IS_NOT_EMPTY'.
+     * A string specifying the operation to be performed in the condition. Valid values include 'EQ', 'N_EQ', 'LT', 'GT', 'LTE', 'GTE', 'CONTAINS', 'STARTS_WITH', 'ENDS_WITH', 'IN', 'NOT_IN', 'IS_EMPTY', and 'IS_NOT_EMPTY'.
      *
      * @param Operator|value-of<Operator> $operator
      */
@@ -135,7 +135,7 @@ final class Condition implements BaseModel
     }
 
     /**
-     * A string specifying the property of the CRM object to be filtered.
+     * A string representing the specific property of the CRM object that the condition applies to.
      */
     public function withProperty(string $property): self
     {
@@ -146,7 +146,7 @@ final class Condition implements BaseModel
     }
 
     /**
-     * A string representing the value to compare against the specified property when filtering.
+     * A string representing the value to be compared against the specified property when using single-value operators.
      */
     public function withValue(string $value): self
     {
@@ -157,7 +157,7 @@ final class Condition implements BaseModel
     }
 
     /**
-     * An array of strings, each representing a value to be used in the filtering operation.
+     * An array of strings used to specify multiple values for comparison when using operators that support multiple values, such as 'IN' or 'NOT_IN'.
      *
      * @param list<string> $values
      */

@@ -8,12 +8,13 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * @phpstan-type HubDBTableRowV3BatchUpdateRequestShape = array{
  *   childTableID: int,
  *   displayIndex: int,
- *   values: array<string,mixed>,
+ *   values: array<string,array<string,mixed>>,
  *   id?: string|null,
  *   name?: string|null,
  *   path?: string|null,
@@ -39,9 +40,9 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @var array<string,mixed> $values
+     * @var array<string,array<string,mixed>> $values
      */
-    #[Required(map: 'mixed')]
+    #[Required(map: new MapOf('mixed'))]
     public array $values;
 
     /**
@@ -91,7 +92,7 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,array<string,mixed>> $values
      */
     public static function with(
         int $childTableID,
@@ -139,7 +140,7 @@ final class HubDBTableRowV3BatchUpdateRequest implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,array<string,mixed>> $values
      */
     public function withValues(array $values): self
     {

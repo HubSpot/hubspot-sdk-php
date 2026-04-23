@@ -14,7 +14,6 @@ use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
 use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationScope;
 use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationStrategy;
 use HubSpotSDK\Files\FileAssets\FileAssetUpdateParams\Access;
-use HubSpotSDK\Files\FileStat;
 use HubSpotSDK\Files\Folder;
 use HubSpotSDK\Files\ImportFromURLTaskLocator;
 use HubSpotSDK\Files\SignedURL;
@@ -172,29 +171,6 @@ final class FileAssetsService implements FileAssetsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($fileID, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Retrieve a file by its path.
-     *
-     * @param list<string> $properties
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getByPath(
-        string $path,
-        ?array $properties = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): FileStat {
-        $params = Util::removeNulls(['properties' => $properties]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->getByPath($path, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

@@ -10,11 +10,8 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type ItemsVariants from \HubSpotSDK\Automation\Actions\ArrayFieldSchema\Items
- * @phpstan-import-type ItemsShape from \HubSpotSDK\Automation\Actions\ArrayFieldSchema\Items
- *
  * @phpstan-type ArrayFieldSchemaShape = array{
- *   items: ItemsShape, type: Type|value-of<Type>
+ *   items: mixed, type: Type|value-of<Type>
  * }
  */
 final class ArrayFieldSchema implements BaseModel
@@ -22,13 +19,8 @@ final class ArrayFieldSchema implements BaseModel
     /** @use SdkModel<ArrayFieldSchemaShape> */
     use SdkModel;
 
-    /**
-     * Defines the type of elements contained within the array, which can be an integer, long, double, string, boolean, another array, or an object.
-     *
-     * @var ItemsVariants $items
-     */
     #[Required]
-    public IntegerFieldSchema|LongFieldSchema|DoubleFieldSchema|StringFieldSchema|BooleanFieldSchema|ArrayFieldSchema|ObjectFieldSchema $items;
+    public mixed $items;
 
     /**
      * Specifies that the field is of type 'ARRAY'.
@@ -62,13 +54,10 @@ final class ArrayFieldSchema implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param ItemsShape $items
      * @param Type|value-of<Type> $type
      */
-    public static function with(
-        IntegerFieldSchema|array|LongFieldSchema|DoubleFieldSchema|StringFieldSchema|BooleanFieldSchema|ArrayFieldSchema|ObjectFieldSchema $items,
-        Type|string $type = 'ARRAY',
-    ): self {
+    public static function with(mixed $items, Type|string $type = 'ARRAY'): self
+    {
         $self = new self;
 
         $self['items'] = $items;
@@ -77,14 +66,8 @@ final class ArrayFieldSchema implements BaseModel
         return $self;
     }
 
-    /**
-     * Defines the type of elements contained within the array, which can be an integer, long, double, string, boolean, another array, or an object.
-     *
-     * @param ItemsShape $items
-     */
-    public function withItems(
-        IntegerFieldSchema|array|LongFieldSchema|DoubleFieldSchema|StringFieldSchema|BooleanFieldSchema|ArrayFieldSchema|ObjectFieldSchema $items,
-    ): self {
+    public function withItems(mixed $items): self
+    {
         $self = clone $this;
         $self['items'] = $items;
 

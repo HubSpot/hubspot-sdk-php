@@ -40,7 +40,7 @@ final class RowsTest extends TestCase
             'tableIdOrName',
             childTableID: 0,
             displayIndex: 0,
-            values: ['foo' => (object) []],
+            values: ['foo' => ['foo' => 'bar']],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -58,7 +58,7 @@ final class RowsTest extends TestCase
             'tableIdOrName',
             childTableID: 0,
             displayIndex: 0,
-            values: ['foo' => (object) []],
+            values: ['foo' => ['foo' => 'bar']],
             name: 'name',
             path: 'path',
         );
@@ -158,7 +158,7 @@ final class RowsTest extends TestCase
                 [
                     'childTableID' => 0,
                     'displayIndex' => 0,
-                    'values' => ['foo' => (object) []],
+                    'values' => ['foo' => ['foo' => 'bar']],
                 ],
             ],
         );
@@ -180,7 +180,7 @@ final class RowsTest extends TestCase
                 [
                     'childTableID' => 0,
                     'displayIndex' => 0,
-                    'values' => ['foo' => (object) []],
+                    'values' => ['foo' => ['foo' => 'bar']],
                     'name' => 'name',
                     'path' => 'path',
                 ],
@@ -398,7 +398,7 @@ final class RowsTest extends TestCase
                 [
                     'childTableID' => 0,
                     'displayIndex' => 0,
-                    'values' => ['foo' => (object) []],
+                    'values' => ['foo' => ['foo' => 'bar']],
                 ],
             ],
         );
@@ -420,7 +420,7 @@ final class RowsTest extends TestCase
                 [
                     'childTableID' => 0,
                     'displayIndex' => 0,
-                    'values' => ['foo' => (object) []],
+                    'values' => ['foo' => ['foo' => 'bar']],
                     'id' => 'id',
                     'name' => 'name',
                     'path' => 'path',
@@ -444,7 +444,7 @@ final class RowsTest extends TestCase
             tableIDOrName: 'tableIdOrName',
             childTableID: 0,
             displayIndex: 0,
-            values: ['foo' => (object) []],
+            values: ['foo' => ['foo' => 'bar']],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -463,7 +463,7 @@ final class RowsTest extends TestCase
             tableIDOrName: 'tableIdOrName',
             childTableID: 0,
             displayIndex: 0,
-            values: ['foo' => (object) []],
+            values: ['foo' => ['foo' => 'bar']],
             name: 'name',
             path: 'path',
         );
@@ -485,7 +485,7 @@ final class RowsTest extends TestCase
                 [
                     'childTableID' => 0,
                     'displayIndex' => 0,
-                    'values' => ['foo' => (object) []],
+                    'values' => ['foo' => ['foo' => 'bar']],
                 ],
             ],
         );
@@ -507,7 +507,7 @@ final class RowsTest extends TestCase
                 [
                     'childTableID' => 0,
                     'displayIndex' => 0,
-                    'values' => ['foo' => (object) []],
+                    'values' => ['foo' => ['foo' => 'bar']],
                     'id' => 'id',
                     'name' => 'name',
                     'path' => 'path',
@@ -531,7 +531,7 @@ final class RowsTest extends TestCase
             tableIDOrName: 'tableIdOrName',
             childTableID: 0,
             displayIndex: 0,
-            values: ['foo' => (object) []],
+            values: ['foo' => ['foo' => 'bar']],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -550,7 +550,7 @@ final class RowsTest extends TestCase
             tableIDOrName: 'tableIdOrName',
             childTableID: 0,
             displayIndex: 0,
-            values: ['foo' => (object) []],
+            values: ['foo' => ['foo' => 'bar']],
             name: 'name',
             path: 'path',
         );

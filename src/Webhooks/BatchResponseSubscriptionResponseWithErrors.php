@@ -32,13 +32,13 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     use SdkModel;
 
     /**
-     * The date and time when the batch operation was completed, in ISO 8601 format.
+     * The date and time when the batch processing was completed, in ISO 8601 format.
      */
     #[Required]
     public \DateTimeInterface $completedAt;
 
     /**
-     * An array of SubscriptionResponse objects, representing the results of the batch operation.
+     * An array of SubscriptionResponse objects representing the results of each subscription update processed in the batch.
      *
      * @var list<SubscriptionResponse> $results
      */
@@ -46,7 +46,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     public array $results;
 
     /**
-     * The date and time when the batch operation started, in ISO 8601 format.
+     * The date and time when the batch processing began, in ISO 8601 format.
      */
     #[Required]
     public \DateTimeInterface $startedAt;
@@ -60,7 +60,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     public string $status;
 
     /**
-     * An array of StandardError objects, detailing any errors that occurred during the batch operation.
+     * An array of StandardError objects detailing any errors that occurred during the batch processing.
      *
      * @var list<StandardError>|null $errors
      */
@@ -76,13 +76,13 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     public ?array $links;
 
     /**
-     * The number of errors encountered during the batch operation.
+     * The total number of errors encountered during the batch operation.
      */
     #[Optional]
     public ?int $numErrors;
 
     /**
-     * The date and time when the batch operation was requested, in ISO 8601 format.
+     * The date and time when the batch request was initially made, in ISO 8601 format.
      */
     #[Optional]
     public ?\DateTimeInterface $requestedAt;
@@ -148,7 +148,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
-     * The date and time when the batch operation was completed, in ISO 8601 format.
+     * The date and time when the batch processing was completed, in ISO 8601 format.
      */
     public function withCompletedAt(\DateTimeInterface $completedAt): self
     {
@@ -159,7 +159,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
-     * An array of SubscriptionResponse objects, representing the results of the batch operation.
+     * An array of SubscriptionResponse objects representing the results of each subscription update processed in the batch.
      *
      * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      */
@@ -172,7 +172,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
-     * The date and time when the batch operation started, in ISO 8601 format.
+     * The date and time when the batch processing began, in ISO 8601 format.
      */
     public function withStartedAt(\DateTimeInterface $startedAt): self
     {
@@ -196,7 +196,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
-     * An array of StandardError objects, detailing any errors that occurred during the batch operation.
+     * An array of StandardError objects detailing any errors that occurred during the batch processing.
      *
      * @param list<StandardError|StandardErrorShape> $errors
      */
@@ -222,7 +222,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
-     * The number of errors encountered during the batch operation.
+     * The total number of errors encountered during the batch operation.
      */
     public function withNumErrors(int $numErrors): self
     {
@@ -233,7 +233,7 @@ final class BatchResponseSubscriptionResponseWithErrors implements BaseModel
     }
 
     /**
-     * The date and time when the batch operation was requested, in ISO 8601 format.
+     * The date and time when the batch request was initially made, in ISO 8601 format.
      */
     public function withRequestedAt(\DateTimeInterface $requestedAt): self
     {

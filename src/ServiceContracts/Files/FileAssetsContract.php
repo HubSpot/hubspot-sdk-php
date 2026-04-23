@@ -12,7 +12,6 @@ use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
 use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationScope;
 use HubSpotSDK\Files\FileAssets\FileAssetImportFromURLAsyncParams\DuplicateValidationStrategy;
 use HubSpotSDK\Files\FileAssets\FileAssetUpdateParams\Access;
-use HubSpotSDK\Files\FileStat;
 use HubSpotSDK\Files\Folder;
 use HubSpotSDK\Files\ImportFromURLTaskLocator;
 use HubSpotSDK\Files\SignedURL;
@@ -102,20 +101,6 @@ interface FileAssetsContract
         ?array $properties = null,
         RequestOptions|array|null $requestOptions = null,
     ): File;
-
-    /**
-     * @api
-     *
-     * @param list<string> $properties
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function getByPath(
-        string $path,
-        ?array $properties = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): FileStat;
 
     /**
      * @api

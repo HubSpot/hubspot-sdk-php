@@ -27,7 +27,7 @@ final class FilterResponse implements BaseModel
     public int $id;
 
     /**
-     * A timestamp indicating when the filter was created, represented as an integer in int64 format.
+     * A Unix timestamp in milliseconds indicating when the filter was created.
      */
     #[Required]
     public int $createdAt;
@@ -90,7 +90,7 @@ final class FilterResponse implements BaseModel
     }
 
     /**
-     * A timestamp indicating when the filter was created, represented as an integer in int64 format.
+     * A Unix timestamp in milliseconds indicating when the filter was created.
      */
     public function withCreatedAt(int $createdAt): self
     {

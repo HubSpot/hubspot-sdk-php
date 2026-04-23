@@ -280,6 +280,8 @@ enum ContactPropertiesLeadingToMatch: string
 
     case HS_ENRICHED_EMAIL_BOUNCE_DETECTED = 'hs_enriched_email_bounce_detected';
 
+    case HS_EXCLUDED_FROM_CROSS_ACCOUNT_DATA_MIRRORING = 'hs_excluded_from_cross_account_data_mirroring';
+
     case HS_FACEBOOK_AD_CLICKED = 'hs_facebook_ad_clicked';
 
     case HS_FACEBOOK_CLICK_ID = 'hs_facebook_click_id';
@@ -319,6 +321,18 @@ enum ContactPropertiesLeadingToMatch: string
     case HS_FIRST_SUBSCRIPTION_CREATE_DATE = 'hs_first_subscription_create_date';
 
     case HS_FULL_NAME_OR_EMAIL = 'hs_full_name_or_email';
+
+    case HS_GEOHASH_1 = 'hs_geohash_1';
+
+    case HS_GEOHASH_2 = 'hs_geohash_2';
+
+    case HS_GEOHASH_3 = 'hs_geohash_3';
+
+    case HS_GEOHASH_4 = 'hs_geohash_4';
+
+    case HS_GEOHASH_5 = 'hs_geohash_5';
+
+    case HS_GEOHASH_6 = 'hs_geohash_6';
 
     case HS_GOOGLE_CLICK_ID = 'hs_google_click_id';
 

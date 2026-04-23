@@ -11,11 +11,11 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Cms\MediaBridge\Property
+ * @phpstan-import-type MediaBridgePropertyShape from \HubSpotSDK\Cms\MediaBridge\MediaBridgeProperty
  *
  * @phpstan-type BatchResponsePropertyShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<Property|PropertyShape>,
+ *   results: list<MediaBridgeProperty|MediaBridgePropertyShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   links?: array<string,string>|null,
@@ -30,8 +30,8 @@ final class BatchResponseProperty implements BaseModel
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<Property> $results */
-    #[Required(list: Property::class)]
+    /** @var list<MediaBridgeProperty> $results */
+    #[Required(list: MediaBridgeProperty::class)]
     public array $results;
 
     #[Required]
@@ -78,7 +78,7 @@ final class BatchResponseProperty implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property|PropertyShape> $results
+     * @param list<MediaBridgeProperty|MediaBridgePropertyShape> $results
      * @param Status|value-of<Status> $status
      * @param array<string,string>|null $links
      */
@@ -112,7 +112,7 @@ final class BatchResponseProperty implements BaseModel
     }
 
     /**
-     * @param list<Property|PropertyShape> $results
+     * @param list<MediaBridgeProperty|MediaBridgePropertyShape> $results
      */
     public function withResults(array $results): self
     {

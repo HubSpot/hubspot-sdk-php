@@ -12,12 +12,12 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Cms\MediaBridge\Property
+ * @phpstan-import-type MediaBridgePropertyShape from \HubSpotSDK\Cms\MediaBridge\MediaBridgeProperty
  * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponsePropertyWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<Property|PropertyShape>,
+ *   results: list<MediaBridgeProperty|MediaBridgePropertyShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   errors?: list<StandardError|StandardErrorShape>|null,
@@ -34,8 +34,8 @@ final class BatchResponsePropertyWithErrors implements BaseModel
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<Property> $results */
-    #[Required(list: Property::class)]
+    /** @var list<MediaBridgeProperty> $results */
+    #[Required(list: MediaBridgeProperty::class)]
     public array $results;
 
     #[Required]
@@ -89,7 +89,7 @@ final class BatchResponsePropertyWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property|PropertyShape> $results
+     * @param list<MediaBridgeProperty|MediaBridgePropertyShape> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
@@ -128,7 +128,7 @@ final class BatchResponsePropertyWithErrors implements BaseModel
     }
 
     /**
-     * @param list<Property|PropertyShape> $results
+     * @param list<MediaBridgeProperty|MediaBridgePropertyShape> $results
      */
     public function withResults(array $results): self
     {

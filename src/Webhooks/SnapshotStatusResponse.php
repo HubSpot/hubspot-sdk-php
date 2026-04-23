@@ -27,19 +27,19 @@ final class SnapshotStatusResponse implements BaseModel
     use SdkModel;
 
     /**
-     * The unique identifier for the snapshot operation, formatted as a UUID.
+     * The unique identifier for the snapshot operation, represented as a UUID.
      */
     #[Required]
     public string $id;
 
     /**
-     * A Unix timestamp in milliseconds indicating when the snapshot operation was initiated.
+     * The timestamp indicating when the snapshot operation was initiated, represented as a Unix timestamp in milliseconds.
      */
     #[Required]
     public int $initiatedAt;
 
     /**
-     * The current status of the snapshot operation. Valid values include 'PENDING', 'IN_PROGRESS', 'COMPLETED', 'FAILED', and 'EXPIRED'.
+     * The current status of the snapshot. Valid values include 'PENDING', 'IN_PROGRESS', 'COMPLETED', 'FAILED', and 'EXPIRED'.
      *
      * @var value-of<Status> $status
      */
@@ -47,13 +47,13 @@ final class SnapshotStatusResponse implements BaseModel
     public string $status;
 
     /**
-     * A Unix timestamp in milliseconds indicating when the snapshot operation was completed.
+     * The timestamp indicating when the snapshot operation was completed, represented as a Unix timestamp in milliseconds.
      */
     #[Optional]
     public ?int $completedAt;
 
     /**
-     * The code representing any error that occurred during the snapshot operation. Possible values are 'TIMEOUT', 'VALIDATION_ERROR', 'INTERNAL_ERROR', and 'PERMISSION_DENIED'.
+     * A code representing the error that occurred, if any. Possible values are 'TIMEOUT', 'VALIDATION_ERROR', 'INTERNAL_ERROR', and 'PERMISSION_DENIED'.
      *
      * @var value-of<ErrorCode>|null $errorCode
      */
@@ -61,7 +61,7 @@ final class SnapshotStatusResponse implements BaseModel
     public ?string $errorCode;
 
     /**
-     * A descriptive message providing additional information about the snapshot operation or any errors encountered.
+     * A descriptive message providing additional information about the snapshot operation or error.
      */
     #[Optional]
     public ?string $message;
@@ -115,7 +115,7 @@ final class SnapshotStatusResponse implements BaseModel
     }
 
     /**
-     * The unique identifier for the snapshot operation, formatted as a UUID.
+     * The unique identifier for the snapshot operation, represented as a UUID.
      */
     public function withID(string $id): self
     {
@@ -126,7 +126,7 @@ final class SnapshotStatusResponse implements BaseModel
     }
 
     /**
-     * A Unix timestamp in milliseconds indicating when the snapshot operation was initiated.
+     * The timestamp indicating when the snapshot operation was initiated, represented as a Unix timestamp in milliseconds.
      */
     public function withInitiatedAt(int $initiatedAt): self
     {
@@ -137,7 +137,7 @@ final class SnapshotStatusResponse implements BaseModel
     }
 
     /**
-     * The current status of the snapshot operation. Valid values include 'PENDING', 'IN_PROGRESS', 'COMPLETED', 'FAILED', and 'EXPIRED'.
+     * The current status of the snapshot. Valid values include 'PENDING', 'IN_PROGRESS', 'COMPLETED', 'FAILED', and 'EXPIRED'.
      *
      * @param Status|value-of<Status> $status
      */
@@ -150,7 +150,7 @@ final class SnapshotStatusResponse implements BaseModel
     }
 
     /**
-     * A Unix timestamp in milliseconds indicating when the snapshot operation was completed.
+     * The timestamp indicating when the snapshot operation was completed, represented as a Unix timestamp in milliseconds.
      */
     public function withCompletedAt(int $completedAt): self
     {
@@ -161,7 +161,7 @@ final class SnapshotStatusResponse implements BaseModel
     }
 
     /**
-     * The code representing any error that occurred during the snapshot operation. Possible values are 'TIMEOUT', 'VALIDATION_ERROR', 'INTERNAL_ERROR', and 'PERMISSION_DENIED'.
+     * A code representing the error that occurred, if any. Possible values are 'TIMEOUT', 'VALIDATION_ERROR', 'INTERNAL_ERROR', and 'PERMISSION_DENIED'.
      *
      * @param ErrorCode|value-of<ErrorCode> $errorCode
      */
@@ -174,7 +174,7 @@ final class SnapshotStatusResponse implements BaseModel
     }
 
     /**
-     * A descriptive message providing additional information about the snapshot operation or any errors encountered.
+     * A descriptive message providing additional information about the snapshot operation or error.
      */
     public function withMessage(string $message): self
     {

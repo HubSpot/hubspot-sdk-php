@@ -19,7 +19,7 @@ final class JournalFetchResponse implements BaseModel
     use SdkModel;
 
     /**
-     * A UUID string indicating the current offset in the journal data, used for pagination.
+     * The unique identifier for the current offset of the journal entry, formatted as a UUID.
      */
     #[Required]
     public string $currentOffset;
@@ -31,7 +31,7 @@ final class JournalFetchResponse implements BaseModel
     public \DateTimeInterface $expiresAt;
 
     /**
-     * A string representing the URL where the fetched journal data can be accessed.
+     * The URL where the journal entry can be accessed. It is a string.
      */
     #[Required]
     public string $url;
@@ -78,7 +78,7 @@ final class JournalFetchResponse implements BaseModel
     }
 
     /**
-     * A UUID string indicating the current offset in the journal data, used for pagination.
+     * The unique identifier for the current offset of the journal entry, formatted as a UUID.
      */
     public function withCurrentOffset(string $currentOffset): self
     {
@@ -100,7 +100,7 @@ final class JournalFetchResponse implements BaseModel
     }
 
     /**
-     * A string representing the URL where the fetched journal data can be accessed.
+     * The URL where the journal entry can be accessed. It is a string.
      */
     public function withURL(string $url): self
     {

@@ -31,13 +31,13 @@ final class WebhookCreateEventSubscriptionParams implements BaseModel
     use SdkParams;
 
     /**
-     * A boolean indicating whether the subscription is active. This field is required.
+     * A boolean indicating whether the subscription is active.
      */
     #[Required]
     public bool $active;
 
     /**
-     * A string representing the type of event to subscribe to. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'conversation.newMessage'.
+     * A string representing the type of event to subscribe to. Valid values include various property changes, creations, deletions, merges, restorations, association changes, and event completions.
      *
      * @var value-of<EventType> $eventType
      */
@@ -45,19 +45,19 @@ final class WebhookCreateEventSubscriptionParams implements BaseModel
     public string $eventType;
 
     /**
-     * A string that provides a human-readable name for the event type. This is optional.
+     * A string providing a human-readable name for the event type.
      */
     #[Optional]
     public ?string $eventTypeName;
 
     /**
-     * A string representing the identifier of the object type for which the subscription is being created. This is optional.
+     * A string representing the ID of the object type associated with the subscription.
      */
     #[Optional('objectTypeId')]
     public ?string $objectTypeID;
 
     /**
-     * A string indicating the name of the property that triggers the event. This is optional and used when subscribing to property change events.
+     * A string indicating the specific property name related to the event type, if applicable.
      */
     #[Optional]
     public ?string $propertyName;
@@ -108,7 +108,7 @@ final class WebhookCreateEventSubscriptionParams implements BaseModel
     }
 
     /**
-     * A boolean indicating whether the subscription is active. This field is required.
+     * A boolean indicating whether the subscription is active.
      */
     public function withActive(bool $active): self
     {
@@ -119,7 +119,7 @@ final class WebhookCreateEventSubscriptionParams implements BaseModel
     }
 
     /**
-     * A string representing the type of event to subscribe to. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'conversation.newMessage'.
+     * A string representing the type of event to subscribe to. Valid values include various property changes, creations, deletions, merges, restorations, association changes, and event completions.
      *
      * @param EventType|value-of<EventType> $eventType
      */
@@ -132,7 +132,7 @@ final class WebhookCreateEventSubscriptionParams implements BaseModel
     }
 
     /**
-     * A string that provides a human-readable name for the event type. This is optional.
+     * A string providing a human-readable name for the event type.
      */
     public function withEventTypeName(string $eventTypeName): self
     {
@@ -143,7 +143,7 @@ final class WebhookCreateEventSubscriptionParams implements BaseModel
     }
 
     /**
-     * A string representing the identifier of the object type for which the subscription is being created. This is optional.
+     * A string representing the ID of the object type associated with the subscription.
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
@@ -154,7 +154,7 @@ final class WebhookCreateEventSubscriptionParams implements BaseModel
     }
 
     /**
-     * A string indicating the name of the property that triggers the event. This is optional and used when subscribing to property change events.
+     * A string indicating the specific property name related to the event type, if applicable.
      */
     public function withPropertyName(string $propertyName): self
     {

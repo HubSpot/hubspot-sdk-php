@@ -12,7 +12,6 @@ use HubSpotSDK\Core\Util;
 use HubSpotSDK\Files\File;
 use HubSpotSDK\Files\FileActionResponse;
 use HubSpotSDK\Files\FileAssets\FileAssetCreateParams;
-use HubSpotSDK\Files\FileAssets\FileAssetGetByPathParams;
 use HubSpotSDK\Files\FileAssets\FileAssetGetParams;
 use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams;
 use HubSpotSDK\Files\FileAssets\FileAssetGetSignedURLParams\Size;
@@ -24,7 +23,6 @@ use HubSpotSDK\Files\FileAssets\FileAssetSearchParams;
 use HubSpotSDK\Files\FileAssets\FileAssetUpdateParams;
 use HubSpotSDK\Files\FileAssets\FileAssetUpdateParams\Access;
 use HubSpotSDK\Files\FileAssets\FileAssetUploadParams;
-use HubSpotSDK\Files\FileStat;
 use HubSpotSDK\Files\Folder;
 use HubSpotSDK\Files\ImportFromURLTaskLocator;
 use HubSpotSDK\Files\SignedURL;
@@ -193,38 +191,6 @@ final class FileAssetsRawService implements FileAssetsRawContract
             query: $parsed,
             options: $options,
             convert: File::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Retrieve a file by its path.
-     *
-     * @param array{properties?: list<string>}|FileAssetGetByPathParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<FileStat>
-     *
-     * @throws APIException
-     */
-    public function getByPath(
-        string $path,
-        array|FileAssetGetByPathParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = FileAssetGetByPathParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['files/2026-03/files/stat/%1$s', $path],
-            query: $parsed,
-            options: $options,
-            convert: FileStat::class,
         );
     }
 

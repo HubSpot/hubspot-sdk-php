@@ -336,6 +336,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
      *
      * Retrieve a website page by its ID.
      *
+     * @param string $objectID the unique identifier of the site page to retrieve
      * @param array{archived?: bool, property?: string}|WebsitePageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
