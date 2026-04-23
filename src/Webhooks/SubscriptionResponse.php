@@ -28,7 +28,7 @@ final class SubscriptionResponse implements BaseModel
     use SdkModel;
 
     /**
-     * The unique identifier for the subscription, represented as an integer.
+     * The unique identifier for the subscription. It is an integer formatted as int64.
      */
     #[Required]
     public string $id;
@@ -46,7 +46,7 @@ final class SubscriptionResponse implements BaseModel
     public \DateTimeInterface $createdAt;
 
     /**
-     * The type of event that triggers the subscription. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'ticket.deletion'.
+     * The type of event that triggers the subscription. Valid values include various property changes, creations, deletions, merges, restores, and association changes for different HubSpot objects.
      *
      * @var value-of<EventType> $eventType
      */
@@ -54,19 +54,19 @@ final class SubscriptionResponse implements BaseModel
     public string $eventType;
 
     /**
-     * A descriptive name for the event type.
+     * The name of the event type for the subscription.
      */
     #[Optional]
     public ?string $eventTypeName;
 
     /**
-     * The identifier for the object type associated with the subscription, represented as a string.
+     * The identifier for the object type associated with the subscription. It is a string.
      */
     #[Optional('objectTypeId')]
     public ?string $objectTypeID;
 
     /**
-     * The name of the property associated with the event, if applicable.
+     * The name of the property associated with the subscription event, if applicable.
      */
     #[Optional]
     public ?string $propertyName;
@@ -133,7 +133,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The unique identifier for the subscription, represented as an integer.
+     * The unique identifier for the subscription. It is an integer formatted as int64.
      */
     public function withID(string $id): self
     {
@@ -166,7 +166,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The type of event that triggers the subscription. Valid values include various object changes such as 'contact.propertyChange', 'deal.creation', and 'ticket.deletion'.
+     * The type of event that triggers the subscription. Valid values include various property changes, creations, deletions, merges, restores, and association changes for different HubSpot objects.
      *
      * @param EventType|value-of<EventType> $eventType
      */
@@ -179,7 +179,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * A descriptive name for the event type.
+     * The name of the event type for the subscription.
      */
     public function withEventTypeName(string $eventTypeName): self
     {
@@ -190,7 +190,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The identifier for the object type associated with the subscription, represented as a string.
+     * The identifier for the object type associated with the subscription. It is a string.
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
@@ -201,7 +201,7 @@ final class SubscriptionResponse implements BaseModel
     }
 
     /**
-     * The name of the property associated with the event, if applicable.
+     * The name of the property associated with the subscription event, if applicable.
      */
     public function withPropertyName(string $propertyName): self
     {

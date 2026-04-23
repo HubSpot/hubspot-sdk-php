@@ -9,6 +9,7 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * Replace a single row in the draft version of a table. All column values must be specified. If a column has a value in the target table and this request doesn't define that value, it will be deleted.
@@ -20,7 +21,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   tableIDOrName: string,
  *   childTableID: int,
  *   displayIndex: int,
- *   values: array<string,mixed>,
+ *   values: array<string,array<string,mixed>>,
  *   name?: string|null,
  *   path?: string|null,
  * }
@@ -49,9 +50,9 @@ final class RowReplaceDraftParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @var array<string,mixed> $values
+     * @var array<string,array<string,mixed>> $values
      */
-    #[Required(map: 'mixed')]
+    #[Required(map: new MapOf('mixed'))]
     public array $values;
 
     /**
@@ -96,7 +97,7 @@ final class RowReplaceDraftParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,array<string,mixed>> $values
      */
     public static function with(
         string $tableIDOrName,
@@ -152,7 +153,7 @@ final class RowReplaceDraftParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,array<string,mixed>> $values
      */
     public function withValues(array $values): self
     {

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Crm\Properties;
 
+use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\Property;
 
 /**
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Property
+ * @phpstan-import-type BasePropertyShape from \HubSpotSDK\BaseProperty
  *
  * @phpstan-type CollectionResponsePropertyNoPagingShape = array{
- *   results: list<Property|PropertyShape>
+ *   results: list<BaseProperty|BasePropertyShape>
  * }
  */
 final class CollectionResponsePropertyNoPaging implements BaseModel
@@ -21,8 +21,8 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
     /** @use SdkModel<CollectionResponsePropertyNoPagingShape> */
     use SdkModel;
 
-    /** @var list<Property> $results */
-    #[Required(list: Property::class)]
+    /** @var list<BaseProperty> $results */
+    #[Required(list: BaseProperty::class)]
     public array $results;
 
     /**
@@ -49,7 +49,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Property|PropertyShape> $results
+     * @param list<BaseProperty|BasePropertyShape> $results
      */
     public static function with(array $results): self
     {
@@ -61,7 +61,7 @@ final class CollectionResponsePropertyNoPaging implements BaseModel
     }
 
     /**
-     * @param list<Property|PropertyShape> $results
+     * @param list<BaseProperty|BasePropertyShape> $results
      */
     public function withResults(array $results): self
     {

@@ -34,7 +34,7 @@ final class BatchResponseJournalFetchResponse implements BaseModel
     public \DateTimeInterface $completedAt;
 
     /**
-     * An array of journal fetch responses, each containing details about individual journal entries.
+     * An array of results from the batch operation, each represented as a JournalFetchResponse object.
      *
      * @var list<JournalFetchResponse> $results
      */
@@ -56,7 +56,7 @@ final class BatchResponseJournalFetchResponse implements BaseModel
     public string $status;
 
     /**
-     * A map of link names to associated URIs, providing additional resources or documentation related to the batch operation.
+     * A map of link names to associated URIs related to the batch operation.
      *
      * @var array<string,string>|null $links
      */
@@ -136,7 +136,7 @@ final class BatchResponseJournalFetchResponse implements BaseModel
     }
 
     /**
-     * An array of journal fetch responses, each containing details about individual journal entries.
+     * An array of results from the batch operation, each represented as a JournalFetchResponse object.
      *
      * @param list<JournalFetchResponse|JournalFetchResponseShape> $results
      */
@@ -173,7 +173,7 @@ final class BatchResponseJournalFetchResponse implements BaseModel
     }
 
     /**
-     * A map of link names to associated URIs, providing additional resources or documentation related to the batch operation.
+     * A map of link names to associated URIs related to the batch operation.
      *
      * @param array<string,string> $links
      */

@@ -4,8 +4,6 @@ namespace Tests\Services\Cms;
 
 use HubSpotSDK\ActionResponse;
 use HubSpotSDK\Client;
-use HubSpotSDK\Cms\SourceCode\AssetFileMetadata;
-use HubSpotSDK\Core\FileParam;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\TaskLocator;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -29,71 +27,6 @@ final class SourceCodeTest extends TestCase
         $client = new Client(accessToken: 'My Access Token', baseUrl: $testUrl);
 
         $this->client = $client;
-    }
-
-    #[Test]
-    public function testCreate(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->create(
-            'path',
-            environment: 'environment'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(AssetFileMetadata::class, $result);
-    }
-
-    #[Test]
-    public function testCreateWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->create(
-            'path',
-            environment: 'environment',
-            file: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(AssetFileMetadata::class, $result);
-    }
-
-    #[Test]
-    public function testDelete(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->delete(
-            'path',
-            environment: 'environment'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testDeleteWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->delete(
-            'path',
-            environment: 'environment'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
     }
 
     #[Test]
@@ -123,38 +56,6 @@ final class SourceCodeTest extends TestCase
     }
 
     #[Test]
-    public function testGet(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->get(
-            'path',
-            environment: 'environment'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testGetWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->get(
-            'path',
-            environment: 'environment'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
     public function testGetExtractionStatus(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -165,104 +66,5 @@ final class SourceCodeTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(ActionResponse::class, $result);
-    }
-
-    #[Test]
-    public function testGetMetadata(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->getMetadata(
-            'path',
-            environment: 'environment'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(AssetFileMetadata::class, $result);
-    }
-
-    #[Test]
-    public function testGetMetadataWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->getMetadata(
-            'path',
-            environment: 'environment',
-            properties: 'properties'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(AssetFileMetadata::class, $result);
-    }
-
-    #[Test]
-    public function testUpsert(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->upsert(
-            'path',
-            environment: 'environment'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(AssetFileMetadata::class, $result);
-    }
-
-    #[Test]
-    public function testUpsertWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->upsert(
-            'path',
-            environment: 'environment',
-            file: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(AssetFileMetadata::class, $result);
-    }
-
-    #[Test]
-    public function testValidate(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->validate(
-            'path',
-            environment: 'environment'
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
-    }
-
-    #[Test]
-    public function testValidateWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->sourceCode->validate(
-            'path',
-            environment: 'environment',
-            file: FileParam::fromString('Example data', filename: uniqid('file-upload-', true)),
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
     }
 }

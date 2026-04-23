@@ -31,32 +31,6 @@ final class PagesTest extends TestCase
     }
 
     #[Test]
-    public function testGetLandingPageFolders(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->getLandingPageFolders();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
-    }
-
-    #[Test]
-    public function testGetLandingPageFoldersByQuery(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->getLandingPageFoldersByQuery();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
-    }
-
-    #[Test]
     public function testGetLandingPageRevision(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -89,32 +63,6 @@ final class PagesTest extends TestCase
     }
 
     #[Test]
-    public function testGetLandingPages(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->getLandingPages();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
-    }
-
-    #[Test]
-    public function testGetLandingPagesByQuery(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->getLandingPagesByQuery();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
-    }
-
-    #[Test]
     public function testGetSitePageRevision(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -144,32 +92,6 @@ final class PagesTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(PageVersion::class, $result);
-    }
-
-    #[Test]
-    public function testGetSitePages(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->getSitePages();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
-    }
-
-    #[Test]
-    public function testGetSitePagesByQuery(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->pages->getSitePagesByQuery();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsNotResource($result);
     }
 
     #[Test]

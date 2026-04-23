@@ -9,8 +9,10 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type IntegratorObjectCreationResponseShape from \HubSpotSDK\Cms\MediaBridge\IntegratorObjectCreationResponse
+ *
  * @phpstan-type BulkIntegratorObjectCreationResponseShape = array{
- *   createdObjects: array<string,mixed>
+ *   createdObjects: array<string,IntegratorObjectCreationResponse|IntegratorObjectCreationResponseShape>,
  * }
  */
 final class BulkIntegratorObjectCreationResponse implements BaseModel
@@ -18,7 +20,7 @@ final class BulkIntegratorObjectCreationResponse implements BaseModel
     /** @use SdkModel<BulkIntegratorObjectCreationResponseShape> */
     use SdkModel;
 
-    /** @var array<string,mixed> $createdObjects */
+    /** @var array<string,IntegratorObjectCreationResponse> $createdObjects */
     #[Required(map: IntegratorObjectCreationResponse::class)]
     public array $createdObjects;
 
@@ -46,7 +48,7 @@ final class BulkIntegratorObjectCreationResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed> $createdObjects
+     * @param array<string,IntegratorObjectCreationResponse|IntegratorObjectCreationResponseShape> $createdObjects
      */
     public static function with(array $createdObjects): self
     {
@@ -58,7 +60,7 @@ final class BulkIntegratorObjectCreationResponse implements BaseModel
     }
 
     /**
-     * @param array<string,mixed> $createdObjects
+     * @param array<string,IntegratorObjectCreationResponse|IntegratorObjectCreationResponseShape> $createdObjects
      */
     public function withCreatedObjects(array $createdObjects): self
     {

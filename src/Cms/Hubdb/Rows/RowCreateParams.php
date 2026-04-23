@@ -9,6 +9,7 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Core\Conversion\MapOf;
 
 /**
  * Add a new row to a HubDB table. New rows will be added to the draft version of the table. Use the `/publish` endpoint to push these changes to published version.
@@ -18,7 +19,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @phpstan-type RowCreateParamsShape = array{
  *   childTableID: int,
  *   displayIndex: int,
- *   values: array<string,mixed>,
+ *   values: array<string,array<string,mixed>>,
  *   name?: string|null,
  *   path?: string|null,
  * }
@@ -44,9 +45,9 @@ final class RowCreateParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @var array<string,mixed> $values
+     * @var array<string,array<string,mixed>> $values
      */
-    #[Required(map: 'mixed')]
+    #[Required(map: new MapOf('mixed'))]
     public array $values;
 
     /**
@@ -88,7 +89,7 @@ final class RowCreateParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,array<string,mixed>> $values
      */
     public static function with(
         int $childTableID,
@@ -134,7 +135,7 @@ final class RowCreateParams implements BaseModel
     /**
      * List of key value pairs with the column name and column value.
      *
-     * @param array<string,mixed> $values
+     * @param array<string,array<string,mixed>> $values
      */
     public function withValues(array $values): self
     {

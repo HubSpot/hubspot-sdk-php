@@ -71,6 +71,8 @@ enum Source: string
 
     case COMPANY_INSIGHTS = 'COMPANY_INSIGHTS';
 
+    case CONNECTED_ACCOUNT = 'CONNECTED_ACCOUNT';
+
     case CONTACTS = 'CONTACTS';
 
     case CONTACTS_WEB = 'CONTACTS_WEB';

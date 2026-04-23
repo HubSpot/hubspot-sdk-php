@@ -279,8 +279,15 @@ interface WebsitePagesContract
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
+     * @param \DateTimeInterface $createdAfter filter pages created after a specific date and time
+     * @param \DateTimeInterface $createdAt Filter pages by the exact creation timestamp. Format is date-time.
+     * @param \DateTimeInterface $createdBefore filter pages created before a specific date-time
      * @param int $limit the maximum number of results to display per page
-     * @param list<string> $sort
+     * @param string $property specify properties to include in the response
+     * @param list<string> $sort Specify the order of results. Accepts an array of field names to sort by.
+     * @param \DateTimeInterface $updatedAfter filter pages updated after the specified date-time
+     * @param \DateTimeInterface $updatedAt filter pages by their exact update timestamp in ISO 8601 format
+     * @param \DateTimeInterface $updatedBefore Filter pages updated before a specific date and time. Format should be date-time.
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<PageData>
@@ -334,6 +341,7 @@ interface WebsitePagesContract
     /**
      * @api
      *
+     * @param string $objectID the unique identifier of the site page to retrieve
      * @param bool $archived whether to return only results that have been archived
      * @param RequestOpts|null $requestOptions
      *

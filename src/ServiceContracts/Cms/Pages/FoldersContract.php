@@ -75,7 +75,10 @@ interface FoldersContract
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param bool $archived whether to return only results that have been archived
+     * @param \DateTimeInterface $createdAfter filter folders created after the specified date and time
+     * @param \DateTimeInterface $createdAt filter folders by their exact creation date and time
      * @param int $limit the maximum number of results to display per page
+     * @param string $property specify a property to include in the response
      * @param list<string> $sort
      * @param RequestOpts|null $requestOptions
      *

@@ -19,25 +19,25 @@ final class CrmObjectSnapshotResponse implements BaseModel
     use SdkModel;
 
     /**
-     * An integer representing the unique identifier for the CRM object.
+     * An integer representing the unique identifier of the CRM object for which the snapshot is taken.
      */
     #[Required('objectId')]
     public int $objectID;
 
     /**
-     * A string representing the type identifier of the CRM object.
+     * A string indicating the type of the CRM object, such as contact, company, or deal.
      */
     #[Required('objectTypeId')]
     public string $objectTypeID;
 
     /**
-     * An integer representing the unique identifier for the HubSpot portal.
+     * An integer representing the unique identifier of the HubSpot portal associated with the CRM object.
      */
     #[Required('portalId')]
     public int $portalID;
 
     /**
-     * A UUID string representing the status identifier of the snapshot.
+     * A UUID string representing the status identifier of the snapshot request, indicating the current state of the snapshot process.
      */
     #[Required('snapshotStatusId')]
     public string $snapshotStatusID;
@@ -89,7 +89,7 @@ final class CrmObjectSnapshotResponse implements BaseModel
     }
 
     /**
-     * An integer representing the unique identifier for the CRM object.
+     * An integer representing the unique identifier of the CRM object for which the snapshot is taken.
      */
     public function withObjectID(int $objectID): self
     {
@@ -100,7 +100,7 @@ final class CrmObjectSnapshotResponse implements BaseModel
     }
 
     /**
-     * A string representing the type identifier of the CRM object.
+     * A string indicating the type of the CRM object, such as contact, company, or deal.
      */
     public function withObjectTypeID(string $objectTypeID): self
     {
@@ -111,7 +111,7 @@ final class CrmObjectSnapshotResponse implements BaseModel
     }
 
     /**
-     * An integer representing the unique identifier for the HubSpot portal.
+     * An integer representing the unique identifier of the HubSpot portal associated with the CRM object.
      */
     public function withPortalID(int $portalID): self
     {
@@ -122,7 +122,7 @@ final class CrmObjectSnapshotResponse implements BaseModel
     }
 
     /**
-     * A UUID string representing the status identifier of the snapshot.
+     * A UUID string representing the status identifier of the snapshot request, indicating the current state of the snapshot process.
      */
     public function withSnapshotStatusID(string $snapshotStatusID): self
     {

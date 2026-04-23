@@ -45,7 +45,7 @@ final class RowsService implements RowsContract
      *
      * @param int $childTableID Specifies the value for the column child table id
      * @param int $displayIndex the index position for displaying the row within the table
-     * @param array<string,mixed> $values List of key value pairs with the column name and column value
+     * @param array<string,array<string,mixed>> $values List of key value pairs with the column name and column value
      * @param string $name Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
      * @param string $path Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      * @param RequestOpts|null $requestOptions
@@ -375,7 +375,7 @@ final class RowsService implements RowsContract
      * @param string $tableIDOrName Path param
      * @param int $childTableID Body param: Specifies the value for the column child table id
      * @param int $displayIndex body param: The index position for displaying the row within the table
-     * @param array<string,mixed> $values Body param: List of key value pairs with the column name and column value
+     * @param array<string,array<string,mixed>> $values Body param: List of key value pairs with the column name and column value
      * @param string $name Body param: Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
      * @param string $path Body param: Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      * @param RequestOpts|null $requestOptions
@@ -443,7 +443,7 @@ final class RowsService implements RowsContract
      * @param string $tableIDOrName Path param
      * @param int $childTableID Body param: Specifies the value for the column child table id
      * @param int $displayIndex body param: The index position for displaying the row within the table
-     * @param array<string,mixed> $values Body param: List of key value pairs with the column name and column value
+     * @param array<string,array<string,mixed>> $values Body param: List of key value pairs with the column name and column value
      * @param string $name Body param: Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
      * @param string $path Body param: Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
      * @param RequestOpts|null $requestOptions

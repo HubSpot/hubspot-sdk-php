@@ -55,7 +55,7 @@ final class RowsRawService implements RowsRawContract
      * @param array{
      *   childTableID: int,
      *   displayIndex: int,
-     *   values: array<string,mixed>,
+     *   values: array<string,array<string,mixed>>,
      *   name?: string,
      *   path?: string,
      * }|RowCreateParams $params
@@ -492,7 +492,7 @@ final class RowsRawService implements RowsRawContract
      *   tableIDOrName: string,
      *   childTableID: int,
      *   displayIndex: int,
-     *   values: array<string,mixed>,
+     *   values: array<string,array<string,mixed>>,
      *   name?: string,
      *   path?: string,
      * }|RowReplaceDraftParams $params
@@ -574,7 +574,7 @@ final class RowsRawService implements RowsRawContract
      *   tableIDOrName: string,
      *   childTableID: int,
      *   displayIndex: int,
-     *   values: array<string,mixed>,
+     *   values: array<string,array<string,mixed>>,
      *   name?: string,
      *   path?: string,
      * }|RowUpdateDraftParams $params

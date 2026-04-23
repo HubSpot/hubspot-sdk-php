@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Cms;
 
-use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\BaseAssociationDefinition;
+use HubSpotSDK\BaseObjectTypeDefinition;
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
@@ -43,6 +44,7 @@ use HubSpotSDK\Cms\MediaBridge\MediaBridgeListOembedDomainsParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeListPropertiesParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeListPropertyGroupsParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeListSchemasParams;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeProperty;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeRegisterAppNameParams;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdateEventVisibilitySettingsParams;
@@ -57,12 +59,10 @@ use HubSpotSDK\Cms\MediaBridge\MediaPlayedPercentageEvent;
 use HubSpotSDK\Cms\MediaBridge\ObjectDefinitionResponse;
 use HubSpotSDK\Cms\MediaBridge\ObjectSchema;
 use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
-use HubSpotSDK\Cms\MediaBridge\Property;
 use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\PropertyGroup;
@@ -95,7 +95,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeCreateAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<AssociationDefinition>
+     * @return BaseResponse<BaseAssociationDefinition>
      *
      * @throws APIException
      */
@@ -121,7 +121,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
             ],
             body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
-            convert: AssociationDefinition::class,
+            convert: BaseAssociationDefinition::class,
         );
     }
 
@@ -366,7 +366,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeCreatePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Property>
+     * @return BaseResponse<MediaBridgeProperty>
      *
      * @throws APIException
      */
@@ -388,7 +388,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
             path: ['media-bridge/2026-03/%1$s/properties/%2$s', $appID, $objectType],
             body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
-            convert: Property::class,
+            convert: MediaBridgeProperty::class,
         );
     }
 
@@ -436,7 +436,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<AssociationDefinition>
+     * @return BaseResponse<BaseAssociationDefinition>
      *
      * @throws APIException
      */
@@ -452,7 +452,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
                 $appID,
             ],
             options: $requestOptions,
-            convert: AssociationDefinition::class,
+            convert: BaseAssociationDefinition::class,
         );
     }
 
@@ -691,7 +691,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeGetPropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Property>
+     * @return BaseResponse<MediaBridgeProperty>
      *
      * @throws APIException
      */
@@ -720,7 +720,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
             ],
             query: $parsed,
             options: $options,
-            convert: Property::class,
+            convert: MediaBridgeProperty::class,
         );
     }
 
@@ -1123,7 +1123,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeUpdatePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Property>
+     * @return BaseResponse<MediaBridgeProperty>
      *
      * @throws APIException
      */
@@ -1155,7 +1155,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
                 array_flip(['appID', 'objectType'])
             ),
             options: $options,
-            convert: Property::class,
+            convert: MediaBridgeProperty::class,
         );
     }
 
@@ -1226,7 +1226,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeUpdateSchemaParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<ObjectTypeDefinition>
+     * @return BaseResponse<BaseObjectTypeDefinition>
      *
      * @throws APIException
      */
@@ -1248,7 +1248,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
             path: ['media-bridge/2026-03/%1$s/schemas/%2$s', $appID, $objectType],
             body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
-            convert: ObjectTypeDefinition::class,
+            convert: BaseObjectTypeDefinition::class,
         );
     }
 

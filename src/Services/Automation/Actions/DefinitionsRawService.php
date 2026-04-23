@@ -11,6 +11,7 @@ use HubSpotSDK\Automation\Actions\Definitions\DefinitionGetParams;
 use HubSpotSDK\Automation\Actions\Definitions\DefinitionGetRequiresObjectParams;
 use HubSpotSDK\Automation\Actions\Definitions\DefinitionListParams;
 use HubSpotSDK\Automation\Actions\Definitions\DefinitionUpdateParams;
+use HubSpotSDK\Automation\Actions\OutputFieldDefinition;
 use HubSpotSDK\Automation\Actions\PublicActionDefinition;
 use HubSpotSDK\Automation\Actions\PublicActionDefinitionRequiresObjectResponse;
 use HubSpotSDK\Automation\Actions\PublicActionFunction;
@@ -33,6 +34,7 @@ use HubSpotSDK\ServiceContracts\Automation\Actions\DefinitionsRawContract;
  * @phpstan-import-type PublicActionLabelsShape from \HubSpotSDK\Automation\Actions\PublicActionLabels
  * @phpstan-import-type PublicExecutionTranslationRuleShape from \HubSpotSDK\Automation\Actions\PublicExecutionTranslationRule
  * @phpstan-import-type PublicObjectRequestOptionsShape from \HubSpotSDK\Automation\Actions\PublicObjectRequestOptions
+ * @phpstan-import-type OutputFieldDefinitionShape from \HubSpotSDK\Automation\Actions\OutputFieldDefinition
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class DefinitionsRawService implements DefinitionsRawContract
@@ -59,7 +61,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      *   executionRules?: list<PublicExecutionTranslationRule|PublicExecutionTranslationRuleShape>,
      *   inputFieldDependencies?: list<InputFieldDependencyShape>,
      *   objectRequestOptions?: PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
-     *   outputFields?: list<mixed>,
+     *   outputFields?: list<OutputFieldDefinition|OutputFieldDefinitionShape>,
      * }|DefinitionCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -102,7 +104,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      *   labels?: array<string,PublicActionLabels|PublicActionLabelsShape>,
      *   objectRequestOptions?: PublicObjectRequestOptions|PublicObjectRequestOptionsShape,
      *   objectTypes?: list<string>,
-     *   outputFields?: list<mixed>,
+     *   outputFields?: list<OutputFieldDefinition|OutputFieldDefinitionShape>,
      *   published?: bool,
      * }|DefinitionUpdateParams $params
      * @param RequestOpts|null $requestOptions

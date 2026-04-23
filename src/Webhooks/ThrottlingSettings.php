@@ -17,7 +17,7 @@ final class ThrottlingSettings implements BaseModel
     use SdkModel;
 
     /**
-     * The maximum number of concurrent requests allowed. It is an integer value.
+     * The maximum number of concurrent requests allowed. This is an integer value.
      */
     #[Required]
     public int $maxConcurrentRequests;
@@ -56,7 +56,7 @@ final class ThrottlingSettings implements BaseModel
     }
 
     /**
-     * The maximum number of concurrent requests allowed. It is an integer value.
+     * The maximum number of concurrent requests allowed. This is an integer value.
      */
     public function withMaxConcurrentRequests(int $maxConcurrentRequests): self
     {

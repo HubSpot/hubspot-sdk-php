@@ -11,10 +11,12 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\ForwardPaging;
 
 /**
+ * @phpstan-import-type PublicActionRevisionShape from \HubSpotSDK\Automation\Actions\PublicActionRevision
  * @phpstan-import-type ForwardPagingShape from \HubSpotSDK\ForwardPaging
  *
  * @phpstan-type CollectionResponsePublicActionRevisionForwardPagingShape = array{
- *   results: list<mixed>, paging?: null|ForwardPaging|ForwardPagingShape
+ *   results: list<PublicActionRevision|PublicActionRevisionShape>,
+ *   paging?: null|ForwardPaging|ForwardPagingShape,
  * }
  */
 final class CollectionResponsePublicActionRevisionForwardPaging implements BaseModel
@@ -22,7 +24,7 @@ final class CollectionResponsePublicActionRevisionForwardPaging implements BaseM
     /** @use SdkModel<CollectionResponsePublicActionRevisionForwardPagingShape> */
     use SdkModel;
 
-    /** @var list<mixed> $results */
+    /** @var list<PublicActionRevision> $results */
     #[Required(list: PublicActionRevision::class)]
     public array $results;
 
@@ -53,7 +55,7 @@ final class CollectionResponsePublicActionRevisionForwardPaging implements BaseM
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $results
+     * @param list<PublicActionRevision|PublicActionRevisionShape> $results
      * @param ForwardPaging|ForwardPagingShape|null $paging
      */
     public static function with(
@@ -70,7 +72,7 @@ final class CollectionResponsePublicActionRevisionForwardPaging implements BaseM
     }
 
     /**
-     * @param list<mixed> $results
+     * @param list<PublicActionRevision|PublicActionRevisionShape> $results
      */
     public function withResults(array $results): self
     {

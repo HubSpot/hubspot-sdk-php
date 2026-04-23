@@ -13,7 +13,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-import-type SimpleUserShape from \HubSpotSDK\Cms\Hubdb\SimpleUser
  * @phpstan-import-type ForeignIDShape from \HubSpotSDK\Cms\Hubdb\ForeignID
- * @phpstan-import-type OptionShape from \HubSpotSDK\Cms\Hubdb\Option
+ * @phpstan-import-type HubdbOptionShape from \HubSpotSDK\Cms\Hubdb\HubdbOption
  *
  * @phpstan-type ColumnShape = array{
  *   id: string,
@@ -31,7 +31,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   foreignIDsByName?: array<string,ForeignID|ForeignIDShape>|null,
  *   foreignTableID?: int|null,
  *   optionCount?: int|null,
- *   options?: list<Option|OptionShape>|null,
+ *   options?: list<HubdbOption|HubdbOptionShape>|null,
  *   updatedAt?: \DateTimeInterface|null,
  *   updatedBy?: null|SimpleUser|SimpleUserShape,
  *   updatedByUserID?: int|null,
@@ -141,9 +141,9 @@ final class Column implements BaseModel
     /**
      * Options to choose for select and multi-select columns.
      *
-     * @var list<Option>|null $options
+     * @var list<HubdbOption>|null $options
      */
-    #[Optional(list: Option::class)]
+    #[Optional(list: HubdbOption::class)]
     public ?array $options;
 
     /**
@@ -204,7 +204,7 @@ final class Column implements BaseModel
      * @param list<ForeignID|ForeignIDShape>|null $foreignIDs
      * @param array<string,ForeignID|ForeignIDShape>|null $foreignIDsByID
      * @param array<string,ForeignID|ForeignIDShape>|null $foreignIDsByName
-     * @param list<Option|OptionShape>|null $options
+     * @param list<HubdbOption|HubdbOptionShape>|null $options
      * @param SimpleUser|SimpleUserShape|null $updatedBy
      */
     public static function with(
@@ -432,7 +432,7 @@ final class Column implements BaseModel
     /**
      * Options to choose for select and multi-select columns.
      *
-     * @param list<Option|OptionShape> $options
+     * @param list<HubdbOption|HubdbOptionShape> $options
      */
     public function withOptions(array $options): self
     {

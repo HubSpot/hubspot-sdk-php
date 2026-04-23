@@ -21,7 +21,7 @@ final class SubscriptionListResponse implements BaseModel
     use SdkModel;
 
     /**
-     * An array of SubscriptionResponse objects, each representing a subscription associated with the app. This property is required.
+     * An array of subscription responses, each detailing a specific subscription's properties and status.
      *
      * @var list<SubscriptionResponse> $results
      */
@@ -64,7 +64,7 @@ final class SubscriptionListResponse implements BaseModel
     }
 
     /**
-     * An array of SubscriptionResponse objects, each representing a subscription associated with the app. This property is required.
+     * An array of subscription responses, each detailing a specific subscription's properties and status.
      *
      * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
      */

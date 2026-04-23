@@ -6,7 +6,6 @@ use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Files\File;
 use HubSpotSDK\Files\FileActionResponse;
-use HubSpotSDK\Files\FileStat;
 use HubSpotSDK\Files\Folder;
 use HubSpotSDK\Files\ImportFromURLTaskLocator;
 use HubSpotSDK\Files\SignedURL;
@@ -139,19 +138,6 @@ final class FileAssetsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(File::class, $result);
-    }
-
-    #[Test]
-    public function testGetByPath(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->files->fileAssets->getByPath('path');
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(FileStat::class, $result);
     }
 
     #[Test]

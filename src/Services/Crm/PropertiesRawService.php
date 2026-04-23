@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Crm;
 
+use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
@@ -18,7 +19,6 @@ use HubSpotSDK\Crm\Properties\PropertyGetParams;
 use HubSpotSDK\Crm\Properties\PropertyListParams;
 use HubSpotSDK\Crm\Properties\PropertyUpdateParams;
 use HubSpotSDK\OptionInput;
-use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\PropertiesRawContract;
 
@@ -61,7 +61,7 @@ final class PropertiesRawService implements PropertiesRawContract
      * }|PropertyCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Property>
+     * @return BaseResponse<BaseProperty>
      *
      * @throws APIException
      */
@@ -81,7 +81,7 @@ final class PropertiesRawService implements PropertiesRawContract
             path: ['crm/properties/2026-03/%1$s', $objectType],
             body: (object) $parsed,
             options: $options,
-            convert: Property::class,
+            convert: BaseProperty::class,
         );
     }
 
@@ -109,7 +109,7 @@ final class PropertiesRawService implements PropertiesRawContract
      * }|PropertyUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Property>
+     * @return BaseResponse<BaseProperty>
      *
      * @throws APIException
      */
@@ -131,7 +131,7 @@ final class PropertiesRawService implements PropertiesRawContract
             path: ['crm/properties/2026-03/%1$s/%2$s', $objectType, $propertyName],
             body: (object) array_diff_key($parsed, array_flip(['objectType'])),
             options: $options,
-            convert: Property::class,
+            convert: BaseProperty::class,
         );
     }
 
@@ -220,7 +220,7 @@ final class PropertiesRawService implements PropertiesRawContract
      * }|PropertyGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Property>
+     * @return BaseResponse<BaseProperty>
      *
      * @throws APIException
      */
@@ -242,7 +242,7 @@ final class PropertiesRawService implements PropertiesRawContract
             path: ['crm/properties/2026-03/%1$s/%2$s', $objectType, $propertyName],
             query: $parsed,
             options: $options,
-            convert: Property::class,
+            convert: BaseProperty::class,
         );
     }
 }

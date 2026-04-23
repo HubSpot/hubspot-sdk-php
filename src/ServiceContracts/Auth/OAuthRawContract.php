@@ -7,7 +7,8 @@ namespace HubSpotSDK\ServiceContracts\Auth;
 use HubSpotSDK\Auth\OAuth\OAuthCreateTokenParams;
 use HubSpotSDK\Auth\OAuth\OAuthIntrospectTokenParams;
 use HubSpotSDK\Auth\OAuth\OAuthRevokeTokenParams;
-use HubSpotSDK\Auth\OAuth\TokenInfoResponseBaseIf;
+use HubSpotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
+use HubSpotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\RequestOptions;
@@ -38,7 +39,7 @@ interface OAuthRawContract
      * @param array<string,mixed>|OAuthIntrospectTokenParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<TokenInfoResponseBaseIf>
+     * @return BaseResponse<PublicAccessTokenInfoResponse|PublicRefreshTokenInfoResponse,>
      *
      * @throws APIException
      */

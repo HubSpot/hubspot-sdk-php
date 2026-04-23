@@ -10,13 +10,14 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
+ * @phpstan-import-type PropertyDefinitionShape from \HubSpotSDK\Cms\MediaBridge\PropertyDefinition
  * @phpstan-import-type GroupViewShape from \HubSpotSDK\Cms\MediaBridge\GroupView
  * @phpstan-import-type InboundDBObjectTypeShape from \HubSpotSDK\Cms\MediaBridge\InboundDBObjectType
  *
  * @phpstan-type ObjectDefinitionResponseShape = array{
  *   objectTypeID: string,
  *   objectTypeName: string,
- *   properties: list<mixed>,
+ *   properties: list<PropertyDefinition|PropertyDefinitionShape>,
  *   propertyGroups: list<GroupView|GroupViewShape>,
  *   schema?: null|InboundDBObjectType|InboundDBObjectTypeShape,
  * }
@@ -32,7 +33,7 @@ final class ObjectDefinitionResponse implements BaseModel
     #[Required]
     public string $objectTypeName;
 
-    /** @var list<mixed> $properties */
+    /** @var list<PropertyDefinition> $properties */
     #[Required(list: PropertyDefinition::class)]
     public array $properties;
 
@@ -73,7 +74,7 @@ final class ObjectDefinitionResponse implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<mixed> $properties
+     * @param list<PropertyDefinition|PropertyDefinitionShape> $properties
      * @param list<GroupView|GroupViewShape> $propertyGroups
      * @param InboundDBObjectType|InboundDBObjectTypeShape|null $schema
      */
@@ -113,7 +114,7 @@ final class ObjectDefinitionResponse implements BaseModel
     }
 
     /**
-     * @param list<mixed> $properties
+     * @param list<PropertyDefinition|PropertyDefinitionShape> $properties
      */
     public function withProperties(array $properties): self
     {

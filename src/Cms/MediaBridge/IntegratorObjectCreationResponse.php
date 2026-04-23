@@ -10,11 +10,12 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-import-type InboundDBObjectTypeShape from \HubSpotSDK\Cms\MediaBridge\InboundDBObjectType
+ * @phpstan-import-type PropertyDefinitionShape from \HubSpotSDK\Cms\MediaBridge\PropertyDefinition
  * @phpstan-import-type GroupShape from \HubSpotSDK\Cms\MediaBridge\Group
  *
  * @phpstan-type IntegratorObjectCreationResponseShape = array{
  *   objectType: InboundDBObjectType|InboundDBObjectTypeShape,
- *   properties: list<mixed>,
+ *   properties: list<PropertyDefinition|PropertyDefinitionShape>,
  *   propertyGroups: list<Group|GroupShape>,
  * }
  */
@@ -26,7 +27,7 @@ final class IntegratorObjectCreationResponse implements BaseModel
     #[Required]
     public InboundDBObjectType $objectType;
 
-    /** @var list<mixed> $properties */
+    /** @var list<PropertyDefinition> $properties */
     #[Required(list: PropertyDefinition::class)]
     public array $properties;
 
@@ -64,7 +65,7 @@ final class IntegratorObjectCreationResponse implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      *
      * @param InboundDBObjectType|InboundDBObjectTypeShape $objectType
-     * @param list<mixed> $properties
+     * @param list<PropertyDefinition|PropertyDefinitionShape> $properties
      * @param list<Group|GroupShape> $propertyGroups
      */
     public static function with(
@@ -93,7 +94,7 @@ final class IntegratorObjectCreationResponse implements BaseModel
     }
 
     /**
-     * @param list<mixed> $properties
+     * @param list<PropertyDefinition|PropertyDefinitionShape> $properties
      */
     public function withProperties(array $properties): self
     {

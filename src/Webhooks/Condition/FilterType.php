@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Webhooks\Condition;
 
 /**
- * A string representing the type of filter. Valid value is 'CRM_OBJECT_PROPERTY'.
+ * A string indicating the type of filter being applied. Valid value is 'CRM_OBJECT_PROPERTY'.
  */
 enum FilterType: string
 {
