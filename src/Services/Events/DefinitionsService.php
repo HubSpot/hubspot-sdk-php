@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Events;
 
+use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
@@ -13,7 +14,6 @@ use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
 use HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\Page;
-use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Events\DefinitionsContract;
 
@@ -187,7 +187,7 @@ final class DefinitionsService implements DefinitionsContract
         ?string $name = null,
         ?array $options = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Property {
+    ): BaseProperty {
         $params = Util::removeNulls(
             [
                 'label' => $label,
@@ -288,7 +288,7 @@ final class DefinitionsService implements DefinitionsContract
         ?string $label = null,
         ?array $options = null,
         RequestOptions|array|null $requestOptions = null,
-    ): Property {
+    ): BaseProperty {
         $params = Util::removeNulls(
             [
                 'eventName' => $eventName,

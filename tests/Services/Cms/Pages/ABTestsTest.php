@@ -3,7 +3,7 @@
 namespace Tests\Services\Cms\Pages;
 
 use HubSpotSDK\Client;
-use HubSpotSDK\Cms\Pages\PagesPage;
+use HubSpotSDK\Cms\Pages\PageData;
 use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -41,7 +41,7 @@ final class ABTestsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PagesPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -57,7 +57,7 @@ final class ABTestsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PagesPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -73,7 +73,7 @@ final class ABTestsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PagesPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]
@@ -89,7 +89,7 @@ final class ABTestsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PagesPage::class, $result);
+        $this->assertInstanceOf(PageData::class, $result);
     }
 
     #[Test]

@@ -13,7 +13,7 @@ use HubSpotSDK\Core\Conversion\ListOf;
 /**
  * @phpstan-import-type ErrorDetailShape from \HubSpotSDK\ErrorDetail
  *
- * @phpstan-type ErrorDataShape = array{
+ * @phpstan-type BaseErrorShape = array{
  *   category: string,
  *   correlationID: string,
  *   message: string,
@@ -23,9 +23,9 @@ use HubSpotSDK\Core\Conversion\ListOf;
  *   subCategory?: string|null,
  * }
  */
-final class ErrorData implements BaseModel
+final class BaseError implements BaseModel
 {
-    /** @use SdkModel<ErrorDataShape> */
+    /** @use SdkModel<BaseErrorShape> */
     use SdkModel;
 
     /**
@@ -77,17 +77,17 @@ final class ErrorData implements BaseModel
     public ?string $subCategory;
 
     /**
-     * `new ErrorData()` is missing required properties by the API.
+     * `new BaseError()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * ErrorData::with(category: ..., correlationID: ..., message: ...)
+     * BaseError::with(category: ..., correlationID: ..., message: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new ErrorData)->withCategory(...)->withCorrelationID(...)->withMessage(...)
+     * (new BaseError)->withCategory(...)->withCorrelationID(...)->withMessage(...)
      * ```
      */
     public function __construct()

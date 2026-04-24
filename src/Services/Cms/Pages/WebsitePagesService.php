@@ -6,7 +6,7 @@ namespace HubSpotSDK\Services\Cms\Pages;
 
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\ContentLanguageVariation;
-use HubSpotSDK\Cms\Pages\PagesPage;
+use HubSpotSDK\Cms\Pages\PageData;
 use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\AbStatus;
 use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\ContentTypeCategory;
 use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\CurrentState;
@@ -161,7 +161,7 @@ final class WebsitePagesService implements WebsitePagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             [
                 'id' => $id,
@@ -359,7 +359,7 @@ final class WebsitePagesService implements WebsitePagesContract
         array $widgets,
         ?bool $archived = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             [
                 'id' => $id,
@@ -447,7 +447,7 @@ final class WebsitePagesService implements WebsitePagesContract
      * @param \DateTimeInterface $updatedBefore Filter pages updated before a specific date and time. Format should be date-time.
      * @param RequestOpts|null $requestOptions
      *
-     * @return Page<PagesPage>
+     * @return Page<PageData>
      *
      * @throws APIException
      */
@@ -525,7 +525,7 @@ final class WebsitePagesService implements WebsitePagesContract
         string $id,
         ?string $cloneName = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(['id' => $id, 'cloneName' => $cloneName]);
 
         // @phpstan-ignore-next-line argument.type
@@ -550,7 +550,7 @@ final class WebsitePagesService implements WebsitePagesContract
         ?bool $archived = null,
         ?string $property = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             ['archived' => $archived, 'property' => $property]
         );
@@ -573,7 +573,7 @@ final class WebsitePagesService implements WebsitePagesContract
     public function getDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
-    ): PagesPage {
+    ): PageData {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getDraft($objectID, requestOptions: $requestOptions);
 
@@ -771,7 +771,7 @@ final class WebsitePagesService implements WebsitePagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             [
                 'id' => $id,

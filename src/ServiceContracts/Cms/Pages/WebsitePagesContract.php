@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\ServiceContracts\Cms\Pages;
 
 use HubSpotSDK\Cms\ContentLanguageVariation;
-use HubSpotSDK\Cms\Pages\PagesPage;
+use HubSpotSDK\Cms\Pages\PageData;
 use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\AbStatus;
 use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\ContentTypeCategory;
 use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\CurrentState;
@@ -143,7 +143,7 @@ interface WebsitePagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage;
+    ): PageData;
 
     /**
      * @api
@@ -272,7 +272,7 @@ interface WebsitePagesContract
         array $widgets,
         ?bool $archived = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage;
+    ): PageData;
 
     /**
      * @api
@@ -290,7 +290,7 @@ interface WebsitePagesContract
      * @param \DateTimeInterface $updatedBefore Filter pages updated before a specific date and time. Format should be date-time.
      * @param RequestOpts|null $requestOptions
      *
-     * @return Page<PagesPage>
+     * @return Page<PageData>
      *
      * @throws APIException
      */
@@ -336,7 +336,7 @@ interface WebsitePagesContract
         string $id,
         ?string $cloneName = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage;
+    ): PageData;
 
     /**
      * @api
@@ -352,7 +352,7 @@ interface WebsitePagesContract
         ?bool $archived = null,
         ?string $property = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage;
+    ): PageData;
 
     /**
      * @api
@@ -364,7 +364,7 @@ interface WebsitePagesContract
     public function getDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
-    ): PagesPage;
+    ): PageData;
 
     /**
      * @api
@@ -530,5 +530,5 @@ interface WebsitePagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage;
+    ): PageData;
 }

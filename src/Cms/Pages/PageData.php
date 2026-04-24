@@ -6,10 +6,10 @@ namespace HubSpotSDK\Cms\Pages;
 
 use HubSpotSDK\Cms\ContentLanguageVariation;
 use HubSpotSDK\Cms\LayoutSection;
-use HubSpotSDK\Cms\Pages\PagesPage\AbStatus;
-use HubSpotSDK\Cms\Pages\PagesPage\ContentTypeCategory;
-use HubSpotSDK\Cms\Pages\PagesPage\CurrentState;
-use HubSpotSDK\Cms\Pages\PagesPage\Language;
+use HubSpotSDK\Cms\Pages\PageData\AbStatus;
+use HubSpotSDK\Cms\Pages\PageData\ContentTypeCategory;
+use HubSpotSDK\Cms\Pages\PageData\CurrentState;
+use HubSpotSDK\Cms\Pages\PageData\Language;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
@@ -18,7 +18,7 @@ use HubSpotSDK\Core\Conversion\MapOf;
 /**
  * @phpstan-import-type ContentLanguageVariationShape from \HubSpotSDK\Cms\ContentLanguageVariation
  *
- * @phpstan-type PagesPageShape = array{
+ * @phpstan-type PageDataShape = array{
  *   id: string,
  *   abStatus: AbStatus|value-of<AbStatus>,
  *   abTestID: string,
@@ -78,9 +78,9 @@ use HubSpotSDK\Core\Conversion\MapOf;
  *   widgets: array<string,mixed>,
  * }
  */
-final class PagesPage implements BaseModel
+final class PageData implements BaseModel
 {
-    /** @use SdkModel<PagesPageShape> */
+    /** @use SdkModel<PageDataShape> */
     use SdkModel;
 
     /**
@@ -448,11 +448,11 @@ final class PagesPage implements BaseModel
     public array $widgets;
 
     /**
-     * `new PagesPage()` is missing required properties by the API.
+     * `new PageData()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * PagesPage::with(
+     * PageData::with(
      *   id: ...,
      *   abStatus: ...,
      *   abTestID: ...,
@@ -516,7 +516,7 @@ final class PagesPage implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new PagesPage)
+     * (new PageData)
      *   ->withID(...)
      *   ->withAbStatus(...)
      *   ->withAbTestID(...)

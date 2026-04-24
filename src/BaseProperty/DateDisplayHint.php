@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubSpotSDK\Property;
+namespace HubSpotSDK\BaseProperty;
 
 /**
  * Controls how date properties are displayed in the HubSpot UI, with options such as 'absolute', 'absolute_with_relative', 'time_since', and 'time_until'.

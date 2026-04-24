@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Services\Cms;
 
 use HubSpotSDK\Client;
-use HubSpotSDK\Cms\Pages\PagesPage;
+use HubSpotSDK\Cms\Pages\PageData;
 use HubSpotSDK\Cms\Pages\PageVersion;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
@@ -211,7 +211,7 @@ final class PagesService implements PagesContract
         string $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
@@ -233,7 +233,7 @@ final class PagesService implements PagesContract
         int $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
@@ -255,7 +255,7 @@ final class PagesService implements PagesContract
         string $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type
@@ -277,7 +277,7 @@ final class PagesService implements PagesContract
         int $revisionID,
         string $objectID,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(['objectID' => $objectID]);
 
         // @phpstan-ignore-next-line argument.type

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Services\Cms\Pages;
 
 use HubSpotSDK\Client;
-use HubSpotSDK\Cms\Pages\PagesPage;
+use HubSpotSDK\Cms\Pages\PageData;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\RequestOptions;
@@ -44,7 +44,7 @@ final class ABTestsService implements ABTestsContract
         string $contentID,
         string $variationName,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             ['contentID' => $contentID, 'variationName' => $variationName]
         );
@@ -70,7 +70,7 @@ final class ABTestsService implements ABTestsContract
         string $contentID,
         string $variationName,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             ['contentID' => $contentID, 'variationName' => $variationName]
         );

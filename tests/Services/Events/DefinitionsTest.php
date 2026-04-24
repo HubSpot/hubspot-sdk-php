@@ -2,11 +2,11 @@
 
 namespace Tests\Services\Events;
 
+use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
 use HubSpotSDK\Page;
-use HubSpotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -159,7 +159,7 @@ final class DefinitionsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(BaseProperty::class, $result);
     }
 
     #[Test]
@@ -187,7 +187,7 @@ final class DefinitionsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(BaseProperty::class, $result);
     }
 
     #[Test]
@@ -293,7 +293,7 @@ final class DefinitionsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(BaseProperty::class, $result);
     }
 
     #[Test]
@@ -320,6 +320,6 @@ final class DefinitionsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(Property::class, $result);
+        $this->assertInstanceOf(BaseProperty::class, $result);
     }
 }

@@ -41,7 +41,7 @@ final class BatchResponsePageWithErrors implements BaseModel
      *
      * @var list<mixed> $results
      */
-    #[Required(list: PagesPage::class)]
+    #[Required(list: PageData::class)]
     public array $results;
 
     /**

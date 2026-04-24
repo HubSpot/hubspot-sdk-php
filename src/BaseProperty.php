@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace HubSpotSDK;
 
+use HubSpotSDK\BaseProperty\DataSensitivity;
+use HubSpotSDK\BaseProperty\DateDisplayHint;
+use HubSpotSDK\BaseProperty\NumberDisplayHint;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\Property\DataSensitivity;
-use HubSpotSDK\Property\DateDisplayHint;
-use HubSpotSDK\Property\NumberDisplayHint;
 
 /**
  * A HubSpot property.
  *
- * @phpstan-import-type OptionShape from \HubSpotSDK\Option
+ * @phpstan-import-type BaseOptionShape from \HubSpotSDK\BaseOption
  * @phpstan-import-type PropertyModificationMetadataShape from \HubSpotSDK\PropertyModificationMetadata
  *
- * @phpstan-type PropertyShape = array{
+ * @phpstan-type BasePropertyShape = array{
  *   description: string,
  *   fieldType: string,
  *   groupName: string,
  *   label: string,
  *   name: string,
- *   options: list<Option|OptionShape>,
+ *   options: list<BaseOption|BaseOptionShape>,
  *   type: string,
  *   archived?: bool|null,
  *   archivedAt?: \DateTimeInterface|null,
@@ -50,9 +50,9 @@ use HubSpotSDK\Property\NumberDisplayHint;
  *   updatedUserID?: string|null,
  * }
  */
-final class Property implements BaseModel
+final class BaseProperty implements BaseModel
 {
-    /** @use SdkModel<PropertyShape> */
+    /** @use SdkModel<BasePropertyShape> */
     use SdkModel;
 
     /**
@@ -88,9 +88,9 @@ final class Property implements BaseModel
     /**
      * A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.
      *
-     * @var list<Option> $options
+     * @var list<BaseOption> $options
      */
-    #[Required(list: Option::class)]
+    #[Required(list: BaseOption::class)]
     public array $options;
 
     /**
@@ -237,11 +237,11 @@ final class Property implements BaseModel
     public ?string $updatedUserID;
 
     /**
-     * `new Property()` is missing required properties by the API.
+     * `new BaseProperty()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * Property::with(
+     * BaseProperty::with(
      *   description: ...,
      *   fieldType: ...,
      *   groupName: ...,
@@ -255,7 +255,7 @@ final class Property implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new Property)
+     * (new BaseProperty)
      *   ->withDescription(...)
      *   ->withFieldType(...)
      *   ->withGroupName(...)
@@ -275,7 +275,7 @@ final class Property implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Option|OptionShape> $options
+     * @param list<BaseOption|BaseOptionShape> $options
      * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
      * @param DateDisplayHint|value-of<DateDisplayHint>|null $dateDisplayHint
      * @param PropertyModificationMetadata|PropertyModificationMetadataShape|null $modificationMetadata
@@ -407,7 +407,7 @@ final class Property implements BaseModel
     /**
      * A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.
      *
-     * @param list<Option|OptionShape> $options
+     * @param list<BaseOption|BaseOptionShape> $options
      */
     public function withOptions(array $options): self
     {
