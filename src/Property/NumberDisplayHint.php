@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubSpotSDK\BaseProperty;
+namespace HubSpotSDK\Property;
 
 /**
  * Hint for how a number property is displayed and validated in HubSpot's UI. Can be: "unformatted", "formatted", "currency", "percentage", "duration", or "probability".

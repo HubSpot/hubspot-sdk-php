@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
@@ -12,6 +11,7 @@ use HubSpotSDK\Crm\Properties\PropertyCreateParams\FieldType;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\NumberDisplayHint;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\Type;
 use HubSpotSDK\OptionInput;
+use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 
 /**
@@ -53,7 +53,7 @@ interface PropertiesContract
         ?string $referencedObjectType = null,
         ?bool $showCurrencySymbol = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseProperty;
+    ): Property;
 
     /**
      * @api
@@ -94,7 +94,7 @@ interface PropertiesContract
         ?bool $showCurrencySymbol = null,
         \HubSpotSDK\Crm\Properties\PropertyUpdateParams\Type|string|null $type = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseProperty;
+    ): Property;
 
     /**
      * @api
@@ -148,5 +148,5 @@ interface PropertiesContract
         ?string $locale = null,
         ?string $properties = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseProperty;
+    ): Property;
 }

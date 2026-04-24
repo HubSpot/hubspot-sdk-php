@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubSpotSDK\BaseAssociationDefinition;
-use HubSpotSDK\BaseObjectTypeDefinition;
+use HubSpotSDK\AssociationDefinition;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubSpotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
 use HubSpotSDK\Cms\MediaBridge\CollectionResponseObjectSchemaNoPaging;
@@ -52,6 +51,7 @@ use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
 use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\PropertyGroup;
 use HubSpotSDK\RequestOptions;
 
@@ -67,7 +67,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeCreateAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseAssociationDefinition>
+     * @return BaseResponse<AssociationDefinition>
      *
      * @throws APIException
      */
@@ -193,7 +193,7 @@ interface MediaBridgeRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseAssociationDefinition>
+     * @return BaseResponse<AssociationDefinition>
      *
      * @throws APIException
      */
@@ -519,7 +519,7 @@ interface MediaBridgeRawContract
      * @param array<string,mixed>|MediaBridgeUpdateSchemaParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseObjectTypeDefinition>
+     * @return BaseResponse<ObjectTypeDefinition>
      *
      * @throws APIException
      */

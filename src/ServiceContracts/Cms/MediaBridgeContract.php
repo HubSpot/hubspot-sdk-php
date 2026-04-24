@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubSpotSDK\BaseAssociationDefinition;
-use HubSpotSDK\BaseObjectTypeDefinition;
+use HubSpotSDK\AssociationDefinition;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubSpotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
@@ -32,6 +31,7 @@ use HubSpotSDK\Cms\MediaBridge\ObjectSchema;
 use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
 use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\PropertyGroup;
@@ -65,7 +65,7 @@ interface MediaBridgeContract
         string $toObjectTypeID,
         ?string $name = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseAssociationDefinition;
+    ): AssociationDefinition;
 
     /**
      * @api
@@ -268,7 +268,7 @@ interface MediaBridgeContract
     public function createVideoAssociationDefinition(
         int $appID,
         RequestOptions|array|null $requestOptions = null
-    ): BaseAssociationDefinition;
+    ): AssociationDefinition;
 
     /**
      * @api
@@ -627,7 +627,7 @@ interface MediaBridgeContract
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseObjectTypeDefinition;
+    ): ObjectTypeDefinition;
 
     /**
      * @api

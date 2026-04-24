@@ -12,7 +12,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 /**
  * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubSpotSDK\ObjectTypeDefinitionLabels
  *
- * @phpstan-type BaseObjectTypeDefinitionShape = array{
+ * @phpstan-type ObjectTypeDefinitionShape = array{
  *   id: string,
  *   allowsSensitiveProperties: bool,
  *   archived: bool,
@@ -30,9 +30,9 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   updatedAt?: \DateTimeInterface|null,
  * }
  */
-final class BaseObjectTypeDefinition implements BaseModel
+final class ObjectTypeDefinition implements BaseModel
 {
-    /** @use SdkModel<BaseObjectTypeDefinitionShape> */
+    /** @use SdkModel<ObjectTypeDefinitionShape> */
     use SdkModel;
 
     #[Required]
@@ -84,11 +84,11 @@ final class BaseObjectTypeDefinition implements BaseModel
     public ?\DateTimeInterface $updatedAt;
 
     /**
-     * `new BaseObjectTypeDefinition()` is missing required properties by the API.
+     * `new ObjectTypeDefinition()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * BaseObjectTypeDefinition::with(
+     * ObjectTypeDefinition::with(
      *   id: ...,
      *   allowsSensitiveProperties: ...,
      *   archived: ...,
@@ -105,7 +105,7 @@ final class BaseObjectTypeDefinition implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new BaseObjectTypeDefinition)
+     * (new ObjectTypeDefinition)
      *   ->withID(...)
      *   ->withAllowsSensitiveProperties(...)
      *   ->withArchived(...)

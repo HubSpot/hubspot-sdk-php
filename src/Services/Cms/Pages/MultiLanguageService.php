@@ -7,7 +7,7 @@ namespace HubSpotSDK\Services\Cms\Pages;
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\Language;
 use HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageAttachToLangGroupParams\PrimaryLanguage;
-use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\RequestOptions;
@@ -83,7 +83,7 @@ final class MultiLanguageService implements MultiLanguageContract
         ?string $language = null,
         ?string $primaryLanguage = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PageData {
+    ): PagesPage {
         $params = Util::removeNulls(
             [
                 'id' => $id,

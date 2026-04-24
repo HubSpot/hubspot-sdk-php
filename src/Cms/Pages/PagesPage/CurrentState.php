@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubSpotSDK\Cms\Pages\PageData;
+namespace HubSpotSDK\Cms\Pages\PagesPage;
 
 /**
  * A generated ENUM descibing the current state of this page.

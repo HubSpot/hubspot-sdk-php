@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Crm\Properties;
 
-use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Properties\BatchResponsePropertyWithErrors\Status;
+use HubSpotSDK\Property;
 use HubSpotSDK\StandardError;
 
 /**
- * @phpstan-import-type BasePropertyShape from \HubSpotSDK\BaseProperty
+ * @phpstan-import-type PropertyShape from \HubSpotSDK\Property
  * @phpstan-import-type StandardErrorShape from \HubSpotSDK\StandardError
  *
  * @phpstan-type BatchResponsePropertyWithErrorsShape = array{
  *   completedAt: \DateTimeInterface,
- *   results: list<BaseProperty|BasePropertyShape>,
+ *   results: list<Property|PropertyShape>,
  *   startedAt: \DateTimeInterface,
  *   status: Status|value-of<Status>,
  *   errors?: list<StandardError|StandardErrorShape>|null,
@@ -35,8 +35,8 @@ final class BatchResponsePropertyWithErrors implements BaseModel
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<BaseProperty> $results */
-    #[Required(list: BaseProperty::class)]
+    /** @var list<Property> $results */
+    #[Required(list: Property::class)]
     public array $results;
 
     #[Required]
@@ -90,7 +90,7 @@ final class BatchResponsePropertyWithErrors implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<BaseProperty|BasePropertyShape> $results
+     * @param list<Property|PropertyShape> $results
      * @param Status|value-of<Status> $status
      * @param list<StandardError|StandardErrorShape>|null $errors
      * @param array<string,string>|null $links
@@ -129,7 +129,7 @@ final class BatchResponsePropertyWithErrors implements BaseModel
     }
 
     /**
-     * @param list<BaseProperty|BasePropertyShape> $results
+     * @param list<Property|PropertyShape> $results
      */
     public function withResults(array $results): self
     {
