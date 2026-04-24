@@ -3,7 +3,7 @@
 namespace Tests\Services\Cms\Pages;
 
 use HubSpotSDK\Client;
-use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
@@ -175,7 +175,7 @@ final class WebsitePagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 
     #[Test]
@@ -355,7 +355,7 @@ final class WebsitePagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 
     #[Test]
@@ -505,7 +505,7 @@ final class WebsitePagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 
     #[Test]
@@ -687,7 +687,7 @@ final class WebsitePagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 
     #[Test]
@@ -704,7 +704,7 @@ final class WebsitePagesTest extends TestCase
 
         if ($item = $page->getItems()[0] ?? null) {
             // @phpstan-ignore-next-line method.alreadyNarrowedType
-            $this->assertInstanceOf(PageData::class, $item);
+            $this->assertInstanceOf(PagesPage::class, $item);
         }
     }
 
@@ -731,7 +731,7 @@ final class WebsitePagesTest extends TestCase
         $result = $this->client->cms->pages->websitePages->clone(id: 'id');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 
     #[Test]
@@ -747,7 +747,7 @@ final class WebsitePagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 
     #[Test]
@@ -760,7 +760,7 @@ final class WebsitePagesTest extends TestCase
         $result = $this->client->cms->pages->websitePages->get('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 
     #[Test]
@@ -773,7 +773,7 @@ final class WebsitePagesTest extends TestCase
         $result = $this->client->cms->pages->websitePages->getDraft('objectId');
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 
     #[Test]
@@ -998,7 +998,7 @@ final class WebsitePagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 
     #[Test]
@@ -1179,6 +1179,6 @@ final class WebsitePagesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PageData::class, $result);
+        $this->assertInstanceOf(PagesPage::class, $result);
     }
 }

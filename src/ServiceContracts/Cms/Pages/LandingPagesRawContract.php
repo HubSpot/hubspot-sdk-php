@@ -12,7 +12,7 @@ use HubSpotSDK\Cms\Pages\LandingPages\LandingPageListParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
-use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Page;
@@ -29,7 +29,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -45,7 +45,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -61,7 +61,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Page<PageData>>
+     * @return BaseResponse<Page<PagesPage>>
      *
      * @throws APIException
      */
@@ -93,7 +93,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageCloneParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -109,7 +109,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -125,7 +125,7 @@ interface LandingPagesRawContract
      * @param string $objectID the unique identifier of the landing page whose draft version is to be retrieved
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -186,7 +186,7 @@ interface LandingPagesRawContract
      * @param array<string,mixed>|LandingPageUpdateDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */

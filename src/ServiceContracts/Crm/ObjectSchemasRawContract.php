@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubSpotSDK\BaseAssociationDefinition;
-use HubSpotSDK\BaseObjectTypeDefinition;
+use HubSpotSDK\AssociationDefinition;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
@@ -17,6 +16,7 @@ use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaDeleteParams;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaGetParams;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaListParams;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaUpdateParams;
+use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\RequestOptions;
 
 /**
@@ -45,7 +45,7 @@ interface ObjectSchemasRawContract
      * @param array<string,mixed>|ObjectSchemaUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseObjectTypeDefinition>
+     * @return BaseResponse<ObjectTypeDefinition>
      *
      * @throws APIException
      */
@@ -92,7 +92,7 @@ interface ObjectSchemasRawContract
      * @param array<string,mixed>|ObjectSchemaCreateAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseAssociationDefinition>
+     * @return BaseResponse<AssociationDefinition>
      *
      * @throws APIException
      */

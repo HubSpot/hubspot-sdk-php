@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
@@ -13,6 +12,7 @@ use HubSpotSDK\Crm\Properties\PropertyDeleteParams;
 use HubSpotSDK\Crm\Properties\PropertyGetParams;
 use HubSpotSDK\Crm\Properties\PropertyListParams;
 use HubSpotSDK\Crm\Properties\PropertyUpdateParams;
+use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 
 /**
@@ -26,7 +26,7 @@ interface PropertiesRawContract
      * @param array<string,mixed>|PropertyCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseProperty>
+     * @return BaseResponse<Property>
      *
      * @throws APIException
      */
@@ -43,7 +43,7 @@ interface PropertiesRawContract
      * @param array<string,mixed>|PropertyUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseProperty>
+     * @return BaseResponse<Property>
      *
      * @throws APIException
      */
@@ -92,7 +92,7 @@ interface PropertiesRawContract
      * @param array<string,mixed>|PropertyGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseProperty>
+     * @return BaseResponse<Property>
      *
      * @throws APIException
      */

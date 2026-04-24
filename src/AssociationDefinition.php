@@ -12,7 +12,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 /**
  * The definition of an association.
  *
- * @phpstan-type BaseAssociationDefinitionShape = array{
+ * @phpstan-type AssociationDefinitionShape = array{
  *   id: string,
  *   fromObjectTypeID: string,
  *   toObjectTypeID: string,
@@ -21,9 +21,9 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   updatedAt?: \DateTimeInterface|null,
  * }
  */
-final class BaseAssociationDefinition implements BaseModel
+final class AssociationDefinition implements BaseModel
 {
-    /** @use SdkModel<BaseAssociationDefinitionShape> */
+    /** @use SdkModel<AssociationDefinitionShape> */
     use SdkModel;
 
     /**
@@ -63,19 +63,17 @@ final class BaseAssociationDefinition implements BaseModel
     public ?\DateTimeInterface $updatedAt;
 
     /**
-     * `new BaseAssociationDefinition()` is missing required properties by the API.
+     * `new AssociationDefinition()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * BaseAssociationDefinition::with(
-     *   id: ..., fromObjectTypeID: ..., toObjectTypeID: ...
-     * )
+     * AssociationDefinition::with(id: ..., fromObjectTypeID: ..., toObjectTypeID: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new BaseAssociationDefinition)
+     * (new AssociationDefinition)
      *   ->withID(...)
      *   ->withFromObjectTypeID(...)
      *   ->withToObjectTypeID(...)

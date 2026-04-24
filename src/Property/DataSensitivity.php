@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubSpotSDK\BaseProperty;
+namespace HubSpotSDK\Property;
 
 /**
  * Indicates the sensitivity level of the property, such as "non_sensitive", "sensitive", or "highly_sensitive".
