@@ -10,7 +10,7 @@ use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
-use HubSpotSDK\Cms\Pages\PagesPage;
+use HubSpotSDK\Cms\Pages\PageData;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Page;
@@ -161,7 +161,7 @@ final class LandingPagesService implements LandingPagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             [
                 'id' => $id,
@@ -360,7 +360,7 @@ final class LandingPagesService implements LandingPagesContract
         array $widgets,
         ?bool $archived = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             [
                 'id' => $id,
@@ -448,7 +448,7 @@ final class LandingPagesService implements LandingPagesContract
      * @param \DateTimeInterface $updatedBefore filter landing pages updated before a specific date and time
      * @param RequestOpts|null $requestOptions
      *
-     * @return Page<PagesPage>
+     * @return Page<PageData>
      *
      * @throws APIException
      */
@@ -527,7 +527,7 @@ final class LandingPagesService implements LandingPagesContract
         string $id,
         ?string $cloneName = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(['id' => $id, 'cloneName' => $cloneName]);
 
         // @phpstan-ignore-next-line argument.type
@@ -553,7 +553,7 @@ final class LandingPagesService implements LandingPagesContract
         ?bool $archived = null,
         ?string $property = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             ['archived' => $archived, 'property' => $property]
         );
@@ -577,7 +577,7 @@ final class LandingPagesService implements LandingPagesContract
     public function getDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
-    ): PagesPage {
+    ): PageData {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getDraft($objectID, requestOptions: $requestOptions);
 
@@ -775,7 +775,7 @@ final class LandingPagesService implements LandingPagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): PagesPage {
+    ): PageData {
         $params = Util::removeNulls(
             [
                 'id' => $id,

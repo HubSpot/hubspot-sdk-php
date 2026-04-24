@@ -4,29 +4,29 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Crm\ObjectSchemas;
 
-use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\BaseAssociationDefinition;
+use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
-use HubSpotSDK\Property;
 
 /**
- * @phpstan-import-type AssociationDefinitionShape from \HubSpotSDK\AssociationDefinition
+ * @phpstan-import-type BaseAssociationDefinitionShape from \HubSpotSDK\BaseAssociationDefinition
  * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubSpotSDK\ObjectTypeDefinitionLabels
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Property
+ * @phpstan-import-type BasePropertyShape from \HubSpotSDK\BaseProperty
  *
  * @phpstan-type ObjectSchemaShape = array{
  *   id: string,
  *   allowsSensitiveProperties: bool,
  *   archived: bool,
- *   associations: list<AssociationDefinition|AssociationDefinitionShape>,
+ *   associations: list<BaseAssociationDefinition|BaseAssociationDefinitionShape>,
  *   fullyQualifiedName: string,
  *   labels: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
  *   name: string,
  *   objectTypeID: string,
- *   properties: list<Property|PropertyShape>,
+ *   properties: list<BaseProperty|BasePropertyShape>,
  *   requiredProperties: list<string>,
  *   searchableProperties: list<string>,
  *   secondaryDisplayProperties: list<string>,
@@ -58,9 +58,9 @@ final class ObjectSchema implements BaseModel
     /**
      * Associations defined for a given object type.
      *
-     * @var list<AssociationDefinition> $associations
+     * @var list<BaseAssociationDefinition> $associations
      */
-    #[Required(list: AssociationDefinition::class)]
+    #[Required(list: BaseAssociationDefinition::class)]
     public array $associations;
 
     /**
@@ -84,9 +84,9 @@ final class ObjectSchema implements BaseModel
     /**
      * Properties defined for this object type.
      *
-     * @var list<Property> $properties
+     * @var list<BaseProperty> $properties
      */
-    #[Required(list: Property::class)]
+    #[Required(list: BaseProperty::class)]
     public array $properties;
 
     /**
@@ -189,9 +189,9 @@ final class ObjectSchema implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
+     * @param list<BaseAssociationDefinition|BaseAssociationDefinitionShape> $associations
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
-     * @param list<Property|PropertyShape> $properties
+     * @param list<BaseProperty|BasePropertyShape> $properties
      * @param list<string> $requiredProperties
      * @param list<string> $searchableProperties
      * @param list<string> $secondaryDisplayProperties
@@ -272,7 +272,7 @@ final class ObjectSchema implements BaseModel
     /**
      * Associations defined for a given object type.
      *
-     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
+     * @param list<BaseAssociationDefinition|BaseAssociationDefinitionShape> $associations
      */
     public function withAssociations(array $associations): self
     {
@@ -326,7 +326,7 @@ final class ObjectSchema implements BaseModel
     /**
      * Properties defined for this object type.
      *
-     * @param list<Property|PropertyShape> $properties
+     * @param list<BaseProperty|BasePropertyShape> $properties
      */
     public function withProperties(array $properties): self
     {

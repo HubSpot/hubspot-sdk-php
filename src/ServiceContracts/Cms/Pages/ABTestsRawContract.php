@@ -10,7 +10,7 @@ use HubSpotSDK\Cms\Pages\ABTests\AbTestEndLandingPageTestParams;
 use HubSpotSDK\Cms\Pages\ABTests\AbTestEndSitePageTestParams;
 use HubSpotSDK\Cms\Pages\ABTests\AbTestRerunLandingPageTestParams;
 use HubSpotSDK\Cms\Pages\ABTests\AbTestRerunSitePageTestParams;
-use HubSpotSDK\Cms\Pages\PagesPage;
+use HubSpotSDK\Cms\Pages\PageData;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\RequestOptions;
@@ -26,7 +26,7 @@ interface ABTestsRawContract
      * @param array<string,mixed>|AbTestCreateLandingPageVariationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PagesPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -41,7 +41,7 @@ interface ABTestsRawContract
      * @param array<string,mixed>|AbTestCreateSitePageVariationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PagesPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */

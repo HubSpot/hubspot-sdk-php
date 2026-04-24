@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubSpotSDK\Cms\Pages\PagesPage;
+namespace HubSpotSDK\Cms\Pages\PageData;
 
 /**
  * An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.

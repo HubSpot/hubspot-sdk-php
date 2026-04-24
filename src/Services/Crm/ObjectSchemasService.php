@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Crm;
 
-use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\BaseAssociationDefinition;
+use HubSpotSDK\BaseObjectTypeDefinition;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectSchema;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
-use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\ObjectSchemasContract;
@@ -121,7 +121,7 @@ final class ObjectSchemasService implements ObjectSchemasContract
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
         RequestOptions|array|null $requestOptions = null,
-    ): ObjectTypeDefinition {
+    ): BaseObjectTypeDefinition {
         $params = Util::removeNulls(
             [
                 'clearDescription' => $clearDescription,
@@ -212,7 +212,7 @@ final class ObjectSchemasService implements ObjectSchemasContract
         string $toObjectTypeID,
         ?string $name = null,
         RequestOptions|array|null $requestOptions = null,
-    ): AssociationDefinition {
+    ): BaseAssociationDefinition {
         $params = Util::removeNulls(
             [
                 'fromObjectTypeID' => $fromObjectTypeID,

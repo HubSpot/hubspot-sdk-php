@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Cms;
 
-use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\BaseAssociationDefinition;
+use HubSpotSDK\BaseObjectTypeDefinition;
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
@@ -33,7 +34,6 @@ use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
 use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\PropertyGroup;
@@ -90,7 +90,7 @@ final class MediaBridgeService implements MediaBridgeContract
         string $toObjectTypeID,
         ?string $name = null,
         RequestOptions|array|null $requestOptions = null,
-    ): AssociationDefinition {
+    ): BaseAssociationDefinition {
         $params = Util::removeNulls(
             [
                 'appID' => $appID,
@@ -458,7 +458,7 @@ final class MediaBridgeService implements MediaBridgeContract
     public function createVideoAssociationDefinition(
         int $appID,
         RequestOptions|array|null $requestOptions = null
-    ): AssociationDefinition {
+    ): BaseAssociationDefinition {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createVideoAssociationDefinition($appID, requestOptions: $requestOptions);
 
@@ -1057,7 +1057,7 @@ final class MediaBridgeService implements MediaBridgeContract
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
         RequestOptions|array|null $requestOptions = null,
-    ): ObjectTypeDefinition {
+    ): BaseObjectTypeDefinition {
         $params = Util::removeNulls(
             [
                 'appID' => $appID,

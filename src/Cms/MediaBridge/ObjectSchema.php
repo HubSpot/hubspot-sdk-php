@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubSpotSDK\AssociationDefinition;
+use HubSpotSDK\BaseAssociationDefinition;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
@@ -12,7 +12,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
 
 /**
- * @phpstan-import-type AssociationDefinitionShape from \HubSpotSDK\AssociationDefinition
+ * @phpstan-import-type BaseAssociationDefinitionShape from \HubSpotSDK\BaseAssociationDefinition
  * @phpstan-import-type ObjectTypeDefinitionLabelsShape from \HubSpotSDK\ObjectTypeDefinitionLabels
  * @phpstan-import-type Property1Shape from \HubSpotSDK\Cms\MediaBridge\Property1
  *
@@ -20,7 +20,7 @@ use HubSpotSDK\ObjectTypeDefinitionLabels;
  *   id: string,
  *   allowsSensitiveProperties: bool,
  *   archived: bool,
- *   associations: list<AssociationDefinition|AssociationDefinitionShape>,
+ *   associations: list<BaseAssociationDefinition|BaseAssociationDefinitionShape>,
  *   fullyQualifiedName: string,
  *   labels: ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape,
  *   name: string,
@@ -51,8 +51,8 @@ final class ObjectSchema implements BaseModel
     #[Required]
     public bool $archived;
 
-    /** @var list<AssociationDefinition> $associations */
-    #[Required(list: AssociationDefinition::class)]
+    /** @var list<BaseAssociationDefinition> $associations */
+    #[Required(list: BaseAssociationDefinition::class)]
     public array $associations;
 
     #[Required]
@@ -150,7 +150,7 @@ final class ObjectSchema implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
+     * @param list<BaseAssociationDefinition|BaseAssociationDefinitionShape> $associations
      * @param ObjectTypeDefinitionLabels|ObjectTypeDefinitionLabelsShape $labels
      * @param list<Property1|Property1Shape> $properties
      * @param list<string> $requiredProperties
@@ -228,7 +228,7 @@ final class ObjectSchema implements BaseModel
     }
 
     /**
-     * @param list<AssociationDefinition|AssociationDefinitionShape> $associations
+     * @param list<BaseAssociationDefinition|BaseAssociationDefinitionShape> $associations
      */
     public function withAssociations(array $associations): self
     {

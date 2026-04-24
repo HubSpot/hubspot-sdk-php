@@ -6,7 +6,7 @@ namespace HubSpotSDK\Services\Cms\Pages;
 
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\ContentLanguageVariation;
-use HubSpotSDK\Cms\Pages\PagesPage;
+use HubSpotSDK\Cms\Pages\PageData;
 use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCloneParams;
 use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams;
 use HubSpotSDK\Cms\Pages\WebsitePages\WebsitePageCreateParams\AbStatus;
@@ -104,7 +104,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
      * }|WebsitePageCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PagesPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -124,7 +124,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: PagesPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -196,7 +196,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
      * }|WebsitePageUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PagesPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -219,7 +219,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: PagesPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -243,7 +243,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
      * }|WebsitePageListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Page<PagesPage>>
+     * @return BaseResponse<Page<PageData>>
      *
      * @throws APIException
      */
@@ -262,7 +262,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
             path: 'cms/pages/2026-03/site-pages',
             query: $parsed,
             options: $options,
-            convert: PagesPage::class,
+            convert: PageData::class,
             page: Page::class,
         );
     }
@@ -307,7 +307,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
      * @param array{id: string, cloneName?: string}|WebsitePageCloneParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PagesPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -327,7 +327,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: PagesPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -340,7 +340,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
      * @param array{archived?: bool, property?: string}|WebsitePageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PagesPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -360,7 +360,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
             path: ['cms/pages/2026-03/site-pages/%1$s', $objectID],
             query: $parsed,
             options: $options,
-            convert: PagesPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -371,7 +371,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PagesPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -384,7 +384,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
             method: 'get',
             path: ['cms/pages/2026-03/site-pages/%1$s/draft', $objectID],
             options: $requestOptions,
-            convert: PagesPage::class,
+            convert: PageData::class,
         );
     }
 
@@ -544,7 +544,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
      * }|WebsitePageUpdateDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PagesPage>
+     * @return BaseResponse<PageData>
      *
      * @throws APIException
      */
@@ -565,7 +565,7 @@ final class WebsitePagesRawService implements WebsitePagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: PagesPage::class,
+            convert: PageData::class,
         );
     }
 }

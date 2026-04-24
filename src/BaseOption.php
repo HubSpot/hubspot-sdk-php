@@ -12,7 +12,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 /**
  * A HubSpot property option.
  *
- * @phpstan-type OptionShape = array{
+ * @phpstan-type BaseOptionShape = array{
  *   hidden: bool,
  *   label: string,
  *   value: string,
@@ -20,9 +20,9 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   displayOrder?: int|null,
  * }
  */
-final class Option implements BaseModel
+final class BaseOption implements BaseModel
 {
-    /** @use SdkModel<OptionShape> */
+    /** @use SdkModel<BaseOptionShape> */
     use SdkModel;
 
     /**
@@ -56,17 +56,17 @@ final class Option implements BaseModel
     public ?int $displayOrder;
 
     /**
-     * `new Option()` is missing required properties by the API.
+     * `new BaseOption()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * Option::with(hidden: ..., label: ..., value: ...)
+     * BaseOption::with(hidden: ..., label: ..., value: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new Option)->withHidden(...)->withLabel(...)->withValue(...)
+     * (new BaseOption)->withHidden(...)->withLabel(...)->withValue(...)
      * ```
      */
     public function __construct()

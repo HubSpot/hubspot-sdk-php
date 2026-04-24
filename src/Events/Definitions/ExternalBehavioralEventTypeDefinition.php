@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Events\Definitions;
 
+use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition\TrackingType;
-use HubSpotSDK\Property;
 
 /**
  * @phpstan-import-type DefinitionsAssociationDefinitionShape from \HubSpotSDK\Events\Definitions\DefinitionsAssociationDefinition
  * @phpstan-import-type BehavioralEventTypeDefinitionLabelsShape from \HubSpotSDK\Events\Definitions\BehavioralEventTypeDefinitionLabels
- * @phpstan-import-type PropertyShape from \HubSpotSDK\Property
+ * @phpstan-import-type BasePropertyShape from \HubSpotSDK\BaseProperty
  * @phpstan-import-type ComboEventRuleBranchShape from \HubSpotSDK\Events\Definitions\ComboEventRuleBranch
  * @phpstan-import-type ExternalObjectResolutionMappingResponseShape from \HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingResponse
  *
@@ -26,7 +26,7 @@ use HubSpotSDK\Property;
  *   labels: BehavioralEventTypeDefinitionLabels|BehavioralEventTypeDefinitionLabelsShape,
  *   name: string,
  *   objectTypeID: string,
- *   properties: list<Property|PropertyShape>,
+ *   properties: list<BaseProperty|BasePropertyShape>,
  *   comboEventRules?: null|ComboEventRuleBranch|ComboEventRuleBranchShape,
  *   createdAt?: \DateTimeInterface|null,
  *   createdUserID?: int|null,
@@ -68,8 +68,8 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     #[Required('objectTypeId')]
     public string $objectTypeID;
 
-    /** @var list<Property> $properties */
-    #[Required(list: Property::class)]
+    /** @var list<BaseProperty> $properties */
+    #[Required(list: BaseProperty::class)]
     public array $properties;
 
     #[Optional]
@@ -152,7 +152,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
      *
      * @param list<DefinitionsAssociationDefinition|DefinitionsAssociationDefinitionShape> $associations
      * @param BehavioralEventTypeDefinitionLabels|BehavioralEventTypeDefinitionLabelsShape $labels
-     * @param list<Property|PropertyShape> $properties
+     * @param list<BaseProperty|BasePropertyShape> $properties
      * @param ComboEventRuleBranch|ComboEventRuleBranchShape|null $comboEventRules
      * @param ExternalObjectResolutionMappingResponse|ExternalObjectResolutionMappingResponseShape|null $customMatchingID
      * @param TrackingType|value-of<TrackingType>|null $trackingType
@@ -270,7 +270,7 @@ final class ExternalBehavioralEventTypeDefinition implements BaseModel
     }
 
     /**
-     * @param list<Property|PropertyShape> $properties
+     * @param list<BaseProperty|BasePropertyShape> $properties
      */
     public function withProperties(array $properties): self
     {
