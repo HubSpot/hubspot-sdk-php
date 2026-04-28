@@ -1,6 +1,6 @@
 # HubSpot PHP API library
 
-The HubSpot PHP library provides convenient access to HubSpot's date-versioned REST API (`2026-03` release) from any PHP 8.1.0+ application.
+The HubSpot PHP library provides convenient access to the HubSpot REST API from any PHP 8.1.0+ application.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
