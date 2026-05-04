@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2026-05-01)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** manual updates ([6b9c325](https://github.com/HubSpot/hubspot-sdk-php/commit/6b9c3252964ec4c73aa094b0ba5af3b895478b2e))
+* **api:** manual updates ([9d40428](https://github.com/HubSpot/hubspot-sdk-php/commit/9d40428eb4ed1dd767bd4286887880ba8fb98972))
+* support setting headers via env ([2952fa1](https://github.com/HubSpot/hubspot-sdk-php/commit/2952fa19397d8f4343fbef504ea90aab6256b271))
+
+
+### Bug Fixes
+
+* revert enum parsing change that lead to unconditional failure ([eaa2987](https://github.com/HubSpot/hubspot-sdk-php/commit/eaa298761b4fc61bc645596c75b57c2cc9f1c3a9))
+
+
+### Chores
+
+* remove custom code ([64956be](https://github.com/HubSpot/hubspot-sdk-php/commit/64956be38f085c03e4ff7973c3a883f3925870c0))
+
 ## 0.1.0-alpha.4 (2026-04-23)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
