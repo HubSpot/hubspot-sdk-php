@@ -81,7 +81,7 @@ final class CardsDevRawService implements CardsDevRawContract
      *
      * Update a card definition with new details.
      *
-     * @param string $cardID Path param
+     * @param string $cardID Path param: The id of the Legacy CRM Card
      * @param array{
      *   appID: int,
      *   actions?: CardActions|CardActionsShape,
@@ -122,6 +122,7 @@ final class CardsDevRawService implements CardsDevRawContract
      *
      * Permanently deletes a card definition with the given ID. Once deleted, data fetch requests for this card will no longer be sent to your service. This can't be undone.
      *
+     * @param string $cardID The id of the Legacy CRM Card
      * @param array{appID: int}|CardsDevDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -180,6 +181,7 @@ final class CardsDevRawService implements CardsDevRawContract
      *
      * Returns the definition for a card with the given ID.
      *
+     * @param string $cardID The id of the Legacy CRM Card
      * @param array{appID: int}|CardsDevGetByIDParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -233,6 +235,8 @@ final class CardsDevRawService implements CardsDevRawContract
 
     /**
      * @api
+     *
+     * Swaps a Legacy CRM Card with an App Card in views. Reference the "Migrate a legacy CRM card to an app card" docs for more information
      *
      * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param array{

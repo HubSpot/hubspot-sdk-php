@@ -2,12 +2,12 @@
 
 namespace Tests\Services\Crm;
 
-use HubSpotSDK\BaseAssociationDefinition;
-use HubSpotSDK\BaseObjectTypeDefinition;
+use HubSpotSDK\AssociationDefinition;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectSchema;
+use HubSpotSDK\ObjectTypeDefinition;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -126,7 +126,7 @@ final class ObjectSchemasTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseObjectTypeDefinition::class, $result);
+        $this->assertInstanceOf(ObjectTypeDefinition::class, $result);
     }
 
     #[Test]
@@ -150,7 +150,7 @@ final class ObjectSchemasTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseObjectTypeDefinition::class, $result);
+        $this->assertInstanceOf(ObjectTypeDefinition::class, $result);
     }
 
     #[Test]
@@ -196,7 +196,7 @@ final class ObjectSchemasTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseAssociationDefinition::class, $result);
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
     }
 
     #[Test]
@@ -214,7 +214,7 @@ final class ObjectSchemasTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseAssociationDefinition::class, $result);
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
     }
 
     #[Test]

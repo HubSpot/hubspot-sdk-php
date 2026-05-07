@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Crm;
 
-use HubSpotSDK\BaseAssociationDefinition;
-use HubSpotSDK\BaseObjectTypeDefinition;
+use HubSpotSDK\AssociationDefinition;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
@@ -19,6 +18,7 @@ use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaGetParams;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaListParams;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectSchemaUpdateParams;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
+use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\ObjectSchemasRawContract;
@@ -96,7 +96,7 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
      * }|ObjectSchemaUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseObjectTypeDefinition>
+     * @return BaseResponse<ObjectTypeDefinition>
      *
      * @throws APIException
      */
@@ -116,7 +116,7 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
             path: ['crm-object-schemas/2026-03/schemas/%1$s', $objectType],
             body: (object) $parsed,
             options: $options,
-            convert: BaseObjectTypeDefinition::class,
+            convert: ObjectTypeDefinition::class,
         );
     }
 
@@ -198,7 +198,7 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
      * }|ObjectSchemaCreateAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseAssociationDefinition>
+     * @return BaseResponse<AssociationDefinition>
      *
      * @throws APIException
      */
@@ -220,7 +220,7 @@ final class ObjectSchemasRawService implements ObjectSchemasRawContract
             ],
             body: (object) $parsed,
             options: $options,
-            convert: BaseAssociationDefinition::class,
+            convert: AssociationDefinition::class,
         );
     }
 

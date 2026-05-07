@@ -35,6 +35,8 @@ final class BudgetService implements BudgetContract
      *
      * Add a new budget item to the campaign
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param float $amount the monetary value assigned to the budget item
      * @param string $name the name of the budget item
      * @param int $order the sequence number indicating the order of the budget item
@@ -71,8 +73,9 @@ final class BudgetService implements BudgetContract
      *
      * Update a specific budget item by ID
      *
-     * @param int $budgetID Path param
-     * @param string $campaignGuid Path param
+     * @param int $budgetID Path param: The ID of the budget item, required. Example: 352
+     * @param string $campaignGuid Path param: The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param float $amount body param: The monetary value assigned to the budget item
      * @param string $name body param: The name of the budget item
      * @param int $order body param: The sequence number indicating the order of the budget item
@@ -111,6 +114,9 @@ final class BudgetService implements BudgetContract
      *
      * Delete a specific budget item by ID
      *
+     * @param int $budgetID The ID of the budget item, required. Example: 352
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -133,6 +139,9 @@ final class BudgetService implements BudgetContract
      *
      * Get a specific budget item by ID
      *
+     * @param int $budgetID The ID of the budget item, required. Example: 352
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -156,6 +165,8 @@ final class BudgetService implements BudgetContract
      * Retrieve detailed information about the budget and spend items for a specified campaign, including the total budget, total spend, and remaining budget.
      * Budget and Spend items may be returned in any order, but the order field specifies their sequence based on the creation date. The item with order 0 is the oldest, and items with higher order values are newer
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

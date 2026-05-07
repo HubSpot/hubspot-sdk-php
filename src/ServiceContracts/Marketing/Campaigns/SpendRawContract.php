@@ -21,6 +21,8 @@ interface SpendRawContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array<string,mixed>|SpendCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -37,7 +39,7 @@ interface SpendRawContract
     /**
      * @api
      *
-     * @param int $spendID Path param
+     * @param int $spendID Path param: The ID of the spend item, required. Example: 491
      * @param array<string,mixed>|SpendUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -54,6 +56,7 @@ interface SpendRawContract
     /**
      * @api
      *
+     * @param int $spendID The ID of the spend item, required. Example: 491
      * @param array<string,mixed>|SpendDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -70,6 +73,7 @@ interface SpendRawContract
     /**
      * @api
      *
+     * @param int $spendID The ID of the spend item, required. Example: 491
      * @param array<string,mixed>|SpendGetParams $params
      * @param RequestOpts|null $requestOptions
      *

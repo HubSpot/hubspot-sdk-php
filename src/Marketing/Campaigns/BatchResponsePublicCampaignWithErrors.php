@@ -37,7 +37,11 @@ final class BatchResponsePublicCampaignWithErrors implements BaseModel
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<PublicCampaign> $results */
+    /**
+     * The list of successfully created or updated campaigns.
+     *
+     * @var list<PublicCampaign> $results
+     */
     #[Required(list: PublicCampaign::class)]
     public array $results;
 
@@ -55,7 +59,11 @@ final class BatchResponsePublicCampaignWithErrors implements BaseModel
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
+    /**
+     * The list of errors for individual campaign operations that failed within the batch. Only included when non-empty.
+     *
+     * @var list<StandardError>|null $errors
+     */
     #[Optional(list: StandardError::class)]
     public ?array $errors;
 
@@ -151,6 +159,8 @@ final class BatchResponsePublicCampaignWithErrors implements BaseModel
     }
 
     /**
+     * The list of successfully created or updated campaigns.
+     *
      * @param list<PublicCampaign|PublicCampaignShape> $results
      */
     public function withResults(array $results): self
@@ -186,6 +196,8 @@ final class BatchResponsePublicCampaignWithErrors implements BaseModel
     }
 
     /**
+     * The list of errors for individual campaign operations that failed within the batch. Only included when non-empty.
+     *
      * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self

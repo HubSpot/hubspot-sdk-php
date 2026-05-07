@@ -16,6 +16,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @phpstan-type ChirpAIContextObjectShape = array{
  *   applicationGroup: string,
  *   applicationID: string,
+ *   isPrivate: bool,
  *   metadata: array<string,string>,
  *   otelContextHolder: array<string,string>,
  *   unstructuredSources: list<UnstructuredSource|value-of<UnstructuredSource>>,
@@ -42,6 +43,9 @@ final class ChirpAIContextObject implements BaseModel
      */
     #[Required('applicationId')]
     public string $applicationID;
+
+    #[Required]
+    public bool $isPrivate;
 
     /**
      * Additional metadata related to the context, represented as key-value pairs.
@@ -95,6 +99,7 @@ final class ChirpAIContextObject implements BaseModel
      * ChirpAIContextObject::with(
      *   applicationGroup: ...,
      *   applicationID: ...,
+     *   isPrivate: ...,
      *   metadata: ...,
      *   otelContextHolder: ...,
      *   unstructuredSources: ...,
@@ -107,6 +112,7 @@ final class ChirpAIContextObject implements BaseModel
      * (new ChirpAIContextObject)
      *   ->withApplicationGroup(...)
      *   ->withApplicationID(...)
+     *   ->withIsPrivate(...)
      *   ->withMetadata(...)
      *   ->withOtelContextHolder(...)
      *   ->withUnstructuredSources(...)
@@ -130,6 +136,7 @@ final class ChirpAIContextObject implements BaseModel
     public static function with(
         string $applicationGroup,
         string $applicationID,
+        bool $isPrivate,
         array $metadata,
         array $otelContextHolder,
         array $unstructuredSources,
@@ -143,6 +150,7 @@ final class ChirpAIContextObject implements BaseModel
 
         $self['applicationGroup'] = $applicationGroup;
         $self['applicationID'] = $applicationID;
+        $self['isPrivate'] = $isPrivate;
         $self['metadata'] = $metadata;
         $self['otelContextHolder'] = $otelContextHolder;
         $self['unstructuredSources'] = $unstructuredSources;
@@ -174,6 +182,14 @@ final class ChirpAIContextObject implements BaseModel
     {
         $self = clone $this;
         $self['applicationID'] = $applicationID;
+
+        return $self;
+    }
+
+    public function withIsPrivate(bool $isPrivate): self
+    {
+        $self = clone $this;
+        $self['isPrivate'] = $isPrivate;
 
         return $self;
     }

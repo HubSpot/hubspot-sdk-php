@@ -7,7 +7,6 @@ namespace HubSpotSDK\Conversations\CustomChannels\Messages;
 use HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant;
 use HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment;
 use HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\MessageDirection;
-use HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
@@ -22,7 +21,6 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type AttachmentVariants from \HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
  * @phpstan-import-type AttachmentShape from \HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
  * @phpstan-import-type ChannelIntegrationParticipantShape from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
- * @phpstan-import-type PreResolvedContactsShape from \HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts
  *
  * @phpstan-type MessageCreateParamsShape = array{
  *   attachments: list<AttachmentShape>,
@@ -36,7 +34,6 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   inReplyToID?: string|null,
  *   integrationIdempotencyID?: string|null,
  *   integrationThreadID?: string|null,
- *   preResolvedContacts?: null|PreResolvedContacts|PreResolvedContactsShape,
  *   richText?: string|null,
  * }
  */
@@ -84,9 +81,6 @@ final class MessageCreateParams implements BaseModel
     public ?string $integrationThreadID;
 
     #[Optional]
-    public ?PreResolvedContacts $preResolvedContacts;
-
-    #[Optional]
     public ?string $richText;
 
     /**
@@ -132,7 +126,6 @@ final class MessageCreateParams implements BaseModel
      * @param MessageDirection|value-of<MessageDirection> $messageDirection
      * @param list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape> $recipients
      * @param list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape> $senders
-     * @param PreResolvedContacts|PreResolvedContactsShape|null $preResolvedContacts
      */
     public static function with(
         array $attachments,
@@ -146,7 +139,6 @@ final class MessageCreateParams implements BaseModel
         ?string $inReplyToID = null,
         ?string $integrationIdempotencyID = null,
         ?string $integrationThreadID = null,
-        PreResolvedContacts|array|null $preResolvedContacts = null,
         ?string $richText = null,
     ): self {
         $self = new self;
@@ -163,7 +155,6 @@ final class MessageCreateParams implements BaseModel
         null !== $inReplyToID && $self['inReplyToID'] = $inReplyToID;
         null !== $integrationIdempotencyID && $self['integrationIdempotencyID'] = $integrationIdempotencyID;
         null !== $integrationThreadID && $self['integrationThreadID'] = $integrationThreadID;
-        null !== $preResolvedContacts && $self['preResolvedContacts'] = $preResolvedContacts;
         null !== $richText && $self['richText'] = $richText;
 
         return $self;
@@ -268,18 +259,6 @@ final class MessageCreateParams implements BaseModel
     {
         $self = clone $this;
         $self['integrationThreadID'] = $integrationThreadID;
-
-        return $self;
-    }
-
-    /**
-     * @param PreResolvedContacts|PreResolvedContactsShape $preResolvedContacts
-     */
-    public function withPreResolvedContacts(
-        PreResolvedContacts|array $preResolvedContacts
-    ): self {
-        $self = clone $this;
-        $self['preResolvedContacts'] = $preResolvedContacts;
 
         return $self;
     }

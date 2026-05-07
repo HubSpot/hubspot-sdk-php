@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Events;
 
-use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
@@ -21,6 +20,7 @@ use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
 use HubSpotSDK\Events\Definitions\ExternalObjectResolutionMappingRequest;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\Page;
+use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Events\DefinitionsRawContract;
 
@@ -188,7 +188,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      * }|DefinitionCreatePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseProperty>
+     * @return BaseResponse<Property>
      *
      * @throws APIException
      */
@@ -208,7 +208,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
             path: ['events/2026-03/event-definitions/%1$s/property', $eventName],
             body: (object) $parsed,
             options: $options,
-            convert: BaseProperty::class,
+            convert: Property::class,
         );
     }
 
@@ -320,7 +320,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
      * }|DefinitionUpdatePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseProperty>
+     * @return BaseResponse<Property>
      *
      * @throws APIException
      */
@@ -346,7 +346,7 @@ final class DefinitionsRawService implements DefinitionsRawContract
             ],
             body: (object) array_diff_key($parsed, array_flip(['eventName'])),
             options: $options,
-            convert: BaseProperty::class,
+            convert: Property::class,
         );
     }
 }

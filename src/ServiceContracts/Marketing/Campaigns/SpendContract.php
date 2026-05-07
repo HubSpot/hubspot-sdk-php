@@ -16,6 +16,8 @@ interface SpendContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param float $amount the monetary value of the spend item
      * @param string $name the name of the spend item
      * @param int $order the sequence number indicating the order of the spend item
@@ -36,8 +38,9 @@ interface SpendContract
     /**
      * @api
      *
-     * @param int $spendID Path param
-     * @param string $campaignGuid Path param
+     * @param int $spendID Path param: The ID of the spend item, required. Example: 491
+     * @param string $campaignGuid Path param: The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param float $amount body param: The monetary value of the spend item
      * @param string $name body param: The name of the spend item
      * @param int $order body param: The sequence number indicating the order of the spend item
@@ -59,6 +62,9 @@ interface SpendContract
     /**
      * @api
      *
+     * @param int $spendID The ID of the spend item, required. Example: 491
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -72,6 +78,9 @@ interface SpendContract
     /**
      * @api
      *
+     * @param int $spendID The ID of the spend item, required. Example: 491
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

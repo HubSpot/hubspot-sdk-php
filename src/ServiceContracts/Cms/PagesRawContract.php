@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Cms;
 
-use HubSpotSDK\Cms\Pages\PageData;
 use HubSpotSDK\Cms\Pages\PageGetLandingPageRevisionParams;
 use HubSpotSDK\Cms\Pages\PageGetSitePageRevisionParams;
 use HubSpotSDK\Cms\Pages\PageListLandingPageRevisionsParams;
@@ -13,6 +12,7 @@ use HubSpotSDK\Cms\Pages\PageRestoreLandingPageRevisionParams;
 use HubSpotSDK\Cms\Pages\PageRestoreLandingPageRevisionToDraftParams;
 use HubSpotSDK\Cms\Pages\PageRestoreSitePageRevisionParams;
 use HubSpotSDK\Cms\Pages\PageRestoreSitePageRevisionToDraftParams;
+use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Cms\Pages\PageVersion;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
@@ -109,7 +109,7 @@ interface PagesRawContract
      * @param array<string,mixed>|PageRestoreLandingPageRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -125,7 +125,7 @@ interface PagesRawContract
      * @param array<string,mixed>|PageRestoreLandingPageRevisionToDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -141,7 +141,7 @@ interface PagesRawContract
      * @param array<string,mixed>|PageRestoreSitePageRevisionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -157,7 +157,7 @@ interface PagesRawContract
      * @param array<string,mixed>|PageRestoreSitePageRevisionToDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */

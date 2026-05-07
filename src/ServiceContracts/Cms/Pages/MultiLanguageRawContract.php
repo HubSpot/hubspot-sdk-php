@@ -9,7 +9,7 @@ use HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageCreateLanguageVariationParam
 use HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageDetachFromLangGroupParams;
 use HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageSetNewLangPrimaryParams;
 use HubSpotSDK\Cms\Pages\MultiLanguage\MultiLanguageUpdateLanguagesParams;
-use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\RequestOptions;
@@ -40,7 +40,7 @@ interface MultiLanguageRawContract
      * @param array<string,mixed>|MultiLanguageCreateLanguageVariationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubSpotSDK\Cms\MediaBridge\IfString\Input;
 use HubSpotSDK\Cms\MediaBridge\IfString\Operator;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
@@ -41,7 +40,7 @@ final class IfString implements BaseModel
     public mixed $elseExpression;
 
     /** @var list<mixed>|null $inputs */
-    #[Optional(list: Input::class)]
+    #[Optional(list: 'mixed')]
     public ?array $inputs;
 
     #[Optional]

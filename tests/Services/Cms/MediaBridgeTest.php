@@ -2,8 +2,7 @@
 
 namespace Tests\Services\Cms;
 
-use HubSpotSDK\BaseAssociationDefinition;
-use HubSpotSDK\BaseObjectTypeDefinition;
+use HubSpotSDK\AssociationDefinition;
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
 use HubSpotSDK\Cms\MediaBridge\BulkIntegratorObjectCreationResponse;
@@ -21,6 +20,7 @@ use HubSpotSDK\Cms\MediaBridge\ObjectSchema;
 use HubSpotSDK\Cms\MediaBridge\OEmbedDomainsCollectionResponse;
 use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
 use HubSpotSDK\Core\Util;
+use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\PropertyGroup;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -60,7 +60,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseAssociationDefinition::class, $result);
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
     }
 
     #[Test]
@@ -79,7 +79,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseAssociationDefinition::class, $result);
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
     }
 
     #[Test]
@@ -409,7 +409,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseAssociationDefinition::class, $result);
+        $this->assertInstanceOf(AssociationDefinition::class, $result);
     }
 
     #[Test]
@@ -1024,7 +1024,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseObjectTypeDefinition::class, $result);
+        $this->assertInstanceOf(ObjectTypeDefinition::class, $result);
     }
 
     #[Test]
@@ -1049,7 +1049,7 @@ final class MediaBridgeTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseObjectTypeDefinition::class, $result);
+        $this->assertInstanceOf(ObjectTypeDefinition::class, $result);
     }
 
     #[Test]
