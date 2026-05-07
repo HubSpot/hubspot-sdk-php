@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Crm;
 
-use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
@@ -14,6 +13,7 @@ use HubSpotSDK\Crm\Properties\PropertyCreateParams\FieldType;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\NumberDisplayHint;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\Type;
 use HubSpotSDK\OptionInput;
+use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\PropertiesContract;
 use HubSpotSDK\Services\Crm\Properties\BatchService;
@@ -85,7 +85,7 @@ final class PropertiesService implements PropertiesContract
         ?string $referencedObjectType = null,
         ?bool $showCurrencySymbol = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseProperty {
+    ): Property {
         $params = Util::removeNulls(
             [
                 'fieldType' => $fieldType,
@@ -156,7 +156,7 @@ final class PropertiesService implements PropertiesContract
         ?bool $showCurrencySymbol = null,
         \HubSpotSDK\Crm\Properties\PropertyUpdateParams\Type|string|null $type = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseProperty {
+    ): Property {
         $params = Util::removeNulls(
             [
                 'objectType' => $objectType,
@@ -261,7 +261,7 @@ final class PropertiesService implements PropertiesContract
         ?string $locale = null,
         ?string $properties = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseProperty {
+    ): Property {
         $params = Util::removeNulls(
             [
                 'objectType' => $objectType,

@@ -37,7 +37,11 @@ final class BatchResponsePublicCampaignWithAssetsWithErrors implements BaseModel
     #[Required]
     public \DateTimeInterface $completedAt;
 
-    /** @var list<PublicCampaignWithAssets> $results */
+    /**
+     * The list of successfully retrieved campaigns with their associated assets.
+     *
+     * @var list<PublicCampaignWithAssets> $results
+     */
     #[Required(list: PublicCampaignWithAssets::class)]
     public array $results;
 
@@ -55,7 +59,11 @@ final class BatchResponsePublicCampaignWithAssetsWithErrors implements BaseModel
     #[Required(enum: Status::class)]
     public string $status;
 
-    /** @var list<StandardError>|null $errors */
+    /**
+     * The list of errors for individual campaign reads that failed within the batch (e.g., campaign not found, permission denied). Only included when non-empty.
+     *
+     * @var list<StandardError>|null $errors
+     */
     #[Optional(list: StandardError::class)]
     public ?array $errors;
 
@@ -151,6 +159,8 @@ final class BatchResponsePublicCampaignWithAssetsWithErrors implements BaseModel
     }
 
     /**
+     * The list of successfully retrieved campaigns with their associated assets.
+     *
      * @param list<PublicCampaignWithAssets|PublicCampaignWithAssetsShape> $results
      */
     public function withResults(array $results): self
@@ -186,6 +196,8 @@ final class BatchResponsePublicCampaignWithAssetsWithErrors implements BaseModel
     }
 
     /**
+     * The list of errors for individual campaign reads that failed within the batch (e.g., campaign not found, permission denied). Only included when non-empty.
+     *
      * @param list<StandardError|StandardErrorShape> $errors
      */
     public function withErrors(array $errors): self

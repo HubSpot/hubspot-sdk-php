@@ -38,6 +38,10 @@ final class MetricsService implements MetricsContract
      * This endpoint retrieves key attribution metrics for a specified campaign, such as sessions, new contacts, and influenced contacts.
      *
      * @param string $campaignGuid The unique identifier of the campaign
+     * @param string $endDate The end date for fetching attribution data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27
+     * @param string $startDate The start date for fetching attribution data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -64,6 +68,7 @@ final class MetricsService implements MetricsContract
      * Fetch revenue attribution report data for a specified campaign
      *
      * @param string $campaignGuid The unique identifier of the campaign
+     * @param string $attributionModel The revenue attribution model used to calculate deal revenue credit. Defaults to LINEAR if not specified. Enum values: LINEAR,            FIRST_INTERACTION, LAST_INTERACTION, FULL_PATH, U_SHAPED, W_SHAPED,          TIME_DECAY, J_SHAPED, INVERSE_J_SHAPED
      * @param string $endDate End date to fetch attribution data, YYYY-MM-DD
      * @param string $startDate Start date to fetch attribution data, YYYY-MM-DD
      * @param RequestOpts|null $requestOptions
@@ -99,9 +104,11 @@ final class MetricsService implements MetricsContract
      * @param string $contactType Path param: The type of contact to filter the list
      * @param string $campaignGuid Path param: The unique identifier of the campaign
      * @param string $after Query param: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param string $endDate Query param
+     * @param string $endDate Query param: The end date for fetching contact data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27
      * @param int $limit query param: The maximum number of results to display per page
-     * @param string $startDate Query param
+     * @param string $startDate Query param: The start date for fetching contact data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<ContactReference>

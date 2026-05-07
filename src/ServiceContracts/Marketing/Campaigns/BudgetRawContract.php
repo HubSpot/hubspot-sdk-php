@@ -22,6 +22,8 @@ interface BudgetRawContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array<string,mixed>|BudgetCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -38,7 +40,7 @@ interface BudgetRawContract
     /**
      * @api
      *
-     * @param int $budgetID Path param
+     * @param int $budgetID Path param: The ID of the budget item, required. Example: 352
      * @param array<string,mixed>|BudgetUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -55,6 +57,7 @@ interface BudgetRawContract
     /**
      * @api
      *
+     * @param int $budgetID The ID of the budget item, required. Example: 352
      * @param array<string,mixed>|BudgetDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -71,6 +74,7 @@ interface BudgetRawContract
     /**
      * @api
      *
+     * @param int $budgetID The ID of the budget item, required. Example: 352
      * @param array<string,mixed>|BudgetGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -87,6 +91,8 @@ interface BudgetRawContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetTotals>

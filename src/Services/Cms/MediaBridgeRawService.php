@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Cms;
 
-use HubSpotSDK\BaseAssociationDefinition;
-use HubSpotSDK\BaseObjectTypeDefinition;
+use HubSpotSDK\AssociationDefinition;
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanCalculatedValues;
 use HubSpotSDK\Cms\MediaBridge\AttentionSpanEvent;
@@ -63,6 +62,7 @@ use HubSpotSDK\CollectionResponsePropertyGroupNoPaging;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
+use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\PropertyGroup;
@@ -95,7 +95,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeCreateAssociationParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseAssociationDefinition>
+     * @return BaseResponse<AssociationDefinition>
      *
      * @throws APIException
      */
@@ -121,7 +121,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
             ],
             body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
-            convert: BaseAssociationDefinition::class,
+            convert: AssociationDefinition::class,
         );
     }
 
@@ -436,7 +436,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseAssociationDefinition>
+     * @return BaseResponse<AssociationDefinition>
      *
      * @throws APIException
      */
@@ -452,7 +452,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
                 $appID,
             ],
             options: $requestOptions,
-            convert: BaseAssociationDefinition::class,
+            convert: AssociationDefinition::class,
         );
     }
 
@@ -1226,7 +1226,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
      * }|MediaBridgeUpdateSchemaParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseObjectTypeDefinition>
+     * @return BaseResponse<ObjectTypeDefinition>
      *
      * @throws APIException
      */
@@ -1248,7 +1248,7 @@ final class MediaBridgeRawService implements MediaBridgeRawContract
             path: ['media-bridge/2026-03/%1$s/schemas/%2$s', $appID, $objectType],
             body: (object) array_diff_key($parsed, array_flip(['appID'])),
             options: $options,
-            convert: BaseObjectTypeDefinition::class,
+            convert: ObjectTypeDefinition::class,
         );
     }
 

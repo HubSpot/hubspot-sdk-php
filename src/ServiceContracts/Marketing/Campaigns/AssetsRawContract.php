@@ -20,6 +20,8 @@ interface AssetsRawContract
     /**
      * @api
      *
+     * @param string $assetID The id of asset to disassociate, required
+     * Example: 154543
      * @param array<string,mixed>|AssetUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -36,7 +38,8 @@ interface AssetsRawContract
     /**
      * @api
      *
-     * @param string $assetType Path param
+     * @param string $assetType Path param: The type of asset to fetch, required
+     * Example: MARKETING_EVENT
      * @param array<string,mixed>|AssetListParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -53,6 +56,8 @@ interface AssetsRawContract
     /**
      * @api
      *
+     * @param string $assetID The id of asset to disassociate, required
+     * Example: 154543
      * @param array<string,mixed>|AssetDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *

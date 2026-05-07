@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2026-05-07)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** manual updates ([4c8d19d](https://github.com/HubSpot/hubspot-sdk-php/commit/4c8d19deff66fef059203616ec63d68fd787a70c))
+
+
+### Bug Fixes
+
+* **release:** use canonical GitHub URL in Packagist publish script ([4ae0e5f](https://github.com/HubSpot/hubspot-sdk-php/commit/4ae0e5fb3ff8371639e323d70ee9e962ab5617cf))
+
 ## 0.1.0-alpha.5 (2026-05-01)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)

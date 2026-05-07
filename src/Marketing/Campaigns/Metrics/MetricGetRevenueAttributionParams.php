@@ -24,6 +24,9 @@ final class MetricGetRevenueAttributionParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The revenue attribution model used to calculate deal revenue credit. Defaults to LINEAR if not specified. Enum values: LINEAR,            FIRST_INTERACTION, LAST_INTERACTION, FULL_PATH, U_SHAPED, W_SHAPED,          TIME_DECAY, J_SHAPED, INVERSE_J_SHAPED.
+     */
     #[Optional]
     public ?string $attributionModel;
 
@@ -63,6 +66,9 @@ final class MetricGetRevenueAttributionParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The revenue attribution model used to calculate deal revenue credit. Defaults to LINEAR if not specified. Enum values: LINEAR,            FIRST_INTERACTION, LAST_INTERACTION, FULL_PATH, U_SHAPED, W_SHAPED,          TIME_DECAY, J_SHAPED, INVERSE_J_SHAPED.
+     */
     public function withAttributionModel(string $attributionModel): self
     {
         $self = clone $this;

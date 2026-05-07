@@ -31,6 +31,8 @@ final class SpendRawService implements SpendRawContract
      *
      * Create a new campaign spend item
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array{
      *   amount: float, name: string, order: int, description?: string
      * }|SpendCreateParams $params
@@ -65,7 +67,7 @@ final class SpendRawService implements SpendRawContract
      *
      * Update a specific campaign spend item by ID
      *
-     * @param int $spendID Path param
+     * @param int $spendID Path param: The ID of the spend item, required. Example: 491
      * @param array{
      *   campaignGuid: string,
      *   amount: float,
@@ -108,6 +110,7 @@ final class SpendRawService implements SpendRawContract
      *
      * Delete a specific campaign spend item by ID
      *
+     * @param int $spendID The ID of the spend item, required. Example: 491
      * @param array{campaignGuid: string}|SpendDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -143,6 +146,7 @@ final class SpendRawService implements SpendRawContract
      *
      * Read a campaign spend item by its spendId
      *
+     * @param int $spendID The ID of the spend item, required. Example: 491
      * @param array{campaignGuid: string}|SpendGetParams $params
      * @param RequestOpts|null $requestOptions
      *

@@ -32,6 +32,8 @@ final class AssetsRawService implements AssetsRawContract
      *
      * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
      *
+     * @param string $assetID The id of asset to disassociate, required
+     * Example: 154543
      * @param array{campaignGuid: string, assetType: string}|AssetUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -73,7 +75,8 @@ final class AssetsRawService implements AssetsRawContract
      * This endpoint lists all assets of the campaign by asset type. The assetType parameter is required, and each request can only fetch assets of a single type.
      * Asset metrics can also be fetched along with the assets; they are available only if start and end dates are provided.
      *
-     * @param string $assetType Path param
+     * @param string $assetType Path param: The type of asset to fetch, required
+     * Example: MARKETING_EVENT
      * @param array{
      *   campaignGuid: string,
      *   after?: string,
@@ -120,6 +123,8 @@ final class AssetsRawService implements AssetsRawContract
      *
      * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
      *
+     * @param string $assetID The id of asset to disassociate, required
+     * Example: 154543
      * @param array{campaignGuid: string, assetType: string}|AssetDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *

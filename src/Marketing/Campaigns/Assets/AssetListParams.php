@@ -39,6 +39,10 @@ final class AssetListParams implements BaseModel
     #[Optional]
     public ?string $after;
 
+    /**
+     * End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2024-01-27.
+     */
     #[Optional]
     public ?string $endDate;
 
@@ -48,6 +52,10 @@ final class AssetListParams implements BaseModel
     #[Optional]
     public ?string $limit;
 
+    /**
+     * Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2023-01-20.
+     */
     #[Optional]
     public ?string $startDate;
 
@@ -113,6 +121,10 @@ final class AssetListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2024-01-27.
+     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -132,6 +144,10 @@ final class AssetListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2023-01-20.
+     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;

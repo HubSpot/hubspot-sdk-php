@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Crm;
 
-use HubSpotSDK\BaseAssociationDefinition;
-use HubSpotSDK\BaseObjectTypeDefinition;
+use HubSpotSDK\AssociationDefinition;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Crm\ObjectSchemas\CollectionResponseObjectSchemaNoPaging;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectSchema;
 use HubSpotSDK\Crm\ObjectSchemas\ObjectTypePropertyCreate;
+use HubSpotSDK\ObjectTypeDefinition;
 use HubSpotSDK\ObjectTypeDefinitionLabels;
 use HubSpotSDK\RequestOptions;
 
@@ -74,7 +74,7 @@ interface ObjectSchemasContract
         ?array $searchableProperties = null,
         ?array $secondaryDisplayProperties = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseObjectTypeDefinition;
+    ): ObjectTypeDefinition;
 
     /**
      * @api
@@ -119,7 +119,7 @@ interface ObjectSchemasContract
         string $toObjectTypeID,
         ?string $name = null,
         RequestOptions|array|null $requestOptions = null,
-    ): BaseAssociationDefinition;
+    ): AssociationDefinition;
 
     /**
      * @api

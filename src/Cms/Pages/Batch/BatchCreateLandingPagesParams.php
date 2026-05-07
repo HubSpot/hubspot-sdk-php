@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Cms\Pages\Batch;
 
-use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
@@ -28,7 +28,7 @@ final class BatchCreateLandingPagesParams implements BaseModel
      *
      * @var list<mixed> $inputs
      */
-    #[Required(list: PageData::class)]
+    #[Required(list: PagesPage::class)]
     public array $inputs;
 
     /**

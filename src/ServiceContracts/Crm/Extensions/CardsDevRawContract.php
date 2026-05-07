@@ -42,7 +42,7 @@ interface CardsDevRawContract
     /**
      * @api
      *
-     * @param string $cardID Path param
+     * @param string $cardID Path param: The id of the Legacy CRM Card
      * @param array<string,mixed>|CardsDevUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -59,6 +59,7 @@ interface CardsDevRawContract
     /**
      * @api
      *
+     * @param string $cardID The id of the Legacy CRM Card
      * @param array<string,mixed>|CardsDevDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -90,6 +91,7 @@ interface CardsDevRawContract
     /**
      * @api
      *
+     * @param string $cardID The id of the Legacy CRM Card
      * @param array<string,mixed>|CardsDevGetByIDParams $params
      * @param RequestOpts|null $requestOptions
      *

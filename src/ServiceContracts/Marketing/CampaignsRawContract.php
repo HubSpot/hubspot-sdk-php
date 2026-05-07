@@ -38,6 +38,8 @@ interface CampaignsRawContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array<string,mixed>|CampaignUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -69,6 +71,8 @@ interface CampaignsRawContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -83,6 +87,8 @@ interface CampaignsRawContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array<string,mixed>|CampaignGetParams $params
      * @param RequestOpts|null $requestOptions
      *

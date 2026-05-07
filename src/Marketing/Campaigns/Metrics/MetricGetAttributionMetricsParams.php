@@ -24,9 +24,17 @@ final class MetricGetAttributionMetricsParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The end date for fetching attribution data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27.
+     */
     #[Optional]
     public ?string $endDate;
 
+    /**
+     * The start date for fetching attribution data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20.
+     */
     #[Optional]
     public ?string $startDate;
 
@@ -52,6 +60,10 @@ final class MetricGetAttributionMetricsParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The end date for fetching attribution data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27.
+     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -60,6 +72,10 @@ final class MetricGetAttributionMetricsParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The start date for fetching attribution data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20.
+     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;

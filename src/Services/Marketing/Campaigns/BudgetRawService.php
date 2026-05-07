@@ -32,6 +32,8 @@ final class BudgetRawService implements BudgetRawContract
      *
      * Add a new budget item to the campaign
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array{
      *   amount: float, name: string, order: int, description?: string
      * }|BudgetCreateParams $params
@@ -66,7 +68,7 @@ final class BudgetRawService implements BudgetRawContract
      *
      * Update a specific budget item by ID
      *
-     * @param int $budgetID Path param
+     * @param int $budgetID Path param: The ID of the budget item, required. Example: 352
      * @param array{
      *   campaignGuid: string,
      *   amount: float,
@@ -109,6 +111,7 @@ final class BudgetRawService implements BudgetRawContract
      *
      * Delete a specific budget item by ID
      *
+     * @param int $budgetID The ID of the budget item, required. Example: 352
      * @param array{campaignGuid: string}|BudgetDeleteParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -144,6 +147,7 @@ final class BudgetRawService implements BudgetRawContract
      *
      * Get a specific budget item by ID
      *
+     * @param int $budgetID The ID of the budget item, required. Example: 352
      * @param array{campaignGuid: string}|BudgetGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -180,6 +184,8 @@ final class BudgetRawService implements BudgetRawContract
      * Retrieve detailed information about the budget and spend items for a specified campaign, including the total budget, total spend, and remaining budget.
      * Budget and Spend items may be returned in any order, but the order field specifies their sequence based on the creation date. The item with order 0 is the oldest, and items with higher order values are newer
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<PublicBudgetTotals>

@@ -36,6 +36,12 @@ final class AssetsService implements AssetsContract
      *
      * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
      *
+     * @param string $assetID The id of asset to disassociate, required
+     * Example: 154543
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
+     * @param string $assetType The type of asset to disassociate, required
+     * Example: OBJECT_LIST
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -62,12 +68,16 @@ final class AssetsService implements AssetsContract
      * This endpoint lists all assets of the campaign by asset type. The assetType parameter is required, and each request can only fetch assets of a single type.
      * Asset metrics can also be fetched along with the assets; they are available only if start and end dates are provided.
      *
-     * @param string $assetType Path param
-     * @param string $campaignGuid Path param
+     * @param string $assetType Path param: The type of asset to fetch, required
+     * Example: MARKETING_EVENT
+     * @param string $campaignGuid Path param: The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param string $after Query param: The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
-     * @param string $endDate Query param
+     * @param string $endDate Query param: End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2024-01-27
      * @param string $limit query param: The maximum number of results to display per page
-     * @param string $startDate Query param
+     * @param string $startDate Query param: Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2023-01-20
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -104,6 +114,12 @@ final class AssetsService implements AssetsContract
      *
      * For other asset types, it is recommended to manage your associations directly in the campaign tool in HubSpot.
      *
+     * @param string $assetID The id of asset to disassociate, required
+     * Example: 154543
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
+     * @param string $assetType The type of asset to disassociate, required
+     * Example: OBJECT_LIST
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
