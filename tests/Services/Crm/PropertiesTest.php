@@ -2,10 +2,10 @@
 
 namespace Tests\Services\Crm;
 
-use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
+use HubSpotSDK\Property;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -46,7 +46,7 @@ final class PropertiesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseProperty::class, $result);
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -87,7 +87,7 @@ final class PropertiesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseProperty::class, $result);
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -103,7 +103,7 @@ final class PropertiesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseProperty::class, $result);
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -140,7 +140,7 @@ final class PropertiesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseProperty::class, $result);
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -201,7 +201,7 @@ final class PropertiesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseProperty::class, $result);
+        $this->assertInstanceOf(Property::class, $result);
     }
 
     #[Test]
@@ -221,6 +221,6 @@ final class PropertiesTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BaseProperty::class, $result);
+        $this->assertInstanceOf(Property::class, $result);
     }
 }

@@ -38,6 +38,10 @@ final class MetricListContactIDsByTypeParams implements BaseModel
     #[Optional]
     public ?string $after;
 
+    /**
+     * The end date for fetching contact data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27.
+     */
     #[Optional]
     public ?string $endDate;
 
@@ -47,6 +51,10 @@ final class MetricListContactIDsByTypeParams implements BaseModel
     #[Optional]
     public ?int $limit;
 
+    /**
+     * The start date for fetching contact data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20.
+     */
     #[Optional]
     public ?string $startDate;
 
@@ -112,6 +120,10 @@ final class MetricListContactIDsByTypeParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The end date for fetching contact data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27.
+     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -131,6 +143,10 @@ final class MetricListContactIDsByTypeParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The start date for fetching contact data, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20.
+     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;

@@ -31,6 +31,8 @@ interface CampaignsContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array<string,string> $properties A collection of key-value pairs representing the properties of the campaign. Each key is a property name, and the corresponding value is the property's value.
      * @param RequestOpts|null $requestOptions
      *
@@ -47,7 +49,11 @@ interface CampaignsContract
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
-     * @param list<string> $properties
+     * @param string $name Filter campaigns by name. Optional.
+     * @param list<string> $properties A comma-separated list of properties to include in the response.
+     *   Unrecognized properties are ignored. Optional. Example:
+     *   hs_name, hs_budget,hs_notes
+     * @param string $sort The property to sort results by. Optional.
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicCampaign>
@@ -66,6 +72,8 @@ interface CampaignsContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -78,7 +86,14 @@ interface CampaignsContract
     /**
      * @api
      *
-     * @param list<string> $properties
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
+     * @param string $endDate The end date for fetching asset metrics, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27
+     * @param list<string> $properties A comma-separated list of properties to include in the response.
+     *   Unrecognized properties are ignored. Optional. Example: hs_name,hs_budget, hs_notes
+     * @param string $startDate The start date for fetching asset metrics, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

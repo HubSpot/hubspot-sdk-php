@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Events;
 
-use HubSpotSDK\BaseProperty;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Events\Definitions\DefinitionCreateParams;
@@ -16,6 +15,7 @@ use HubSpotSDK\Events\Definitions\DefinitionUpdateParams;
 use HubSpotSDK\Events\Definitions\DefinitionUpdatePropertyParams;
 use HubSpotSDK\Events\Definitions\ExternalBehavioralEventTypeDefinition;
 use HubSpotSDK\Page;
+use HubSpotSDK\Property;
 use HubSpotSDK\RequestOptions;
 
 /**
@@ -89,7 +89,7 @@ interface DefinitionsRawContract
      * @param array<string,mixed>|DefinitionCreatePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseProperty>
+     * @return BaseResponse<Property>
      *
      * @throws APIException
      */
@@ -151,7 +151,7 @@ interface DefinitionsRawContract
      * @param array<string,mixed>|DefinitionUpdatePropertyParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BaseProperty>
+     * @return BaseResponse<Property>
      *
      * @throws APIException
      */

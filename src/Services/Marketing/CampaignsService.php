@@ -94,6 +94,8 @@ final class CampaignsService implements CampaignsContract
      * Perform a partial update of a campaign identified by the specified campaignGuid. Provided property values will be overwritten. Read-only and non-existent properties will cause 400 error.
      * If an empty string is passed for any property in the Batch Update, it will reset that property's value.
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array<string,string> $properties A collection of key-value pairs representing the properties of the campaign. Each key is a property name, and the corresponding value is the property's value.
      * @param RequestOpts|null $requestOptions
      *
@@ -119,7 +121,11 @@ final class CampaignsService implements CampaignsContract
      *
      * @param string $after The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
      * @param int $limit the maximum number of results to display per page
-     * @param list<string> $properties
+     * @param string $name Filter campaigns by name. Optional.
+     * @param list<string> $properties A comma-separated list of properties to include in the response.
+     *   Unrecognized properties are ignored. Optional. Example:
+     *   hs_name, hs_budget,hs_notes
+     * @param string $sort The property to sort results by. Optional.
      * @param RequestOpts|null $requestOptions
      *
      * @return Page<PublicCampaign>
@@ -156,6 +162,8 @@ final class CampaignsService implements CampaignsContract
      * Delete a specified campaign from the system.
      * This call will return a 204 No Content response regardless of whether the campaignGuid provided corresponds to an existing campaign or not.
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -175,7 +183,14 @@ final class CampaignsService implements CampaignsContract
      *
      * Get a campaign identified by a specific campaignGuid with the given properties. Along with the campaign information, it also returns information about assets. Depending on the query parameters used, this can also be used to return information about the corresponding assets' metrics. Metrics are available only if startDate and endDate are provided.
      *
-     * @param list<string> $properties
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
+     * @param string $endDate The end date for fetching asset metrics, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27
+     * @param list<string> $properties A comma-separated list of properties to include in the response.
+     *   Unrecognized properties are ignored. Optional. Example: hs_name,hs_budget, hs_notes
+     * @param string $startDate The start date for fetching asset metrics, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

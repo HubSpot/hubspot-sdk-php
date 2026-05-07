@@ -48,7 +48,7 @@ interface CardsDevContract
     /**
      * @api
      *
-     * @param string $cardID Path param
+     * @param string $cardID Path param: The id of the Legacy CRM Card
      * @param int $appID Path param: The appId of the app containing the Legacy CRM Card(s)
      * @param CardActions|CardActionsShape $actions Body param
      * @param CardDisplayBody|CardDisplayBodyShape $display Body param
@@ -71,6 +71,7 @@ interface CardsDevContract
     /**
      * @api
      *
+     * @param string $cardID The id of the Legacy CRM Card
      * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *
@@ -98,6 +99,7 @@ interface CardsDevContract
     /**
      * @api
      *
+     * @param string $cardID The id of the Legacy CRM Card
      * @param int $appID The appId of the app containing the Legacy CRM Card(s)
      * @param RequestOpts|null $requestOptions
      *

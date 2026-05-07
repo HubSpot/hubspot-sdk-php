@@ -10,12 +10,12 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\VersionUser;
 
 /**
- * @phpstan-import-type PageDataShape from \HubSpotSDK\Cms\Pages\PageData
+ * @phpstan-import-type PagesPageShape from \HubSpotSDK\Cms\Pages\PagesPage
  * @phpstan-import-type VersionUserShape from \HubSpotSDK\VersionUser
  *
  * @phpstan-type PageVersionShape = array{
  *   id: string,
- *   object: PageData|PageDataShape,
+ *   object: PagesPage|PagesPageShape,
  *   updatedAt: \DateTimeInterface,
  *   user: VersionUser|VersionUserShape,
  * }
@@ -29,7 +29,7 @@ final class PageVersion implements BaseModel
     public string $id;
 
     #[Required]
-    public PageData $object;
+    public PagesPage $object;
 
     #[Required]
     public \DateTimeInterface $updatedAt;
@@ -65,12 +65,12 @@ final class PageVersion implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param PageData|PageDataShape $object
+     * @param PagesPage|PagesPageShape $object
      * @param VersionUser|VersionUserShape $user
      */
     public static function with(
         string $id,
-        PageData|array $object,
+        PagesPage|array $object,
         \DateTimeInterface $updatedAt,
         VersionUser|array $user,
     ): self {
@@ -93,9 +93,9 @@ final class PageVersion implements BaseModel
     }
 
     /**
-     * @param PageData|PageDataShape $object
+     * @param PagesPage|PagesPageShape $object
      */
-    public function withObject(PageData|array $object): self
+    public function withObject(PagesPage|array $object): self
     {
         $self = clone $this;
         $self['object'] = $object;

@@ -42,13 +42,26 @@ final class BatchGetParams implements BaseModel
     #[Required(list: PublicCampaignReadInput::class)]
     public array $inputs;
 
+    /**
+     * End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2024-01-27.
+     */
     #[Optional]
     public ?string $endDate;
 
-    /** @var list<string>|null $properties */
+    /**
+     * A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object(s), they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map.
+     * Example: hs_name, hs_campaign_status, hs_notes.
+     *
+     * @var list<string>|null $properties
+     */
     #[Optional(list: 'string')]
     public ?array $properties;
 
+    /**
+     * Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2023-01-20.
+     */
     #[Optional]
     public ?string $startDate;
 
@@ -109,6 +122,10 @@ final class BatchGetParams implements BaseModel
         return $self;
     }
 
+    /**
+     * End date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2024-01-27.
+     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -118,6 +135,9 @@ final class BatchGetParams implements BaseModel
     }
 
     /**
+     * A comma-separated list of the properties to be returned in the response. If any of the specified properties has empty value on the requested object(s), they will be ignored and not returned in response. If this parameter is empty, the response will include an empty properties map.
+     * Example: hs_name, hs_campaign_status, hs_notes.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -128,6 +148,10 @@ final class BatchGetParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Start date to fetch asset metrics, formatted as YYYY-MM-DD. This date is used to fetch the metrics associated with the assets for a specified period.  If not provided, no asset metrics will be fetched.
+     * Example: 2023-01-20.
+     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;

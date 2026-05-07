@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Cms\MediaBridge;
 
-use HubSpotSDK\Cms\MediaBridge\SubtractTime\Input;
 use HubSpotSDK\Cms\MediaBridge\SubtractTime\Operator;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
@@ -33,7 +32,7 @@ final class SubtractTime implements BaseModel
     public mixed $stringToCheck;
 
     /** @var list<mixed>|null $inputs */
-    #[Optional(list: Input::class)]
+    #[Optional(list: 'mixed')]
     public ?array $inputs;
 
     #[Optional]

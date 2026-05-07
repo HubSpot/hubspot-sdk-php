@@ -40,13 +40,25 @@ final class CampaignListParams implements BaseModel
     #[Optional]
     public ?int $limit;
 
+    /**
+     * Filter campaigns by name. Optional.
+     */
     #[Optional]
     public ?string $name;
 
-    /** @var list<string>|null $properties */
+    /**
+     * A comma-separated list of properties to include in the response.
+     *   Unrecognized properties are ignored. Optional. Example:
+     *   hs_name, hs_budget,hs_notes.
+     *
+     * @var list<string>|null $properties
+     */
     #[Optional(list: 'string')]
     public ?array $properties;
 
+    /**
+     * The property to sort results by. Optional.
+     */
     #[Optional]
     public ?string $sort;
 
@@ -102,6 +114,9 @@ final class CampaignListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * Filter campaigns by name. Optional.
+     */
     public function withName(string $name): self
     {
         $self = clone $this;
@@ -111,6 +126,10 @@ final class CampaignListParams implements BaseModel
     }
 
     /**
+     * A comma-separated list of properties to include in the response.
+     *   Unrecognized properties are ignored. Optional. Example:
+     *   hs_name, hs_budget,hs_notes.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -121,6 +140,9 @@ final class CampaignListParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The property to sort results by. Optional.
+     */
     public function withSort(string $sort): self
     {
         $self = clone $this;

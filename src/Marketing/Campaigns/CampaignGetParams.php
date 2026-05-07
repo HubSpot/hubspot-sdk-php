@@ -24,13 +24,26 @@ final class CampaignGetParams implements BaseModel
     use SdkModel;
     use SdkParams;
 
+    /**
+     * The end date for fetching asset metrics, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27.
+     */
     #[Optional]
     public ?string $endDate;
 
-    /** @var list<string>|null $properties */
+    /**
+     * A comma-separated list of properties to include in the response.
+     *   Unrecognized properties are ignored. Optional. Example: hs_name,hs_budget, hs_notes.
+     *
+     * @var list<string>|null $properties
+     */
     #[Optional(list: 'string')]
     public ?array $properties;
 
+    /**
+     * The start date for fetching asset metrics, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20.
+     */
     #[Optional]
     public ?string $startDate;
 
@@ -60,6 +73,10 @@ final class CampaignGetParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The end date for fetching asset metrics, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-27.
+     */
     public function withEndDate(string $endDate): self
     {
         $self = clone $this;
@@ -69,6 +86,9 @@ final class CampaignGetParams implements BaseModel
     }
 
     /**
+     * A comma-separated list of properties to include in the response.
+     *   Unrecognized properties are ignored. Optional. Example: hs_name,hs_budget, hs_notes.
+     *
      * @param list<string> $properties
      */
     public function withProperties(array $properties): self
@@ -79,6 +99,10 @@ final class CampaignGetParams implements BaseModel
         return $self;
     }
 
+    /**
+     * The start date for fetching asset metrics, in YYYY-MM-DD format.
+     * Optional. Example: 2000-01-20.
+     */
     public function withStartDate(string $startDate): self
     {
         $self = clone $this;

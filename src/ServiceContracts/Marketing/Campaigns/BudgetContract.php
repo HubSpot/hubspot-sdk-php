@@ -17,6 +17,8 @@ interface BudgetContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param float $amount the monetary value assigned to the budget item
      * @param string $name the name of the budget item
      * @param int $order the sequence number indicating the order of the budget item
@@ -37,8 +39,9 @@ interface BudgetContract
     /**
      * @api
      *
-     * @param int $budgetID Path param
-     * @param string $campaignGuid Path param
+     * @param int $budgetID Path param: The ID of the budget item, required. Example: 352
+     * @param string $campaignGuid Path param: The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param float $amount body param: The monetary value assigned to the budget item
      * @param string $name body param: The name of the budget item
      * @param int $order body param: The sequence number indicating the order of the budget item
@@ -60,6 +63,9 @@ interface BudgetContract
     /**
      * @api
      *
+     * @param int $budgetID The ID of the budget item, required. Example: 352
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -73,6 +79,9 @@ interface BudgetContract
     /**
      * @api
      *
+     * @param int $budgetID The ID of the budget item, required. Example: 352
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -86,6 +95,8 @@ interface BudgetContract
     /**
      * @api
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException

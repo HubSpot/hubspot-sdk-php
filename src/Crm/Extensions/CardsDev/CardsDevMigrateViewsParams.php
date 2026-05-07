@@ -11,6 +11,8 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
+ * Swaps a Legacy CRM Card with an App Card in views. Reference the "Migrate a legacy CRM card to an app card" docs for more information.
+ *
  * @see HubSpotSDK\Services\Crm\Extensions\CardsDevService::migrateViews()
  *
  * @phpstan-type CardsDevMigrateViewsParamsShape = array{

@@ -9,7 +9,7 @@ use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\AbStatus;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\ContentTypeCategory;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\CurrentState;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageCreateParams\Language;
-use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Page;
 use HubSpotSDK\RequestOptions;
@@ -143,7 +143,7 @@ interface LandingPagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): PageData;
+    ): PagesPage;
 
     /**
      * @api
@@ -272,7 +272,7 @@ interface LandingPagesContract
         array $widgets,
         ?bool $archived = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PageData;
+    ): PagesPage;
 
     /**
      * @api
@@ -290,7 +290,7 @@ interface LandingPagesContract
      * @param \DateTimeInterface $updatedBefore filter landing pages updated before a specific date and time
      * @param RequestOpts|null $requestOptions
      *
-     * @return Page<PageData>
+     * @return Page<PagesPage>
      *
      * @throws APIException
      */
@@ -337,7 +337,7 @@ interface LandingPagesContract
         string $id,
         ?string $cloneName = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PageData;
+    ): PagesPage;
 
     /**
      * @api
@@ -354,7 +354,7 @@ interface LandingPagesContract
         ?bool $archived = null,
         ?string $property = null,
         RequestOptions|array|null $requestOptions = null,
-    ): PageData;
+    ): PagesPage;
 
     /**
      * @api
@@ -367,7 +367,7 @@ interface LandingPagesContract
     public function getDraft(
         string $objectID,
         RequestOptions|array|null $requestOptions = null
-    ): PageData;
+    ): PagesPage;
 
     /**
      * @api
@@ -535,5 +535,5 @@ interface LandingPagesContract
         array $widgetContainers,
         array $widgets,
         RequestOptions|array|null $requestOptions = null,
-    ): PageData;
+    ): PagesPage;
 }

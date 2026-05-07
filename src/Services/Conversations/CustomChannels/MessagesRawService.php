@@ -11,7 +11,6 @@ use HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Message
 use HubSpotSDK\Conversations\CustomChannels\Messages\MessageGetParams;
 use HubSpotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams;
 use HubSpotSDK\Conversations\CustomChannels\Messages\MessageUpdateParams\StatusType;
-use HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts;
 use HubSpotSDK\Conversations\CustomChannels\PublicConversationsMessage;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
@@ -20,7 +19,6 @@ use HubSpotSDK\ServiceContracts\Conversations\CustomChannels\MessagesRawContract
 
 /**
  * @phpstan-import-type AttachmentShape from \HubSpotSDK\Conversations\CustomChannels\Messages\MessageCreateParams\Attachment
- * @phpstan-import-type PreResolvedContactsShape from \HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts
  * @phpstan-import-type ChannelIntegrationParticipantShape from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
@@ -49,7 +47,6 @@ final class MessagesRawService implements MessagesRawContract
      *   inReplyToID?: string,
      *   integrationIdempotencyID?: string,
      *   integrationThreadID?: string,
-     *   preResolvedContacts?: PreResolvedContacts|PreResolvedContactsShape,
      *   richText?: string,
      * }|MessageCreateParams $params
      * @param RequestOpts|null $requestOptions

@@ -18,7 +18,7 @@ use HubSpotSDK\Cms\Pages\LandingPages\LandingPageListParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
-use HubSpotSDK\Cms\Pages\PageData;
+use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Page;
@@ -103,7 +103,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * }|LandingPageCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -123,7 +123,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: PageData::class,
+            convert: PagesPage::class,
         );
     }
 
@@ -196,7 +196,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * }|LandingPageUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -219,7 +219,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) array_diff_key($parsed, $query_params),
             options: $options,
-            convert: PageData::class,
+            convert: PagesPage::class,
         );
     }
 
@@ -243,7 +243,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * }|LandingPageListParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<Page<PageData>>
+     * @return BaseResponse<Page<PagesPage>>
      *
      * @throws APIException
      */
@@ -262,7 +262,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             path: 'cms/pages/2026-03/landing-pages',
             query: $parsed,
             options: $options,
-            convert: PageData::class,
+            convert: PagesPage::class,
             page: Page::class,
         );
     }
@@ -308,7 +308,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{id: string, cloneName?: string}|LandingPageCloneParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -328,7 +328,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: PageData::class,
+            convert: PagesPage::class,
         );
     }
 
@@ -341,7 +341,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param array{archived?: bool, property?: string}|LandingPageGetParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -361,7 +361,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             path: ['cms/pages/2026-03/landing-pages/%1$s', $objectID],
             query: $parsed,
             options: $options,
-            convert: PageData::class,
+            convert: PagesPage::class,
         );
     }
 
@@ -373,7 +373,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * @param string $objectID the unique identifier of the landing page whose draft version is to be retrieved
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -386,7 +386,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             method: 'get',
             path: ['cms/pages/2026-03/landing-pages/%1$s/draft', $objectID],
             options: $requestOptions,
-            convert: PageData::class,
+            convert: PagesPage::class,
         );
     }
 
@@ -541,7 +541,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
      * }|LandingPageUpdateDraftParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<PageData>
+     * @return BaseResponse<PagesPage>
      *
      * @throws APIException
      */
@@ -562,7 +562,7 @@ final class LandingPagesRawService implements LandingPagesRawContract
             headers: ['Content-Type' => '*/*'],
             body: (object) $parsed,
             options: $options,
-            convert: PageData::class,
+            convert: PagesPage::class,
         );
     }
 }

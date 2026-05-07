@@ -100,11 +100,6 @@ final class MessagesTest extends TestCase
             inReplyToID: 'inReplyToId',
             integrationIdempotencyID: 'integrationIdempotencyId',
             integrationThreadID: 'integrationThreadId',
-            preResolvedContacts: [
-                'contacts' => [
-                    ['contactPropertiesLeadingToMatch' => ['address'], 'contactVid' => 0],
-                ],
-            ],
             richText: 'richText',
         );
 

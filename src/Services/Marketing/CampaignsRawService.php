@@ -65,6 +65,8 @@ final class CampaignsRawService implements CampaignsRawContract
      * Perform a partial update of a campaign identified by the specified campaignGuid. Provided property values will be overwritten. Read-only and non-existent properties will cause 400 error.
      * If an empty string is passed for any property in the Batch Update, it will reset that property's value.
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array{properties: array<string,string>}|CampaignUpdateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -136,6 +138,8 @@ final class CampaignsRawService implements CampaignsRawContract
      * Delete a specified campaign from the system.
      * This call will return a 204 No Content response regardless of whether the campaignGuid provided corresponds to an existing campaign or not.
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -160,6 +164,8 @@ final class CampaignsRawService implements CampaignsRawContract
      *
      * Get a campaign identified by a specific campaignGuid with the given properties. Along with the campaign information, it also returns information about assets. Depending on the query parameters used, this can also be used to return information about the corresponding assets' metrics. Metrics are available only if startDate and endDate are provided.
      *
+     * @param string $campaignGuid The UUID of the campaign, required
+     * Example: 9dbec438-53e2-4b28-8c0f-38f56574a6e8
      * @param array{
      *   endDate?: string, properties?: list<string>, startDate?: string
      * }|CampaignGetParams $params
