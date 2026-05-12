@@ -7,6 +7,7 @@ namespace HubSpotSDK;
 use Http\Discovery\Psr17FactoryDiscovery;
 use Http\Discovery\Psr18ClientDiscovery;
 use HubSpotSDK\Core\BaseClient;
+use HubSpotSDK\Core\Implementation\StreamingHttpClient;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Services\AccountService;
 use HubSpotSDK\Services\AuthService;
@@ -125,6 +126,11 @@ class Client extends BaseClient
             ),
             $requestOptions,
         );
+
+        if (is_null($options->streamingTransporter)) {
+            assert(!is_null($options->transporter));
+            $options->streamingTransporter = new StreamingHttpClient($options->transporter);
+        }
 
         /** @var array<string, string|null> $headers */
         $headers = [
