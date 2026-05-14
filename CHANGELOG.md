@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2026-05-14)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Bug Fixes
+
+* guzzle requires special handling to enable streaming ([e00eb10](https://github.com/HubSpot/hubspot-sdk-php/commit/e00eb10c585804e2b3139c932472620849788409))
+
 ## 0.1.0-alpha.6 (2026-05-07)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
