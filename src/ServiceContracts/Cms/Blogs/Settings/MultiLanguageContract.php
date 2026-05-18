@@ -50,6 +50,7 @@ interface MultiLanguageContract
         ?string $language = null,
         ?string $primaryLanguage = null,
         ?string $slug = null,
+        ?bool $usePublished = null,
         RequestOptions|array|null $requestOptions = null,
     ): Blog;
 

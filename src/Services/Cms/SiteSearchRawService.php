@@ -6,15 +6,9 @@ namespace HubSpotSDK\Services\Cms;
 
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\SiteSearch\IndexedData;
-use HubSpotSDK\Cms\SiteSearch\PublicSearchResults;
 use HubSpotSDK\Cms\SiteSearch\SiteSearchGetIndexedDataParams;
-use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams;
-use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams\Language;
-use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams\Length;
-use HubSpotSDK\Cms\SiteSearch\SiteSearchSearchParams\Type;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
-use HubSpotSDK\Core\Util;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Cms\SiteSearchRawContract;
 
@@ -58,60 +52,6 @@ final class SiteSearchRawService implements SiteSearchRawContract
             query: $parsed,
             options: $options,
             convert: IndexedData::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Returns any website content matching the given search criteria for a given HubSpot account. Searches can be filtered by content type, domain, or URL path. Includes options for weighing results by recency and popularity, along with language support.
-     *
-     * @param array{
-     *   analytics?: bool,
-     *   autocomplete?: bool,
-     *   boostLimit?: float,
-     *   boostRecent?: string,
-     *   domain?: list<string>,
-     *   groupID?: list<int>,
-     *   hubdbQuery?: string,
-     *   language?: value-of<Language>,
-     *   length?: Length|value-of<Length>,
-     *   limit?: int,
-     *   matchPrefix?: bool,
-     *   offset?: int,
-     *   pathPrefix?: list<string>,
-     *   popularityBoost?: float,
-     *   property?: list<string>,
-     *   q?: string,
-     *   tableID?: int,
-     *   type?: list<string>,
-     *   types?: list<Type|value-of<Type>>,
-     * }|SiteSearchSearchParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<PublicSearchResults>
-     *
-     * @throws APIException
-     */
-    public function search(
-        array|SiteSearchSearchParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = SiteSearchSearchParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: 'cms/site-search/2026-03/search',
-            query: Util::array_transform_keys(
-                $parsed,
-                ['groupID' => 'groupId', 'tableID' => 'tableId']
-            ),
-            options: $options,
-            convert: PublicSearchResults::class,
         );
     }
 }

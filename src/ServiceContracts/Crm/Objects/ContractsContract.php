@@ -5,53 +5,15 @@ declare(strict_types=1);
 namespace HubSpotSDK\ServiceContracts\Crm\Objects;
 
 use HubSpotSDK\Core\Exceptions\APIException;
-use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubSpotSDK\Crm\FilterGroup;
-use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubSpotSDK\Crm\SimplePublicObject;
 use HubSpotSDK\Page;
 use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface ContractsContract
 {
-    /**
-     * @api
-     *
-     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
-     * @param array<string,string> $properties key-value pairs for setting properties for the new object
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function create(
-        array $associations,
-        array $properties,
-        RequestOptions|array|null $requestOptions = null,
-    ): SimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param string $contractID Path param
-     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
-     * @param string $idProperty Query param: The name of a property whose values are unique for this object type
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function update(
-        string $contractID,
-        array $properties,
-        ?string $idProperty = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): SimplePublicObject;
-
     /**
      * @api
      *
@@ -80,18 +42,6 @@ interface ContractsContract
     /**
      * @api
      *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function delete(
-        string $contractID,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed;
-
-    /**
-     * @api
-     *
      * @param bool $archived whether to return only results that have been archived
      * @param list<string> $associations A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
      * @param string $idProperty The name of a property whose values are unique for this object type
@@ -110,27 +60,4 @@ interface ContractsContract
         ?array $propertiesWithHistory = null,
         RequestOptions|array|null $requestOptions = null,
     ): SimplePublicObjectWithAssociations;
-
-    /**
-     * @api
-     *
-     * @param string $after a paging cursor token for retrieving subsequent pages
-     * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
-     * @param int $limit the maximum results to return, up to 200 objects
-     * @param list<string> $properties a list of property names to include in the response
-     * @param list<string> $sorts specifies sorting order based on object properties
-     * @param string $query the search query string, up to 3000 characters
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function search(
-        string $after,
-        array $filterGroups,
-        int $limit,
-        array $properties,
-        array $sorts,
-        ?string $query = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): CollectionResponseWithTotalSimplePublicObject;
 }

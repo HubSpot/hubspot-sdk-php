@@ -279,6 +279,7 @@ final class AuthorsTest extends TestCase
             ],
             language: 'language',
             primaryLanguage: 'primaryLanguage',
+            usePublished: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

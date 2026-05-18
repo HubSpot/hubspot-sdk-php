@@ -302,8 +302,8 @@ interface ListsContract
      */
     public function getSizeAndEditsHistoryBetween(
         string $listID,
-        ?string $endDate = null,
-        ?string $startDate = null,
+        ?\DateTimeInterface $endDate = null,
+        ?\DateTimeInterface $startDate = null,
         RequestOptions|array|null $requestOptions = null,
     ): ListSizeAndEditHistoryResponse;
 

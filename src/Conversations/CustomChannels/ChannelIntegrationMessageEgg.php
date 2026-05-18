@@ -15,6 +15,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @phpstan-import-type AttachmentVariants from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\Attachment
  * @phpstan-import-type AttachmentShape from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationMessageEgg\Attachment
  * @phpstan-import-type ChannelIntegrationParticipantShape from \HubSpotSDK\Conversations\CustomChannels\ChannelIntegrationParticipant
+ * @phpstan-import-type PreResolvedContactsShape from \HubSpotSDK\Conversations\CustomChannels\PreResolvedContacts
  *
  * @phpstan-type ChannelIntegrationMessageEggShape = array{
  *   attachments: list<AttachmentShape>,
@@ -28,6 +29,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   inReplyToID?: string|null,
  *   integrationIdempotencyID?: string|null,
  *   integrationThreadID?: string|null,
+ *   preResolvedContacts?: null|PreResolvedContacts|PreResolvedContactsShape,
  *   richText?: string|null,
  * }
  */
@@ -72,6 +74,9 @@ final class ChannelIntegrationMessageEgg implements BaseModel
 
     #[Optional('integrationThreadId')]
     public ?string $integrationThreadID;
+
+    #[Optional]
+    public ?PreResolvedContacts $preResolvedContacts;
 
     #[Optional]
     public ?string $richText;
@@ -119,6 +124,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
      * @param MessageDirection|value-of<MessageDirection> $messageDirection
      * @param list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape> $recipients
      * @param list<ChannelIntegrationParticipant|ChannelIntegrationParticipantShape> $senders
+     * @param PreResolvedContacts|PreResolvedContactsShape|null $preResolvedContacts
      */
     public static function with(
         array $attachments,
@@ -132,6 +138,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
         ?string $inReplyToID = null,
         ?string $integrationIdempotencyID = null,
         ?string $integrationThreadID = null,
+        PreResolvedContacts|array|null $preResolvedContacts = null,
         ?string $richText = null,
     ): self {
         $self = new self;
@@ -148,6 +155,7 @@ final class ChannelIntegrationMessageEgg implements BaseModel
         null !== $inReplyToID && $self['inReplyToID'] = $inReplyToID;
         null !== $integrationIdempotencyID && $self['integrationIdempotencyID'] = $integrationIdempotencyID;
         null !== $integrationThreadID && $self['integrationThreadID'] = $integrationThreadID;
+        null !== $preResolvedContacts && $self['preResolvedContacts'] = $preResolvedContacts;
         null !== $richText && $self['richText'] = $richText;
 
         return $self;
@@ -252,6 +260,18 @@ final class ChannelIntegrationMessageEgg implements BaseModel
     {
         $self = clone $this;
         $self['integrationThreadID'] = $integrationThreadID;
+
+        return $self;
+    }
+
+    /**
+     * @param PreResolvedContacts|PreResolvedContactsShape $preResolvedContacts
+     */
+    public function withPreResolvedContacts(
+        PreResolvedContacts|array $preResolvedContacts
+    ): self {
+        $self = clone $this;
+        $self['preResolvedContacts'] = $preResolvedContacts;
 
         return $self;
     }

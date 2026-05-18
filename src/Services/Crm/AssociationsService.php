@@ -8,11 +8,12 @@ use HubSpotSDK\AssociationSpec;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\Crm\Associations\ReportCreationResponse;
+use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubSpotSDK\Crm\FilterGroup;
 use HubSpotSDK\Crm\LabelsBetweenObjectPair;
 use HubSpotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubSpotSDK\Crm\ReportCreationResponse;
 use HubSpotSDK\Page;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\AssociationsContract;
@@ -42,6 +43,36 @@ final class AssociationsService implements AssociationsContract
     {
         $this->raw = new AssociationsRawService($client);
         $this->batch = new BatchService($client);
+    }
+
+    /**
+     * @api
+     *
+     * Create the default (most generic) association type between two object types
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function create(
+        string $toObjectID,
+        string $fromObjectType,
+        string $fromObjectID,
+        string $toObjectType,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponsePublicDefaultAssociation {
+        $params = Util::removeNulls(
+            [
+                'fromObjectType' => $fromObjectType,
+                'fromObjectID' => $fromObjectID,
+                'toObjectType' => $toObjectType,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->create($toObjectID, params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
     }
 
     /**
@@ -85,6 +116,8 @@ final class AssociationsService implements AssociationsContract
 
     /**
      * @api
+     *
+     * deletes all associations between two records.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -173,6 +206,8 @@ final class AssociationsService implements AssociationsContract
     /**
      * @api
      *
+     * Set association labels between two records.
+     *
      * @param string $toObjectID Path param
      * @param string $objectType Path param
      * @param string $objectID Path param
@@ -182,7 +217,7 @@ final class AssociationsService implements AssociationsContract
      *
      * @throws APIException
      */
-    public function updateAssociationLabels(
+    public function updateLabels(
         string $toObjectID,
         string $objectType,
         string $objectID,
@@ -200,7 +235,7 @@ final class AssociationsService implements AssociationsContract
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->updateAssociationLabels($toObjectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->updateLabels($toObjectID, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

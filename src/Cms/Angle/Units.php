@@ -9,11 +9,11 @@ namespace HubSpotSDK\Cms\Angle;
  */
 enum Units: string
 {
-    case DEG = 'deg';
+    case DEGREES = 'DEGREES';
 
-    case GRAD = 'grad';
+    case GRADIANS = 'GRADIANS';
 
-    case RAD = 'rad';
+    case RADIANS = 'RADIANS';
 
-    case TURN = 'turn';
+    case TURNS = 'TURNS';
 }

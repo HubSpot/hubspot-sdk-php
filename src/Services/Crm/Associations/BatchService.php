@@ -7,20 +7,21 @@ namespace HubSpotSDK\Services\Crm\Associations;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
-use HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive;
-use HubSpotSDK\Crm\Associations\PublicAssociationMultiPost;
-use HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
-use HubSpotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest;
+use HubSpotSDK\Crm\BatchResponseLabelsBetweenObjectPair;
+use HubSpotSDK\Crm\BatchResponsePublicAssociationMultiWithLabel;
 use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
+use HubSpotSDK\Crm\PublicAssociationMultiArchive;
+use HubSpotSDK\Crm\PublicAssociationMultiPost;
+use HubSpotSDK\Crm\PublicDefaultAssociationMultiPost;
+use HubSpotSDK\Crm\PublicFetchAssociationsBatchRequest;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\Associations\BatchContract;
 
 /**
- * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive
- * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost
- * @phpstan-import-type PublicAssociationMultiPostShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiPost
- * @phpstan-import-type PublicFetchAssociationsBatchRequestShape from \HubSpotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest
+ * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubSpotSDK\Crm\PublicAssociationMultiArchive
+ * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubSpotSDK\Crm\PublicDefaultAssociationMultiPost
+ * @phpstan-import-type PublicFetchAssociationsBatchRequestShape from \HubSpotSDK\Crm\PublicFetchAssociationsBatchRequest
+ * @phpstan-import-type PublicAssociationMultiPostShape from \HubSpotSDK\Crm\PublicAssociationMultiPost
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchService implements BatchContract
@@ -41,27 +42,27 @@ final class BatchService implements BatchContract
     /**
      * @api
      *
+     * Batch create associations for objects
+     *
+     * @param string $toObjectType Path param
+     * @param string $fromObjectType Path param
+     * @param list<PublicAssociationMultiPost|PublicAssociationMultiPostShape> $inputs Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function create(
-        string $toObjectID,
-        string $fromObjectType,
-        string $fromObjectID,
         string $toObjectType,
+        string $fromObjectType,
+        array $inputs,
         RequestOptions|array|null $requestOptions = null,
-    ): BatchResponsePublicDefaultAssociation {
+    ): BatchResponseLabelsBetweenObjectPair {
         $params = Util::removeNulls(
-            [
-                'fromObjectType' => $fromObjectType,
-                'fromObjectID' => $fromObjectID,
-                'toObjectType' => $toObjectType,
-            ],
+            ['fromObjectType' => $fromObjectType, 'inputs' => $inputs]
         );
 
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->create($toObjectID, params: $params, requestOptions: $requestOptions);
+        $response = $this->raw->create($toObjectType, params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

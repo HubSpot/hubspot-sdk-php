@@ -85,7 +85,7 @@ final class BatchTest extends TestCase
                                             'a' => 0, 'b' => 0, 'g' => 0, 'r' => 0,
                                         ],
                                         'backgroundGradient' => [
-                                            'angle' => ['units' => 'deg', 'value' => 0],
+                                            'angle' => ['units' => 'DEGREES', 'value' => 0],
                                             'colors' => [
                                                 ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                                             ],
@@ -109,7 +109,7 @@ final class BatchTest extends TestCase
                             'styles' => [
                                 'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
                                 'backgroundGradient' => [
-                                    'angle' => ['units' => 'deg', 'value' => 0],
+                                    'angle' => ['units' => 'DEGREES', 'value' => 0],
                                     'colors' => [
                                         ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                                     ],
@@ -246,7 +246,7 @@ final class BatchTest extends TestCase
                                             'a' => 0, 'b' => 0, 'g' => 0, 'r' => 0,
                                         ],
                                         'backgroundGradient' => [
-                                            'angle' => ['units' => 'deg', 'value' => 0],
+                                            'angle' => ['units' => 'DEGREES', 'value' => 0],
                                             'colors' => [
                                                 ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                                             ],
@@ -267,14 +267,14 @@ final class BatchTest extends TestCase
                                             'foo' => [
                                                 'hidden' => true,
                                                 'margin' => [
-                                                    'bottom' => ['units' => '%', 'value' => 0],
-                                                    'top' => ['units' => '%', 'value' => 0],
+                                                    'bottom' => ['units' => 'CH', 'value' => 0],
+                                                    'top' => ['units' => 'CH', 'value' => 0],
                                                 ],
                                                 'padding' => [
-                                                    'bottom' => ['units' => '%', 'value' => 0],
-                                                    'left' => ['units' => '%', 'value' => 0],
-                                                    'right' => ['units' => '%', 'value' => 0],
-                                                    'top' => ['units' => '%', 'value' => 0],
+                                                    'bottom' => ['units' => 'CH', 'value' => 0],
+                                                    'left' => ['units' => 'CH', 'value' => 0],
+                                                    'right' => ['units' => 'CH', 'value' => 0],
+                                                    'top' => ['units' => 'CH', 'value' => 0],
                                                 ],
                                             ],
                                         ],
@@ -285,7 +285,7 @@ final class BatchTest extends TestCase
                             'styles' => [
                                 'backgroundColor' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0],
                                 'backgroundGradient' => [
-                                    'angle' => ['units' => 'deg', 'value' => 0],
+                                    'angle' => ['units' => 'DEGREES', 'value' => 0],
                                     'colors' => [
                                         ['color' => ['a' => 0, 'b' => 0, 'g' => 0, 'r' => 0]],
                                     ],
@@ -306,14 +306,14 @@ final class BatchTest extends TestCase
                                     'foo' => [
                                         'hidden' => true,
                                         'margin' => [
-                                            'bottom' => ['units' => '%', 'value' => 0],
-                                            'top' => ['units' => '%', 'value' => 0],
+                                            'bottom' => ['units' => 'CH', 'value' => 0],
+                                            'top' => ['units' => 'CH', 'value' => 0],
                                         ],
                                         'padding' => [
-                                            'bottom' => ['units' => '%', 'value' => 0],
-                                            'left' => ['units' => '%', 'value' => 0],
-                                            'right' => ['units' => '%', 'value' => 0],
-                                            'top' => ['units' => '%', 'value' => 0],
+                                            'bottom' => ['units' => 'CH', 'value' => 0],
+                                            'left' => ['units' => 'CH', 'value' => 0],
+                                            'right' => ['units' => 'CH', 'value' => 0],
+                                            'top' => ['units' => 'CH', 'value' => 0],
                                         ],
                                     ],
                                 ],

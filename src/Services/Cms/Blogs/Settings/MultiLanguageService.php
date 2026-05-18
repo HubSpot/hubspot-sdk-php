@@ -84,6 +84,7 @@ final class MultiLanguageService implements MultiLanguageContract
         ?string $language = null,
         ?string $primaryLanguage = null,
         ?string $slug = null,
+        ?bool $usePublished = null,
         RequestOptions|array|null $requestOptions = null,
     ): Blog {
         $params = Util::removeNulls(
@@ -92,6 +93,7 @@ final class MultiLanguageService implements MultiLanguageContract
                 'language' => $language,
                 'primaryLanguage' => $primaryLanguage,
                 'slug' => $slug,
+                'usePublished' => $usePublished,
             ],
         );
 

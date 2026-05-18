@@ -16,7 +16,6 @@ use HubSpotSDK\Cms\Pages\LandingPages\LandingPageDeleteParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageGetParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageListParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
-use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
 use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Core\Contracts\BaseResponse;
@@ -368,81 +367,6 @@ final class LandingPagesRawService implements LandingPagesRawContract
     /**
      * @api
      *
-     * Retrieve the full draft version of a landing page, specified by page ID.
-     *
-     * @param string $objectID the unique identifier of the landing page whose draft version is to be retrieved
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<PagesPage>
-     *
-     * @throws APIException
-     */
-    public function getDraft(
-        string $objectID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'get',
-            path: ['cms/pages/2026-03/landing-pages/%1$s/draft', $objectID],
-            options: $requestOptions,
-            convert: PagesPage::class,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Take any changes from the draft version of the Landing Page and apply them to the live version.
-     *
-     * @param string $objectID the unique identifier of the landing page draft to be published
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function pushDraftLive(
-        string $objectID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: ['cms/pages/2026-03/landing-pages/%1$s/draft/push-live', $objectID],
-            options: $requestOptions,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Discards any edits and resets the draft to match the live version.
-     *
-     * @param string $objectID the unique identifier of the landing page whose draft is to be reset
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function resetDraft(
-        string $objectID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse {
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'post',
-            path: ['cms/pages/2026-03/landing-pages/%1$s/draft/reset', $objectID],
-            options: $requestOptions,
-            convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
      * Schedule a landing page to be published.
      *
      * @param array{
@@ -471,98 +395,6 @@ final class LandingPagesRawService implements LandingPagesRawContract
             body: (object) $parsed,
             options: $options,
             convert: null,
-        );
-    }
-
-    /**
-     * @api
-     *
-     * Partially updates the draft version of a single landing page, specified by its ID. You only need to specify the column values that you are modifying.
-     *
-     * @param string $objectID the unique identifier of the landing page draft to update
-     * @param array{
-     *   id: string,
-     *   abStatus: value-of<LandingPageUpdateDraftParams\AbStatus>,
-     *   abTestID: string,
-     *   archivedAt: \DateTimeInterface,
-     *   archivedInDashboard: bool,
-     *   attachedStylesheets: list<array<string,mixed>>,
-     *   authorName: string,
-     *   campaign: string,
-     *   categoryID: int,
-     *   contentGroupID: string,
-     *   contentTypeCategory: value-of<LandingPageUpdateDraftParams\ContentTypeCategory>,
-     *   created: \DateTimeInterface,
-     *   createdByID: string,
-     *   currentlyPublished: bool,
-     *   currentState: value-of<LandingPageUpdateDraftParams\CurrentState>,
-     *   domain: string,
-     *   dynamicPageDataSourceID: string,
-     *   dynamicPageDataSourceType: int,
-     *   dynamicPageHubDBTableID: string,
-     *   enableDomainStylesheets: bool,
-     *   enableLayoutStylesheets: bool,
-     *   featuredImage: string,
-     *   featuredImageAltText: string,
-     *   folderID: string,
-     *   footerHTML: string,
-     *   headHTML: string,
-     *   htmlTitle: string,
-     *   includeDefaultCustomCss: bool,
-     *   language: value-of<LandingPageUpdateDraftParams\Language>,
-     *   layoutSections: array<string,mixed>,
-     *   linkRelCanonicalURL: string,
-     *   mabExperimentID: string,
-     *   metaDescription: string,
-     *   name: string,
-     *   pageExpiryDate: int,
-     *   pageExpiryEnabled: bool,
-     *   pageExpiryRedirectID: int,
-     *   pageExpiryRedirectURL: string,
-     *   pageRedirected: bool,
-     *   password: string,
-     *   publicAccessRules: list<mixed>,
-     *   publicAccessRulesEnabled: bool,
-     *   publishDate: \DateTimeInterface,
-     *   publishImmediately: bool,
-     *   slug: string,
-     *   state: string,
-     *   subcategory: string,
-     *   templatePath: string,
-     *   themeSettingsValues: array<string,mixed>,
-     *   translatedFromID: string,
-     *   translations: array<string,ContentLanguageVariation|ContentLanguageVariationShape>,
-     *   updated: \DateTimeInterface,
-     *   updatedByID: string,
-     *   url: string,
-     *   useFeaturedImage: bool,
-     *   widgetContainers: array<string,mixed>,
-     *   widgets: array<string,mixed>,
-     * }|LandingPageUpdateDraftParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<PagesPage>
-     *
-     * @throws APIException
-     */
-    public function updateDraft(
-        string $objectID,
-        array|LandingPageUpdateDraftParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse {
-        [$parsed, $options] = LandingPageUpdateDraftParams::parseRequest(
-            $params,
-            $requestOptions,
-        );
-
-        // @phpstan-ignore-next-line return.type
-        return $this->client->request(
-            method: 'patch',
-            path: ['cms/pages/2026-03/landing-pages/%1$s/draft', $objectID],
-            headers: ['Content-Type' => '*/*'],
-            body: (object) $parsed,
-            options: $options,
-            convert: PagesPage::class,
         );
     }
 }

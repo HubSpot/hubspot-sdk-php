@@ -8,14 +8,14 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive;
+use HubSpotSDK\Crm\PublicAssociationMultiArchive;
 
 /**
  * Batch delete associations for objects.
  *
  * @see HubSpotSDK\Services\Crm\Associations\BatchService::delete()
  *
- * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive
+ * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubSpotSDK\Crm\PublicAssociationMultiArchive
  *
  * @phpstan-type BatchDeleteParamsShape = array{
  *   fromObjectType: string,

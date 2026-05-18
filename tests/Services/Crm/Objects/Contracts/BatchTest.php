@@ -5,7 +5,6 @@ namespace Tests\Services\Crm\Objects\Contracts;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -27,134 +26,6 @@ final class BatchTest extends TestCase
         $client = new Client(accessToken: 'My Access Token', baseUrl: $testUrl);
 
         $this->client = $client;
-    }
-
-    #[Test]
-    public function testCreate(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contracts->batch->create(
-            inputs: [
-                [
-                    'associations' => [
-                        [
-                            'to' => ['id' => 'id'],
-                            'types' => [
-                                [
-                                    'associationCategory' => 'HUBSPOT_DEFINED',
-                                    'associationTypeID' => 0,
-                                ],
-                            ],
-                        ],
-                    ],
-                    'properties' => ['foo' => 'string'],
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
-    }
-
-    #[Test]
-    public function testCreateWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contracts->batch->create(
-            inputs: [
-                [
-                    'associations' => [
-                        [
-                            'to' => ['id' => 'id'],
-                            'types' => [
-                                [
-                                    'associationCategory' => 'HUBSPOT_DEFINED',
-                                    'associationTypeID' => 0,
-                                ],
-                            ],
-                        ],
-                    ],
-                    'properties' => ['foo' => 'string'],
-                    'objectWriteTraceID' => 'objectWriteTraceId',
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
-    }
-
-    #[Test]
-    public function testUpdate(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contracts->batch->update(
-            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]]
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
-    }
-
-    #[Test]
-    public function testUpdateWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contracts->batch->update(
-            inputs: [
-                [
-                    'id' => 'id',
-                    'properties' => ['foo' => 'string'],
-                    'idProperty' => 'my_unique_property_name',
-                    'objectWriteTraceID' => 'objectWriteTraceId',
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
-    }
-
-    #[Test]
-    public function testDelete(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contracts->batch->delete(
-            inputs: [['id' => '430001']]
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
-    }
-
-    #[Test]
-    public function testDeleteWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contracts->batch->delete(
-            inputs: [['id' => '430001']]
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertNull($result);
     }
 
     #[Test]
@@ -191,48 +62,5 @@ final class BatchTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(BatchResponseSimplePublicObject::class, $result);
-    }
-
-    #[Test]
-    public function testUpsert(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contracts->batch->upsert(
-            inputs: [['id' => 'id', 'properties' => ['foo' => 'string']]]
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            BatchResponseSimplePublicUpsertObject::class,
-            $result
-        );
-    }
-
-    #[Test]
-    public function testUpsertWithOptionalParams(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->crm->objects->contracts->batch->upsert(
-            inputs: [
-                [
-                    'id' => 'id',
-                    'properties' => ['foo' => 'string'],
-                    'idProperty' => 'idProperty',
-                    'objectWriteTraceID' => 'objectWriteTraceId',
-                ],
-            ],
-        );
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            BatchResponseSimplePublicUpsertObject::class,
-            $result
-        );
     }
 }

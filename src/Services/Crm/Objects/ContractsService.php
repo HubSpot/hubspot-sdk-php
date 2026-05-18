@@ -7,19 +7,13 @@ namespace HubSpotSDK\Services\Crm\Objects;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
-use HubSpotSDK\Crm\FilterGroup;
-use HubSpotSDK\Crm\Objects\PublicAssociationsForObject;
 use HubSpotSDK\Crm\Objects\SimplePublicObjectWithAssociations;
-use HubSpotSDK\Crm\SimplePublicObject;
 use HubSpotSDK\Page;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\Objects\ContractsContract;
 use HubSpotSDK\Services\Crm\Objects\Contracts\BatchService;
 
 /**
- * @phpstan-import-type PublicAssociationsForObjectShape from \HubSpotSDK\Crm\Objects\PublicAssociationsForObject
- * @phpstan-import-type FilterGroupShape from \HubSpotSDK\Crm\FilterGroup
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class ContractsService implements ContractsContract
@@ -41,60 +35,6 @@ final class ContractsService implements ContractsContract
     {
         $this->raw = new ContractsRawService($client);
         $this->batch = new BatchService($client);
-    }
-
-    /**
-     * @api
-     *
-     * Create a contract with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard contracts is provided.
-     *
-     * @param list<PublicAssociationsForObject|PublicAssociationsForObjectShape> $associations
-     * @param array<string,string> $properties key-value pairs for setting properties for the new object
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function create(
-        array $associations,
-        array $properties,
-        RequestOptions|array|null $requestOptions = null,
-    ): SimplePublicObject {
-        $params = Util::removeNulls(
-            ['associations' => $associations, 'properties' => $properties]
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Perform a partial update of an Object identified by `{contractId}`or optionally a unique property value as specified by the `idProperty` query param. `{contractId}` refers to the internal object ID by default, and the `idProperty` query param refers to a property whose values are unique for the object. Provided property values will be overwritten. Read-only and non-existent properties will result in an error. Properties values can be cleared by passing an empty string.
-     *
-     * @param string $contractID Path param
-     * @param array<string,string> $properties body param: Key value pairs representing the properties of the object
-     * @param string $idProperty Query param: The name of a property whose values are unique for this object type
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function update(
-        string $contractID,
-        array $properties,
-        ?string $idProperty = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): SimplePublicObject {
-        $params = Util::removeNulls(
-            ['properties' => $properties, 'idProperty' => $idProperty]
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->update($contractID, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
     }
 
     /**
@@ -143,25 +83,6 @@ final class ContractsService implements ContractsContract
     /**
      * @api
      *
-     * Move an Object identified by `{contractId}` to the recycling bin.
-     *
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function delete(
-        string $contractID,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed {
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->delete($contractID, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
      * Read an Object identified by `{contractId}`. `{contractId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.
      *
      * @param bool $archived whether to return only results that have been archived
@@ -194,47 +115,6 @@ final class ContractsService implements ContractsContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($contractID, params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Execute a search query to find contracts based on defined filters, properties, and sorting options. This allows for retrieving specific contract records that match the search criteria.
-     *
-     * @param string $after a paging cursor token for retrieving subsequent pages
-     * @param list<FilterGroup|FilterGroupShape> $filterGroups up to 6 groups of filters defining additional query criteria
-     * @param int $limit the maximum results to return, up to 200 objects
-     * @param list<string> $properties a list of property names to include in the response
-     * @param list<string> $sorts specifies sorting order based on object properties
-     * @param string $query the search query string, up to 3000 characters
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function search(
-        string $after,
-        array $filterGroups,
-        int $limit,
-        array $properties,
-        array $sorts,
-        ?string $query = null,
-        RequestOptions|array|null $requestOptions = null,
-    ): CollectionResponseWithTotalSimplePublicObject {
-        $params = Util::removeNulls(
-            [
-                'after' => $after,
-                'filterGroups' => $filterGroups,
-                'limit' => $limit,
-                'properties' => $properties,
-                'sorts' => $sorts,
-                'query' => $query,
-            ],
-        );
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->search(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

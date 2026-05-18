@@ -8,14 +8,14 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
+use HubSpotSDK\Crm\PublicDefaultAssociationMultiPost;
 
 /**
  * Create the default (most generic) association type between two object types.
  *
  * @see HubSpotSDK\Services\Crm\Associations\BatchService::createDefault()
  *
- * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost
+ * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubSpotSDK\Crm\PublicDefaultAssociationMultiPost
  *
  * @phpstan-type BatchCreateDefaultParamsShape = array{
  *   fromObjectType: string,

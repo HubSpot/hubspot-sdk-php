@@ -4,7 +4,8 @@ namespace Tests\Services\Crm\Associations;
 
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
+use HubSpotSDK\Crm\BatchResponseLabelsBetweenObjectPair;
+use HubSpotSDK\Crm\BatchResponsePublicAssociationMultiWithLabel;
 use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -37,15 +38,25 @@ final class BatchTest extends TestCase
         }
 
         $result = $this->client->crm->associations->batch->create(
-            'toObjectId',
+            'toObjectType',
             fromObjectType: 'fromObjectType',
-            fromObjectID: 'fromObjectId',
-            toObjectType: 'toObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => 'id'],
+                    'to' => ['id' => 'id'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
+                        ],
+                    ],
+                ],
+            ],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
-            BatchResponsePublicDefaultAssociation::class,
+            BatchResponseLabelsBetweenObjectPair::class,
             $result
         );
     }
@@ -58,15 +69,25 @@ final class BatchTest extends TestCase
         }
 
         $result = $this->client->crm->associations->batch->create(
-            'toObjectId',
+            'toObjectType',
             fromObjectType: 'fromObjectType',
-            fromObjectID: 'fromObjectId',
-            toObjectType: 'toObjectType',
+            inputs: [
+                [
+                    'from' => ['id' => 'id'],
+                    'to' => ['id' => 'id'],
+                    'types' => [
+                        [
+                            'associationCategory' => 'HUBSPOT_DEFINED',
+                            'associationTypeID' => 0,
+                        ],
+                    ],
+                ],
+            ],
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
-            BatchResponsePublicDefaultAssociation::class,
+            BatchResponseLabelsBetweenObjectPair::class,
             $result
         );
     }
