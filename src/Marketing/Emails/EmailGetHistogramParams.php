@@ -17,9 +17,9 @@ use HubSpotSDK\Marketing\Emails\EmailGetHistogramParams\Interval;
  *
  * @phpstan-type EmailGetHistogramParamsShape = array{
  *   emailIDs?: list<int>|null,
- *   endTimestamp?: string|null,
+ *   endTimestamp?: \DateTimeInterface|null,
  *   interval?: null|\HubSpotSDK\Marketing\Emails\EmailGetHistogramParams\Interval|value-of<\HubSpotSDK\Marketing\Emails\EmailGetHistogramParams\Interval>,
- *   startTimestamp?: string|null,
+ *   startTimestamp?: \DateTimeInterface|null,
  * }
  */
 final class EmailGetHistogramParams implements BaseModel
@@ -33,7 +33,7 @@ final class EmailGetHistogramParams implements BaseModel
     public ?array $emailIDs;
 
     #[Optional]
-    public ?string $endTimestamp;
+    public ?\DateTimeInterface $endTimestamp;
 
     /**
      * @var value-of<Interval>|null $interval
@@ -44,7 +44,7 @@ final class EmailGetHistogramParams implements BaseModel
     public ?string $interval;
 
     #[Optional]
-    public ?string $startTimestamp;
+    public ?\DateTimeInterface $startTimestamp;
 
     public function __construct()
     {
@@ -61,9 +61,9 @@ final class EmailGetHistogramParams implements BaseModel
      */
     public static function with(
         ?array $emailIDs = null,
-        ?string $endTimestamp = null,
+        ?\DateTimeInterface $endTimestamp = null,
         Interval|string|null $interval = null,
-        ?string $startTimestamp = null,
+        ?\DateTimeInterface $startTimestamp = null,
     ): self {
         $self = new self;
 
@@ -86,7 +86,7 @@ final class EmailGetHistogramParams implements BaseModel
         return $self;
     }
 
-    public function withEndTimestamp(string $endTimestamp): self
+    public function withEndTimestamp(\DateTimeInterface $endTimestamp): self
     {
         $self = clone $this;
         $self['endTimestamp'] = $endTimestamp;
@@ -106,7 +106,7 @@ final class EmailGetHistogramParams implements BaseModel
         return $self;
     }
 
-    public function withStartTimestamp(string $startTimestamp): self
+    public function withStartTimestamp(\DateTimeInterface $startTimestamp): self
     {
         $self = clone $this;
         $self['startTimestamp'] = $startTimestamp;

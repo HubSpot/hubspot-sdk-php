@@ -207,6 +207,7 @@ final class TagsTest extends TestCase
             name: 'name',
             language: 'language',
             primaryLanguage: 'primaryLanguage',
+            usePublished: true,
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

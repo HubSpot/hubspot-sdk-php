@@ -11,7 +11,10 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type ContentLanguageCloneRequestVNextShape = array{
- *   id: string, language?: string|null, primaryLanguage?: string|null
+ *   id: string,
+ *   language?: string|null,
+ *   primaryLanguage?: string|null,
+ *   usePublished?: bool|null,
  * }
  */
 final class ContentLanguageCloneRequestVNext implements BaseModel
@@ -36,6 +39,9 @@ final class ContentLanguageCloneRequestVNext implements BaseModel
      */
     #[Optional]
     public ?string $primaryLanguage;
+
+    #[Optional]
+    public ?bool $usePublished;
 
     /**
      * `new ContentLanguageCloneRequestVNext()` is missing required properties by the API.
@@ -64,7 +70,8 @@ final class ContentLanguageCloneRequestVNext implements BaseModel
     public static function with(
         string $id,
         ?string $language = null,
-        ?string $primaryLanguage = null
+        ?string $primaryLanguage = null,
+        ?bool $usePublished = null,
     ): self {
         $self = new self;
 
@@ -72,6 +79,7 @@ final class ContentLanguageCloneRequestVNext implements BaseModel
 
         null !== $language && $self['language'] = $language;
         null !== $primaryLanguage && $self['primaryLanguage'] = $primaryLanguage;
+        null !== $usePublished && $self['usePublished'] = $usePublished;
 
         return $self;
     }
@@ -105,6 +113,14 @@ final class ContentLanguageCloneRequestVNext implements BaseModel
     {
         $self = clone $this;
         $self['primaryLanguage'] = $primaryLanguage;
+
+        return $self;
+    }
+
+    public function withUsePublished(bool $usePublished): self
+    {
+        $self = clone $this;
+        $self['usePublished'] = $usePublished;
 
         return $self;
     }

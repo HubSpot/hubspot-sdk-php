@@ -6,14 +6,16 @@ namespace HubSpotSDK\ServiceContracts\Crm;
 
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Associations\AssociationCreateParams;
 use HubSpotSDK\Crm\Associations\AssociationDeleteParams;
 use HubSpotSDK\Crm\Associations\AssociationListParams;
 use HubSpotSDK\Crm\Associations\AssociationSearchParams;
-use HubSpotSDK\Crm\Associations\AssociationUpdateAssociationLabelsParams;
-use HubSpotSDK\Crm\Associations\ReportCreationResponse;
+use HubSpotSDK\Crm\Associations\AssociationUpdateLabelsParams;
+use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubSpotSDK\Crm\LabelsBetweenObjectPair;
 use HubSpotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubSpotSDK\Crm\ReportCreationResponse;
 use HubSpotSDK\Page;
 use HubSpotSDK\RequestOptions;
 
@@ -22,6 +24,22 @@ use HubSpotSDK\RequestOptions;
  */
 interface AssociationsRawContract
 {
+    /**
+     * @api
+     *
+     * @param array<string,mixed>|AssociationCreateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponsePublicDefaultAssociation>
+     *
+     * @throws APIException
+     */
+    public function create(
+        string $toObjectID,
+        array|AssociationCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
     /**
      * @api
      *
@@ -89,16 +107,16 @@ interface AssociationsRawContract
      * @api
      *
      * @param string $toObjectID Path param
-     * @param array<string,mixed>|AssociationUpdateAssociationLabelsParams $params
+     * @param array<string,mixed>|AssociationUpdateLabelsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<LabelsBetweenObjectPair>
      *
      * @throws APIException
      */
-    public function updateAssociationLabels(
+    public function updateLabels(
         string $toObjectID,
-        array|AssociationUpdateAssociationLabelsParams $params,
+        array|AssociationUpdateLabelsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

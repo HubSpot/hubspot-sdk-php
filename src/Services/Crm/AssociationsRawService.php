@@ -8,15 +8,17 @@ use HubSpotSDK\AssociationSpec;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Crm\Associations\AssociationCreateParams;
 use HubSpotSDK\Crm\Associations\AssociationDeleteParams;
 use HubSpotSDK\Crm\Associations\AssociationListParams;
 use HubSpotSDK\Crm\Associations\AssociationSearchParams;
-use HubSpotSDK\Crm\Associations\AssociationUpdateAssociationLabelsParams;
-use HubSpotSDK\Crm\Associations\ReportCreationResponse;
+use HubSpotSDK\Crm\Associations\AssociationUpdateLabelsParams;
+use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubSpotSDK\Crm\FilterGroup;
 use HubSpotSDK\Crm\LabelsBetweenObjectPair;
 use HubSpotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubSpotSDK\Crm\ReportCreationResponse;
 use HubSpotSDK\Page;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\AssociationsRawContract;
@@ -33,6 +35,51 @@ final class AssociationsRawService implements AssociationsRawContract
      * @internal
      */
     public function __construct(private Client $client) {}
+
+    /**
+     * @api
+     *
+     * Create the default (most generic) association type between two object types
+     *
+     * @param array{
+     *   fromObjectType: string, fromObjectID: string, toObjectType: string
+     * }|AssociationCreateParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<BatchResponsePublicDefaultAssociation>
+     *
+     * @throws APIException
+     */
+    public function create(
+        string $toObjectID,
+        array|AssociationCreateParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = AssociationCreateParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+        $fromObjectType = $parsed['fromObjectType'];
+        unset($parsed['fromObjectType']);
+        $fromObjectID = $parsed['fromObjectID'];
+        unset($parsed['fromObjectID']);
+        $toObjectType = $parsed['toObjectType'];
+        unset($parsed['toObjectType']);
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'put',
+            path: [
+                'crm/objects/2026-03/%1$s/%2$s/associations/default/%3$s/%4$s',
+                $fromObjectType,
+                $fromObjectID,
+                $toObjectType,
+                $toObjectID,
+            ],
+            options: $options,
+            convert: BatchResponsePublicDefaultAssociation::class,
+        );
+    }
 
     /**
      * @api
@@ -81,6 +128,8 @@ final class AssociationsRawService implements AssociationsRawContract
 
     /**
      * @api
+     *
+     * deletes all associations between two records.
      *
      * @param array{
      *   objectType: string, objectID: string, toObjectType: string
@@ -186,25 +235,27 @@ final class AssociationsRawService implements AssociationsRawContract
     /**
      * @api
      *
+     * Set association labels between two records.
+     *
      * @param string $toObjectID Path param
      * @param array{
      *   objectType: string,
      *   objectID: string,
      *   toObjectType: string,
      *   body: list<AssociationSpec|AssociationSpecShape>,
-     * }|AssociationUpdateAssociationLabelsParams $params
+     * }|AssociationUpdateLabelsParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<LabelsBetweenObjectPair>
      *
      * @throws APIException
      */
-    public function updateAssociationLabels(
+    public function updateLabels(
         string $toObjectID,
-        array|AssociationUpdateAssociationLabelsParams $params,
+        array|AssociationUpdateLabelsParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
-        [$parsed, $options] = AssociationUpdateAssociationLabelsParams::parseRequest(
+        [$parsed, $options] = AssociationUpdateLabelsParams::parseRequest(
             $params,
             $requestOptions,
         );

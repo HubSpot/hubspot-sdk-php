@@ -105,7 +105,7 @@ final class MultiLanguageTest extends TestCase
             ->blogs
             ->posts
             ->multiLanguage
-            ->createLangVariation(id: 'id', language: 'language')
+            ->createLangVariation(id: 'id', language: 'language', usePublished: true)
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType

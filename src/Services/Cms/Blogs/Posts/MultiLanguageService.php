@@ -79,9 +79,12 @@ final class MultiLanguageService implements MultiLanguageContract
     public function createLangVariation(
         string $id,
         ?string $language = null,
+        ?bool $usePublished = null,
         RequestOptions|array|null $requestOptions = null,
     ): string {
-        $params = Util::removeNulls(['id' => $id, 'language' => $language]);
+        $params = Util::removeNulls(
+            ['id' => $id, 'language' => $language, 'usePublished' => $usePublished]
+        );
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->createLangVariation(params: $params, requestOptions: $requestOptions);

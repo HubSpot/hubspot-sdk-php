@@ -32,7 +32,7 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
     public array $results;
 
     /**
-     * The total number of objects in the collection.
+     * The number of available results.
      */
     #[Required]
     public int $total;
@@ -96,7 +96,7 @@ final class CollectionResponseWithTotalSimplePublicObject implements BaseModel
     }
 
     /**
-     * The total number of objects in the collection.
+     * The number of available results.
      */
     public function withTotal(int $total): self
     {

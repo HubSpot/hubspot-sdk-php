@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Crm\AssociationSpecWithLabel;
 
 /**
- * The category of the association, such as HUBSPOT_DEFINED, USER_DEFINED, or INTEGRATOR_DEFINED.
+ * Association category. Can be HUBSPOT_DEFINED, USER_DEFINED, INTEGRATOR_DEFINED or WORK.
  */
 enum Category: string
 {

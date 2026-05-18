@@ -16,9 +16,9 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *
  * @phpstan-type EmailGetParamsShape = array{
  *   emailIDs?: list<int>|null,
- *   endTimestamp?: string|null,
+ *   endTimestamp?: \DateTimeInterface|null,
  *   property?: string|null,
- *   startTimestamp?: string|null,
+ *   startTimestamp?: \DateTimeInterface|null,
  * }
  */
 final class EmailGetParams implements BaseModel
@@ -32,13 +32,13 @@ final class EmailGetParams implements BaseModel
     public ?array $emailIDs;
 
     #[Optional]
-    public ?string $endTimestamp;
+    public ?\DateTimeInterface $endTimestamp;
 
     #[Optional]
     public ?string $property;
 
     #[Optional]
-    public ?string $startTimestamp;
+    public ?\DateTimeInterface $startTimestamp;
 
     public function __construct()
     {
@@ -54,9 +54,9 @@ final class EmailGetParams implements BaseModel
      */
     public static function with(
         ?array $emailIDs = null,
-        ?string $endTimestamp = null,
+        ?\DateTimeInterface $endTimestamp = null,
         ?string $property = null,
-        ?string $startTimestamp = null,
+        ?\DateTimeInterface $startTimestamp = null,
     ): self {
         $self = new self;
 
@@ -79,7 +79,7 @@ final class EmailGetParams implements BaseModel
         return $self;
     }
 
-    public function withEndTimestamp(string $endTimestamp): self
+    public function withEndTimestamp(\DateTimeInterface $endTimestamp): self
     {
         $self = clone $this;
         $self['endTimestamp'] = $endTimestamp;
@@ -95,7 +95,7 @@ final class EmailGetParams implements BaseModel
         return $self;
     }
 
-    public function withStartTimestamp(string $startTimestamp): self
+    public function withStartTimestamp(\DateTimeInterface $startTimestamp): self
     {
         $self = clone $this;
         $self['startTimestamp'] = $startTimestamp;

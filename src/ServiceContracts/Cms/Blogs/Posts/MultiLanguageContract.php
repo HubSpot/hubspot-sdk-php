@@ -45,6 +45,7 @@ interface MultiLanguageContract
     public function createLangVariation(
         string $id,
         ?string $language = null,
+        ?bool $usePublished = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
 

@@ -13,7 +13,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @see HubSpotSDK\Services\Crm\ListsService::getSizeAndEditsHistoryBetween()
  *
  * @phpstan-type ListGetSizeAndEditsHistoryBetweenParamsShape = array{
- *   endDate?: string|null, startDate?: string|null
+ *   endDate?: \DateTimeInterface|null, startDate?: \DateTimeInterface|null
  * }
  */
 final class ListGetSizeAndEditsHistoryBetweenParams implements BaseModel
@@ -23,10 +23,10 @@ final class ListGetSizeAndEditsHistoryBetweenParams implements BaseModel
     use SdkParams;
 
     #[Optional]
-    public ?string $endDate;
+    public ?\DateTimeInterface $endDate;
 
     #[Optional]
-    public ?string $startDate;
+    public ?\DateTimeInterface $startDate;
 
     public function __construct()
     {
@@ -39,8 +39,8 @@ final class ListGetSizeAndEditsHistoryBetweenParams implements BaseModel
      * You must use named parameters to construct any parameters with a default value.
      */
     public static function with(
-        ?string $endDate = null,
-        ?string $startDate = null
+        ?\DateTimeInterface $endDate = null,
+        ?\DateTimeInterface $startDate = null
     ): self {
         $self = new self;
 
@@ -50,7 +50,7 @@ final class ListGetSizeAndEditsHistoryBetweenParams implements BaseModel
         return $self;
     }
 
-    public function withEndDate(string $endDate): self
+    public function withEndDate(\DateTimeInterface $endDate): self
     {
         $self = clone $this;
         $self['endDate'] = $endDate;
@@ -58,7 +58,7 @@ final class ListGetSizeAndEditsHistoryBetweenParams implements BaseModel
         return $self;
     }
 
-    public function withStartDate(string $startDate): self
+    public function withStartDate(\DateTimeInterface $startDate): self
     {
         $self = clone $this;
         $self['startDate'] = $startDate;

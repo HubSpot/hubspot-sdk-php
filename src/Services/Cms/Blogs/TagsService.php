@@ -261,6 +261,7 @@ final class TagsService implements TagsContract
         string $name,
         ?string $language = null,
         ?string $primaryLanguage = null,
+        ?bool $usePublished = null,
         RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(
@@ -269,6 +270,7 @@ final class TagsService implements TagsContract
                 'name' => $name,
                 'language' => $language,
                 'primaryLanguage' => $primaryLanguage,
+                'usePublished' => $usePublished,
             ],
         );
 

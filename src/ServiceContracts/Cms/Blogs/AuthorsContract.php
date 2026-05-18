@@ -185,6 +185,7 @@ interface AuthorsContract
         BlogAuthor|array $blogAuthor,
         ?string $language = null,
         ?string $primaryLanguage = null,
+        ?bool $usePublished = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
 

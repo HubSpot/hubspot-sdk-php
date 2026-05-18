@@ -72,7 +72,11 @@ final class MultiLanguageRawService implements MultiLanguageRawContract
      * Create a new language variation from an existing blog.
      *
      * @param array{
-     *   id: string, language?: string, primaryLanguage?: string, slug?: string
+     *   id: string,
+     *   language?: string,
+     *   primaryLanguage?: string,
+     *   slug?: string,
+     *   usePublished?: bool,
      * }|MultiLanguageCreateLanguageVariationParams $params
      * @param RequestOpts|null $requestOptions
      *

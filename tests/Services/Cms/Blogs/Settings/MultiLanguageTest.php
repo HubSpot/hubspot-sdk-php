@@ -111,6 +111,7 @@ final class MultiLanguageTest extends TestCase
                 language: 'language',
                 primaryLanguage: 'primaryLanguage',
                 slug: 'slug',
+                usePublished: true,
             )
         ;
 

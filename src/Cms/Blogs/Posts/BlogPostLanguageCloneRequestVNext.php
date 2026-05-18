@@ -11,7 +11,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type BlogPostLanguageCloneRequestVNextShape = array{
- *   id: string, language?: string|null
+ *   id: string, language?: string|null, usePublished?: bool|null
  * }
  */
 final class BlogPostLanguageCloneRequestVNext implements BaseModel
@@ -30,6 +30,9 @@ final class BlogPostLanguageCloneRequestVNext implements BaseModel
      */
     #[Optional]
     public ?string $language;
+
+    #[Optional]
+    public ?bool $usePublished;
 
     /**
      * `new BlogPostLanguageCloneRequestVNext()` is missing required properties by the API.
@@ -55,13 +58,17 @@ final class BlogPostLanguageCloneRequestVNext implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $id, ?string $language = null): self
-    {
+    public static function with(
+        string $id,
+        ?string $language = null,
+        ?bool $usePublished = null
+    ): self {
         $self = new self;
 
         $self['id'] = $id;
 
         null !== $language && $self['language'] = $language;
+        null !== $usePublished && $self['usePublished'] = $usePublished;
 
         return $self;
     }
@@ -84,6 +91,14 @@ final class BlogPostLanguageCloneRequestVNext implements BaseModel
     {
         $self = clone $this;
         $self['language'] = $language;
+
+        return $self;
+    }
+
+    public function withUsePublished(bool $usePublished): self
+    {
+        $self = clone $this;
+        $self['usePublished'] = $usePublished;
 
         return $self;
     }

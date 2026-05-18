@@ -325,9 +325,9 @@ final class EmailsRawService implements EmailsRawContract
      *
      * @param array{
      *   emailIDs?: list<int>,
-     *   endTimestamp?: string,
+     *   endTimestamp?: \DateTimeInterface,
      *   property?: string,
-     *   startTimestamp?: string,
+     *   startTimestamp?: \DateTimeInterface,
      * }|EmailGetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -424,9 +424,9 @@ final class EmailsRawService implements EmailsRawContract
      *
      * @param array{
      *   emailIDs?: list<int>,
-     *   endTimestamp?: string,
+     *   endTimestamp?: \DateTimeInterface,
      *   interval?: Interval|value-of<Interval>,
-     *   startTimestamp?: string,
+     *   startTimestamp?: \DateTimeInterface,
      * }|EmailGetHistogramParams $params
      * @param RequestOpts|null $requestOptions
      *

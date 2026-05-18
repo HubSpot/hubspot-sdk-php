@@ -50,7 +50,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     public \DateTimeInterface $startedAt;
 
     /**
-     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
+     * The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
      *
      * @var value-of<Status> $status
      */
@@ -70,7 +70,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     public ?array $links;
 
     /**
-     * The number of errors encountered during the batch processing.
+     * The total number of errors that occurred during the operation.
      */
     #[Optional]
     public ?int $numErrors;
@@ -175,7 +175,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
+     * The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
      *
      * @param Status|value-of<Status> $status
      */
@@ -212,7 +212,7 @@ final class BatchResponsePublicDefaultAssociation implements BaseModel
     }
 
     /**
-     * The number of errors encountered during the batch processing.
+     * The total number of errors that occurred during the operation.
      */
     public function withNumErrors(int $numErrors): self
     {

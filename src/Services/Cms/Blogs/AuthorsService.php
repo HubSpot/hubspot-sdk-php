@@ -318,6 +318,7 @@ final class AuthorsService implements AuthorsContract
         BlogAuthor|array $blogAuthor,
         ?string $language = null,
         ?string $primaryLanguage = null,
+        ?bool $usePublished = null,
         RequestOptions|array|null $requestOptions = null,
     ): string {
         $params = Util::removeNulls(
@@ -326,6 +327,7 @@ final class AuthorsService implements AuthorsContract
                 'blogAuthor' => $blogAuthor,
                 'language' => $language,
                 'primaryLanguage' => $primaryLanguage,
+                'usePublished' => $usePublished,
             ],
         );
 
