@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
 
 /**
- * The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
+ * The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
  */
 enum Status: string
 {

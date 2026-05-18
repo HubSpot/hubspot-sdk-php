@@ -20,6 +20,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   name: string,
  *   language?: string|null,
  *   primaryLanguage?: string|null,
+ *   usePublished?: bool|null,
  * }
  */
 final class TagCreateLangVariationParams implements BaseModel
@@ -52,6 +53,9 @@ final class TagCreateLangVariationParams implements BaseModel
     #[Optional]
     public ?string $primaryLanguage;
 
+    #[Optional]
+    public ?bool $usePublished;
+
     /**
      * `new TagCreateLangVariationParams()` is missing required properties by the API.
      *
@@ -81,6 +85,7 @@ final class TagCreateLangVariationParams implements BaseModel
         string $name,
         ?string $language = null,
         ?string $primaryLanguage = null,
+        ?bool $usePublished = null,
     ): self {
         $self = new self;
 
@@ -89,6 +94,7 @@ final class TagCreateLangVariationParams implements BaseModel
 
         null !== $language && $self['language'] = $language;
         null !== $primaryLanguage && $self['primaryLanguage'] = $primaryLanguage;
+        null !== $usePublished && $self['usePublished'] = $usePublished;
 
         return $self;
     }
@@ -133,6 +139,14 @@ final class TagCreateLangVariationParams implements BaseModel
     {
         $self = clone $this;
         $self['primaryLanguage'] = $primaryLanguage;
+
+        return $self;
+    }
+
+    public function withUsePublished(bool $usePublished): self
+    {
+        $self = clone $this;
+        $self['usePublished'] = $usePublished;
 
         return $self;
     }

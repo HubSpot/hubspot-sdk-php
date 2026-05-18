@@ -146,6 +146,7 @@ interface TagsContract
         string $name,
         ?string $language = null,
         ?string $primaryLanguage = null,
+        ?bool $usePublished = null,
         RequestOptions|array|null $requestOptions = null,
     ): string;
 

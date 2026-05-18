@@ -4,7 +4,6 @@ namespace Tests\Services\Cms;
 
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\SiteSearch\IndexedData;
-use HubSpotSDK\Cms\SiteSearch\PublicSearchResults;
 use HubSpotSDK\Core\Util;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -40,18 +39,5 @@ final class SiteSearchTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(IndexedData::class, $result);
-    }
-
-    #[Test]
-    public function testSearch(): void
-    {
-        if (UnsupportedMockTests::$skip) {
-            $this->markTestSkipped('Mock server tests are disabled');
-        }
-
-        $result = $this->client->cms->siteSearch->search();
-
-        // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(PublicSearchResults::class, $result);
     }
 }

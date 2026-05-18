@@ -590,7 +590,7 @@ final class ListsRawService implements ListsRawContract
      * @api
      *
      * @param array{
-     *   endDate?: string, startDate?: string
+     *   endDate?: \DateTimeInterface, startDate?: \DateTimeInterface
      * }|ListGetSizeAndEditsHistoryBetweenParams $params
      * @param RequestOpts|null $requestOptions
      *

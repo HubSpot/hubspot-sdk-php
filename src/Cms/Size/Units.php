@@ -6,37 +6,37 @@ namespace HubSpotSDK\Cms\Size;
 
 enum Units: string
 {
-    case PERCENT = '%';
+    case CH = 'CH';
 
-    case CH = 'ch';
+    case CM = 'CM';
 
-    case CM = 'cm';
+    case EM = 'EM';
 
-    case EM = 'em';
+    case EX = 'EX';
 
-    case EX = 'ex';
+    case IN = 'IN';
 
-    case IN = 'in';
+    case LH = 'LH';
 
-    case LH = 'lh';
+    case MM = 'MM';
 
-    case MM = 'mm';
+    case PC = 'PC';
 
-    case PC = 'pc';
+    case PERCENTAGE = 'PERCENTAGE';
 
-    case PT = 'pt';
+    case PT = 'PT';
 
-    case PX = 'px';
+    case PX = 'PX';
 
     case Q = 'Q';
 
-    case REM = 'rem';
+    case REM = 'REM';
 
-    case VH = 'vh';
+    case VH = 'VH';
 
-    case VMAX = 'vmax';
+    case VMAX = 'VMAX';
 
-    case VMIN = 'vmin';
+    case VMIN = 'VMIN';
 
-    case VW = 'vw';
+    case VW = 'VW';
 }

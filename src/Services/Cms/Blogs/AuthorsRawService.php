@@ -270,6 +270,7 @@ final class AuthorsRawService implements AuthorsRawContract
      *   blogAuthor: BlogAuthor|BlogAuthorShape,
      *   language?: string,
      *   primaryLanguage?: string,
+     *   usePublished?: bool,
      * }|AuthorCreateLanguageVariationParams $params
      * @param RequestOpts|null $requestOptions
      *

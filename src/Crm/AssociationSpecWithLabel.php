@@ -23,7 +23,7 @@ final class AssociationSpecWithLabel implements BaseModel
     use SdkModel;
 
     /**
-     * The category of the association, such as HUBSPOT_DEFINED, USER_DEFINED, or INTEGRATOR_DEFINED.
+     * Association category. Can be HUBSPOT_DEFINED, USER_DEFINED, INTEGRATOR_DEFINED or WORK.
      *
      * @var value-of<Category> $category
      */
@@ -31,13 +31,13 @@ final class AssociationSpecWithLabel implements BaseModel
     public string $category;
 
     /**
-     * The unique identifier for the type of association.
+     * An integer value used to uniquely identify a specific association type within its Association Category.
      */
     #[Required('typeId')]
     public int $typeID;
 
     /**
-     * A label describing the association between two objects.
+     * An optional descriptor that provides additional context about the relationship between associated records, such as "Mentor" and "Mentee".
      */
     #[Optional]
     public ?string $label;
@@ -84,7 +84,7 @@ final class AssociationSpecWithLabel implements BaseModel
     }
 
     /**
-     * The category of the association, such as HUBSPOT_DEFINED, USER_DEFINED, or INTEGRATOR_DEFINED.
+     * Association category. Can be HUBSPOT_DEFINED, USER_DEFINED, INTEGRATOR_DEFINED or WORK.
      *
      * @param Category|value-of<Category> $category
      */
@@ -97,7 +97,7 @@ final class AssociationSpecWithLabel implements BaseModel
     }
 
     /**
-     * The unique identifier for the type of association.
+     * An integer value used to uniquely identify a specific association type within its Association Category.
      */
     public function withTypeID(int $typeID): self
     {
@@ -108,7 +108,7 @@ final class AssociationSpecWithLabel implements BaseModel
     }
 
     /**
-     * A label describing the association between two objects.
+     * An optional descriptor that provides additional context about the relationship between associated records, such as "Mentor" and "Mentee".
      */
     public function withLabel(string $label): self
     {

@@ -8,14 +8,14 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest;
+use HubSpotSDK\Crm\PublicFetchAssociationsBatchRequest;
 
 /**
  * Batch read associations for objects to specific object type. The 'after' field in a returned paging object  can be added alongside the 'id' to retrieve the next page of associations from that objectId. The 'link' field is deprecated and should be ignored. Note: The 'paging' field will only be present if there are more pages and absent otherwise.
  *
  * @see HubSpotSDK\Services\Crm\Associations\BatchService::get()
  *
- * @phpstan-import-type PublicFetchAssociationsBatchRequestShape from \HubSpotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest
+ * @phpstan-import-type PublicFetchAssociationsBatchRequestShape from \HubSpotSDK\Crm\PublicFetchAssociationsBatchRequest
  *
  * @phpstan-type BatchGetParamsShape = array{
  *   fromObjectType: string,

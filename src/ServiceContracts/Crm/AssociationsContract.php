@@ -6,11 +6,12 @@ namespace HubSpotSDK\ServiceContracts\Crm;
 
 use HubSpotSDK\AssociationSpec;
 use HubSpotSDK\Core\Exceptions\APIException;
-use HubSpotSDK\Crm\Associations\ReportCreationResponse;
+use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubSpotSDK\Crm\FilterGroup;
 use HubSpotSDK\Crm\LabelsBetweenObjectPair;
 use HubSpotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubSpotSDK\Crm\ReportCreationResponse;
 use HubSpotSDK\Page;
 use HubSpotSDK\RequestOptions;
 
@@ -21,6 +22,21 @@ use HubSpotSDK\RequestOptions;
  */
 interface AssociationsContract
 {
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function create(
+        string $toObjectID,
+        string $fromObjectType,
+        string $fromObjectID,
+        string $toObjectType,
+        RequestOptions|array|null $requestOptions = null,
+    ): BatchResponsePublicDefaultAssociation;
+
     /**
      * @api
      *
@@ -107,7 +123,7 @@ interface AssociationsContract
      *
      * @throws APIException
      */
-    public function updateAssociationLabels(
+    public function updateLabels(
         string $toObjectID,
         string $objectType,
         string $objectID,

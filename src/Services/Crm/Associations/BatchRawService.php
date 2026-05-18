@@ -12,20 +12,21 @@ use HubSpotSDK\Crm\Associations\Batch\BatchCreateParams;
 use HubSpotSDK\Crm\Associations\Batch\BatchDeleteLabelsParams;
 use HubSpotSDK\Crm\Associations\Batch\BatchDeleteParams;
 use HubSpotSDK\Crm\Associations\Batch\BatchGetParams;
-use HubSpotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
-use HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive;
-use HubSpotSDK\Crm\Associations\PublicAssociationMultiPost;
-use HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost;
-use HubSpotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest;
+use HubSpotSDK\Crm\BatchResponseLabelsBetweenObjectPair;
+use HubSpotSDK\Crm\BatchResponsePublicAssociationMultiWithLabel;
 use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
+use HubSpotSDK\Crm\PublicAssociationMultiArchive;
+use HubSpotSDK\Crm\PublicAssociationMultiPost;
+use HubSpotSDK\Crm\PublicDefaultAssociationMultiPost;
+use HubSpotSDK\Crm\PublicFetchAssociationsBatchRequest;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\Associations\BatchRawContract;
 
 /**
- * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiArchive
- * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubSpotSDK\Crm\Associations\PublicDefaultAssociationMultiPost
- * @phpstan-import-type PublicAssociationMultiPostShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiPost
- * @phpstan-import-type PublicFetchAssociationsBatchRequestShape from \HubSpotSDK\Crm\Associations\PublicFetchAssociationsBatchRequest
+ * @phpstan-import-type PublicAssociationMultiArchiveShape from \HubSpotSDK\Crm\PublicAssociationMultiArchive
+ * @phpstan-import-type PublicDefaultAssociationMultiPostShape from \HubSpotSDK\Crm\PublicDefaultAssociationMultiPost
+ * @phpstan-import-type PublicFetchAssociationsBatchRequestShape from \HubSpotSDK\Crm\PublicFetchAssociationsBatchRequest
+ * @phpstan-import-type PublicAssociationMultiPostShape from \HubSpotSDK\Crm\PublicAssociationMultiPost
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchRawService implements BatchRawContract
@@ -39,17 +40,21 @@ final class BatchRawService implements BatchRawContract
     /**
      * @api
      *
+     * Batch create associations for objects
+     *
+     * @param string $toObjectType Path param
      * @param array{
-     *   fromObjectType: string, fromObjectID: string, toObjectType: string
+     *   fromObjectType: string,
+     *   inputs: list<PublicAssociationMultiPost|PublicAssociationMultiPostShape>,
      * }|BatchCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponsePublicDefaultAssociation>
+     * @return BaseResponse<BatchResponseLabelsBetweenObjectPair>
      *
      * @throws APIException
      */
     public function create(
-        string $toObjectID,
+        string $toObjectType,
         array|BatchCreateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
@@ -59,23 +64,18 @@ final class BatchRawService implements BatchRawContract
         );
         $fromObjectType = $parsed['fromObjectType'];
         unset($parsed['fromObjectType']);
-        $fromObjectID = $parsed['fromObjectID'];
-        unset($parsed['fromObjectID']);
-        $toObjectType = $parsed['toObjectType'];
-        unset($parsed['toObjectType']);
 
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
-            method: 'put',
+            method: 'post',
             path: [
-                'crm/objects/2026-03/%1$s/%2$s/associations/default/%3$s/%4$s',
+                'crm/associations/2026-03/%1$s/%2$s/batch/create',
                 $fromObjectType,
-                $fromObjectID,
                 $toObjectType,
-                $toObjectID,
             ],
+            body: (object) array_diff_key($parsed, array_flip(['fromObjectType'])),
             options: $options,
-            convert: BatchResponsePublicDefaultAssociation::class,
+            convert: BatchResponseLabelsBetweenObjectPair::class,
         );
     }
 

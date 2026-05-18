@@ -28,7 +28,7 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     public array $associationTypes;
 
     /**
-     * The unique identifier for the target object in the association.
+     * Target unique ID of the object.
      */
     #[Required('toObjectId')]
     public string $toObjectID;
@@ -85,7 +85,7 @@ final class MultiAssociatedObjectWithLabel implements BaseModel
     }
 
     /**
-     * The unique identifier for the target object in the association.
+     * Target unique ID of the object.
      */
     public function withToObjectID(string $toObjectID): self
     {

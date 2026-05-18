@@ -25,33 +25,29 @@ final class LabelsBetweenObjectPair implements BaseModel
     use SdkModel;
 
     /**
-     * The ID of the source object in the association.
+     * Source unique ID of the object.
      */
     #[Required('fromObjectId')]
     public string $fromObjectID;
 
     /**
-     * The type ID of the source object in the association.
+     * Source object type.
      */
     #[Required('fromObjectTypeId')]
     public string $fromObjectTypeID;
 
-    /**
-     * An array of labels associated with the relationship between the objects.
-     *
-     * @var list<string> $labels
-     */
+    /** @var list<string> $labels */
     #[Required(list: 'string')]
     public array $labels;
 
     /**
-     * The ID of the target object in the association.
+     * Target unique ID of the object.
      */
     #[Required('toObjectId')]
     public string $toObjectID;
 
     /**
-     * The type ID of the target object in the association.
+     * Target object type.
      */
     #[Required('toObjectTypeId')]
     public string $toObjectTypeID;
@@ -112,7 +108,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     }
 
     /**
-     * The ID of the source object in the association.
+     * Source unique ID of the object.
      */
     public function withFromObjectID(string $fromObjectID): self
     {
@@ -123,7 +119,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     }
 
     /**
-     * The type ID of the source object in the association.
+     * Source object type.
      */
     public function withFromObjectTypeID(string $fromObjectTypeID): self
     {
@@ -134,8 +130,6 @@ final class LabelsBetweenObjectPair implements BaseModel
     }
 
     /**
-     * An array of labels associated with the relationship between the objects.
-     *
      * @param list<string> $labels
      */
     public function withLabels(array $labels): self
@@ -147,7 +141,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     }
 
     /**
-     * The ID of the target object in the association.
+     * Target unique ID of the object.
      */
     public function withToObjectID(string $toObjectID): self
     {
@@ -158,7 +152,7 @@ final class LabelsBetweenObjectPair implements BaseModel
     }
 
     /**
-     * The type ID of the target object in the association.
+     * Target object type.
      */
     public function withToObjectTypeID(string $toObjectTypeID): self
     {

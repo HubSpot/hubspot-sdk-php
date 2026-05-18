@@ -15,6 +15,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   language?: string|null,
  *   primaryLanguage?: string|null,
  *   slug?: string|null,
+ *   usePublished?: bool|null,
  * }
  */
 final class BlogLanguageCloneRequestVNext implements BaseModel
@@ -46,6 +47,9 @@ final class BlogLanguageCloneRequestVNext implements BaseModel
     #[Optional]
     public ?string $slug;
 
+    #[Optional]
+    public ?bool $usePublished;
+
     /**
      * `new BlogLanguageCloneRequestVNext()` is missing required properties by the API.
      *
@@ -75,6 +79,7 @@ final class BlogLanguageCloneRequestVNext implements BaseModel
         ?string $language = null,
         ?string $primaryLanguage = null,
         ?string $slug = null,
+        ?bool $usePublished = null,
     ): self {
         $self = new self;
 
@@ -83,6 +88,7 @@ final class BlogLanguageCloneRequestVNext implements BaseModel
         null !== $language && $self['language'] = $language;
         null !== $primaryLanguage && $self['primaryLanguage'] = $primaryLanguage;
         null !== $slug && $self['slug'] = $slug;
+        null !== $usePublished && $self['usePublished'] = $usePublished;
 
         return $self;
     }
@@ -127,6 +133,14 @@ final class BlogLanguageCloneRequestVNext implements BaseModel
     {
         $self = clone $this;
         $self['slug'] = $slug;
+
+        return $self;
+    }
+
+    public function withUsePublished(bool $usePublished): self
+    {
+        $self = clone $this;
+        $self['usePublished'] = $usePublished;
 
         return $self;
     }

@@ -16,7 +16,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  * @see HubSpotSDK\Services\Cms\Blogs\Posts\MultiLanguageService::createLangVariation()
  *
  * @phpstan-type MultiLanguageCreateLangVariationParamsShape = array{
- *   id: string, language?: string|null
+ *   id: string, language?: string|null, usePublished?: bool|null
  * }
  */
 final class MultiLanguageCreateLangVariationParams implements BaseModel
@@ -36,6 +36,9 @@ final class MultiLanguageCreateLangVariationParams implements BaseModel
      */
     #[Optional]
     public ?string $language;
+
+    #[Optional]
+    public ?bool $usePublished;
 
     /**
      * `new MultiLanguageCreateLangVariationParams()` is missing required properties by the API.
@@ -61,13 +64,17 @@ final class MultiLanguageCreateLangVariationParams implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      */
-    public static function with(string $id, ?string $language = null): self
-    {
+    public static function with(
+        string $id,
+        ?string $language = null,
+        ?bool $usePublished = null
+    ): self {
         $self = new self;
 
         $self['id'] = $id;
 
         null !== $language && $self['language'] = $language;
+        null !== $usePublished && $self['usePublished'] = $usePublished;
 
         return $self;
     }
@@ -90,6 +97,14 @@ final class MultiLanguageCreateLangVariationParams implements BaseModel
     {
         $self = clone $this;
         $self['language'] = $language;
+
+        return $self;
+    }
+
+    public function withUsePublished(bool $usePublished): self
+    {
+        $self = clone $this;
+        $self['usePublished'] = $usePublished;
 
         return $self;
     }

@@ -11,7 +11,8 @@ use HubSpotSDK\Crm\Associations\Batch\BatchCreateParams;
 use HubSpotSDK\Crm\Associations\Batch\BatchDeleteLabelsParams;
 use HubSpotSDK\Crm\Associations\Batch\BatchDeleteParams;
 use HubSpotSDK\Crm\Associations\Batch\BatchGetParams;
-use HubSpotSDK\Crm\Associations\BatchResponsePublicAssociationMultiWithLabel;
+use HubSpotSDK\Crm\BatchResponseLabelsBetweenObjectPair;
+use HubSpotSDK\Crm\BatchResponsePublicAssociationMultiWithLabel;
 use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubSpotSDK\RequestOptions;
 
@@ -23,15 +24,16 @@ interface BatchRawContract
     /**
      * @api
      *
+     * @param string $toObjectType Path param
      * @param array<string,mixed>|BatchCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<BatchResponsePublicDefaultAssociation>
+     * @return BaseResponse<BatchResponseLabelsBetweenObjectPair>
      *
      * @throws APIException
      */
     public function create(
-        string $toObjectID,
+        string $toObjectType,
         array|BatchCreateParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;

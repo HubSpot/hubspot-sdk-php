@@ -8,20 +8,13 @@ use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
 use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput;
-use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
-use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
 use HubSpotSDK\Crm\Objects\SimplePublicObjectID;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\Objects\Contracts\BatchContract;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput
- * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
- * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  * @phpstan-import-type SimplePublicObjectIDShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectID
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class BatchService implements BatchContract
 {
@@ -36,72 +29,6 @@ final class BatchService implements BatchContract
     public function __construct(private Client $client)
     {
         $this->raw = new BatchRawService($client);
-    }
-
-    /**
-     * @api
-     *
-     * Create multiple contracts in a single request by providing the necessary properties and associations for each contract. This endpoint returns a batch response containing the details of each created contract.
-     *
-     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function create(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicObject {
-        $params = Util::removeNulls(['inputs' => $inputs]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->create(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Update multiple contracts by their internal IDs or unique property values. This endpoint allows you to modify the properties of several contracts in a single request, streamlining the update process for batch operations.
-     *
-     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function update(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicObject {
-        $params = Util::removeNulls(['inputs' => $inputs]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->update(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Archive a batch of contracts by their IDs. This operation moves the specified contracts to the archive, making them inactive but still retrievable if needed.
-     *
-     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function delete(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed {
-        $params = Util::removeNulls(['inputs' => $inputs]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->delete(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
     }
 
     /**
@@ -138,28 +65,6 @@ final class BatchService implements BatchContract
 
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get(params: $params, requestOptions: $requestOptions);
-
-        return $response->parse();
-    }
-
-    /**
-     * @api
-     *
-     * Create or update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.
-     *
-     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject {
-        $params = Util::removeNulls(['inputs' => $inputs]);
-
-        // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->upsert(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

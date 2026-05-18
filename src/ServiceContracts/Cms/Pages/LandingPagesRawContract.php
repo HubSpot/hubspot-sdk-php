@@ -10,7 +10,6 @@ use HubSpotSDK\Cms\Pages\LandingPages\LandingPageDeleteParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageGetParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageListParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageScheduleParams;
-use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateDraftParams;
 use HubSpotSDK\Cms\Pages\LandingPages\LandingPageUpdateParams;
 use HubSpotSDK\Cms\Pages\PagesPage;
 use HubSpotSDK\Core\Contracts\BaseResponse;
@@ -122,51 +121,6 @@ interface LandingPagesRawContract
     /**
      * @api
      *
-     * @param string $objectID the unique identifier of the landing page whose draft version is to be retrieved
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<PagesPage>
-     *
-     * @throws APIException
-     */
-    public function getDraft(
-        string $objectID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $objectID the unique identifier of the landing page draft to be published
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function pushDraftLive(
-        string $objectID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $objectID the unique identifier of the landing page whose draft is to be reset
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<mixed>
-     *
-     * @throws APIException
-     */
-    public function resetDraft(
-        string $objectID,
-        RequestOptions|array|null $requestOptions = null
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
      * @param array<string,mixed>|LandingPageScheduleParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -176,23 +130,6 @@ interface LandingPagesRawContract
      */
     public function schedule(
         array|LandingPageScheduleParams $params,
-        RequestOptions|array|null $requestOptions = null,
-    ): BaseResponse;
-
-    /**
-     * @api
-     *
-     * @param string $objectID the unique identifier of the landing page draft to update
-     * @param array<string,mixed>|LandingPageUpdateDraftParams $params
-     * @param RequestOpts|null $requestOptions
-     *
-     * @return BaseResponse<PagesPage>
-     *
-     * @throws APIException
-     */
-    public function updateDraft(
-        string $objectID,
-        array|LandingPageUpdateDraftParams $params,
         RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 }

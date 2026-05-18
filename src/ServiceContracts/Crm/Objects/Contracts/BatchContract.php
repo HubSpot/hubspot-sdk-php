@@ -6,61 +6,15 @@ namespace HubSpotSDK\ServiceContracts\Crm\Objects\Contracts;
 
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicObject;
-use HubSpotSDK\Crm\Objects\BatchResponseSimplePublicUpsertObject;
-use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput;
-use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate;
-use HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert;
 use HubSpotSDK\Crm\Objects\SimplePublicObjectID;
 use HubSpotSDK\RequestOptions;
 
 /**
- * @phpstan-import-type SimplePublicObjectBatchInputForCreateShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputForCreate
- * @phpstan-import-type SimplePublicObjectBatchInputShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInput
- * @phpstan-import-type SimplePublicObjectBatchInputUpsertShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectBatchInputUpsert
- * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  * @phpstan-import-type SimplePublicObjectIDShape from \HubSpotSDK\Crm\Objects\SimplePublicObjectID
+ * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 interface BatchContract
 {
-    /**
-     * @api
-     *
-     * @param list<SimplePublicObjectBatchInputForCreate|SimplePublicObjectBatchInputForCreateShape> $inputs
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function create(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param list<SimplePublicObjectBatchInput|SimplePublicObjectBatchInputShape> $inputs
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function update(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param list<SimplePublicObjectID|SimplePublicObjectIDShape> $inputs
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function delete(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): mixed;
-
     /**
      * @api
      *
@@ -81,17 +35,4 @@ interface BatchContract
         ?string $idProperty = null,
         RequestOptions|array|null $requestOptions = null,
     ): BatchResponseSimplePublicObject;
-
-    /**
-     * @api
-     *
-     * @param list<SimplePublicObjectBatchInputUpsert|SimplePublicObjectBatchInputUpsertShape> $inputs
-     * @param RequestOpts|null $requestOptions
-     *
-     * @throws APIException
-     */
-    public function upsert(
-        array $inputs,
-        RequestOptions|array|null $requestOptions = null
-    ): BatchResponseSimplePublicUpsertObject;
 }

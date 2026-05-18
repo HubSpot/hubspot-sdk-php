@@ -8,14 +8,14 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\Crm\Associations\PublicAssociationMultiPost;
+use HubSpotSDK\Crm\PublicAssociationMultiPost;
 
 /**
  * Batch delete specific association labels for objects. Deleting an unlabeled association will also delete all labeled associations between those two objects.
  *
  * @see HubSpotSDK\Services\Crm\Associations\BatchService::deleteLabels()
  *
- * @phpstan-import-type PublicAssociationMultiPostShape from \HubSpotSDK\Crm\Associations\PublicAssociationMultiPost
+ * @phpstan-import-type PublicAssociationMultiPostShape from \HubSpotSDK\Crm\PublicAssociationMultiPost
  *
  * @phpstan-type BatchDeleteLabelsParamsShape = array{
  *   fromObjectType: string,

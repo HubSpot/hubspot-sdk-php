@@ -382,9 +382,9 @@ final class EmailsService implements EmailsContract
      */
     public function get(
         ?array $emailIDs = null,
-        ?string $endTimestamp = null,
+        ?\DateTimeInterface $endTimestamp = null,
         ?string $property = null,
-        ?string $startTimestamp = null,
+        ?\DateTimeInterface $startTimestamp = null,
         RequestOptions|array|null $requestOptions = null,
     ): AggregateEmailStatistics {
         $params = Util::removeNulls(
@@ -472,9 +472,9 @@ final class EmailsService implements EmailsContract
      */
     public function getHistogram(
         ?array $emailIDs = null,
-        ?string $endTimestamp = null,
+        ?\DateTimeInterface $endTimestamp = null,
         Interval|string|null $interval = null,
-        ?string $startTimestamp = null,
+        ?\DateTimeInterface $startTimestamp = null,
         RequestOptions|array|null $requestOptions = null,
     ): CollectionResponseWithTotalEmailStatisticInterval {
         $params = Util::removeNulls(

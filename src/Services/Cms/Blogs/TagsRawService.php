@@ -246,7 +246,11 @@ final class TagsRawService implements TagsRawContract
      * Create a new language variation from an existing Blog Tag
      *
      * @param array{
-     *   id: string, name: string, language?: string, primaryLanguage?: string
+     *   id: string,
+     *   name: string,
+     *   language?: string,
+     *   primaryLanguage?: string,
+     *   usePublished?: bool,
      * }|TagCreateLangVariationParams $params
      * @param RequestOpts|null $requestOptions
      *

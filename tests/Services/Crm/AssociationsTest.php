@@ -4,10 +4,11 @@ namespace Tests\Services\Crm;
 
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\Crm\Associations\ReportCreationResponse;
+use HubSpotSDK\Crm\BatchResponsePublicDefaultAssociation;
 use HubSpotSDK\Crm\CollectionResponseWithTotalSimplePublicObject;
 use HubSpotSDK\Crm\LabelsBetweenObjectPair;
 use HubSpotSDK\Crm\MultiAssociatedObjectWithLabel;
+use HubSpotSDK\Crm\ReportCreationResponse;
 use HubSpotSDK\Page;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
@@ -30,6 +31,48 @@ final class AssociationsTest extends TestCase
         $client = new Client(accessToken: 'My Access Token', baseUrl: $testUrl);
 
         $this->client = $client;
+    }
+
+    #[Test]
+    public function testCreate(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->create(
+            'toObjectId',
+            fromObjectType: 'fromObjectType',
+            fromObjectID: 'fromObjectId',
+            toObjectType: 'toObjectType',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicDefaultAssociation::class,
+            $result
+        );
+    }
+
+    #[Test]
+    public function testCreateWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->associations->create(
+            'toObjectId',
+            fromObjectType: 'fromObjectType',
+            fromObjectID: 'fromObjectId',
+            toObjectType: 'toObjectType',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(
+            BatchResponsePublicDefaultAssociation::class,
+            $result
+        );
     }
 
     #[Test]
@@ -193,13 +236,13 @@ final class AssociationsTest extends TestCase
     }
 
     #[Test]
-    public function testUpdateAssociationLabels(): void
+    public function testUpdateLabels(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->associations->updateAssociationLabels(
+        $result = $this->client->crm->associations->updateLabels(
             'toObjectId',
             objectType: 'objectType',
             objectID: 'objectId',
@@ -214,13 +257,13 @@ final class AssociationsTest extends TestCase
     }
 
     #[Test]
-    public function testUpdateAssociationLabelsWithOptionalParams(): void
+    public function testUpdateLabelsWithOptionalParams(): void
     {
         if (UnsupportedMockTests::$skip) {
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->associations->updateAssociationLabels(
+        $result = $this->client->crm->associations->updateLabels(
             'toObjectId',
             objectType: 'objectType',
             objectID: 'objectId',

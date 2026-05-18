@@ -10,6 +10,8 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
+ * deletes all associations between two records.
+ *
  * @see HubSpotSDK\Services\Crm\AssociationsService::delete()
  *
  * @phpstan-type AssociationDeleteParamsShape = array{
