@@ -138,7 +138,7 @@ class Client extends BaseClient
             'Accept' => 'application/json',
             'User-Agent' => sprintf('hubspot/PHP %s', VERSION),
             'X-Stainless-Lang' => 'php',
-            'X-Stainless-Package-Version' => '0.1.0-alpha.7',
+            'X-Stainless-Package-Version' => '0.1.0-alpha.8',
             'X-Stainless-Arch' => Util::machtype(),
             'X-Stainless-OS' => Util::ostype(),
             'X-Stainless-Runtime' => php_sapi_name(),

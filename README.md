@@ -13,7 +13,7 @@ The REST API documentation can be found on [developers.hubspot.com](https://deve
 <!-- x-release-please-start-version -->
 
 ```
-composer require "hubspot/sdk 0.1.0-alpha.7"
+composer require "hubspot/sdk 0.1.0-alpha.8"
 ```
 
 <!-- x-release-please-end -->
