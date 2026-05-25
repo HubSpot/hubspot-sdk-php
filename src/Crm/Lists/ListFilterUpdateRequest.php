@@ -28,7 +28,7 @@ final class ListFilterUpdateRequest implements BaseModel
      * @var FilterBranchVariants $filterBranch
      */
     #[Required(union: FilterBranch::class)]
-    public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch;
+    public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch $filterBranch;
 
     /**
      * `new ListFilterUpdateRequest()` is missing required properties by the API.
@@ -57,7 +57,7 @@ final class ListFilterUpdateRequest implements BaseModel
      * @param FilterBranchShape $filterBranch
      */
     public static function with(
-        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
         $self = new self;
 
@@ -72,7 +72,7 @@ final class ListFilterUpdateRequest implements BaseModel
      * @param FilterBranchShape $filterBranch
      */
     public function withFilterBranch(
-        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
         $self = clone $this;
         $self['filterBranch'] = $filterBranch;

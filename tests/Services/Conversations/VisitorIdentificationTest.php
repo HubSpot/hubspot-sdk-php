@@ -39,7 +39,10 @@ final class VisitorIdentificationTest extends TestCase
             ->client
             ->conversations
             ->visitorIdentification
-            ->generateToken(email: 'email')
+            ->generateToken(
+                email: 'email',
+                hsCustomerAgentContext: ['foo' => 'string']
+            )
         ;
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -59,8 +62,9 @@ final class VisitorIdentificationTest extends TestCase
             ->visitorIdentification
             ->generateToken(
                 email: 'email',
+                hsCustomerAgentContext: ['foo' => 'string'],
                 firstName: 'firstName',
-                lastName: 'lastName'
+                lastName: 'lastName',
             )
         ;
 

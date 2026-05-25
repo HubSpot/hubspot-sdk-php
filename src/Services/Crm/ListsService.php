@@ -31,7 +31,6 @@ use HubSpotSDK\Crm\Lists\PublicMigrationMapping;
 use HubSpotSDK\Crm\Lists\PublicNotAllFilterBranch;
 use HubSpotSDK\Crm\Lists\PublicNotAnyFilterBranch;
 use HubSpotSDK\Crm\Lists\PublicOrFilterBranch;
-use HubSpotSDK\Crm\Lists\PublicPropertyAssociationFilterBranch;
 use HubSpotSDK\Crm\Lists\PublicRestrictedFilterBranch;
 use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch;
 use HubSpotSDK\Crm\Lists\RecordIDInput;
@@ -82,7 +81,7 @@ final class ListsService implements ListsContract
         string $objectTypeID,
         string $processingType,
         ?array $customProperties = null,
-        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
         ?int $listFolderID = null,
         PublicListPermissions|array|null $listPermissions = null,
         PublicMembershipSettings|array|null $membershipSettings = null,
@@ -691,7 +690,7 @@ final class ListsService implements ListsContract
      */
     public function updateListFilters(
         string $listID,
-        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch $filterBranch,
         bool $enrollObjectsInWorkflows = false,
         RequestOptions|array|null $requestOptions = null,
     ): ListUpdateResponse {

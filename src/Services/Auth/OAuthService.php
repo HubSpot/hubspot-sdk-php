@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Auth;
 
+use HubSpotSDK\Auth\OAuth\AccessTokenResponse;
+use HubSpotSDK\Auth\OAuth\ClientCredentialsTokenResponse;
 use HubSpotSDK\Auth\OAuth\OAuthCreateTokenParams\GrantType;
 use HubSpotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
 use HubSpotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
@@ -51,7 +53,7 @@ final class OAuthService implements OAuthContract
         ?string $refreshToken = null,
         ?string $scope = null,
         RequestOptions|array|null $requestOptions = null,
-    ): string {
+    ): AccessTokenResponse|ClientCredentialsTokenResponse {
         $params = Util::removeNulls(
             [
                 'clientID' => $clientID,

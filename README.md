@@ -39,10 +39,10 @@ var_dump($simplePublicObjectWithAssociations->id);
 
 ### Value Objects
 
-It is recommended to use the static `with` constructor `AssociationSpec::with(associationCategory: 'HUBSPOT_DEFINED', ...)`
+It is recommended to use the static `with` constructor `AppLifecycleEventSubscriptionUpsertRequest::with(eventTypeID: 'eventTypeId', ...)`
 and named parameters to initialize value objects.
 
-However, builders are also provided `(new AssociationSpec)->withAssociationCategory('HUBSPOT_DEFINED')`.
+However, builders are also provided `(new AppLifecycleEventSubscriptionUpsertRequest)->withEventTypeID('eventTypeId')`.
 
 ### Pagination
 

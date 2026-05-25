@@ -556,6 +556,8 @@ enum ContactPropertiesLeadingToMatch: string
 
     case HS_SOURCE_PORTAL_ID = 'hs_source_portal_id';
 
+    case HS_SOURCED_CONTACT_ORIGIN = 'hs_sourced_contact_origin';
+
     case HS_STATE_CODE = 'hs_state_code';
 
     case HS_SUB_ROLE = 'hs_sub_role';

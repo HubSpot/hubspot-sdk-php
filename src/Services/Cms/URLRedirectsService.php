@@ -217,6 +217,83 @@ final class URLRedirectsService implements URLRedirectsContract
     /**
      * @api
      *
+     * @param string $id the unique ID of this URL redirect
+     * @param \DateTimeInterface $created the date and time when the URL mapping was initially created
+     * @param string $destination the destination URL, where the target URL should be redirected if it matches the `routePrefix`
+     * @param bool $isMatchFullURL whether the `routePrefix` should match on the entire URL, including the domain
+     * @param bool $isMatchQueryString whether the `routePrefix` should match on the entire URL path, including the query string
+     * @param bool $isOnlyAfterNotFound Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.
+     * @param bool $isPattern whether the `routePrefix` should match based on pattern
+     * @param bool $isProtocolAgnostic whether the `routePrefix` should match both HTTP and HTTPS protocols
+     * @param bool $isTrailingSlashOptional whether a trailing slash will be ignored
+     * @param int $precedence Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
+     * @param int $redirectStyle The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
+     * @param string $routePrefix the target incoming URL, path, or pattern to match for redirection
+     * @param \DateTimeInterface $updated the date and time when the URL mapping was last modified
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function createURLMapping(
+        string $id,
+        \DateTimeInterface $created,
+        string $destination,
+        bool $isMatchFullURL,
+        bool $isMatchQueryString,
+        bool $isOnlyAfterNotFound,
+        bool $isPattern,
+        bool $isProtocolAgnostic,
+        bool $isTrailingSlashOptional,
+        int $precedence,
+        int $redirectStyle,
+        string $routePrefix,
+        \DateTimeInterface $updated,
+        RequestOptions|array|null $requestOptions = null,
+    ): string {
+        $params = Util::removeNulls(
+            [
+                'id' => $id,
+                'created' => $created,
+                'destination' => $destination,
+                'isMatchFullURL' => $isMatchFullURL,
+                'isMatchQueryString' => $isMatchQueryString,
+                'isOnlyAfterNotFound' => $isOnlyAfterNotFound,
+                'isPattern' => $isPattern,
+                'isProtocolAgnostic' => $isProtocolAgnostic,
+                'isTrailingSlashOptional' => $isTrailingSlashOptional,
+                'precedence' => $precedence,
+                'redirectStyle' => $redirectStyle,
+                'routePrefix' => $routePrefix,
+                'updated' => $updated,
+            ],
+        );
+
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->createURLMapping(params: $params, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function deleteURLMapping(
+        int $id,
+        RequestOptions|array|null $requestOptions = null
+    ): mixed {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->deleteURLMapping($id, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
      * Returns the details for a single existing URL redirect by ID.
      *
      * @param RequestOpts|null $requestOptions
@@ -229,6 +306,39 @@ final class URLRedirectsService implements URLRedirectsContract
     ): URLMapping {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($urlRedirectID, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function getURLMapping(
+        int $id,
+        RequestOptions|array|null $requestOptions = null
+    ): string {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->getURLMapping($id, requestOptions: $requestOptions);
+
+        return $response->parse();
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @throws APIException
+     */
+    public function listURLMappings(
+        RequestOptions|array|null $requestOptions = null
+    ): string {
+        // @phpstan-ignore-next-line argument.type
+        $response = $this->raw->listURLMappings(requestOptions: $requestOptions);
 
         return $response->parse();
     }
