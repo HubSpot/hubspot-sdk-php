@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Webhooks;
 
+use HubSpotSDK\ActionOverrideRequest;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
@@ -12,7 +13,7 @@ use HubSpotSDK\Webhooks\SubscriptionResponse1\Action;
 use HubSpotSDK\Webhooks\SubscriptionResponse1\SubscriptionType;
 
 /**
- * @phpstan-import-type ActionOverrideRequestShape from \HubSpotSDK\Webhooks\ActionOverrideRequest
+ * @phpstan-import-type ActionOverrideRequestShape from \HubSpotSDK\ActionOverrideRequest
  *
  * @phpstan-type SubscriptionResponse1Shape = array{
  *   id: int,

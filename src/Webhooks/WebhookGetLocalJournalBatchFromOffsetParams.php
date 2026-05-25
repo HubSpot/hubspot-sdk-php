@@ -11,7 +11,7 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint allows you to fetch a defined number of entries, facilitating the processing of webhook data in manageable chunks.
+ * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through large sets of webhook data. The number of entries returned is determined by the 'count' parameter.
  *
  * @see HubSpotSDK\Services\WebhooksService::getLocalJournalBatchFromOffset()
  *
@@ -29,7 +29,7 @@ final class WebhookGetLocalJournalBatchFromOffsetParams implements BaseModel
     public string $offset;
 
     /**
-     * The ID of the portal installation. This is an integer value used to specify the portal context for the request.
+     * The ID of the portal where the webhooks are installed. This is an optional parameter.
      */
     #[Optional]
     public ?int $installPortalID;
@@ -80,7 +80,7 @@ final class WebhookGetLocalJournalBatchFromOffsetParams implements BaseModel
     }
 
     /**
-     * The ID of the portal installation. This is an integer value used to specify the portal context for the request.
+     * The ID of the portal where the webhooks are installed. This is an optional parameter.
      */
     public function withInstallPortalID(int $installPortalID): self
     {

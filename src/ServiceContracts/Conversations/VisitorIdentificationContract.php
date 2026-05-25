@@ -17,6 +17,7 @@ interface VisitorIdentificationContract
      * @api
      *
      * @param string $email The email of the visitor that you wish to identify
+     * @param array<string,string> $hsCustomerAgentContext
      * @param string $firstName The first name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where first name is unknown. Optional.
      * @param string $lastName The last name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where last name is unknown. Optional.
      * @param RequestOpts|null $requestOptions
@@ -25,6 +26,7 @@ interface VisitorIdentificationContract
      */
     public function generateToken(
         string $email,
+        array $hsCustomerAgentContext,
         ?string $firstName = null,
         ?string $lastName = null,
         RequestOptions|array|null $requestOptions = null,

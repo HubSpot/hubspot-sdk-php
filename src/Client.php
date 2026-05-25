@@ -23,6 +23,7 @@ use HubSpotSDK\Services\MarketingService;
 use HubSpotSDK\Services\MetaService;
 use HubSpotSDK\Services\SchedulerService;
 use HubSpotSDK\Services\SettingsService;
+use HubSpotSDK\Services\WebhooksJournalService;
 use HubSpotSDK\Services\WebhooksService;
 
 /**
@@ -107,6 +108,11 @@ class Client extends BaseClient
     public WebhooksService $webhooks;
 
     /**
+     * @api
+     */
+    public WebhooksJournalService $webhooksJournal;
+
+    /**
      * @param RequestOpts|null $requestOptions
      */
     public function __construct(
@@ -176,6 +182,7 @@ class Client extends BaseClient
         $this->scheduler = new SchedulerService($this);
         $this->settings = new SettingsService($this);
         $this->webhooks = new WebhooksService($this);
+        $this->webhooksJournal = new WebhooksJournalService($this);
     }
 
     /** @return array<string,string> */

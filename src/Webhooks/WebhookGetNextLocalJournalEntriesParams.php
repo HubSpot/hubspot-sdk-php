@@ -10,7 +10,7 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve the next set of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through webhook journal data in a sequential manner, allowing you to fetch entries beyond a given point.
+ * Retrieve the next set of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through large sets of webhook data, allowing you to continue from where a previous request left off.
  *
  * @see HubSpotSDK\Services\WebhooksService::getNextLocalJournalEntries()
  *
@@ -25,7 +25,7 @@ final class WebhookGetNextLocalJournalEntriesParams implements BaseModel
     use SdkParams;
 
     /**
-     * The ID of the portal where the webhook is installed. This is an integer value.
+     * The ID of the portal installation to filter the webhook journal entries. This is an integer value.
      */
     #[Optional]
     public ?int $installPortalID;
@@ -50,7 +50,7 @@ final class WebhookGetNextLocalJournalEntriesParams implements BaseModel
     }
 
     /**
-     * The ID of the portal where the webhook is installed. This is an integer value.
+     * The ID of the portal installation to filter the webhook journal entries. This is an integer value.
      */
     public function withInstallPortalID(int $installPortalID): self
     {

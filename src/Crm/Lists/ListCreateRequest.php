@@ -64,7 +64,7 @@ final class ListCreateRequest implements BaseModel
      * @var FilterBranchVariants|null $filterBranch
      */
     #[Optional(union: FilterBranch::class)]
-    public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
+    public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 
     /**
      * The ID of the folder that the list should be created in. If left blank, then the list will be created in the root of the list folder structure.
@@ -115,7 +115,7 @@ final class ListCreateRequest implements BaseModel
         string $objectTypeID,
         string $processingType,
         ?array $customProperties = null,
-        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
         ?int $listFolderID = null,
         PublicListPermissions|array|null $listPermissions = null,
         PublicMembershipSettings|array|null $membershipSettings = null,
@@ -187,7 +187,7 @@ final class ListCreateRequest implements BaseModel
      * @param FilterBranchShape $filterBranch
      */
     public function withFilterBranch(
-        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
         $self = clone $this;
         $self['filterBranch'] = $filterBranch;

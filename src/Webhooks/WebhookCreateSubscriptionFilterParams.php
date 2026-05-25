@@ -8,13 +8,14 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Filter;
 
 /**
- * Create a new filter for a webhook subscription in your HubSpot account. This endpoint allows you to define specific conditions that a webhook event must meet to trigger the subscription. It is useful for managing and customizing the behavior of webhook subscriptions based on specific criteria.
+ * Create a new filter for a specific webhook subscription in the HubSpot account. This endpoint allows you to define conditions that determine when a webhook should be triggered. The filter is associated with a subscription identified by its ID, and the request must include the filter details.
  *
  * @see HubSpotSDK\Services\WebhooksService::createSubscriptionFilter()
  *
- * @phpstan-import-type FilterShape from \HubSpotSDK\Webhooks\Filter
+ * @phpstan-import-type FilterShape from \HubSpotSDK\Filter
  *
  * @phpstan-type WebhookCreateSubscriptionFilterParamsShape = array{
  *   filter: Filter|FilterShape, subscriptionID: int

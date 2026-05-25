@@ -158,6 +158,73 @@ final class URLRedirectsTest extends TestCase
     }
 
     #[Test]
+    public function testCreateURLMapping(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->urlRedirects->createURLMapping(
+            id: 'id',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            destination: 'destination',
+            isMatchFullURL: true,
+            isMatchQueryString: true,
+            isOnlyAfterNotFound: true,
+            isPattern: true,
+            isProtocolAgnostic: true,
+            isTrailingSlashOptional: true,
+            precedence: 0,
+            redirectStyle: 0,
+            routePrefix: 'routePrefix',
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testCreateURLMappingWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->urlRedirects->createURLMapping(
+            id: 'id',
+            created: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+            destination: 'destination',
+            isMatchFullURL: true,
+            isMatchQueryString: true,
+            isOnlyAfterNotFound: true,
+            isPattern: true,
+            isProtocolAgnostic: true,
+            isTrailingSlashOptional: true,
+            precedence: 0,
+            redirectStyle: 0,
+            routePrefix: 'routePrefix',
+            updated: new \DateTimeImmutable('2019-12-27T18:11:19.117Z'),
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testDeleteURLMapping(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->urlRedirects->deleteURLMapping(0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertNull($result);
+    }
+
+    #[Test]
     public function testGet(): void
     {
         if (UnsupportedMockTests::$skip) {
@@ -168,5 +235,31 @@ final class URLRedirectsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(URLMapping::class, $result);
+    }
+
+    #[Test]
+    public function testGetURLMapping(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->urlRedirects->getURLMapping(0);
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
+    }
+
+    #[Test]
+    public function testListURLMappings(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->cms->urlRedirects->listURLMappings();
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertIsString($result);
     }
 }

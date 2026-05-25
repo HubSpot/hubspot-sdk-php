@@ -4,29 +4,30 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts;
 
+use HubSpotSDK\BatchResponseJournalFetchResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\CrmObjectSnapshotBatchResponse;
+use HubSpotSDK\CrmObjectSnapshotRequest;
+use HubSpotSDK\Filter;
+use HubSpotSDK\FilterCreateResponse;
+use HubSpotSDK\FilterResponse;
 use HubSpotSDK\RequestOptions;
-use HubSpotSDK\Webhooks\BatchResponseJournalFetchResponse;
+use HubSpotSDK\SnapshotStatusResponse;
 use HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubSpotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
-use HubSpotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
-use HubSpotSDK\Webhooks\CrmObjectSnapshotRequest;
-use HubSpotSDK\Webhooks\Filter;
-use HubSpotSDK\Webhooks\FilterCreateResponse;
-use HubSpotSDK\Webhooks\FilterResponse;
 use HubSpotSDK\Webhooks\SettingsResponse;
-use HubSpotSDK\Webhooks\SnapshotStatusResponse;
 use HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest;
 use HubSpotSDK\Webhooks\SubscriptionListResponse;
 use HubSpotSDK\Webhooks\SubscriptionResponse;
-use HubSpotSDK\Webhooks\SubscriptionResponse1;
 use HubSpotSDK\Webhooks\ThrottlingSettings;
 use HubSpotSDK\Webhooks\WebhookCreateEventSubscriptionParams\EventType;
+use HubSpotSDK\Webhooks\WebhookCreateJournalSubscriptionParams\Action;
+use HubSpotSDK\Webhooks\WebhookCreateJournalSubscriptionParams\SubscriptionType;
+use HubSpotSDK\WebhooksJournal\CollectionResponseSubscriptionResponseNoPaging;
 
 /**
  * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest
- * @phpstan-import-type CrmObjectSnapshotRequestShape from \HubSpotSDK\Webhooks\CrmObjectSnapshotRequest
- * @phpstan-import-type FilterShape from \HubSpotSDK\Webhooks\Filter
+ * @phpstan-import-type CrmObjectSnapshotRequestShape from \HubSpotSDK\CrmObjectSnapshotRequest
+ * @phpstan-import-type FilterShape from \HubSpotSDK\Filter
  * @phpstan-import-type ThrottlingSettingsShape from \HubSpotSDK\Webhooks\ThrottlingSettings
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
@@ -86,13 +87,28 @@ interface WebhooksContract
     /**
      * @api
      *
+     * @param list<Action|value-of<Action>> $actions
+     * @param list<int> $objectIDs
+     * @param list<string> $properties
+     * @param list<string> $associatedObjectTypeIDs
+     * @param list<int> $listIDs
+     * @param SubscriptionType|value-of<SubscriptionType> $subscriptionType
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createJournalSubscription(
-        RequestOptions|array|null $requestOptions = null
-    ): SubscriptionResponse1;
+        array $actions,
+        array $objectIDs,
+        string $objectTypeID,
+        int $portalID,
+        array $properties,
+        array $associatedObjectTypeIDs,
+        string $eventTypeID,
+        array $listIDs,
+        SubscriptionType|string $subscriptionType = 'GDPR_PRIVACY_DELETION',
+        RequestOptions|array|null $requestOptions = null,
+    ): \HubSpotSDK\WebhooksJournal\SubscriptionResponse;
 
     /**
      * @api
@@ -127,7 +143,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $subscriptionID the unique identifier of the subscription to delete
+     * @param int $subscriptionID The unique identifier of the subscription to delete. It must be provided as an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -140,7 +156,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $portalID the unique identifier of the portal whose webhook journal subscription is to be deleted
+     * @param int $portalID the unique identifier of the portal for which the webhook journal subscription is to be deleted
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -179,8 +195,8 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $count The maximum number of journal entries to retrieve in the batch. This must be an integer with a minimum value of 1.
-     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries by. This is an integer value.
+     * @param int $count The number of earliest journal entries to retrieve. This must be an integer with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation. This is an integer value that specifies which portal's data to access.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -194,7 +210,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $installPortalID The ID of the portal installation to filter the journal entries. It is an integer.
+     * @param int $installPortalID The ID of the portal installation to filter the journal entries by. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -207,8 +223,8 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $count The number of earliest entries to retrieve from the webhook journal. Must be an integer with a minimum value of 1.
-     * @param int $installPortalID The ID of the portal where the webhooks are installed. This is an integer value.
+     * @param int $count The number of earliest webhook journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries. This is an optional integer parameter.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -222,7 +238,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $installPortalID The ID of the portal installation to filter the journal entries by. This parameter is optional and should be an integer.
+     * @param int $installPortalID The ID of the portal for which to retrieve the earliest webhook journal entries. This parameter is optional and should be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -251,7 +267,7 @@ interface WebhooksContract
      * @api
      *
      * @param list<string> $inputs body param: Strings to input
-     * @param int $installPortalID Query param: The ID of the portal where the webhooks are installed. This is an integer value.
+     * @param int $installPortalID query param: An integer representing the ID of the portal installation for which the webhooks journal data should be retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -265,9 +281,9 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $count Path param: The number of journal entries to fetch in the batch. This is an integer value with a minimum of 1.
-     * @param string $offset Path param: The starting point for fetching the next batch of journal entries. This is a string value that indicates the offset position.
-     * @param int $installPortalID Query param: The ID of the portal installation. This is an integer value used to specify the portal context for the request.
+     * @param int $count Path param: The number of journal entries to retrieve. This must be an integer with a minimum value of 1.
+     * @param string $offset Path param: The starting point for fetching the journal entries. This is a string value.
+     * @param int $installPortalID Query param: The ID of the portal installation. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -295,7 +311,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $subscriptionID The unique identifier of the subscription to retrieve. It must be an integer.
+     * @param int $subscriptionID the unique identifier of the subscription to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -303,13 +319,13 @@ interface WebhooksContract
     public function getJournalSubscription(
         int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
-    ): SubscriptionResponse1;
+    ): \HubSpotSDK\WebhooksJournal\SubscriptionResponse;
 
     /**
      * @api
      *
-     * @param int $count The number of journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
-     * @param int $installPortalID The ID of the portal installation. This is an integer value used to identify the specific portal.
+     * @param int $count The maximum number of journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation. This is an integer value used to specify the portal context for the request.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -323,7 +339,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $installPortalID The ID of the portal installation to filter the journal entries. It is an integer value.
+     * @param int $installPortalID The unique identifier of the portal installation for which to retrieve the latest journal entries. This parameter is optional and should be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -337,7 +353,7 @@ interface WebhooksContract
      * @api
      *
      * @param int $count The number of journal entries to retrieve. Must be an integer with a minimum value of 1.
-     * @param int $installPortalID The ID of the portal installation. This parameter is optional and used to filter the journal entries by a specific portal.
+     * @param int $installPortalID The ID of the portal where the webhook journal is installed. This parameter is optional and used to specify the target portal.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -351,7 +367,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $installPortalID The ID of the portal for which to retrieve the latest journal entries. This parameter is optional and should be an integer.
+     * @param int $installPortalID The ID of the portal for which to retrieve the latest journal entries. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -365,7 +381,7 @@ interface WebhooksContract
      * @api
      *
      * @param list<string> $inputs body param: Strings to input
-     * @param int $installPortalID Query param: The ID of the portal where the webhooks are installed. This parameter is optional and is used to specify the target portal.
+     * @param int $installPortalID Query param: The ID of the portal where the webhooks are installed. This parameter is optional and is used to specify the target portal for the operation.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -379,9 +395,9 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $count Path param: The number of journal entries to retrieve. This is an integer value with a minimum of 1.
-     * @param string $offset Path param: The starting point for fetching the batch of journal entries. This is a string value that indicates the offset position.
-     * @param int $installPortalID Query param: The ID of the portal installation. This is an integer value used to specify the portal context for the request.
+     * @param int $count Path param: The number of journal entries to retrieve in this batch. Must be an integer with a minimum value of 1.
+     * @param string $offset path param: The starting point for the batch retrieval, specified as a string
+     * @param int $installPortalID Query param: The ID of the portal where the webhooks are installed. This is an optional parameter.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -396,7 +412,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param string $statusID the unique identifier (UUID) of the status to retrieve
+     * @param string $statusID The unique identifier of the status to retrieve. It should be in UUID format.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -409,8 +425,8 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param string $offset The offset from which to start retrieving the next batch of webhook journal entries. This parameter is required and identifies the starting point for the batch retrieval.
-     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries. This is an optional parameter.
+     * @param string $offset the offset string indicating the starting point for retrieving the next set of journal entries
+     * @param int $installPortalID The ID of the portal where the webhooks are installed. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -424,8 +440,8 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param string $offset The starting point for retrieving the next set of journal entries. This is a string value.
-     * @param int $installPortalID The ID of the portal where the webhook is installed. This is an integer value.
+     * @param string $offset The starting point for retrieving the next set of webhook journal entries. This is a string value that represents the current position in the journal.
+     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -452,7 +468,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $filterID the unique identifier of the filter to retrieve
+     * @param int $filterID The unique identifier of the filter to retrieve. It is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -489,7 +505,7 @@ interface WebhooksContract
     /**
      * @api
      *
-     * @param int $subscriptionID the unique identifier of the subscription for which to retrieve filters
+     * @param int $subscriptionID The unique identifier of the subscription for which to retrieve filters. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @return list<FilterResponse>

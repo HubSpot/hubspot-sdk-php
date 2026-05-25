@@ -9,17 +9,17 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type FilterShape from \HubSpotSDK\Crm\Filter
+ * @phpstan-import-type CrmFilterShape from \HubSpotSDK\Crm\CrmFilter
  *
- * @phpstan-type FilterGroupShape = array{filters: list<Filter|FilterShape>}
+ * @phpstan-type FilterGroupShape = array{filters: list<CrmFilter|CrmFilterShape>}
  */
 final class FilterGroup implements BaseModel
 {
     /** @use SdkModel<FilterGroupShape> */
     use SdkModel;
 
-    /** @var list<Filter> $filters */
-    #[Required(list: Filter::class)]
+    /** @var list<CrmFilter> $filters */
+    #[Required(list: CrmFilter::class)]
     public array $filters;
 
     /**
@@ -46,7 +46,7 @@ final class FilterGroup implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<Filter|FilterShape> $filters
+     * @param list<CrmFilter|CrmFilterShape> $filters
      */
     public static function with(array $filters): self
     {
@@ -58,7 +58,7 @@ final class FilterGroup implements BaseModel
     }
 
     /**
-     * @param list<Filter|FilterShape> $filters
+     * @param list<CrmFilter|CrmFilterShape> $filters
      */
     public function withFilters(array $filters): self
     {

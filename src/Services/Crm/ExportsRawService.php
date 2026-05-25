@@ -8,12 +8,19 @@ use HubSpotSDK\Client;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams\ExportInternalValuesOption;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams\ExportType;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams\Format;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams\Language;
+use HubSpotSDK\Crm\Exports\PublicCrmSearchRequest;
 use HubSpotSDK\Crm\Exports\PublicExportResponse;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\ExportsRawContract;
 use HubSpotSDK\TaskLocator;
 
 /**
+ * @phpstan-import-type PublicCrmSearchRequestShape from \HubSpotSDK\Crm\Exports\PublicCrmSearchRequest
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class ExportsRawService implements ExportsRawContract
@@ -29,6 +36,21 @@ final class ExportsRawService implements ExportsRawContract
      *
      * Begins exporting CRM data for the portal as specified in the request body
      *
+     * @param array{
+     *   associatedObjectType: list<string>,
+     *   exportInternalValuesOptions: list<ExportInternalValuesOption|value-of<ExportInternalValuesOption>>,
+     *   exportName: string,
+     *   exportType: ExportType|value-of<ExportType>,
+     *   format: Format|value-of<Format>,
+     *   includeLabeledAssociations: bool,
+     *   includePrimaryDisplayPropertyForAssociatedObjects: bool,
+     *   language: value-of<Language>,
+     *   objectProperties: list<string>,
+     *   objectType: string,
+     *   overrideAssociatedObjectsPerDefinitionPerRowLimit: bool,
+     *   publicCrmSearchRequest?: PublicCrmSearchRequest|PublicCrmSearchRequestShape,
+     *   listID: string,
+     * }|ExportCreateAsyncParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TaskLocator>
@@ -36,13 +58,20 @@ final class ExportsRawService implements ExportsRawContract
      * @throws APIException
      */
     public function createAsync(
-        RequestOptions|array|null $requestOptions = null
+        array|ExportCreateAsyncParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse {
+        [$parsed, $options] = ExportCreateAsyncParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
         // @phpstan-ignore-next-line return.type
         return $this->client->request(
             method: 'post',
             path: 'crm/exports/2026-03/export/async',
-            options: $requestOptions,
+            body: (object) $parsed,
+            options: $options,
             convert: TaskLocator::class,
         );
     }

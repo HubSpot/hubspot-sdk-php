@@ -100,7 +100,7 @@ final class PublicObjectList implements BaseModel
      * @var FilterBranchVariants|null $filterBranch
      */
     #[Optional(union: FilterBranch::class)]
-    public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
+    public PublicOrFilterBranch|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch|null $filterBranch;
 
     /**
      * The time when the filters for this list were last updated.
@@ -183,7 +183,7 @@ final class PublicObjectList implements BaseModel
         ?\DateTimeInterface $createdAt = null,
         ?string $createdByID = null,
         ?\DateTimeInterface $deletedAt = null,
-        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch|null $filterBranch = null,
         ?\DateTimeInterface $filtersUpdatedAt = null,
         PublicListPermissions|array|null $listPermissions = null,
         PublicMembershipSettings|array|null $membershipSettings = null,
@@ -319,7 +319,7 @@ final class PublicObjectList implements BaseModel
      * @param FilterBranchShape $filterBranch
      */
     public function withFilterBranch(
-        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicPropertyAssociationFilterBranch|PublicAssociationFilterBranch $filterBranch,
+        PublicOrFilterBranch|array|PublicAndFilterBranch|PublicNotAllFilterBranch|PublicNotAnyFilterBranch|PublicRestrictedFilterBranch|PublicUnifiedEventsFilterBranch|PublicAssociationFilterBranch $filterBranch,
     ): self {
         $self = clone $this;
         $self['filterBranch'] = $filterBranch;

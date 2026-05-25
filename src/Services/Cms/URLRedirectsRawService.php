@@ -7,6 +7,7 @@ namespace HubSpotSDK\Services\Cms;
 use HubSpotSDK\Client;
 use HubSpotSDK\Cms\URLRedirects\URLMapping;
 use HubSpotSDK\Cms\URLRedirects\URLRedirectCreateParams;
+use HubSpotSDK\Cms\URLRedirects\URLRedirectCreateURLMappingParams;
 use HubSpotSDK\Cms\URLRedirects\URLRedirectListParams;
 use HubSpotSDK\Cms\URLRedirects\URLRedirectUpdateParams;
 use HubSpotSDK\Core\Contracts\BaseResponse;
@@ -184,6 +185,72 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
     /**
      * @api
      *
+     * @param array{
+     *   id: string,
+     *   created: \DateTimeInterface,
+     *   destination: string,
+     *   isMatchFullURL: bool,
+     *   isMatchQueryString: bool,
+     *   isOnlyAfterNotFound: bool,
+     *   isPattern: bool,
+     *   isProtocolAgnostic: bool,
+     *   isTrailingSlashOptional: bool,
+     *   precedence: int,
+     *   redirectStyle: int,
+     *   routePrefix: string,
+     *   updated: \DateTimeInterface,
+     * }|URLRedirectCreateURLMappingParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function createURLMapping(
+        array|URLRedirectCreateURLMappingParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse {
+        [$parsed, $options] = URLRedirectCreateURLMappingParams::parseRequest(
+            $params,
+            $requestOptions,
+        );
+
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'post',
+            path: 'cms/url-redirects/2026-03/url-mappings',
+            headers: ['Content-Type' => '*/*', 'Accept' => '*/*'],
+            body: (object) $parsed,
+            options: $options,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteURLMapping(
+        int $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'delete',
+            path: ['cms/url-redirects/2026-03/url-mappings/%1$s', $id],
+            options: $requestOptions,
+            convert: null,
+        );
+    }
+
+    /**
+     * @api
+     *
      * Returns the details for a single existing URL redirect by ID.
      *
      * @param RequestOpts|null $requestOptions
@@ -202,6 +269,51 @@ final class URLRedirectsRawService implements URLRedirectsRawContract
             path: ['cms/url-redirects/2026-03/%1$s', $urlRedirectID],
             options: $requestOptions,
             convert: URLMapping::class,
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getURLMapping(
+        int $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: ['cms/url-redirects/2026-03/url-mappings/%1$s', $id],
+            headers: ['Accept' => '*/*'],
+            options: $requestOptions,
+            convert: 'string',
+        );
+    }
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listURLMappings(
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse {
+        // @phpstan-ignore-next-line return.type
+        return $this->client->request(
+            method: 'get',
+            path: 'cms/url-redirects/2026-03/url-mappings',
+            headers: ['Accept' => '*/*'],
+            options: $requestOptions,
+            convert: 'string',
         );
     }
 }

@@ -37,7 +37,7 @@ final class OAuthTest extends TestCase
         $result = $this->client->auth->oauth->createToken();
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertIsString($result);
+        $this->assertNotNull($result);
     }
 
     #[Test]
