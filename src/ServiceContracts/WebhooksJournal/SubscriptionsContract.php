@@ -6,8 +6,8 @@ namespace HubSpotSDK\ServiceContracts\WebhooksJournal;
 
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\RequestOptions;
-use HubSpotSDK\WebhooksJournal\CollectionResponseSubscriptionResponseNoPaging;
-use HubSpotSDK\WebhooksJournal\SubscriptionResponse;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 use HubSpotSDK\WebhooksJournal\Subscriptions\SubscriptionCreateParams\Action;
 use HubSpotSDK\WebhooksJournal\Subscriptions\SubscriptionCreateParams\SubscriptionType;
 
@@ -40,7 +40,7 @@ interface SubscriptionsContract
         array $listIDs,
         SubscriptionType|string $subscriptionType = 'GDPR_PRIVACY_DELETION',
         RequestOptions|array|null $requestOptions = null,
-    ): SubscriptionResponse;
+    ): JournalSubscriptionResponse;
 
     /**
      * @api
@@ -51,7 +51,7 @@ interface SubscriptionsContract
      */
     public function list(
         RequestOptions|array|null $requestOptions = null
-    ): CollectionResponseSubscriptionResponseNoPaging;
+    ): JournalCollectionResponseSubscriptionResponseNoPaging;
 
     /**
      * @api
@@ -90,5 +90,5 @@ interface SubscriptionsContract
     public function get(
         int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
-    ): SubscriptionResponse;
+    ): JournalSubscriptionResponse;
 }

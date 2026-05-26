@@ -9,13 +9,13 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
-use HubSpotSDK\WebhooksJournal\SubscriptionResponse\Action;
-use HubSpotSDK\WebhooksJournal\SubscriptionResponse\SubscriptionType;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse\Action;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse\SubscriptionType;
 
 /**
  * @phpstan-import-type ActionOverrideRequestShape from \HubSpotSDK\ActionOverrideRequest
  *
- * @phpstan-type SubscriptionResponseShape = array{
+ * @phpstan-type JournalSubscriptionResponseShape = array{
  *   id: int,
  *   actions: list<Action|value-of<Action>>,
  *   appID: int,
@@ -33,9 +33,9 @@ use HubSpotSDK\WebhooksJournal\SubscriptionResponse\SubscriptionType;
  *   properties?: list<string>|null,
  * }
  */
-final class SubscriptionResponse implements BaseModel
+final class JournalSubscriptionResponse implements BaseModel
 {
-    /** @use SdkModel<SubscriptionResponseShape> */
+    /** @use SdkModel<JournalSubscriptionResponseShape> */
     use SdkModel;
 
     /**
@@ -143,11 +143,11 @@ final class SubscriptionResponse implements BaseModel
     public ?array $properties;
 
     /**
-     * `new SubscriptionResponse()` is missing required properties by the API.
+     * `new JournalSubscriptionResponse()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * SubscriptionResponse::with(
+     * JournalSubscriptionResponse::with(
      *   id: ...,
      *   actions: ...,
      *   appID: ...,
@@ -161,7 +161,7 @@ final class SubscriptionResponse implements BaseModel
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new SubscriptionResponse)
+     * (new JournalSubscriptionResponse)
      *   ->withID(...)
      *   ->withActions(...)
      *   ->withAppID(...)

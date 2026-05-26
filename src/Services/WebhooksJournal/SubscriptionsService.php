@@ -10,8 +10,8 @@ use HubSpotSDK\Core\Util;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\WebhooksJournal\SubscriptionsContract;
 use HubSpotSDK\Services\WebhooksJournal\Subscriptions\FiltersService;
-use HubSpotSDK\WebhooksJournal\CollectionResponseSubscriptionResponseNoPaging;
-use HubSpotSDK\WebhooksJournal\SubscriptionResponse;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 use HubSpotSDK\WebhooksJournal\Subscriptions\SubscriptionCreateParams\Action;
 use HubSpotSDK\WebhooksJournal\Subscriptions\SubscriptionCreateParams\SubscriptionType;
 
@@ -65,7 +65,7 @@ final class SubscriptionsService implements SubscriptionsContract
         array $listIDs,
         SubscriptionType|string $subscriptionType = 'GDPR_PRIVACY_DELETION',
         RequestOptions|array|null $requestOptions = null,
-    ): SubscriptionResponse {
+    ): JournalSubscriptionResponse {
         $params = Util::removeNulls(
             [
                 'actions' => $actions,
@@ -97,7 +97,7 @@ final class SubscriptionsService implements SubscriptionsContract
      */
     public function list(
         RequestOptions|array|null $requestOptions = null
-    ): CollectionResponseSubscriptionResponseNoPaging {
+    ): JournalCollectionResponseSubscriptionResponseNoPaging {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->list(requestOptions: $requestOptions);
 
@@ -157,7 +157,7 @@ final class SubscriptionsService implements SubscriptionsContract
     public function get(
         int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
-    ): SubscriptionResponse {
+    ): JournalSubscriptionResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->get($subscriptionID, requestOptions: $requestOptions);
 

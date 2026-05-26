@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubSpotSDK\WebhooksJournal\SubscriptionResponse;
+namespace HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 
 /**
  * The type of subscription, indicating the nature of events it pertains to. Valid values include 'OBJECT', 'ASSOCIATION', 'EVENT', 'APP_LIFECYCLE_EVENT', 'LIST_MEMBERSHIP', and 'GDPR_PRIVACY_DELETION'.

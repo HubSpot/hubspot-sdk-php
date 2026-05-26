@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace HubSpotSDK\WebhooksJournal\SubscriptionResponse;
+namespace HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 
 enum Action: string
 {

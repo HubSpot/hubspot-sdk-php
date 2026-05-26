@@ -13,7 +13,8 @@ use HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
 use HubSpotSDK\Webhooks\SettingsResponse;
 use HubSpotSDK\Webhooks\SubscriptionListResponse;
 use HubSpotSDK\Webhooks\SubscriptionResponse;
-use HubSpotSDK\WebhooksJournal\CollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -170,10 +171,7 @@ final class WebhooksTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            \HubSpotSDK\WebhooksJournal\SubscriptionResponse::class,
-            $result
-        );
+        $this->assertInstanceOf(JournalSubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -196,10 +194,7 @@ final class WebhooksTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            \HubSpotSDK\WebhooksJournal\SubscriptionResponse::class,
-            $result
-        );
+        $this->assertInstanceOf(JournalSubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -497,10 +492,7 @@ final class WebhooksTest extends TestCase
         $result = $this->client->webhooks->getJournalSubscription(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(
-            \HubSpotSDK\WebhooksJournal\SubscriptionResponse::class,
-            $result
-        );
+        $this->assertInstanceOf(JournalSubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -710,7 +702,7 @@ final class WebhooksTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
-            CollectionResponseSubscriptionResponseNoPaging::class,
+            JournalCollectionResponseSubscriptionResponseNoPaging::class,
             $result
         );
     }

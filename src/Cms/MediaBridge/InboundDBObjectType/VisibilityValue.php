@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Cms\MediaBridge\InboundDBObjectType;
 
-enum Visibility1: string
+enum VisibilityValue: string
 {
     case CUSTOMER_FACING = 'Customer-facing';
 

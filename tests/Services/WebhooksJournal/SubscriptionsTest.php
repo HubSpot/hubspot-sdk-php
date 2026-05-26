@@ -4,8 +4,8 @@ namespace Tests\Services\WebhooksJournal;
 
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\WebhooksJournal\CollectionResponseSubscriptionResponseNoPaging;
-use HubSpotSDK\WebhooksJournal\SubscriptionResponse;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -49,7 +49,7 @@ final class SubscriptionsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse::class, $result);
+        $this->assertInstanceOf(JournalSubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -72,7 +72,7 @@ final class SubscriptionsTest extends TestCase
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse::class, $result);
+        $this->assertInstanceOf(JournalSubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -86,7 +86,7 @@ final class SubscriptionsTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
-            CollectionResponseSubscriptionResponseNoPaging::class,
+            JournalCollectionResponseSubscriptionResponseNoPaging::class,
             $result
         );
     }
@@ -127,6 +127,6 @@ final class SubscriptionsTest extends TestCase
         $result = $this->client->webhooksJournal->subscriptions->get(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse::class, $result);
+        $this->assertInstanceOf(JournalSubscriptionResponse::class, $result);
     }
 }

@@ -8,7 +8,7 @@ use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\MetaType;
 use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\PermissioningType;
 use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\Status;
 use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\Visibility;
-use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\Visibility1;
+use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\VisibilityValue;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
@@ -56,8 +56,8 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   readScopeName?: string|null,
  *   singularForm?: string|null,
  *   status?: null|Status|value-of<Status>,
- *   visibilities?: list<Visibility1|value-of<Visibility1>>|null,
  *   visibility?: null|Visibility|value-of<Visibility>,
+ *   visibilityValues?: list<VisibilityValue|value-of<VisibilityValue>>|null,
  *   writeScopeName?: string|null,
  * }
  */
@@ -187,13 +187,13 @@ final class InboundDBObjectType implements BaseModel
     #[Optional(enum: Status::class)]
     public ?string $status;
 
-    /** @var list<value-of<Visibility1>>|null $visibilities */
-    #[Optional(list: Visibility1::class)]
-    public ?array $visibilities;
-
     /** @var value-of<Visibility>|null $visibility */
     #[Optional(enum: Visibility::class)]
     public ?string $visibility;
+
+    /** @var list<value-of<VisibilityValue>>|null $visibilityValues */
+    #[Optional('visibility_values', list: VisibilityValue::class)]
+    public ?array $visibilityValues;
 
     #[Optional]
     public ?string $writeScopeName;
@@ -280,8 +280,8 @@ final class InboundDBObjectType implements BaseModel
      * @param list<ScopeMapping|ScopeMappingShape> $scopeMappings
      * @param list<string> $secondaryDisplayLabelPropertyNames
      * @param Status|value-of<Status>|null $status
-     * @param list<Visibility1|value-of<Visibility1>>|null $visibilities
      * @param Visibility|value-of<Visibility>|null $visibility
+     * @param list<VisibilityValue|value-of<VisibilityValue>>|null $visibilityValues
      */
     public static function with(
         int $id,
@@ -322,8 +322,8 @@ final class InboundDBObjectType implements BaseModel
         ?string $readScopeName = null,
         ?string $singularForm = null,
         Status|string|null $status = null,
-        ?array $visibilities = null,
         Visibility|string|null $visibility = null,
+        ?array $visibilityValues = null,
         ?string $writeScopeName = null,
     ): self {
         $self = new self;
@@ -367,8 +367,8 @@ final class InboundDBObjectType implements BaseModel
         null !== $readScopeName && $self['readScopeName'] = $readScopeName;
         null !== $singularForm && $self['singularForm'] = $singularForm;
         null !== $status && $self['status'] = $status;
-        null !== $visibilities && $self['visibilities'] = $visibilities;
         null !== $visibility && $self['visibility'] = $visibility;
+        null !== $visibilityValues && $self['visibilityValues'] = $visibilityValues;
         null !== $writeScopeName && $self['writeScopeName'] = $writeScopeName;
 
         return $self;
@@ -711,23 +711,23 @@ final class InboundDBObjectType implements BaseModel
     }
 
     /**
-     * @param list<Visibility1|value-of<Visibility1>> $visibilities
-     */
-    public function withVisibilities(array $visibilities): self
-    {
-        $self = clone $this;
-        $self['visibilities'] = $visibilities;
-
-        return $self;
-    }
-
-    /**
      * @param Visibility|value-of<Visibility> $visibility
      */
     public function withVisibility(Visibility|string $visibility): self
     {
         $self = clone $this;
         $self['visibility'] = $visibility;
+
+        return $self;
+    }
+
+    /**
+     * @param list<VisibilityValue|value-of<VisibilityValue>> $visibilityValues
+     */
+    public function withVisibilityValues(array $visibilityValues): self
+    {
+        $self = clone $this;
+        $self['visibilityValues'] = $visibilityValues;
 
         return $self;
     }
