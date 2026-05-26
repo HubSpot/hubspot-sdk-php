@@ -39,7 +39,8 @@ use HubSpotSDK\Webhooks\WebhookGetNextJournalEntriesParams;
 use HubSpotSDK\Webhooks\WebhookGetNextLocalJournalEntriesParams;
 use HubSpotSDK\Webhooks\WebhookUpdateEventSubscriptionParams;
 use HubSpotSDK\Webhooks\WebhookUpdateSettingsParams;
-use HubSpotSDK\WebhooksJournal\CollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
@@ -101,7 +102,7 @@ interface WebhooksRawContract
      * @param array<string,mixed>|WebhookCreateJournalSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubSpotSDK\WebhooksJournal\SubscriptionResponse>
+     * @return BaseResponse<JournalSubscriptionResponse>
      *
      * @throws APIException
      */
@@ -336,7 +337,7 @@ interface WebhooksRawContract
      * @param int $subscriptionID the unique identifier of the subscription to retrieve
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubSpotSDK\WebhooksJournal\SubscriptionResponse>
+     * @return BaseResponse<JournalSubscriptionResponse>
      *
      * @throws APIException
      */
@@ -540,7 +541,7 @@ interface WebhooksRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CollectionResponseSubscriptionResponseNoPaging>
+     * @return BaseResponse<JournalCollectionResponseSubscriptionResponseNoPaging>
      *
      * @throws APIException
      */

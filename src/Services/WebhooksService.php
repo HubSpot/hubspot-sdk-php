@@ -25,7 +25,8 @@ use HubSpotSDK\Webhooks\ThrottlingSettings;
 use HubSpotSDK\Webhooks\WebhookCreateEventSubscriptionParams\EventType;
 use HubSpotSDK\Webhooks\WebhookCreateJournalSubscriptionParams\Action;
 use HubSpotSDK\Webhooks\WebhookCreateJournalSubscriptionParams\SubscriptionType;
-use HubSpotSDK\WebhooksJournal\CollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 
 /**
  * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest
@@ -161,7 +162,7 @@ final class WebhooksService implements WebhooksContract
         array $listIDs,
         SubscriptionType|string $subscriptionType = 'GDPR_PRIVACY_DELETION',
         RequestOptions|array|null $requestOptions = null,
-    ): \HubSpotSDK\WebhooksJournal\SubscriptionResponse {
+    ): JournalSubscriptionResponse {
         $params = Util::removeNulls(
             [
                 'actions' => $actions,
@@ -515,7 +516,7 @@ final class WebhooksService implements WebhooksContract
     public function getJournalSubscription(
         int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
-    ): \HubSpotSDK\WebhooksJournal\SubscriptionResponse {
+    ): JournalSubscriptionResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getJournalSubscription($subscriptionID, requestOptions: $requestOptions);
 
@@ -807,7 +808,7 @@ final class WebhooksService implements WebhooksContract
      */
     public function listJournalSubscriptions(
         RequestOptions|array|null $requestOptions = null
-    ): CollectionResponseSubscriptionResponseNoPaging {
+    ): JournalCollectionResponseSubscriptionResponseNoPaging {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listJournalSubscriptions(requestOptions: $requestOptions);
 

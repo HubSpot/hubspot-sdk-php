@@ -7,8 +7,8 @@ namespace HubSpotSDK\ServiceContracts\WebhooksJournal;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\RequestOptions;
-use HubSpotSDK\WebhooksJournal\CollectionResponseSubscriptionResponseNoPaging;
-use HubSpotSDK\WebhooksJournal\SubscriptionResponse;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 use HubSpotSDK\WebhooksJournal\Subscriptions\SubscriptionCreateParams;
 
 /**
@@ -22,7 +22,7 @@ interface SubscriptionsRawContract
      * @param array<string,mixed>|SubscriptionCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SubscriptionResponse>
+     * @return BaseResponse<JournalSubscriptionResponse>
      *
      * @throws APIException
      */
@@ -36,7 +36,7 @@ interface SubscriptionsRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CollectionResponseSubscriptionResponseNoPaging>
+     * @return BaseResponse<JournalCollectionResponseSubscriptionResponseNoPaging>
      *
      * @throws APIException
      */
@@ -80,7 +80,7 @@ interface SubscriptionsRawContract
      * @param int $subscriptionID the unique identifier of the subscription to retrieve
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SubscriptionResponse>
+     * @return BaseResponse<JournalSubscriptionResponse>
      *
      * @throws APIException
      */

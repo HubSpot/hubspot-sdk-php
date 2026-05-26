@@ -9,37 +9,37 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * @phpstan-import-type SubscriptionResponseShape from \HubSpotSDK\WebhooksJournal\SubscriptionResponse
+ * @phpstan-import-type JournalSubscriptionResponseShape from \HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse
  *
- * @phpstan-type CollectionResponseSubscriptionResponseNoPagingShape = array{
- *   results: list<SubscriptionResponse|SubscriptionResponseShape>
+ * @phpstan-type JournalCollectionResponseSubscriptionResponseNoPagingShape = array{
+ *   results: list<JournalSubscriptionResponse|JournalSubscriptionResponseShape>
  * }
  */
-final class CollectionResponseSubscriptionResponseNoPaging implements BaseModel
+final class JournalCollectionResponseSubscriptionResponseNoPaging implements BaseModel
 {
-    /** @use SdkModel<CollectionResponseSubscriptionResponseNoPagingShape> */
+    /** @use SdkModel<JournalCollectionResponseSubscriptionResponseNoPagingShape> */
     use SdkModel;
 
     /**
      * An array of subscription responses, where each item contains details about a specific subscription. Each item follows the SubscriptionResponse schema.
      *
-     * @var list<SubscriptionResponse> $results
+     * @var list<JournalSubscriptionResponse> $results
      */
-    #[Required(list: SubscriptionResponse::class)]
+    #[Required(list: JournalSubscriptionResponse::class)]
     public array $results;
 
     /**
-     * `new CollectionResponseSubscriptionResponseNoPaging()` is missing required properties by the API.
+     * `new JournalCollectionResponseSubscriptionResponseNoPaging()` is missing required properties by the API.
      *
      * To enforce required parameters use
      * ```
-     * CollectionResponseSubscriptionResponseNoPaging::with(results: ...)
+     * JournalCollectionResponseSubscriptionResponseNoPaging::with(results: ...)
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new CollectionResponseSubscriptionResponseNoPaging)->withResults(...)
+     * (new JournalCollectionResponseSubscriptionResponseNoPaging)->withResults(...)
      * ```
      */
     public function __construct()
@@ -52,7 +52,7 @@ final class CollectionResponseSubscriptionResponseNoPaging implements BaseModel
      *
      * You must use named parameters to construct any parameters with a default value.
      *
-     * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
+     * @param list<JournalSubscriptionResponse|JournalSubscriptionResponseShape> $results
      */
     public static function with(array $results): self
     {
@@ -66,7 +66,7 @@ final class CollectionResponseSubscriptionResponseNoPaging implements BaseModel
     /**
      * An array of subscription responses, where each item contains details about a specific subscription. Each item follows the SubscriptionResponse schema.
      *
-     * @param list<SubscriptionResponse|SubscriptionResponseShape> $results
+     * @param list<JournalSubscriptionResponse|JournalSubscriptionResponseShape> $results
      */
     public function withResults(array $results): self
     {

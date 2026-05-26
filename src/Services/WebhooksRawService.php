@@ -50,7 +50,8 @@ use HubSpotSDK\Webhooks\WebhookGetNextJournalEntriesParams;
 use HubSpotSDK\Webhooks\WebhookGetNextLocalJournalEntriesParams;
 use HubSpotSDK\Webhooks\WebhookUpdateEventSubscriptionParams;
 use HubSpotSDK\Webhooks\WebhookUpdateSettingsParams;
-use HubSpotSDK\WebhooksJournal\CollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 
 /**
  * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest
@@ -192,7 +193,7 @@ final class WebhooksRawService implements WebhooksRawContract
      * }|WebhookCreateJournalSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubSpotSDK\WebhooksJournal\SubscriptionResponse>
+     * @return BaseResponse<JournalSubscriptionResponse>
      *
      * @throws APIException
      */
@@ -211,7 +212,7 @@ final class WebhooksRawService implements WebhooksRawContract
             path: 'webhooks-journal/subscriptions/2026-03',
             body: (object) $parsed,
             options: $options,
-            convert: \HubSpotSDK\WebhooksJournal\SubscriptionResponse::class,
+            convert: JournalSubscriptionResponse::class,
         );
     }
 
@@ -681,7 +682,7 @@ final class WebhooksRawService implements WebhooksRawContract
      * @param int $subscriptionID the unique identifier of the subscription to retrieve
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<\HubSpotSDK\WebhooksJournal\SubscriptionResponse>
+     * @return BaseResponse<JournalSubscriptionResponse>
      *
      * @throws APIException
      */
@@ -694,7 +695,7 @@ final class WebhooksRawService implements WebhooksRawContract
             method: 'get',
             path: ['webhooks-journal/subscriptions/2026-03/%1$s', $subscriptionID],
             options: $requestOptions,
-            convert: \HubSpotSDK\WebhooksJournal\SubscriptionResponse::class,
+            convert: JournalSubscriptionResponse::class,
         );
     }
 
@@ -1113,7 +1114,7 @@ final class WebhooksRawService implements WebhooksRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CollectionResponseSubscriptionResponseNoPaging>
+     * @return BaseResponse<JournalCollectionResponseSubscriptionResponseNoPaging>
      *
      * @throws APIException
      */
@@ -1125,7 +1126,7 @@ final class WebhooksRawService implements WebhooksRawContract
             method: 'get',
             path: 'webhooks-journal/subscriptions/2026-03',
             options: $requestOptions,
-            convert: CollectionResponseSubscriptionResponseNoPaging::class,
+            convert: JournalCollectionResponseSubscriptionResponseNoPaging::class,
         );
     }
 
