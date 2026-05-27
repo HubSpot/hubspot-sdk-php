@@ -10,7 +10,6 @@ use HubSpotSDK\Core\Conversion\Contracts\ConverterSource;
 use HubSpotSDK\Crm\Lists\PublicAdsSearchFilter;
 use HubSpotSDK\Crm\Lists\PublicAdsTimeFilter;
 use HubSpotSDK\Crm\Lists\PublicAssociationInListFilter;
-use HubSpotSDK\Crm\Lists\PublicCampaignInfluencedFilter;
 use HubSpotSDK\Crm\Lists\PublicCommunicationSubscriptionFilter;
 use HubSpotSDK\Crm\Lists\PublicConstantFilter;
 use HubSpotSDK\Crm\Lists\PublicCtaAnalyticsFilter;
@@ -21,10 +20,8 @@ use HubSpotSDK\Crm\Lists\PublicFormSubmissionFilter;
 use HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter;
 use HubSpotSDK\Crm\Lists\PublicInListFilter;
 use HubSpotSDK\Crm\Lists\PublicIntegrationEventFilter;
-use HubSpotSDK\Crm\Lists\PublicNumAssociationsFilter;
 use HubSpotSDK\Crm\Lists\PublicPageViewAnalyticsFilter;
 use HubSpotSDK\Crm\Lists\PublicPrivacyAnalyticsFilter;
-use HubSpotSDK\Crm\Lists\PublicPropertyAssociationInListFilter;
 use HubSpotSDK\Crm\Lists\PublicPropertyFilter;
 use HubSpotSDK\Crm\Lists\PublicSurveyMonkeyFilter;
 use HubSpotSDK\Crm\Lists\PublicSurveyMonkeyValueFilter;
@@ -42,7 +39,6 @@ use HubSpotSDK\Crm\Lists\PublicWebinarFilter;
  * @phpstan-import-type PublicIntegrationEventFilterShape from \HubSpotSDK\Crm\Lists\PublicIntegrationEventFilter
  * @phpstan-import-type PublicEmailSubscriptionFilterShape from \HubSpotSDK\Crm\Lists\PublicEmailSubscriptionFilter
  * @phpstan-import-type PublicCommunicationSubscriptionFilterShape from \HubSpotSDK\Crm\Lists\PublicCommunicationSubscriptionFilter
- * @phpstan-import-type PublicCampaignInfluencedFilterShape from \HubSpotSDK\Crm\Lists\PublicCampaignInfluencedFilter
  * @phpstan-import-type PublicSurveyMonkeyFilterShape from \HubSpotSDK\Crm\Lists\PublicSurveyMonkeyFilter
  * @phpstan-import-type PublicSurveyMonkeyValueFilterShape from \HubSpotSDK\Crm\Lists\PublicSurveyMonkeyValueFilter
  * @phpstan-import-type PublicWebinarFilterShape from \HubSpotSDK\Crm\Lists\PublicWebinarFilter
@@ -51,13 +47,11 @@ use HubSpotSDK\Crm\Lists\PublicWebinarFilter;
  * @phpstan-import-type PublicAdsSearchFilterShape from \HubSpotSDK\Crm\Lists\PublicAdsSearchFilter
  * @phpstan-import-type PublicAdsTimeFilterShape from \HubSpotSDK\Crm\Lists\PublicAdsTimeFilter
  * @phpstan-import-type PublicInListFilterShape from \HubSpotSDK\Crm\Lists\PublicInListFilter
- * @phpstan-import-type PublicNumAssociationsFilterShape from \HubSpotSDK\Crm\Lists\PublicNumAssociationsFilter
  * @phpstan-import-type PublicUnifiedEventsFilterShape from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilter
- * @phpstan-import-type PublicPropertyAssociationInListFilterShape from \HubSpotSDK\Crm\Lists\PublicPropertyAssociationInListFilter
  * @phpstan-import-type PublicConstantFilterShape from \HubSpotSDK\Crm\Lists\PublicConstantFilter
  *
- * @phpstan-type FilterVariants = PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicCampaignInfluencedFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicNumAssociationsFilter|PublicUnifiedEventsFilter|PublicPropertyAssociationInListFilter|PublicConstantFilter
- * @phpstan-type FilterShape = FilterVariants|PublicPropertyFilterShape|PublicAssociationInListFilterShape|PublicPageViewAnalyticsFilterShape|PublicCtaAnalyticsFilterShape|PublicEventAnalyticsFilterShape|PublicFormSubmissionFilterShape|PublicFormSubmissionOnPageFilterShape|PublicIntegrationEventFilterShape|PublicEmailSubscriptionFilterShape|PublicCommunicationSubscriptionFilterShape|PublicCampaignInfluencedFilterShape|PublicSurveyMonkeyFilterShape|PublicSurveyMonkeyValueFilterShape|PublicWebinarFilterShape|PublicEmailEventFilterShape|PublicPrivacyAnalyticsFilterShape|PublicAdsSearchFilterShape|PublicAdsTimeFilterShape|PublicInListFilterShape|PublicNumAssociationsFilterShape|PublicUnifiedEventsFilterShape|PublicPropertyAssociationInListFilterShape|PublicConstantFilterShape
+ * @phpstan-type FilterVariants = PublicPropertyFilter|PublicAssociationInListFilter|PublicPageViewAnalyticsFilter|PublicCtaAnalyticsFilter|PublicEventAnalyticsFilter|PublicFormSubmissionFilter|PublicFormSubmissionOnPageFilter|PublicIntegrationEventFilter|PublicEmailSubscriptionFilter|PublicCommunicationSubscriptionFilter|PublicSurveyMonkeyFilter|PublicSurveyMonkeyValueFilter|PublicWebinarFilter|PublicEmailEventFilter|PublicPrivacyAnalyticsFilter|PublicAdsSearchFilter|PublicAdsTimeFilter|PublicInListFilter|PublicUnifiedEventsFilter|PublicConstantFilter
+ * @phpstan-type FilterShape = FilterVariants|PublicPropertyFilterShape|PublicAssociationInListFilterShape|PublicPageViewAnalyticsFilterShape|PublicCtaAnalyticsFilterShape|PublicEventAnalyticsFilterShape|PublicFormSubmissionFilterShape|PublicFormSubmissionOnPageFilterShape|PublicIntegrationEventFilterShape|PublicEmailSubscriptionFilterShape|PublicCommunicationSubscriptionFilterShape|PublicSurveyMonkeyFilterShape|PublicSurveyMonkeyValueFilterShape|PublicWebinarFilterShape|PublicEmailEventFilterShape|PublicPrivacyAnalyticsFilterShape|PublicAdsSearchFilterShape|PublicAdsTimeFilterShape|PublicInListFilterShape|PublicUnifiedEventsFilterShape|PublicConstantFilterShape
  */
 final class Filter implements ConverterSource
 {
@@ -84,7 +78,6 @@ final class Filter implements ConverterSource
             'INTEGRATION_EVENT' => PublicIntegrationEventFilter::class,
             'EMAIL_SUBSCRIPTION' => PublicEmailSubscriptionFilter::class,
             'COMMUNICATION_SUBSCRIPTION' => PublicCommunicationSubscriptionFilter::class,
-            'CAMPAIGN_INFLUENCED' => PublicCampaignInfluencedFilter::class,
             'SURVEY_MONKEY' => PublicSurveyMonkeyFilter::class,
             'SURVEY_MONKEY_VALUE' => PublicSurveyMonkeyValueFilter::class,
             'WEBINAR' => PublicWebinarFilter::class,
@@ -93,9 +86,7 @@ final class Filter implements ConverterSource
             'ADS_SEARCH' => PublicAdsSearchFilter::class,
             'ADS_TIME' => PublicAdsTimeFilter::class,
             'IN_LIST' => PublicInListFilter::class,
-            'NUM_ASSOCIATIONS' => PublicNumAssociationsFilter::class,
             'UNIFIED_EVENTS' => PublicUnifiedEventsFilter::class,
-            'PROPERTY_ASSOCIATION' => PublicPropertyAssociationInListFilter::class,
             'CONSTANT' => PublicConstantFilter::class,
         ];
     }

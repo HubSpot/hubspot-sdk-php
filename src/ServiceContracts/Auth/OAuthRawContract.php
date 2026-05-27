@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts\Auth;
 
+use HubSpotSDK\Auth\OAuth\AccessTokenResponse;
+use HubSpotSDK\Auth\OAuth\ClientCredentialsTokenResponse;
 use HubSpotSDK\Auth\OAuth\OAuthCreateTokenParams;
 use HubSpotSDK\Auth\OAuth\OAuthIntrospectTokenParams;
 use HubSpotSDK\Auth\OAuth\OAuthRevokeTokenParams;
@@ -24,7 +26,7 @@ interface OAuthRawContract
      * @param array<string,mixed>|OAuthCreateTokenParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<AccessTokenResponse|ClientCredentialsTokenResponse>
      *
      * @throws APIException
      */

@@ -29,7 +29,10 @@ final class VisitorIdentificationRawService implements VisitorIdentificationRawC
      * Generate an identification token for a website visitor who has been authenticated using your own system. An identification token returned from this API can be used to pass information about your already-authenticated visitor to the chat widget, so that it treats the visitor as a known contact. This allows support agents to recognize and assist the visitor more effectively.
      *
      * @param array{
-     *   email: string, firstName?: string, lastName?: string
+     *   email: string,
+     *   hsCustomerAgentContext: array<string,string>,
+     *   firstName?: string,
+     *   lastName?: string,
      * }|VisitorIdentificationGenerateTokenParams $params
      * @param RequestOpts|null $requestOptions
      *

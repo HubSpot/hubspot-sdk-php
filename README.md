@@ -13,7 +13,7 @@ The REST API documentation can be found on [developers.hubspot.com](https://deve
 <!-- x-release-please-start-version -->
 
 ```
-composer require "hubspot/sdk 0.1.0-alpha.8"
+composer require "hubspot/sdk 0.1.0-alpha.9"
 ```
 
 <!-- x-release-please-end -->
@@ -39,10 +39,10 @@ var_dump($simplePublicObjectWithAssociations->id);
 
 ### Value Objects
 
-It is recommended to use the static `with` constructor `AssociationSpec::with(associationCategory: 'HUBSPOT_DEFINED', ...)`
+It is recommended to use the static `with` constructor `AppLifecycleEventSubscriptionUpsertRequest::with(eventTypeID: 'eventTypeId', ...)`
 and named parameters to initialize value objects.
 
-However, builders are also provided `(new AssociationSpec)->withAssociationCategory('HUBSPOT_DEFINED')`.
+However, builders are also provided `(new AppLifecycleEventSubscriptionUpsertRequest)->withEventTypeID('eventTypeId')`.
 
 ### Pagination
 

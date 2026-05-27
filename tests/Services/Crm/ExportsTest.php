@@ -37,7 +37,72 @@ final class ExportsTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->crm->exports->createAsync();
+        $result = $this->client->crm->exports->createAsync(
+            associatedObjectType: ['string'],
+            exportInternalValuesOptions: ['NAMES'],
+            exportName: 'exportName',
+            exportType: 'LIST',
+            format: 'CSV',
+            includeLabeledAssociations: true,
+            includePrimaryDisplayPropertyForAssociatedObjects: true,
+            language: 'AF_ZA',
+            objectProperties: ['string'],
+            objectType: 'objectType',
+            overrideAssociatedObjectsPerDefinitionPerRowLimit: true,
+            listID: 'listId',
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(TaskLocator::class, $result);
+    }
+
+    #[Test]
+    public function testCreateAsyncWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->crm->exports->createAsync(
+            associatedObjectType: ['string'],
+            exportInternalValuesOptions: ['NAMES'],
+            exportName: 'exportName',
+            exportType: 'LIST',
+            format: 'CSV',
+            includeLabeledAssociations: true,
+            includePrimaryDisplayPropertyForAssociatedObjects: true,
+            language: 'AF_ZA',
+            objectProperties: ['string'],
+            objectType: 'objectType',
+            overrideAssociatedObjectsPerDefinitionPerRowLimit: true,
+            publicCrmSearchRequest: [
+                'filterGroups' => [
+                    [
+                        'filters' => [
+                            [
+                                'operator' => 'BETWEEN',
+                                'propertyName' => 'propertyName',
+                                'highValue' => 'highValue',
+                                'value' => 'value',
+                                'values' => ['string'],
+                            ],
+                        ],
+                    ],
+                ],
+                'filters' => [
+                    [
+                        'operator' => 'BETWEEN',
+                        'propertyName' => 'propertyName',
+                        'highValue' => 'highValue',
+                        'value' => 'value',
+                        'values' => ['string'],
+                    ],
+                ],
+                'sorts' => ['string'],
+                'query' => 'query',
+            ],
+            listID: 'listId',
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(TaskLocator::class, $result);

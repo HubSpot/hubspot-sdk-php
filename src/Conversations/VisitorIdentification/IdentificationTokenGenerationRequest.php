@@ -11,7 +11,10 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
  * @phpstan-type IdentificationTokenGenerationRequestShape = array{
- *   email: string, firstName?: string|null, lastName?: string|null
+ *   email: string,
+ *   hsCustomerAgentContext: array<string,string>,
+ *   firstName?: string|null,
+ *   lastName?: string|null,
  * }
  */
 final class IdentificationTokenGenerationRequest implements BaseModel
@@ -24,6 +27,10 @@ final class IdentificationTokenGenerationRequest implements BaseModel
      */
     #[Required]
     public string $email;
+
+    /** @var array<string,string> $hsCustomerAgentContext */
+    #[Required(map: 'string')]
+    public array $hsCustomerAgentContext;
 
     /**
      * The first name of the visitor that you wish to identify. This value will only be set in HubSpot for new contacts and existing contacts where first name is unknown. Optional.
@@ -42,13 +49,17 @@ final class IdentificationTokenGenerationRequest implements BaseModel
      *
      * To enforce required parameters use
      * ```
-     * IdentificationTokenGenerationRequest::with(email: ...)
+     * IdentificationTokenGenerationRequest::with(
+     *   email: ..., hsCustomerAgentContext: ...
+     * )
      * ```
      *
      * Otherwise ensure the following setters are called
      *
      * ```
-     * (new IdentificationTokenGenerationRequest)->withEmail(...)
+     * (new IdentificationTokenGenerationRequest)
+     *   ->withEmail(...)
+     *   ->withHsCustomerAgentContext(...)
      * ```
      */
     public function __construct()
@@ -60,15 +71,19 @@ final class IdentificationTokenGenerationRequest implements BaseModel
      * Construct an instance from the required parameters.
      *
      * You must use named parameters to construct any parameters with a default value.
+     *
+     * @param array<string,string> $hsCustomerAgentContext
      */
     public static function with(
         string $email,
+        array $hsCustomerAgentContext,
         ?string $firstName = null,
-        ?string $lastName = null
+        ?string $lastName = null,
     ): self {
         $self = new self;
 
         $self['email'] = $email;
+        $self['hsCustomerAgentContext'] = $hsCustomerAgentContext;
 
         null !== $firstName && $self['firstName'] = $firstName;
         null !== $lastName && $self['lastName'] = $lastName;
@@ -83,6 +98,18 @@ final class IdentificationTokenGenerationRequest implements BaseModel
     {
         $self = clone $this;
         $self['email'] = $email;
+
+        return $self;
+    }
+
+    /**
+     * @param array<string,string> $hsCustomerAgentContext
+     */
+    public function withHsCustomerAgentContext(
+        array $hsCustomerAgentContext
+    ): self {
+        $self = clone $this;
+        $self['hsCustomerAgentContext'] = $hsCustomerAgentContext;
 
         return $self;
     }

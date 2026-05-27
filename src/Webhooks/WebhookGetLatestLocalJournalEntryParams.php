@@ -10,7 +10,7 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * Retrieve the latest entries from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook events that have been logged, allowing you to process or analyze them as needed.
+ * Retrieve the latest entries from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook events that have been logged, allowing for real-time monitoring or debugging of webhook activities.
  *
  * @see HubSpotSDK\Services\WebhooksService::getLatestLocalJournalEntry()
  *
@@ -25,7 +25,7 @@ final class WebhookGetLatestLocalJournalEntryParams implements BaseModel
     use SdkParams;
 
     /**
-     * The ID of the portal for which to retrieve the latest journal entries. This parameter is optional and should be an integer.
+     * The ID of the portal for which to retrieve the latest journal entries. This is an integer value.
      */
     #[Optional]
     public ?int $installPortalID;
@@ -50,7 +50,7 @@ final class WebhookGetLatestLocalJournalEntryParams implements BaseModel
     }
 
     /**
-     * The ID of the portal for which to retrieve the latest journal entries. This parameter is optional and should be an integer.
+     * The ID of the portal for which to retrieve the latest journal entries. This is an integer value.
      */
     public function withInstallPortalID(int $installPortalID): self
     {

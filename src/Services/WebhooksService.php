@@ -4,32 +4,34 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services;
 
+use HubSpotSDK\BatchResponseJournalFetchResponse;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Core\Util;
+use HubSpotSDK\CrmObjectSnapshotBatchResponse;
+use HubSpotSDK\CrmObjectSnapshotRequest;
+use HubSpotSDK\Filter;
+use HubSpotSDK\FilterCreateResponse;
+use HubSpotSDK\FilterResponse;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\WebhooksContract;
-use HubSpotSDK\Webhooks\BatchResponseJournalFetchResponse;
+use HubSpotSDK\SnapshotStatusResponse;
 use HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubSpotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
-use HubSpotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
-use HubSpotSDK\Webhooks\CrmObjectSnapshotRequest;
-use HubSpotSDK\Webhooks\Filter;
-use HubSpotSDK\Webhooks\FilterCreateResponse;
-use HubSpotSDK\Webhooks\FilterResponse;
 use HubSpotSDK\Webhooks\SettingsResponse;
-use HubSpotSDK\Webhooks\SnapshotStatusResponse;
 use HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest;
 use HubSpotSDK\Webhooks\SubscriptionListResponse;
 use HubSpotSDK\Webhooks\SubscriptionResponse;
-use HubSpotSDK\Webhooks\SubscriptionResponse1;
 use HubSpotSDK\Webhooks\ThrottlingSettings;
 use HubSpotSDK\Webhooks\WebhookCreateEventSubscriptionParams\EventType;
+use HubSpotSDK\Webhooks\WebhookCreateJournalSubscriptionParams\Action;
+use HubSpotSDK\Webhooks\WebhookCreateJournalSubscriptionParams\SubscriptionType;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 
 /**
  * @phpstan-import-type SubscriptionBatchUpdateRequestShape from \HubSpotSDK\Webhooks\SubscriptionBatchUpdateRequest
- * @phpstan-import-type CrmObjectSnapshotRequestShape from \HubSpotSDK\Webhooks\CrmObjectSnapshotRequest
- * @phpstan-import-type FilterShape from \HubSpotSDK\Webhooks\Filter
+ * @phpstan-import-type CrmObjectSnapshotRequestShape from \HubSpotSDK\CrmObjectSnapshotRequest
+ * @phpstan-import-type FilterShape from \HubSpotSDK\Filter
  * @phpstan-import-type ThrottlingSettingsShape from \HubSpotSDK\Webhooks\ThrottlingSettings
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
@@ -75,7 +77,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Create a batch of CRM object snapshots for the specified portal. This endpoint allows you to capture the state of CRM objects at a specific point in time, which can be useful for auditing or historical analysis. The request requires a list of CRM object snapshot requests, each specifying the portal ID, object ID, object type ID, and properties to include in the snapshot.
+     * Create a batch of CRM object snapshots in HubSpot. This endpoint is used to capture the current state of specified CRM objects for later reference or analysis. It requires a JSON payload containing the details of the CRM objects to snapshot. This operation is exempt from daily and ten-secondly rate limits.
      *
      * @param list<CrmObjectSnapshotRequest|CrmObjectSnapshotRequestShape> $snapshotRequests An array of CrmObjectSnapshotRequest objects, each representing a request to create a snapshot for a specific CRM object. This property is required.
      * @param RequestOpts|null $requestOptions
@@ -137,17 +139,46 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Create a new webhook subscription for the specified portal in the HubSpot account. This endpoint allows you to define the subscription details, including the types of events you want to subscribe to. The request body must include the necessary subscription information as defined by the SubscriptionUpsertRequest schema.
+     * Create a new subscription in the Webhooks Journal for the specified version. This endpoint allows you to define the subscription details by providing the necessary information in the request body. It supports various types of subscriptions, including object, association, event, app lifecycle event, list membership, and GDPR privacy deletion. Ensure that all required fields are included in the request to successfully create a subscription.
      *
+     * @param list<Action|value-of<Action>> $actions
+     * @param list<int> $objectIDs
+     * @param list<string> $properties
+     * @param list<string> $associatedObjectTypeIDs
+     * @param list<int> $listIDs
+     * @param SubscriptionType|value-of<SubscriptionType> $subscriptionType
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createJournalSubscription(
-        RequestOptions|array|null $requestOptions = null
-    ): SubscriptionResponse1 {
+        array $actions,
+        array $objectIDs,
+        string $objectTypeID,
+        int $portalID,
+        array $properties,
+        array $associatedObjectTypeIDs,
+        string $eventTypeID,
+        array $listIDs,
+        SubscriptionType|string $subscriptionType = 'GDPR_PRIVACY_DELETION',
+        RequestOptions|array|null $requestOptions = null,
+    ): JournalSubscriptionResponse {
+        $params = Util::removeNulls(
+            [
+                'actions' => $actions,
+                'objectIDs' => $objectIDs,
+                'objectTypeID' => $objectTypeID,
+                'portalID' => $portalID,
+                'properties' => $properties,
+                'subscriptionType' => $subscriptionType,
+                'associatedObjectTypeIDs' => $associatedObjectTypeIDs,
+                'eventTypeID' => $eventTypeID,
+                'listIDs' => $listIDs,
+            ],
+        );
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->createJournalSubscription(requestOptions: $requestOptions);
+        $response = $this->raw->createJournalSubscription(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }
@@ -155,7 +186,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Create a new filter for a webhook subscription in your HubSpot account. This endpoint allows you to define specific conditions that a webhook event must meet to trigger the subscription. It is useful for managing and customizing the behavior of webhook subscriptions based on specific criteria.
+     * Create a new filter for a specific webhook subscription in the HubSpot account. This endpoint allows you to define conditions that determine when a webhook should be triggered. The filter is associated with a subscription identified by its ID, and the request must include the filter details.
      *
      * @param Filter|FilterShape $filter defines a single condition for searching CRM objects, specifying the property to filter on, the operator to use (such as equals, greater than, or contains), and the value(s) to compare against
      * @param int $subscriptionID The unique identifier of the subscription to which the filter will be applied. It is an integer formatted as int64.
@@ -205,9 +236,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Delete a specific webhook journal subscription using its unique identifier. This operation is useful for managing and cleaning up subscriptions that are no longer needed or relevant.
+     * Delete a specific webhook journal subscription using its unique identifier. This operation is useful for managing and cleaning up subscriptions that are no longer needed in your HubSpot account.
      *
-     * @param int $subscriptionID the unique identifier of the subscription to delete
+     * @param int $subscriptionID The unique identifier of the subscription to delete. It must be provided as an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -225,9 +256,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Delete a webhook journal subscription for a specific portal. This operation removes the subscription associated with the given portalId, and no content is returned upon successful deletion.
+     * Delete a webhook journal subscription for a specific portal. This operation removes the subscription associated with the given portalId, ensuring that no further webhook events are sent for this portal. Use this endpoint to manage and clean up subscriptions that are no longer needed.
      *
-     * @param int $portalID the unique identifier of the portal whose webhook journal subscription is to be deleted
+     * @param int $portalID the unique identifier of the portal for which the webhook journal subscription is to be deleted
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -265,7 +296,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Delete a specific filter associated with a webhook journal subscription. This operation is useful for managing and cleaning up filters that are no longer needed in your subscription setup. The endpoint requires the unique identifier of the filter to be deleted.
+     * Remove a specific filter from the webhooks journal subscriptions. This operation is useful for managing and cleaning up filters that are no longer needed. Once deleted, the filter cannot be recovered.
      *
      * @param int $filterID the unique identifier of the filter to delete
      * @param RequestOpts|null $requestOptions
@@ -285,10 +316,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the earliest batch of webhook journal entries up to the specified count. This endpoint is useful for fetching historical webhook data in batches, allowing you to process or analyze the earliest entries first.
+     * Retrieve the earliest batch of webhook journal entries for a specified count. This endpoint is useful for accessing historical webhook data in batches, allowing you to process or analyze older entries. The number of entries retrieved is determined by the count parameter.
      *
-     * @param int $count The maximum number of journal entries to retrieve in the batch. This must be an integer with a minimum value of 1.
-     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries by. This is an integer value.
+     * @param int $count The number of earliest journal entries to retrieve. This must be an integer with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation. This is an integer value that specifies which portal's data to access.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -309,9 +340,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the earliest entry from the webhooks journal for the specified version. This endpoint is useful for accessing the oldest records available in the journal, which can be helpful for auditing or historical data analysis.
+     * Retrieve the earliest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the first recorded webhook event in the journal, which can be helpful for auditing or debugging purposes.
      *
-     * @param int $installPortalID The ID of the portal installation to filter the journal entries. It is an integer.
+     * @param int $installPortalID The ID of the portal installation to filter the journal entries by. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -331,10 +362,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the earliest batch of webhook journal entries based on the specified count. This endpoint is useful for fetching a specific number of the earliest entries in the webhook journal for analysis or processing.
+     * Retrieve the earliest batch of webhook journal entries. This endpoint is useful for accessing the oldest available data in the webhook journal, allowing users to process or analyze historical webhook events. The number of entries to fetch is specified by the 'count' path parameter.
      *
-     * @param int $count The number of earliest entries to retrieve from the webhook journal. Must be an integer with a minimum value of 1.
-     * @param int $installPortalID The ID of the portal where the webhooks are installed. This is an integer value.
+     * @param int $count The number of earliest webhook journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries. This is an optional integer parameter.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -355,9 +386,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the earliest entry from the webhooks journal for the specified portal. This endpoint is useful for accessing the oldest records in the journal, which can be helpful for auditing or tracking purposes.
+     * Retrieve the earliest webhook journal entries for the specified portal. This endpoint can be used to access the oldest records available in the webhook journal, which may be useful for auditing or historical analysis.
      *
-     * @param int $installPortalID The ID of the portal installation to filter the journal entries by. This parameter is optional and should be an integer.
+     * @param int $installPortalID The ID of the portal for which to retrieve the earliest webhook journal entries. This parameter is optional and should be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -401,10 +432,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Perform a batch read operation on the webhooks journal for the specified date. This endpoint allows you to retrieve multiple entries from the webhooks journal in a single request, which can be useful for processing large amounts of data efficiently.
+     * Execute a batch read operation on the webhooks journal for the specified date, 2026-03. This endpoint allows you to retrieve multiple entries from the webhooks journal in a single request, which can be useful for processing large amounts of data efficiently. Ensure that the request body is provided in the required format.
      *
      * @param list<string> $inputs body param: Strings to input
-     * @param int $installPortalID Query param: The ID of the portal where the webhooks are installed. This is an integer value.
+     * @param int $installPortalID query param: An integer representing the ID of the portal installation for which the webhooks journal data should be retrieved
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -427,11 +458,11 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint allows you to fetch a specified number of entries, making it useful for paginating through large sets of webhook journal data.
+     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint allows you to fetch a defined number of entries, which can be useful for processing large datasets in manageable chunks.
      *
-     * @param int $count Path param: The number of journal entries to fetch in the batch. This is an integer value with a minimum of 1.
-     * @param string $offset Path param: The starting point for fetching the next batch of journal entries. This is a string value that indicates the offset position.
-     * @param int $installPortalID Query param: The ID of the portal installation. This is an integer value used to specify the portal context for the request.
+     * @param int $count Path param: The number of journal entries to retrieve. This must be an integer with a minimum value of 1.
+     * @param string $offset Path param: The starting point for fetching the journal entries. This is a string value.
+     * @param int $installPortalID Query param: The ID of the portal installation. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -455,7 +486,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the status of a specific webhook journal entry using its status ID. This endpoint is useful for checking the current state of a webhook process, such as whether it is pending, in progress, completed, failed, or expired.
+     * Retrieve the status of a specific webhook journal entry using its unique status ID. This endpoint provides detailed information about the status, including whether it is pending, in progress, completed, failed, or expired. It is useful for monitoring and managing the state of webhook journal entries.
      *
      * @param string $statusID the unique identifier (UUID) of the status to retrieve
      * @param RequestOpts|null $requestOptions
@@ -475,9 +506,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve details of a specific webhook subscription using its unique identifier. This endpoint is useful for obtaining information about a particular subscription's configuration and status within the HubSpot account.
+     * Retrieve details of a specific webhook subscription using its unique identifier. This endpoint is useful for obtaining information about a particular subscription, such as its actions, object type, and associated properties.
      *
-     * @param int $subscriptionID The unique identifier of the subscription to retrieve. It must be an integer.
+     * @param int $subscriptionID the unique identifier of the subscription to retrieve
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -485,7 +516,7 @@ final class WebhooksService implements WebhooksContract
     public function getJournalSubscription(
         int $subscriptionID,
         RequestOptions|array|null $requestOptions = null
-    ): SubscriptionResponse1 {
+    ): JournalSubscriptionResponse {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->getJournalSubscription($subscriptionID, requestOptions: $requestOptions);
 
@@ -495,10 +526,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the latest batch of webhook journal entries. This endpoint allows you to specify the number of entries to fetch, providing a way to access recent webhook activity within your HubSpot account.
+     * Retrieve the latest batch of webhook journal entries up to the specified count. This endpoint is useful for fetching recent webhook data for analysis or processing. The count parameter determines the maximum number of entries to return.
      *
-     * @param int $count The number of journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
-     * @param int $installPortalID The ID of the portal installation. This is an integer value used to identify the specific portal.
+     * @param int $count The maximum number of journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
+     * @param int $installPortalID The ID of the portal installation. This is an integer value used to specify the portal context for the request.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -519,9 +550,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the latest entries from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook events processed by your HubSpot account. It allows you to filter the results by the portal ID to ensure you are retrieving data relevant to a specific installation.
+     * Retrieve the latest entries from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook events and their statuses, allowing you to monitor and debug webhook activity effectively.
      *
-     * @param int $installPortalID The ID of the portal installation to filter the journal entries. It is an integer value.
+     * @param int $installPortalID The unique identifier of the portal installation for which to retrieve the latest journal entries. This parameter is optional and should be an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -541,10 +572,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the latest batch of webhook journal entries. This endpoint is useful for accessing the most recent data entries processed by the webhook journal. It requires specifying the number of entries to retrieve.
+     * Retrieve the latest batch of webhook journal entries. This endpoint allows you to specify the number of entries to fetch, providing a way to access the most recent webhook events processed by your HubSpot account.
      *
      * @param int $count The number of journal entries to retrieve. Must be an integer with a minimum value of 1.
-     * @param int $installPortalID The ID of the portal installation. This parameter is optional and used to filter the journal entries by a specific portal.
+     * @param int $installPortalID The ID of the portal where the webhook journal is installed. This parameter is optional and used to specify the target portal.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -565,9 +596,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the latest entries from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook events that have been logged, allowing you to process or analyze them as needed.
+     * Retrieve the latest entries from the webhooks journal for the specified portal. This endpoint is useful for accessing the most recent webhook events that have been logged, allowing for real-time monitoring or debugging of webhook activities.
      *
-     * @param int $installPortalID The ID of the portal for which to retrieve the latest journal entries. This parameter is optional and should be an integer.
+     * @param int $installPortalID The ID of the portal for which to retrieve the latest journal entries. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -587,10 +618,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Perform a batch read operation on the webhooks journal. This endpoint allows you to read multiple entries from the journal in a single request. It requires a JSON request body specifying the inputs to be read. The response includes the results of the batch read operation, and may return multiple statuses if there are errors.
+     * Execute a batch read operation on the webhooks journal. This endpoint allows you to retrieve a batch of webhook journal entries by providing the necessary input data. It is useful for processing multiple records in a single request, streamlining data retrieval tasks.
      *
      * @param list<string> $inputs body param: Strings to input
-     * @param int $installPortalID Query param: The ID of the portal where the webhooks are installed. This parameter is optional and is used to specify the target portal.
+     * @param int $installPortalID Query param: The ID of the portal where the webhooks are installed. This parameter is optional and is used to specify the target portal for the operation.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -613,11 +644,11 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint allows you to fetch a defined number of entries, facilitating the processing of webhook data in manageable chunks.
+     * Retrieve a batch of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through large sets of webhook data. The number of entries returned is determined by the 'count' parameter.
      *
-     * @param int $count Path param: The number of journal entries to retrieve. This is an integer value with a minimum of 1.
-     * @param string $offset Path param: The starting point for fetching the batch of journal entries. This is a string value that indicates the offset position.
-     * @param int $installPortalID Query param: The ID of the portal installation. This is an integer value used to specify the portal context for the request.
+     * @param int $count Path param: The number of journal entries to retrieve in this batch. Must be an integer with a minimum value of 1.
+     * @param string $offset path param: The starting point for the batch retrieval, specified as a string
+     * @param int $installPortalID Query param: The ID of the portal where the webhooks are installed. This is an optional parameter.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -641,9 +672,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the status of a specific webhook journal entry using its unique status ID. This endpoint is useful for monitoring the progress or completion of webhook processing tasks.
+     * Retrieve the status of a specific webhook journal entry using its unique status ID. This endpoint is useful for monitoring the progress or outcome of webhook journal entries, allowing you to check if an entry is pending, in progress, completed, failed, or expired.
      *
-     * @param string $statusID the unique identifier (UUID) of the status to retrieve
+     * @param string $statusID The unique identifier of the status to retrieve. It should be in UUID format.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -661,10 +692,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the next batch of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through large sets of webhook data, allowing you to continue fetching entries from where you last left off.
+     * Retrieve the next set of entries from the webhooks journal starting from a specified offset. This endpoint is useful for paginating through journal entries to process or analyze webhook events sequentially.
      *
-     * @param string $offset The offset from which to start retrieving the next batch of webhook journal entries. This parameter is required and identifies the starting point for the batch retrieval.
-     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries. This is an optional parameter.
+     * @param string $offset the offset string indicating the starting point for retrieving the next set of journal entries
+     * @param int $installPortalID The ID of the portal where the webhooks are installed. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -685,10 +716,10 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the next set of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through webhook journal data in a sequential manner, allowing you to fetch entries beyond a given point.
+     * Retrieve the next set of webhook journal entries starting from a specified offset. This endpoint is useful for paginating through large sets of webhook data, allowing you to continue from where a previous request left off.
      *
-     * @param string $offset The starting point for retrieving the next set of journal entries. This is a string value.
-     * @param int $installPortalID The ID of the portal where the webhook is installed. This is an integer value.
+     * @param string $offset The starting point for retrieving the next set of webhook journal entries. This is a string value that represents the current position in the journal.
+     * @param int $installPortalID The ID of the portal installation to filter the webhook journal entries. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -729,9 +760,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve details of a specific filter associated with a webhook subscription in the HubSpot account. This endpoint is useful for accessing the configuration and conditions of a filter by its unique identifier.
+     * Retrieve a specific filter associated with a webhook journal subscription. This endpoint allows you to access the details of the filter identified by the filterId, which is useful for managing and understanding the conditions applied to webhook events.
      *
-     * @param int $filterID the unique identifier of the filter to retrieve
+     * @param int $filterID The unique identifier of the filter to retrieve. It is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -769,7 +800,7 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve a list of webhook journal subscriptions for the specified API version. This endpoint provides details about each subscription, including actions, object types, and associated properties. It is useful for managing and reviewing current webhook subscriptions.
+     * Retrieve a list of webhook journal subscriptions for the specified version. This endpoint allows you to view all active subscriptions without pagination. It is useful for monitoring and managing webhook subscriptions in your HubSpot account.
      *
      * @param RequestOpts|null $requestOptions
      *
@@ -777,7 +808,7 @@ final class WebhooksService implements WebhooksContract
      */
     public function listJournalSubscriptions(
         RequestOptions|array|null $requestOptions = null
-    ): CollectionResponseSubscriptionResponseNoPaging {
+    ): JournalCollectionResponseSubscriptionResponseNoPaging {
         // @phpstan-ignore-next-line argument.type
         $response = $this->raw->listJournalSubscriptions(requestOptions: $requestOptions);
 
@@ -787,9 +818,9 @@ final class WebhooksService implements WebhooksContract
     /**
      * @api
      *
-     * Retrieve the filters associated with a specific webhook subscription in the HubSpot account. This endpoint is useful for obtaining detailed information about the filters applied to a given subscription, identified by its subscription ID.
+     * Retrieve the filters associated with a specific webhook subscription. This endpoint allows you to view the filters applied to a subscription, which can help in managing and understanding the conditions set for webhook events.
      *
-     * @param int $subscriptionID the unique identifier of the subscription for which to retrieve filters
+     * @param int $subscriptionID The unique identifier of the subscription for which to retrieve filters. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @return list<FilterResponse>

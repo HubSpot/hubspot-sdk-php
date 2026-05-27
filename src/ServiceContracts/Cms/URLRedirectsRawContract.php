@@ -6,6 +6,7 @@ namespace HubSpotSDK\ServiceContracts\Cms;
 
 use HubSpotSDK\Cms\URLRedirects\URLMapping;
 use HubSpotSDK\Cms\URLRedirects\URLRedirectCreateParams;
+use HubSpotSDK\Cms\URLRedirects\URLRedirectCreateURLMappingParams;
 use HubSpotSDK\Cms\URLRedirects\URLRedirectListParams;
 use HubSpotSDK\Cms\URLRedirects\URLRedirectUpdateParams;
 use HubSpotSDK\Core\Contracts\BaseResponse;
@@ -81,6 +82,35 @@ interface URLRedirectsRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|URLRedirectCreateURLMappingParams $params
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function createURLMapping(
+        array|URLRedirectCreateURLMappingParams $params,
+        RequestOptions|array|null $requestOptions = null,
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<mixed>
+     *
+     * @throws APIException
+     */
+    public function deleteURLMapping(
+        int $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<URLMapping>
@@ -89,6 +119,33 @@ interface URLRedirectsRawContract
      */
     public function get(
         string $urlRedirectID,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function getURLMapping(
+        int $id,
+        RequestOptions|array|null $requestOptions = null
+    ): BaseResponse;
+
+    /**
+     * @api
+     *
+     * @param RequestOpts|null $requestOptions
+     *
+     * @return BaseResponse<string>
+     *
+     * @throws APIException
+     */
+    public function listURLMappings(
         RequestOptions|array|null $requestOptions = null
     ): BaseResponse;
 }

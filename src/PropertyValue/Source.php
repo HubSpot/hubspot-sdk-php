@@ -55,6 +55,8 @@ enum Source: string
 
     case BOT = 'BOT';
 
+    case BREEZE_AGENT = 'BREEZE_AGENT';
+
     case CALCULATED = 'CALCULATED';
 
     case CENTRAL_EXCHANGE_RATES = 'CENTRAL_EXCHANGE_RATES';
@@ -102,6 +104,8 @@ enum Source: string
     case DEFAULT = 'DEFAULT';
 
     case DELETE_OBJECTS = 'DELETE_OBJECTS';
+
+    case DI_WRITE_TO_CRM = 'DI_WRITE_TO_CRM';
 
     case EMAIL = 'EMAIL';
 

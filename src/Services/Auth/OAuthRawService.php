@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Services\Auth;
 
+use HubSpotSDK\Auth\OAuth\AccessTokenResponse;
+use HubSpotSDK\Auth\OAuth\ClientCredentialsTokenResponse;
 use HubSpotSDK\Auth\OAuth\OAuthCreateTokenParams;
 use HubSpotSDK\Auth\OAuth\OAuthCreateTokenParams\GrantType;
 use HubSpotSDK\Auth\OAuth\OAuthIntrospectTokenParams;
@@ -11,6 +13,7 @@ use HubSpotSDK\Auth\OAuth\OAuthRevokeTokenParams;
 use HubSpotSDK\Auth\OAuth\PublicAccessTokenInfoResponse;
 use HubSpotSDK\Auth\OAuth\PublicRefreshTokenInfoResponse;
 use HubSpotSDK\Auth\OAuth\TokenInfoResponseBaseIf;
+use HubSpotSDK\Auth\OAuth\TokenResponseIf;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
@@ -45,7 +48,7 @@ final class OAuthRawService implements OAuthRawContract
      * }|OAuthCreateTokenParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<string>
+     * @return BaseResponse<AccessTokenResponse|ClientCredentialsTokenResponse>
      *
      * @throws APIException
      */
@@ -62,12 +65,10 @@ final class OAuthRawService implements OAuthRawContract
         return $this->client->request(
             method: 'post',
             path: 'oauth/2026-03/token',
-            headers: [
-                'Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => '*/*',
-            ],
+            headers: ['Content-Type' => 'application/x-www-form-urlencoded'],
             body: (object) $parsed,
             options: $options,
-            convert: 'string',
+            convert: TokenResponseIf::class,
         );
     }
 

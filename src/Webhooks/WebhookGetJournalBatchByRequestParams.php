@@ -11,7 +11,7 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 
 /**
- * Perform a batch read operation on the webhooks journal for the specified date. This endpoint allows you to retrieve multiple entries from the webhooks journal in a single request, which can be useful for processing large amounts of data efficiently.
+ * Execute a batch read operation on the webhooks journal for the specified date, 2026-03. This endpoint allows you to retrieve multiple entries from the webhooks journal in a single request, which can be useful for processing large amounts of data efficiently. Ensure that the request body is provided in the required format.
  *
  * @see HubSpotSDK\Services\WebhooksService::getJournalBatchByRequest()
  *
@@ -34,7 +34,7 @@ final class WebhookGetJournalBatchByRequestParams implements BaseModel
     public array $inputs;
 
     /**
-     * The ID of the portal where the webhooks are installed. This is an integer value.
+     * An integer representing the ID of the portal installation for which the webhooks journal data should be retrieved.
      */
     #[Optional]
     public ?int $installPortalID;
@@ -92,7 +92,7 @@ final class WebhookGetJournalBatchByRequestParams implements BaseModel
     }
 
     /**
-     * The ID of the portal where the webhooks are installed. This is an integer value.
+     * An integer representing the ID of the portal installation for which the webhooks journal data should be retrieved.
      */
     public function withInstallPortalID(int $installPortalID): self
     {

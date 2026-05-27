@@ -7,6 +7,7 @@ namespace HubSpotSDK\ServiceContracts\Crm;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
 use HubSpotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams;
 use HubSpotSDK\Crm\Exports\PublicExportResponse;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\TaskLocator;
@@ -19,6 +20,7 @@ interface ExportsRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|ExportCreateAsyncParams $params
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<TaskLocator>
@@ -26,7 +28,8 @@ interface ExportsRawContract
      * @throws APIException
      */
     public function createAsync(
-        RequestOptions|array|null $requestOptions = null
+        array|ExportCreateAsyncParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**

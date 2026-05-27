@@ -2,19 +2,19 @@
 
 namespace Tests\Services;
 
+use HubSpotSDK\BatchResponseJournalFetchResponse;
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Util;
-use HubSpotSDK\Webhooks\BatchResponseJournalFetchResponse;
+use HubSpotSDK\CrmObjectSnapshotBatchResponse;
+use HubSpotSDK\FilterCreateResponse;
+use HubSpotSDK\FilterResponse;
+use HubSpotSDK\SnapshotStatusResponse;
 use HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubSpotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
-use HubSpotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
-use HubSpotSDK\Webhooks\FilterCreateResponse;
-use HubSpotSDK\Webhooks\FilterResponse;
 use HubSpotSDK\Webhooks\SettingsResponse;
-use HubSpotSDK\Webhooks\SnapshotStatusResponse;
 use HubSpotSDK\Webhooks\SubscriptionListResponse;
 use HubSpotSDK\Webhooks\SubscriptionResponse;
-use HubSpotSDK\Webhooks\SubscriptionResponse1;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -158,10 +158,43 @@ final class WebhooksTest extends TestCase
             $this->markTestSkipped('Mock server tests are disabled');
         }
 
-        $result = $this->client->webhooks->createJournalSubscription();
+        $result = $this->client->webhooks->createJournalSubscription(
+            actions: ['CREATE'],
+            objectIDs: [0],
+            objectTypeID: 'objectTypeId',
+            portalID: 0,
+            properties: ['string'],
+            subscriptionType: 'GDPR_PRIVACY_DELETION',
+            associatedObjectTypeIDs: ['string'],
+            eventTypeID: 'eventTypeId',
+            listIDs: [0],
+        );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse1::class, $result);
+        $this->assertInstanceOf(JournalSubscriptionResponse::class, $result);
+    }
+
+    #[Test]
+    public function testCreateJournalSubscriptionWithOptionalParams(): void
+    {
+        if (UnsupportedMockTests::$skip) {
+            $this->markTestSkipped('Mock server tests are disabled');
+        }
+
+        $result = $this->client->webhooks->createJournalSubscription(
+            actions: ['CREATE'],
+            objectIDs: [0],
+            objectTypeID: 'objectTypeId',
+            portalID: 0,
+            properties: ['string'],
+            subscriptionType: 'GDPR_PRIVACY_DELETION',
+            associatedObjectTypeIDs: ['string'],
+            eventTypeID: 'eventTypeId',
+            listIDs: [0],
+        );
+
+        // @phpstan-ignore-next-line method.alreadyNarrowedType
+        $this->assertInstanceOf(JournalSubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -459,7 +492,7 @@ final class WebhooksTest extends TestCase
         $result = $this->client->webhooks->getJournalSubscription(0);
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
-        $this->assertInstanceOf(SubscriptionResponse1::class, $result);
+        $this->assertInstanceOf(JournalSubscriptionResponse::class, $result);
     }
 
     #[Test]
@@ -669,7 +702,7 @@ final class WebhooksTest extends TestCase
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
         $this->assertInstanceOf(
-            CollectionResponseSubscriptionResponseNoPaging::class,
+            JournalCollectionResponseSubscriptionResponseNoPaging::class,
             $result
         );
     }

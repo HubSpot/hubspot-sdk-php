@@ -6,13 +6,20 @@ namespace HubSpotSDK\Services\Crm;
 
 use HubSpotSDK\Client;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\Core\Util;
 use HubSpotSDK\Crm\Exports\ActionResponseWithSingleResultUri;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams\ExportInternalValuesOption;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams\ExportType;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams\Format;
+use HubSpotSDK\Crm\Exports\ExportCreateAsyncParams\Language;
+use HubSpotSDK\Crm\Exports\PublicCrmSearchRequest;
 use HubSpotSDK\Crm\Exports\PublicExportResponse;
 use HubSpotSDK\RequestOptions;
 use HubSpotSDK\ServiceContracts\Crm\ExportsContract;
 use HubSpotSDK\TaskLocator;
 
 /**
+ * @phpstan-import-type PublicCrmSearchRequestShape from \HubSpotSDK\Crm\Exports\PublicCrmSearchRequest
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
  */
 final class ExportsService implements ExportsContract
@@ -35,15 +42,53 @@ final class ExportsService implements ExportsContract
      *
      * Begins exporting CRM data for the portal as specified in the request body
      *
+     * @param list<string> $associatedObjectType
+     * @param list<ExportInternalValuesOption|value-of<ExportInternalValuesOption>> $exportInternalValuesOptions
+     * @param Format|value-of<Format> $format
+     * @param Language|value-of<Language> $language
+     * @param list<string> $objectProperties
+     * @param ExportType|value-of<ExportType> $exportType
+     * @param PublicCrmSearchRequest|PublicCrmSearchRequestShape $publicCrmSearchRequest
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
      */
     public function createAsync(
-        RequestOptions|array|null $requestOptions = null
+        array $associatedObjectType,
+        array $exportInternalValuesOptions,
+        string $exportName,
+        Format|string $format,
+        bool $includeLabeledAssociations,
+        bool $includePrimaryDisplayPropertyForAssociatedObjects,
+        Language|string $language,
+        array $objectProperties,
+        string $objectType,
+        bool $overrideAssociatedObjectsPerDefinitionPerRowLimit,
+        string $listID,
+        ExportType|string $exportType = 'LIST',
+        PublicCrmSearchRequest|array|null $publicCrmSearchRequest = null,
+        RequestOptions|array|null $requestOptions = null,
     ): TaskLocator {
+        $params = Util::removeNulls(
+            [
+                'associatedObjectType' => $associatedObjectType,
+                'exportInternalValuesOptions' => $exportInternalValuesOptions,
+                'exportName' => $exportName,
+                'exportType' => $exportType,
+                'format' => $format,
+                'includeLabeledAssociations' => $includeLabeledAssociations,
+                'includePrimaryDisplayPropertyForAssociatedObjects' => $includePrimaryDisplayPropertyForAssociatedObjects,
+                'language' => $language,
+                'objectProperties' => $objectProperties,
+                'objectType' => $objectType,
+                'overrideAssociatedObjectsPerDefinitionPerRowLimit' => $overrideAssociatedObjectsPerDefinitionPerRowLimit,
+                'publicCrmSearchRequest' => $publicCrmSearchRequest,
+                'listID' => $listID,
+            ],
+        );
+
         // @phpstan-ignore-next-line argument.type
-        $response = $this->raw->createAsync(requestOptions: $requestOptions);
+        $response = $this->raw->createAsync(params: $params, requestOptions: $requestOptions);
 
         return $response->parse();
     }

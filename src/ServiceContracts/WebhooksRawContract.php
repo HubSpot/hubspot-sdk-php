@@ -4,23 +4,22 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\ServiceContracts;
 
+use HubSpotSDK\BatchResponseJournalFetchResponse;
 use HubSpotSDK\Core\Contracts\BaseResponse;
 use HubSpotSDK\Core\Exceptions\APIException;
+use HubSpotSDK\CrmObjectSnapshotBatchResponse;
+use HubSpotSDK\FilterCreateResponse;
+use HubSpotSDK\FilterResponse;
 use HubSpotSDK\RequestOptions;
-use HubSpotSDK\Webhooks\BatchResponseJournalFetchResponse;
+use HubSpotSDK\SnapshotStatusResponse;
 use HubSpotSDK\Webhooks\BatchResponseSubscriptionResponse;
-use HubSpotSDK\Webhooks\CollectionResponseSubscriptionResponseNoPaging;
-use HubSpotSDK\Webhooks\CrmObjectSnapshotBatchResponse;
-use HubSpotSDK\Webhooks\FilterCreateResponse;
-use HubSpotSDK\Webhooks\FilterResponse;
 use HubSpotSDK\Webhooks\SettingsResponse;
-use HubSpotSDK\Webhooks\SnapshotStatusResponse;
 use HubSpotSDK\Webhooks\SubscriptionListResponse;
 use HubSpotSDK\Webhooks\SubscriptionResponse;
-use HubSpotSDK\Webhooks\SubscriptionResponse1;
 use HubSpotSDK\Webhooks\WebhookCreateBatchEventSubscriptionsParams;
 use HubSpotSDK\Webhooks\WebhookCreateCrmSnapshotsParams;
 use HubSpotSDK\Webhooks\WebhookCreateEventSubscriptionParams;
+use HubSpotSDK\Webhooks\WebhookCreateJournalSubscriptionParams;
 use HubSpotSDK\Webhooks\WebhookCreateSubscriptionFilterParams;
 use HubSpotSDK\Webhooks\WebhookDeleteEventSubscriptionParams;
 use HubSpotSDK\Webhooks\WebhookGetEarliestJournalBatchParams;
@@ -40,6 +39,8 @@ use HubSpotSDK\Webhooks\WebhookGetNextJournalEntriesParams;
 use HubSpotSDK\Webhooks\WebhookGetNextLocalJournalEntriesParams;
 use HubSpotSDK\Webhooks\WebhookUpdateEventSubscriptionParams;
 use HubSpotSDK\Webhooks\WebhookUpdateSettingsParams;
+use HubSpotSDK\WebhooksJournal\JournalCollectionResponseSubscriptionResponseNoPaging;
+use HubSpotSDK\WebhooksJournal\JournalSubscriptionResponse;
 
 /**
  * @phpstan-import-type RequestOpts from \HubSpotSDK\RequestOptions
@@ -98,14 +99,16 @@ interface WebhooksRawContract
     /**
      * @api
      *
+     * @param array<string,mixed>|WebhookCreateJournalSubscriptionParams $params
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SubscriptionResponse1>
+     * @return BaseResponse<JournalSubscriptionResponse>
      *
      * @throws APIException
      */
     public function createJournalSubscription(
-        RequestOptions|array|null $requestOptions = null
+        array|WebhookCreateJournalSubscriptionParams $params,
+        RequestOptions|array|null $requestOptions = null,
     ): BaseResponse;
 
     /**
@@ -143,7 +146,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $subscriptionID the unique identifier of the subscription to delete
+     * @param int $subscriptionID The unique identifier of the subscription to delete. It must be provided as an integer.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -158,7 +161,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $portalID the unique identifier of the portal whose webhook journal subscription is to be deleted
+     * @param int $portalID the unique identifier of the portal for which the webhook journal subscription is to be deleted
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<mixed>
@@ -203,7 +206,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count The maximum number of journal entries to retrieve in the batch. This must be an integer with a minimum value of 1.
+     * @param int $count The number of earliest journal entries to retrieve. This must be an integer with a minimum value of 1.
      * @param array<string,mixed>|WebhookGetEarliestJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -235,7 +238,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count The number of earliest entries to retrieve from the webhook journal. Must be an integer with a minimum value of 1.
+     * @param int $count The number of earliest webhook journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
      * @param array<string,mixed>|WebhookGetEarliestLocalJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -299,7 +302,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count Path param: The number of journal entries to fetch in the batch. This is an integer value with a minimum of 1.
+     * @param int $count Path param: The number of journal entries to retrieve. This must be an integer with a minimum value of 1.
      * @param array<string,mixed>|WebhookGetJournalBatchFromOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -331,10 +334,10 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $subscriptionID The unique identifier of the subscription to retrieve. It must be an integer.
+     * @param int $subscriptionID the unique identifier of the subscription to retrieve
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<SubscriptionResponse1>
+     * @return BaseResponse<JournalSubscriptionResponse>
      *
      * @throws APIException
      */
@@ -346,7 +349,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count The number of journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
+     * @param int $count The maximum number of journal entries to retrieve. This is a required integer parameter with a minimum value of 1.
      * @param array<string,mixed>|WebhookGetLatestJournalBatchParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -425,7 +428,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $count Path param: The number of journal entries to retrieve. This is an integer value with a minimum of 1.
+     * @param int $count Path param: The number of journal entries to retrieve in this batch. Must be an integer with a minimum value of 1.
      * @param array<string,mixed>|WebhookGetLocalJournalBatchFromOffsetParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -442,7 +445,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param string $statusID the unique identifier (UUID) of the status to retrieve
+     * @param string $statusID The unique identifier of the status to retrieve. It should be in UUID format.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<SnapshotStatusResponse>
@@ -457,7 +460,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param string $offset The offset from which to start retrieving the next batch of webhook journal entries. This parameter is required and identifies the starting point for the batch retrieval.
+     * @param string $offset the offset string indicating the starting point for retrieving the next set of journal entries
      * @param array<string,mixed>|WebhookGetNextJournalEntriesParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -474,7 +477,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param string $offset The starting point for retrieving the next set of journal entries. This is a string value.
+     * @param string $offset The starting point for retrieving the next set of webhook journal entries. This is a string value that represents the current position in the journal.
      * @param array<string,mixed>|WebhookGetNextLocalJournalEntriesParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -506,7 +509,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $filterID the unique identifier of the filter to retrieve
+     * @param int $filterID The unique identifier of the filter to retrieve. It is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<FilterResponse>
@@ -538,7 +541,7 @@ interface WebhooksRawContract
      *
      * @param RequestOpts|null $requestOptions
      *
-     * @return BaseResponse<CollectionResponseSubscriptionResponseNoPaging>
+     * @return BaseResponse<JournalCollectionResponseSubscriptionResponseNoPaging>
      *
      * @throws APIException
      */
@@ -549,7 +552,7 @@ interface WebhooksRawContract
     /**
      * @api
      *
-     * @param int $subscriptionID the unique identifier of the subscription for which to retrieve filters
+     * @param int $subscriptionID The unique identifier of the subscription for which to retrieve filters. This is an integer value.
      * @param RequestOpts|null $requestOptions
      *
      * @return BaseResponse<list<FilterResponse>>

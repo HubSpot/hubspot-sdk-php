@@ -8,6 +8,7 @@ use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\MetaType;
 use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\PermissioningType;
 use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\Status;
 use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\Visibility;
+use HubSpotSDK\Cms\MediaBridge\InboundDBObjectType\VisibilityValue;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
@@ -56,6 +57,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
  *   singularForm?: string|null,
  *   status?: null|Status|value-of<Status>,
  *   visibility?: null|Visibility|value-of<Visibility>,
+ *   visibilityValues?: list<VisibilityValue|value-of<VisibilityValue>>|null,
  *   writeScopeName?: string|null,
  * }
  */
@@ -189,6 +191,10 @@ final class InboundDBObjectType implements BaseModel
     #[Optional(enum: Visibility::class)]
     public ?string $visibility;
 
+    /** @var list<value-of<VisibilityValue>>|null $visibilityValues */
+    #[Optional('visibility_values', list: VisibilityValue::class)]
+    public ?array $visibilityValues;
+
     #[Optional]
     public ?string $writeScopeName;
 
@@ -275,6 +281,7 @@ final class InboundDBObjectType implements BaseModel
      * @param list<string> $secondaryDisplayLabelPropertyNames
      * @param Status|value-of<Status>|null $status
      * @param Visibility|value-of<Visibility>|null $visibility
+     * @param list<VisibilityValue|value-of<VisibilityValue>>|null $visibilityValues
      */
     public static function with(
         int $id,
@@ -316,6 +323,7 @@ final class InboundDBObjectType implements BaseModel
         ?string $singularForm = null,
         Status|string|null $status = null,
         Visibility|string|null $visibility = null,
+        ?array $visibilityValues = null,
         ?string $writeScopeName = null,
     ): self {
         $self = new self;
@@ -360,6 +368,7 @@ final class InboundDBObjectType implements BaseModel
         null !== $singularForm && $self['singularForm'] = $singularForm;
         null !== $status && $self['status'] = $status;
         null !== $visibility && $self['visibility'] = $visibility;
+        null !== $visibilityValues && $self['visibilityValues'] = $visibilityValues;
         null !== $writeScopeName && $self['writeScopeName'] = $writeScopeName;
 
         return $self;
@@ -708,6 +717,17 @@ final class InboundDBObjectType implements BaseModel
     {
         $self = clone $this;
         $self['visibility'] = $visibility;
+
+        return $self;
+    }
+
+    /**
+     * @param list<VisibilityValue|value-of<VisibilityValue>> $visibilityValues
+     */
+    public function withVisibilityValues(array $visibilityValues): self
+    {
+        $self = clone $this;
+        $self['visibilityValues'] = $visibilityValues;
 
         return $self;
     }
