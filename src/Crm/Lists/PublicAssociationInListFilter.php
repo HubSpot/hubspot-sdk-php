@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicAssociationInListFilter\CoalescingRefineBy;
 use HubSpotSDK\Crm\Lists\PublicAssociationInListFilter\FilterType;
 
 /**
@@ -47,7 +48,7 @@ final class PublicAssociationInListFilter implements BaseModel
      *
      * @var CoalescingRefineByVariants $coalescingRefineBy
      */
-    #[Required]
+    #[Required(union: CoalescingRefineBy::class)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $coalescingRefineBy;
 
     /**

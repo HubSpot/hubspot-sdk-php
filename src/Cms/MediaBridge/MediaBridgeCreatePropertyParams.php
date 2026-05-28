@@ -7,6 +7,7 @@ namespace HubSpotSDK\Cms\MediaBridge;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\NumberDisplayHint;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\TextDisplayHint;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
@@ -42,6 +43,7 @@ use HubSpotSDK\OptionInput;
  *   options?: list<OptionInput|OptionInputShape>|null,
  *   referencedObjectType?: string|null,
  *   showCurrencySymbol?: bool|null,
+ *   textDisplayHint?: null|TextDisplayHint|value-of<TextDisplayHint>,
  * }
  */
 final class MediaBridgeCreatePropertyParams implements BaseModel
@@ -112,6 +114,10 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
     #[Optional]
     public ?bool $showCurrencySymbol;
 
+    /** @var value-of<TextDisplayHint>|null $textDisplayHint */
+    #[Optional(enum: TextDisplayHint::class)]
+    public ?string $textDisplayHint;
+
     /**
      * `new MediaBridgeCreatePropertyParams()` is missing required properties by the API.
      *
@@ -149,6 +155,7 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
      * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
      * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
      * @param list<OptionInput|OptionInputShape>|null $options
+     * @param TextDisplayHint|value-of<TextDisplayHint>|null $textDisplayHint
      */
     public static function with(
         int $appID,
@@ -170,6 +177,7 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
         ?array $options = null,
         ?string $referencedObjectType = null,
         ?bool $showCurrencySymbol = null,
+        TextDisplayHint|string|null $textDisplayHint = null,
     ): self {
         $self = new self;
 
@@ -193,6 +201,7 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
         null !== $options && $self['options'] = $options;
         null !== $referencedObjectType && $self['referencedObjectType'] = $referencedObjectType;
         null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
+        null !== $textDisplayHint && $self['textDisplayHint'] = $textDisplayHint;
 
         return $self;
     }
@@ -362,6 +371,18 @@ final class MediaBridgeCreatePropertyParams implements BaseModel
     {
         $self = clone $this;
         $self['showCurrencySymbol'] = $showCurrencySymbol;
+
+        return $self;
+    }
+
+    /**
+     * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint
+     */
+    public function withTextDisplayHint(
+        TextDisplayHint|string $textDisplayHint
+    ): self {
+        $self = clone $this;
+        $self['textDisplayHint'] = $textDisplayHint;
 
         return $self;
     }

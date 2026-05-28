@@ -21,11 +21,18 @@ final class CallerIDMatch implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'callerIDType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
-        return [ContactCallerID::class, CompanyCallerID::class];
+        return [
+            'CONTACT' => ContactCallerID::class, 'COMPANY' => CompanyCallerID::class,
+        ];
     }
 }

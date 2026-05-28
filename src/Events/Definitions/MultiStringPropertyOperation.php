@@ -8,8 +8,10 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\CoalescingRefineBy;
 use HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\Operator;
 use HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\PropertyType;
+use HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\PruningRefineBy;
 
 /**
  * @phpstan-import-type CoalescingRefineByVariants from \HubSpotSDK\Events\Definitions\MultiStringPropertyOperation\CoalescingRefineBy
@@ -36,7 +38,7 @@ final class MultiStringPropertyOperation implements BaseModel
     use SdkModel;
 
     /** @var CoalescingRefineByVariants $coalescingRefineBy */
-    #[Required]
+    #[Required(union: CoalescingRefineBy::class)]
     public NumOccurrencesRefineBy|SetOccurrencesRefineBy $coalescingRefineBy;
 
     #[Required]
@@ -64,7 +66,7 @@ final class MultiStringPropertyOperation implements BaseModel
     public ?string $defaultValue;
 
     /** @var PruningRefineByVariants|null $pruningRefineBy */
-    #[Optional]
+    #[Optional(union: PruningRefineBy::class)]
     public RelativeComparativeTimestampRefineBy|RelativeRangedTimestampRefineBy|AbsoluteComparativeTimestampRefineBy|AbsoluteRangedTimestampRefineBy|AllHistoryRefineBy|TimePointOperation|RangedTimeOperation|null $pruningRefineBy;
 
     #[Optional]

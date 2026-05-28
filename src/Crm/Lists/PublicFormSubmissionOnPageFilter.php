@@ -8,8 +8,10 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\CoalescingRefineBy;
 use HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\FilterType;
 use HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\Operator;
+use HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\PruningRefineBy;
 
 /**
  * @phpstan-import-type CoalescingRefineByVariants from \HubSpotSDK\Crm\Lists\PublicFormSubmissionOnPageFilter\CoalescingRefineBy
@@ -58,7 +60,7 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
      *
      * @var CoalescingRefineByVariants|null $coalescingRefineBy
      */
-    #[Optional]
+    #[Optional(union: CoalescingRefineBy::class)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
     /**
@@ -72,7 +74,7 @@ final class PublicFormSubmissionOnPageFilter implements BaseModel
      *
      * @var PruningRefineByVariants|null $pruningRefineBy
      */
-    #[Optional]
+    #[Optional(union: PruningRefineBy::class)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 
     /**

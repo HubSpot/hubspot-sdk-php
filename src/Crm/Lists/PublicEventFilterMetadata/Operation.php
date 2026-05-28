@@ -53,29 +53,34 @@ final class Operation implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'operationType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            PublicBoolPropertyOperation::class,
-            PublicNumberPropertyOperation::class,
-            PublicStringPropertyOperation::class,
-            PublicDateTimePropertyOperation::class,
-            PublicRangedDatePropertyOperation::class,
-            PublicComparativePropertyUpdatedOperation::class,
-            PublicComparativeDatePropertyOperation::class,
-            PublicRollingDateRangePropertyOperation::class,
-            PublicRollingPropertyUpdatedOperation::class,
-            PublicEnumerationPropertyOperation::class,
-            PublicAllPropertyTypesOperation::class,
-            PublicRangedNumberPropertyOperation::class,
-            PublicMultiStringPropertyOperation::class,
-            PublicDatePropertyOperation::class,
-            PublicCalendarDatePropertyOperation::class,
-            PublicTimePointOperation::class,
-            PublicRangedTimeOperation::class,
+            'BOOL' => PublicBoolPropertyOperation::class,
+            'NUMBER' => PublicNumberPropertyOperation::class,
+            'STRING' => PublicStringPropertyOperation::class,
+            'DATETIME' => PublicDateTimePropertyOperation::class,
+            'RANGED_DATE' => PublicRangedDatePropertyOperation::class,
+            'COMPARATIVE_PROPERTY_UPDATED' => PublicComparativePropertyUpdatedOperation::class,
+            'COMPARATIVE_DATE' => PublicComparativeDatePropertyOperation::class,
+            'ROLLING_DATE_RANGE' => PublicRollingDateRangePropertyOperation::class,
+            'ROLLING_PROPERTY_UPDATED' => PublicRollingPropertyUpdatedOperation::class,
+            'ENUMERATION' => PublicEnumerationPropertyOperation::class,
+            'ALL_PROPERTY' => PublicAllPropertyTypesOperation::class,
+            'NUMBER_RANGED' => PublicRangedNumberPropertyOperation::class,
+            'MULTISTRING' => PublicMultiStringPropertyOperation::class,
+            'DATE' => PublicDatePropertyOperation::class,
+            'CALENDAR_DATE' => PublicCalendarDatePropertyOperation::class,
+            'TIME_POINT' => PublicTimePointOperation::class,
+            'TIME_RANGED' => PublicRangedTimeOperation::class,
         ];
     }
 }

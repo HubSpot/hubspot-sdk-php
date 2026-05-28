@@ -19,11 +19,19 @@ final class PublicExportRequest implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'exportType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
-        return [PublicExportViewRequest::class, PublicExportListRequest::class];
+        return [
+            'VIEW' => PublicExportViewRequest::class,
+            'LIST' => PublicExportListRequest::class,
+        ];
     }
 }

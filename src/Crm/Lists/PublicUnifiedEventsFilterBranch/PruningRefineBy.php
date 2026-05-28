@@ -35,21 +35,26 @@ final class PruningRefineBy implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'type';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            PublicNumOccurrencesRefineBy::class,
-            PublicSetOccurrencesRefineBy::class,
-            PublicRelativeComparativeTimestampRefineBy::class,
-            PublicRelativeRangedTimestampRefineBy::class,
-            PublicAbsoluteComparativeTimestampRefineBy::class,
-            PublicAbsoluteRangedTimestampRefineBy::class,
-            PublicAllHistoryRefineBy::class,
             PublicTimePointOperation::class,
-            PublicRangedTimeOperation::class,
+            'NUM_OCCURRENCES' => PublicNumOccurrencesRefineBy::class,
+            'SET_OCCURRENCES' => PublicSetOccurrencesRefineBy::class,
+            'RELATIVE_COMPARATIVE' => PublicRelativeComparativeTimestampRefineBy::class,
+            'RELATIVE_RANGED' => PublicRelativeRangedTimestampRefineBy::class,
+            'ABSOLUTE_COMPARATIVE' => PublicAbsoluteComparativeTimestampRefineBy::class,
+            'ABSOLUTE_RANGED' => PublicAbsoluteRangedTimestampRefineBy::class,
+            'ALL_HISTORY' => PublicAllHistoryRefineBy::class,
+            'TIME_RANGED' => PublicRangedTimeOperation::class,
         ];
     }
 }

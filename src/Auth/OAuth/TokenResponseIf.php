@@ -19,11 +19,19 @@ final class TokenResponseIf implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'tokenUse';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
-        return [AccessTokenResponse::class, ClientCredentialsTokenResponse::class];
+        return [
+            'access_token' => AccessTokenResponse::class,
+            'client_credentials' => ClientCredentialsTokenResponse::class,
+        ];
     }
 }

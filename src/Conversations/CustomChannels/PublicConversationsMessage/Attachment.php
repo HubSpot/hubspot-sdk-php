@@ -33,20 +33,25 @@ final class Attachment implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'type';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            PublicFile::class,
-            PublicLocation::class,
-            PublicContact::class,
-            PublicUnsupportedContent::class,
-            PublicMessageHeader::class,
-            PublicQuickReplies::class,
-            PublicWhatsAppTemplateMetadata::class,
-            PublicSocialMetadataAttachment::class,
+            'FILE' => PublicFile::class,
+            'LOCATION' => PublicLocation::class,
+            'CONTACT' => PublicContact::class,
+            'UNSUPPORTED_CONTENT' => PublicUnsupportedContent::class,
+            'MESSAGE_HEADER' => PublicMessageHeader::class,
+            'QUICK_REPLIES' => PublicQuickReplies::class,
+            'WHATSAPP_TEMPLATE_METADATA' => PublicWhatsAppTemplateMetadata::class,
+            'SOCIAL_MEDIA_METADATA' => PublicSocialMetadataAttachment::class,
         ];
     }
 }

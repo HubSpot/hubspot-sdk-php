@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Extensions\CardsDev\TopLevelActions\Primary;
 use HubSpotSDK\Crm\Extensions\CardsDev\TopLevelActions\Secondary;
 
 /**
@@ -41,7 +42,7 @@ final class TopLevelActions implements BaseModel
      *
      * @var PrimaryVariants|null $primary
      */
-    #[Optional]
+    #[Optional(union: Primary::class)]
     public ActionHookActionBody|IFrameActionBody|null $primary;
 
     #[Optional]

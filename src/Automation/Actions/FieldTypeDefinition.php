@@ -6,6 +6,7 @@ namespace HubSpotSDK\Automation\Actions;
 
 use HubSpotSDK\Automation\Actions\FieldTypeDefinition\FieldType;
 use HubSpotSDK\Automation\Actions\FieldTypeDefinition\ReferencedObjectType;
+use HubSpotSDK\Automation\Actions\FieldTypeDefinition\Schema;
 use HubSpotSDK\Automation\Actions\FieldTypeDefinition\Type;
 use HubSpotSDK\AutomationActionsOption;
 use HubSpotSDK\Core\Attributes\Optional;
@@ -60,7 +61,7 @@ final class FieldTypeDefinition implements BaseModel
      *
      * @var SchemaVariants $schema
      */
-    #[Required]
+    #[Required(union: Schema::class)]
     public IntegerFieldSchema|LongFieldSchema|DoubleFieldSchema|StringFieldSchema|BooleanFieldSchema|ArrayFieldSchema|ObjectFieldSchema $schema;
 
     /**

@@ -19,14 +19,19 @@ final class TokenInfoResponseBaseIf implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'tokenUse';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            PublicAccessTokenInfoResponse::class,
-            PublicRefreshTokenInfoResponse::class,
+            'access_token' => PublicAccessTokenInfoResponse::class,
+            'refresh_token' => PublicRefreshTokenInfoResponse::class,
         ];
     }
 }

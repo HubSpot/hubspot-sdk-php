@@ -21,14 +21,19 @@ final class InputFieldDependency implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'dependencyType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            PublicSingleFieldDependency::class,
-            PublicConditionalSingleFieldDependency::class,
+            'SINGLE_FIELD' => PublicSingleFieldDependency::class,
+            'CONDITIONAL_SINGLE_FIELD' => PublicConditionalSingleFieldDependency::class,
         ];
     }
 }
