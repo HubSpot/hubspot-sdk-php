@@ -23,13 +23,20 @@ final class TimePoint implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'timeType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            DatePoint::class, IndexedTimePoint::class, PropertyReferencedTime::class,
+            'DATE' => DatePoint::class,
+            'INDEXED' => IndexedTimePoint::class,
+            'PROPERTY_REFERENCED' => PropertyReferencedTime::class,
         ];
     }
 }

@@ -25,15 +25,20 @@ final class UpperBoundTimePoint implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'timeType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            PublicDatePoint::class,
-            PublicIndexedTimePoint::class,
-            PublicPropertyReferencedTime::class,
+            'DATE' => PublicDatePoint::class,
+            'INDEXED' => PublicIndexedTimePoint::class,
+            'PROPERTY_REFERENCED' => PublicPropertyReferencedTime::class,
         ];
     }
 }

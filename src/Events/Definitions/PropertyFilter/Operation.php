@@ -59,33 +59,38 @@ final class Operation implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'propertyType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            BoolPropertyOperation::class,
-            NumberPropertyOperation::class,
-            StringPropertyOperation::class,
-            DateTimePropertyOperation::class,
-            RangedDatePropertyOperation::class,
-            ComparativeDatePropertyOperation::class,
-            ComparativeBoolPropertyOperation::class,
-            ComparativeNumberPropertyOperation::class,
-            ComparativeStringPropertyOperation::class,
-            ComparativePropertyUpdatedOperation::class,
-            RollingDateRangePropertyOperation::class,
-            RollingPropertyUpdatedOperation::class,
-            EnumerationPropertyOperation::class,
-            AllPropertyTypesOperation::class,
-            RangedNumberPropertyOperation::class,
-            MultiStringPropertyOperation::class,
-            DatePropertyOperation::class,
-            CalendarDatePropertyOperation::class,
-            TimePointOperation::class,
-            RangedTimeOperation::class,
-            RegexPropertyOperation::class,
+            'bool' => BoolPropertyOperation::class,
+            'number' => NumberPropertyOperation::class,
+            'string' => StringPropertyOperation::class,
+            'datetime' => DateTimePropertyOperation::class,
+            'datetime-ranged' => RangedDatePropertyOperation::class,
+            'datetime-comparative' => ComparativeDatePropertyOperation::class,
+            'bool-comparative' => ComparativeBoolPropertyOperation::class,
+            'number-comparative' => ComparativeNumberPropertyOperation::class,
+            'string-comparative' => ComparativeStringPropertyOperation::class,
+            'property-updated-comparative' => ComparativePropertyUpdatedOperation::class,
+            'datetime-rolling' => RollingDateRangePropertyOperation::class,
+            'rolling-property-updated' => RollingPropertyUpdatedOperation::class,
+            'enumeration' => EnumerationPropertyOperation::class,
+            'alltypes' => AllPropertyTypesOperation::class,
+            'number-ranged' => RangedNumberPropertyOperation::class,
+            'multistring' => MultiStringPropertyOperation::class,
+            'date' => DatePropertyOperation::class,
+            'calendar-date' => CalendarDatePropertyOperation::class,
+            'timepoint' => TimePointOperation::class,
+            'rangedtime' => RangedTimeOperation::class,
+            'regex' => RegexPropertyOperation::class,
         ];
     }
 }

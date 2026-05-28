@@ -7,6 +7,7 @@ namespace HubSpotSDK\Cms\MediaBridge;
 use HubSpotSDK\Cms\MediaBridge\Property1\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\Property1\DateDisplayHint;
 use HubSpotSDK\Cms\MediaBridge\Property1\NumberDisplayHint;
+use HubSpotSDK\Cms\MediaBridge\Property1\TextDisplayHint;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
@@ -45,6 +46,7 @@ use HubSpotSDK\PropertyModificationMetadata;
  *   referencedObjectType?: string|null,
  *   sensitiveDataCategories?: list<string>|null,
  *   showCurrencySymbol?: bool|null,
+ *   textDisplayHint?: null|TextDisplayHint|value-of<TextDisplayHint>,
  *   updatedAt?: \DateTimeInterface|null,
  *   updatedUserID?: string|null,
  * }
@@ -140,6 +142,10 @@ final class Property1 implements BaseModel
     #[Optional]
     public ?bool $showCurrencySymbol;
 
+    /** @var value-of<TextDisplayHint>|null $textDisplayHint */
+    #[Optional(enum: TextDisplayHint::class)]
+    public ?string $textDisplayHint;
+
     #[Optional]
     public ?\DateTimeInterface $updatedAt;
 
@@ -191,6 +197,7 @@ final class Property1 implements BaseModel
      * @param PropertyModificationMetadata|PropertyModificationMetadataShape|null $modificationMetadata
      * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
      * @param list<string>|null $sensitiveDataCategories
+     * @param TextDisplayHint|value-of<TextDisplayHint>|null $textDisplayHint
      */
     public static function with(
         string $description,
@@ -220,6 +227,7 @@ final class Property1 implements BaseModel
         ?string $referencedObjectType = null,
         ?array $sensitiveDataCategories = null,
         ?bool $showCurrencySymbol = null,
+        TextDisplayHint|string|null $textDisplayHint = null,
         ?\DateTimeInterface $updatedAt = null,
         ?string $updatedUserID = null,
     ): self {
@@ -253,6 +261,7 @@ final class Property1 implements BaseModel
         null !== $referencedObjectType && $self['referencedObjectType'] = $referencedObjectType;
         null !== $sensitiveDataCategories && $self['sensitiveDataCategories'] = $sensitiveDataCategories;
         null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
+        null !== $textDisplayHint && $self['textDisplayHint'] = $textDisplayHint;
         null !== $updatedAt && $self['updatedAt'] = $updatedAt;
         null !== $updatedUserID && $self['updatedUserID'] = $updatedUserID;
 
@@ -494,6 +503,18 @@ final class Property1 implements BaseModel
     {
         $self = clone $this;
         $self['showCurrencySymbol'] = $showCurrencySymbol;
+
+        return $self;
+    }
+
+    /**
+     * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint
+     */
+    public function withTextDisplayHint(
+        TextDisplayHint|string $textDisplayHint
+    ): self {
+        $self = clone $this;
+        $self['textDisplayHint'] = $textDisplayHint;
 
         return $self;
     }

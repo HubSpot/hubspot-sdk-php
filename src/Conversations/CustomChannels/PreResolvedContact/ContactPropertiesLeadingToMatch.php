@@ -360,6 +360,8 @@ enum ContactPropertiesLeadingToMatch: string
 
     case HS_IS_ENRICHED = 'hs_is_enriched';
 
+    case HS_IS_MASS_MARKETING_ACTIVATION_DISALLOWED = 'hs_is_mass_marketing_activation_disallowed';
+
     case HS_IS_MERGE_REVERTIBLE = 'hs_is_merge_revertible';
 
     case HS_IS_UNWORKED = 'hs_is_unworked';

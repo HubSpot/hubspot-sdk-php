@@ -7,6 +7,7 @@ namespace HubSpotSDK\Crm\Lists;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicEventFilterMetadata\Operation;
 
 /**
  * @phpstan-import-type OperationVariants from \HubSpotSDK\Crm\Lists\PublicEventFilterMetadata\Operation
@@ -26,7 +27,7 @@ final class PublicEventFilterMetadata implements BaseModel
      *
      * @var OperationVariants $operation
      */
-    #[Required]
+    #[Required(union: Operation::class)]
     public PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $operation;
 
     /**

@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicIndexedTimePoint\IndexReference;
 use HubSpotSDK\Crm\Lists\PublicIndexedTimePoint\TimeType;
 
 /**
@@ -33,7 +34,7 @@ final class PublicIndexedTimePoint implements BaseModel
      *
      * @var IndexReferenceVariants $indexReference
      */
-    #[Required]
+    #[Required(union: IndexReference::class)]
     public PublicNowReference|PublicTodayReference|PublicWeekReference|PublicFiscalQuarterReference|PublicFiscalYearReference|PublicYearReference|PublicQuarterReference|PublicMonthReference $indexReference;
 
     /**

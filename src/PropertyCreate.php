@@ -11,6 +11,7 @@ use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\PropertyCreate\DataSensitivity;
 use HubSpotSDK\PropertyCreate\FieldType;
 use HubSpotSDK\PropertyCreate\NumberDisplayHint;
+use HubSpotSDK\PropertyCreate\TextDisplayHint;
 use HubSpotSDK\PropertyCreate\Type;
 
 /**
@@ -35,6 +36,7 @@ use HubSpotSDK\PropertyCreate\Type;
  *   options?: list<OptionInput|OptionInputShape>|null,
  *   referencedObjectType?: string|null,
  *   showCurrencySymbol?: bool|null,
+ *   textDisplayHint?: null|TextDisplayHint|value-of<TextDisplayHint>,
  * }
  */
 final class PropertyCreate implements BaseModel
@@ -101,6 +103,10 @@ final class PropertyCreate implements BaseModel
     #[Optional]
     public ?bool $showCurrencySymbol;
 
+    /** @var value-of<TextDisplayHint>|null $textDisplayHint */
+    #[Optional(enum: TextDisplayHint::class)]
+    public ?string $textDisplayHint;
+
     /**
      * `new PropertyCreate()` is missing required properties by the API.
      *
@@ -137,6 +143,7 @@ final class PropertyCreate implements BaseModel
      * @param DataSensitivity|value-of<DataSensitivity>|null $dataSensitivity
      * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
      * @param list<OptionInput|OptionInputShape>|null $options
+     * @param TextDisplayHint|value-of<TextDisplayHint>|null $textDisplayHint
      */
     public static function with(
         FieldType|string $fieldType,
@@ -157,6 +164,7 @@ final class PropertyCreate implements BaseModel
         ?array $options = null,
         ?string $referencedObjectType = null,
         ?bool $showCurrencySymbol = null,
+        TextDisplayHint|string|null $textDisplayHint = null,
     ): self {
         $self = new self;
 
@@ -179,6 +187,7 @@ final class PropertyCreate implements BaseModel
         null !== $options && $self['options'] = $options;
         null !== $referencedObjectType && $self['referencedObjectType'] = $referencedObjectType;
         null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
+        null !== $textDisplayHint && $self['textDisplayHint'] = $textDisplayHint;
 
         return $self;
     }
@@ -340,6 +349,18 @@ final class PropertyCreate implements BaseModel
     {
         $self = clone $this;
         $self['showCurrencySymbol'] = $showCurrencySymbol;
+
+        return $self;
+    }
+
+    /**
+     * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint
+     */
+    public function withTextDisplayHint(
+        TextDisplayHint|string $textDisplayHint
+    ): self {
+        $self = clone $this;
+        $self['textDisplayHint'] = $textDisplayHint;
 
         return $self;
     }

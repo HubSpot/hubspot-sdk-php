@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HubSpotSDK\Automation\Actions;
 
+use HubSpotSDK\Automation\Actions\CallbackCompletionRequest\RequestContext;
 use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
@@ -50,7 +51,7 @@ final class CallbackCompletionRequest implements BaseModel
      *
      * @var RequestContextVariants|null $requestContext
      */
-    #[Optional]
+    #[Optional(union: RequestContext::class)]
     public WorkflowsRequestContext|AgentRequestContext|CopilotRequestContext|StandaloneRequestContext|TestRequestContext|null $requestContext;
 
     /**

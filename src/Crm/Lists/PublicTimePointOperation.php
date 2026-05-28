@@ -9,6 +9,7 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Lists\PublicTimePointOperation\OperationType;
+use HubSpotSDK\Crm\Lists\PublicTimePointOperation\TimePoint;
 
 /**
  * @phpstan-import-type TimePointVariants from \HubSpotSDK\Crm\Lists\PublicTimePointOperation\TimePoint
@@ -54,7 +55,7 @@ final class PublicTimePointOperation implements BaseModel
      *
      * @var TimePointVariants $timePoint
      */
-    #[Required]
+    #[Required(union: TimePoint::class)]
     public PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $timePoint;
 
     /**

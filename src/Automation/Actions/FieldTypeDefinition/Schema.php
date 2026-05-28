@@ -33,19 +33,24 @@ final class Schema implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'type';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            IntegerFieldSchema::class,
-            LongFieldSchema::class,
-            DoubleFieldSchema::class,
-            StringFieldSchema::class,
-            BooleanFieldSchema::class,
-            ArrayFieldSchema::class,
-            ObjectFieldSchema::class,
+            'INTEGER' => IntegerFieldSchema::class,
+            'LONG' => LongFieldSchema::class,
+            'DOUBLE' => DoubleFieldSchema::class,
+            'STRING' => StringFieldSchema::class,
+            'BOOLEAN' => BooleanFieldSchema::class,
+            'ARRAY' => ArrayFieldSchema::class,
+            'OBJECT' => ObjectFieldSchema::class,
         ];
     }
 }

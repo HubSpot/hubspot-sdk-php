@@ -11,6 +11,7 @@ use HubSpotSDK\Core\Concerns\SdkParams;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Properties\PropertyUpdateParams\FieldType;
 use HubSpotSDK\Crm\Properties\PropertyUpdateParams\NumberDisplayHint;
+use HubSpotSDK\Crm\Properties\PropertyUpdateParams\TextDisplayHint;
 use HubSpotSDK\Crm\Properties\PropertyUpdateParams\Type;
 use HubSpotSDK\OptionInput;
 
@@ -35,6 +36,7 @@ use HubSpotSDK\OptionInput;
  *   numberDisplayHint?: null|NumberDisplayHint|value-of<NumberDisplayHint>,
  *   options?: list<OptionInput|OptionInputShape>|null,
  *   showCurrencySymbol?: bool|null,
+ *   textDisplayHint?: null|TextDisplayHint|value-of<TextDisplayHint>,
  *   type?: null|Type|value-of<Type>,
  * }
  */
@@ -115,6 +117,10 @@ final class PropertyUpdateParams implements BaseModel
     #[Optional]
     public ?bool $showCurrencySymbol;
 
+    /** @var value-of<TextDisplayHint>|null $textDisplayHint */
+    #[Optional(enum: TextDisplayHint::class)]
+    public ?string $textDisplayHint;
+
     /**
      * The data type of the property.
      *
@@ -150,6 +156,7 @@ final class PropertyUpdateParams implements BaseModel
      * @param FieldType|value-of<FieldType>|null $fieldType
      * @param NumberDisplayHint|value-of<NumberDisplayHint>|null $numberDisplayHint
      * @param list<OptionInput|OptionInputShape>|null $options
+     * @param TextDisplayHint|value-of<TextDisplayHint>|null $textDisplayHint
      * @param Type|value-of<Type>|null $type
      */
     public static function with(
@@ -166,6 +173,7 @@ final class PropertyUpdateParams implements BaseModel
         NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
         ?bool $showCurrencySymbol = null,
+        TextDisplayHint|string|null $textDisplayHint = null,
         Type|string|null $type = null,
     ): self {
         $self = new self;
@@ -184,6 +192,7 @@ final class PropertyUpdateParams implements BaseModel
         null !== $numberDisplayHint && $self['numberDisplayHint'] = $numberDisplayHint;
         null !== $options && $self['options'] = $options;
         null !== $showCurrencySymbol && $self['showCurrencySymbol'] = $showCurrencySymbol;
+        null !== $textDisplayHint && $self['textDisplayHint'] = $textDisplayHint;
         null !== $type && $self['type'] = $type;
 
         return $self;
@@ -324,6 +333,18 @@ final class PropertyUpdateParams implements BaseModel
     {
         $self = clone $this;
         $self['showCurrencySymbol'] = $showCurrencySymbol;
+
+        return $self;
+    }
+
+    /**
+     * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint
+     */
+    public function withTextDisplayHint(
+        TextDisplayHint|string $textDisplayHint
+    ): self {
+        $self = clone $this;
+        $self['textDisplayHint'] = $textDisplayHint;
 
         return $self;
     }

@@ -10,6 +10,7 @@ use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Lists\PublicEmailEventFilter\FilterType;
 use HubSpotSDK\Crm\Lists\PublicEmailEventFilter\Operator;
+use HubSpotSDK\Crm\Lists\PublicEmailEventFilter\PruningRefineBy;
 
 /**
  * @phpstan-import-type PruningRefineByVariants from \HubSpotSDK\Crm\Lists\PublicEmailEventFilter\PruningRefineBy
@@ -75,7 +76,7 @@ final class PublicEmailEventFilter implements BaseModel
      *
      * @var PruningRefineByVariants|null $pruningRefineBy
      */
-    #[Optional]
+    #[Optional(union: PruningRefineBy::class)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 
     /**

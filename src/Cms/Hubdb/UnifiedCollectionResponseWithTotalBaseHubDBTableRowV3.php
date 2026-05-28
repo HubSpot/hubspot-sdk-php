@@ -19,14 +19,19 @@ final class UnifiedCollectionResponseWithTotalBaseHubDBTableRowV3 implements Con
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'type';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            RandomAccessCollectionResponseWithTotalHubDBTableRowV3::class,
-            StreamingCollectionResponseWithTotalHubDBTableRowV3::class,
+            'RANDOM_ACCESS' => RandomAccessCollectionResponseWithTotalHubDBTableRowV3::class,
+            'STREAMING' => StreamingCollectionResponseWithTotalHubDBTableRowV3::class,
         ];
     }
 }

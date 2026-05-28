@@ -20,6 +20,7 @@ use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreateMediaPlayedEventParams\State;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\DataSensitivity;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\FieldType;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\NumberDisplayHint;
+use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\TextDisplayHint;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeCreatePropertyParams\Type;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeProperty;
 use HubSpotSDK\Cms\MediaBridge\MediaBridgeProviderRegistrationResponse;
@@ -209,6 +210,7 @@ interface MediaBridgeContract
      * @param list<OptionInput|OptionInputShape> $options Body param
      * @param string $referencedObjectType Body param
      * @param bool $showCurrencySymbol Body param
+     * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint Body param
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -234,6 +236,7 @@ interface MediaBridgeContract
         ?array $options = null,
         ?string $referencedObjectType = null,
         ?bool $showCurrencySymbol = null,
+        TextDisplayHint|string|null $textDisplayHint = null,
         RequestOptions|array|null $requestOptions = null,
     ): MediaBridgeProperty;
 
@@ -549,6 +552,7 @@ interface MediaBridgeContract
      * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\NumberDisplayHint|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\NumberDisplayHint> $numberDisplayHint Body param
      * @param list<OptionInput|OptionInputShape> $options Body param
      * @param bool $showCurrencySymbol Body param
+     * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\TextDisplayHint|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\TextDisplayHint> $textDisplayHint Body param
      * @param \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|value-of<\HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type> $type Body param
      * @param RequestOpts|null $requestOptions
      *
@@ -571,6 +575,7 @@ interface MediaBridgeContract
         \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
         ?bool $showCurrencySymbol = null,
+        \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\TextDisplayHint|string|null $textDisplayHint = null,
         \HubSpotSDK\Cms\MediaBridge\MediaBridgeUpdatePropertyParams\Type|string|null $type = null,
         RequestOptions|array|null $requestOptions = null,
     ): MediaBridgeProperty;

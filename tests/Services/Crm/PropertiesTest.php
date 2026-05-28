@@ -84,6 +84,7 @@ final class PropertiesTest extends TestCase
             ],
             referencedObjectType: 'referencedObjectType',
             showCurrencySymbol: true,
+            textDisplayHint: 'domain_name',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -136,6 +137,7 @@ final class PropertiesTest extends TestCase
                 ],
             ],
             showCurrencySymbol: true,
+            textDisplayHint: 'domain_name',
             type: 'bool',
         );
 

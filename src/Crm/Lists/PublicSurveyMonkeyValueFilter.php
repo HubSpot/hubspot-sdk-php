@@ -9,6 +9,7 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Lists\PublicSurveyMonkeyValueFilter\FilterType;
+use HubSpotSDK\Crm\Lists\PublicSurveyMonkeyValueFilter\ValueComparison;
 
 /**
  * @phpstan-import-type ValueComparisonVariants from \HubSpotSDK\Crm\Lists\PublicSurveyMonkeyValueFilter\ValueComparison
@@ -60,7 +61,7 @@ final class PublicSurveyMonkeyValueFilter implements BaseModel
      *
      * @var ValueComparisonVariants $valueComparison
      */
-    #[Required]
+    #[Required(union: ValueComparison::class)]
     public PublicBoolPropertyOperation|PublicNumberPropertyOperation|PublicStringPropertyOperation|PublicDateTimePropertyOperation|PublicRangedDatePropertyOperation|PublicComparativePropertyUpdatedOperation|PublicComparativeDatePropertyOperation|PublicRollingDateRangePropertyOperation|PublicRollingPropertyUpdatedOperation|PublicEnumerationPropertyOperation|PublicAllPropertyTypesOperation|PublicRangedNumberPropertyOperation|PublicMultiStringPropertyOperation|PublicDatePropertyOperation|PublicCalendarDatePropertyOperation|PublicTimePointOperation|PublicRangedTimeOperation $valueComparison;
 
     /**

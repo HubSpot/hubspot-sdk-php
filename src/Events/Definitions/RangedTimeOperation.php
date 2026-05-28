@@ -9,10 +9,12 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Events\Definitions\RangedTimeOperation\LowerBoundEndpointBehavior;
+use HubSpotSDK\Events\Definitions\RangedTimeOperation\LowerBoundTimePoint;
 use HubSpotSDK\Events\Definitions\RangedTimeOperation\Operator;
 use HubSpotSDK\Events\Definitions\RangedTimeOperation\PropertyParser;
 use HubSpotSDK\Events\Definitions\RangedTimeOperation\PropertyType;
 use HubSpotSDK\Events\Definitions\RangedTimeOperation\UpperBoundEndpointBehavior;
+use HubSpotSDK\Events\Definitions\RangedTimeOperation\UpperBoundTimePoint;
 
 /**
  * @phpstan-import-type LowerBoundTimePointVariants from \HubSpotSDK\Events\Definitions\RangedTimeOperation\LowerBoundTimePoint
@@ -49,7 +51,7 @@ final class RangedTimeOperation implements BaseModel
     public string $lowerBoundEndpointBehavior;
 
     /** @var LowerBoundTimePointVariants $lowerBoundTimePoint */
-    #[Required]
+    #[Required(union: LowerBoundTimePoint::class)]
     public DatePoint|IndexedTimePoint|PropertyReferencedTime $lowerBoundTimePoint;
 
     #[Required]
@@ -78,7 +80,7 @@ final class RangedTimeOperation implements BaseModel
     public string $upperBoundEndpointBehavior;
 
     /** @var UpperBoundTimePointVariants $upperBoundTimePoint */
-    #[Required]
+    #[Required(union: UpperBoundTimePoint::class)]
     public DatePoint|IndexedTimePoint|PropertyReferencedTime $upperBoundTimePoint;
 
     #[Optional]
