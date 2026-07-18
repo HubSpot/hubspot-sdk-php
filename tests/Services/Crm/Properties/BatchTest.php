@@ -89,6 +89,7 @@ final class BatchTest extends TestCase
                     ],
                     'referencedObjectType' => 'referencedObjectType',
                     'showCurrencySymbol' => true,
+                    'textDisplayHint' => 'domain_name',
                 ],
             ],
         );

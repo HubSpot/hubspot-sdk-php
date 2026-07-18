@@ -31,19 +31,24 @@ final class Attachment implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'type';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            FileAttachment::class,
-            LocationAttachment::class,
-            ContactAttachment::class,
-            UnsupportedContentAttachment::class,
-            MessageHeaderAttachment::class,
-            QuickRepliesAttachment::class,
-            SocialMetadataIntegrationAttachment::class,
+            'FILE' => FileAttachment::class,
+            'LOCATION' => LocationAttachment::class,
+            'CONTACT' => ContactAttachment::class,
+            'UNSUPPORTED_CONTENT' => UnsupportedContentAttachment::class,
+            'MESSAGE_HEADER' => MessageHeaderAttachment::class,
+            'QUICK_REPLIES' => QuickRepliesAttachment::class,
+            'SOCIAL_MEDIA_METADATA' => SocialMetadataIntegrationAttachment::class,
         ];
     }
 }

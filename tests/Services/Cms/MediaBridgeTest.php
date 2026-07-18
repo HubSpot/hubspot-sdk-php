@@ -354,6 +354,7 @@ final class MediaBridgeTest extends TestCase
             ],
             referencedObjectType: 'referencedObjectType',
             showCurrencySymbol: true,
+            textDisplayHint: 'domain_name',
         );
 
         // @phpstan-ignore-next-line method.alreadyNarrowedType
@@ -967,6 +968,7 @@ final class MediaBridgeTest extends TestCase
                 ],
             ],
             showCurrencySymbol: true,
+            textDisplayHint: 'domain_name',
             type: 'bool',
         );
 

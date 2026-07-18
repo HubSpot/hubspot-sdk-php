@@ -22,17 +22,22 @@ final class SubscriptionUpsertRequest implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'subscriptionType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            ObjectSubscriptionUpsertRequest::class,
-            AssociationSubscriptionUpsertRequest::class,
-            AppLifecycleEventSubscriptionUpsertRequest::class,
-            ListMembershipSubscriptionUpsertRequest::class,
-            GdprPrivacyDeletionSubscriptionUpsertRequest::class,
+            'OBJECT' => ObjectSubscriptionUpsertRequest::class,
+            'ASSOCIATION' => AssociationSubscriptionUpsertRequest::class,
+            'APP_LIFECYCLE_EVENT' => AppLifecycleEventSubscriptionUpsertRequest::class,
+            'LIST_MEMBERSHIP' => ListMembershipSubscriptionUpsertRequest::class,
+            'GDPR_PRIVACY_DELETION' => GdprPrivacyDeletionSubscriptionUpsertRequest::class,
         ];
     }
 }

@@ -23,13 +23,19 @@ final class RequestedConversionTime implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'conversionType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            PublicListConversionDate::class, PublicListConversionInactivity::class,
+            'CONVERSION_DATE' => PublicListConversionDate::class,
+            'INACTIVITY' => PublicListConversionInactivity::class,
         ];
     }
 }

@@ -12,6 +12,7 @@ use HubSpotSDK\Events\Definitions\TimePointOperation\EndpointBehavior;
 use HubSpotSDK\Events\Definitions\TimePointOperation\Operator;
 use HubSpotSDK\Events\Definitions\TimePointOperation\PropertyParser;
 use HubSpotSDK\Events\Definitions\TimePointOperation\PropertyType;
+use HubSpotSDK\Events\Definitions\TimePointOperation\TimePoint;
 
 /**
  * @phpstan-import-type TimePointVariants from \HubSpotSDK\Events\Definitions\TimePointOperation\TimePoint
@@ -62,7 +63,7 @@ final class TimePointOperation implements BaseModel
     public string $propertyType;
 
     /** @var TimePointVariants $timePoint */
-    #[Required]
+    #[Required(union: TimePoint::class)]
     public DatePoint|IndexedTimePoint|PropertyReferencedTime $timePoint;
 
     #[Required]

@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Crm\Lists\PublicAdsTimeFilter\FilterType;
+use HubSpotSDK\Crm\Lists\PublicAdsTimeFilter\PruningRefineBy;
 
 /**
  * @phpstan-import-type PruningRefineByVariants from \HubSpotSDK\Crm\Lists\PublicAdsTimeFilter\PruningRefineBy
@@ -36,7 +37,7 @@ final class PublicAdsTimeFilter implements BaseModel
      *
      * @var PruningRefineByVariants $pruningRefineBy
      */
-    #[Required]
+    #[Required(union: PruningRefineBy::class)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation $pruningRefineBy;
 
     /**

@@ -21,11 +21,19 @@ final class CoalescingRefineBy implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'type';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
-        return [NumOccurrencesRefineBy::class, SetOccurrencesRefineBy::class];
+        return [
+            'NumOccurrencesRefineBy' => NumOccurrencesRefineBy::class,
+            'SetOccurrencesRefineBy' => SetOccurrencesRefineBy::class,
+        ];
     }
 }

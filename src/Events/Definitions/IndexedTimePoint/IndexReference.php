@@ -33,20 +33,25 @@ final class IndexReference implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'referenceType';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            NowReference::class,
-            TodayReference::class,
-            WeekReference::class,
-            MonthReference::class,
-            QuarterReference::class,
-            FiscalQuarter::class,
-            YearReference::class,
-            FiscalYear::class,
+            'NOW' => NowReference::class,
+            'TODAY' => TodayReference::class,
+            'WEEK' => WeekReference::class,
+            'MONTH' => MonthReference::class,
+            'QUARTER' => QuarterReference::class,
+            'FISCAL_QUARTER' => FiscalQuarter::class,
+            'YEAR' => YearReference::class,
+            'FISCAL_YEAR' => FiscalYear::class,
         ];
     }
 }

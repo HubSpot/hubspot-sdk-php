@@ -8,10 +8,12 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\CoalescingRefineBy;
 use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Filter;
 use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\FilterBranch;
 use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\FilterBranchType;
 use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Operator;
+use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\PruningRefineBy;
 
 /**
  * @phpstan-import-type FilterVariants from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilterBranch\Filter
@@ -78,11 +80,11 @@ final class PublicUnifiedEventsFilterBranch implements BaseModel
      *
      * @var CoalescingRefineByVariants|null $coalescingRefineBy
      */
-    #[Optional]
+    #[Optional(union: CoalescingRefineBy::class)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
     /** @var PruningRefineByVariants|null $pruningRefineBy */
-    #[Optional]
+    #[Optional(union: PruningRefineBy::class)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 
     /**

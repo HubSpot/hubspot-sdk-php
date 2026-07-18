@@ -8,6 +8,7 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicListConversionResponse\RequestedConversionTime;
 
 /**
  * @phpstan-import-type RequestedConversionTimeVariants from \HubSpotSDK\Crm\Lists\PublicListConversionResponse\RequestedConversionTime
@@ -41,7 +42,7 @@ final class PublicListConversionResponse implements BaseModel
      *
      * @var RequestedConversionTimeVariants|null $requestedConversionTime
      */
-    #[Optional]
+    #[Optional(union: RequestedConversionTime::class)]
     public PublicListConversionDate|PublicListConversionInactivity|null $requestedConversionTime;
 
     /**

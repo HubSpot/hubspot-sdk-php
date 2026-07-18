@@ -9,6 +9,7 @@ use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
 use HubSpotSDK\Events\Definitions\PropertyFilter\FilterType;
+use HubSpotSDK\Events\Definitions\PropertyFilter\Operation;
 
 /**
  * @phpstan-import-type OperationVariants from \HubSpotSDK\Events\Definitions\PropertyFilter\Operation
@@ -34,7 +35,7 @@ final class PropertyFilter implements BaseModel
     public string $filterType;
 
     /** @var OperationVariants $operation */
-    #[Required]
+    #[Required(union: Operation::class)]
     public BoolPropertyOperation|NumberPropertyOperation|StringPropertyOperation|DateTimePropertyOperation|RangedDatePropertyOperation|ComparativeDatePropertyOperation|ComparativeBoolPropertyOperation|ComparativeNumberPropertyOperation|ComparativeStringPropertyOperation|ComparativePropertyUpdatedOperation|RollingDateRangePropertyOperation|RollingPropertyUpdatedOperation|EnumerationPropertyOperation|AllPropertyTypesOperation|RangedNumberPropertyOperation|MultiStringPropertyOperation|DatePropertyOperation|CalendarDatePropertyOperation|TimePointOperation|RangedTimeOperation|RegexPropertyOperation $operation;
 
     #[Required]

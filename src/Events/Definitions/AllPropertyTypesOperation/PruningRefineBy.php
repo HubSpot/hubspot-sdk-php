@@ -31,19 +31,24 @@ final class PruningRefineBy implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'type';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            RelativeComparativeTimestampRefineBy::class,
-            RelativeRangedTimestampRefineBy::class,
-            AbsoluteComparativeTimestampRefineBy::class,
-            AbsoluteRangedTimestampRefineBy::class,
-            AllHistoryRefineBy::class,
             TimePointOperation::class,
             RangedTimeOperation::class,
+            'RelativeComparativeTimestampRefineBy' => RelativeComparativeTimestampRefineBy::class,
+            'RelativeRangedTimestampRefineBy' => RelativeRangedTimestampRefineBy::class,
+            'AbsoluteComparativeTimestampRefineBy' => AbsoluteComparativeTimestampRefineBy::class,
+            'AbsoluteRangedTimestampRefineBy' => AbsoluteRangedTimestampRefineBy::class,
+            'AllHistoryRefineBy' => AllHistoryRefineBy::class,
         ];
     }
 }

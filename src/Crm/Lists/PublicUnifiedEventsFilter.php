@@ -8,7 +8,9 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilter\CoalescingRefineBy;
 use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilter\FilterType;
+use HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilter\PruningRefineBy;
 
 /**
  * @phpstan-import-type CoalescingRefineByVariants from \HubSpotSDK\Crm\Lists\PublicUnifiedEventsFilter\CoalescingRefineBy
@@ -47,7 +49,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
      *
      * @var CoalescingRefineByVariants|null $coalescingRefineBy
      */
-    #[Optional]
+    #[Optional(union: CoalescingRefineBy::class)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $coalescingRefineBy;
 
     /**
@@ -61,7 +63,7 @@ final class PublicUnifiedEventsFilter implements BaseModel
      *
      * @var PruningRefineByVariants|null $pruningRefineBy
      */
-    #[Optional]
+    #[Optional(union: PruningRefineBy::class)]
     public PublicNumOccurrencesRefineBy|PublicSetOccurrencesRefineBy|PublicRelativeComparativeTimestampRefineBy|PublicRelativeRangedTimestampRefineBy|PublicAbsoluteComparativeTimestampRefineBy|PublicAbsoluteRangedTimestampRefineBy|PublicAllHistoryRefineBy|PublicTimePointOperation|PublicRangedTimeOperation|null $pruningRefineBy;
 
     /**

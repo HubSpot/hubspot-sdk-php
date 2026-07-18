@@ -29,17 +29,22 @@ final class RequestContext implements ConverterSource
 {
     use SdkUnion;
 
+    public static function discriminator(): string
+    {
+        return 'source';
+    }
+
     /**
      * @return list<string|Converter|ConverterSource>|array<string,string|Converter|ConverterSource>
      */
     public static function variants(): array
     {
         return [
-            WorkflowsRequestContext::class,
-            AgentRequestContext::class,
-            CopilotRequestContext::class,
-            StandaloneRequestContext::class,
-            TestRequestContext::class,
+            'WORKFLOWS' => WorkflowsRequestContext::class,
+            'AGENTS' => AgentRequestContext::class,
+            'COPILOT' => CopilotRequestContext::class,
+            'STANDALONE' => StandaloneRequestContext::class,
+            'TEST' => TestRequestContext::class,
         ];
     }
 }

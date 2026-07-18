@@ -8,8 +8,10 @@ use HubSpotSDK\Core\Attributes\Optional;
 use HubSpotSDK\Core\Attributes\Required;
 use HubSpotSDK\Core\Concerns\SdkModel;
 use HubSpotSDK\Core\Contracts\BaseModel;
+use HubSpotSDK\Crm\Lists\PublicRangedTimeOperation\LowerBoundTimePoint;
 use HubSpotSDK\Crm\Lists\PublicRangedTimeOperation\OperationType;
 use HubSpotSDK\Crm\Lists\PublicRangedTimeOperation\Type;
+use HubSpotSDK\Crm\Lists\PublicRangedTimeOperation\UpperBoundTimePoint;
 
 /**
  * @phpstan-import-type LowerBoundTimePointVariants from \HubSpotSDK\Crm\Lists\PublicRangedTimeOperation\LowerBoundTimePoint
@@ -45,7 +47,7 @@ final class PublicRangedTimeOperation implements BaseModel
      *
      * @var LowerBoundTimePointVariants $lowerBoundTimePoint
      */
-    #[Required]
+    #[Required(union: LowerBoundTimePoint::class)]
     public PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $lowerBoundTimePoint;
 
     /**
@@ -75,7 +77,7 @@ final class PublicRangedTimeOperation implements BaseModel
      *
      * @var UpperBoundTimePointVariants $upperBoundTimePoint
      */
-    #[Required]
+    #[Required(union: UpperBoundTimePoint::class)]
     public PublicDatePoint|PublicIndexedTimePoint|PublicPropertyReferencedTime $upperBoundTimePoint;
 
     /**

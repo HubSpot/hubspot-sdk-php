@@ -9,6 +9,7 @@ use HubSpotSDK\Crm\Properties\CollectionResponsePropertyNoPaging;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\FieldType;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\NumberDisplayHint;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams\TextDisplayHint;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\Type;
 use HubSpotSDK\OptionInput;
 use HubSpotSDK\Property;
@@ -28,6 +29,7 @@ interface PropertiesContract
      * @param DataSensitivity|value-of<DataSensitivity> $dataSensitivity
      * @param NumberDisplayHint|value-of<NumberDisplayHint> $numberDisplayHint
      * @param list<OptionInput|OptionInputShape> $options
+     * @param TextDisplayHint|value-of<TextDisplayHint> $textDisplayHint
      * @param RequestOpts|null $requestOptions
      *
      * @throws APIException
@@ -52,6 +54,7 @@ interface PropertiesContract
         ?array $options = null,
         ?string $referencedObjectType = null,
         ?bool $showCurrencySymbol = null,
+        TextDisplayHint|string|null $textDisplayHint = null,
         RequestOptions|array|null $requestOptions = null,
     ): Property;
 
@@ -72,6 +75,7 @@ interface PropertiesContract
      * @param \HubSpotSDK\Crm\Properties\PropertyUpdateParams\NumberDisplayHint|value-of<\HubSpotSDK\Crm\Properties\PropertyUpdateParams\NumberDisplayHint> $numberDisplayHint Body param
      * @param list<OptionInput|OptionInputShape> $options body param: A list of valid options for the property
      * @param bool $showCurrencySymbol Body param
+     * @param \HubSpotSDK\Crm\Properties\PropertyUpdateParams\TextDisplayHint|value-of<\HubSpotSDK\Crm\Properties\PropertyUpdateParams\TextDisplayHint> $textDisplayHint Body param
      * @param \HubSpotSDK\Crm\Properties\PropertyUpdateParams\Type|value-of<\HubSpotSDK\Crm\Properties\PropertyUpdateParams\Type> $type body param: The data type of the property
      * @param RequestOpts|null $requestOptions
      *
@@ -92,6 +96,7 @@ interface PropertiesContract
         \HubSpotSDK\Crm\Properties\PropertyUpdateParams\NumberDisplayHint|string|null $numberDisplayHint = null,
         ?array $options = null,
         ?bool $showCurrencySymbol = null,
+        \HubSpotSDK\Crm\Properties\PropertyUpdateParams\TextDisplayHint|string|null $textDisplayHint = null,
         \HubSpotSDK\Crm\Properties\PropertyUpdateParams\Type|string|null $type = null,
         RequestOptions|array|null $requestOptions = null,
     ): Property;

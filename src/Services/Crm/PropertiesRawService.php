@@ -12,6 +12,7 @@ use HubSpotSDK\Crm\Properties\PropertyCreateParams;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\DataSensitivity;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\FieldType;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\NumberDisplayHint;
+use HubSpotSDK\Crm\Properties\PropertyCreateParams\TextDisplayHint;
 use HubSpotSDK\Crm\Properties\PropertyCreateParams\Type;
 use HubSpotSDK\Crm\Properties\PropertyDeleteParams;
 use HubSpotSDK\Crm\Properties\PropertyGetParams;
@@ -58,6 +59,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *   options?: list<OptionInput|OptionInputShape>,
      *   referencedObjectType?: string,
      *   showCurrencySymbol?: bool,
+     *   textDisplayHint?: value-of<TextDisplayHint>,
      * }|PropertyCreateParams $params
      * @param RequestOpts|null $requestOptions
      *
@@ -105,6 +107,7 @@ final class PropertiesRawService implements PropertiesRawContract
      *   numberDisplayHint?: PropertyUpdateParams\NumberDisplayHint|value-of<PropertyUpdateParams\NumberDisplayHint>,
      *   options?: list<OptionInput|OptionInputShape>,
      *   showCurrencySymbol?: bool,
+     *   textDisplayHint?: value-of<PropertyUpdateParams\TextDisplayHint>,
      *   type?: PropertyUpdateParams\Type|value-of<PropertyUpdateParams\Type>,
      * }|PropertyUpdateParams $params
      * @param RequestOpts|null $requestOptions
