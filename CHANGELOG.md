@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2026-07-18)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Features
+
+* **api:** api update ([4bfad2d](https://github.com/HubSpot/hubspot-sdk-php/commit/4bfad2d75abd1de31c38719a857eed317704f771))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([60ec958](https://github.com/HubSpot/hubspot-sdk-php/commit/60ec9587149c323891dd83beb0e3f7af78a638f1))
+
 ## 0.1.0-alpha.9 (2026-05-26)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/HubSpot/hubspot-sdk-php/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
